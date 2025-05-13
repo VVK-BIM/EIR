@@ -1,0 +1,897 @@
+# v 0.5a
+# NSIK ver 0.9, 2023-09-01
+# https://nsiklab.lt 
+#
+# 10 - Elektrotechnika
+#
+
+E:
+    elements:
+    - id: Vėdinimo kamera
+      classifications:
+        NSIK LF: J
+        NSIK LT: HF
+        NSIK LK: GQB
+      stages:
+        s3:
+          properties:
+          - VVK.LevelName:
+            - examples:
+              - 1 aukštas
+            - units: Tekstas
+          - Name:
+            - examples:
+              - M_Vėdinimo kamera
+            - units: Tekstas
+            - descr: Elemento pavadinimas
+          - Pset_ElementComponentCommon.Status:
+            - examples:
+              - Projektuojamas
+            - units: Tekstas
+            - descr: Elemento būsena
+          - Numeris:
+            - examples:
+              - AHU-1
+            - memo: AHU-1, AHU 3 kaip pavyzdys (kaip Vėdinime, žymėjimas ant brėžinio)
+                analogija Type Mark. Numerius suveda projektuotojai
+            - units: Tekstas
+            - descr: Vėdinimo arba dūmų šalinimo sistemos pavadinimas
+          - Type:
+            - units: Tekstas
+            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
+                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
+                medžiagų ir kiekių žiniaraščiuose
+          - VVK.Material:
+            - examples:
+              - Cinkuotas plienas
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento medžiaga
+          - VVK.Apdaila:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento apdaila
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
+                spalvyną ir spalvos pavadinimą, jei žinomas
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 1.1
+            - units: Tekstas
+            - descr: Techninės specifikacijos Nr.
+          - Galingumas:
+            - examples:
+              - 5
+            - units: W
+            - descr: Nurodomas įrenginio elektros poreikis
+          - Ifc__.Heigth:
+            - examples:
+              - 300
+            - units: mm
+            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          - Ifc__.Length:
+            - examples:
+              - 1100
+            - units: mm
+            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
+                skaitmenys)
+          - Ifc__.Width:
+            - examples:
+              - 560
+            - units: mm
+            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          - Diametras:
+            - examples:
+              - 160
+            - units: mm
+            - descr: Gaminio diametras / dydis (jei taikoma), mm
+          - Ifc__.Weigth:
+            - examples:
+              - 1500
+            - units: kg
+            - descr: Elemento svoris
+          lod: 300
+      examples:
+      - Vėdinimo kamera
+      - oro tiekimo kamera
+
+    - id: Jungiklis
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: SJA
+      stages:
+        s3:
+          properties:
+          - VVK.LevelName:
+            - examples:
+              - 1 aukštas
+            - units: Tekstas
+          - Name:
+            - examples:
+              - Dviejų padėčių jungiklis
+            - units: Tekstas
+            - descr: Elemento pavadinimas
+          - Pset_ElementComponentCommon.Status:
+            - examples:
+              - Projektuojamas
+            - units: Tekstas
+            - descr: Elemento būsena
+          - Type:
+            - examples:
+              - JJ-1
+            - units: Tekstas
+            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
+                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
+                medžiagų ir kiekių žiniaraščiuose
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento medžiaga
+          - VVK.Apdaila:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento apdaila
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
+                spalvyną ir spalvos pavadinimą, jei žinomas
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+            - units: Tekstas
+            - descr: Techninės specifikacijos Nr.
+          - Ifc__.Heigth:
+            - examples:
+              - 80
+            - units: mm
+            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          - Ifc__.Length:
+            - examples:
+              - 80
+            - units: mm
+            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
+                skaitmenys)
+          - Ifc__.Depth:
+            - examples:
+              - 48
+            - units: mm
+            - descr: Montažinis gylis, mm (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
+                skaitmenys)
+          lod: 300
+
+    - id: Šviestuvas
+      classifications:
+        NSIK LF: Q
+        NSIK LT: HH
+        NSIK LK: UAC
+      stages:
+        s3:
+          properties:
+          - VVK.LevelName:
+            - examples:
+              - 1 aukštas
+            - units: Tekstas
+          - Name:
+            - examples:
+              - Lubų šviestuvas
+            - units: Tekstas
+            - descr: Elemento pavadinimas
+          - Pset_ElementComponentCommon.Status:
+            - examples:
+              - Projektuojamas
+            - units: Tekstas
+            - descr: Elemento būsena
+          - Type:
+            - examples:
+              - L-1, L-2
+            - units: Tekstas
+            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
+                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
+                medžiagų ir kiekių žiniaraščiuose
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento medžiaga
+          - VVK.Apdaila:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento apdaila
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
+                spalvyną ir spalvos pavadinimą, jei žinomas
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+            - units: Tekstas
+            - descr: Techninės specifikacijos Nr.
+          - Galingumas:
+            - examples:
+              - 10
+            - units: W
+            - descr: Elemento projektinė galia. Elektriniams prietaisams - elektrinė
+                galia, šiluminiams ir jiems prilygintims - šiluminė galia
+          - Ifc__.Heigth:
+            - examples:
+              - 150
+            - units: mm
+            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          - Ifc__.Length:
+            - examples:
+              - 1250
+            - units: mm
+            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
+                skaitmenys)
+          - Ifc__.Width:
+            - examples:
+              - 150
+            - units: mm
+            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          lod: 300
+      examples:
+      - Lubų šviestuvas
+      - pakabinamas šviestuvas
+      - sienų šviestuvas
+
+    - id: Įrangos ir/ar kabelių dėklas
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: UBA
+      stages:
+        s3:
+          properties:
+          - VVK.LevelName:
+            - examples:
+              - 1 aukštas
+            - units: Tekstas
+          - Name:
+            - examples:
+              - Kabelio kanalas
+            - units: Tekstas
+            - descr: Elemento pavadinimas
+          - Pset_ElementComponentCommon.Status:
+            - examples:
+              - Projektuojamas
+            - units: Tekstas
+            - descr: Elemento būsena
+          - Type:
+            - examples:
+              - KL-1
+            - units: Tekstas
+            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
+                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
+                medžiagų ir kiekių žiniaraščiuose
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento medžiaga
+          - VVK.Apdaila:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento apdaila
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
+                spalvyną ir spalvos pavadinimą, jei žinomas
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+            - units: Tekstas
+            - descr: Techninės specifikacijos Nr.
+          - Ifc__.Heigth:
+            - examples:
+              - 60
+            - units: mm
+            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          - Ifc__.Length:
+            - examples:
+              - 3000
+            - units: mm
+            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
+                skaitmenys)
+          - Ifc__.Width:
+            - examples:
+              - 100
+            - units: mm
+            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          lod: 300
+      examples:
+      - Kabelio kanalas
+      - kabelio kopėčios
+      - kabelio lovelis
+
+    - id: Korpusas (skydelis)
+      classifications:
+        NSIK LF: K
+        NSIK LT: HJ
+        NSIK LK: UCA
+      stages:
+        s3:
+          properties:
+          - VVK.LevelName:
+            - examples:
+              - 1 aukštas
+            - units: Tekstas
+          - Name:
+            - examples:
+              - Apsaugos centralė
+            - units: Tekstas
+            - descr: Elemento pavadinimas
+          - Pset_ElementComponentCommon.Status:
+            - examples:
+              - Projektuojamas
+            - units: Tekstas
+            - descr: Elemento būsena
+          - Type:
+            - examples:
+              - AS-1
+            - units: Tekstas
+            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
+                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
+                medžiagų ir kiekių žiniaraščiuose
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento medžiaga
+          - VVK.Apdaila:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento apdaila
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
+                spalvyną ir spalvos pavadinimą, jei žinomas
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+            - units: Tekstas
+            - descr: Techninės specifikacijos Nr.
+          - Ifc__.Heigth:
+            - examples:
+              - 400
+            - units: mm
+            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          - Ifc__.Length:
+            - examples:
+              - 150
+            - units: mm
+            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
+                skaitmenys)
+          - Ifc__.Width:
+            - examples:
+              - 300
+            - units: mm
+            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          lod: 300
+      examples:
+      - Centralė
+      - elektros skydelis
+      - elektros spinta
+      - kolektorių spintelė
+      - paskirstymo skydelis
+
+    - id: Ženklas
+      classifications:
+        NSIK LF: Q
+        NSIK LT: MB
+        NSIK LK: PFA
+      stages:
+        s3:
+          properties:
+          - VVK.LevelName:
+            - examples:
+              - 1 aukštas
+            - units: Tekstas
+          - Name:
+            - examples:
+              - Avarinis ženklas
+            - units: Tekstas
+            - descr: Elemento pavadinimas
+          - Pset_ElementComponentCommon.Status:
+            - examples:
+              - Projektuojamas
+            - units: Tekstas
+            - descr: Elemento būsena
+          - Type:
+            - examples:
+              - Ž-1
+            - units: Tekstas
+            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
+                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
+                medžiagų ir kiekių žiniaraščiuose
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento medžiaga
+          - VVK.Apdaila:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento apdaila
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
+                spalvyną ir spalvos pavadinimą, jei žinomas
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+            - units: Tekstas
+            - descr: Techninės specifikacijos Nr.
+          - Galingumas:
+            - units: W
+            - descr: Elemento projektinė galia. Elektriniams prietaisams - elektrinė
+                galia, šiluminiams ir jiems prilygintims - šiluminė galia
+          - Ifc__.Heigth:
+            - examples:
+              - 250
+            - units: mm
+            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          - Ifc__.Length:
+            - examples:
+              - 50
+            - units: mm
+            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
+                skaitmenys)
+          - Ifc__.Width:
+            - examples:
+              - 400
+            - units: mm
+            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          lod: 300
+      examples:
+      - Avarinis šviesos signalas
+      - būsenos vizualinis indikatorius
+    
+    - id: Kištukinis lizdas
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: XDD
+      stages:
+        s3:
+          properties:
+          - VVK.LevelName:
+            - examples:
+              - 1 aukštas
+            - units: Tekstas
+          - Name:
+            - examples:
+              - Kištukinis lizdas
+            - units: Tekstas
+            - descr: Elemento pavadinimas
+          - Pset_ElementComponentCommon.Status:
+            - examples:
+              - Projektuojamas
+            - units: Tekstas
+            - descr: Elemento būsena
+          - Type:
+            - examples:
+              - ŽĮ-1
+            - units: Tekstas
+            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
+                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
+                medžiagų ir kiekių žiniaraščiuose
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento medžiaga
+          - VVK.Apdaila:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento apdaila
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
+                spalvyną ir spalvos pavadinimą, jei žinomas
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+            - units: Tekstas
+            - descr: Techninės specifikacijos Nr.
+          - Galingumas:
+            - units: W
+            - descr: Elemento projektinė galia. Elektriniams prietaisams - elektrinė
+                galia, šiluminiams ir jiems prilygintims - šiluminė galia
+          - Ifc__.Heigth:
+            - examples:
+              - 70
+            - units: mm
+            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          - Ifc__.Length:
+            - examples:
+              - 70
+            - units: mm
+            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
+                skaitmenys)
+          - Ifc__.Depth:
+            - examples:
+              - 42
+            - units: mm
+            - descr: Gaminio montavimo gylis, mm (0 dešimtainių skaitmenų) arba m
+                (3 dešimtainiai skaitmenys)
+          lod: 300
+
+    - id: Jungiklis
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: SJA
+      stages:
+        s3:
+          properties:
+          - VVK.LevelName:
+            - examples:
+              - 1 aukštas
+            - units: Tekstas
+          - Name:
+            - examples:
+              - Dviejų padėčių jungiklis
+            - units: Tekstas
+            - descr: Elemento pavadinimas
+          - Pset_ElementComponentCommon.Status:
+            - examples:
+              - Projektuojamas
+            - units: Tekstas
+            - descr: Elemento būsena
+          - Type:
+            - examples:
+              - JJ-1
+            - units: Tekstas
+            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
+                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
+                medžiagų ir kiekių žiniaraščiuose
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento medžiaga
+          - VVK.Apdaila:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento apdaila
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
+                spalvyną ir spalvos pavadinimą, jei žinomas
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+            - units: Tekstas
+            - descr: Techninės specifikacijos Nr.
+          - Ifc__.Heigth:
+            - examples:
+              - 80
+            - units: mm
+            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          - Ifc__.Length:
+            - examples:
+              - 80
+            - units: mm
+            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
+                skaitmenys)
+          - Ifc__.Depth:
+            - examples:
+              - 48
+            - units: mm
+            - descr: Montažinis gylis, mm (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
+                skaitmenys)
+          lod: 300
+
+    - id: Šviestuvas
+      classifications:
+        NSIK LF: Q
+        NSIK LT: HH
+        NSIK LK: UAC
+      stages:
+        s3:
+          properties:
+          - VVK.LevelName:
+            - examples:
+              - 1 aukštas
+            - units: Tekstas
+          - Name:
+            - examples:
+              - Lubų šviestuvas
+            - units: Tekstas
+            - descr: Elemento pavadinimas
+          - Pset_ElementComponentCommon.Status:
+            - examples:
+              - Projektuojamas
+            - units: Tekstas
+            - descr: Elemento būsena
+          - Type:
+            - examples:
+              - L-1, L-2
+            - units: Tekstas
+            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
+                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
+                medžiagų ir kiekių žiniaraščiuose
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento medžiaga
+          - VVK.Apdaila:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento apdaila
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
+                spalvyną ir spalvos pavadinimą, jei žinomas
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+            - units: Tekstas
+            - descr: Techninės specifikacijos Nr.
+          - Galingumas:
+            - examples:
+              - 10
+            - units: W
+            - descr: Elemento projektinė galia. Elektriniams prietaisams - elektrinė
+                galia, šiluminiams ir jiems prilygintims - šiluminė galia
+          - Ifc__.Heigth:
+            - examples:
+              - 150
+            - units: mm
+            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          - Ifc__.Length:
+            - examples:
+              - 1250
+            - units: mm
+            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
+                skaitmenys)
+          - Ifc__.Width:
+            - examples:
+              - 150
+            - units: mm
+            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          lod: 300
+      examples:
+      - Lubų šviestuvas
+      - pakabinamas šviestuvas
+      - sienų šviestuvas
+
+    - id: Įrangos ir/ar kabelių dėklas
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: UBA
+      stages:
+        s3:
+          properties:
+          - VVK.LevelName:
+            - examples:
+              - 1 aukštas
+            - units: Tekstas
+          - Name:
+            - examples:
+              - Kabelio kanalas
+            - units: Tekstas
+            - descr: Elemento pavadinimas
+          - Pset_ElementComponentCommon.Status:
+            - examples:
+              - Projektuojamas
+            - units: Tekstas
+            - descr: Elemento būsena
+          - Type:
+            - examples:
+              - KL-1
+            - units: Tekstas
+            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
+                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
+                medžiagų ir kiekių žiniaraščiuose
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento medžiaga
+          - VVK.Apdaila:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento apdaila
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
+                spalvyną ir spalvos pavadinimą, jei žinomas
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+            - units: Tekstas
+            - descr: Techninės specifikacijos Nr.
+          - Ifc__.Heigth:
+            - examples:
+              - 60
+            - units: mm
+            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          - Ifc__.Length:
+            - examples:
+              - 3000
+            - units: mm
+            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
+                skaitmenys)
+          - Ifc__.Width:
+            - examples:
+              - 100
+            - units: mm
+            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          lod: 300
+      examples:
+      - Kabelio kanalas
+      - kabelio kopėčios
+      - kabelio lovelis
+
+    - id: Korpusas (skydelis)
+      classifications:
+        NSIK LF: K
+        NSIK LT: HJ
+        NSIK LK: UCA
+      stages:
+        s3:
+          properties:
+          - VVK.LevelName:
+            - examples:
+              - 1 aukštas
+            - units: Tekstas
+          - Name:
+            - examples:
+              - Apsaugos centralė
+            - units: Tekstas
+            - descr: Elemento pavadinimas
+          - Pset_ElementComponentCommon.Status:
+            - examples:
+              - Projektuojamas
+            - units: Tekstas
+            - descr: Elemento būsena
+          - Type:
+            - examples:
+              - AS-1
+            - units: Tekstas
+            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
+                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
+                medžiagų ir kiekių žiniaraščiuose
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento medžiaga
+          - VVK.Apdaila:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento apdaila
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
+                spalvyną ir spalvos pavadinimą, jei žinomas
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+            - units: Tekstas
+            - descr: Techninės specifikacijos Nr.
+          - Ifc__.Heigth:
+            - examples:
+              - 400
+            - units: mm
+            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          - Ifc__.Length:
+            - examples:
+              - 150
+            - units: mm
+            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
+                skaitmenys)
+          - Ifc__.Width:
+            - examples:
+              - 300
+            - units: mm
+            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          lod: 300
+      examples:
+      - Centralė
+      - elektros skydelis
+      - elektros spinta
+      - kolektorių spintelė
+      - paskirstymo skydelis
+
+    - id: Ženklas
+      classifications:
+        NSIK LF: Q
+        NSIK LT: MB
+        NSIK LK: PFA
+      stages:
+        s3:
+          properties:
+          - VVK.LevelName:
+            - examples:
+              - 1 aukštas
+            - units: Tekstas
+          - Name:
+            - examples:
+              - Avarinis ženklas
+            - units: Tekstas
+            - descr: Elemento pavadinimas
+          - Pset_ElementComponentCommon.Status:
+            - examples:
+              - Projektuojamas
+            - units: Tekstas
+            - descr: Elemento būsena
+          - Type:
+            - examples:
+              - Ž-1
+            - units: Tekstas
+            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
+                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
+                medžiagų ir kiekių žiniaraščiuose
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento medžiaga
+          - VVK.Apdaila:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento apdaila
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
+                spalvyną ir spalvos pavadinimą, jei žinomas
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+            - units: Tekstas
+            - descr: Techninės specifikacijos Nr.
+          - Galingumas:
+            - units: W
+            - descr: Elemento projektinė galia. Elektriniams prietaisams - elektrinė
+                galia, šiluminiams ir jiems prilygintims - šiluminė galia
+          - Ifc__.Heigth:
+            - examples:
+              - 250
+            - units: mm
+            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          - Ifc__.Length:
+            - examples:
+              - 50
+            - units: mm
+            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
+                skaitmenys)
+          - Ifc__.Width:
+            - examples:
+              - 400
+            - units: mm
+            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          lod: 300
+      examples:
+      - Avarinis šviesos signalas
+      - būsenos vizualinis indikatorius
+  
+

@@ -1,0 +1,247 @@
+# v 0.5a
+# NSIK ver 0.9, 2023-09-01
+# https://nsiklab.lt 
+#
+# 11.10 - Elektroniniai ryšiai. Lauko tinklai
+#
+
+LER:
+    elements:
+    - classifications:
+        NSIK LF: K
+        NSIK LT: JK
+        NSIK LK: XMC
+      stages:
+        s3:
+          properties:
+          - Name:
+            - examples:
+              - Komunikacijų šulinys
+            - units: Tekstas
+            - descr: Elemento pavadinimas
+          - Pset_ElementComponentCommon.Status:
+            - examples:
+              - Projektuojamas
+            - units: Tekstas
+            - descr: Elemento būsena
+          - Type:
+            - examples:
+              - AŠ-1
+            - units: Tekstas
+            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
+                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
+                medžiagų ir kiekių žiniaraščiuose
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento medžiaga
+          - VVK.Apdaila:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento apdaila
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
+                spalvyną ir spalvos pavadinimą, jei žinomas
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+            - units: Tekstas
+            - descr: Techninės specifikacijos Nr.
+          - Ifc__.Heigth:
+            - examples:
+              - 1500
+            - units: mm
+            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          - Diametras:
+            - examples:
+              - 1000
+            - units: mm
+            - descr: Gaminio diametras
+          lod: 300
+      id: Šulinys
+      examples:
+      - Apžiūros šulinys
+      - inspektavimo šulinys
+      - kamera
+      - komunikacijų šulinys
+    - classifications:
+        NSIK LF: M
+        NSIK LT: JK
+        NSIK LK: XMC
+      stages:
+        s3:
+          properties:
+          - Name:
+            - examples:
+              - Komunikacijų šulinys
+            - units: Tekstas
+            - descr: Elemento pavadinimas
+          - Pset_ElementComponentCommon.Status:
+            - examples:
+              - Projektuojamas
+            - units: Tekstas
+            - descr: Elemento būsena
+          - Type:
+            - examples:
+              - KŠ-1
+            - units: Tekstas
+            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
+                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
+                medžiagų ir kiekių žiniaraščiuose
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento medžiaga
+          - VVK.Apdaila:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento apdaila
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
+                spalvyną ir spalvos pavadinimą, jei žinomas
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+            - units: Tekstas
+            - descr: Techninės specifikacijos Nr.
+          - Ifc__.Heigth:
+            - examples:
+              - 1500
+            - units: mm
+            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          - Diametras:
+            - examples:
+              - 1000
+            - units: mm
+            - descr: Gaminio diametras
+          lod: 300
+      id: Šulinys
+      examples:
+      - Apžiūros šulinys
+      - inspektavimo šulinys
+      - kamera
+      - komunikacijų šulinys
+  
+    - classifications:
+        NSIK LF: M
+        NSIK LT: JL
+        NSIK LK: WGB
+      stages:
+        s3:
+          properties:
+          - Name:
+            - examples:
+              - Įvadinis vamzdis telekomunikacijų kabeliams tiesti
+            - units: Tekstas
+            - descr: Elemento pavadinimas
+          - Pset_ElementComponentCommon.Status:
+            - examples:
+              - Projektuojamas
+            - units: Tekstas
+            - descr: Elemento būsena
+          - Type:
+            - examples:
+              - ĮV-1
+            - units: Tekstas
+            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
+                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
+                medžiagų ir kiekių žiniaraščiuose
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento medžiaga
+          - VVK.Apdaila:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento apdaila
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
+                spalvyną ir spalvos pavadinimą, jei žinomas
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+            - units: Tekstas
+            - descr: Techninės specifikacijos Nr.
+          - Ifc__.Length:
+            - examples:
+              - 10000
+            - units: mm
+            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
+                skaitmenys)
+          - Diametras:
+            - examples:
+              - 110
+            - units: mm
+            - descr: Gaminio diametras
+          lod: 300
+      id: Duomenų kabelių trasa
+    - classifications:
+        NSIK LF: M
+        NSIK LT: JK
+        NSIK LK: XMC
+      stages:
+        s3:
+          properties:
+          - Name:
+            - examples:
+              - Komunikacijų šulinys
+            - units: Tekstas
+            - descr: Elemento pavadinimas
+          - Pset_ElementComponentCommon.Status:
+            - examples:
+              - Projektuojamas
+            - units: Tekstas
+            - descr: Elemento būsena
+          - Type:
+            - examples:
+              - KŠ-1
+            - units: Tekstas
+            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
+                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
+                medžiagų ir kiekių žiniaraščiuose
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento medžiaga
+          - VVK.Apdaila:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento apdaila
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
+                spalvyną ir spalvos pavadinimą, jei žinomas
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+            - units: Tekstas
+            - descr: Techninės specifikacijos Nr.
+          - Ifc__.Heigth:
+            - examples:
+              - 1500
+            - units: mm
+            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          - Diametras:
+            - examples:
+              - 1000
+            - units: mm
+            - descr: Gaminio diametras
+          lod: 300
+      id: Šulinys
+      examples:
+      - Apžiūros šulinys
+      - inspektavimo šulinys
+      - kamera
+      - komunikacijų šulinys
+      
+

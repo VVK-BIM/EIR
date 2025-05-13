@@ -1,0 +1,313 @@
+# v 0.5a
+# NSIK ver 0.9, 2023-09-01
+# https://nsiklab.lt 
+#
+# 05 - Technologinės dalys
+# Architektūros technologija. Sporto įranga
+#
+
+s2:  &stageS2_common
+  lod: 200
+  properties:
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  
+s3:  &stageS3_common
+  lod: 300
+  properties:
+    - Type:
+      - examples:
+        - KK-1
+    - Pset_ConstructionAdministration.SpecificationSectionNumber:
+      - examples:
+        - PVA-TS 2.1
+    - VVK.Material:
+      - examples:
+        - Plienas
+        - Plastikas
+    - VVK.Finish:
+      - memo: Pildoma, jei tokia savybė aktuali
+      - examples:
+          - Cinkuotas
+          - Dažytas milteliniu būdu
+    - VVK.Colour:
+      - memo: Pildoma, jei tokia savybė aktuali
+    - Pset_QuantityTakeOff.Heigth:
+      - examples:
+        - 600
+    - Pset_QuantityTakeOff.Width:
+      - examples:
+        - 400
+    - Pset_QuantityTakeOff.Length:
+      - examples:
+        - 150
+
+
+T.S: 
+    id: "05.S"
+    name: Architektūros technologija. Sporto įranga
+    elements:
+    - id: Vartai # S.RB.SZB
+      examples:
+      - Rankinio
+      - futbolo vartai
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: SZB
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Rankinio vartai
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - V-1
+          - VVK.Material
+          - VVK.Apdaila
+          - VVK.Colour
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+          - Ifc__.Heigth:
+            - examples:
+              - 2440
+          - Ifc__.Length:
+            - examples:
+              - 7320
+          - Ifc__.Width:
+            - examples:
+              - 5500
+    
+    - id: Lentyna # S.RB.CLB
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: CLB
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Sandėliavimo lentyna, stelažai
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - B-1
+          - VVK.Material
+          - VVK.Apdaila
+          - VVK.Colour
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+          - Ifc__.Heigth:
+            - examples:
+              - 2000
+          - Ifc__.Length:
+            - examples:
+              - 1000
+          - Ifc__.Width:
+            - examples:
+              - 600
+    
+    - id: Sporto salių įranga # S.RC.%SZB110
+      examples:
+      - Prie stogo konstrukcijos tvirtinamas, pulteliu valdomas, sulankstomas krepšinio
+        stovas;
+      - skiriamoji salės užuolaida
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: '%SZB110'
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Krepšinio stovas / lenta
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - STO-1
+          - VVK.Material
+          - VVK.Apdaila
+          - VVK.Colour
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+          - Galingumas:
+            - examples:
+              - 150
+            - units: W
+            - descr: Pavaros elektrinė  galia, jei reikalinga
+          - Ifc__.Heigth:
+            - examples:
+              - 1000
+          - Ifc__.Length:
+            - examples:
+              - 1000
+          - Ifc__.Width:
+            - examples:
+              - 80
+          - Ifc__.Weigth:
+            - examples:
+              - 40
+            - memo: Pildoma, jei tokia savybė aktuali
+    
+    - id: Kita sporto salių įranga # S.RC.SZB
+      examples:
+      - Tinklinio stovų kapsulės;
+      - teniso stovų kapsulės
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: SZB
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Tinklinio stovo kapsulė
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - S-1
+          - VVK.Material
+          - VVK.Apdaila
+          - VVK.Colour
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+          - Ifc__.Heigth:
+            - examples:
+              - 800
+          - Ifc__.Length:
+            - examples:
+              - 120
+          - Ifc__.Width:
+            - examples:
+              - 120
+          - Diametras:
+            - examples:
+              - 120
+
+    - id: Laikmatis # S.RC.BKA
+      description: Laiko jutimo komponentas su skaliariniu išėjimu.
+      memo: Elemento geometrija tur būti tokia, kad būtų galima užtikrintai tikrinti susikirtimus su kitomis projekto dalimis.
+      examples:
+      - Laiko matavimo sistemos elementai
+      - laikmatis
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: BKA
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Laiko matavimo sistema
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - LM-1
+              - VVK.Material
+              - VVK.Colour
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS 2.3
+          - Galingumas:
+            - examples:
+              - 50
+          - Ifc__.Heigth:
+            - examples:
+              - 1000
+          - Ifc__.Length:
+            - examples:
+              - 800
+          - Ifc__.Width:
+            - examples:
+              - 100
+          - Pset_ServiceLifeFactors.OutdoorEnvironment
+    
+    - id: Baseino starto bokštelis # S.RC.SZB
+      description: Sporto įranga
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: SZB
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Baseino starto bokštelis
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - BSB-1
+          - VVK.Material
+          - VVK.Colour
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS 2.1
+          - Ifc__.Heigth:
+            - examples:
+              - 400
+          - Ifc__.Length:
+            - examples:
+              - 400
+          - Ifc__.Width:
+            - examples:
+              - 400
+          - Pset_ServiceLifeFactors.OutdoorEnvironment
+
+    - id: Tinklo stovo kapsulė # S.RC.UQB
+      description: Sporto įranga
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: UQB
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Teniso stovo kapsulė
+              - Tinklinio stovo kapsulė
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - BSB-1
+          - VVK.Material
+          - VVK.Colour
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS 2.1
+          - Ifc__.Heigth:
+            - examples:
+              - 400
+          - Ifc__.Length:
+            - examples:
+              - 400
+          - Ifc__.Width:
+            - examples:
+              - 400
+          - Pset_ServiceLifeFactors.OutdoorEnvironment

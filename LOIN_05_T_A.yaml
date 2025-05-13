@@ -1,0 +1,271 @@
+# v 0.5a
+# NSIK ver 0.9, 2023-09-01
+# https://nsiklab.lt 
+#
+# 05 - Technologinės dalys
+# Architektūros technoligija. Klasių įranga 
+#
+
+T.A: # Architektūros technoligija. Klasių įranga 
+    # Architektūros technoligija. Klasių įranga 
+    elements:
+    - id: Ekranas   # S.%RC1040.PHA
+      classifications:
+        NSIK LF: S
+        NSIK LT: '%RC1040'
+        NSIK LK: PHA
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Interaktyvi lenta
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - T-1
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - VVK.Apdaila:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+          - Galingumas:
+            - examples:
+              - 200
+          - Ifc__.Heigth:
+            - examples:
+              - 800
+          - Ifc__.Width:
+            - examples:
+              - 1600
+          - Ifc__.Depth:
+            - examples:
+              - 80
+          - Ifc__.Weigth:
+            - examples:
+              - 30
+    
+    - id: Laikanti platforma  # S.%RB1040.UBE
+      examples:
+      - Mokytojo
+      - mokinių ir laboratoriniai stalai; teisėjų
+      - sekretoriato stalas; lyginimo lenta; virtuvės gamybinis stalas
+      classifications:
+        NSIK LF: S
+        NSIK LT: '%RB1040'
+        NSIK LK: UBE
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Stalas
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - B-1
+          - VVK.Material
+          - VVK.Apdaila
+          - VVK.Colour
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+          - Ifc__.Heigth:
+            - examples:
+              - 900
+          - Ifc__.Length:
+            - examples:
+              - 1200
+          - Ifc__.Width:
+            - examples:
+              - 800
+    
+    - id: Atsisėdimas # S.%RB1040.CLC
+      examples:
+      - Mokytojo
+      - mokinių bei laboratorinės kėdės; žiūrovų tribūnos; gimnastikos suoliukas
+      classifications:
+        NSIK LF: S
+        NSIK LT: '%RB1040'
+        NSIK LK: CLC
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Kėdė
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - K-1
+          - VVK.Material
+          - VVK.Apdaila
+          - VVK.Colour
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+          - Ifc__.Heigth:
+            - examples:
+              - 1200
+          - Ifc__.Length:
+            - examples:
+              - 500
+          - Ifc__.Width:
+            - examples:
+              - 500
+    
+    - id: Spintelė  # S.%RB1040.CMB
+      classifications:
+        NSIK LF: S
+        NSIK LT: '%RB1040'
+        NSIK LK: CMB
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Spintelė
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - B-1
+          - VVK.Material
+          - VVK.Apdaila
+          - VVK.Colour
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+          - Ifc__.Heigth:
+            - examples:
+              - 1800
+          - Ifc__.Length:
+            - examples:
+              - 600
+          - Ifc__.Width:
+            - examples:
+              - 600
+    
+    - id: Praustuvas  # S.%RB1040.XKA
+      examples:
+      - Plautuvė; demonstracinis stalas su plautuve; stalas su gilumine vonia;
+      - stalas su plautuve prie indaplovės
+      classifications:
+        NSIK LF: S
+        NSIK LT: "%RB1040"
+        NSIK LK: XKA
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Laboratorinis stalas su plautuve
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - PL-1
+          - VVK.Material
+          - VVK.Apdaila
+          - VVK.Colour
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+          - Ifc__.Heigth:
+            - examples:
+              - 900
+          - Ifc__.Length:
+            - examples:
+              - 1200
+          - Ifc__.Width:
+            - examples:
+              - 800
+    
+    - id: Gaubtas # S.%RC1040.UCC
+      examples:
+      - Traukos spinta; spinta reagentams su ištraukimu (jeigu tokia bus);
+      - ventiliacinė oro nutraukimo rankovė; ventiliacinis gaubtas
+      classifications:
+        NSIK LF: S
+        NSIK LT: '%RC1040'
+        NSIK LK: UCC
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Traukos spinta
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - G-1
+          - VVK.Material
+          - VVK.Apdaila
+          - VVK.Colour
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+          - Galingumas:
+            - examples:
+              - 200
+          - Ifc__.Heigth:
+            - examples:
+              - 2870
+          - Ifc__.Length:
+            - examples:
+              - 1800
+          - Ifc__.Width:
+            - examples:
+              - 1200
+          - Diametras:
+            - examples:
+              - 200
+            - descr: Gaminio diametras (apvalaus skerspjūvio ortakiams), mm
+
+    - id: Lentyna # S.%RB1040.CLB
+      classifications:
+        NSIK LF: S
+        NSIK LT: '%RB1040'
+        NSIK LK: CLB
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Sandėliavimo lentyna, stelažai
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - B-1
+          - VVK.Material
+          - VVK.Apdaila
+          - VVK.Colour
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+          - Ifc__.Heigth:
+            - examples:
+              - 2000
+          - Ifc__.Length:
+            - examples:
+              - 1000
+          - Ifc__.Width:
+            - examples:
+              - 600
+    

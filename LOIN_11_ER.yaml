@@ -1,0 +1,141 @@
+# v 0.5a
+# NSIK ver 0.9, 2023-09-01
+# https://nsiklab.lt 
+#
+# 11 - Elektoniniai ryšiai
+#
+
+ER:
+    elements:
+    # - id: Kištukinis lizdas
+    - id: Įrangos ir/ar kabelių dėklas
+      examples:
+      - Kabelio kanalas
+      - kabelio kopėčios
+      - kabelio lovelis
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: XDD
+      stages:
+        s3:
+          properties:
+          - VVK.LevelName:
+            - examples:
+              - 1 aukštas
+            - units: Tekstas
+          - Name:
+            - examples:
+              - Kištukinis lizdas
+            - units: Tekstas
+            - descr: Elemento pavadinimas
+          - Pset_ElementComponentCommon.Status:
+            - examples:
+              - Projektuojamas
+            - units: Tekstas
+            - descr: Elemento būsena
+          - Type:
+            - examples:
+              - ŽĮ-1
+            - units: Tekstas
+            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
+                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
+                medžiagų ir kiekių žiniaraščiuose
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento medžiaga
+          - VVK.Apdaila:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento apdaila
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
+                spalvyną ir spalvos pavadinimą, jei žinomas
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+            - units: Tekstas
+            - descr: Techninės specifikacijos Nr.
+          - Galingumas:
+            - units: W
+            - descr: Elemento projektinė galia. Elektriniams prietaisams - elektrinė
+                galia, šiluminiams ir jiems prilygintims - šiluminė galia
+          - Ifc__.Heigth:
+            - examples:
+              - 70
+            - units: mm
+            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          - Ifc__.Length:
+            - examples:
+              - 70
+            - units: mm
+            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
+                skaitmenys)
+          - Ifc__.Depth:
+            - examples:
+              - 42
+            - units: mm
+            - descr: Gaminio montavimo gylis, mm (0 dešimtainių skaitmenų) arba m
+                (3 dešimtainiai skaitmenys)
+          lod: 300
+      
+      
+    # - classifications: {}
+      # stages:
+        # s3:
+          # properties: []
+          # lod: 300
+      
+    
+      
+    # - id: Korpusas (skydelis)
+      # classifications: {}
+      # stages:
+        # s3:
+          # properties: []
+          # lod: 300
+
+    # - id: Kištukinis lizdas
+      # classifications: {}
+      # stages:
+        # s3:
+          # properties: []
+          # lod: 300
+      
+    # - id: Komutacinis skydelis
+      # classifications: {}
+      # stages:
+        # s3:
+          # properties: []
+          # lod: 300
+      
+    # - id: Įrangos ir/ar kabelių dėklas
+      # examples:
+      # - Kabelio kanalas
+      # - kabelio kopėčios
+      # - kabelio lovelis
+      # classifications: {}
+      # stages:
+        # s3:
+          # properties: []
+          # lod: 300
+      
+    # - id: Korpusas (skydelis)
+      # classifications: {}
+      # stages:
+        # s3:
+          # properties: []
+          # lod: 300
+      
+    # - id: Kištukinis lizdas
+      # classifications: {}
+      # stages:
+        # s3:
+          # properties: []
+          # lod: 300
+      
+

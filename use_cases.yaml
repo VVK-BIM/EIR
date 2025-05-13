@@ -1,0 +1,94 @@
+U1:
+  name: Esamų sąlygų modeliavimas
+U2:
+  name: Kiekių skaičiavimai
+U3:
+  name: Projekto etapų planavimas
+U4:
+  name: Sklypo analizė
+U5:
+  name: Funkcinis, tūrinis, planinis vertinimas
+U6:
+  name: Statinio informacinio modeliavimo projekto vizualizavimas ir peržiūros
+U7:
+  name: Projektavimas ir (ar) modeliavimas
+U8:
+  name: Inžineriniai skaičiavimai ir analizė
+U9:
+  name: Energinė analizė
+U10:
+  name: Tvarumo vertinimas
+U11:
+  name: Konstrukcijų analizė ir projektavimas
+U12:
+  name: Apšvietimo analizė
+U13:
+  name: Inžinerinių sistemų, tinklų ir komunikacijų analizė
+U14:
+  name: Kiti analizės atvejai
+U15:
+  name: Atitikties vertinimas ir (ar) statinio informacinio modeliavimo projekto ekspertizė
+U16:
+  name: 3D koordinavimas ir (ar) susikirtimų patikra
+U17:
+  name: Statybvietės planavimas
+U18:
+  name: Sveikatos ir saugos priemonių planavimas
+U19:
+  name: Konstrukcinė-technologinė analizė
+U20:
+  name: Statybos technologijos (technologinės schemos) ir montavimo eigos simuliavimas
+U21:
+  name: Statybos logistikos planavimas
+U22:
+  name: Statybos procesų modeliavimas ir valdymas
+U23:
+  name: Skaitmeninė gamyba
+U24:
+  name: Statybos darbų techninė priežiūra
+U25:
+  name: Išpildomasis modeliavimas
+U26:
+  name: Duomenų modeliavimas
+  stages:
+    s3:
+      properties:
+      - Pset_ConstructionAdministration.SpecificationSectionNumber
+
+U27:
+  name: Statinio priežiūros planavimas
+  stages:
+    s4:
+      properties:
+      - Pset_ManufacturerTypeInformation.ArticleNumber
+      - Pset_ManufacturerTypeInformation.Manufacturer
+
+U28:
+  name: Statinio inžinerinių sistemų, tinklų ir komunikacijų analizė
+U29:
+  name: Energijos sąnaudų analizė
+U30:
+  name: Turto valdymas
+  properties:
+  - Pset_EnvironmentalCondition.OperationalTemperatureRange
+  stages:
+    s5:
+      properties:
+      - Pset_ConstructionOccurence.AssetIdentifier
+      - Pset_ConstructionOccurence.TagNumber
+      - Pset_InstallationOccurrence.AcceptanceDate
+      - Pset_InstallationOccurrence.InstallationDate
+    s6:
+      properties:
+      - Pset_InstallationOccurrence.PutIntoOperationDate
+      - Pset_Warranty.WarrantyPeriod
+      - Pset_Warranty.PointOfContact
+      - Pset_Warranty.WarrantyPeriod
+      - Pset_Warranty.WarrantyStartDate
+U31:
+  name: Erdvės valdymas ir stebėsena
+U32:
+  name: Tvarumo stebėsena ir analizė
+U33:
+  name: Avarijų prevencija
+

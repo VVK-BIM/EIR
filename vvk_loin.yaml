@@ -1,0 +1,44 @@
+# v 0.5a
+# NSIK ver 0.9, 2023-09-01
+# https://nsiklab.lt 
+
+!include LOIN_00_erdves.yaml
+!include LOIN_02_SP.yaml
+!include LOIN_03_SA.yaml
+!include LOIN_03_10_SI.yaml
+!include LOIN_04_SK.yaml
+
+!include LOIN_05_T_A.yaml
+!include LOIN_05_T_SV_BAS.yaml
+!include LOIN_05_T_S.yaml
+!include LOIN_05_T_G.yaml
+!include LOIN_05_T_MG.yaml
+!include LOIN_05_T_GVŠ.yaml
+
+!include LOIN_06_S.yaml
+!include LOIN_07_01_VN.V.yaml
+!include LOIN_07_02_VN.GV.yaml
+!include LOIN_07_03_VN.N.yaml
+!include LOIN_07_10_LVN.yaml
+!include LOIN_08_01_ŠVOK.Š.yaml
+!include LOIN_08_02_ŠVOK.V.yaml
+!include LOIN_08_03_ŠVOK.OK.yaml
+!include LOIN_09_D.yaml
+!include LOIN_10_E.yaml
+!include LOIN_10_10_LE.yaml
+!include LOIN_11_ER.yaml
+!include LOIN_11_10_LER.yaml
+!include LOIN_12_AS.yaml
+!include LOIN_13_GSS.yaml
+!include LOIN_14_PVA.yaml
+!include LOIN_15_ŠG.yaml
+
+#!include LOIN_05_T.yaml
+
+#!include LOIN_08_04_ŠVOK.ŠOK.yaml
+
+#!include LOIN_16_GS.yaml
+#!include LOIN_17_BS.yaml
+#!include LOIN_18_SO.yaml
+#!include LOIN_19_KS.yaml
+#!include LOIN_21_GO.yaml

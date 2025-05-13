@@ -1,0 +1,185 @@
+# v 0.5a
+# NSIK ver 0.9, 2023-09-01
+# https://nsiklab.lt 
+#
+# 14 - Procesų valdymas ir automatizavimas
+#
+
+s2:  &stageS2_common
+  lod: 200
+  properties:
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  
+s3:  &stageS3_common
+  lod: 300
+  properties:
+    - Type:
+      - examples:
+        - KK-1
+    - Pset_ConstructionAdministration.SpecificationSectionNumber:
+      - examples:
+        - PVA-TS 2.1
+    - VVK.Material:
+      - examples:
+        - Plienas
+        - Plastikas
+    - VVK.Finish:
+      - memo: Pildoma, jei tokia savybė aktuali
+      - examples:
+          - Cinkuotas
+          - Dažytas milteliniu būdu
+    - VVK.Colour:
+      - memo: Pildoma, jei tokia savybė aktuali
+    - Pset_QuantityTakeOff.Heigth:
+      - examples:
+        - 600
+    - Pset_QuantityTakeOff.Width:
+      - examples:
+        - 400
+    - Pset_QuantityTakeOff.Length:
+      - examples:
+        - 150
+
+
+PVA:
+    id: "14"
+    name: Procesų valdymas ir automatizavimas
+    elements:
+    - id: Įrangos ir/ar kabelių dėklas           #                                          NSIK: L.LC.UBA
+      examples:
+      - Kabelio kanalas
+      - kabelio kopėčios
+      - kabelio lovelis
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: UBA
+      stages: &stages_linear_element
+        s2:  *stageS2_common
+        s3:  *stageS3_common
+
+    - id: Infraraudonųjų spindulių jutiklis      #                                          NSIK: P.LE.BRC
+      classifications:
+        NSIK LF: P
+        NSIK LT: LE
+        NSIK LK: BRC
+      stages:
+        s2:   &stageS2_unique_equipment
+          <<: *stageS2_common
+          properties:
+          - Tag
+        s3:   &stageS3_unique_visible_equipment
+          <<: *stageS3_common
+          properties:
+          - Pset_QuantityTakeOff.Heigth:
+            - examples:
+              - 40
+          - Pset_QuantityTakeOff.Width:
+            - examples:
+              - 80
+          - Pset_QuantityTakeOff.Length:
+            - examples:
+              - 80
+          - Pset_QuantityTakeOff.Diameter:
+            - examples:
+              - 80
+
+    - id: Dujų jutiklis                          #                                          NSIK: L.LC.BQA
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: BQA
+      stages:
+        s2:
+          <<: *stageS2_unique_equipment
+          properties:
+          - Name:
+            - examples:
+              - CO2 koncentracijos jutiklis
+        s3:   
+          <<: *stageS3_unique_visible_equipment
+          properties:
+          - Type:
+            - examples:
+              - DJ-1
+      
+    - id: Temperatūros jutiklis                  #                                          NSIK: L.LC.BTA
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: BTA
+      stages:
+        s2:
+          <<: *stageS2_unique_equipment
+          properties:
+          - Name:
+            - examples:
+              - CO2 koncentracijos jutiklis
+        s3:   
+          <<: *stageS3_unique_visible_equipment
+          properties:
+          - Type:
+            - examples:
+              - PT-01
+
+    - id: Asmens detektorius                     #                                          NSIK: L.LC.BZC
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: BZC
+      stages:
+        s2:
+          <<: *stageS2_unique_equipment
+          properties:
+          - Name:
+            - examples:
+              - Buvimo detektorius
+        s3:   
+          <<: *stageS3_unique_visible_equipment
+          properties:
+          - Type:
+            - examples:
+              - BD-02
+
+    - id: Valdymo blokas                         #                                          NSIK: L.LC.KEB
+      examples:
+      - Centralė
+      - elektros skydelis
+      - elektros spinta
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: KEB
+      stages:
+        s2:
+          <<: *stageS2_unique_equipment
+          properties:
+          - Name:
+            - examples:
+              - Kontaktorius
+              - Valdiklis
+              - Automatinis išjungėjas
+        s3:  *stageS3_common
+
+    - id: Korpusas (skydelis)                    #                                          NSIK: L.LC.UCA
+      examples:
+      - Prietaisų dėžė
+      - skydinė
+      - spintelė
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: UCA
+      stages:
+        s2:
+          <<: *stageS2_unique_equipment
+          properties:
+          - Name:
+            - examples:
+            - Ventiliacijos valdymo spinta
+        s3: *stageS3_common
+          
+    
+

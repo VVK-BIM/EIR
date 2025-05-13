@@ -1,0 +1,623 @@
+# v 0.5a
+# NSIK ver 0.9, 2023-09-01
+# https://nsiklab.lt 
+#
+# 07.03 - Nuotekų šalinimas
+#
+
+VN.N:
+    id: "07.03"
+    name: Nuotekų šalinimas
+    elements:
+    - id: Elektrinis vandens šildytuvas         # NSIK : F.JB.EBA
+      classifications:
+        NSIK LF: F
+        NSIK LT: JB
+        NSIK LK: EBA
+      stages:
+        s3:
+          properties:
+          - VVK.LevelName:
+            - examples:
+              - 1 aukštas
+            - units: Tekstas
+          - Name:
+            - examples:
+              - Elektrinis vandens šildytuvas
+            - units: Tekstas
+            - descr: Elemento pavadinimas
+          - Pset_ElementComponentCommon.Status:
+            - examples:
+              - Projektuojamas
+            - units: Tekstas
+            - descr: Elemento būsena
+          - Type:
+            - examples:
+              - GČ-1
+            - units: Tekstas
+            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
+                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
+                medžiagų ir kiekių žiniaraščiuose
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento medžiaga
+          - VVK.Apdaila:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento apdaila
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
+                spalvyną ir spalvos pavadinimą, jei žinomas
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 1.2
+            - units: Tekstas
+            - descr: Techninės specifikacijos Nr.
+          - Ifc__.Heigth:
+            - examples:
+              - 520
+            - units: mm
+            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          - Ifc__.Length:
+            - examples:
+              - 400
+            - units: mm
+            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
+                skaitmenys)
+          - Ifc__.Width:
+            - examples:
+              - 180
+            - units: mm
+            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          lod: 300
+      id: Elektrinis vandens šildytuvas
+    - id: Vamzdis
+      classifications: {}
+      stages:
+        s3:
+          properties: []
+          lod: 300
+      
+    - id: Izoliacija
+      examples:
+      - Antikondensacinė
+      - šiluminė
+      - akustinė izoliacija
+      classifications: {}
+      stages:
+        s3:
+          properties: []
+          lod: 300
+      
+    - id: Praustuvas                            # NSIK G.JD.XKA
+      examples:
+      - Dubens pavidalo santechnikos prietaisas su skysčio išleidimo įtaisu
+      - kriauklė
+      - plautuvė
+      - praustuvas
+      classifications:
+        NSIK LF: G
+        NSIK LT: JD
+        NSIK LK: XKA
+      stages:
+        s3:
+          properties:
+          - VVK.LevelName:
+            - examples:
+              - 1 aukštas
+            - units: Tekstas
+          - Name:
+            - examples:
+              - Plautuvė
+            - units: Tekstas
+            - descr: Elemento pavadinimas
+          - Pset_ElementComponentCommon.Status:
+            - examples:
+              - Projektuojamas
+            - units: Tekstas
+            - descr: Elemento būsena
+          - Type:
+            - examples:
+              - PL-1
+            - units: Tekstas
+            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
+                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
+                medžiagų ir kiekių žiniaraščiuose
+          - VVK.Material:
+            - examples:
+              - Keramika
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento medžiaga
+          - VVK.Apdaila:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento apdaila
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
+                spalvyną ir spalvos pavadinimą, jei žinomas
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 1.2
+            - units: Tekstas
+            - descr: Techninės specifikacijos Nr.
+          - Ifc__.Heigth:
+            - examples:
+              - 140
+            - units: mm
+            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          - Ifc__.Length:
+            - examples:
+              - 430
+            - units: mm
+            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
+                skaitmenys)
+          - Ifc__.Width:
+            - examples:
+              - 360
+            - units: mm
+            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          lod: 300
+      
+    - id: Klozetas                              # NSIK G.JD.XKB
+      classifications:
+        NSIK LF: G
+        NSIK LT: JD
+        NSIK LK: XKB
+      examples:
+      - Tualetas
+      - tualetas su bakeliu
+      - unitazas
+      - WC
+      - įleidžiamas klozetas
+      
+      stages:
+        s3:
+          properties:
+          - VVK.LevelName:
+            - examples:
+              - 1 aukštas
+            - units: Tekstas
+          - Name:
+            - examples:
+              - Tualetas
+            - units: Tekstas
+            - descr: Elemento pavadinimas
+          - Pset_ElementComponentCommon.Status:
+            - examples:
+              - Projektuojamas
+            - units: Tekstas
+            - descr: Elemento būsena
+          - Type:
+            - examples:
+              - KL-1
+            - units: Tekstas
+            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
+                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
+                medžiagų ir kiekių žiniaraščiuose
+          - VVK.Material:
+            - examples:
+              - Keramika
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento medžiaga
+          - VVK.Apdaila:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento apdaila
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
+                spalvyną ir spalvos pavadinimą, jei žinomas
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 1.2
+            - units: Tekstas
+            - descr: Techninės specifikacijos Nr.
+          - Ifc__.Heigth:
+            - examples:
+              - 775
+            - units: mm
+            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          - Ifc__.Length:
+            - examples:
+              - 383
+            - units: mm
+            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
+                skaitmenys)
+          - Ifc__.Width:
+            - examples:
+              - 675
+            - units: mm
+            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          lod: 300
+      
+    - id: Pisuaras                              # NSIK G.JD.XKC
+      classifications:
+        NSIK LF: G
+        NSIK LT: JD
+        NSIK LK: XKC
+      stages:
+        s3:
+          properties:
+          - VVK.LevelName:
+            - examples:
+              - 1 aukštas
+            - units: Tekstas
+          - Name:
+            - examples:
+              - Pisuaras
+            - units: Tekstas
+            - descr: Elemento pavadinimas
+          - Pset_ElementComponentCommon.Status:
+            - examples:
+              - Projektuojamas
+            - units: Tekstas
+            - descr: Elemento būsena
+          - Type:
+            - examples:
+              - PR-1
+            - units: Tekstas
+            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
+                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
+                medžiagų ir kiekių žiniaraščiuose
+          - VVK.Material:
+            - examples:
+              - Keramika
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento medžiaga
+          - VVK.Apdaila:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento apdaila
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
+                spalvyną ir spalvos pavadinimą, jei žinomas
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 1.2
+            - units: Tekstas
+            - descr: Techninės specifikacijos Nr.
+          - Ifc__.Heigth:
+            - examples:
+              - 535
+            - units: mm
+            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          - Ifc__.Length:
+            - examples:
+              - 285
+            - units: mm
+            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
+                skaitmenys)
+          - Ifc__.Width:
+            - examples:
+              - 315
+            - units: mm
+            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          lod: 300
+      
+  
+    - id: Dušo padėklas                         # NSIK G.JD.XKC
+      classifications:
+        NSIK LF: G
+        NSIK LT: JD
+        NSIK LK: XKC
+      stages:
+        s3:
+          properties:
+          - VVK.LevelName:
+            - examples:
+              - 1 aukštas
+            - units: Tekstas
+          - Name:
+            - examples:
+              - Pisuaras
+            - units: Tekstas
+            - descr: Elemento pavadinimas
+          - Pset_ElementComponentCommon.Status:
+            - examples:
+              - Projektuojamas
+            - units: Tekstas
+            - descr: Elemento būsena
+          - Type:
+            - examples:
+              - SK-1
+            - units: Tekstas
+            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
+                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
+                medžiagų ir kiekių žiniaraščiuose
+          - VVK.Material:
+            - examples:
+              - Keramika
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento medžiaga
+          - VVK.Apdaila:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento apdaila
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
+                spalvyną ir spalvos pavadinimą, jei žinomas
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 1.2
+            - units: Tekstas
+            - descr: Techninės specifikacijos Nr.
+          - Ifc__.Heigth:
+            - examples:
+              - 535
+            - units: mm
+            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          - Ifc__.Length:
+            - examples:
+              - 285
+            - units: mm
+            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
+                skaitmenys)
+          - Ifc__.Width:
+            - examples:
+              - 315
+            - units: mm
+            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          lod: 300
+      
+    - id: Vamzdis
+      classifications: {}
+      stages:
+        s3:
+          properties: []
+          lod: 300
+
+    - id: Trapas
+      examples:
+      - Grindų sifonas
+      - trapas
+      - įlaja
+      classifications: {}
+      stages:
+        s3:
+          properties: []
+          lod: 300
+
+    - id: Pravala
+      examples:
+      - Pravalymo anga
+      - revizija
+      classifications: {}
+      stages:
+        s3:
+          properties: []
+          lod: 300
+
+    - id: Teigiamo darbinio tūrio siurblys
+      classifications: {}
+      stages:
+        s3:
+          properties: []
+          lod: 300
+
+    - id: Izoliacija
+      examples:
+      - Antikondensacinė
+      - šiluminė
+      - akustinė izoliacija
+      classifications: {}
+      stages:
+        s3:
+          properties: []
+          lod: 300
+
+    - id: Išardoma jungtis
+      examples:
+      - Flanšinės
+      - fasoninės dalys
+      classifications: {}
+      stages:
+        s3:
+          properties: []
+          lod: 300
+
+    - id: Sifonas
+      examples:
+      - Sifonas
+      - hidraulinė užtvara
+      - kvapų sklendė
+      classifications: {}
+      stages:
+        s3:
+          properties: []
+          lod: 300
+
+    - id: Apsaugos priedanga
+      examples:
+      - Ventiliacinės angos stogelis
+      - kaminėlio stogelis
+      classifications: {}
+      stages:
+        s3:
+          properties: []
+          lod: 300
+      
+    - id: Surinkimo šulinys
+      classifications: {}
+      stages:
+        s3:
+          properties: []
+          lod: 300
+      
+    - id: Praustuvas                            # NSIK G.JD.XKA
+      classifications:
+        NSIK LF: G
+        NSIK LT: JD
+        NSIK LK: XKA
+      examples:
+      - Dubens pavidalo santechnikos prietaisas su skysčio išleidimo įtaisu
+      - kriauklė
+      - plautuvė
+      - praustuvas
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - VVK.LevelName:
+            - examples:
+              - 1 aukštas
+            - units: Tekstas
+          - Name:
+            - examples:
+              - Plautuvė
+            - units: Tekstas
+            - descr: Elemento pavadinimas
+          - Pset_ElementComponentCommon.Status:
+            - examples:
+              - Projektuojamas
+            - units: Tekstas
+            - descr: Elemento būsena
+          - Type:
+            - examples:
+              - PL-1
+            - units: Tekstas
+            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
+                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
+                medžiagų ir kiekių žiniaraščiuose
+          - VVK.Material:
+            - examples:
+              - Keramika
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento medžiaga
+          - VVK.Apdaila:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento apdaila
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
+                spalvyną ir spalvos pavadinimą, jei žinomas
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 1.2
+            - units: Tekstas
+            - descr: Techninės specifikacijos Nr.
+          - Ifc__.Heigth:
+            - examples:
+              - 140
+            - units: mm
+            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          - Ifc__.Length:
+            - examples:
+              - 430
+            - units: mm
+            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
+                skaitmenys)
+          - Ifc__.Width:
+            - examples:
+              - 360
+            - units: mm
+            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          
+      
+    - id: Klozetas                              # NSIK G.JD.XKB
+      examples:
+      - Tualetas
+      - tualetas su bakeliu
+      - unitazas
+      - WC
+      - įleidžiamas klozetas
+      classifications:
+        NSIK LF: G
+        NSIK LT: JD
+        NSIK LK: XKB
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - VVK.LevelName:
+            - examples:
+              - 1 aukštas
+            - units: Tekstas
+          - Name:
+            - examples:
+              - Tualetas
+            - units: Tekstas
+            - descr: Elemento pavadinimas
+          - Pset_ElementComponentCommon.Status:
+            - examples:
+              - Projektuojamas
+            - units: Tekstas
+            - descr: Elemento būsena
+          - Type:
+            - examples:
+              - KL-1
+            - units: Tekstas
+            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
+                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
+                medžiagų ir kiekių žiniaraščiuose
+          - VVK.Material:
+            - examples:
+              - Keramika
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento medžiaga
+          - VVK.Apdaila:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento apdaila
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
+                spalvyną ir spalvos pavadinimą, jei žinomas
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 1.2
+            - units: Tekstas
+            - descr: Techninės specifikacijos Nr.
+          - Ifc__.Heigth:
+            - examples:
+              - 775
+            - units: mm
+            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          - Ifc__.Length:
+            - examples:
+              - 383
+            - units: mm
+            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
+                skaitmenys)
+          - Ifc__.Width:
+            - examples:
+              - 675
+            - units: mm
+            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          lod: 300
+      
+
+
+

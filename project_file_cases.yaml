@@ -1,0 +1,507 @@
+
+SP:
+  id: 02
+  description: Sklypo planas
+  useCases:
+    - U4
+    - U12
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+SP.Ž:
+  id: 02.01
+  description: Sklypo želdynai
+  personResponsible: 
+  useCases:
+  - U4
+  - U12
+  - U13
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+SA:
+  id: 03
+  description: Statinio architektūra
+  useCases:
+    - U5
+    - U12
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+SI:
+  id: 03.10
+  description: Statinio interjeras
+  useCases:
+    - U5
+    - U12
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+SK:
+  id: 04
+  description: Statinio konstrukcijos
+  useCases:
+    - U11
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+T:
+  id: 05
+  description: Technologijos
+  useCases:
+    - U32
+    - U33
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+T.A:
+  id: 05.10
+  description: Architektūros technologija
+  useCases:
+    - U32
+    - U33
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+T.S:
+  id: 05.20
+  description: Sporto technologija
+  useCases:
+    - U32
+    - U33
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+T.GVŠ:
+  id: 05.30
+  description: Garso, vaizdo ir šviesos technologija
+  useCases:
+    - U32
+    - U33
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+T.MG:
+  id: 05.40
+  description: Maisto gamybos technologija
+  useCases:
+    - U32
+    - U33
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+T.P:
+  id: 05.50
+  description: Parduotuvės technologija
+  useCases:
+    - U32
+    - U33
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+T.G:
+  id: 05.60
+  description: Dirbtuvių ir gamybos technologija
+  useCases:
+    - U32
+    - U33
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+T.SV:
+  id: 05.70
+  description: Gydymo ir sveikatinimo technologija
+  useCases:
+    - U32
+    - U33
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+T.SV.BAS:
+  id: 05.75
+  description: Baseino technologija
+  useCases:
+    - U32
+    - U33
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+S:
+  id: 07.01
+  description: Susisiekimas
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat: LandXML
+
+VN:
+  id: 07
+  description: Vandentiekis ir nuotekos
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+VN.V:
+  id: 07.01
+  description: Vandentiekis
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+VN.GV:
+  id: 07.02
+  description: Gaisrinis vandentiekis
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+VN.N:
+  id: 07.03
+  description: Nuotekos
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+VN.ND:
+  id: 07.04
+  description: Nuotekos. Drenažo tinklas
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+LVN:
+  id: 07.10
+  description: Vandentiekis ir nuotekos. Lauko tinklai
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+LVN.V:
+  id: 07.11
+  description: Vandentiekis. Lauko tinklai
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+LVN.GV:
+  id: 07.12
+  description: Gaisrinis vandentiekis. Lauko tinklai
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+LVN.N:
+  id: 07.13
+  description: Nuotekos. Lauko tinklai
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+LVN.ND:
+  id: 07.14
+  description: Drenažo tinklas. Lauko tinklai
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+ŠVOK:
+  id: 08
+  description: Šildymas, vėdinimas ir oro kondicionavimas
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+ŠVOK.Š:
+  id: 08.01
+  description: 'ŠVOK: šildymas'
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+ŠVOK.V:
+  id: 08.02
+  description: 'ŠVOK: vėdinimas'
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+  
+ŠVOK.OK:
+  id: 08.03
+  description: 'ŠVOK: oro kondicionavimas'
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat: 
+
+ŠVOK.ŠV:
+  id: 08.04
+  description: 'ŠVOK: šildymas ir vėdinimas'
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat: 
+
+ŠVOK.ŠOK:
+  id: 08.05
+  description: 'ŠVOK: šildymas ir oro kondicionavimas'
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+E:
+  id: 10
+  description: Elektrotechnika
+  useCases:
+      - U12
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+E.4:
+  id: 10.04
+  description: Elektrotechnika. Technologinis tinklas
+  useCases:
+      - U12
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+LE:
+  id: 10.10
+  description: Elektrotechnika. Lauko tinklai
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+LE.4:
+  id: 10.14
+  description: Elektrotechnika. Technologinis tinklas. Lauko tinklai
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+ER:
+  id: 11
+  description: Elektroniniai ryšiai
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+LER:
+  id: 11.10
+  description: Elektroniniai ryšiai. Lauko tinklai
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+GSS:
+  id: 13
+  description: Gaisrinės signalizacijos sistemos
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+  
+AS:
+  id: 12
+  description: Apsaugos sistemos
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+LAS:
+  id: 12.10
+  description: Apsaugos sistemos. Lauko tinklai
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+PVA:
+  id: 14
+  description: Pastato valdymas ir automatizacija
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat: 
+
+ŠG:
+  id: 15
+  description: Šilumos ar šalčio gamyba ir tiekimas
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat: 
+
+ŠG.G:
+  id: 15.20
+  description: Geoteriminė šilumos ar šalčio gamyba ir tiekimas
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat: 
+    
+LŠT:
+  id: 15.10
+  description: Šilumos ar šalčio gamyba ar tiekimas. Lauko tinklai
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+SO:
+  id: 20
+  description: Pasirengimas statybai ir statybos darbų organizavimas
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+KS:
+  id: 20
+  description: Statybos skaičiuojamosios kainos nustatymo
+  personResponsible: 
+      - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+
+IT.T:
+  id: 30.10
+  description: Topografiniai tyrimai
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+IT.G:
+  id: 30.20
+  description: Geologiniai tyrimai
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+IT.PEN:
+  id: 30.40
+  description: Projekto energinio naudingumo skaičiavimai
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+IT.A:
+  id: 30.50
+  description: Arboristiniai tyrimai
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:
+
+_ERDVĖS_:
+  id: 00
+  description: Patalpos ir erdvės
+  personResponsible: 
+    - ''
+  software: 
+  nativeFormat: 
+  exchangeFormat:

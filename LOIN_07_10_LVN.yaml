@@ -1,0 +1,499 @@
+# v 0.5a
+# NSIK ver 0.9, 2023-09-01
+# https://nsiklab.lt 
+#
+# 07.10 - Vandentiekis ir nuotekų šalinimas. Lauko tinklai
+#
+
+LVN:
+    elements:
+    - id: Lauko danga                        # NSIK: A.CA.NCA
+      examples:
+      - Asfalto danga
+      - Lauko plytelių danga
+      - Trinkelių danga
+      classifications:
+        NSIK LF: A
+        NSIK LT: CA
+        NSIK LK: NCA
+      stages:
+        s3:
+          lod: 200
+          properties:
+          - Name:
+            - examples:
+              - Asfalto danga
+              - Trinkelių danga
+              - Plytelių danga
+          - Pset_ElementComponentCommon.Status
+          
+          - Numeris:
+            - examples:
+              - BT-01
+              
+          - Type:
+            - examples:
+              - LD-1
+          - VVK.Material:
+            - examples:
+              - Asfaltas
+              - Lauko trinkelių danga
+          - VVK.Apdaila:
+            - memo: Pildoma jei tokia savybė aktuali
+          - VVK.Colour:
+            - memo: Pildoma jei tokia savybė aktuali
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - LVN-TS-1.1
+          - Ifc__.Heigth:
+            - examples:
+              - 0.050
+            - memo: metrais
+          - Ifc__.Depth:
+            - examples:
+              - 0.700
+            - memo: Visos dangos konstrukcijos storis
+          - Ifc__.Area:
+            - examples:
+              - 100.020
+            - memo: metrais
+          
+      
+    - id: Vamzdžiai                          # NSIK: F.JB.WPA
+      examples:
+      - Lankas
+      - vamzdynas
+      classifications:
+        NSIK LF: F
+        NSIK LT: JB
+        NSIK LK: WPA
+      stages:
+        s3:
+          properties:
+          - Name:
+            - examples:
+              - PP vamzdis
+              - Ketinis vamzdis
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - VZ-1
+          - VVK.Material:
+            - examples:
+              - Polipropilenas
+          - VVK.Apdaila:
+            - memo: Pildoma jei tokia savybė aktuali
+          - VVK.Colour:
+            - memo: Pildoma jei tokia savybė aktuali
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - LVN-TS-3.1
+          - Ifc__.Length:
+            - examples:
+              - 50.4200
+            - memo: metrais
+          - Ifc__.Diameter:
+            - examples:
+              - 110
+            - memo: milimetrais
+          lod: 200
+      
+    - id: Šulinys                            # NSIK: F.JB.XMC
+      examples:
+      - Apžiūros šulinys
+      - Valymo šulinys
+      - Kamera
+      classifications:
+        NSIK LF: F
+        NSIK LT: JB
+        NSIK LK: XMC
+      stages:
+        s3:
+          lod: 200
+          properties:
+          - Name:
+            - examples:
+              - Apžiūros šulinys
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - Š-1
+          - VVK.Material:
+            - examples:
+              - Polietilenas
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - LVN-TS-3.5
+          - Ifc__.Heigth:
+            - examples:
+              - 3.000
+            - memo: metrais
+            
+          - Ifc__.Diameter:
+            - examples:
+              - 1.000
+            - memo: metrais
+          
+      
+    - id: Talpa
+      classifications:
+        NSIK LF: G
+        NSIK LT: JD
+        NSIK LK: CMA
+      stages:
+        s3:
+          properties:
+          - Name:
+            - examples:
+              - Rezervuaras
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - R-1
+          - VVK.Material:
+            - examples:
+              - Polietilenas
+          - VVK.Apdaila:
+            - memo: Pildoma jei tokia savybė aktuali
+          - VVK.Colour:
+            - memo: Pildoma jei tokia savybė aktuali
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - LVN-TS-5.1
+          - Ifc__.Heigth:
+            - examples:
+              - 3,000
+            - memo: metrais
+          - Ifc__.Length:
+            - examples:
+              - 10.000
+            - memo: metrais
+          - Ifc__.Width:
+            - examples:
+              - 8.000
+            - memo: metrais
+          - Ifc__.Volume:
+            - examples:
+              - 220.000
+          lod: 200
+      
+    - id: Latakas
+      classifications:
+        NSIK LF: G
+        NSIK LT: JD
+        NSIK LK: WMB
+      stages:
+        s3:
+          properties:
+          - Name:
+            - examples:
+              - Trapas
+            - units: Tekstas
+            - descr: Elemento pavadinimas
+          - Pset_ElementComponentCommon.Status:
+            - examples:
+              - Projektuojamas
+            - units: Tekstas
+            - descr: Elemento būsena
+          - Type:
+            - examples:
+              - LK-1
+            - units: Tekstas
+            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
+                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
+                medžiagų ir kiekių žiniaraščiuose
+          - VVK.Material:
+            - examples:
+              - Ketus
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento medžiaga
+          - VVK.Apdaila:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento apdaila
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
+                spalvyną ir spalvos pavadinimą, jei žinomas
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 3.1
+            - units: Tekstas
+            - descr: Techninės specifikacijos Nr.
+          - Ifc__.Heigth:
+            - examples:
+              - 150
+            - units: mm
+            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          - Ifc__.Length:
+            - examples:
+              - 1000
+            - units: mm
+            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
+                skaitmenys)
+          - Ifc__.Width:
+            - examples:
+              - 130
+            - units: mm
+            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          lod: 300
+      
+      examples:
+      - Lietaus latakas
+      - trapas
+    - id: Surinkimo šulinys
+      classifications:
+        NSIK LF: G
+        NSIK LT: JD
+        NSIK LK: XKG
+      stages:
+        s3:
+          properties:
+          - Name:
+            - examples:
+              - Lietaus nuotekų surinkimo šulinėlis
+            - units: Tekstas
+            - descr: Elemento pavadinimas
+          - Pset_ElementComponentCommon.Status:
+            - examples:
+              - Projektuojamas
+            - units: Tekstas
+            - descr: Elemento būsena
+          - Type:
+            - examples:
+              - LŠ-1
+            - units: Tekstas
+            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
+                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
+                medžiagų ir kiekių žiniaraščiuose
+          - VVK.Material:
+            - examples:
+              - Polietilenas
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento medžiaga
+          - VVK.Apdaila:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento apdaila
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
+                spalvyną ir spalvos pavadinimą, jei žinomas
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 3.1
+            - units: Tekstas
+            - descr: Techninės specifikacijos Nr.
+          - Ifc__.Heigth:
+            - examples:
+              - 3000
+            - units: mm
+            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          - Diametras:
+            - examples:
+              - 315
+            - units: mm
+            - descr: Gaminio diametras
+          lod: 300
+      
+  
+    - id: Skysčių atskirtuvas
+      classifications:
+        NSIK LF: G
+        NSIK LT: JD
+        NSIK LK: XKD
+      stages:
+        s3:
+          properties:
+          - Name:
+            - examples:
+              - Naftos gaudyklė
+            - units: Tekstas
+            - descr: Elemento pavadinimas
+          - Pset_ElementComponentCommon.Status:
+            - examples:
+              - Projektuojamas
+            - units: Tekstas
+            - descr: Elemento būsena
+          - Type:
+            - examples:
+              - RA-1
+            - units: Tekstas
+            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
+                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
+                medžiagų ir kiekių žiniaraščiuose
+          - VVK.Material:
+            - examples:
+              - Polietilenas
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento medžiaga
+          - VVK.Apdaila:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento apdaila
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
+                spalvyną ir spalvos pavadinimą, jei žinomas
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 3.1
+            - units: Tekstas
+            - descr: Techninės specifikacijos Nr.
+          - Ifc__.Heigth:
+            - examples:
+              - 1220
+            - units: mm
+            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          - Ifc__.Length:
+            - examples:
+              - 1530
+            - units: mm
+            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
+                skaitmenys)
+          - Ifc__.Width:
+            - examples:
+              - 1000
+            - units: mm
+            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          - Ifc__.Weigth:
+            - examples:
+              - 145
+            - units: kg
+            - descr: Elemento svoris
+          lod: 300
+      id: Skysčių atskirtuvas
+      examples:
+      - Naftos produktų atskirtuvas
+      - riebalų atskirtuvas
+    - id: Vamzdžiai
+      classifications:
+        NSIK LF: F
+        NSIK LT: JB
+        NSIK LK: WPA
+      examples:
+      - Lankas
+      - vamzdynas
+      stages:
+        s3:
+          properties:
+          - Name:
+            - examples:
+              - Vamzdynas
+            - units: Tekstas
+            - descr: Elemento pavadinimas
+          - Pset_ElementComponentCommon.Status:
+            - examples:
+              - Projektuojamas
+            - units: Tekstas
+            - descr: Elemento būsena
+          - Type:
+            - examples:
+              - VZ-1
+            - units: Tekstas
+            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
+                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
+                medžiagų ir kiekių žiniaraščiuose
+          - VVK.Material:
+            - examples:
+              - Polipropilenas
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento medžiaga
+          - VVK.Apdaila:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento apdaila
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
+                spalvyną ir spalvos pavadinimą, jei žinomas
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 3.1
+            - units: Tekstas
+            - descr: Techninės specifikacijos Nr.
+          - Ifc__.Length:
+            - examples:
+              - 5000
+            - units: mm
+            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
+                skaitmenys)
+          - Diametras:
+            - examples:
+              - 110
+            - units: mm
+            - descr: Gaminio diametras
+          lod: 300
+      
+      
+    - id: Šulinys
+      classifications:
+        NSIK LF: F
+        NSIK LT: JB
+        NSIK LK: XMC
+      examples:
+      - Apžiūros šulinys
+      - valymo šulinys
+      - kamera
+      stages:
+        s2:
+          lod: 200
+        s3:
+          lod: 300
+          properties:
+          - Name:
+            - examples:
+              - Apžiūros šulinys
+            - units: Tekstas
+            - descr: Elemento pavadinimas
+          - Pset_ElementComponentCommon.Status:
+            - examples:
+              - Projektuojamas
+            - units: Tekstas
+            - descr: Elemento būsena
+          - Type:
+            - examples:
+              - Š-1
+            - units: Tekstas
+            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
+                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
+                medžiagų ir kiekių žiniaraščiuose
+          - VVK.Material:
+            - examples:
+              - Polietilenas
+            - memo: Pildoma, jei tokia savybė aktuali
+            - units: Tekstas
+            - descr: Pagrindinė elemento medžiaga
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 3.1
+            - units: Tekstas
+            - descr: Techninės specifikacijos Nr.
+          - Ifc__.Heigth:
+            - examples:
+              - 3000
+            - units: mm
+            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
+                m (3 dešimtainiai skaitmenys)
+          - Diametras:
+            - examples:
+              - 1000
+            - units: mm
+            - descr: Gaminio diametras
+          
+      
+     
+

@@ -1,0 +1,350 @@
+Name: 
+    type: IfcLabel
+    units: String
+    examples:
+    - Gumos danga
+    description: Elemento pavadinimas
+  
+Tag:
+    type: IfcLabel
+    units: String
+    examples:
+    - GR-10
+    - K-01
+    - AHU-42
+    description: Elemento tipo žymuo
+
+Type:
+  type: IfcLabel
+  units: String
+  examples:
+    - L1
+  description: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas medžiagų ir kiekių žiniaraščiuose
+
+Classification.NSIKcodeB:
+  type: IfcLabel
+  units: String
+  allowedValues: [A, A+, B, B+, C, C+, D, D+, E, E+, F, F+, P, P+]
+  description: Klasifikatoriaus kodas pagal NSIK <B> generalinę klasę
+
+Classification.NSIKcodeLT:
+  type: IfcLabel
+  units: String
+  allowedValues: [B, C, D, E, F, G, H, K, L, M, "N", P, S ]
+  description: Klasifikatoriaus kodas pagal NSIK <LT> generalinę klasę
+
+Classification.NSIKcodeLF:
+  type: IfcLabel
+  units: String
+  description: Klasifikatoriaus kodas pagal NSIK <LF> generalinę klasę
+      
+Classification.NSIKcodeLK:
+  type: IfcLabel
+  units: String
+  description: Klasifikatoriaus kodas pagal NSIK <LK> generalinę klasę
+
+Pset_ElementComponentCommon.Status:
+    type: IfcLabel
+    units: String
+    examples:
+      - Projektuojamas
+    description: Elemento būsena
+    allowedValues:
+      - Esamas
+      - Ardomas
+      - Remontuojamas
+      - Rekonstruojamas
+      - Projektuojamas
+
+Pset_ConstructionAdministration.SpecificationSectionNumber:
+  type: IfcLabel
+  units: String
+  examples:
+    - SA-TS-1.1
+    - SA-TS-C.BA.%CDD1042
+    - T-TS 2.3
+  units: String
+  description: Techninės specifikacijos numeris, nurodant projekto dalies žymenį
+
+Pset_QuantityTakeOff.Heigth: &prop_Height
+    type: IfcLengthMeasure
+    examples:
+      - 120
+      - 5.600
+    units: Real
+    memo: Žr. IFC ilgio, pločio ir aukščio apibrėžimus
+    description: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai skaitmenys)
+
+Pset_QuantityTakeOff.NominalHeight: *prop_Height
+
+Pset_QuantityTakeOff.Width: &prop_Width
+    type: IfcLengthMeasure
+    units: Real
+    examples:
+      - 120
+      - 0.800
+    memo: Žr. IFC ilgio, pločio ir aukščio apibrėžimus
+    description: Gaminio plotis, mm (0 dešimtainių skaitmenų) arba m (3 dešimtainiai skaitmenys)
+
+Pset_QuantityTakeOff.NominalWidth: *prop_Width
+
+Pset_QuantityTakeOff.Length: &prop_Length
+    type: IfcLengthMeasure
+    units: Real
+    examples:
+      - 1600
+      - 1.600
+    memo: Žr. IFC ilgio, pločio ir aukščio apibrėžimus
+    description: Gaminio ilgis, mm (0 dešimtainių skaitmenų) arba m (3 dešimtainiai skaitmenys)
+
+Pset_QuantityTakeOff.NominalLength: *prop_Length
+
+Pset_QuantityTakeOff.Depth: &prop_Depth
+  type: IfcLengthMeasure
+  units: Real
+  examples:
+    - 120
+    - 5.600
+  description: Elemento storis, mm (0 dešimtainių skaitmenų) arba m (3 dešimtainiai skaitmenys)
+
+Pset_QuantityTakeOff.NominalDepth: *prop_Depth
+
+Pset_QuantityTakeOff.Diameter: &prop_Diameter
+  type: IfcLengthMeasure
+  units: Real
+  examples:
+    - 600
+    - 0.600
+  description: Gaminio diametras
+  memo: Jei taikomas
+
+Pset_QuantityTakeOff.NominalDiameter: *prop_Diameter
+
+Pset_QuantityTakeOff.Area: &prop_Area
+    type: IfcAreaMeasure
+    units: Real
+    examples:
+      - 4.20
+      - 0.42
+    description: Elemento plotas, m²
+
+Pset_QuantityTakeOff.NetArea: *prop_Area
+
+Pset_QuantityTakeOff.Weigth: &prop_Weight
+    type: IfcWeightMeasure
+    units: Real
+    examples:
+      - 80
+      - 18
+    description: Elemento svoris, kg
+    
+
+Pset_QuantityTakeOff.Volume:
+    type: IfcVolumeMeasure
+    units: Real
+    examples:
+      - 80.500
+      - 0.006    
+    description: Gaminio tūris, m³, 3 dešimtainiai skaitmenys
+
+
+Pset_QuantityTakeOff.Power: &prop_Power
+    type: IfcPowerMeasure
+    units: Real
+    examples:
+      - 80
+      - 18
+    description: Elemento projektinė galia, W.
+    memo: Elektriniams prietaisams - elektrinė galia, šiluminiams ir jiems prilygintims - šiluminė galia
+
+Pset_QuantityTakeOff.NominalPower: *prop_Power
+
+Pset_ElectricalDeviceCommon.NominalPowerConsumption: 
+    <<: *prop_Power
+    description: Elektrinio prietaiso ar įrenginio projektinė elektrinė galia, W.
+    memo: Prietaiso ar įrenginio elektrinė galia. Kito tipo energijos galia (šiluminė, mechaninė ir pan.) nurodoma atitinkamoje savybėje.
+
+# patikrinti    
+Pset_QuantityTakeOff.VolumetricFlowRate:
+
+
+# patikrinti    
+VVK.Energetinė klasė:
+    type: IfcLabel
+    units: String
+    examples:
+      - A++
+      - C
+    allowedValues:
+      - A+++
+      - A++
+      - A+
+      - A
+      - B
+      - C
+      - D
+      - E
+      - F
+      - G
+    description: Statinio arba įrangos energetinė klasė
+
+# patikrinti
+VVK.LevelName:
+    type: IfcLabel
+    units: String
+    examples:
+      - '1'
+      - '2'
+      - Rūsys
+      - '0,00 = +242.42'
+    description: Statinio aukštas, kuriam priskirtas elementas
+
+# patikrinti
+VVK.AcousticRating:
+  type: IfcLabel
+  valueType: Integer
+
+# patikrinti
+VVK.Korpusas:
+  type: IfcLabel
+  valueType: String
+  description: Korpusas ar etapas, jeigu skirstoma
+  examples: 2 etapas
+
+# patikrinti
+VVK.IsArchitecturalExposed:
+  type: IfcBoolean
+
+# patikrinti
+VVK.RelatedDocumentationURI:
+  type: IfcURIReference
+  valueType: String
+  description: Nuoroda (URI / URL) į su elementu susijusią dokumentaciją.
+  memo: Nuoroda formuojama į CDE aplinkoje sukurtus katalogus, kuriuose saugoma su elementu susijusi rangos, bandymų, atitikties ir panaši informacija. Atitinkamą šių katalogų informaciją pateikia Rangovas.
+
+# patikrinti
+VVK.Energetinė klasė:
+  type: IfcLabel
+  units: String
+  examples:
+    - A++
+    - C
+  allowedValues:
+    - A+++
+    - A++
+    - A+
+    - A
+    - B
+    - C
+    - D
+    - E
+    - F
+    - G
+  description: Statinio arba įrangos energetinė klasė
+
+# patikrinti
+VVK.ASSEMBLY MARK:
+  type: IfcLabel
+  units: String
+  examples:
+    - 80
+    - 18
+  description: Elemento žyma
+
+# patikrinti
+VVK.FireResistanceRating:
+    type: IfcLabel
+    units: String
+    examples:
+      - I-1
+      - II
+    allowedValues:
+      - I-1
+      - I-2
+      - I-3
+      - II
+      - III    
+    description: Statinio atsparumu ugniai laipsnis
+
+# patikrinti
+VVK.FireRating:
+  type: IfcLabel
+  allowedValues:
+  - R [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - E [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - I [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - EI [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - EW [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - REI [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - R-M [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - EI_2 [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - EI_2 [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]-Cs
+
+# patikrinti
+VVK.Combustability:
+  type: IfcLabel
+  units: String
+  examples:
+    - A2
+    - B-s3,d0
+  description: Medžiagos degumo klasė
+
+# patikrinti
+Pset_ServiceLifeFactors.OutdoorEnvironment:
+    type: IfcLabel
+    examples:
+      - XC3
+      - XC6
+      - XO
+      - XC1
+    units: String
+    memo: Jei taikoma
+    description: Elemento aplinkos agresyvumo klasė
+
+# patikrinti
+VVK.Material:
+    type: IfcLabel
+    units: String
+    examples:
+      - Guma
+      - Konstrukcinis plienas 
+      - Nerūdijantis plienas
+      - Plastikas
+      - Betonas
+    memo: Pildoma, jei tokia savybė aktuali
+    description: Pagrindinė elemento medžiaga
+
+# patikrinti
+VVK.Colour:
+    type: IfcLabel
+    units: String
+    examples:
+      - RAL 9003 'Signal white'
+      - NCS S-1005-Y
+    memo: Pildoma, jei tokia savybė aktuali
+    description: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant spalvyną ir spalvos pavadinimą, jei žinomas
+
+# patikrinti
+VVK.Finish:
+  type: IfcLabel
+  units: String
+  examples:
+    - Dažomas milteliniu būdu
+    - Glaistomas, dažomas
+    - Impregnuojamas
+  memo: Pildoma, jei tokia savybė aktuali
+  description: Pagrindinė elemento apdaila
+
+Pset_EnvironmentalCondition.MaximumWindSpeed:
+  memo: Nurodomas tik lauke naudojamai įrangai
+
+VVK.OperationalConditionsClass:
+  type: IfcLabel
+  units: String
+  examples:
+    - XC4
+    - XF2
+    - XA2
+    - X0
+  description: Aplinkos poveikio klasė pagal EN 206-1
+  memo: Nurodomas tik agresyvioje aplinkoje ar lauke naudojamai įrangai ar elementams

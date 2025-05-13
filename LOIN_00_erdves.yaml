@@ -1,0 +1,1132 @@
+# v 0.5a
+# NSIK ver 0.9, 2023-09-01
+# https://nsiklab.lt 
+
+ERDVĖS_:
+  id: "00"
+  name: Erdvės ir patalpos
+  elements:
+  - id: Privati gyvenamoji erdvė        # NSIK B = AAA         &space_types , &stages_spaces_with_persons
+    classifications:
+      NSIK B: AAA
+    ifcType: &space_types
+    - IfcSpace
+    - IfcSpaceType
+    stages: &stages_spaces_with_persons
+      s2:
+        lod: 200
+        properties:
+        - Name | LongName
+        - Pset_SpaceCommon.HandicapAccessible
+        - Pset_SpaceCommon.PubliclyAccessible
+        - Qto_SpaceBaseQuantities.NetFloorArea
+        - Pset_SpaceOccupancyRequirements.OccupancyNumber
+      s3:
+        lod: 300
+        properties:
+        - Pset_SpaceOccupancyRequirements.AreaPerOccupant
+        - Qto_BodyGeometryValidation.GrossVolume
+        - Pset_SpaceFireSafetyRequirements.FireRiskFactor
+        - Pset_SpaceFireSafetyRequirements.AirPressurization
+        - Pset_SpaceFireSafetyRequirements.SprinklerProtection
+      s4:
+        lod: 300
+        properties:
+        - Pset_SpaceHVACDesign.HumidityMin
+        - Pset_SpaceHVACDesign.HumidityMax
+        - Pset_SpaceHVACDesign.TemperatureMin
+        - Pset_SpaceHVACDesign.TemperatureMax
+        - Pset_SpaceHVACDesign.MechanicalVentilation
+        - Pset_SpaceLightingDesign.Illuminance 
+
+  - id: Svetainė                        #   NSIK B = %AAA10
+    classifications:
+      NSIK B: "%AAA10"
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+  
+  - id: Vaiko kambarys                  #   NSIK B = %AAA20
+    classifications:
+      NSIK B: "%AAA20"
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+  
+  - id: Miegamasis                      #   NSIK B = %AAA30
+    classifications:
+      NSIK B: "%AAA30"
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+
+  - id: Bendrabučio kambarys            #   NSIK B = %AAA40
+    classifications:
+      NSIK B: "%AAA40"
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+  
+  - id: Privati virtuvė                 #   NSIK B = %AAA50
+    classifications:
+      NSIK B: "%AAA50"
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+      
+  - id: Valgomasis                      #    NSIK B = %AAA60
+    classifications:
+      NSIK B: "%AAA60"
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+  
+  - id: Viešbučio kambarys              #   NSIK B = %AAA70
+    classifications:
+      NSIK B: "%AAA70"
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+   
+  - id: Vienuolyno celė                 #   NSIK B = %AAA80
+    classifications:
+      NSIK B: "%AAA80"
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons    
+      
+  - id: Bendra erdvė                    # NSIK B = AAB
+    classifications:
+      NSIK B: AAB
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+      
+  - id: Poilsio kambarys                #   NSIK B = %AAB10
+    classifications:
+      NSIK B: "%AAB10"
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+      
+  - id: Vaikų miegamasis                #   NSIK B = %AAB20
+    classifications:
+      NSIK B: "%AAB20"
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+  
+  - id: Laikinos prieglaudos patalpa    #   NSIK B = %AAB30
+    classifications:
+      NSIK B: "%AAB30"
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+  
+  - id: Žaidimų kambarys                #   NSIK B = %AAB40
+    classifications:
+      NSIK B: "%AAB40"
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+      
+  - id: Fitoterapijos erdvė             #   NSIK B = %AAB50
+    classifications:
+      NSIK B: "%AAB50"
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+      
+  - id: Tarpinė erdvė                   # NSIK B = AAC
+    classifications:
+      NSIK B: AAC
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+      
+  - id: Holas                           #   NSIK B = %AAC10
+    classifications:
+      NSIK B: "%AAC10"
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+  
+  - id: Fojė                            #   NSIK B = %AAC20
+    classifications:
+      NSIK B: "%AAC20"
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+  
+  - id: Rūkomasis                       #   NSIK B = %AAC30
+    classifications:
+      NSIK B: "%AAC30"
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+  
+  - id: Kiemas                          # NSIK B = AAD
+    classifications:
+      NSIK B: AAD
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+  
+  - id: Atriumas                        #   NSIK B = %AAD10
+    classifications:
+      NSIK B: "%AAD10"
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+  
+  - id: Terasa                          #   NSIK B = %AAD20
+    classifications:
+      NSIK B: "%AAD20"
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+  
+  - id: Sanitarinis mazgas              # NSIK B = ABA
+    classifications:
+      NSIK B: ABA
+    ifcType:  *space_types
+    stages: *stages_spaces_with_persons
+  
+  - id: Tualetas                        # NSIK B = ABB
+    classifications:
+      NSIK B: ABB
+    ifcType:  *space_types
+    stages: *stages_spaces_with_persons
+      
+  - id: Kūdikių vystymo kambarys        # NSIK B = ABC
+    classifications:
+      NSIK B: ABC
+    ifcType:  *space_types
+    stages: *stages_spaces_with_persons
+  
+  - id: Persirengimo kambarys           # NSIK B = ABD
+    classifications:
+      NSIK B: ABD
+    ifcType:  *space_types
+    stages: *stages_spaces_with_persons
+  
+  - id: Dušas                           # NSIK B = ABE
+    classifications:
+      NSIK B: ABE
+    ifcType:  *space_types
+    stages: *stages_spaces_with_persons
+  
+  - id: Pirtis                          # NSIK B = ABF
+    classifications:
+      NSIK B: ABF
+    ifcType:  *space_types
+    stages: *stages_spaces_with_persons
+  
+  - id: Slėptuvė                        # NSIK B = ACA
+    classifications:
+      NSIK B: ACA
+    ifcType:  *space_types
+    stages: *stages_spaces_with_persons
+  
+  - id: Kamera                          # NSIK B = ACB
+    classifications:
+      NSIK B: ACB
+    ifcType:  *space_types
+    stages: *stages_spaces_with_persons
+  
+  - id: Biuras                              # NSIK B = BAA ,   &stages_spaces_with_persons
+    classifications:
+      NSIK B: BAA
+    examples:
+    - Kabinetas
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+  
+  - id: Posėdžių erdvė                      # NSIK B = BAB
+    classifications:
+      NSIK B: BAB
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+  
+  - id: Priimamasis                         # NSIK B = BAC
+    classifications:
+      NSIK B: BAC
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+  
+  - id: Pardavimų erdvė                     # NSIK B = BAD
+    classifications:
+      NSIK B: BAD
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+  
+  - id: Mokymų erdvė                        # NSIK B = BAE
+    classifications:
+      NSIK B: BAE
+    examples:
+    - Klasė
+    - Darželio grupė
+    - Lauko klasė
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+  
+  - id: Skaitykla                           # NSIK B = BAF
+    classifications:
+      NSIK B: BAF
+    examples:
+    - Skaitykla
+    - Biblioteka
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+
+  - id: Skalbykla                           # NSIK B = BAG
+    classifications:
+      NSIK B: BAG
+    examples:
+    - Skalbykla
+    - Plovykla
+    ifcType: 
+    - IfcSpace
+    - IfcSpaceType
+    stages: *stages_spaces_with_persons
+  
+  - id: Gydymo erdvė                        # NSIK B = BAH
+    classifications:
+      NSIK B: BAH
+    examples:
+    - Skalbykla
+    - Plovykla
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+    
+  - id: Tyrimų erdvė                        # NSIK B = BAJ
+    classifications:
+      NSIK B: BAJ
+    examples:
+    - Skalbykla
+    - Plovykla
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+    
+  - id: Stebėjimo erdvė                     # NSIK B = BAK
+    classifications:
+      NSIK B: BAK
+    examples:
+    - Skalbykla
+    - Plovykla
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+    
+  - id: Apžiūros erdvė                      # NSIK B = BAL
+    classifications:
+      NSIK B: BAL
+    examples:
+    - Skalbykla
+    - Plovykla
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+  
+  - id: Medijų dirbtuvės                    # NSIK B = BAM
+    classifications:
+      NSIK B: BAM
+    examples:
+    - Skalbykla
+    - Plovykla
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+    
+    
+  - id: Virtuvė                             # NSIK B = BBA
+    classifications:
+      NSIK B: BBA
+    examples:
+    - Virtuvė
+    - Virtuvėlė
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+
+  - id: Medžiagų dirbtuvės                  # NSIK B = BBB
+    classifications:
+      NSIK B: BBB
+    examples:
+    - Medžio dirbtuvės
+    - Metalo dirbtuvės
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+
+  - id: Mechanizmų cechas                   # NSIK B = BBC
+    classifications:
+      NSIK B: BBC
+    examples:
+    - Garažas
+    - IT dirbtuvės
+    - FabLab dirbtuvės
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+
+  - id: Studija                             # NSIK B = BBD
+    classifications:
+      NSIK B: BBD
+    examples:
+    - Keramikos dirbtuvės
+    - Siuvimo dirbtuvės
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+    
+  - id: Pakavimo vieta                      # NSIK B = BBE
+    classifications:
+      NSIK B: BBE
+    examples:
+    - Keramikos dirbtuvės
+    - Siuvimo dirbtuvės
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+
+  - id: Mokslinių tyrimu laboratorija       # NSIK B = BCA
+    classifications:
+      NSIK B: BCA
+    examples:
+    - Chemijos laboratorija
+    - Fizikos laboratorija
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+
+  - id: Medžiagų laboratorija               # NSIK B = BCB
+    classifications:
+      NSIK B: BCB
+    examples:
+    - Maisto laboratorija
+    - Virusų laboratorija
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+    
+  - id: Biologijos laboratorija             # NSIK B = BCC
+    classifications:
+      NSIK B: BCC
+    examples:
+    - Maisto laboratorija
+    - Virusų laboratorija
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+
+  - id: Sporto salė                         # NSIK B = BDA
+    classifications:
+      NSIK B: BDA
+    examples:
+    - Sporto salė
+    - Čiuožykla
+    - Plaukimo salė
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+
+  - id: Treniruočių patalpa                 # NSIK B = BDB
+    classifications:
+      NSIK B: BDB
+    examples:
+    - Svarmenų kambarys
+    - Treniruokliu patalpa
+    - Treniruoklių zona
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+
+  - id: Repeticijų patalpa                  # NSIK B = BDC
+    classifications:
+      NSIK B: BDC
+    examples:
+    - Baleto salė
+    - Choro salė
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons 
+
+  
+  - id: Scena                               # NSIK B = BDD
+    classifications:
+      NSIK B: BDD
+    examples:
+    - Orkestro duobė
+    - Perklausų scena
+    - Amfiteatras
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+
+  - id: Žaidimų kambarys                    # NSIK B = BDE
+    classifications:
+      NSIK B: BDE
+    examples:
+    - Vaikų žaidimu erdvė
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons 
+
+  - id: Valgymo erdvė                       # NSIK B = BEA
+    classifications:
+      NSIK B: BEA
+    examples:
+    - Kavinė
+    - Valgykla
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+
+  - id: Salė                                # NSIK B = BEB
+    classifications:
+      NSIK B: BEB
+    examples:
+    - Bendruomenės salė
+    - Susirinkimų kambarys
+    - Aktų salė
+    - Aula
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons 
+
+  - id: Galerija                            # NSIK B = BEC
+    classifications:
+      NSIK B: BEC
+    examples:
+    - Bendruomenės salė
+    - Susirinkimų kambarys
+    - Aktų salė
+    - Aula
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+    
+  - id: Religinių apeigų erdvė              # NSIK B = BED
+    classifications:
+      NSIK B: BED
+    examples:
+    - Bendruomenės salė
+    - Susirinkimų kambarys
+    - Aktų salė
+    - Aula
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons 
+    
+  - id: Atliekų laikymo erdvė                                # NSIK B = CAA , &stages_spaces_no_persons
+    classifications:
+      NSIK B: CAA
+    examples:
+    - Šiukšlių konteinerių aikštelė
+    - Šiukšlių patalpa
+    - Atliekų konteinerių patalpa
+    ifcType: *space_types
+    stages: &stages_spaces_no_persons
+      s2:
+        lod: 300
+        properties:
+        - Name | LongName
+        - Pset_SpaceCommon.IsExternal
+        - Pset_SpaceCommon.HandicapAccessible
+        - Pset_SpaceCommon.PubliclyAccessible
+        - Qto_SpaceBaseQuantities.NetFloorArea
+      s3:
+        lod: 300
+        properties:
+        - Qto_BodyGeometryValidation.GrossVolume
+        - Pset_SpaceFireSafetyRequirements.FireRiskFactor
+        - Pset_SpaceFireSafetyRequirements.AirPressurization
+        - Pset_SpaceFireSafetyRequirements.SprinklerProtection
+      s4:
+        lod: 300
+        properties:
+        - Pset_SpaceHVACDesign.HumidityMin
+        - Pset_SpaceHVACDesign.HumidityMax
+        - Pset_SpaceHVACDesign.TemperatureMin
+        - Pset_SpaceHVACDesign.TemperatureMax
+        - Pset_SpaceHVACDesign.MechanicalVentilation
+        - Pset_SpaceLightingDesign.Illuminance
+
+  - id: Chemikalų laikymo erdvė                              # NSIK B = CAB
+    classifications:
+      NSIK B: CAB
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+
+  - id: Vaistų laikymo erdvė                                 # NSIK B = CAC
+    classifications:
+      NSIK B: CAC
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+
+  - id: Archyvo laikymo erdvė                                # NSIK B = CAD
+    classifications:
+      NSIK B: CAD
+    examples:
+    - Brėžinių archyvas
+    - Vadovėlių saugykla
+    - Įrašų archyvo patalpa
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+
+  - id: Skysčių laikymo erdvė                                # NSIK B = CAE
+    classifications:
+      NSIK B: CAE
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+
+  - id: Žaliavų laikymo erdvė                                # NSIK B = CAF
+    classifications:
+      NSIK B: CAF
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+
+  - id: Maisto laikymo erdvė                                 # NSIK B = CAG
+    classifications:
+      NSIK B: CAG
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+    
+  - id: Vertybių laikymo erdvė                               # NSIK B = CAH
+    classifications:
+      NSIK B: CAH
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+    
+  - id: Pakuočių laikymo erdvė                               # NSIK B = CAJ
+    classifications:
+      NSIK B: CAJ
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+
+  - id: Drabužių laikymo erdvė                               # NSIK B = CAK
+    classifications:
+      NSIK B: CAK
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+
+  - id: Statybinių medžiagų laikymo erdvė                    # NSIK B = CAL
+    classifications:
+      NSIK B: CAL
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+  
+  - id: Sprogmenų laikymo erdvė                              # NSIK B = CAM
+    classifications:
+      NSIK B: CAM
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+    
+  
+  - id: Atsargų laikymo erdvė                                # NSIK B = CAN
+    classifications:
+      NSIK B: CAG
+    examples:
+    - Sandėliukas
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+  
+  - id: Baldų laikymo erdvė                                  # NSIK B = CBA
+    classifications:
+      NSIK B: CBA
+    examples:
+    - Baldų saugojimo patalpa
+    - Užkulisiai
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+
+  - id: Įrankių laikymo erdvė                                # NSIK B = CBB
+    classifications:
+      NSIK B: CBB
+    examples:
+    - Garažas
+    - Daržinė
+    - Sodo priežiūros įreankių sandėlis
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+
+  - id: Prietaisų laikymo erdvė                              # NSIK B = CBC
+    classifications:
+      NSIK B: CBC
+    examples:
+    - Aparatūros saugykla
+    - Medicininės įrangos saugykla
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+
+  - id: Transporto priemonės laikymo erdvė                   # NSIK B = CBD
+    classifications:
+      NSIK B: CBD
+    examples:
+    - Angaras
+    - Parkavimo vieta
+    - Garažas
+    - Prieplauka
+    - Elingas
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+
+  - id: Narvas                                               # NSIK B = CCA
+    classifications:
+      NSIK B: CCA
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+
+  - id: Gardas                                               # NSIK B = CCB
+    classifications:
+      NSIK B: CCB
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+    
+  - id: Tvartas                                              # NSIK B = CCC
+    classifications:
+      NSIK B: CCC
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+
+  - id: Vandens aptvėrimas gyvūnams                          # NSIK B = CCD
+    classifications:
+      NSIK B: CCC
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+    
+  - id: Akvariumas                                           #   NSIK B = %CCD10
+    classifications:
+      NSIK B: "%CCD10"
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+  
+  - id: Vidaus sodinimo erdvė                                # NSIK B = CDA
+    classifications:
+      NSIK B: ABB
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+  
+  - id: Lauko sodinimo erdvė                                 # NSIK B = CDB , &stages_external_spaces_no_persons
+    classifications:
+      NSIK B: CDB
+    ifcType: *space_types
+    stages: &stages_external_spaces_no_persons
+      s2:
+        lod: 300
+        properties:
+        - Name | LongName
+        - Pset_SpaceCommon.IsExternal
+        - Pset_SpaceCommon.HandicapAccessible
+        - Pset_SpaceCommon.PubliclyAccessible
+        - Qto_SpaceBaseQuantities.NetFloorArea
+      s3:
+        lod: 300
+        properties:
+        - Pset_SpaceFireSafetyRequirements.FireRiskFactor
+      s4:
+        lod: 300
+        properties:
+        - Pset_SpaceLightingDesign.Illuminance
+  
+  - id: Laidojimo namų koplyčia                              # NSIK B = CEA
+    classifications:
+      NSIK B: CEA
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+  
+  - id: Kripta                                               # NSIK B = CEB
+    classifications:
+      NSIK B: CEB
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+  
+  - id: Elektros instaliacijos erdvė                         # NSIK B = DAA
+    classifications:
+      NSIK B: DAA
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+  
+  - id: Informacinių technologijų (IT) įrangos erdvė         # NSIK B = DAB
+    classifications:
+      NSIK B: DAB
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+  
+  - id: Mechaninės instaliacijos erdvė                       # NSIK B = DAC
+    classifications:
+      NSIK B: DAC
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+
+  - id: Inžinerinės instaliacijos erdvė                      # NSIK B = DAD
+    classifications:
+      NSIK B: DAD
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+
+  - id: Vandens apskaitos erdvė                              #   NSIK B = %DAD10
+    classifications:
+      NSIK B: "%DAD10"
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+
+  - id: Šilumos punktas                                      #   NSIK B = %DAD20
+    classifications:
+      NSIK B: "%DAD20"
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+
+  - id: Ventkamera                                           #   NSIK B = %DAD30
+    classifications:
+      NSIK B: "%DAD30"
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+    
+  - id: Dujų punktas                                         #   NSIK B = %DAD40
+    classifications:
+      NSIK B: "%DAD40"
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+
+  - id: Gaisrų gesinimos įrangos erdvė                       #   NSIK B = %DAD50
+    classifications:
+      NSIK B: "%DAD50"
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+
+  - id: Šaldymo įrangos erdvė                                #  NSIK B = %DAD60
+    classifications:
+      NSIK B: "%DAD60"
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+
+  - id: Valdymo įrangos erdvė                                # NSIK B = DBA
+    classifications:
+      NSIK B: DBA
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+
+  - id: Gamybos erdvė                                        # NSIK B = DBB
+    classifications:
+      NSIK B: DBB
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+
+  - id: Aptarnavimo įrangos erdvė                            # NSIK B = DBC
+    classifications:
+      NSIK B: DBC
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+
+  - id: Analizės įrangos erdvė                               # NSIK B = DBD
+    classifications:
+      NSIK B: DBD
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+
+  - id: Įrangos darbinė erdvė                                # NSIK B = DCA
+    classifications:
+      NSIK B: DCA
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+    
+  - id: Įrangos prieigos erdvė                               # NSIK B = DCB
+    classifications:
+      NSIK B: DCA
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+
+  - id: Vestibiulis                                          # NSIK B = EAA
+    classifications:
+      NSIK B: EAA
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+
+  - id: Oro užsklanda                                        # NSIK B = EAB
+    classifications:
+      NSIK B: EAB
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+
+  - id: Koridorius                                           # NSIK B = EAC
+    classifications:
+      NSIK B: EAC
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+
+  - id: Laiptinė                                             # NSIK B = EAD
+    classifications:
+      NSIK B: EAD
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+
+  - id: Lifto erdvė                                          # NSIK B = EAE
+    classifications:
+      NSIK B: EAE
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+
+  - id: Portikas                                             # NSIK B = EAF
+    classifications:
+      NSIK B: EAF
+    ifcType: *space_types
+    stages: *stages_spaces_with_persons
+
+  - id: Aptarnavimo tunelis                                  # NSIK B = EBA
+    classifications:
+      NSIK B: EBA
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+
+  - id: Šachta                                               # NSIK B = EBB
+    classifications:
+      NSIK B: EBB
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+    
+  - id: Ortakis                                              # NSIK B = EBC
+    classifications:
+      NSIK B: EBC
+    ifcType: *space_types
+    stages: *stages_spaces_no_persons
+
+  - id: Važiuojamoji dalis                                   # NSIK B = FAA
+    classifications:
+      NSIK B: FAA
+    ifcType: *space_types
+    stages: &stages_traffic_spaces
+      s2:
+        lod: 300
+        properties:
+        - Name | LongName
+        - Pset_SpaceCommon.IsExternal
+        - Pset_SpaceCommon.HandicapAccessible
+        - Pset_SpaceCommon.PubliclyAccessible
+        - Qto_SpaceBaseQuantities.NetFloorArea
+        - Pset_QuantityTakeOff.Width
+        - Pset_QuantityTakeOff.Length
+        - Pset_QuantityTakeOff.Heigth
+      s3:
+        lod: 300
+        properties:
+        - Pset_SpaceLightingDesign.Illuminance
+    
+  - id: Eismo juosta                                         # NSIK B = FAB
+    classifications:
+      NSIK B: FAB
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Greitėjimo ir (arba) lėtėjimo juosta                 #   NSIK B = %FAB10
+    classifications:
+      NSIK B: "%FAB10"
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Kelkraštis                                           # NSIK B = FAC
+    classifications:
+      NSIK B: FAC
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Kelio vidinis šlaitas                                #   NSIK B = %FAC10
+    classifications:
+      NSIK B: "%FAC10"
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+    
+  - id: Kelio išorinis šlaitas                               #   NSIK B = %FAC20
+    classifications:
+      NSIK B: "%FAC20"
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Sustojimo vieta                                      # NSIK B = FAD
+    classifications:
+      NSIK B: FAD
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Lygiagreti sustojimo vieta                           #   NSIK B = %FAD10
+    classifications:
+      NSIK B: "%FAD10"
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Poilsio aikštelė                                     #   NSIK B = %FAD20
+    classifications:
+      NSIK B: "%FAD20"
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Sankryža                                             # NSIK B = FAE
+    classifications:
+      NSIK B: FAE
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Nuovaža                                              # NSIK B = FAF
+    classifications:
+      NSIK B: FAF
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Įvaža ir (arba) išvaža                               #   NSIK B = %FAF10
+    classifications:
+      NSIK B: "%FAF10"
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+    
+
+  - id: Pėsčiųjų takas                                       # NSIK B = FBA
+    classifications:
+      NSIK B: FBA
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Dviračių takas                                       # NSIK B = FBB
+    classifications:
+      NSIK B: FBB
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Dviračių ir pėsčiųjų takas                           # NSIK B = FBC
+    classifications:
+      NSIK B: FBC
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Gyvūnų takas                                         # NSIK B = FBD
+    classifications:
+      NSIK B: FBD
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Orlaivių kilimo ir tūpimo takas                      # NSIK B = FCA
+    classifications:
+      NSIK B: FCA
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Orlaivių riedėjimo takas                             # NSIK B = FCB
+    classifications:
+      NSIK B: FCB
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+    
+  - id: Geležinkelio bėgių kelias                            # NSIK B = FDA
+    classifications:
+      NSIK B: FDA
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Geležinkelio pervaža                                 # NSIK B = FDB
+    classifications:
+      NSIK B: FDB
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+    
+  - id: Farvateris                                           # NSIK B = FEA
+    classifications:
+      NSIK B: FEA
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Šliuzas                                              # NSIK B = FEB
+    classifications:
+      NSIK B: FEB
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Skiriamoji juosta                                    # NSIK B = FFA
+    classifications:
+      NSIK B: FFA
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Saugumo salelė                                       #   NSIK B = %FFA10
+    classifications:
+      NSIK B: "%FFA10"
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Skiriamoji salelė                                    #   NSIK B = %FFA20
+    classifications:
+      NSIK B: "%FFA20"
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Platforma                                            # NSIK B = FFB
+    classifications:
+      NSIK B: FFB
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Autobusų stotelė                                     #   NSIK B = %FFB10
+    classifications:
+      NSIK B: "%FFB10"
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Geležinkelio platforma                               #   NSIK B = %FFB20
+    classifications:
+      NSIK B: "%FFB20"
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Eismo informacijos erdvė                             # NSIK B = FFC
+    classifications:
+      NSIK B: FFC
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Perėja                                               #   NSIK B = %FFC10
+    classifications:
+      NSIK B: "%FFC10"
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Artumo gabaritas                                     # NSIK B = FFD
+    classifications:
+      NSIK B: FFD
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Eismo ribojimo erdvė                                 # NSIK B = FFE
+    classifications:
+      NSIK B: FFE
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Nuolaužų srauto erdvė                                # NSIK B = PAA
+    classifications:
+      NSIK B: PAA
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Kietųjų medžiagų srauto erdvė                        # NSIK B = PAB
+    classifications:
+      NSIK B: PAB
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Dujų srauto erdvė                                    # NSIK B = PAC
+    classifications:
+      NSIK B: PAB
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+    
+  - id: Skysčio srauto vieta                                 # NSIK B = PAD
+    classifications:
+      NSIK B: PAD
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Kelio griovys                                        #   NSIK B = %PAD10
+    classifications:
+      NSIK B: "%PAD10"
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Plazmos srauto erdvė                                 # NSIK B = PAE
+    classifications:
+      NSIK B: PAE
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Dūmų susidarymo erdvė                                # NSIK B = PAF
+    classifications:
+      NSIK B: PAF
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Elektros energijos srauto erdvė                      # NSIK B = PBA
+    classifications:
+      NSIK B: PBA
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Šiluminės energijos srauto erdvė                     # NSIK B = PBB
+    classifications:
+      NSIK B: PBB
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Mechaninės energijos srauto erdvė                    # NSIK B = PBC
+    classifications:
+      NSIK B: PBC
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Sprogimo vieta                                       # NSIK B = PBD
+    classifications:
+      NSIK B: PBD
+    ifcType: *space_types
+    stages: *stages_traffic_spaces
+
+  - id: Degimo proceso vieta                                 # NSIK B = PBE
+    classifications:
+      NSIK B: PBE
+    ifcType: *space_types
+    stages: *stages_traffic_spaces

@@ -1,0 +1,639 @@
+# v 0.5a
+# NSIK ver 0.9, 2023-09-01
+# https://nsiklab.lt 
+#
+# 05 - Technologinės dalys
+# Garso, vaizdo ir šviesos technologija
+#
+
+s2:  &stageS2_common
+  lod: 200
+  properties:
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  
+s3:  &stageS3_common
+  lod: 300
+  properties:
+    - Type:
+      - examples:
+        - KK-1
+    - Pset_ConstructionAdministration.SpecificationSectionNumber:
+      - examples:
+        - PVA-TS 2.1
+    - VVK.Material:
+      - examples:
+        - Plienas
+        - Plastikas
+    - VVK.Finish:
+      - memo: Pildoma, jei tokia savybė aktuali
+      - examples:
+          - Cinkuotas
+          - Dažytas milteliniu būdu
+    - VVK.Colour:
+      - memo: Pildoma, jei tokia savybė aktuali
+    - Pset_QuantityTakeOff.Heigth:
+      - examples:
+        - 600
+    - Pset_QuantityTakeOff.Width:
+      - examples:
+        - 400
+    - Pset_QuantityTakeOff.Length:
+      - examples:
+        - 150
+        
+T.GVŠ: 
+    id: "05.GVŠ"
+    name: Garso, vaizdo ir šviesos technologija
+    elements:
+    - id: Aktų salės įranga                                                 # S.RC.UBE
+      examples:
+      - Stacionari scena (SA dalyje
+      - projektuojama scenos pakyla)
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: UBE
+      stages:
+        s2:  *stageS2_common
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Stacionari scena
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - SC-1
+          - VVK.Material
+          - VVK.Apdaila
+          - VVK.Colour
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+          - Ifc__.Heigth:
+            - examples:
+              - 1200
+          - Ifc__.Length:
+            - examples:
+              - 10000
+          - Ifc__.Width:
+            - examples:
+              - 6000
+          - Degumo klasė:
+            - examples:
+              - A1
+              - A2
+              - B-s2, d0
+  
+    - id: Įrangos korpusas                                                  # S.RC.UCA
+      memo: Apytikslis elemento ribojantis tūris
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: UCA
+      ifcType:
+       - IfcDistributionFlowElement
+       - IfcDistributionElement
+      stages:
+        s2:  *stageS2_common
+        s3:
+          lod: 200
+          properties:
+          - Name:
+            - examples:
+              - AV įrangos spinta 42U
+          - Type:
+            - examples:
+              - SP-01
+          - Tag:
+            - examples:
+              - AVR-3.04
+              - AVR-3.18
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS-2.3
+          - Pset_ElementSize.NominalHeight:
+            - examples:
+              - 2055
+          - Pset_ElementSize.NominalLength:
+            - examples:
+              - 800
+          - Pset_ElementSize.NominalWidth:
+            - examples:
+              - 800
+          - Pset_ElectricalDeviceCommon.HasProtectiveEarth
+          - Pset_ElectricalDeviceCommon.IP_Code:
+            memo: Nurodomas tik agresyvioje aplinkoje naudojamai įrangai
+          - Pset_ElectricalDeviceCommon.IK_Code:
+            memo: Nurodomas tik agresyvioje aplinkoje naudojamai įrangai
+          - VVK.OperationalConditionsClass:
+            memo: Nurodomas tik agresyvioje aplinkoje naudojamai įrangai
+    
+    - id: 'Techninės įrangos spinta: Signalų komutacinė panelė'             # S.%RC20.XGD
+      memo: Apytikslis elemento ribojantis tūris
+      classifications:
+        NSIK LF: S
+        NSIK LT: '%RC20'
+        NSIK LK: XGD
+      ifcType:
+       - IfcDistributionFlowElement
+       - IfcDistributionElement
+      ontology: 'MEP → elektra'
+      stages:
+        s2:  *stageS2_common
+        s3:
+          lod: 200
+          properties:
+          - Name:
+            - examples:
+              - 1U aukščio komutavimo panelė su 6 vnt HDMI signalo jungtimis
+          - Type:
+            - examples:
+              - SP-01
+          - Tag:
+            - examples:
+              - AVR-3.04
+              - AVR-3.18
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS-2.3
+          - Pset_ElementSize.NominalHeight:
+            - examples:
+              - 44.45
+          - Pset_ElementSize.NominalLength:
+            - examples:
+              - 40
+          - Pset_ElementSize.NominalWidth:
+            - examples:
+              - 483
+          - Pset_ElectricalDeviceCommon.HasProtectiveEarth
+          - Pset_ElectricalDeviceCommon.IP_Code:
+            memo: Nurodomas tik agresyvioje aplinkoje naudojamai įrangai
+          - Pset_ElectricalDeviceCommon.IK_Code:
+            memo: Nurodomas tik agresyvioje aplinkoje naudojamai įrangai
+          - VVK.OperationalConditionsClass:
+            memo: Nurodomas tik agresyvioje aplinkoje naudojamai įrangai
+
+    - id: 'Techninės įrangos spinta: Maitinimo panelė'                      # S.%RC20.XDE
+      memo: Apytikslis elemento ribojantis tūris
+      classifications:
+        NSIK LF: S
+        NSIK LT: '%RC20'
+        NSIK LK: XDE
+      ifcType:
+       - IfcDistributionFlowElement
+       - IfcDistributionElement
+      ontology: 'MEP → elektra'
+      stages:
+        s2:  *stageS2_common
+        s3:
+          lod: 200
+          properties:
+          - Name:
+            - examples:
+              - 1U aukščio maitinimo panelė su 6 vnt CEE 7/3 tipo lizdais ir jungikliu
+          - Type:
+            - examples:
+              - MP-01
+          - Tag:
+            - examples:
+              - AVR-3.08
+              - AVR-3.12
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS-2.3
+          - Pset_ElementSize.NominalHeight:
+            - examples:
+              - 44.45
+          - Pset_ElementSize.NominalLength:
+            - examples:
+              - 60
+          - Pset_ElementSize.NominalWidth:
+            - examples:
+              - 483
+          - Pset_ElectricalDeviceCommon.NominalPowerConsumption:
+            - examples:
+              - 3500
+            - memo: Visį prijungtų įrenginiu maksimali galia
+          - Pset_ElectricalDeviceCommon.RatedCurrent:
+            - memo: Maksimali leidžiama srovė
+            - examples:
+              - 10
+              - 16
+          - Pset_ElectricalDeviceCommon.RatedVoltage
+          - Pset_ElectricalDeviceCommon.HasProtectiveEarth
+          - Pset_ElectricalDeviceCommon.InsulationStandardClass
+          - Pset_ElectricalDeviceCommon.IP_Code
+          - Pset_ElectricalDeviceCommon.IK_Code
+          - VVK.OperationalConditionsClass:
+            memo: Nurodomas tik agresyvioje aplinkoje naudojamai įrangai
+      
+    - id: 'Techninės įrangos spinta: aušinimo panelė su ventiliatoriumi'    # S.%RC20.GQB
+      memo: Apytikslis elemento ribojantis tūris
+      classifications:
+        NSIK LF: S
+        NSIK LT: '%RC20'
+        NSIK LK: GQB
+      ifcType:
+       - IfcAudioVisualAppliance
+       - IfcAudioVisualApplianceType
+      ontology: 'MEP → elektra'
+      stages:
+        s2:  *stageS2_common
+        s3:
+          lod: 200
+          properties:
+          - Name:
+            - examples:
+              - 1U aukščio aušinimo panelė su termostatu
+          - Type:
+            - examples:
+              - AP-01
+          - Tag:
+            - examples:
+              - AVR-3.01
+              - AVR-2.01
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS-2.3
+          - Pset_ElementSize.NominalHeight:
+            - examples:
+              - 44.45
+          - Pset_ElementSize.NominalLength:
+            - examples:
+              - 450
+          - Pset_ElementSize.NominalWidth:
+            - examples:
+              - 483
+          - Pset_ElectricalDeviceCommon.NominalPowerConsumption:
+            - examples:
+              - 20
+          - Pset_ElectricalDeviceCommon.RatedVoltage
+          - Pset_ElectricalDeviceCommon.HasProtectiveEarth
+          - Pset_ElectricalDeviceCommon.InsulationStandardClass
+          - Pset_ElectricalDeviceCommon.IP_Code
+          - Pset_ElectricalDeviceCommon.IK_Code
+          - VVK.OperationalConditionsClass:
+            memo: Nurodomas tik agresyvioje aplinkoje naudojamai įrangai
+
+    - id: Vaizdo kamera                                                     # S.RC.%BXC20
+      description: Vaizdo jutiklis aplinkos judantiems vaizdams fiksuoti.
+      memo: Apytikslis elemento ribojantis tūris
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: '%BXC20'
+      ifcType:
+       - IfcAudioVisualAppliance
+       - IfcAudioVisualApplianceType
+      ontology: 'MEP → elektra'
+      stages:
+        s2:  *stageS2_common
+        s3:
+          lod: 200
+          properties:
+          - Name:
+            - examples:
+              - PTZ kamera
+          - Type:
+            - examples:
+              - VK-03
+          - Tag:
+            - examples:
+              - VK-302.01
+              - VK-302.02
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS-2.3
+          - Pset_ElementSize.NominalHeight:
+            - examples:
+              - 60
+          - Pset_ElementSize.NominalLength:
+            - examples:
+              - 200
+          - Pset_ElementSize.NominalWidth:
+            - examples:
+              - 60
+          - Pset_ElectricalDeviceCommon.NominalPowerConsumption:
+            - examples:
+              - 50
+          - Pset_ElectricalDeviceCommon.RatedVoltage
+          - Pset_ElectricalDeviceCommon.InsulationStandardClass
+          - Pset_ElectricalDeviceCommon.IP_Code
+          - Pset_ElectricalDeviceCommon.IK_Code
+          - VVK.OutdoorEnvironment #| Pset_BuildingElementProxyCommon.IsExternal
+          - Pset_EnvironmentalCondition.MaximumWindSpeed:
+            memo: Nurodomas tik lauke naudojamai įrangai
+          - VVK.OperationalConditionsClass:
+            memo: Nurodomas tik agresyvioje aplinkoje ar lauke naudojamai įrangai
+
+    - id: Garsiakalbis                                                      # S.RC.PJA
+      description: Judančios membranos principu veikiantis akustinis prietaisas.
+      memo: Apytikslis elemento ribojantis tūris
+      ifcType:
+       - IfcAudioVisualAppliance
+       - IfcAudioVisualApplianceType
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: PJA
+      ontology: 'MEP → elektra'
+      stages:
+        s2:  *stageS2_common
+        s3:
+          lod: 200
+          properties:
+          - Name:
+            - examples:
+              - Žemų dažnių garsiakalbis
+          - Type:
+            - examples:
+              - ŽDG-01
+          - Tag:
+            - examples:
+              - ŽDG-302.01
+          - Pset_ElementComponentCommon.Status
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS-2.3
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS-2.3
+          - Pset_ElementSize.NominalHeight:
+            - examples:
+              - 600
+          - Pset_ElementSize.NominalLength:
+            - examples:
+              - 600
+          - Pset_ElementSize.NominalWidth:
+            - examples:
+              - 400
+          - Pset_ElectricalDeviceCommon.NominalPowerConsumption:
+            - examples:
+              - 50
+            - memo: Maksimali galia (RMS)
+          - Pset_ElectricalDeviceCommon.RatedVoltage:
+            - memo: Įrenginiui ir (arba) su juo susijusiai elektros įrangai
+            - examples:
+              - 30
+              - 70
+              - 100
+          - Pset_ElectricalDeviceCommon.InsulationStandardClass:
+            - memo: Įrenginiui ir (arba) su juo susijusiai elektros įrangai
+          - Pset_ElectricalDeviceCommon.IP_Code:
+            - memo: Įrenginiui ir (arba) su juo susijusiai elektros įrangai
+          - Pset_ElectricalDeviceCommon.IK_Code:
+            - memo: Įrenginiui ir (arba) su juo susijusiai elektros įrangai
+          - VVK.OutdoorEnvironment # | Pset_BuildingElementProxyCommon.IsExternal
+          - Pset_EnvironmentalCondition.MaximumWindSpeed:
+            memo: Nurodomas tik lauke naudojamai įrangai
+          - VVK.OperationalConditionsClass:
+            memo: Nurodomas tik agresyvioje aplinkoje ar lauke naudojamai įrangai
+
+    - id: Ekranas                                                           # S.RC.PHA
+      description: Grafinio vaizdavimo įtaisas, skirtas atvaizduoti dinaminę informaciją ant savo paviršiaus.
+      memo: Apytikslis elemento ribojantis tūris
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: PHA
+      ifcType:
+       - IfcAudioVisualAppliance
+       - IfcAudioVisualApplianceType
+      ontology: 'MEP → elektra'
+      stages:
+        s2:  *stageS2_common
+        s3:
+          lod: 200
+          properties:
+          - Name:
+            - examples:
+              - Ekranas
+          - Type:
+            - examples:
+              - VK-03
+          - Tag:
+            - examples:
+              - VK-302.01
+          - Pset_ElementComponentCommon.Status
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS-2.3
+          - VVK.Material:
+            - examples:
+              - Antpirenuose išmirkyta drobė
+            - memo: Pildoma, jei tokia savybė aktuali
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - Pset_ElementSize.NominalHeight:
+            - examples:
+              - 3500
+          - Pset_ElementSize.NominalLength:
+            - examples:
+              - 4600
+          - Pset_ElementSize.NominalWidth:
+            - examples:
+              - 80
+          - Pset_ElectricalDeviceCommon.NominalPowerConsumption:
+            - examples:
+              - 3000
+            - memo: Įrenginio ir (arba) su juo susijusios elektros įrangos galia
+          - Pset_ElectricalDeviceCommon.RatedCurrent:
+            - memo: Įrenginiui ir (arba) su juo susijusiai elektros įrangai
+          - Pset_ElectricalDeviceCommon.RatedVoltage:
+            - memo: Įrenginiui ir (arba) su juo susijusiai elektros įrangai
+          - Pset_ElectricalDeviceCommon.HasProtectiveEarth:
+            - memo: Įrenginiui ir (arba) su juo susijusiai elektros įrangai
+          - Pset_ElectricalDeviceCommon.InsulationStandardClass:
+            - memo: Įrenginiui ir (arba) su juo susijusiai elektros įrangai
+          - Pset_ElectricalDeviceCommon.IP_Code:
+            - memo: Įrenginiui ir (arba) su juo susijusiai elektros įrangai
+          - Pset_ElectricalDeviceCommon.IK_Code:
+            - memo: Įrenginiui ir (arba) su juo susijusiai elektros įrangai
+          - VVK.OutdoorEnvironment #| Pset_BuildingElementProxyCommon.IsExternal
+          - Pset_EnvironmentalCondition.MaximumWindSpeed:
+            memo: Nurodomas tik lauke naudojamai įrangai
+          - VVK.OperationalConditionsClass:
+            memo: Nurodomas tik agresyvioje aplinkoje ar lauke naudojamai įrangai
+
+    - id: Projektorius                                                      # S.RC.PHB
+      description: Grafinio vaizdavimo įtaisas, skirtas atvaizduoti dinaminei informacijai
+        ant kito paviršiaus.
+      memo: Apytikslis elemento ribojantis tūris
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: PHB
+      ifcType:
+       - IfcAudioVisualAppliance
+       - IfcAudioVisualApplianceType
+      ontology: 'MEP → elektra'
+      stages:
+        s2:  *stageS2_common
+        s3:
+          lod: 200
+          properties:
+          - Name:
+            - examples:
+              - Vaizdo projektorius su standartiniu lęšiu, 10.000 liumenų
+          - Type:
+            - examples:
+              - VP-01
+          - Tag:
+            - examples:
+              - VP-301.01
+          - Pset_ElementComponentCommon.Status
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS-2.3
+          - VVK.Material:
+            - memo: Pildoma, jei savybė aktuali
+          - VVK.Colour:
+            - memo: Pildoma, jei savybė aktuali
+          - Pset_ElementSize.NominalHeight:
+            - examples:
+              - 120
+          - Pset_ElementSize.NominalLength:
+            - examples:
+              - 300
+          - Pset_ElementSize.NominalWidth:
+            - examples:
+              - 300
+          - Pset_ElectricalDeviceCommon.NominalPowerConsumption:
+            - examples:
+              - 300
+          - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+          - Pset_ElectricalDeviceCommon.RatedCurrent
+          - Pset_ElectricalDeviceCommon.RatedVoltage
+          - Pset_ElectricalDeviceCommon.HasProtectiveEarth
+          - Pset_ElectricalDeviceCommon.InsulationStandardClass
+          - Pset_ElectricalDeviceCommon.IP_Code
+          - Pset_ElectricalDeviceCommon.IK_Code
+          - VVK.OutdoorEnvironment #| Pset_BuildingElementProxyCommon.IsExternal
+          - Pset_EnvironmentalCondition.MaximumWindSpeed:
+            memo: Nurodomas tik lauke naudojamai įrangai
+          - VVK.OperationalConditionsClass:
+            memo: Nurodomas tik agresyvioje aplinkoje ar lauke naudojamai įrangai
+    
+    - id: Elektros lempa (renginių apšvietimas)                             # S.RC.PHA
+      description: Šviesos komponentas, naudojantis elektros energiją.
+      memo: Elemento geometrija tur būti tokia, kad būtų galima užtikrintai tikrinti susikirtimus su kitomis projekto dalimis.
+      examples:
+        - šviesos efektų lazeris
+        - sceniniai prožektoriai
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: PHA
+      stages:
+        s2:  *stageS2_common
+        s3:
+          lod: 300
+          properties:
+            - Aukštas
+            - Name:
+              - examples:
+                - Valdomas šviestuvas su šviesos šaltiniu
+            - Pset_ElementComponentCommon.Status
+            - Type:
+              - examples:
+                - SVS-01
+            - VVK.Material:
+              - memo: Pildoma, jei tokia savybė aktuali
+              - examples:
+                - Plienas
+            - VVK.Colour:
+              - memo: Pildoma, jei tokia savybė aktuali
+            - Pset_ConstructionAdministration.SpecificationSectionNumber:
+              - examples:
+                - T-TS 2.3
+            - Galingumas:
+                - examples:
+                - 250
+            - Ifc__.Heigth:
+              - examples:
+                - 250
+            - Ifc__.Length:
+              - examples:
+                - 200
+            - Ifc__.Width:
+              - examples:
+                - 200
+            - Pset_ServiceLifeFactors.OutdoorEnvironment
+    - id: Sija apšvietimo įrangai                                           # S.RC.ULE
+      description: Sija, skirta pakabiniti apšvietimo įrangai.
+      memo: Apytikslis elemento ribojantis tūris
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: ULE
+      ifcType:
+       - IfcBeam
+       - IfcBeamType
+      stages:
+        s2:  *stageS2_common
+        s3:
+          lod: 200
+          properties:
+          - Name:
+            - examples:
+              - Apšvietimo įrangos sija
+          - Type:
+            - examples:
+              - VK-03
+          - Tag:
+            - examples:
+              - VK-302.01
+          - Pset_ElementComponentCommon.Status
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS-2.3
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - Pset_ElementSize.NominalHeight:
+            - examples:
+              - 3500
+            - memo: Sijos ilgis
+          - Pset_ElementSize.NominalLength:
+            - examples:
+              - 600
+            - memo: Sijos profilio aukštis
+          - Pset_ElementSize.NominalWidth:
+            - examples:
+              - 400
+            - memo: Sijos profilio plotis
+          - VVK.OutdoorEnvironment #| Pset_BuildingElementProxyCommon.IsExternal
+          - Pset_EnvironmentalCondition.MaximumWindSpeed:
+            memo: Nurodomas tik lauke naudojamai įrangai
+          - VVK.OperationalConditionsClass:
+            memo: Nurodomas tik agresyvioje aplinkoje ar lauke naudojamai įrangai
