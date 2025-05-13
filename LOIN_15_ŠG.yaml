@@ -5,6 +5,21 @@
 # 15 - Šilumos gamyba
 # 
 
+
+properties: &props_equipment
+  - Type
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - VVK.Finish:
+    - memo: Pildoma, jei tokia savybė aktuali
+  - VVK.Colour:
+    - memo: Pildoma, jei tokia savybė aktuali
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - Pset_QuantityTakeOff.Diameter
+  #- Pset_QuantityTakeOff.Diameter | Pset_QuantityTakeOff.NominalDiameter
+    
 s2:    &stageS2_common
   lod: 200
   properties:
@@ -50,18 +65,19 @@ s3:  &stageS3_wells
 
 s3:   &stageS3_equipment
   lod: 300
-  properties:
-    - Type
-    - Pset_ConstructionAdministration.SpecificationSectionNumber
-    - VVK.Material
-    - VVK.Finish:
-      - memo: Pildoma, jei tokia savybė aktuali
-    - VVK.Colour:
-      - memo: Pildoma, jei tokia savybė aktuali
-    - Pset_QuantityTakeOff.Heigth
-    - Pset_QuantityTakeOff.Width
-    - Pset_QuantityTakeOff.Length
-    - Pset_QuantityTakeOff.Diameter | Pset_QuantityTakeOff.NominalDiameter
+  properties: *props_equipment
+#    - Type
+#    - Pset_ConstructionAdministration.SpecificationSectionNumber
+#    - VVK.Material
+#    - VVK.Finish:
+#      - memo: Pildoma, jei tokia savybė aktuali
+#    - VVK.Colour:
+#      - memo: Pildoma, jei tokia savybė aktuali
+#    - Pset_QuantityTakeOff.Heigth
+#    - Pset_QuantityTakeOff.Width
+#    - Pset_QuantityTakeOff.Length
+#    - Pset_QuantityTakeOff.Diameter
+    #- Pset_QuantityTakeOff.Diameter | Pset_QuantityTakeOff.NominalDiameter
 
 s3:   &stageS3_equipment_with_volume
   <<: *stageS3_equipment
@@ -129,17 +145,73 @@ stages: &stages_unique_heavy_electrical_equipment
         - units: kg
         - descr: Elemento svoris
 
+ifcType:                 &type_ctrl_equipment
+  - IfcFlowMeter
+  - IfcFlowMeterType
+  - IfcFlowMeterTypeEnum
+  - IfcFlowController
+  - IfcFlowControllerType
+  - IfcFlowControllerTypeEnum
+
+ifcType:  &type_ctrl_valve
+  - IfcValve
+  - IfcValveType
+  - IfcValveTypeEnum
+  - IfcFlowController
+  - IfcFlowControllerType
+  - IfcFlowControllerTypeEnum
+  
+ifcType:  &type_pump
+  '2x3': 
+  - IfcFlowController
+  - IfcFlowControllerType
+  - IfcFlowControllerTypeEnum
+  '4': 
+  - IfcPump
+  - IfcPumpType
+  - IfcPumpTypeEnum
+  - IfcFlowController
+  - IfcFlowControllerType
+  - IfcFlowControllerTypeEnum
+
+ifcType:  &type_vessel
+  - IfcTank
+  - IfcTankType
+  - IfcTankTypeEnum
+
+
 
 ŠG:
     id: "15"
     name: Šilumos gamyba
+    stages:
+      s0:
+        lod: 275
+      s2:
+        lod: 200
+      s3:
+        lod: 300
+      s4:
+        lod: 350
+        properties:
+        - Pset_ManufacturerTypeInformation.ArticleNumber
+        - Pset_ManufacturerTypeInformation.Manufacturer
+      s5:
+        lod: 350
+        properties:
+        - VVK.RelatedDocumentationURI
+      s6:
+        lod: 500
     elements:
-    - id: Vamzdis                                            # &stages_piping                                  NSIK: H.HD.WPA    Uniclass: Pr_65_52_63_82
+    - id: Vamzdis                                            #+ &stages_piping                                  NSIK: H.HD.WPA         Uc: Pr_65_52_63
       classifications:
         NSIK LF: H
         NSIK LT: HD
         NSIK LK: WPA
-        Uniclass: Pr_65_52_63_82
+        Uniclass: Pr_65_52_63
+      ifcType: 
+      - IfcPipeSegment
+      - IfcPipeSegmentType
       stages: &stages_piping
         s2:   *stageS2_common
         s3:
@@ -151,45 +223,85 @@ stages: &stages_unique_heavy_electrical_equipment
           - VVK.Colour
           - Pset_ConstructionAdministration.SpecificationSectionNumber
           - Pset_QuantityTakeOff.Length
-          - Pset_QuantityTakeOff.Diameter | Pset_QuantityTakeOff.NominalDiameter
+          - Pset_QuantityTakeOff.Diameter
+          #- Pset_QuantityTakeOff.Diameter | Pset_QuantityTakeOff.NominalDiameter
             # - descr: Gaminio nominalus diametras (DN)
-    - id: Vamzdžio armatūra                                  #                                                                   Uniclass: Pr_65_52_61
-      classifications:
-        NSIK LF: ''
-        NSIK LT: ''
-        NSIK LK: ''
-        Uniclass: Pr_65_52_61
-      stages: *stages_piping
-      
-      
-    - id: Šilumos akumuliavimo skysčiuose talpykla           #                                                 NSIK: H.HD.CPA
+    - id: Išardoma vamzdžių jungtis                          #+                                                 NSIK: H.HD.XMA         Uc: Pr_65_52_63
       classifications:
         NSIK LF: H
         NSIK LT: HD
-        NSIK LK: CPA
-      stages:
-        s2:  *stageS2_unique_equipment
-        s3:  *stageS3_heavy_equipment_with_volume
+        NSIK LK: XMA
+        Uniclass: Pr_65_52_63
+      ifcType: 
+      - IfcPipeFitting
+      - IfcPipeFittingType
+      stages: *stages_piping
+    
+    - id: Neišardoma vamzdžių jungtis                        #+                                                 NSIK: H.HD.XMB         Uc: Pr_65_52_63
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: XMB
+        Uniclass: Pr_65_52_63
+      ifcType: 
+      - IfcPipeFitting
+      - IfcPipeFittingType
+      stages: *stages_piping
 
-    - id: Kompresorinė šaldymo mašina
+    - id: Siurblys                                           #+   *stages_unique_heavy_electrical_equipment     NSIK: H.HD.GPB         Uc: Pr_65_53_86
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: GPB
+        Uniclass: Pr_65_53_86
+      examples:
+      - Cirkuliacinis siurblys
+      - Rotacinis siurblys
+      ifcType: *type_pump
+      stages: *stages_unique_heavy_electrical_equipment
+      
+    - id: Kompresorinė šaldymo mašina                        #+  *stages_unique_heavy_electrical_equipment +    NSIK: H.HD.ECC         Uc: Pr_60_60_13_04
       classifications:
         NSIK LF: H
         NSIK LT: HD
         NSIK LK: ECC
+        Uniclass: Pr_60_60_13_04
+      ifcType:
+      - IfcHeatExchanger
+      - IfcHeatExchangerType
+      - IfcHeatExchangerTypeEnum
+      - IfcTank
+      - IfcTankType
+      - IfcTankTypeEnum
+      - IfcFlowController
+      - IfcFlowControllerType
+      - IfcFlowControllerTypeEnum
+      examples:
+      - Kompresorinė šaldymo mašina
+      - Čileris
+      - Šaldytuvas
       stages:
-        s2:   *stageS2_unique_equipment
+        <<: *stages_unique_heavy_electrical_equipment
         s3:
-          <<: *stageS3_heavy_equipment
           properties:
           - Pset_QuantityTakeOff.Power
-          - Pset_ElectricalDeviceCommon.NominalPowerConsumption
 
-    - id: Šilumokaitis                                       # &stages_unique_heavy_equipment                  NSIK: H.HD.EGC    Uniclass: Pr_60_60_38_62
+    - id: Šilumokaitis                                       #+ &stages_unique_heavy_equipment                  NSIK: H.HD.EGC         Uc: Pr_60_60_38_62
       classifications:
         NSIK LF: H
         NSIK LT: HD
         NSIK LK: EGC
         Uniclass: Pr_60_60_38_62
+      ifcType:
+      - IfcHeatExchanger
+      - IfcHeatExchangerType
+      - IfcHeatExchangerTypeEnum
+      - IfcTank
+      - IfcTankType
+      - IfcTankTypeEnum
+      - IfcFlowController
+      - IfcFlowControllerType
+      - IfcFlowControllerTypeEnum
       stages: &stages_unique_heavy_equipment
         s2:   *stageS2_unique_equipment
         s3:
@@ -197,64 +309,70 @@ stages: &stages_unique_heavy_electrical_equipment
           properties:
           - Pset_QuantityTakeOff.Power
  
-    - id: Šilumos siurblys                                   #   *stageS2_S3_electrical_equipment              NSIK: H.HD.EGA
+    - id: Šilumos siurblys                                   #+ &stageS2_S3_electrical_equipment                NSIK: H.HD.EGA         Uc: Pr_70_60_37
       classifications:
         NSIK LF: H
         NSIK LT: HD
         NSIK LK: EGA
-      stages:
+        Uniclass: Pr_70_60_37
+      ifcType: *type_pump
+      stages: &stageS2_S3_electrical_equipment
         s2: *stageS2_unique_equipment
         s3:
           <<: *stageS3_heavy_equipment
           properties:
           - Pset_QuantityTakeOff.Power
+          - Pset_ElectricalDeviceCommon.NominalPowerConsumption
 
-    - id: Rotacinis siurblys                                 #                                                 NSIK: H.HD.GPB
+    - id: Cirkuliacinis siurblys                             #+   *stages_unique_heavy_electrical_equipment     NSIK: H.HD.%GPB1010    Uc: Pr_65_53_86_12
       classifications:
         NSIK LF: H
         NSIK LT: HD
-        NSIK LK: GPB
-      stages:
-        s2: *stageS2_unique_equipment
-        s3:
-          <<: *stageS3_heavy_equipment
-          properties:
-          - Pset_QuantityTakeOff.Power
+        NSIK LK: '%GPB1010'
+        Uniclass: Pr_65_53_86_12
+      ifcType: *type_pump
+      stages: *stages_unique_heavy_electrical_equipment
 
-    - id: Apsauginis vožtuvas                                #                                                 NSIK: H.HD.FLA
+    - id: Apsauginis vožtuvas                                #+                                                 NSIK: H.HD.FLA         Uc: Pr_65_54_95_65
       classifications:
         NSIK LF: H
         NSIK LT: HD
         NSIK LK: FLA
+        Uniclass: Pr_65_54_95_65
+      ifcType: *type_ctrl_valve
       stages:
         s2: *stageS2_unique_equipment
         s3: *stageS3_equipment
 
-    - id: Atskirtuvas                                        #                                                 NSIK: H.HD.HQB
+    - id: Filtras                                            #+                                                 NSIK: H.HD.HQB         Uc: Pr_60_55_97_41
       classifications:
         NSIK LF: H
         NSIK LT: HD
         NSIK LK: HQB
+        Uniclass: Pr_60_55_97_41
+      ifcType: *type_vessel
       stages:
         s2: *stageS2_unique_equipment
         s3: *stageS3_equipment_with_volume
 
-    - id: Šildymo sistema. Šilumos tiekimo sistema. Išsiplėtimo indas  #   *stageS2_S3_unique_heavy_equipment                              Uniclass: EF_55_70_38
+    - id: Išsiplėtimo indas                                  #+   *stageS2_S3_unique_heavy_equipment            NSIK: H.HD.FLE         Uc: Pr_60_50_20_28
       classifications:
         NSIK LF: H
         NSIK LT: HD
         NSIK LK: FLE
-        Uniclass: EF_55_70_38
+        Uniclass: Pr_60_50_20_28 
+      ifcType: *type_vessel
       stages: 
         s2:   *stageS2_unique_equipment
         s3:   *stageS3_heavy_equipment_with_volume
 
-    - id: Šildymo sistema. Šilumos tiekimo sistema. Šulinys                                            #                                                 NSIK: H.HD.WPA    Uniclass: EF_55_70_38
+    - id: Šulinys                                            #+                                                 NSIK: H.HD.XMC         Uc: Ss_50_35_06
       classifications:
         NSIK LF: H
         NSIK LT: HD
-        NSIK LK: WPA
-        Uniclass: EF_55_70_38
+        NSIK LK: XMC
+        Uniclass: Ss_50_35_06
+      ifcType:  *type_vessel
       stages:
         s2:   
           <<: *stageS2_unique_equipment
@@ -264,18 +382,24 @@ stages: &stages_unique_heavy_electrical_equipment
               - Geoterminis gręžinys
         s3:  *stageS3_wells
           
-    - id: Akumuliacinė talpa                                 #   *stages_unique_heavy_equipment_with_volume    NSIK: H.HD.CPA
+    - id: Akumuliacinė talpa                                 #+   *stages_unique_heavy_equipment_with_volume    NSIK: H.HD.CPA         Uc; Pr_60_50_20
       classifications:
         NSIK LF: H
         NSIK LT: HD
         NSIK LK: CPA
+        Uniclass: Pr_60_50_20
+      ifcType: *type_vessel
+      examples:
+      - Šilumos akumuliavimo skysčiuose talpykla
       stages: *stages_unique_heavy_equipment_with_volume
 
-    - id: Akumuliacinė talpa su elektriniu šildymo elementu  #   *stageS3_heavy_equipment_with_volume          NSIK: H.HD.%CPA2010
+    - id: Akumuliacinė talpa su elektriniu šildymo elementu  #+   *stageS3_heavy_equipment_with_volume          NSIK: H.HD.%CPA2010    Uc: Pr_60_50_20
       classifications:
         NSIK LF: H
         NSIK LT: HD
         NSIK LK: "%CPA2010"
+        Uniclass: Pr_60_50_20
+      ifcType: *type_vessel
       stages: 
         s2:   *stageS2_unique_equipment
         s3:   
@@ -283,72 +407,98 @@ stages: &stages_unique_heavy_electrical_equipment
           properties:
           - Pset_ElectricalDeviceCommon.NominalPowerConsumption
 
-
-    - id: Cirkuliacinis siurblys                             #   *stages_unique_heavy_electrical_equipment                       Uniclass: Pr_65_53_86_94
+    - id: Sklendė                                            #+   *stages_unique_equipment                      NSIK: H.HD.%QMA10      Uc: Pr_65_54_95
       classifications:
-        Uniclass: Pr_65_53_86_94
-      stages: *stages_unique_heavy_electrical_equipment
-
-    - id: Sklendė                                            #   *stages_unique_equipment                                        Uniclass: Pr_65_54
-      classifications:
-        Uniclass: Pr_65_54
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: "%QMA10"
+        Uniclass: Pr_65_54_95
+      ifcType: *type_ctrl_valve
       stages: *stages_unique_equipment
       
-    - id: Nuorintojas                                        #                                                                   Uniclass: Pr_65_54_95_86
+    - id: Oro atskirtuvas                                    #+   *stages_unique_equipment                      NSIK: H.HD.%HQB40      Uc: Pr_65_54_93_05
       classifications:
-        Uniclass: Pr_65_54_95_86
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: "%HQB40"
+        Uniclass: Pr_65_54_93_05
+      ifcType: *type_ctrl_valve
       stages: *stages_unique_equipment
           
-    - id: Balansinis ventilis                                #                                                                   Uniclass: Pr_65_54_95_86
+    - id: Balansinis ventilis                                #+   *stages_unique_equipment                      NSIK: H.HD.%RNA20      Uc: Pr_65_54_95_86
       classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: "%RNA20"
         Uniclass: Pr_65_54_95_86
+      ifcType: *type_ctrl_valve
       stages: *stages_unique_equipment
     
-    - id: Balansavimo ventilis su matavimo antgaliais        #                                                                   Uniclass: Pr_65_54_95_86
+    - id: Balansavimo ventilis su matavimo antgaliais        #+   *stages_unique_equipment                      NSIK: H.HD.%RNA2010    Uc: Pr_65_54_95_86
       classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: '%RNA2010'
         Uniclass: Pr_65_54_95_86
+      ifcType: *type_ctrl_valve
       stages: *stages_unique_equipment
   
-    - id: Termometras                                        #   *stages_measuring_equipment                                     Uniclass: Pr_65_52_34_88
+    - id: Termometras                                        #+   *stages_measuring_equipment                   NSIK: H.HD.BTA         Uc: Pr_65_52_34_88
       classifications:
         NSIK LF: H
         NSIK LT: HD
         NSIK LK: BTA
         Uniclass: Pr_65_52_34_88
+      ifcType:  *type_ctrl_equipment
       stages: *stages_measuring_equipment
 
-    
-
-    - id: Vandens skaitiklis                                 #   *stages_measuring_equipment                  NSIK: H.HD.%BHA20     Uniclass: Pr_80_51_51_97
+    - id: Vandens skaitiklis                                 #+   *stages_measuring_equipment                   NSIK: H.HD.%BHA20      Uc: Pr_80_51_51_97
       classifications:
         NSIK LF: H
         NSIK LT: HD
         NSIK LK: "%BHA20"
         Uniclass: Pr_80_51_51_97
+      ifcType: *type_ctrl_equipment
       stages: *stages_measuring_equipment
 
-    - id:  Šiluminės energijos skaitiklis                    #   *stages_measuring_equipment                  NSIK: H.HD.BHB     Uniclass: Pr_80_51_51_37
+    - id: Šiluminės energijos skaitiklis                     #+   *stages_measuring_equipment                   NSIK: H.HD.BHB         Uc: Pr_80_51_51_37
       classifications:
         NSIK LF: H
         NSIK LT: HD
         NSIK LK: BHB
         Uniclass: Pr_80_51_51_37
+      ifcType:  *type_ctrl_equipment
       stages: *stages_measuring_equipment
 
-    - id: Elektros skaitiklis                                 #   *stages_measuring_equipment                  NSIK: H.HD.BHC     Uniclass: Pr_80_51_51_98
+    - id: Elektros skaitiklis                                #+   *stages_measuring_equipment                   NSIK: H.HD.BHC         Uc: Pr_80_51_51_98
       classifications:
         NSIK LF: H
         NSIK LT: HD
         NSIK LK: BHC
         Uniclass: Pr_80_51_51_98
+      ifcType:  *type_ctrl_equipment
       stages: *stages_measuring_equipment
 
-    - id: Manometras                                         #   *stages_measuring_equipment                   NSIK: H.HD.BPA    Uniclass: Pr_80_51_51_67
+    - id: Manometras                                         #+   *stages_measuring_equipment                   NSIK: H.HD.BPA         Uc: Pr_80_51_51_67
       classifications:
         NSIK LF: H
         NSIK LT: HD
         NSIK LK: BPA
         Uniclass: Pr_80_51_51_67
+      examples:
+      - Slėgio indikatorius
+      ifcType:  *type_ctrl_equipment
+      stages: *stages_measuring_equipment
+    
+    - id: Slėgio relė                                        #+   *stages_measuring_equipment                   NSIK: H.HD.BPB         Uc: Pr_75_50_76_97
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: BPP
+        Uniclass: Pr_75_50_76_97
+      examples:
+      - Slėgio jungiklis
+      ifcType: *type_ctrl_equipment
       stages: *stages_measuring_equipment
 
 

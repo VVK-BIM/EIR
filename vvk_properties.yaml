@@ -165,7 +165,7 @@ Pset_ElectricalDeviceCommon.NominalPowerConsumption:
     memo: Prietaiso ar įrenginio elektrinė galia. Kito tipo energijos galia (šiluminė, mechaninė ir pan.) nurodoma atitinkamoje savybėje.
 
 # patikrinti    
-Pset_QuantityTakeOff.VolumetricFlowRate:
+Pset_QuantityTakeOff.VolumetricFlowRate
 
 
 # patikrinti    
