@@ -5,684 +5,375 @@
 # 13 - Gaisro saugos sistema
 #
 
+prop_g:   &prop_g
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+
+prop:     &prop
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  
+prop_s2u: &prop_s2_u
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Tag
+
+prop_s3:  &prop_s3
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+
+prop_vu:  &prop_s3_v
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - VVK.Finish
+  - VVK.Colour
+  
+prop_s3u: &prop_s3_u
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Tag
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  
+prop_vu:  &prop_s3_vu
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Tag
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - VVK.Finish
+  - VVK.Colour
+
+prop_ue:  &prop_s3_ue
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Tag
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+  
+prop_vue: &prop_s3_vue
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Tag
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - VVK.Finish
+  - VVK.Colour
+  - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+  
+prop_vue: &prop_s3_vue_x
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Tag
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - VVK.Finish
+  - VVK.Colour
+  - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+  - Pset_ElectricalDeviceCommon.IsExternal
+  
+  
+s2:       &stageS2_common
+  lod: 200
+  properties: *prop
+  
+s2_u:     &stageS2_unique
+  lod: 200
+  properties: *prop_s2_u
+
+s3:       &stageS3_common
+  lod: 300
+  properties: *prop_s3
+  
+s3_u:     &stageS3_unique
+  lod: 300
+  properties: *prop_s3_u
+
+s3_vu:    &stageS3_visible
+  lod: 300
+  properties: *prop_s3_v
+  
+s3_vu:    &stageS3_visible_unique
+  lod: 300
+  properties: *prop_s3_vu
+
+s3_vue:   &stageS3_visible_unique_electrical
+  lod: 300
+  properties: *prop_s3_vue
+  
+s3_vue_x:   &stageS3_visible_unique_electrical_external
+  lod: 300
+  properties: *prop_s3_vue_x
+  
+s3_ue:    &stageS3_unique_electrical
+  lod: 300
+  properties: *prop_s3_ue
+
+ifc_e:    &type_linear
+  - IfcFlowSegment
+  - IfcFlowSegmentType
+  - IfcFlowSegmentTypeEnum
+  
+ifc_e:    &type_e
+  - IfcDistributionControlElement
+  - IfcDistributionControlElementType
+  - IfcDistributionControlElementTypeEnum
+
+
 GSS:
+    stages:
+      s0:
+        lod: 275
+      s2:
+        lod: 200
+      s3:
+        lod: 300
+      s4:
+        lod: 350
+        properties:
+        - Pset_ManufacturerTypeInformation.ArticleNumber
+        - Pset_ManufacturerTypeInformation.Manufacturer
+      s5:
+        lod: 350
+        properties:
+        - VVK.RelatedDocumentationURI
+      s6:
+        lod: 500
     elements:
-    # - classifications: {}
-      # stages:
-        # s3:
-          # properties: []
-          # lod: 300
-      # id: ''
-    - id: Valdymo blokas
+    - id: Įrangos ir/ar kabelių dėklas               # common                                NSIK: P.LB.UBA
+      examples:
+      - Kabelio kanalas
+      - kabelio kopėčios
+      - kabelio lovelis
+      classifications:
+        NSIK LF: P
+        NSIK LT: LB
+        NSIK LK: UBA
+      ifcType: *type_linear
+      stages:
+        s2: *stageS2_common
+        s3: *stageS3_common
+
+
+    - id: Valdymo blokas                             # visible_unique_electrical             NSIK: P.LB.KEB
+      examples:
+      - Kontroleris
+      - Centrinis procesorius
+      - Valdiklis
+      - Evakuacijos valdymo sistemos valdiklis
       classifications:
         NSIK LF: P
         NSIK LT: LB
         NSIK LK: KEB
+      ifcType: *type_e
       stages:
-        s3:
-          properties:
-          - VVK.LevelName:
-            - examples:
-              - 01_+180.500
-            - units: Tekstas
-          - Name:
-            - examples:
-              - Centrinis procesorius
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - CP-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
-                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 2.1
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          - Ifc__.Heigth:
-            - examples:
-              - 250
-            - units: mm
-            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Ifc__.Length:
-            - examples:
-              - 50
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Ifc__.Width:
-            - examples:
-              - 400
-            - units: mm
-            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          lod: 300
-      
-    - id: Korpusas (skydelis)
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical
+     
+    - id: Avarinis paspaudimo mygtukas               # visible_unique                        NSIK: P.LB.SJB
+      classifications:
+        NSIK LF: P
+        NSIK LT: LB
+        NSIK LK: SJB
+      examples:
+      - Rankinis gaisro pavojaus mygtukas
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique
+        
+    
+    - id: Gaisrinė centralė                          # visible_unique_electrical             NSIK: P.LB.%KEB10
+      examples:
+      - Gaisrinė centralė
+      - Gaisro centralės kartotuvas
+      classifications:
+        NSIK LF: P
+        NSIK LT: LB
+        NSIK LK: "%KEB10"
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical
+        
+    - id: Išplėtimo modulis                          # unique_electrical                     NSIK: P.LB.%KEB20
+      examples:
+      - Gaisrinė centralės išplėtimo modulis
+      classifications:
+        NSIK LF: P
+        NSIK LT: LB
+        NSIK LK: "%KEB20"
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_unique_electrical
+
+    - id: Korpusas (skydelis)                        # visible_unique_electrical             NSIK: P.LB.UCA
+      examples:
+      - Prietaisų dėžė
+      - Automatikos spinta
+      - Evakuacijos valdymo sistemos įranginių spinta
       classifications:
         NSIK LF: P
         NSIK LT: LB
         NSIK LK: UCA
       stages:
-        s3:
-          properties:
-          - VVK.LevelName:
-            - examples:
-              - 01_+180.500
-            - units: Tekstas
-          - Name:
-            - examples:
-              - Gaisrinė centralė
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - GC-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
-                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 2.1
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          - Ifc__.Heigth:
-            - examples:
-              - 600
-            - units: mm
-            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Ifc__.Length:
-            - examples:
-              - 150
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Ifc__.Width:
-            - examples:
-              - 400
-            - units: mm
-            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          lod: 300
-      
-    - id: Avarinis paspaudimo mygtukas
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical
+
+    - id: Kietųju dalelių detektorius                # visible_unique                        NSIK: P.LB.%BQF10
       classifications:
         NSIK LF: P
         NSIK LT: LB
-        NSIK LK: SJB
+        NSIK LK: "%BQF10"
+      examples:
+      - Dūmų jutiklis
+      ifcType: *type_e
       stages:
-        s3:
-          properties:
-          - VVK.LevelName:
-            - examples:
-              - 01_+180.500
-            - units: Tekstas
-          - Name:
-            - examples:
-              - Rankinis gaisro pavojaus mygtukas
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - GPM-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
-                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 2.1
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          - Ifc__.Heigth:
-            - examples:
-              - 70
-            - units: mm
-            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Ifc__.Length:
-            - examples:
-              - 70
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Ifc__.Width:
-            - examples:
-              - 20
-            - units: mm
-            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          lod: 300
-      
-    - id: Gaisro davikliai ant lubų
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique
+    
+    - id: Optinis kietųju dalelių detektorius        # visible_unique                        NSIK: P.LB.%BQF3010
       classifications:
         NSIK LF: P
         NSIK LT: LB
-        NSIK LK: BTB (temperatūros); BQF (dūmų)
+        NSIK LK: "%BQF3010"
+      examples:
+      - Optinis spindulinis jutiklis
+      ifcType: *type_e
       stages:
-        s3:
-          properties:
-          - VVK.LevelName:
-            - examples:
-              - 01_+180.500
-            - units: Tekstas
-          - Name:
-            - examples:
-              - Temperatūros daviklis
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - DD-1; TD-1
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas (Revit Type Mark)
-          - VVK.Material:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 2.1
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          - Ifc__.Heigth:
-            - examples:
-              - 50
-            - units: mm
-            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Diametras:
-            - examples:
-              - 60
-            - units: mm
-            - descr: Gaminio diametras
-          lod: 300
-      
-    - id: Evakuacijos valdymo sistema
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique
+    
+    - id: Veidrodis                                  # visible                               NSIK: P.LB.WHD
       classifications:
         NSIK LF: P
         NSIK LT: LB
-        NSIK LK: KEB
+        NSIK LK: WHD
+      examples:
+      - Dūmų jutiklis
+      ifcType: *type_e
       stages:
-        s3:
-          properties:
-          - VVK.LevelName:
-            - examples:
-              - 01_+180.500
-            - units: Tekstas
-          - Name:
-            - examples:
-              - Evakuacijos valdymo sistemos įranginių spinta
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - EVS-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas (Revit Type Mark)
-          - VVK.Material:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 2.1
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          lod: 300
-      
-    - id: Evakuacijos valdymo sistema
+        s2: *stageS2_common
+        s3: *stageS3_visible
+        
+    - id: Aspiracinis kietųju dalelių detektorius    # visible_unique                        NSIK: P.LB.%BQF3020
+      classifications:
+        NSIK LF: P
+        NSIK LT: LB
+        NSIK LK: "%BQF3020"
+      examples:
+      - Aspiracinis gaisro daviklis
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical
+        
+        
+    - id: Temperatūros detektorius                   # visible_unique                        NSIK: P.LB.%BQF10
+      classifications:
+        NSIK LF: P
+        NSIK LT: LB
+        NSIK LK: BTB
+      examples:
+      - Temperatūrinis gaisro jutiklis
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique
+        
+    - id: Blykstė                                    # visible_unique_electrical_external    NSIK: P.LB.PJA         Uc: Pr_75_80_30_97
       classifications:
         NSIK LF: P
         NSIK LT: LB
         NSIK LK: PJA
+        Uniclass: Pr_75_80_30_97
+      examples:
+      - Gaisro signalizacijos blykstė
+      ifcType: *type_e
       stages:
-        s3:
-          properties:
-          - VVK.LevelName:
-            - examples:
-              - 01_+180.500
-            - units: Tekstas
-          - Name:
-            - examples:
-              - Evakuacijos vladymo sistemos garsiakalbis
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - GRS-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas (Revit Type Mark)
-          - VVK.Material:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 2.1
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          - Ifc__.Width:
-            - examples:
-              - 94
-            - units: mm
-            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Diametras:
-            - examples:
-              - 190
-            - units: mm
-            - descr: Gaminio diametras
-          lod: 300
-      
-    - id: Valdymo blokas
-      classifications:
-        NSIK LF: P
-        NSIK LT: LB
-        NSIK LK: KEB
-      stages:
-        s3:
-          properties:
-          - VVK.LevelName:
-            - examples:
-              - 01_+180.500
-            - units: Tekstas
-          - Name:
-            - examples:
-              - Gaisrinė centralė
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - CP-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
-                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 2.1
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          - Ifc__.Heigth:
-            - examples:
-              - 250
-            - units: mm
-            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Ifc__.Length:
-            - examples:
-              - 50
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Ifc__.Width:
-            - examples:
-              - 400
-            - units: mm
-            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          lod: 300
-      
-    - id: Korpusas (skydelis)
-      classifications:
-        NSIK LF: P
-        NSIK LT: LB
-        NSIK LK: UCA
-      stages:
-        s3:
-          properties:
-          - VVK.LevelName:
-            - examples:
-              - 01_+180.500
-            - units: Tekstas
-          - Name:
-            - examples:
-              - Korpusas
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - GC-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
-                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 2.1
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          - Ifc__.Heigth:
-            - examples:
-              - 600
-            - units: mm
-            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Ifc__.Length:
-            - examples:
-              - 150
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Ifc__.Width:
-            - examples:
-              - 400
-            - units: mm
-            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          lod: 300
-      
-    - id: Avarinis paspaudimo mygtukas
-      classifications:
-        NSIK LF: P
-        NSIK LT: LB
-        NSIK LK: SJB
-      stages:
-        s3:
-          properties:
-          - VVK.LevelName:
-            - examples:
-              - 01_+180.500
-            - units: Tekstas
-          - Name:
-            - examples:
-              - Rankinis gaisro pavojaus mygtukas
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - GPM-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
-                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 2.1
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          - Ifc__.Heigth:
-            - examples:
-              - 70
-            - units: mm
-            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Ifc__.Length:
-            - examples:
-              - 70
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Ifc__.Width:
-            - examples:
-              - 20
-            - units: mm
-            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          lod: 300
-      
-    - id: Gaisro davikliai ant lubų
-      classifications:
-        NSIK LF: P
-        NSIK LT: LB
-        NSIK LK: BTB (temperatūros); BQF (dūmų)
-      stages:
-        s3:
-          properties:
-          - VVK.LevelName:
-            - examples:
-              - 01_+180.500
-            - units: Tekstas
-          - Name:
-            - examples:
-              - Temperatūros daviklis
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - DD-1; TD-1
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas (Revit Type Mark)
-          - VVK.Material:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 2.1
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          - Ifc__.Heigth:
-            - examples:
-              - 50
-            - units: mm
-            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Diametras:
-            - examples:
-              - 60
-            - units: mm
-            - descr: Gaminio diametras
-          lod: 300
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical_external
 
-    - id: Evakuacijos valdymo sistema
+    - id: Sirena                                     # visible_unique_electrical_external    NSIK: P.LB.PJB         Uc: Pr_75_80_30_30
       classifications:
         NSIK LF: P
         NSIK LT: LB
-        NSIK LK: KEB
+        NSIK LK: PJB
+        Uniclass: Pr_75_80_30_30
+      examples:
+      - Gaisro signalizacijos sirena
+      ifcType: *type_e
       stages:
-        s3:
-          properties:
-          - VVK.LevelName:
-            - examples:
-              - 01_+180.500
-            - units: Tekstas
-          - Name:
-            - examples:
-              - Evakuacijos valdymo sistemos įranginių spinta
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - EVS-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas (Revit Type Mark)
-          - VVK.Material:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 2.1
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          lod: 300
-  
-
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical_external
+    
+    - id: Sirena su blykste                          # visible_unique_electrical_external    NSIK: P.LB.%PJB1010    Uc: Pr_75_50_20_30
+      classifications:
+        NSIK LF: P
+        NSIK LT: LB
+        NSIK LK: "%PJB1010"
+        Uniclass: Pr_75_50_20_30
+      examples:
+      - Gaisro signalizacijos sirena su blykste
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical_external
+    
+    
+    - id: Garsiakalbis                               # visible_unique_electrical_external    NSIK: P.LB.PJA         Uc: Pr_70_75_06_50
+      classifications:
+        NSIK LF: P
+        NSIK LT: LB
+        NSIK LK: PJA
+        Uniclass: Pr_70_75_06_50
+      examples:
+      - Evakuacijos valdymo sistemos garsiakalbis
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical_external
