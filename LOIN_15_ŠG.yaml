@@ -6,7 +6,28 @@
 # 
 
 
-properties: &props_equipment
+properties: &props
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - VVK.Finish:
+    - memo: Pildoma, jei tokia savybė aktuali
+  - VVK.Colour:
+    - memo: Pildoma, jei tokia savybė aktuali
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - Pset_QuantityTakeOff.Diameter
+  #- Pset_QuantityTakeOff.Diameter | Pset_QuantityTakeOff.NominalDiameter
+  
+properties_e: &props_equipment
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Tag
   - Type
   - Pset_ConstructionAdministration.SpecificationSectionNumber
   - VVK.Material
@@ -20,21 +41,204 @@ properties: &props_equipment
   - Pset_QuantityTakeOff.Diameter
   #- Pset_QuantityTakeOff.Diameter | Pset_QuantityTakeOff.NominalDiameter
     
-s2:    &stageS2_common
+properties_d: &props_equipment_d
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Tag
+  - Type
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - VVK.Finish:
+    - memo: Pildoma, jei tokia savybė aktuali
+  - VVK.Colour:
+    - memo: Pildoma, jei tokia savybė aktuali
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - Pset_QuantityTakeOff.Diameter
+  - Pset_QuantityTakeOff.Diameter:
+      - descr: Elemento prijungimo sriegis
+    
+properties_v: &props_equipment_v
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Tag
+  - Type
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - VVK.Finish:
+    - memo: Pildoma, jei tokia savybė aktuali
+  - VVK.Colour:
+    - memo: Pildoma, jei tokia savybė aktuali
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - Pset_QuantityTakeOff.Diameter
+  - Pset_QuantityTakeOff.Volume:
+    - examples:
+      - 0.500
+    - units: m³
+    - descr: Elemento darbinis tūris, m³
+    
+properties_h: &props_equipment_h
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Tag
+  - Type
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - VVK.Finish:
+    - memo: Pildoma, jei tokia savybė aktuali
+  - VVK.Colour:
+    - memo: Pildoma, jei tokia savybė aktuali
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - Pset_QuantityTakeOff.Diameter
+  - Pset_QuantityTakeOff.Weight:
+    - examples:
+      - 50
+    - units: kg
+    - descr: Elemento svoris
+    
+properties_heh: &props_equipment_e
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Tag
+  - Type
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - VVK.Finish:
+    - memo: Pildoma, jei tokia savybė aktuali
+  - VVK.Colour:
+    - memo: Pildoma, jei tokia savybė aktuali
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - Pset_QuantityTakeOff.Diameter
+    - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+    
+properties_heh: &props_equipment_heh
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Tag
+  - Type
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - VVK.Finish:
+    - memo: Pildoma, jei tokia savybė aktuali
+  - VVK.Colour:
+    - memo: Pildoma, jei tokia savybė aktuali
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - Pset_QuantityTakeOff.Diameter
+  - Pset_QuantityTakeOff.Weight:
+    - examples:
+      - 50
+    - units: kg
+    - descr: Elemento svoris
+    - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+    - Pset_QuantityTakeOff.VolumetricFlowRate
+    
+properties_hep: &props_equipment_hep
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Tag
+  - Type
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - VVK.Finish:
+    - memo: Pildoma, jei tokia savybė aktuali
+  - VVK.Colour:
+    - memo: Pildoma, jei tokia savybė aktuali
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - Pset_QuantityTakeOff.Diameter
+  - Pset_QuantityTakeOff.Weight:
+    - examples:
+      - 50
+    - units: kg
+    - descr: Elemento svoris
+    - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+    
+properties_heph: &props_equipment_heph
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Tag
+  - Type
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - VVK.Finish:
+    - memo: Pildoma, jei tokia savybė aktuali
+  - VVK.Colour:
+    - memo: Pildoma, jei tokia savybė aktuali
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - Pset_QuantityTakeOff.Diameter
+  - Pset_QuantityTakeOff.Weight:
+    - examples:
+      - 50
+    - units: kg
+    - descr: Elemento svoris
+    - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+    - Pset_QuantityTakeOff.VolumetricFlowRate
+    
+properties_vh: &props_equipment_vh
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Tag
+  - Type
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - VVK.Finish:
+    - memo: Pildoma, jei tokia savybė aktuali
+  - VVK.Colour:
+    - memo: Pildoma, jei tokia savybė aktuali
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - Pset_QuantityTakeOff.Diameter
+  - Pset_QuantityTakeOff.Weight:
+    - examples:
+      - 50
+    - units: kg
+    - descr: Elemento svoris
+  - Pset_QuantityTakeOff.Volume:
+    - examples:
+      - 0.500
+    - units: m³
+    - descr: Elemento darbinis tūris, m³
+    
+    
+s2c:    &stageS2_common
   lod: 200
   properties:
   - Name
   - System
   - Pset_ElementComponentCommon.Status
   
-s2:   &stageS2_unique_equipment
-  <<: *stageS2_common
+s2ue:   &stageS2_unique_equipment
+  lod: 200
   properties:
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
   - Tag
 
 
 s3:  &stageS3_wells
-  lod: 300
+  lod: 200
   properties:
   - Type:
     - examples:
@@ -43,109 +247,69 @@ s3:  &stageS3_wells
     - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
                 Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
                 medžiagų ir kiekių žiniaraščiuose
-    - VVK.Material:
-      - memo: Pildoma, jei tokia savybė aktuali
-    - VVK.Finish:
-      - memo: Pildoma, jei tokia savybė aktuali
-      - examples:
-        - Hidroizoliuojamas iš išorės
-    - VVK.Colour:
-      - memo: Pildoma, jei tokia savybė aktuali
-    - Pset_ConstructionAdministration.SpecificationSectionNumber:
-      - examples:
-        - LVN-TS 3.1
-    - Pset_QuantityTakeOff.Heigth:
-      - examples:
-        - 4
-      - units: m
-    - Pset_QuantityTakeOff.Diameter:
-      - examples:
-        - 2
-      - units: m
+  - VVK.Material:
+    - memo: Pildoma, jei tokia savybė aktuali
+  - VVK.Finish:
+    - memo: Pildoma, jei tokia savybė aktuali
+    - examples:
+      - Hidroizoliuojamas iš išorės
+  - VVK.Colour:
+    - memo: Pildoma, jei tokia savybė aktuali
+  - Pset_ConstructionAdministration.SpecificationSectionNumber:
+    - examples:
+      - LVN-TS 3.1
+  - Pset_QuantityTakeOff.Heigth:
+    - examples:
+      - 4
+    - units: m
+  - Pset_QuantityTakeOff.Diameter:
+    - examples:
+      - 2
+    - units: m
 
-s3:   &stageS3_equipment
-  lod: 300
+s3e:   &stageS3_equipment
+  lod: 200
   properties: *props_equipment
-#    - Type
-#    - Pset_ConstructionAdministration.SpecificationSectionNumber
-#    - VVK.Material
-#    - VVK.Finish:
-#      - memo: Pildoma, jei tokia savybė aktuali
-#    - VVK.Colour:
-#      - memo: Pildoma, jei tokia savybė aktuali
-#    - Pset_QuantityTakeOff.Heigth
-#    - Pset_QuantityTakeOff.Width
-#    - Pset_QuantityTakeOff.Length
-#    - Pset_QuantityTakeOff.Diameter
-    #- Pset_QuantityTakeOff.Diameter | Pset_QuantityTakeOff.NominalDiameter
 
-s3:   &stageS3_equipment_with_volume
-  <<: *stageS3_equipment
-  properties:
-  - Pset_QuantityTakeOff.Volume:
-    - examples:
-      - 0.500
-    - units: m³
-    - descr: Elemento darbinis tūris, m³
+s3ev:   &stageS3_equipment_with_volume
+  lod: 300
+  properties: *props_equipment_v
 
+s3eh:                                 &stageS3_heavy_equipment
+  lod: 300
+  properties: *props_equipment_h
 
-s3:   &stageS3_heavy_equipment
-  <<: *stageS3_equipment
-  properties:
-    - Pset_QuantityTakeOff.Weigth:
-      - examples:
-        - 50
-        - units: kg
-        - descr: Elemento svoris
+s3ehv:                                &stageS3_heavy_equipment_with_volume
+  lod: 300
+  properties: *props_equipment_vh
 
-s3:   &stageS3_heavy_equipment_with_volume
-  <<: *stageS3_heavy_equipment
-  properties:
-  - Pset_QuantityTakeOff.Volume:
-    - examples:
-      - 0.500
-    - units: m³
-    - descr: Elemento darbinis tūris, m³
-
-
-stages: &stages_unique_equipment
+stages:                               &stages_unique_equipment
   s2:  *stageS2_unique_equipment
   s3:  *stageS3_equipment
 
-stages: &stages_measuring_equipment
+stages_me:                            &stages_measuring_equipment
   s2:  *stageS2_unique_equipment
   s3:
-    <<: *stageS3_equipment
-    properties:
-    - Pset_QuantityTakeOff.Diameter:
-      - descr: Elemento prijungimo sriegis
+    lod: 200
+    properties: *props_equipment_d
 
-stages: &stages_unique_heavy_equipment_with_volume
+stages_hmev:                          &stages_unique_heavy_equipment_with_volume
   s2:   *stageS2_unique_equipment
   s3:   *stageS3_heavy_equipment_with_volume
         
-stages: &stages_unique_electrical_equipment
+stages_ue:                            &stages_unique_electrical_equipment
   s2: *stageS2_unique_equipment
   s3: 
-    <<: *stageS3_heavy_equipment
-    properties:
-      - Pset_ElectricalDeviceCommon.NominalPowerConsumption
-      - Pset_QuantityTakeOff.VolumetricFlowRate
-
-stages: &stages_unique_heavy_electrical_equipment
+    lod: 300
+    properties: *props_equipment_e
+    
+stages_uhe:                          &stages_unique_heavy_electrical_equipment
   s2: *stageS2_unique_equipment
   s3: 
-    <<: *stageS3_heavy_equipment
-    properties:
-      - Pset_ElectricalDeviceCommon.NominalPowerConsumption
-      - Pset_QuantityTakeOff.VolumetricFlowRate
-      - Pset_QuantityTakeOff.Weigth:
-      - examples:
-        - 50
-        - units: kg
-        - descr: Elemento svoris
+    lod: 300
+    properties: *props_equipment_hep
 
-ifcType:                 &type_ctrl_equipment
+ifcType_e:                 &type_ctrl_equipment
   - IfcFlowMeter
   - IfcFlowMeterType
   - IfcFlowMeterTypeEnum
@@ -153,7 +317,7 @@ ifcType:                 &type_ctrl_equipment
   - IfcFlowControllerType
   - IfcFlowControllerTypeEnum
 
-ifcType:  &type_ctrl_valve
+ifcType_v:  &type_ctrl_valve
   - IfcValve
   - IfcValveType
   - IfcValveTypeEnum
@@ -161,7 +325,7 @@ ifcType:  &type_ctrl_valve
   - IfcFlowControllerType
   - IfcFlowControllerTypeEnum
   
-ifcType:  &type_pump
+ifcType_p:  &type_pump
   '2x3': 
   - IfcFlowController
   - IfcFlowControllerType
@@ -174,12 +338,10 @@ ifcType:  &type_pump
   - IfcFlowControllerType
   - IfcFlowControllerTypeEnum
 
-ifcType:  &type_vessel
+ifcType_ve:  &type_vessel
   - IfcTank
   - IfcTankType
   - IfcTankTypeEnum
-
-
 
 ŠG:
     id: "15"
@@ -216,16 +378,8 @@ ifcType:  &type_vessel
         s2:   *stageS2_common
         s3:
           lod: 300
-          properties:
-          - Type
-          - VVK.Material
-          - VVK.Finish
-          - VVK.Colour
-          - Pset_ConstructionAdministration.SpecificationSectionNumber
-          - Pset_QuantityTakeOff.Length
-          - Pset_QuantityTakeOff.Diameter
-          #- Pset_QuantityTakeOff.Diameter | Pset_QuantityTakeOff.NominalDiameter
-            # - descr: Gaminio nominalus diametras (DN)
+          properties: *props
+
     - id: Išardoma vamzdžių jungtis                          #+                                                 NSIK: H.HD.XMA         Uc: Pr_65_52_63
       classifications:
         NSIK LF: H
@@ -280,11 +434,7 @@ ifcType:  &type_vessel
       - Kompresorinė šaldymo mašina
       - Čileris
       - Šaldytuvas
-      stages:
-        <<: *stages_unique_heavy_electrical_equipment
-        s3:
-          properties:
-          - Pset_QuantityTakeOff.Power
+      stages: *stages_unique_heavy_electrical_equipment
 
     - id: Šilumokaitis                                       #+ &stages_unique_heavy_equipment                  NSIK: H.HD.EGC         Uc: Pr_60_60_38_62
       classifications:
@@ -305,9 +455,8 @@ ifcType:  &type_vessel
       stages: &stages_unique_heavy_equipment
         s2:   *stageS2_unique_equipment
         s3:
-          <<: *stageS3_heavy_equipment
-          properties:
-          - Pset_QuantityTakeOff.Power
+          lod: 200
+          properties: *props_equipment_hep
  
     - id: Šilumos siurblys                                   #+ &stageS2_S3_electrical_equipment                NSIK: H.HD.EGA         Uc: Pr_70_60_37
       classifications:
@@ -316,13 +465,7 @@ ifcType:  &type_vessel
         NSIK LK: EGA
         Uniclass: Pr_70_60_37
       ifcType: *type_pump
-      stages: &stageS2_S3_electrical_equipment
-        s2: *stageS2_unique_equipment
-        s3:
-          <<: *stageS3_heavy_equipment
-          properties:
-          - Pset_QuantityTakeOff.Power
-          - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+      stages: *stages_unique_heavy_electrical_equipment
 
     - id: Cirkuliacinis siurblys                             #+   *stages_unique_heavy_electrical_equipment     NSIK: H.HD.%GPB1010    Uc: Pr_65_53_86_12
       classifications:
@@ -374,12 +517,7 @@ ifcType:  &type_vessel
         Uniclass: Ss_50_35_06
       ifcType:  *type_vessel
       stages:
-        s2:   
-          <<: *stageS2_unique_equipment
-          properties:
-          - Name:
-            - examples:
-              - Geoterminis gręžinys
+        s2: *stageS2_unique_equipment
         s3:  *stageS3_wells
           
     - id: Akumuliacinė talpa                                 #+   *stages_unique_heavy_equipment_with_volume    NSIK: H.HD.CPA         Uc; Pr_60_50_20
@@ -400,12 +538,7 @@ ifcType:  &type_vessel
         NSIK LK: "%CPA2010"
         Uniclass: Pr_60_50_20
       ifcType: *type_vessel
-      stages: 
-        s2:   *stageS2_unique_equipment
-        s3:   
-          <<: *stageS3_heavy_equipment_with_volume
-          properties:
-          - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+      stages: *stages_unique_heavy_electrical_equipment
 
     - id: Sklendė                                            #+   *stages_unique_equipment                      NSIK: H.HD.%QMA10      Uc: Pr_65_54_95
       classifications:

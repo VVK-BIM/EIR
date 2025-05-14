@@ -5,47 +5,146 @@
 # 14 - Procesų valdymas ir automatizavimas
 #
 
-s2:  &stageS2_common
-  lod: 200
-  properties:
+prop_g: &prop_g
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+
+prop: &prop
   - Name
   - System
   - Pset_ElementComponentCommon.Status
   
+prop_s2u: &prop_s2_u
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Tag
+
+prop_s3: &prop_s3
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  
+prop_s3u: &prop_s3_u
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Tag
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  
+prop_vu: &prop_s3_vu
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Tag
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - VVK.Finish
+  - VVK.Colour
+
+prop_ue: &prop_s3_ue
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Tag
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+  
+prop_vue: &prop_s3_vue
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Tag
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - VVK.Finish
+  - VVK.Colour
+  - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+  
+s2:  &stageS2_common
+  lod: 200
+  properties: *prop
+  
+s2_u:  &stageS2_unique
+  lod: 200
+  properties: *prop_s2_u
+
 s3:  &stageS3_common
   lod: 300
-  properties:
-    - Type:
-      - examples:
-        - KK-1
-    - Pset_ConstructionAdministration.SpecificationSectionNumber:
-      - examples:
-        - PVA-TS 2.1
-    - VVK.Material:
-      - examples:
-        - Plienas
-        - Plastikas
-    - VVK.Finish:
-      - memo: Pildoma, jei tokia savybė aktuali
-      - examples:
-          - Cinkuotas
-          - Dažytas milteliniu būdu
-    - VVK.Colour:
-      - memo: Pildoma, jei tokia savybė aktuali
-    - Pset_QuantityTakeOff.Heigth:
-      - examples:
-        - 600
-    - Pset_QuantityTakeOff.Width:
-      - examples:
-        - 400
-    - Pset_QuantityTakeOff.Length:
-      - examples:
-        - 150
+  properties: *prop_s3
+  
+s3_u:  &stageS3_unique
+  lod: 300
+  properties: *prop_s3_u
+  
+s3_vu:  &stageS3_visible_unique
+  lod: 300
+  properties: *prop_s3_vu
 
+s3_vue:  &stageS3_visible_unique_electrical
+  lod: 300
+  properties: *prop_s3_vue
+  
+s3_ue:  &stageS3_unique_electrical
+  lod: 300
+  properties: *prop_s3_ue
+
+ifc_e: &type_linear
+  - IfcFlowSegment
+  - IfcFlowSegmentType
+  - IfcFlowSegmentTypeEnum
+  
+ifc_e: &type_e
+  - IfcDistributionControlElement
+  - IfcDistributionControlElementType
+  - IfcDistributionControlElementTypeEnum
 
 PVA:
     id: "14"
     name: Procesų valdymas ir automatizavimas
+    stages:
+      s0:
+        lod: 275
+      s2:
+        lod: 200
+      s3:
+        lod: 300
+      s4:
+        lod: 350
+        properties:
+        - Pset_ManufacturerTypeInformation.ArticleNumber
+        - Pset_ManufacturerTypeInformation.Manufacturer
+      s5:
+        lod: 350
+        properties:
+        - VVK.RelatedDocumentationURI
+      s6:
+        lod: 500
     elements:
     - id: Įrangos ir/ar kabelių dėklas           #                                          NSIK: L.LC.UBA
       examples:
@@ -56,130 +155,251 @@ PVA:
         NSIK LF: L
         NSIK LT: LC
         NSIK LK: UBA
-      stages: &stages_linear_element
-        s2:  *stageS2_common
-        s3:  *stageS3_common
+      ifcType: *type_linear
+      stages:
+        s2: *stageS2_common
+        s3: *stageS3_visible_unique
 
     - id: Infraraudonųjų spindulių jutiklis      #                                          NSIK: P.LE.BRC
       classifications:
-        NSIK LF: P
+        NSIK LF: L
         NSIK LT: LE
         NSIK LK: BRC
+      ifcType: *type_e
       stages:
-        s2:   &stageS2_unique_equipment
-          <<: *stageS2_common
-          properties:
-          - Tag
-        s3:   &stageS3_unique_visible_equipment
-          <<: *stageS3_common
-          properties:
-          - Pset_QuantityTakeOff.Heigth:
-            - examples:
-              - 40
-          - Pset_QuantityTakeOff.Width:
-            - examples:
-              - 80
-          - Pset_QuantityTakeOff.Length:
-            - examples:
-              - 80
-          - Pset_QuantityTakeOff.Diameter:
-            - examples:
-              - 80
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique
 
-    - id: Dujų jutiklis                          #                                          NSIK: L.LC.BQA
-      classifications:
-        NSIK LF: L
-        NSIK LT: LC
-        NSIK LK: BQA
-      stages:
-        s2:
-          <<: *stageS2_unique_equipment
-          properties:
-          - Name:
-            - examples:
-              - CO2 koncentracijos jutiklis
-        s3:   
-          <<: *stageS3_unique_visible_equipment
-          properties:
-          - Type:
-            - examples:
-              - DJ-1
-      
     - id: Temperatūros jutiklis                  #                                          NSIK: L.LC.BTA
       classifications:
         NSIK LF: L
         NSIK LT: LC
         NSIK LK: BTA
+      examples:
+      - Patalpos termometras
+      ifcType: *type_e
+      stages: 
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique
+              
+    - id: Dujų jutiklis                          #                                          NSIK: L.LC.BTA
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: BQA
+      examples:
+      - Patalpos CO2 daviklis
+      - Degių dujų daviklis
+      ifcType: *type_e
+      stages: 
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique
+    
+    - id: Drėgmės daviklis                       #                                          NSIK: L.LC.BMA
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: BMA
+      examples:
+      - Patalpos oro drėgmės daviklis
+      - Sienos drėgmės daviklis
+      ifcType: *type_e
       stages:
-        s2:
-          <<: *stageS2_unique_equipment
-          properties:
-          - Name:
-            - examples:
-              - CO2 koncentracijos jutiklis
-        s3:   
-          <<: *stageS3_unique_visible_equipment
-          properties:
-          - Type:
-            - examples:
-              - PT-01
-
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique
+        
+    - id: Drėgmės jungiklis                      #                                          NSIK: L.LC.BMB
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: BMB
+      examples:
+      - Patalpos užliejimo daviklis
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique
+    
+    - id: Srauto daviklis                        #                                          NSIK: L.LC.BFA
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: BFA
+      examples:
+      - Vandens srautos daviklis
+      - Oro srauto daviklis
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique
+        
+    - id: Srauto jungiklis                       #                                          NSIK: L.LC.BFB
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: BFB
+      examples:
+      - Vandens srauto jungiklis
+      - Oro srauto jungiklis
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique
+    
+    - id: Šviesos daviklis                       #                                          NSIK: L.LC.BRA
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: BRA
+      examples:
+      - Apšvietimo lygio daviklis
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique
+        
+    - id: Šviesos detektorius                    #                                          NSIK: L.LC.BRB
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: BRB
+      examples:
+      - Apšvietimo jungiklis, reaguojantis į fiksuotą apšvietimo lygį
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique
+    
+    - id: Kietųju dalelių daviklis               #                                          NSIK: L.LC.BQE
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: BQE
+      examples:
+      - Kietųjų medžiagų koncentracijos ore daviklis
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique
+    
+    - id: Kietųju dalelių detektorius            #                                          NSIK: L.LC.%BQF10
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: "%BQF10"
+      examples:
+      - Dūmų jutiklis
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique
+    
+    - id: Medžiagų daviklis                      #                                          NSIK: L.LC.BZD
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: BZD
+      examples:
+      - Teršalų detektorius
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique
+        
+    - id: Apledėjimo daviklis                    #                                          NSIK: L.LC.%BZD0110
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: "%BZD0110"
+      examples:
+      - Ledo detektorius
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique
+    
+    - id: Lygio daviklis                         #                                          NSIK: L.LC.BLA
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: BLA
+      examples:
+      - Skysčio lygio indikatorius
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique
+        
+    - id: Lygio jungiklis                        #                                          NSIK: L.LC.BLB
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: BLB
+      examples:
+      - Skysčio lygio daviklis
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique
+    
+    - id: Meteorologinė stotelė                  #                                          NSIK: L.LC.%BUA1010
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: "%BUA1010"
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical
+    
     - id: Asmens detektorius                     #                                          NSIK: L.LC.BZC
       classifications:
         NSIK LF: L
         NSIK LT: LC
         NSIK LK: BZC
+      examples:
+      - Buvimo detektorius
+      ifcType: *type_e
       stages:
-        s2:
-          <<: *stageS2_unique_equipment
-          properties:
-          - Name:
-            - examples:
-              - Buvimo detektorius
-        s3:   
-          <<: *stageS3_unique_visible_equipment
-          properties:
-          - Type:
-            - examples:
-              - BD-02
-
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique
+          
     - id: Valdymo blokas                         #                                          NSIK: L.LC.KEB
       examples:
-      - Centralė
-      - elektros skydelis
-      - elektros spinta
+      - Kontroleris
+      - Kontaktorius
+      - Valdiklis
       classifications:
         NSIK LF: L
         NSIK LT: LC
         NSIK LK: KEB
+      ifcType: *type_e
       stages:
-        s2:
-          <<: *stageS2_unique_equipment
-          properties:
-          - Name:
-            - examples:
-              - Kontaktorius
-              - Valdiklis
-              - Automatinis išjungėjas
-        s3:  *stageS3_common
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical
 
     - id: Korpusas (skydelis)                    #                                          NSIK: L.LC.UCA
       examples:
       - Prietaisų dėžė
-      - skydinė
-      - spintelė
+      - Automatikos spinta
       classifications:
         NSIK LF: L
         NSIK LT: LC
         NSIK LK: UCA
       stages:
-        s2:
-          <<: *stageS2_unique_equipment
-          properties:
-          - Name:
-            - examples:
-            - Ventiliacijos valdymo spinta
-        s3: *stageS3_common
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical
           
-    
+    - id: Elektriniai varikliai                  #                                          NSIK: L.LC.MAA
+      examples:
+      - Ventiliatoriaus variklis
+      - ŠVOK sklendės variklis
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: MAA
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_unique_electrical
 
