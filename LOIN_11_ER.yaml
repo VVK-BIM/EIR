@@ -178,8 +178,8 @@ ifc_e:      &type_e
   
 
 ER:
-    id: "12"
-    name: Apsauginės signalizacijos sistema
+    id: "11"
+    name: Elektoniniai ryšiai
     stages:
       s0:
         lod: 275
@@ -200,14 +200,14 @@ ER:
         lod: 500
 
     elements:
-    - id: Įrangos ir/ar kabelių dėklas                 # common                                NSIK: K.HG.UBA
+    - id: Įrangos ir/ar kabelių dėklas                 # common                                NSIK: M.HJ.UBA
       examples:
       - Kabelio kanalas
       - kabelio kopėčios
       - kabelio lovelis
       classifications:
-        NSIK LF: K
-        NSIK LT: HG
+        NSIK LF: M
+        NSIK LT: HJ
         NSIK LK: UBA
       ifcType: *type_linear
       stages:
@@ -215,24 +215,24 @@ ER:
         s3: *stageS3_common
 
 
-    - id: Ryšių prietaisas                             # visible_unique_electrical             NSIK: K.HG.KEB
+    - id: Ryšių prietaisas                             # visible_unique_electrical             NSIK: M.HJ.KEB
       examples:
       - Kontroleris
       - Valdiklis
       memo: Kitos paskirties ryšių prietaisas
       classifications:
-        NSIK LF: K
-        NSIK LT: HG
+        NSIK LF: M
+        NSIK LT: HJ
         NSIK LK: KEC
       ifcType: *type_e
       stages:
         s2: *stageS2_unique
         s3: *stageS3_visible_unique_electrical
      
-    - id: Telefono komutatorius                        # visible_unique                        NSIK: K.HG.%KFE10
+    - id: Telefono komutatorius                        # visible_unique                        NSIK: M.HJ.%KFE10
       classifications:
-        NSIK LF: K
-        NSIK LT: HG
+        NSIK LF: M
+        NSIK LT: HJ
         NSIK LK: "%KFE10"
       examples:
       - Telefonų stotis
@@ -241,10 +241,10 @@ ER:
         s2: *stageS2_unique
         s3: *stageS3_visible_unique_electrical
         
-    - id: PBX telefono komutatorius                    # visible_unique                        NSIK: K.HG.%KFE11
+    - id: PBX telefono komutatorius                    # visible_unique                        NSIK: M.HJ.%KFE11
       classifications:
-        NSIK LF: K
-        NSIK LT: HG
+        NSIK LF: M
+        NSIK LT: HJ
         NSIK LK: "%KFE11"
       examples:
       - Žinybinė telefonų stotis
@@ -254,10 +254,10 @@ ER:
         s2: *stageS2_unique
         s3: *stageS3_visible_unique_electrical
     
-    - id: Telefonas                                    # visible_unique                        NSIK: K.HG.TFE
+    - id: Telefonas                                    # visible_unique                        NSIK: M.HJ.TFE
       classifications:
-        NSIK LF: K
-        NSIK LT: HG
+        NSIK LF: M
+        NSIK LT: HJ
         NSIK LK: TFE
       examples:
       - Telefono aparatas
@@ -267,137 +267,137 @@ ER:
         s2: *stageS2_unique
         s3: *stageS3_visible_unique
     
-    - id: Optinio tinklo komutatorius                  # visible_unique_electrical             NSIK: K.HG.KGA
+    - id: Optinio tinklo komutatorius                  # visible_unique_electrical             NSIK: M.HJ.KGA
       examples:
       - Optikos panelė
       classifications:
-        NSIK LF: K
-        NSIK LT: HG
+        NSIK LF: M
+        NSIK LT: HJ
         NSIK LK: KGA
       ifcType: *type_e
       stages:
         s2: *stageS2_unique
         s3: *stageS3_visible_unique_electrical
         
-    - id: Optinio tinklo maršrutizatorius              # visible_unique_electrical             NSIK: K.HG.KGB
+    - id: Optinio tinklo maršrutizatorius              # visible_unique_electrical             NSIK: M.HJ.KGB
       examples:
       - Optinis maršrutizatorius
       - Optinis keitiklis
       classifications:
-        NSIK LF: K
-        NSIK LT: HG
+        NSIK LF: M
+        NSIK LT: HJ
         NSIK LK: KGB
       ifcType: *type_e
       stages:
         s2: *stageS2_unique
         s3: *stageS3_visible_unique_electrical
     
-    - id: Optinio tinklo kartotuvas                    # visible_unique_electrical             NSIK: K.HG.KGC
+    - id: Optinio tinklo kartotuvas                    # visible_unique_electrical             NSIK: M.HJ.KGC
       examples:
       - Optinis kartotuvas
       - Optinis stiprintuvas
       classifications:
-        NSIK LF: K
-        NSIK LT: HG
+        NSIK LF: M
+        NSIK LT: HJ
         NSIK LK: KGC
       ifcType: *type_e
       stages:
         s2: *stageS2_unique
         s3: *stageS3_visible_unique_electrical
         
-    - id: Optinis transiveris                          # visible_unique_electrical             NSIK: K.HG.TFD
+    - id: Optinis transiveris                          # visible_unique_electrical             NSIK: M.HJ.TFD
       examples:
       - Optinis keitiklis
       classifications:
-        NSIK LF: K
-        NSIK LT: HG
+        NSIK LF: M
+        NSIK LT: HJ
         NSIK LK: TFD
       ifcType: *type_e
       stages:
         s2: *stageS2_unique
         s3: *stageS3_visible_unique_electrical
         
-    - id: Optinis kabelis                              # pipe                                  NSIK: K.HG.WHA
+    - id: Optinis kabelis                              # pipe                                  NSIK: M.HJ.WHA
       classifications:
-        NSIK LF: K
-        NSIK LT: HG
+        NSIK LF: M
+        NSIK LT: HJ
         NSIK LK: WHA
       ifcType: *type_linear
       stages:
         s2: *stageS2_common
         s3: *stageS3_pipe
     
-    - id: Optinė jungtis                               # visible_unique                        NSIK: K.HG.XHA
+    - id: Optinė jungtis                               # visible_unique                        NSIK: M.HJ.XHA
       classifications:
-        NSIK LF: K
-        NSIK LT: HG
+        NSIK LF: M
+        NSIK LT: HJ
         NSIK LK: XHA
       ifcType: *type_linear
       stages:
         s2: *stageS2_common
         s3: *stageS3_visible_unique
         
-    - id: Daugialypė jungtis                           # visible_unique                        NSIK: K.HG.XZA
+    - id: Daugialypė jungtis                           # visible_unique                        NSIK: M.HJ.XZA
       classifications:
-        NSIK LF: K
-        NSIK LT: HG
+        NSIK LF: M
+        NSIK LT: HJ
         NSIK LK: XZA
       ifcType: *type_linear
       stages:
         s2: *stageS2_common
         s3: *stageS3_visible_unique
     
-    - id: Maršrutizatorius                             # unique_electrical                     NSIK: K.HG.KED
+    - id: Maršrutizatorius                             # unique_electrical                     NSIK: M.HJ.KED
       examples:
       - Laidinio tinklo maršrutizatorius
       classifications:
-        NSIK LF: K
-        NSIK LT: HG
+        NSIK LF: M
+        NSIK LT: HJ
         NSIK LK: KED
       ifcType: *type_e
       stages:
         s2: *stageS2_unique
         s3: *stageS3_unique_electrical
         
-    - id: Ryšių kabelis                                # unique_electrical                     NSIK: K.HG.WGB
+    - id: Ryšių kabelis                                # unique_electrical                     NSIK: M.HJ.WGB
       classifications:
-        NSIK LF: K
-        NSIK LT: HG
+        NSIK LF: M
+        NSIK LT: HJ
         NSIK LK: WGB
       ifcType: *type_e
       stages:
         s2: *stageS2_common
         s3: *stageS3_pipe
         
-    - id: Ryšių įrangos lizdas                         # unique_electrical                     NSIK: K.HG.XGA
+    - id: Ryšių įrangos lizdas                         # unique_electrical                     NSIK: M.HJ.XGA
       classifications:
-        NSIK LF: K
-        NSIK LT: HG
+        NSIK LF: M
+        NSIK LT: HJ
         NSIK LK: XGA
       ifcType: *type_e
       stages:
         s2: *stageS2_unique
         s3: *stageS3_visible_unique
     
-    - id: Ryšių įrangos komutacinė panelė              # unique_electrical                     NSIK: K.HG.XGC
+    - id: Ryšių įrangos komutacinė panelė              # unique_electrical                     NSIK: M.HJ.XGC
       examples:
       - Plintas
       - Komutacinė panelė
       classifications:
-        NSIK LF: K
-        NSIK LT: HG
+        NSIK LF: M
+        NSIK LT: HJ
         NSIK LK: XGC
       ifcType: *type_e
       stages:
         s2: *stageS2_unique
         s3: *stageS3_visible_unique
         
-    - id: Dengianti panelė                             # unique_electrical                     NSIK: K.HG.NAB
+    - id: Dengianti panelė                             # unique_electrical                     NSIK: M.HJ.NAB
       examples:
       - Kabelių tvarkymo panelė
       classifications:
-        NSIK LF: K
-        NSIK LT: HG
+        NSIK LF: M
+        NSIK LT: HJ
         NSIK LK: NAB
       ifcType: *type_e
       stages:
@@ -406,49 +406,49 @@ ER:
     
     
     
-    - id: Išplėtimo modulis                            # unique_electrical                     NSIK: K.HG.%KEB20
+    - id: Išplėtimo modulis                            # unique_electrical                     NSIK: M.HJ.%KEB20
       examples:
       - Įrangos išplėtimo modulis
       classifications:
-        NSIK LF: K
-        NSIK LT: HG
+        NSIK LF: M
+        NSIK LT: HJ
         NSIK LK: "%KEB20"
       ifcType: *type_e
       stages:
         s2: *stageS2_unique
         s3: *stageS3_unique_electrical
 
-    - id: Korpusas (skydelis)                          # visible_unique_electrical             NSIK: K.HG.UCA
+    - id: Korpusas (skydelis)                          # visible_unique_electrical             NSIK: M.HJ.UCA
       examples:
       - Ryšių skydelis
       - Ryšių spinta
       classifications:
-        NSIK LF: K
-        NSIK LT: HG
+        NSIK LF: M
+        NSIK LT: HJ
         NSIK LK: UCA
       stages:
         s2: *stageS2_unique
         s3: *stageS3_visible_unique_electrical
         
-    - id: Elektros skirstytuvas                        # visible_unique_electrical             NSIK: K.HG.XDE
+    - id: Elektros skirstytuvas                        # visible_unique_electrical             NSIK: M.HJ.XDE
       examples:
       - Ryšių sistemos elektros šakotuvas
       - Elektros šakotuvas ryšių sistemos įrangai
       classifications:
-        NSIK LF: K
-        NSIK LT: HG
+        NSIK LF: M
+        NSIK LT: HJ
         NSIK LK: XDE
       stages:
         s2: *stageS2_unique
         s3: *stageS3_visible_unique_electrical
         
-    - id: Nepertraukiamo maitinimo šaltinis            # visible_unique_electrical             NSIK: K.HG.RBA
+    - id: Nepertraukiamo maitinimo šaltinis            # visible_unique_electrical             NSIK: M.HJ.RBA
       examples:
       - Ryšiu sistemos nepertraukiamo maitinimo šaltinis
       - Ryšių sistemos UPS
       classifications:
-        NSIK LF: K
-        NSIK LT: HG
+        NSIK LF: M
+        NSIK LT: HJ
         NSIK LK: RBA
       stages:
         s2: *stageS2_unique
