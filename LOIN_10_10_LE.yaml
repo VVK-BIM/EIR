@@ -5,322 +5,631 @@
 # 10 - Elektrotechnika. Lauko tinklai
 #
 
-LE:
-    elements:
-    - classifications:
-        NSIK LF: G
-        NSIK LT: JD
-        NSIK LK: XKG
-      stages:
-        s3:
-          properties:
-          - Name:
-            - examples:
-              - Lietaus nuotekų surinkimo šulinėlis
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - LŠ-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
-                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - Polietilenas
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 3.1
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          - Ifc__.Heigth:
-            - examples:
-              - 3000
-            - units: mm
-            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Diametras:
-            - examples:
-              - 315
-            - units: mm
-            - descr: Gaminio diametras
-          lod: 300
-      id: Surinkimo šulinys
-    - classifications:
-        NSIK LF: K
-        NSIK LT: JK
-        NSIK LK: BCA
-      stages:
-        s3:
-          properties:
-          - Name:
-            - examples:
-              - Srovės matavimo transformatorius
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - ST-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
-                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 2.1
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          lod: 300
-      id: Srovės transformatorius
-    - classifications:
-        NSIK LF: K
-        NSIK LT: JK
-        NSIK LK: WGB
-      stages:
-        s3:
-          properties:
-          - Name:
-            - examples:
-              - Įvadinis vamzdis elektros kabeliams tiesti
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - EĮ-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
-                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 2.1
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          - Ifc__.Length:
-            - examples:
-              - 10000
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Diametras:
-            - examples:
-              - 110
-            - units: mm
-            - descr: Gaminio diametras
-          lod: 300
-      id: Elektros kabelių trasa
+prop_g:   &prop_g
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+
+prop:     &prop
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
   
-    - classifications:
-        NSIK LF: K
-        NSIK LT: JK
-        NSIK LK: XMC
-      stages:
-        s3:
-          properties:
-          - Name:
-            - examples:
-              - Komunikacijų šulinys
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - AŠ-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
-                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 2.1
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          - Ifc__.Heigth:
-            - examples:
-              - 1500
-            - units: mm
-            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Diametras:
-            - examples:
-              - 1000
-            - units: mm
-            - descr: Gaminio diametras
-          lod: 300
-      id: Šulinys
+prop_s2u: &prop_s2_u
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Tag
+
+prop_s3:  &prop_s3
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+
+prop_s3z:  &prop_s3_zone
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Area
+  
+prop_s3:  &prop_s3_pipe
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Diameter
+  - Pset_QuantityTakeOff.Length
+prop_vu:  &prop_s3_v
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - VVK.Finish
+  - VVK.Colour
+  
+prop_s3u: &prop_s3_u
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Tag
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  
+prop_vu:  &prop_s3_vu
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Tag
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - VVK.Finish
+  - VVK.Colour
+
+prop_ue:  &prop_s3_ue
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Tag
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+  
+prop_vue: &prop_s3_vue
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Tag
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - VVK.Finish
+  - VVK.Colour
+  - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+  
+prop_vue: &prop_s3_vue_x
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Tag
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - VVK.Finish
+  - VVK.Colour
+  - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+  - Pset_ElectricalDeviceCommon.IsExternal
+  
+  
+s2:         &stageS2_common
+  lod: 200
+  properties: *prop
+  
+s2_u:       &stageS2_unique
+  lod: 200
+  properties: *prop_s2_u
+
+s3:       &stageS3_common
+  lod: 300
+  properties: *prop_s3
+
+s3_pipe:  &stageS3_pipe
+  lod: 300
+  properties: *prop_s3_pipe
+  
+s3_zone:  &stageS3_zone
+  lod: 300
+  properties: *prop_s3_zone
+  
+s3_u:     &stageS3_unique
+  lod: 300
+  properties: *prop_s3_u
+
+s3_vu:    &stageS3_visible
+  lod: 300
+  properties: *prop_s3_v
+  
+s3_vu:    &stageS3_visible_unique
+  lod: 300
+  properties: *prop_s3_vu
+
+s3_vue:   &stageS3_visible_unique_electrical
+  lod: 300
+  properties: *prop_s3_vue
+  
+s3_vue_x: &stageS3_visible_unique_electrical_external
+  lod: 300
+  properties: *prop_s3_vue_x
+  
+s3_ue:    &stageS3_unique_electrical
+  lod: 300
+  properties: *prop_s3_ue
+
+ifc_linear:  &type_linear
+  - IfcFlowSegment
+  - IfcFlowSegmentType
+  - IfcFlowSegmentTypeEnum
+ifc_e:       &type_e
+  - IfcDistributionControlElement
+  - IfcDistributionControlElementType
+  - IfcDistributionControlElementTypeEnum
+ifc_w:       &type_well
+  - IfcFlowTerminal
+  - IfcFlowTerminalElementType
+  - IfcFlowTerminalElementTypeEnum
+
+
+
+# projeect file
+LE:
+    id: "10.10"
+    name: Elektrotechnika. Lauko tinklai
+    elements:
+    
+    - id: Šulinys                                  # unique                       NSIK: K.HG.XMC
       examples:
       - Apžiūros šulinys
       - inspektavimo šulinys
       - kamera
       - komunikacijų šulinys
-    - classifications:
+      ifcType: *type_well
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: XMC
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_unique
+        
+    - id: Tinklo informacinis ženklas              # visible_unique               NSIK: K.HG.PHD
+      examples:
+      - Sargelis
+      - Informacinis ženklas
+      ifcType: 
+      - IfcPlate
+      - IfcPlateType
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: PHD
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique
+        
+    - id: Tinklo informacinio ženklo laikiklis     # visible_unique               NSIK: K.HG.UBD
+      examples:
+      - Sargelio stovas
+      - Informacinio ženklo stovas
+      ifcType: 
+      - IfcColumn
+      - IfcColumnType
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: UBD
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique
+    
+    - id: Informacinio ženklo laikiklio pamatas    # unique                       NSIK: K.HG.ULD
+      examples:
+      - Pamatas
+      ifcType: 
+      - IfcPile
+      - IfcPileType
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: ULD
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_unique
+
+    - id: Aukštos įtampos elektros kabelis         # pipe                         NSIK: K.JK.WBB
+      examples:
+      - Aukštos įtampos kabelis
+      - Vidutinės įtampos kabelis
+      classifications:
         NSIK LF: K
         NSIK LT: JK
+        NSIK LK: WBB
+      ifcType: *type_linear
+      stages:
+        s2: *stageS2_common
+        s3: *stageS3_pipe
+    
+    - id: Aukštos įtampos elektros kabelio mova    # pipe                         NSIK: K.JK.XBA
+      examples:
+      - Aukštos įtampos kabelis
+      - Vidutinės įtampos kabelis
+      classifications:
+        NSIK LF: K
+        NSIK LT: JK
+        NSIK LK: XBA
+      ifcType: *type_linear
+      stages:
+        s2: *stageS2_common
+        s3: *stageS3_pipe
+        
+        
+    - id: Žemos įtampos elektros kabelis           # pipe                         NSIK: K.HG.WDB
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: WDB
+      ifcType: *type_linear
+      stages:
+        s2: *stageS2_common
+        s3: *stageS3_pipe
+    
+    - id: Valdymo kabelis                          # pipe                         NSIK: K.HG.WGA
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: WGA
+      ifcType: *type_linear
+      stages:
+        s2: *stageS2_common
+        s3: *stageS3_pipe
+        
+    - id: Duomenų kabelis                          # pipe                         NSIK: K.HG.WGB
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: WGB
+      ifcType: *type_linear
+      stages:
+        s2: *stageS2_common
+        s3: *stageS3_pipe
+    
+    - id: Valdymo elementas                        # stageS3_unique_electrical    NSIK: K.HG.KEB
+      examples:
+      - Kontroleris
+      - Kontaktorius
+      - Valdiklis
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: KEB
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_unique_electrical
+    
+    - id: Korpusas (skydelis)                      # visible_unique_electrical    NSIK: K.HG.UCA
+      examples:
+      - Apskaitos skydas
+      - Tranzitinis skydas
+      - Kabelių skydas
+      - Apšveitimo skydas
+      - Elektros spinta
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: UCA
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical
+    
+    
+    - id: Aukštos ir vidutinės įtampos elektros kabelio dėklas                     # pipe         NSIK: K.JK.UBA
+      classifications:
+        NSIK LF: K
+        NSIK LT: JK
+        NSIK LK: UBA
+      ifcType: *type_linear
+      stages:
+        s2: *stageS2_common
+        s3: *stageS3_pipe
+        
+    - id: Žemos įtampos elektros kabelio dėklas                                    # pipe         NSIK: K.HG.UBA
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: UBA
+      ifcType: *type_linear
+      stages:
+        s2: *stageS2_common
+        s3: *stageS3_pipe
+        
+    - id: Aukštos ir vidutinės įtampos elektros kabelių trasos apsaugos zona       # zone         NSIK: <E>DCB <L>K.JK
+      classifications:
+        NSIK LF: K
+        NSIK LT: JK
+        NSIK B: DCB
+      ifcType: 
+      - IfcSpace
+      - IfcSpaceType
+      stages:
+        s2: *stageS2_common
+        s3: *stageS3_zone
+    
+    - id: Žemos įtampos elektros kabelių trasos apsaugos zona                      # zone         NSIK: <E>DCB <L>K.HG
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK B: DCB
+      ifcType: 
+      - IfcSpace
+      - IfcSpaceType
+      stages:
+        s2: *stageS2_common
+        s3: *stageS3_zone
+    
+    - id: "10/0,4kV įtampos transformatorius"
+      ifcType: 
+      - IfcTransformer
+      - IfcTransformerType
+      classifications:
+        NSIK LF: K
+        NSIK LT: JK
+        NSIK LK: BAA
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_unique_electrical
+    
+    - id: Žemos įtampos transformatorius
+      examples:
+      - 230/12 V transformatorius
+      - 230/48 V transformatorius
+      ifcType: 
+      - IfcTransformer
+      - IfcTransformerType
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: BAA
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_unique_electrical
+
+    
+    - id: Srovės transformatorius
+      examples:
+      - Srovės matavimo transformatorius
+      ifcType: 
+      - IfcTransformer
+      - IfcTransformerType
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
         NSIK LK: BCA
       stages:
-        s3:
-          properties:
-          - Name:
-            - examples:
-              - Srovės matavimo transformatorius
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - ST-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
-                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 2.1
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          lod: 300
-      id: Srovės transformatorius
-    - classifications:
-        NSIK LF: K
-        NSIK LT: JK
-        NSIK LK: WGB
-      stages:
-        s3:
-          properties:
-          - Name:
-            - examples:
-              - Įvadinis vamzdis elektros kabeliams tiesti
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - EĮ-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
-                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 2.1
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          - Ifc__.Length:
-            - examples:
-              - 10000
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Diametras:
-            - examples:
-              - 110
-            - units: mm
-            - descr: Gaminio diametras
-          lod: 300
-      id: Elektros kabelių trasa
+        s2: *stageS2_unique
+        s3: *stageS3_unique_electrical
 
+
+
+# įžeminimas
+    - id: Įžeminimo elektrodas                                                   # pipe         NSIK: %P20.HG.XEE
+      classifications:
+        NSIK LF: "%P20"
+        NSIK LT: HG
+        NSIK LK: XEE
+      ifcType: *type_linear
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_pipe
+
+    - id: Įžeminimo kabelis                                                      # pipe         NSIK: %P20.HG.WEB
+      classifications:
+        NSIK LF: "%P20"
+        NSIK LT: HG
+        NSIK LK: WEB
+      ifcType: *type_linear
+      stages:
+        s2: *stageS2_common
+        s3: *stageS3_pipe
+    
+        
+    - id: Įžeminimo šyna                                                         # pipe         NSIK: %P20.HG.XEF
+      classifications:
+        NSIK LF: "%P20"
+        NSIK LT: HG
+        NSIK LK: XEF
+      ifcType: *type_linear
+      stages:
+        s2: *stageS2_common
+        s3: *stageS3_pipe
+        
+    - id: Įžemiklis                                                              # pipe         NSIK: %P20.HG.QCA
+      classifications:
+        NSIK LF: "%P20"
+        NSIK LT: HG
+        NSIK LK: QCA
+      ifcType: *type_linear
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_pipe
+        
+
+# sklypo apšvietimas
+    - id: Šulinys                                                   # unique            NSIK: Q.%HH10.XMC
+      examples:
+      - Apžiūros šulinys
+      - inspektavimo šulinys
+      - kamera
+      - komunikacijų šulinys
+      ifcType: *type_well
+      classifications:
+        NSIK LF: Q
+        NSIK LT: "%HH10"
+        NSIK LK: XMC
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_unique
+    
+    - id: Šviestuvas                                                # visible_unique    NSIK: Q.%HH10.%UAC10
+      examples:
+      - Gatvės šviestuvas
+      - Tako šviestuvas
+      - Dekoratyvinis sklypo šviestuvas
+      memo: Šviestuvas ir jo stiebas yra atskiri eleemntai
+      ifcType: 
+      - IfcLightFixture
+      - IfcLightFixtureType
+      classifications:
+        NSIK LF: Q
+        NSIK LT: "%HH10"
+        NSIK LK: "%UAC10"
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical
+        
+    - id: Šviestuvas su stiebu                                      # visible_unique    NSIK: Q.%HH10.%UAC1010
+      examples:
+      - Gatvės šviestuvas
+      - Tako šviestuvas
+      - Dekoratyvinis sklypo šviestuvas
+      memo: Šviestuvas ir jo stiebas yra vienas gaminys
+      ifcType: 
+      - IfcLightFixture
+      - IfcLightFixtureType
+      classifications:
+        NSIK LF: Q
+        NSIK LT: "%HH10"
+        NSIK LK: "%UAC1010"
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical
+        
+    - id: Šviestuvo stiebas                                         # visible_unique    NSIK: Q.%HH10.UBD
+      examples:
+      - Šviestuvo stiebas
+      - Šviestuvo stiebas su konsole
+      ifcType: 
+      - IfcColumn
+      - IfcColumnType
+      classifications:
+        NSIK LF: Q
+        NSIK LT: "%HH10"
+        NSIK LK: UBD
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique
+        
+    - id: Šviestuvo pamatas                                         # unique            NSIK: Q.%HH10.ULD
+      examples:
+      - Pamatas
+      ifcType: 
+      - IfcPile
+      - IfcPileType
+      classifications:
+        NSIK LF: Q
+        NSIK LT: "%HH10"
+        NSIK LK: ULD
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_unique
+
+    - id: Įžemiklis                                                 # pipe              NSIK: %P20.%HH10.QCA
+      classifications:
+        NSIK LF: "%P20"
+        NSIK LT: "%HH10"
+        NSIK LK: QCA
+      ifcType: *type_linear
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_pipe
+        
+    - id: Įžeminimo elektrodas                                      # pipe              NSIK: %P20.%HH10.XEE
+      classifications:
+        NSIK LF: "%P20"
+        NSIK LT: "%HH10"
+        NSIK LK: XEE
+      ifcType: *type_linear
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_pipe
+        
+    - id: Įžeminimo šyna                                            # pipe              NSIK: %P20.%HH10.XEF
+      classifications:
+        NSIK LF: "%P20"
+        NSIK LT: "%HH10"
+        NSIK LK: XEF
+      ifcType: *type_linear
+      stages:
+        s2: *stageS2_common
+        s3: *stageS3_pipe
+    
+    - id: Apšvietimo tinklo elektros kabelis                                # pipe              NSIK: Q.%HH10.WDB
+      classifications:
+        NSIK LF: Q
+        NSIK LT: "%HH10"
+        NSIK LK: WDB
+      ifcType: *type_linear
+      stages:
+        s2: *stageS2_common
+        s3: *stageS3_pipe
+    
+    - id: Apšvietimo tinklo valdymo kabelis                                 # pipe              NSIK: Q.%HH10.WGA
+      classifications:
+        NSIK LF: Q
+        NSIK LT: "%HH10"
+        NSIK LK: WGA
+      ifcType: *type_linear
+      stages:
+        s2: *stageS2_common
+        s3: *stageS3_pipe
+        
+    - id: Apšvietimo tinklo duomenų kabelis                                 # pipe              NSIK: Q.%HH10.WGB
+      classifications:
+        NSIK LF: Q
+        NSIK LT: "%HH10"
+        NSIK LK: WGB
+      ifcType: *type_linear
+      stages:
+        s2: *stageS2_common
+        s3: *stageS3_pipe
+    
+    - id: Apšvietimo tinklo elektros kabelio dėklas                         # pipe              NSIK: Q.%HH10.UBA
+      classifications:
+        NSIK LF: Q
+        NSIK LT: "%HH10"
+        NSIK LK: UBA
+      ifcType: *type_linear
+      stages:
+        s2: *stageS2_common
+        s3: *stageS3_pipe
+        
+    - id: Apšvietimo tinklo kabelių trasos apsaugos zona                    # zone              NSIK: <E>DCB <L>Q.%HH10
+      classifications:
+        NSIK LF: Q
+        NSIK LT: "%HH10"
+        NSIK B: DCB
+      ifcType: 
+      - IfcSpace
+      - IfcSpaceType
+      stages:
+        s2: *stageS2_common
+        s3: *stageS3_zone

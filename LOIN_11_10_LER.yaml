@@ -180,7 +180,7 @@ ifc_e:      &type_linear
   - IfcFlowSegmentType
   - IfcFlowSegmentTypeEnum
   
-ifc_e:      &type_well
+ifc_w:      &type_well
   - IfcFlowTerminal
   - IfcFlowTerminalElementType
   - IfcFlowTerminalElementTypeEnum
@@ -208,7 +208,7 @@ LER:
         lod: 500
     
     elements:
-    - id: Šulinys                                  # unique            NSIK: M.HJ.XMC
+    - id: Šulinys                                  # unique                       NSIK: %M10.HJ.XMC
       examples:
       - Apžiūros šulinys
       - inspektavimo šulinys
@@ -216,14 +216,14 @@ LER:
       - komunikacijų šulinys
       ifcType: *type_well
       classifications:
-        NSIK LF: M
+        NSIK LF: "%M10"
         NSIK LT: HJ
         NSIK LK: XMC
       stages:
         s2: *stageS2_unique
         s3: *stageS3_unique
         
-    - id: Tinklo informacinis ženklas              # visible_unique    NSIK: M.HJ.PHD
+    - id: Tinklo informacinis ženklas              # visible_unique               NSIK: %M10.HJ.PHD
       examples:
       - Sargelis
       - Informacinis ženklas
@@ -231,14 +231,14 @@ LER:
       - IfcPlate
       - IfcPlateType
       classifications:
-        NSIK LF: M
+        NSIK LF: "%M10"
         NSIK LT: HJ
         NSIK LK: PHD
       stages:
         s2: *stageS2_unique
         s3: *stageS3_visible_unique
         
-    - id: Tinklo informacinio ženklo laikiklis     # visible_unique    NSIK: M.HJ.UBD
+    - id: Tinklo informacinio ženklo laikiklis     # visible_unique               NSIK: %M10.HJ.UBD
       examples:
       - Sargelio stovas
       - Informacinio ženklo stovas
@@ -246,30 +246,30 @@ LER:
       - IfcColumn
       - IfcColumnType
       classifications:
-        NSIK LF: M
+        NSIK LF: "%M10"
         NSIK LT: HJ
         NSIK LK: UBD
       stages:
         s2: *stageS2_unique
         s3: *stageS3_visible_unique
     
-    - id: Informacinio ženklo laikiklio pamatas    # unique            NSIK: M.HJ.ULD
+    - id: Informacinio ženklo laikiklio pamatas    # unique                       NSIK: %M10.HJ.ULD
       examples:
       - Pamatas
       ifcType: 
       - IfcPile
       - IfcPileType
       classifications:
-        NSIK LF: M
+        NSIK LF: "%M10"
         NSIK LT: HJ
         NSIK LK: ULD
       stages:
         s2: *stageS2_unique
         s3: *stageS3_unique
 
-    - id: Duomenų kabelis                          # pipe              NSIK: M.HJ.WGB
+    - id: Duomenų kabelis                          # pipe                         NSIK: %M10.HJ.WGB
       classifications:
-        NSIK LF: M
+        NSIK LF: "%M10"
         NSIK LT: HJ
         NSIK LK: WGB
       ifcType: *type_linear
@@ -277,9 +277,9 @@ LER:
         s2: *stageS2_common
         s3: *stageS3_pipe
         
-    - id: Duomenų kabelio dėklas                   # pipe              NSIK: M.HJ.UBA
+    - id: Duomenų kabelio dėklas                   # pipe                         NSIK: %M10.HJ.UBA
       classifications:
-        NSIK LF: M
+        NSIK LF: "%M10"
         NSIK LT: HJ
         NSIK LK: UBA
       ifcType: *type_linear
@@ -287,9 +287,199 @@ LER:
         s2: *stageS2_common
         s3: *stageS3_pipe
         
-    - id: Duomenų kabelių trasos apsaugos zona     # zone              NSIK: <E>DCB <L>M.HJ
+        - id: Optinio tinklo komutatorius                  # visible_unique_electrical             NSIK: %M10.HJ.KGA
+      examples:
+      - Optikos panelė
       classifications:
-        NSIK LF: M
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: KGA
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical
+        
+    - id: Optinio tinklo maršrutizatorius          # visible_unique_electrical    NSIK: %M10.HJ.KGB
+      examples:
+      - Optinis maršrutizatorius
+      - Optinis keitiklis
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: KGB
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical
+    
+    - id: Optinio tinklo kartotuvas                # visible_unique_electrical    NSIK: %M10.HJ.KGC
+      examples:
+      - Optinis kartotuvas
+      - Optinis stiprintuvas
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: KGC
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical
+        
+    - id: Optinis transiveris                      # visible_unique_electrical    NSIK: %M10.HJ.TFD
+      examples:
+      - Optinis keitiklis
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: TFD
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical
+        
+    - id: Optinis kabelis                          # pipe                         NSIK: %M10.HJ.WHA
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: WHA
+      ifcType: *type_linear
+      stages:
+        s2: *stageS2_common
+        s3: *stageS3_pipe
+    
+    - id: Optinė jungtis                           # visible_unique               NSIK: %M10.HJ.XHA
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: XHA
+      ifcType: *type_linear
+      stages:
+        s2: *stageS2_common
+        s3: *stageS3_visible_unique
+        
+    - id: Daugialypė jungtis                       # visible_unique               NSIK: %M10.HJ.XZA
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: XZA
+      ifcType: *type_linear
+      stages:
+        s2: *stageS2_common
+        s3: *stageS3_visible_unique
+    
+    - id: Maršrutizatorius                         # unique_electrical            NSIK: %M10.HJ.KED
+      examples:
+      - Laidinio tinklo maršrutizatorius
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: KED
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_unique_electrical
+        
+    - id: Ryšių kabelis                            # unique_electrical            NSIK: %M10.HJ.WGB
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: WGB
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_common
+        s3: *stageS3_pipe
+        
+    - id: Ryšių įrangos lizdas                     # unique_electrical            NSIK: %M10.HJ.XGA
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: XGA
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique
+    
+    - id: Ryšių įrangos komutacinė panelė          # unique_electrical            NSIK: %M10.HJ.XGC
+      examples:
+      - Plintas
+      - Komutacinė panelė
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: XGC
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique
+        
+    - id: Dengianti panelė                         # unique_electrical            NSIK: %M10.HJ.NAB
+      examples:
+      - Kabelių tvarkymo panelė
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: NAB
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique
+    
+    
+    
+    - id: Išplėtimo modulis                        # unique_electrical            NSIK: %M10.HJ.%KEB20
+      examples:
+      - Įrangos išplėtimo modulis
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: "%KEB20"
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_unique_electrical
+
+    - id: Korpusas (skydelis)                      # visible_unique_electrical    NSIK: %M10.HJ.UCA
+      examples:
+      - Ryšių skydelis
+      - Ryšių spinta
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: UCA
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical
+        
+    - id: Elektros skirstytuvas                    # visible_unique_electrical    NSIK: %M10.HJ.XDE
+      examples:
+      - Ryšių sistemos elektros šakotuvas
+      - Elektros šakotuvas ryšių sistemos įrangai
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: XDE
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical
+        
+    - id: Nepertraukiamo maitinimo šaltinis        # visible_unique_electrical    NSIK: %M10.HJ.RBA
+      examples:
+      - Ryšiu sistemos nepertraukiamo maitinimo šaltinis
+      - Ryšių sistemos UPS
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: RBA
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical
+
+        
+        
+        
+    - id: Duomenų kabelių trasos apsaugos zona     # zone                         NSIK: <E>DCB <L>%M10.HJ
+      classifications:
+        NSIK LF: "%M10"
         NSIK LT: HJ
         NSIK B: DCB
       ifcType: 
