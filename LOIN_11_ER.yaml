@@ -5,10 +5,202 @@
 # 11 - Elektoniniai ryšiai
 #
 
+prop_g:   &prop_g
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+
+prop:     &prop
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  
+prop_s2u: &prop_s2_u
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Tag
+
+prop_s3:  &prop_s3
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+
+prop_s3:  &prop_s3_pipe
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Diameter
+  - Pset_QuantityTakeOff.Length
+prop_vu:  &prop_s3_v
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - VVK.Finish
+  - VVK.Colour
+  
+prop_s3u: &prop_s3_u
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Tag
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  
+prop_vu:  &prop_s3_vu
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Tag
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - VVK.Finish
+  - VVK.Colour
+
+prop_ue:  &prop_s3_ue
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Tag
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+  
+prop_vue: &prop_s3_vue
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Tag
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - VVK.Finish
+  - VVK.Colour
+  - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+  
+prop_vue: &prop_s3_vue_x
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Tag
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - VVK.Finish
+  - VVK.Colour
+  - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+  - Pset_ElectricalDeviceCommon.IsExternal
+  
+  
+s2:         &stageS2_common
+  lod: 200
+  properties: *prop
+  
+s2_u:       &stageS2_unique
+  lod: 200
+  properties: *prop_s2_u
+
+s3:       &stageS3_common
+  lod: 300
+  properties: *prop_s3
+
+s3_pipe:  &stageS3_pipe
+  lod: 300
+  properties: *prop_s3_pipe
+  
+s3_u:     &stageS3_unique
+  lod: 300
+  properties: *prop_s3_u
+
+s3_vu:    &stageS3_visible
+  lod: 300
+  properties: *prop_s3_v
+  
+s3_vu:    &stageS3_visible_unique
+  lod: 300
+  properties: *prop_s3_vu
+
+s3_vue:   &stageS3_visible_unique_electrical
+  lod: 300
+  properties: *prop_s3_vue
+  
+s3_vue_x: &stageS3_visible_unique_electrical_external
+  lod: 300
+  properties: *prop_s3_vue_x
+  
+s3_ue:    &stageS3_unique_electrical
+  lod: 300
+  properties: *prop_s3_ue
+
+ifc_e:      &type_linear
+  - IfcFlowSegment
+  - IfcFlowSegmentType
+  - IfcFlowSegmentTypeEnum
+  
+ifc_e:      &type_e
+  - IfcDistributionControlElement
+  - IfcDistributionControlElementType
+  - IfcDistributionControlElementTypeEnum
+  
+  
+
 ER:
+    id: "12"
+    name: Apsauginės signalizacijos sistema
+    stages:
+      s0:
+        lod: 275
+      s2:
+        lod: 200
+      s3:
+        lod: 300
+      s4:
+        lod: 350
+        properties:
+        - Pset_ManufacturerTypeInformation.ArticleNumber
+        - Pset_ManufacturerTypeInformation.Manufacturer
+      s5:
+        lod: 350
+        properties:
+        - VVK.RelatedDocumentationURI
+      s6:
+        lod: 500
+
     elements:
-    # - id: Kištukinis lizdas
-    - id: Įrangos ir/ar kabelių dėklas
+    - id: Įrangos ir/ar kabelių dėklas                 # common                                NSIK: K.HG.UBA
       examples:
       - Kabelio kanalas
       - kabelio kopėčios
@@ -16,126 +208,317 @@ ER:
       classifications:
         NSIK LF: K
         NSIK LT: HG
-        NSIK LK: XDD
+        NSIK LK: UBA
+      ifcType: *type_linear
       stages:
-        s3:
-          properties:
-          - VVK.LevelName:
-            - examples:
-              - 1 aukštas
-            - units: Tekstas
-          - Name:
-            - examples:
-              - Kištukinis lizdas
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - ŽĮ-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
-                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 2.1
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          - Galingumas:
-            - units: W
-            - descr: Elemento projektinė galia. Elektriniams prietaisams - elektrinė
-                galia, šiluminiams ir jiems prilygintims - šiluminė galia
-          - Ifc__.Heigth:
-            - examples:
-              - 70
-            - units: mm
-            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Ifc__.Length:
-            - examples:
-              - 70
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Ifc__.Depth:
-            - examples:
-              - 42
-            - units: mm
-            - descr: Gaminio montavimo gylis, mm (0 dešimtainių skaitmenų) arba m
-                (3 dešimtainiai skaitmenys)
-          lod: 300
-      
-      
-    # - classifications: {}
-      # stages:
-        # s3:
-          # properties: []
-          # lod: 300
-      
+        s2: *stageS2_common
+        s3: *stageS3_common
+
+
+    - id: Ryšių prietaisas                             # visible_unique_electrical             NSIK: K.HG.KEB
+      examples:
+      - Kontroleris
+      - Valdiklis
+      memo: Kitos paskirties ryšių prietaisas
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: KEC
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical
+     
+    - id: Telefono komutatorius                        # visible_unique                        NSIK: K.HG.%KFE10
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: "%KFE10"
+      examples:
+      - Telefonų stotis
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical
+        
+    - id: PBX telefono komutatorius                    # visible_unique                        NSIK: K.HG.%KFE11
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: "%KFE11"
+      examples:
+      - Žinybinė telefonų stotis
+      - PBX stotelė
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical
     
-      
-    # - id: Korpusas (skydelis)
-      # classifications: {}
-      # stages:
-        # s3:
-          # properties: []
-          # lod: 300
+    - id: Telefonas                                    # visible_unique                        NSIK: K.HG.TFE
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: TFE
+      examples:
+      - Telefono aparatas
+      - Vietinio ryšio telefono aparatas
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique
+    
+    - id: Optinio tinklo komutatorius                  # visible_unique_electrical             NSIK: K.HG.KGA
+      examples:
+      - Optikos panelė
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: KGA
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical
+        
+    - id: Optinio tinklo maršrutizatorius              # visible_unique_electrical             NSIK: K.HG.KGB
+      examples:
+      - Optinis maršrutizatorius
+      - Optinis keitiklis
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: KGB
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical
+    
+    - id: Optinio tinklo kartotuvas                    # visible_unique_electrical             NSIK: K.HG.KGC
+      examples:
+      - Optinis kartotuvas
+      - Optinis stiprintuvas
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: KGC
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical
+        
+    - id: Optinis transiveris                          # visible_unique_electrical             NSIK: K.HG.TFD
+      examples:
+      - Optinis keitiklis
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: TFD
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical
+        
+    - id: Optinis kabelis                              # pipe                                  NSIK: K.HG.WHA
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: WHA
+      ifcType: *type_linear
+      stages:
+        s2: *stageS2_common
+        s3: *stageS3_pipe
+    
+    - id: Optinė jungtis                               # visible_unique                        NSIK: K.HG.XHA
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: XHA
+      ifcType: *type_linear
+      stages:
+        s2: *stageS2_common
+        s3: *stageS3_visible_unique
+        
+    - id: Daugialypė jungtis                           # visible_unique                        NSIK: K.HG.XZA
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: XZA
+      ifcType: *type_linear
+      stages:
+        s2: *stageS2_common
+        s3: *stageS3_visible_unique
+    
+    - id: Maršrutizatorius                             # unique_electrical                     NSIK: K.HG.KED
+      examples:
+      - Laidinio tinklo maršrutizatorius
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: KED
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_unique_electrical
+        
+    - id: Ryšių kabelis                                # unique_electrical                     NSIK: K.HG.WGB
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: WGB
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_common
+        s3: *stageS3_pipe
+        
+    - id: Ryšių įrangos lizdas                         # unique_electrical                     NSIK: K.HG.XGA
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: XGA
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique
+    
+    - id: Ryšių įrangos komutacinė panelė              # unique_electrical                     NSIK: K.HG.XGC
+      examples:
+      - Plintas
+      - Komutacinė panelė
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: XGC
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique
+        
+    - id: Dengianti panelė                             # unique_electrical                     NSIK: K.HG.NAB
+      examples:
+      - Kabelių tvarkymo panelė
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: NAB
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique
+    
+    
+    
+    - id: Išplėtimo modulis                            # unique_electrical                     NSIK: K.HG.%KEB20
+      examples:
+      - Įrangos išplėtimo modulis
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: "%KEB20"
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_unique_electrical
 
-    # - id: Kištukinis lizdas
-      # classifications: {}
-      # stages:
-        # s3:
-          # properties: []
-          # lod: 300
-      
-    # - id: Komutacinis skydelis
-      # classifications: {}
-      # stages:
-        # s3:
-          # properties: []
-          # lod: 300
-      
-    # - id: Įrangos ir/ar kabelių dėklas
-      # examples:
-      # - Kabelio kanalas
-      # - kabelio kopėčios
-      # - kabelio lovelis
-      # classifications: {}
-      # stages:
-        # s3:
-          # properties: []
-          # lod: 300
-      
-    # - id: Korpusas (skydelis)
-      # classifications: {}
-      # stages:
-        # s3:
-          # properties: []
-          # lod: 300
-      
-    # - id: Kištukinis lizdas
-      # classifications: {}
-      # stages:
-        # s3:
-          # properties: []
-          # lod: 300
-      
+    - id: Korpusas (skydelis)                          # visible_unique_electrical             NSIK: K.HG.UCA
+      examples:
+      - Ryšių skydelis
+      - Ryšių spinta
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: UCA
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical
+        
+    - id: Elektros skirstytuvas                        # visible_unique_electrical             NSIK: K.HG.XDE
+      examples:
+      - Ryšių sistemos elektros šakotuvas
+      - Elektros šakotuvas ryšių sistemos įrangai
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: XDE
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical
+        
+    - id: Nepertraukiamo maitinimo šaltinis            # visible_unique_electrical             NSIK: K.HG.RBA
+      examples:
+      - Ryšiu sistemos nepertraukiamo maitinimo šaltinis
+      - Ryšių sistemos UPS
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: RBA
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical
 
+
+
+    
+# evakuacijos valdymas
+    - id: Garsiakalbis                                 # visible_unique_electrical_external    NSIK: %P10.MA.PJA      Uc: Pr_70_75_06_50
+      classifications:
+        NSIK LF: "%P10"
+        NSIK LT: MA
+        NSIK LK: PJA
+        Uniclass: Pr_70_75_06_50
+      examples:
+      - Evakuacijos valdymo sistemos garsiakalbis
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical_external
+
+
+    - id: Evakuacijos sistemos valdymo blokas          # visible_unique_electrical             NSIK: %P10.MA.%KEB10
+      examples:
+      - Evakuacijos sistemos kontroleris
+      - Evakuacijos sistemos valdiklis
+      classifications:
+        NSIK LF: "%P10"
+        NSIK LT: MA
+        NSIK LK: "%KEB10"
+      ifcType: *type_e
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical
+    
+        
+    - id: Evakuacijos sistemos korpusas (skydelis)     # visible_unique_electrical             NSIK: %P10.MA.UCA
+      examples:
+      - Evakuacijos sistemos prietaisų dėžė
+      - Evakuacijos sistemos spinta
+      - Evakuacijos valdymo sistemos įrenginių spinta
+      classifications:
+        NSIK LF: "%P10"
+        NSIK LT: MA
+        NSIK LK: UCA
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical
+    
+    - id: Elektros skirstytuvas                        # visible_unique_electrical             NSIK: %P10.MA.XDE
+      examples:
+      - Evakuacijos sistemos sistemos elektros šakotuvas
+      - Elektros šakotuvas evakuacijos valdymo sistemos įrangai
+      classifications:
+        NSIK LF: "%P10"
+        NSIK LT: MA
+        NSIK LK: XDE
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical
+        
+    - id: Nepertraukiamo maitinimo šaltinis            # visible_unique_electrical             NSIK: %P10.MA.RBA
+      examples:
+      - Evakuacijos sistemos nepertraukiamo maitinimo šaltinis
+      - Evakuacijos sistemos UPS
+      classifications:
+        NSIK LF: "%P10"
+        NSIK LT: MA
+        NSIK LK: RBA
+      stages:
+        s2: *stageS2_unique
+        s3: *stageS3_visible_unique_electrical
