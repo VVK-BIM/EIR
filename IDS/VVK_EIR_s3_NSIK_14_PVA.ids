@@ -1,0 +1,3193 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ids xmlns="http://standards.buildingsmart.org/IDS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/1.0/ids.xsd">
+    <info>
+        <title>VVK2 IDS</title>
+        <copyright>Vilniaus Vystymo Kompanija, 2024</copyright>
+        <version>0.2</version>
+        <description />
+        <author>bim@vilniausvystymas.lt</author>
+        <date>2024-08-30</date>
+        <purpose>Stadija s3</purpose>
+        <milestone>s3</milestone>
+    </info>
+    <specifications>
+        <specification name="NSIK B" ifcVersion="IFC2X3" identifier="VVK-B0001" description="" instructions="">
+            <applicability minOccurs="0" maxOccurs="unbounded">
+                <entity>
+                    <name>
+                        <simpleValue>IfcBuildingElement</simpleValue>
+                    </name>
+                </entity>
+            </applicability>
+            <requirements>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeB</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>*</simpleValue>
+                    </value>
+                </property>
+            </requirements>
+        </specification>
+        <specification name="NSIK E" ifcVersion="IFC2X3" identifier="VVK-B0002" description="" instructions="">
+            <applicability minOccurs="0" maxOccurs="unbounded">
+                <entity>
+                    <name>
+                        <simpleValue>IfcBuildingElement</simpleValue>
+                    </name>
+                </entity>
+            </applicability>
+            <requirements>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeE</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>*</simpleValue>
+                    </value>
+                </property>
+            </requirements>
+        </specification>
+        <specification name="NSIK LF" ifcVersion="IFC2X3" identifier="VVK-B0003" description="" instructions="">
+            <applicability minOccurs="0" maxOccurs="unbounded">
+                <entity>
+                    <name>
+                        <simpleValue>IfcBuildingElement</simpleValue>
+                    </name>
+                </entity>
+            </applicability>
+            <requirements>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLF</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>*</simpleValue>
+                    </value>
+                </property>
+            </requirements>
+        </specification>
+        <specification name="NSIK LT" ifcVersion="IFC2X3" identifier="VVK-B0004" description="" instructions="">
+            <applicability minOccurs="0" maxOccurs="unbounded">
+                <entity>
+                    <name>
+                        <simpleValue>IfcBuildingElement</simpleValue>
+                    </name>
+                </entity>
+            </applicability>
+            <requirements>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLT</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>*</simpleValue>
+                    </value>
+                </property>
+            </requirements>
+        </specification>
+        <specification name="NSIK LK" ifcVersion="IFC2X3" identifier="VVK-B0005" description="" instructions="">
+            <applicability minOccurs="0" maxOccurs="unbounded">
+                <entity>
+                    <name>
+                        <simpleValue>IfcBuildingElement</simpleValue>
+                    </name>
+                </entity>
+            </applicability>
+            <requirements>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLK</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>*</simpleValue>
+                    </value>
+                </property>
+            </requirements>
+        </specification>
+        <specification name="Įrangos ir/ar kabelių dėklas" ifcVersion="IFC2X3" identifier="VVK-0000001" instructions="">
+            <applicability minOccurs="0" maxOccurs="unbounded">
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLF</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>L</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLT</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>LC</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLK</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>UBA</simpleValue>
+                    </value>
+                </property>
+            </applicability>
+            <requirements>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Height</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Width</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Length</simpleValue>
+                    </baseName>
+                </property>
+            </requirements>
+        </specification>
+        <specification name="Infraraudonųjų spindulių jutiklis" ifcVersion="IFC2X3" identifier="VVK-0000002" instructions="">
+            <applicability minOccurs="0" maxOccurs="unbounded">
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLF</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>L</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLT</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>LE</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLK</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>BRC</simpleValue>
+                    </value>
+                </property>
+            </applicability>
+            <requirements>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Height</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Width</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Length</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Material</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Finish</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Colour</simpleValue>
+                    </baseName>
+                </property>
+            </requirements>
+        </specification>
+        <specification name="Temperatūros jutiklis" ifcVersion="IFC2X3" identifier="VVK-0000003" instructions="">
+            <applicability minOccurs="0" maxOccurs="unbounded">
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLF</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>L</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLT</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>LC</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLK</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>BTA</simpleValue>
+                    </value>
+                </property>
+            </applicability>
+            <requirements>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Height</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Width</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Length</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Material</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Finish</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Colour</simpleValue>
+                    </baseName>
+                </property>
+            </requirements>
+        </specification>
+        <specification name="Dujų jutiklis" ifcVersion="IFC2X3" identifier="VVK-0000004" instructions="">
+            <applicability minOccurs="0" maxOccurs="unbounded">
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLF</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>L</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLT</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>LC</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLK</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>BQA</simpleValue>
+                    </value>
+                </property>
+            </applicability>
+            <requirements>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Height</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Width</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Length</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Material</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Finish</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Colour</simpleValue>
+                    </baseName>
+                </property>
+            </requirements>
+        </specification>
+        <specification name="Drėgmės daviklis" ifcVersion="IFC2X3" identifier="VVK-0000005" instructions="">
+            <applicability minOccurs="0" maxOccurs="unbounded">
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLF</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>L</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLT</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>LC</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLK</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>BMA</simpleValue>
+                    </value>
+                </property>
+            </applicability>
+            <requirements>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Height</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Width</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Length</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Material</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Finish</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Colour</simpleValue>
+                    </baseName>
+                </property>
+            </requirements>
+        </specification>
+        <specification name="Drėgmės jungiklis" ifcVersion="IFC2X3" identifier="VVK-0000006" instructions="">
+            <applicability minOccurs="0" maxOccurs="unbounded">
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLF</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>L</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLT</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>LC</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLK</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>BMB</simpleValue>
+                    </value>
+                </property>
+            </applicability>
+            <requirements>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Height</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Width</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Length</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Material</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Finish</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Colour</simpleValue>
+                    </baseName>
+                </property>
+            </requirements>
+        </specification>
+        <specification name="Srauto daviklis" ifcVersion="IFC2X3" identifier="VVK-0000007" instructions="">
+            <applicability minOccurs="0" maxOccurs="unbounded">
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLF</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>L</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLT</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>LC</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLK</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>BFA</simpleValue>
+                    </value>
+                </property>
+            </applicability>
+            <requirements>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Height</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Width</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Length</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Material</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Finish</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Colour</simpleValue>
+                    </baseName>
+                </property>
+            </requirements>
+        </specification>
+        <specification name="Srauto jungiklis" ifcVersion="IFC2X3" identifier="VVK-0000008" instructions="">
+            <applicability minOccurs="0" maxOccurs="unbounded">
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLF</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>L</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLT</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>LC</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLK</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>BFB</simpleValue>
+                    </value>
+                </property>
+            </applicability>
+            <requirements>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Height</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Width</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Length</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Material</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Finish</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Colour</simpleValue>
+                    </baseName>
+                </property>
+            </requirements>
+        </specification>
+        <specification name="Šviesos daviklis" ifcVersion="IFC2X3" identifier="VVK-0000009" instructions="">
+            <applicability minOccurs="0" maxOccurs="unbounded">
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLF</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>L</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLT</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>LC</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLK</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>BRA</simpleValue>
+                    </value>
+                </property>
+            </applicability>
+            <requirements>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Height</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Width</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Length</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Material</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Finish</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Colour</simpleValue>
+                    </baseName>
+                </property>
+            </requirements>
+        </specification>
+        <specification name="Šviesos detektorius" ifcVersion="IFC2X3" identifier="VVK-0000010" instructions="">
+            <applicability minOccurs="0" maxOccurs="unbounded">
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLF</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>L</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLT</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>LC</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLK</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>BRB</simpleValue>
+                    </value>
+                </property>
+            </applicability>
+            <requirements>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Height</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Width</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Length</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Material</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Finish</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Colour</simpleValue>
+                    </baseName>
+                </property>
+            </requirements>
+        </specification>
+        <specification name="Kietųju dalelių daviklis" ifcVersion="IFC2X3" identifier="VVK-0000011" instructions="">
+            <applicability minOccurs="0" maxOccurs="unbounded">
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLF</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>L</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLT</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>LC</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLK</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>BQE</simpleValue>
+                    </value>
+                </property>
+            </applicability>
+            <requirements>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Height</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Width</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Length</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Material</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Finish</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Colour</simpleValue>
+                    </baseName>
+                </property>
+            </requirements>
+        </specification>
+        <specification name="Kietųju dalelių detektorius" ifcVersion="IFC2X3" identifier="VVK-0000012" instructions="">
+            <applicability minOccurs="0" maxOccurs="unbounded">
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLF</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>L</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLT</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>LC</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLK</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>%BQF10</simpleValue>
+                    </value>
+                </property>
+            </applicability>
+            <requirements>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Height</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Width</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Length</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Material</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Finish</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Colour</simpleValue>
+                    </baseName>
+                </property>
+            </requirements>
+        </specification>
+        <specification name="Medžiagų daviklis" ifcVersion="IFC2X3" identifier="VVK-0000013" instructions="">
+            <applicability minOccurs="0" maxOccurs="unbounded">
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLF</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>L</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLT</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>LC</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLK</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>BZD</simpleValue>
+                    </value>
+                </property>
+            </applicability>
+            <requirements>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Height</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Width</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Length</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Material</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Finish</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Colour</simpleValue>
+                    </baseName>
+                </property>
+            </requirements>
+        </specification>
+        <specification name="Apledėjimo daviklis" ifcVersion="IFC2X3" identifier="VVK-0000014" description="" instructions="">
+            <applicability minOccurs="0" maxOccurs="unbounded">
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLF</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>L</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLT</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>LC</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLK</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>%BZD0110</simpleValue>
+                    </value>
+                </property>
+            </applicability>
+            <requirements>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Height</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Width</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Length</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Material</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Finish</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Colour</simpleValue>
+                    </baseName>
+                </property>
+            </requirements>
+        </specification>
+        <specification name="Lygio daviklis" ifcVersion="IFC2X3" identifier="VVK-0000015" instructions="">
+            <applicability minOccurs="0" maxOccurs="unbounded">
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLF</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>L</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLT</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>LC</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLK</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>BLA</simpleValue>
+                    </value>
+                </property>
+            </applicability>
+            <requirements>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Height</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Width</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Length</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Material</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Finish</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Colour</simpleValue>
+                    </baseName>
+                </property>
+            </requirements>
+        </specification>
+        <specification name="Lygio jungiklis" ifcVersion="IFC2X3" identifier="VVK-0000016" instructions="">
+            <applicability minOccurs="0" maxOccurs="unbounded">
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLF</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>L</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLT</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>LC</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLK</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>BLB</simpleValue>
+                    </value>
+                </property>
+            </applicability>
+            <requirements>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Height</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Width</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Length</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Material</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Finish</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Colour</simpleValue>
+                    </baseName>
+                </property>
+            </requirements>
+        </specification>
+        <specification name="Meteorologinė stotelė" ifcVersion="IFC2X3" identifier="VVK-0000017" description="" instructions="">
+            <applicability minOccurs="0" maxOccurs="unbounded">
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLF</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>L</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLT</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>LC</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLK</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>%BUA1010</simpleValue>
+                    </value>
+                </property>
+            </applicability>
+            <requirements>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Height</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Width</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Length</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Material</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Finish</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Colour</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElectricalDeviceCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NominalPowerConsumption</simpleValue>
+                    </baseName>
+                </property>
+            </requirements>
+        </specification>
+        <specification name="Asmens detektorius" ifcVersion="IFC2X3" identifier="VVK-0000018" instructions="">
+            <applicability minOccurs="0" maxOccurs="unbounded">
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLF</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>L</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLT</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>LC</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLK</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>BZC</simpleValue>
+                    </value>
+                </property>
+            </applicability>
+            <requirements>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Height</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Width</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Length</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Material</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Finish</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Colour</simpleValue>
+                    </baseName>
+                </property>
+            </requirements>
+        </specification>
+        <specification name="Valdymo blokas" ifcVersion="IFC2X3" identifier="VVK-0000019" instructions="">
+            <applicability minOccurs="0" maxOccurs="unbounded">
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLF</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>L</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLT</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>LC</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLK</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>KEB</simpleValue>
+                    </value>
+                </property>
+            </applicability>
+            <requirements>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Height</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Width</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Length</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Material</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Finish</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Colour</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElectricalDeviceCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NominalPowerConsumption</simpleValue>
+                    </baseName>
+                </property>
+            </requirements>
+        </specification>
+        <specification name="Dažnio keitiklis" ifcVersion="IFC2X3" identifier="VVK-0000020" instructions="">
+            <applicability minOccurs="0" maxOccurs="unbounded">
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLF</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>L</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLT</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>LC</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLK</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>TAC</simpleValue>
+                    </value>
+                </property>
+            </applicability>
+            <requirements>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Height</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Width</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Length</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElectricalDeviceCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NominalPowerConsumption</simpleValue>
+                    </baseName>
+                </property>
+            </requirements>
+        </specification>
+        <specification name="Kintamos srovės maitinimo blokas" ifcVersion="IFC2X3" identifier="VVK-0000021" instructions="">
+            <applicability minOccurs="0" maxOccurs="unbounded">
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLF</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>L</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLT</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>LC</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLK</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>TCA</simpleValue>
+                    </value>
+                </property>
+            </applicability>
+            <requirements>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Height</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Width</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Length</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElectricalDeviceCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NominalPowerConsumption</simpleValue>
+                    </baseName>
+                </property>
+            </requirements>
+        </specification>
+        <specification name="Pastovios srovės maitinimo blokas" ifcVersion="IFC2X3" identifier="VVK-0000022" instructions="">
+            <applicability minOccurs="0" maxOccurs="unbounded">
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLF</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>L</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLT</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>LC</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLK</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>TCB</simpleValue>
+                    </value>
+                </property>
+            </applicability>
+            <requirements>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Height</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Width</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Length</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElectricalDeviceCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NominalPowerConsumption</simpleValue>
+                    </baseName>
+                </property>
+            </requirements>
+        </specification>
+        <specification name="Korpusas (skydelis)" ifcVersion="IFC2X3" identifier="VVK-0000023" instructions="">
+            <applicability minOccurs="0" maxOccurs="unbounded">
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLF</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>L</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLT</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>LC</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLK</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>UCA</simpleValue>
+                    </value>
+                </property>
+            </applicability>
+            <requirements>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Height</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Width</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Length</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Material</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Finish</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Colour</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElectricalDeviceCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NominalPowerConsumption</simpleValue>
+                    </baseName>
+                </property>
+            </requirements>
+        </specification>
+        <specification name="Elektrinė pavara ar variklis" ifcVersion="IFC2X3" identifier="VVK-0000024" instructions="">
+            <applicability minOccurs="0" maxOccurs="unbounded">
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLF</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>L</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLT</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>LC</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLK</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>MAA</simpleValue>
+                    </value>
+                </property>
+            </applicability>
+            <requirements>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Height</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Width</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Length</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElectricalDeviceCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NominalPowerConsumption</simpleValue>
+                    </baseName>
+                </property>
+            </requirements>
+        </specification>
+    </specifications>
+</ids>
