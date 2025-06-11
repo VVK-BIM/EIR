@@ -5,180 +5,56 @@
 # 11.10 - Elektroniniai ryšiai. Lauko tinklai
 #
 
+
 prop_g:   &prop_g
-  - Pset_QuantityTakeOff.Heigth
-  - Pset_QuantityTakeOff.Width
-  - Pset_QuantityTakeOff.Length
+  Pset_QuantityTakeOff.Height: {}
+  Pset_QuantityTakeOff.Width: {}
+  Pset_QuantityTakeOff.Length: {}
+
+prop_ga:   &prop_g_area
+  <<: *prop_g
+  Pset_QuantityTakeOff.Area: {}
 
 prop:     &prop
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  
-prop_s2u: &prop_s2_u
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Tag
+  Name: {}
+  Type: {}
+  Pset_ConstructionAdministration.SpecificationSectionNumber: {}
+  Pset_ElementComponentCommon.Status: {}
 
-prop_s3:  &prop_s3
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Type
-  - Pset_ConstructionAdministration.SpecificationSectionNumber
-  - VVK.Material
-  - Pset_QuantityTakeOff.Heigth
-  - Pset_QuantityTakeOff.Width
-  - Pset_QuantityTakeOff.Length
+prop_mat:     &prop_material
+  VVK.Material: {}
 
-prop_s3z:  &prop_s3_zone
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Pset_QuantityTakeOff.Width
-  - Pset_QuantityTakeOff.Area
-  
-prop_s3:  &prop_s3_pipe
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Type
-  - Pset_ConstructionAdministration.SpecificationSectionNumber
-  - VVK.Material
-  - Pset_QuantityTakeOff.Diameter
-  - Pset_QuantityTakeOff.Length
-prop_vu:  &prop_s3_v
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Type
-  - Pset_ConstructionAdministration.SpecificationSectionNumber
-  - VVK.Material
-  - Pset_QuantityTakeOff.Heigth
-  - Pset_QuantityTakeOff.Width
-  - Pset_QuantityTakeOff.Length
-  - VVK.Finish
-  - VVK.Colour
-  
-prop_s3u: &prop_s3_u
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Type
-  - Tag
-  - Pset_ConstructionAdministration.SpecificationSectionNumber
-  - VVK.Material
-  - Pset_QuantityTakeOff.Heigth
-  - Pset_QuantityTakeOff.Width
-  - Pset_QuantityTakeOff.Length
-  
-prop_vu:  &prop_s3_vu
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Type
-  - Tag
-  - Pset_ConstructionAdministration.SpecificationSectionNumber
-  - VVK.Material
-  - Pset_QuantityTakeOff.Heigth
-  - Pset_QuantityTakeOff.Width
-  - Pset_QuantityTakeOff.Length
-  - VVK.Finish
-  - VVK.Colour
+prop_vis:     &prop_vis
+  <<: *prop_material
+  VVK.Finish: {}
+  VVK.Colour: {}
 
-prop_ue:  &prop_s3_ue
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Type
-  - Tag
-  - Pset_ConstructionAdministration.SpecificationSectionNumber
-  - VVK.Material
-  - Pset_QuantityTakeOff.Heigth
-  - Pset_QuantityTakeOff.Width
-  - Pset_QuantityTakeOff.Length
-  - Pset_ElectricalDeviceCommon.NominalPowerConsumption
-  
-prop_vue: &prop_s3_vue
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Type
-  - Tag
-  - Pset_ConstructionAdministration.SpecificationSectionNumber
-  - VVK.Material
-  - Pset_QuantityTakeOff.Heigth
-  - Pset_QuantityTakeOff.Width
-  - Pset_QuantityTakeOff.Length
-  - VVK.Finish
-  - VVK.Colour
-  - Pset_ElectricalDeviceCommon.NominalPowerConsumption
-  
-prop_vue: &prop_s3_vue_x
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Type
-  - Tag
-  - Pset_ConstructionAdministration.SpecificationSectionNumber
-  - VVK.Material
-  - Pset_QuantityTakeOff.Heigth
-  - Pset_QuantityTakeOff.Width
-  - Pset_QuantityTakeOff.Length
-  - VVK.Finish
-  - VVK.Colour
-  - Pset_ElectricalDeviceCommon.NominalPowerConsumption
-  - Pset_ElectricalDeviceCommon.IsExternal
-  
-  
-s2:         &stageS2_common
-  lod: 200
-  properties: *prop
-  
-s2_u:       &stageS2_unique
-  lod: 200
-  properties: *prop_s2_u
+prop_u:     &prop_u
+  <<: *prop
+  Tag: {}
+  Name: {}
+  Type: {}
+  Pset_ElementComponentCommon.Status: {}
 
-s3:       &stageS3_common
-  lod: 300
-  properties: *prop_s3
-
-s3_pipe:  &stageS3_pipe
-  lod: 300
-  properties: *prop_s3_pipe
+prop_e:     &prop_e
+  Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
+  Pset_ElectricalDeviceCommon.RatedVoltage: {}
+  Pset_ElectricalDeviceCommon.HasProtectiveEarth: {}
   
-s3_zone:  &stageS3_zone
-  lod: 300
-  properties: *prop_s3_zone
-  
-s3_u:     &stageS3_unique
-  lod: 300
-  properties: *prop_s3_u
-
-s3_vu:    &stageS3_visible
-  lod: 300
-  properties: *prop_s3_v
-  
-s3_vu:    &stageS3_visible_unique
-  lod: 300
-  properties: *prop_s3_vu
-
-s3_vue:   &stageS3_visible_unique_electrical
-  lod: 300
-  properties: *prop_s3_vue
-  
-s3_vue_x: &stageS3_visible_unique_electrical_external
-  lod: 300
-  properties: *prop_s3_vue_x
-  
-s3_ue:    &stageS3_unique_electrical
-  lod: 300
-  properties: *prop_s3_ue
+prop_external:   &prop_external
+  Pset_ElectricalDeviceCommon.IsExternal: {}
+  Pset_ElectricalDeviceCommon.IP_Code: {}
+  Pset_ElectricalDeviceCommon.IK_Code: {}
 
 ifc_e:      &type_linear
   - IfcFlowSegment
   - IfcFlowSegmentType
   - IfcFlowSegmentTypeEnum
+  
+ifc_e:      &type_e
+  - IfcDistributionControlElement
+  - IfcDistributionControlElementType
+  - IfcDistributionControlElementTypeEnum
   
 ifc_w:      &type_well
   - IfcFlowTerminal
@@ -220,8 +96,17 @@ LER:
         NSIK LT: HJ
         NSIK LK: XMC
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
         
     - id: Tinklo informacinis ženklas              # visible_unique               NSIK: %M10.HJ.PHD
       examples:
@@ -235,8 +120,17 @@ LER:
         NSIK LT: HJ
         NSIK LK: PHD
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
         
     - id: Tinklo informacinio ženklo laikiklis     # visible_unique               NSIK: %M10.HJ.UBD
       examples:
@@ -250,9 +144,18 @@ LER:
         NSIK LT: HJ
         NSIK LK: UBD
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
-    
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+
     - id: Informacinio ženklo laikiklio pamatas    # unique                       NSIK: %M10.HJ.ULD
       examples:
       - Pamatas
@@ -264,8 +167,17 @@ LER:
         NSIK LT: HJ
         NSIK LK: ULD
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
 
     - id: Duomenų kabelis                          # pipe                         NSIK: %M10.HJ.WGB
       classifications:
@@ -274,8 +186,18 @@ LER:
         NSIK LK: WGB
       ifcType: *type_linear
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_pipe
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: {}
+            <<: *prop_material
+            <<: *prop_external
         
     - id: Duomenų kabelio dėklas                   # pipe                         NSIK: %M10.HJ.UBA
       classifications:
@@ -284,10 +206,20 @@ LER:
         NSIK LK: UBA
       ifcType: *type_linear
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_pipe
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: {}
+            <<: *prop_material
+            <<: *prop_external
         
-        - id: Optinio tinklo komutatorius                  # visible_unique_electrical             NSIK: %M10.HJ.KGA
+    - id: Optinio tinklo komutatorius                  # visible_unique_electrical             NSIK: %M10.HJ.KGA
       examples:
       - Optikos panelė
       classifications:
@@ -296,8 +228,17 @@ LER:
         NSIK LK: KGA
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
         
     - id: Optinio tinklo maršrutizatorius          # visible_unique_electrical    NSIK: %M10.HJ.KGB
       examples:
@@ -309,8 +250,17 @@ LER:
         NSIK LK: KGB
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
     
     - id: Optinio tinklo kartotuvas                # visible_unique_electrical    NSIK: %M10.HJ.KGC
       examples:
@@ -322,10 +272,19 @@ LER:
         NSIK LK: KGC
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
         
-    - id: Optinis transiveris                      # visible_unique_electrical    NSIK: %M10.HJ.TFD
+    - id: Optinis transiveris                      # unique_electrical    NSIK: %M10.HJ.TFD
       examples:
       - Optinis keitiklis
       classifications:
@@ -334,8 +293,17 @@ LER:
         NSIK LK: TFD
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
         
     - id: Optinis kabelis                          # pipe                         NSIK: %M10.HJ.WHA
       classifications:
@@ -344,28 +312,62 @@ LER:
         NSIK LK: WHA
       ifcType: *type_linear
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_pipe
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: {}
+            <<: *prop_material
+            <<: *prop_external
     
     - id: Optinė jungtis                           # visible_unique               NSIK: %M10.HJ.XHA
       classifications:
         NSIK LF: "%M10"
         NSIK LT: HJ
         NSIK LK: XHA
-      ifcType: *type_linear
+      ifcType:
+      - IfcEquipmentElement
+      - IfcDistributionElement
+      - IfcDistributionElementType
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_visible_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
         
     - id: Daugialypė jungtis                       # visible_unique               NSIK: %M10.HJ.XZA
       classifications:
         NSIK LF: "%M10"
         NSIK LT: HJ
         NSIK LK: XZA
-      ifcType: *type_linear
+      ifcType:
+      - IfcEquipmentElement
+      - IfcDistributionElement
+      - IfcDistributionElementType
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_visible_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
     
     - id: Maršrutizatorius                         # unique_electrical            NSIK: %M10.HJ.KED
       examples:
@@ -376,41 +378,84 @@ LER:
         NSIK LK: KED
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique_electrical
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
         
     - id: Ryšių kabelis                            # unique_electrical            NSIK: %M10.HJ.WGB
       classifications:
         NSIK LF: "%M10"
         NSIK LT: HJ
         NSIK LK: WGB
-      ifcType: *type_e
+      ifcType: *type_linear
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_pipe
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: {}
+            <<: *prop_material
+            <<: *prop_external
         
     - id: Ryšių įrangos lizdas                     # unique_electrical            NSIK: %M10.HJ.XGA
       classifications:
         NSIK LF: "%M10"
         NSIK LT: HJ
         NSIK LK: XGA
-      ifcType: *type_e
+      ifcType:
+      - IfcEquipmentElement
+      - IfcDistributionElement
+      - IfcDistributionElementType
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
     
     - id: Ryšių įrangos komutacinė panelė          # unique_electrical            NSIK: %M10.HJ.XGC
       examples:
       - Plintas
       - Komutacinė panelė
+      ifcType: 
+      - IfcEquipmentElement
+      - IfcDistributionElement
+      - IfcDistributionElementType
       classifications:
         NSIK LF: "%M10"
         NSIK LT: HJ
         NSIK LK: XGC
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
         
     - id: Dengianti panelė                         # unique_electrical            NSIK: %M10.HJ.NAB
       examples:
@@ -419,12 +464,18 @@ LER:
         NSIK LF: "%M10"
         NSIK LT: HJ
         NSIK LK: NAB
-      ifcType: *type_e
+      ifcType: 
+      - IfcEquipmentElement
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
-    
-    
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_g
+            <<: *prop_vis
     
     - id: Išplėtimo modulis                        # unique_electrical            NSIK: %M10.HJ.%KEB20
       examples:
@@ -435,20 +486,49 @@ LER:
         NSIK LK: "%KEB20"
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique_electrical
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
 
     - id: Korpusas (skydelis)                      # visible_unique_electrical    NSIK: %M10.HJ.UCA
       examples:
       - Ryšių skydelis
       - Ryšių spinta
+      ifcType: 
+        '2x3':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        '4':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        - IfcDistributionChamberElement
+        - IfcDistributionChamberElementType
       classifications:
         NSIK LF: "%M10"
         NSIK LT: HJ
         NSIK LK: UCA
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
         
     - id: Elektros skirstytuvas                    # visible_unique_electrical    NSIK: %M10.HJ.XDE
       examples:
@@ -458,9 +538,20 @@ LER:
         NSIK LF: "%M10"
         NSIK LT: HJ
         NSIK LK: XDE
+      ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
         
     - id: Nepertraukiamo maitinimo šaltinis        # visible_unique_electrical    NSIK: %M10.HJ.RBA
       examples:
@@ -470,13 +561,24 @@ LER:
         NSIK LF: "%M10"
         NSIK LT: HJ
         NSIK LK: RBA
+      ifcType:
+      - IfcElectricalElement
+      - IfcElectricFlowStorageDeviceTypeEnum
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
 
-        
-        
-        
+
     - id: Duomenų kabelių trasos apsaugos zona     # zone                         NSIK: <E>DCB <L>%M10.HJ
       classifications:
         NSIK LF: "%M10"
@@ -486,5 +588,11 @@ LER:
       - IfcSpace
       - IfcSpaceType
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_zone
+        s2: 
+          Pset_QuantityTakeOff.Width: {}
+          Pset_QuantityTakeOff.Area: {}
+        s3: 
+          Pset_QuantityTakeOff.Width: {}
+          Pset_QuantityTakeOff.Area: {}
+          Pset_ElementComponentCommon.Status: {}
+          
