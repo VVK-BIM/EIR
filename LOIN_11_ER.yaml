@@ -6,20 +6,47 @@
 #
 
 prop_g:   &prop_g
-  - Pset_QuantityTakeOff.Heigth
-  - Pset_QuantityTakeOff.Width
-  - Pset_QuantityTakeOff.Length
+  Pset_QuantityTakeOff.Height: {}
+  Pset_QuantityTakeOff.Width: {}
+  Pset_QuantityTakeOff.Length: {}
+
+prop_ga:   &prop_g_area
+  <<: *prop_g
+  Pset_QuantityTakeOff.Area: {}
 
 prop:     &prop
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
+  Name: {}
+  Type: {}
+  Pset_ConstructionAdministration.SpecificationSectionNumber: {}
+  Pset_ElementComponentCommon.Status: {}
+
+prop_mat:     &prop_material
+  VVK.Material: {}
+
+prop_vis:     &prop_vis
+  <<: *prop_material
+  VVK.Finish: {}
+  VVK.Colour: {}
+
+prop_u:     &prop_u
+  <<: *prop
+  Tag: {}
+  Name: {}
+  Type: {}
+  Pset_ElementComponentCommon.Status: {}
+
+prop_e:     &prop_e
+  Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
+  Pset_ElectricalDeviceCommon.RatedVoltage: {}
+  Pset_ElectricalDeviceCommon.HasProtectiveEarth: {}
   
-prop_s2u: &prop_s2_u
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Tag
+prop_external:   &prop_external
+  Pset_ElectricalDeviceCommon.IsExternal: {}
+  Pset_ElectricalDeviceCommon.IP_Code: {}
+  Pset_ElectricalDeviceCommon.IK_Code: {}
+  
+
+
 
 prop_s3:  &prop_s3
   - Name
@@ -124,46 +151,6 @@ prop_vue: &prop_s3_vue_x
   - Pset_ElectricalDeviceCommon.NominalPowerConsumption
   - Pset_ElectricalDeviceCommon.IsExternal
   
-  
-s2:         &stageS2_common
-  lod: 200
-  properties: *prop
-  
-s2_u:       &stageS2_unique
-  lod: 200
-  properties: *prop_s2_u
-
-s3:       &stageS3_common
-  lod: 300
-  properties: *prop_s3
-
-s3_pipe:  &stageS3_pipe
-  lod: 300
-  properties: *prop_s3_pipe
-  
-s3_u:     &stageS3_unique
-  lod: 300
-  properties: *prop_s3_u
-
-s3_vu:    &stageS3_visible
-  lod: 300
-  properties: *prop_s3_v
-  
-s3_vu:    &stageS3_visible_unique
-  lod: 300
-  properties: *prop_s3_vu
-
-s3_vue:   &stageS3_visible_unique_electrical
-  lod: 300
-  properties: *prop_s3_vue
-  
-s3_vue_x: &stageS3_visible_unique_electrical_external
-  lod: 300
-  properties: *prop_s3_vue_x
-  
-s3_ue:    &stageS3_unique_electrical
-  lod: 300
-  properties: *prop_s3_ue
 
 ifc_e:      &type_linear
   - IfcFlowSegment
@@ -211,23 +198,41 @@ ER:
         NSIK LK: UBA
       ifcType: *type_linear
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_common
-
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: {}
+            <<: *prop_material
+            <<: *prop_external
 
     - id: Ryšių prietaisas                             # visible_unique_electrical             NSIK: M.HJ.KEB
       examples:
       - Kontroleris
       - Valdiklis
-      memo: Kitos paskirties ryšių prietaisas
+      memo: Kitos paskirties aktyvus ryšių prietaisas
       classifications:
         NSIK LF: M
         NSIK LT: HJ
         NSIK LK: KEC
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
      
     - id: Telefono komutatorius                        # visible_unique                        NSIK: M.HJ.%KFE10
       classifications:
@@ -238,8 +243,17 @@ ER:
       - Telefonų stotis
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
         
     - id: PBX telefono komutatorius                    # visible_unique                        NSIK: M.HJ.%KFE11
       classifications:
@@ -251,8 +265,17 @@ ER:
       - PBX stotelė
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
     
     - id: Telefonas                                    # visible_unique                        NSIK: M.HJ.TFE
       classifications:
@@ -264,8 +287,16 @@ ER:
       - Vietinio ryšio telefono aparatas
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_external
     
     - id: Optinio tinklo komutatorius                  # visible_unique_electrical             NSIK: M.HJ.KGA
       examples:
@@ -276,8 +307,17 @@ ER:
         NSIK LK: KGA
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
         
     - id: Optinio tinklo maršrutizatorius              # visible_unique_electrical             NSIK: M.HJ.KGB
       examples:
@@ -289,8 +329,17 @@ ER:
         NSIK LK: KGB
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
     
     - id: Optinio tinklo kartotuvas                    # visible_unique_electrical             NSIK: M.HJ.KGC
       examples:
@@ -302,8 +351,17 @@ ER:
         NSIK LK: KGC
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
         
     - id: Optinis transiveris                          # visible_unique_electrical             NSIK: M.HJ.TFD
       examples:
@@ -314,8 +372,17 @@ ER:
         NSIK LK: TFD
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
         
     - id: Optinis kabelis                              # pipe                                  NSIK: M.HJ.WHA
       classifications:
@@ -324,28 +391,62 @@ ER:
         NSIK LK: WHA
       ifcType: *type_linear
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_pipe
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: {}
+            <<: *prop_material
+            <<: *prop_external
     
     - id: Optinė jungtis                               # visible_unique                        NSIK: M.HJ.XHA
       classifications:
         NSIK LF: M
         NSIK LT: HJ
         NSIK LK: XHA
-      ifcType: *type_linear
+      ifcType:
+      - IfcEquipmentElement
+      - IfcDistributionElement
+      - IfcDistributionElementType
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_visible_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
         
     - id: Daugialypė jungtis                           # visible_unique                        NSIK: M.HJ.XZA
       classifications:
         NSIK LF: M
         NSIK LT: HJ
         NSIK LK: XZA
-      ifcType: *type_linear
+      ifcType:
+      - IfcEquipmentElement
+      - IfcDistributionElement
+      - IfcDistributionElementType
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_visible_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
     
     - id: Maršrutizatorius                             # unique_electrical                     NSIK: M.HJ.KED
       examples:
@@ -356,28 +457,59 @@ ER:
         NSIK LK: KED
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique_electrical
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
         
     - id: Ryšių kabelis                                # unique_electrical                     NSIK: M.HJ.WGB
       classifications:
         NSIK LF: M
         NSIK LT: HJ
         NSIK LK: WGB
-      ifcType: *type_e
+      ifcType: *type_linear
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_pipe
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: {}
+            <<: *prop_material
+            <<: *prop_external
         
     - id: Ryšių įrangos lizdas                         # unique_electrical                     NSIK: M.HJ.XGA
       classifications:
         NSIK LF: M
         NSIK LT: HJ
         NSIK LK: XGA
-      ifcType: *type_e
+      ifcType:
+      - IfcEquipmentElement
+      - IfcDistributionElement
+      - IfcDistributionElementType
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
     
     - id: Ryšių įrangos komutacinė panelė              # unique_electrical                     NSIK: M.HJ.XGC
       examples:
@@ -387,10 +519,21 @@ ER:
         NSIK LF: M
         NSIK LT: HJ
         NSIK LK: XGC
-      ifcType: *type_e
+      ifcType: 
+      - IfcEquipmentElement
+      - IfcDistributionElement
+      - IfcDistributionElementType
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
         
     - id: Dengianti panelė                             # unique_electrical                     NSIK: M.HJ.NAB
       examples:
@@ -399,13 +542,19 @@ ER:
         NSIK LF: M
         NSIK LT: HJ
         NSIK LK: NAB
-      ifcType: *type_e
+      ifcType: 
+      - IfcEquipmentElement
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
-    
-    
-    
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_g
+            <<: *prop_vis
+
     - id: Išplėtimo modulis                            # unique_electrical                     NSIK: M.HJ.%KEB20
       examples:
       - Įrangos išplėtimo modulis
@@ -415,48 +564,98 @@ ER:
         NSIK LK: "%KEB20"
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique_electrical
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
 
     - id: Korpusas (skydelis)                          # visible_unique_electrical             NSIK: M.HJ.UCA
       examples:
       - Ryšių skydelis
       - Ryšių spinta
+      ifcType: 
+        '2x3':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        '4':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        - IfcDistributionChamberElement
+        - IfcDistributionChamberElementType
       classifications:
         NSIK LF: M
         NSIK LT: HJ
         NSIK LK: UCA
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
         
     - id: Elektros skirstytuvas                        # visible_unique_electrical             NSIK: M.HJ.XDE
       examples:
       - Ryšių sistemos elektros šakotuvas
       - Elektros šakotuvas ryšių sistemos įrangai
+      ifcType: *type_e
       classifications:
         NSIK LF: M
         NSIK LT: HJ
         NSIK LK: XDE
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
-        
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
     - id: Nepertraukiamo maitinimo šaltinis            # visible_unique_electrical             NSIK: M.HJ.RBA
       examples:
       - Ryšiu sistemos nepertraukiamo maitinimo šaltinis
       - Ryšių sistemos UPS
+      ifcType:
+      - IfcElectricalElement
+      - IfcElectricFlowStorageDeviceTypeEnum
       classifications:
         NSIK LF: M
         NSIK LT: HJ
         NSIK LK: RBA
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
 
-
-
-    
 # evakuacijos valdymas
     - id: Garsiakalbis                                 # visible_unique_electrical_external    NSIK: %P10.MA.PJA      Uc: Pr_70_75_06_50
       classifications:
@@ -466,11 +665,21 @@ ER:
         Uniclass: Pr_70_75_06_50
       examples:
       - Evakuacijos valdymo sistemos garsiakalbis
-      ifcType: *type_e
+      ifcType: 
+      - IfcAudioVisualAppliance
+      - IfcAudioVisualApplianceType
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical_external
-
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
 
     - id: Evakuacijos sistemos valdymo blokas          # visible_unique_electrical             NSIK: %P10.MA.%KEB10
       examples:
@@ -482,35 +691,74 @@ ER:
         NSIK LK: "%KEB10"
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
-    
-        
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
     - id: Evakuacijos sistemos korpusas (skydelis)     # visible_unique_electrical             NSIK: %P10.MA.UCA
       examples:
       - Evakuacijos sistemos prietaisų dėžė
       - Evakuacijos sistemos spinta
       - Evakuacijos valdymo sistemos įrenginių spinta
+      ifcType: 
+        '2x3':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        '4':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        - IfcDistributionChamberElement
+        - IfcDistributionChamberElementType
       classifications:
         NSIK LF: "%P10"
         NSIK LT: MA
         NSIK LK: UCA
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
     
     - id: Elektros skirstytuvas                        # visible_unique_electrical             NSIK: %P10.MA.XDE
       examples:
       - Evakuacijos sistemos sistemos elektros šakotuvas
       - Elektros šakotuvas evakuacijos valdymo sistemos įrangai
+      ifcType: *type_e
       classifications:
         NSIK LF: "%P10"
         NSIK LT: MA
         NSIK LK: XDE
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
-        
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
     - id: Nepertraukiamo maitinimo šaltinis            # visible_unique_electrical             NSIK: %P10.MA.RBA
       examples:
       - Evakuacijos sistemos nepertraukiamo maitinimo šaltinis
@@ -519,6 +767,19 @@ ER:
         NSIK LF: "%P10"
         NSIK LT: MA
         NSIK LK: RBA
+      ifcType:
+      - IfcElectricalElement
+      - IfcElectricFlowStorageDeviceTypeEnum
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external

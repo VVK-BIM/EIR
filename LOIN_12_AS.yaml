@@ -5,16 +5,49 @@
 # 12 - Apsauginės signalizacijos
 #
 
+
 prop_g:   &prop_g
-  - Pset_QuantityTakeOff.Heigth
-  - Pset_QuantityTakeOff.Width
-  - Pset_QuantityTakeOff.Length
+  Pset_QuantityTakeOff.Height: {}
+  Pset_QuantityTakeOff.Width: {}
+  Pset_QuantityTakeOff.Length: {}
+
+prop_ga:   &prop_g_area
+  <<: *prop_g
+  Pset_QuantityTakeOff.Area: {}
 
 prop:     &prop
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
+  Name: {}
+  Type: {}
+  Pset_ConstructionAdministration.SpecificationSectionNumber: {}
+  Pset_ElementComponentCommon.Status: {}
+
+prop_mat:     &prop_material
+  VVK.Material: {}
+
+prop_vis:     &prop_vis
+  <<: *prop_material
+  VVK.Finish: {}
+  VVK.Colour: {}
+
+prop_u:     &prop_u
+  <<: *prop
+  Tag: {}
+  Name: {}
+  Type: {}
+  Pset_ElementComponentCommon.Status: {}
+
+prop_e:     &prop_e
+  Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
+  Pset_ElectricalDeviceCommon.RatedVoltage: {}
+  Pset_ElectricalDeviceCommon.HasProtectiveEarth: {}
   
+prop_external:   &prop_external
+  Pset_ElectricalDeviceCommon.IsExternal: {}
+  Pset_ElectricalDeviceCommon.IP_Code: {}
+  Pset_ElectricalDeviceCommon.IK_Code: {}
+  
+
+
 prop_s2u: &prop_s2_u
   - Name
   - System
@@ -114,43 +147,7 @@ prop_vue: &prop_s3_vue_x
   - VVK.Colour
   - Pset_ElectricalDeviceCommon.NominalPowerConsumption
   - Pset_ElectricalDeviceCommon.IsExternal
-  
-  
-s2:       &stageS2_common
-  lod: 200
-  properties: *prop
-  
-s2_u:     &stageS2_unique
-  lod: 200
-  properties: *prop_s2_u
 
-s3:       &stageS3_common
-  lod: 300
-  properties: *prop_s3
-  
-s3_u:     &stageS3_unique
-  lod: 300
-  properties: *prop_s3_u
-
-s3_vu:    &stageS3_visible
-  lod: 300
-  properties: *prop_s3_v
-  
-s3_vu:    &stageS3_visible_unique
-  lod: 300
-  properties: *prop_s3_vu
-
-s3_vue:   &stageS3_visible_unique_electrical
-  lod: 300
-  properties: *prop_s3_vue
-  
-s3_vue_x:   &stageS3_visible_unique_electrical_external
-  lod: 300
-  properties: *prop_s3_vue_x
-  
-s3_ue:    &stageS3_unique_electrical
-  lod: 300
-  properties: *prop_s3_ue
 
 ifc_e:    &type_linear
   - IfcFlowSegment
@@ -161,7 +158,11 @@ ifc_e:    &type_e
   - IfcDistributionControlElement
   - IfcDistributionControlElementType
   - IfcDistributionControlElementTypeEnum
-  
+
+ifc_sens:    &type_sensor
+  - IfcSensor
+  - IfcSensorType
+  - IfcSensorTypeEnum
 
 AS:
     id: "12"
@@ -197,9 +198,18 @@ AS:
         NSIK LK: UBA
       ifcType: *type_linear
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_common
-
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: {}
+            <<: *prop_material
+            <<: *prop_external
 
     - id: Signalizacijos valdymo blokas                # visible_unique_electrical             NSIK: P.LE.KEB
       examples:
@@ -215,9 +225,19 @@ AS:
         NSIK LK: KEB
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
-     
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
     - id: Avarinis paspaudimo mygtukas                 # visible_unique                        NSIK: P.LE.SJB
       classifications:
         NSIK LF: P
@@ -225,12 +245,20 @@ AS:
         NSIK LK: SJB
       examples:
       - Pavojaus mygtukas
-      ifcType: *type_e
+      ifcType: *type_sensor
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
-        
-    
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+
     - id: Signalizacijos centralė                      # visible_unique_electrical             NSIK: P.LE.%KEB10
       examples:
       - Signalizacijos centralė
@@ -241,9 +269,19 @@ AS:
         NSIK LK: "%KEB10"
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
-        
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
     - id: Išplėtimo modulis                            # unique_electrical                     NSIK: P.LE.%KEB20
       examples:
       - Signalizacijos centralės išplėtimo modulis
@@ -253,20 +291,40 @@ AS:
         NSIK LK: "%KEB20"
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique_electrical
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
 
     - id: Korpusas (skydelis)                          # visible_unique_electrical             NSIK: P.LE.UCA
       examples:
       - Prietaisų dėžė
       - Automatikos spinta
+      ifcType: *type_e
       classifications:
         NSIK LF: P
         NSIK LT: LE
         NSIK LK: UCA
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
 
     - id: Judesio daviklis                             # visible_unique                        NSIK: P.LE.%BGB30
       classifications:
@@ -275,11 +333,20 @@ AS:
         NSIK LK: "%BGB30"
       examples:
       - PIR daviklis
-      ifcType: *type_e
+      ifcType: *type_sensor
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
-    
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+
     - id: Vibracijos daviklis                          # visible_unique                        NSIK: P.LE.BSG
       classifications:
         NSIK LF: P
@@ -288,11 +355,20 @@ AS:
       examples:
       - Seisminis daviklis
       - Smūgio daviklis
-      ifcType: *type_e
+      ifcType: *type_sensor
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
-        
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+
     - id: Stiklo dūžio daviklis                        # visible_unique                        NSIK: P.LE.%BXB10
       classifications:
         NSIK LF: P
@@ -300,11 +376,20 @@ AS:
         NSIK LK: "%BXB10"
       examples:
       - Dūžio daviklis
-      ifcType: *type_e
+      ifcType: *type_sensor
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
-    
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+
     - id: Optinis spindulinis jutiklis                 # visible_unique                        NSIK: P.LE.%BQF3010
       classifications:
         NSIK LF: P
@@ -312,11 +397,20 @@ AS:
         NSIK LK: "%BQF3010"
       examples:
       - Lazerinis barjeras
-      ifcType: *type_e
+      ifcType: *type_sensor
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
-    
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+
     - id: Veidrodis                                    # visible                               NSIK: P.LE.WHD
       classifications:
         NSIK LF: P
@@ -324,11 +418,20 @@ AS:
         NSIK LK: WHD
       examples:
       - Atšvaitas spinduliniam optiniam jutikliui
-      ifcType: *type_e
+      ifcType: *type_sensor
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_visible
-        
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+
     - id: Infraraudonųjų spindulių jutiklis            # visible_unique                        NSIK: P.LE.BRC
       classifications:
         NSIK LF: P
@@ -336,12 +439,19 @@ AS:
         NSIK LK: BRC
       examples:
       - Šiluminis daviklis
-      ifcType: *type_e
+      ifcType: *type_sensor
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
-        
-        
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+
     - id: Magnetinio lauko jutiklis                    # visible_unique                        NSIK: P.LE.BED
       classifications:
         NSIK LF: P
@@ -349,11 +459,20 @@ AS:
         NSIK LK: BED
       examples:
       - Magnetinis kontaktas
-      ifcType: *type_e
+      ifcType: *type_sensor
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
-        
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+
     - id: Blykstė                                      # visible_unique_electrical_external    NSIK: P.LE.PJA         Uc: Pr_75_80_30_97
       classifications:
         NSIK LF: P
@@ -362,10 +481,22 @@ AS:
         Uniclass: Pr_75_80_30_97
       examples:
       - Apsaugos signalizacijos blykstė
-      ifcType: *type_e
+      ifcType: 
+      - IfcLamp
+      - IfcLampType
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical_external
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
 
     - id: Sirena                                       # visible_unique_electrical_external    NSIK: P.LE.PJB         Uc: Pr_75_80_30_30
       classifications:
@@ -375,11 +506,23 @@ AS:
         Uniclass: Pr_75_80_30_30
       examples:
       - Apsaugos signalizacijos sirena
-      ifcType: *type_e
+      ifcType: 
+      - IfcAlarm
+      - IfcAlarmType
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical_external
-    
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
     - id: Sirena su blykste                            # visible_unique_electrical_external    NSIK: P.LE.%PJB1010    Uc: Pr_75_50_20_30
       classifications:
         NSIK LF: P
@@ -388,78 +531,153 @@ AS:
         Uniclass: Pr_75_50_20_30
       examples:
       - Apsaugos signalizacijos sirena su blykste
-      ifcType: *type_e
+      ifcType: 
+      - IfcAlarm
+      - IfcAlarmType
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical_external
-    
-# evakuacijos valdymas
-    - id: Garsiakalbis                                 # visible_unique_electrical_external    NSIK: %P10.MA.PJA      Uc: Pr_70_75_06_50
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
+# praėjimo kontrolė
+    - id: EM kortelių skaitytuvas                                 # visible_unique_electrical_external    NSIK: P.LE.BYB      Uc: 
       classifications:
-        NSIK LF: "%P10"
-        NSIK LT: MA
-        NSIK LK: PJA
-        Uniclass: Pr_70_75_06_50
+        NSIK LF: P
+        NSIK LT: LE
+        NSIK LK: BYB
+      memo: Skaitytuvai, nepatenkantys į RFID ir NFC technologijas
       examples:
-      - Evakuacijos valdymo sistemos garsiakalbis
-      ifcType: *type_e
+      - Nuotolinis kortelių skaitytuvas
+      ifcType: *type_sensor
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical_external
-
-
-    - id: Evakuacijos sistemos valdymo blokas          # visible_unique_electrical             NSIK: %P10.MA.%KEB10
-      examples:
-      - Evakuacijos sistemos kontroleris
-      - Evakuacijos sistemos valdiklis
-      classifications:
-        NSIK LF: "%P10"
-        NSIK LT: MA
-        NSIK LK: "%KEB10"
-      ifcType: *type_e
-      stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
-    
-
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
         
-    - id: Korpusas (skydelis)                          # visible_unique_electrical             NSIK: %P10.MA.UCA
-      examples:
-      - Evakuacijos sistemos prietaisų dėžė
-      - Evakuacijos sistemos spinta
-      - Evakuacijos valdymo sistemos įrenginių spinta
+    - id: NFC kortelių skaitytuvas                                 # visible_unique_electrical_external    NSIK: P.LE.%BYB20      Uc: 
       classifications:
-        NSIK LF: "%P10"
-        NSIK LT: MA
-        NSIK LK: UCA
-      stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
-    
-    - id: Elektros skirstytuvas                        # visible_unique_electrical             NSIK: %P10.MA.XDE
+        NSIK LF: P
+        NSIK LT: LE
+        NSIK LK: "%BYB20"
       examples:
-      - Evakuacijos sistemos sistemos elektros šakotuvas
-      - Elektros šakotuvas evakuacijos valdymo sistemos įrangai
-      classifications:
-        NSIK LF: "%P10"
-        NSIK LT: MA
-        NSIK LK: XDE
+      - NFC skaitytuvas
+      - Mifare skaitytuvas
+      ifcType: *type_sensor
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
-        
-    - id: Nepertraukiamo maitinimo šaltinis            # visible_unique_electrical             NSIK: %P10.MA.RBA
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+
+    - id: RFID kortelių skaitytuvas                                 # visible_unique_electrical_external    NSIK: P.LE.%BYB30      Uc: 
+      classifications:
+        NSIK LF: P
+        NSIK LT: LE
+        NSIK LK: "%BYB30"
       examples:
-      - Evakuacijos sistemos nepertraukiamo maitinimo šaltinis
-      - Evakuacijos sistemos UPS
-      classifications:
-        NSIK LF: "%P10"
-        NSIK LT: MA
-        NSIK LK: RBA
+      - RFID skaitytuvas
+      ifcType: *type_sensor
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
-    
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+
+    - id: Optinis skaitytuvas                                 # visible_unique_electrical_external    NSIK: P.LE.BYC      Uc: 
+      classifications:
+        NSIK LF: P
+        NSIK LT: LE
+        NSIK LK: BYC
+      examples:
+      - Akies rainelės skaitytuvas
+      - QR kodų skeneris
+      ifcType: *type_sensor
+      stages:
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+
+    - id: Kontaktinis skaitytuvas                                 # visible_unique_electrical_external    NSIK: P.LE.BYA      Uc: 
+      classifications:
+        NSIK LF: P
+        NSIK LT: LE
+        NSIK LK: BYA
+      examples:
+      - Lustų skaitytuvas
+      - Dallas-key skaitytuvas
+      ifcType: *type_sensor
+      stages:
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+
+    - id: Elektromagnetas                                 # visible_unique_electrical_external    NSIK: P.LE.MBB      Uc: 
+      classifications:
+        NSIK LF: P
+        NSIK LT: LE
+        NSIK LK: MBB
+      ifcType: 
+      - IfcDiscreteAccessory
+      stages:
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
 
 # vaizdo stebėjimas
     - id: Vaizdo kamera                                # visible_unique_electrical_external    NSIK: P.LF.BXC
@@ -475,8 +693,17 @@ AS:
       - Vaizdo makera su pašvietimu
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical_external
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
         
     - id: Vaizdo kamerų valdymo pultas                 # visible_unique_electrical             NSIK: P.LF.SZA
       classifications:
@@ -489,9 +716,18 @@ AS:
       - PTZ pultas
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
-    
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+
     - id: Vaizdo įrašymo įrenginys                     # visible_unique_electrical             NSIK: P.LF.KEE
       classifications:
         NSIK LF: P
@@ -503,9 +739,18 @@ AS:
       - DVR
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
-    
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+
     - id: Vaizdo kamerų prijungimo lizdas                 # visible_unique    NSIK: P.LF."%XGA10"
       classifications:
         NSIK LF: P
@@ -518,8 +763,16 @@ AS:
       - UTP lizdas
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
         
     - id: Vaizdo kamerų komutacinė panelė              # visible_unique                        NSIK: P.LF."%XGC10"
       classifications:
@@ -533,9 +786,17 @@ AS:
       - Duomenų paskirstymo panelė
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
-    
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+
     - id: Korpusas (skydelis)                          # visible_unique_electrical             NSIK: P.LF.UCA
       examples:
       - Vaizdo kamerų dėžė
@@ -546,21 +807,42 @@ AS:
         NSIK LT: LF
         NSIK LK: UCA
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
-    
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
     - id: Elektros skirstytuvas                        # visible_unique_electrical             NSIK: P.LF.XDE
       examples:
       - Vaizdo kamerų sistemos elektros šakotuvas
       - Elektros šakotuvas vaizdo kamerų sistemai
+      ifcType: *type_e
       classifications:
         NSIK LF: P
         NSIK LT: LF
         NSIK LK: XDE
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
-        
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
     - id: Nepertraukiamo maitinimo šaltinis            # visible_unique_electrical             NSIK: P.LF.RBA
       examples:
       - Vaizdo kamerų nepertraukiamo maitinimo šaltinis
@@ -569,7 +851,20 @@ AS:
         NSIK LF: P
         NSIK LT: LF
         NSIK LK: RBA
+      ifcType:
+      - IfcElectricalElement
+      - IfcElectricFlowStorageDeviceTypeEnum
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
 

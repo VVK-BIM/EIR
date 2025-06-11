@@ -5,16 +5,46 @@
 # 13 - Gaisro saugos sistema
 #
 
-prop_g:   &prop_g
-  - Pset_QuantityTakeOff.Heigth
-  - Pset_QuantityTakeOff.Width
-  - Pset_QuantityTakeOff.Length
 
-prop:     &prop
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
+prop_g:   &prop_g
+  Pset_QuantityTakeOff.Height: {}
+  Pset_QuantityTakeOff.Width: {}
+  Pset_QuantityTakeOff.Length: {}
+
+prop_ga:   &prop_g_area
+  <<: *prop_g
+  Pset_QuantityTakeOff.Area: {}
+
   
+prop:     &prop
+  Name: {}
+  Type: {}
+  Pset_ConstructionAdministration.SpecificationSectionNumber: {}
+  Pset_ElementComponentCommon.Status: {}
+
+prop_vis:     &prop_vis
+  VVK.Material: {}
+  VVK.Finish: {}
+  VVK.Colour: {}
+
+prop_u:     &prop_u
+  <<: *prop
+  Tag: {}
+  Name: {}
+  Type: {}
+  Pset_ElementComponentCommon.Status: {}
+
+prop_e:     &prop_e
+  Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
+  Pset_ElectricalDeviceCommon.RatedVoltage: {}
+  Pset_ElectricalDeviceCommon.HasProtectiveEarth: {}
+  
+prop_external:   &prop_external
+  Pset_ElectricalDeviceCommon.IsExternal: {}
+  Pset_ElectricalDeviceCommon.IP_Code: {}
+  Pset_ElectricalDeviceCommon.IK_Code: {}
+  
+
 prop_s2u: &prop_s2_u
   - Name
   - System
@@ -114,43 +144,7 @@ prop_vue: &prop_s3_vue_x
   - VVK.Colour
   - Pset_ElectricalDeviceCommon.NominalPowerConsumption
   - Pset_ElectricalDeviceCommon.IsExternal
-  
-  
-s2:       &stageS2_common
-  lod: 200
-  properties: *prop
-  
-s2_u:     &stageS2_unique
-  lod: 200
-  properties: *prop_s2_u
 
-s3:       &stageS3_common
-  lod: 300
-  properties: *prop_s3
-  
-s3_u:     &stageS3_unique
-  lod: 300
-  properties: *prop_s3_u
-
-s3_vu:    &stageS3_visible
-  lod: 300
-  properties: *prop_s3_v
-  
-s3_vu:    &stageS3_visible_unique
-  lod: 300
-  properties: *prop_s3_vu
-
-s3_vue:   &stageS3_visible_unique_electrical
-  lod: 300
-  properties: *prop_s3_vue
-  
-s3_vue_x:   &stageS3_visible_unique_electrical_external
-  lod: 300
-  properties: *prop_s3_vue_x
-  
-s3_ue:    &stageS3_unique_electrical
-  lod: 300
-  properties: *prop_s3_ue
 
 ifc_e:    &type_linear
   - IfcFlowSegment
@@ -164,6 +158,8 @@ ifc_e:    &type_e
 
 
 GSS:
+    id: "13"
+    name: Gaisro saugos sistema
     stages:
       s0:
         lod: 275
@@ -194,9 +190,15 @@ GSS:
         NSIK LK: UBA
       ifcType: *type_linear
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_common
-
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g
 
     - id: Valdymo blokas                             # visible_unique_electrical             NSIK: P.LB.KEB
       examples:
@@ -210,9 +212,19 @@ GSS:
         NSIK LK: KEB
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
-     
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
     - id: Avarinis paspaudimo mygtukas               # visible_unique                        NSIK: P.LB.SJB
       classifications:
         NSIK LF: P
@@ -222,10 +234,18 @@ GSS:
       - Rankinis gaisro pavojaus mygtukas
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
-        
-    
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+
     - id: Gaisrinė centralė                          # visible_unique_electrical             NSIK: P.LB.%KEB10
       examples:
       - Gaisrinė centralė
@@ -236,9 +256,19 @@ GSS:
         NSIK LK: "%KEB10"
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
-        
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
     - id: Išplėtimo modulis                          # unique_electrical                     NSIK: P.LB.%KEB20
       examples:
       - Gaisrinė centralės išplėtimo modulis
@@ -248,8 +278,18 @@ GSS:
         NSIK LK: "%KEB20"
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique_electrical
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
 
     - id: Korpusas (skydelis)                        # visible_unique_electrical             NSIK: P.LB.UCA
       examples:
@@ -261,8 +301,18 @@ GSS:
         NSIK LT: LB
         NSIK LK: UCA
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
 
     - id: Kietųju dalelių detektorius                # visible_unique                        NSIK: P.LB.%BQF10
       classifications:
@@ -273,9 +323,18 @@ GSS:
       - Dūmų jutiklis
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
-    
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+
     - id: Optinis kietųju dalelių detektorius        # visible_unique                        NSIK: P.LB.%BQF3010
       classifications:
         NSIK LF: P
@@ -285,21 +344,37 @@ GSS:
       - Optinis spindulinis jutiklis
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
-    
-    - id: Veidrodis                                  # visible                               NSIK: P.LB.WHD
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+
+    - id: Atšvaitas gaisro davikliui                                  # visible                               NSIK: P.LB.WHD
       classifications:
         NSIK LF: P
         NSIK LT: LB
         NSIK LK: WHD
       examples:
-      - Dūmų jutiklis
+      - Atšvaitas spinduliniam dūmų jutikliui
       ifcType: *type_e
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_visible
-        
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_g
+            <<: *prop_vis
+
     - id: Aspiracinis kietųju dalelių detektorius    # visible_unique                        NSIK: P.LB.%BQF3020
       classifications:
         NSIK LF: P
@@ -309,10 +384,18 @@ GSS:
       - Aspiracinis gaisro daviklis
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical
-        
-        
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+
     - id: Temperatūros detektorius                   # visible_unique                        NSIK: P.LB.%BQF10
       classifications:
         NSIK LF: P
@@ -322,9 +405,17 @@ GSS:
       - Temperatūrinis gaisro jutiklis
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
-        
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+
     - id: Blykstė                                    # visible_unique_electrical_external    NSIK: P.LB.PJA         Uc: Pr_75_80_30_97
       classifications:
         NSIK LF: P
@@ -335,8 +426,19 @@ GSS:
       - Gaisro signalizacijos blykstė
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical_external
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
 
     - id: Sirena                                     # visible_unique_electrical_external    NSIK: P.LB.PJB         Uc: Pr_75_80_30_30
       classifications:
@@ -348,9 +450,19 @@ GSS:
       - Gaisro signalizacijos sirena
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical_external
-    
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
     - id: Sirena su blykste                          # visible_unique_electrical_external    NSIK: P.LB.%PJB1010    Uc: Pr_75_50_20_30
       classifications:
         NSIK LF: P
@@ -361,9 +473,18 @@ GSS:
       - Gaisro signalizacijos sirena su blykste
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical_external
-    
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
     
     - id: Garsiakalbis                               # visible_unique_electrical_external    NSIK: P.LB.PJA         Uc: Pr_70_75_06_50
       classifications:
@@ -375,5 +496,15 @@ GSS:
       - Evakuacijos valdymo sistemos garsiakalbis
       ifcType: *type_e
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique_electrical_external
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
