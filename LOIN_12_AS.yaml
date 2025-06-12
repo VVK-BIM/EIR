@@ -549,7 +549,7 @@ AS:
             <<: *prop_external
 
 # praėjimo kontrolė
-    - id: EM kortelių skaitytuvas                                 # visible_unique_electrical_external    NSIK: P.LE.BYB      Uc: 
+    - id: EM kortelių skaitytuvas                      # visible_unique_electrical_external    NSIK: P.LE.BYB         Uc: 
       classifications:
         NSIK LF: P
         NSIK LT: LE
@@ -571,7 +571,7 @@ AS:
             <<: *prop_vis
             <<: *prop_external
         
-    - id: NFC kortelių skaitytuvas                                 # visible_unique_electrical_external    NSIK: P.LE.%BYB20      Uc: 
+    - id: NFC kortelių skaitytuvas                     # visible_unique_electrical_external    NSIK: P.LE.%BYB20      Uc: 
       classifications:
         NSIK LF: P
         NSIK LT: LE
@@ -593,7 +593,7 @@ AS:
             <<: *prop_vis
             <<: *prop_external
 
-    - id: RFID kortelių skaitytuvas                                 # visible_unique_electrical_external    NSIK: P.LE.%BYB30      Uc: 
+    - id: RFID kortelių skaitytuvas                    # visible_unique_electrical_external    NSIK: P.LE.%BYB30      Uc: 
       classifications:
         NSIK LF: P
         NSIK LT: LE
@@ -614,7 +614,7 @@ AS:
             <<: *prop_vis
             <<: *prop_external
 
-    - id: Optinis skaitytuvas                                 # visible_unique_electrical_external    NSIK: P.LE.BYC      Uc: 
+    - id: Optinis skaitytuvas                          # visible_unique_electrical_external    NSIK: P.LE.BYC         Uc: 
       classifications:
         NSIK LF: P
         NSIK LT: LE
@@ -636,7 +636,7 @@ AS:
             <<: *prop_vis
             <<: *prop_external
 
-    - id: Kontaktinis skaitytuvas                                 # visible_unique_electrical_external    NSIK: P.LE.BYA      Uc: 
+    - id: Kontaktinis skaitytuvas                      # visible_unique_electrical_external    NSIK: P.LE.BYA         Uc: 
       classifications:
         NSIK LF: P
         NSIK LT: LE
@@ -658,7 +658,7 @@ AS:
             <<: *prop_vis
             <<: *prop_external
 
-    - id: Elektromagnetas                                 # visible_unique_electrical_external    NSIK: P.LE.MBB      Uc: 
+    - id: Elektromagnetas                              # visible_unique_electrical_external    NSIK: P.LE.MBB         Uc: 
       classifications:
         NSIK LF: P
         NSIK LT: LE
@@ -751,7 +751,7 @@ AS:
             <<: *prop_vis
             <<: *prop_e
 
-    - id: Vaizdo kamerų prijungimo lizdas                 # visible_unique    NSIK: P.LF."%XGA10"
+    - id: Vaizdo kamerų prijungimo lizdas              # visible_unique                        NSIK: P.LF."%XGA10"
       classifications:
         NSIK LF: P
         NSIK LT: LF

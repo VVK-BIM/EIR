@@ -356,7 +356,7 @@ GSS:
             <<: *prop_vis
             <<: *prop_external
 
-    - id: Atšvaitas gaisro davikliui                                  # visible                               NSIK: P.LB.WHD
+    - id: Atšvaitas gaisro davikliui                 # visible                               NSIK: P.LB.WHD
       classifications:
         NSIK LF: P
         NSIK LT: LB
@@ -416,7 +416,7 @@ GSS:
             <<: *prop_g
             <<: *prop_vis
 
-    - id: Blykstė                                    # visible_unique_electrical_external    NSIK: P.LB.PJA         Uc: Pr_75_80_30_97
+    - id: Blykstė                                    # visible_unique_electrical_external    NSIK: P.LB.PJA          Uc: Pr_75_80_30_97
       classifications:
         NSIK LF: P
         NSIK LT: LB
@@ -440,7 +440,7 @@ GSS:
             <<: *prop_external
 
 
-    - id: Sirena                                     # visible_unique_electrical_external    NSIK: P.LB.PJB         Uc: Pr_75_80_30_30
+    - id: Sirena                                     # visible_unique_electrical_external    NSIK: P.LB.PJB          Uc: Pr_75_80_30_30
       classifications:
         NSIK LF: P
         NSIK LT: LB
@@ -463,7 +463,7 @@ GSS:
             <<: *prop_e
             <<: *prop_external
 
-    - id: Sirena su blykste                          # visible_unique_electrical_external    NSIK: P.LB.%PJB1010    Uc: Pr_75_50_20_30
+    - id: Sirena su blykste                          # visible_unique_electrical_external    NSIK: P.LB.%PJB1010     Uc: Pr_75_50_20_30
       classifications:
         NSIK LF: P
         NSIK LT: LB
@@ -486,7 +486,7 @@ GSS:
             <<: *prop_e
             <<: *prop_external
     
-    - id: Garsiakalbis                               # visible_unique_electrical_external    NSIK: P.LB.PJA         Uc: Pr_70_75_06_50
+    - id: Garsiakalbis                               # visible_unique_electrical_external    NSIK: P.LB.PJA          Uc: Pr_70_75_06_50
       classifications:
         NSIK LF: P
         NSIK LT: LB
@@ -507,4 +507,181 @@ GSS:
             <<: *prop_g
             <<: *prop_vis
             <<: *prop_e
+            <<: *prop_external
+
+    - id: Akumuliatorių baterija                     # unique_electrical                     NSIK: P.LB.GBA
+      examples:
+      - Avarinio apšvietimo sistemos akumuliatorių baterija
+      - Avarinio apšvietimo sistemos akumuliatorius
+      ifcType:
+      - IfcElectricalElement
+      - IfcElectricFlowStorageDeviceTypeEnum
+      classifications:
+        NSIK LF: P
+        NSIK LT: LB
+        NSIK LK: GBA
+      stages:
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            Pset_ElectricalDeviceCommon.PowerCapacity:
+              description: Akumuliatorių baterijos talpa, Ah.
+            Pset_ElectricalDeviceCommon.RatedVoltage: {}
+            
+# evakuacijos valdymas
+    - id: Evakuacijos valdymo sistema. Garsiakalbis                          # visible_unique_electrical_external    NSIK: %P10.MA.PJA      Uc: Pr_70_75_06_50
+      classifications:
+        NSIK LF: "%P10"
+        NSIK LT: MA
+        NSIK LK: PJA
+        Uniclass: Pr_70_75_06_50
+      examples:
+      - Evakuacijos valdymo sistemos garsiakalbis
+      ifcType: 
+      - IfcAudioVisualAppliance
+      - IfcAudioVisualApplianceType
+      stages:
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+
+    - id: Evakuacijos valdymo sistemos valdymo blokas                        # visible_unique_electrical             NSIK: %P10.MA.%KEB10
+      examples:
+      - Evakuacijos sistemos kontroleris
+      - Evakuacijos sistemos valdiklis
+      classifications:
+        NSIK LF: "%P10"
+        NSIK LT: MA
+        NSIK LK: "%KEB10"
+      ifcType: *type_e
+      stages:
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
+    - id: Evakuacijos valdymo sistemos korpusas (skydelis)                   # visible_unique_electrical             NSIK: %P10.MA.UCA
+      examples:
+      - Evakuacijos sistemos prietaisų dėžė
+      - Evakuacijos sistemos spinta
+      - Evakuacijos valdymo sistemos įrenginių spinta
+      ifcType: 
+        '2x3':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        '4':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        - IfcDistributionChamberElement
+        - IfcDistributionChamberElementType
+      classifications:
+        NSIK LF: "%P10"
+        NSIK LT: MA
+        NSIK LK: UCA
+      stages:
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+    
+    - id: Evakuacijos valdymo sistema. Elektros skirstytuvas                 # visible_unique_electrical             NSIK: %P10.MA.XDE
+      examples:
+      - Evakuacijos sistemos sistemos elektros šakotuvas
+      - Elektros šakotuvas evakuacijos valdymo sistemos įrangai
+      ifcType: *type_e
+      classifications:
+        NSIK LF: "%P10"
+        NSIK LT: MA
+        NSIK LK: XDE
+      stages:
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
+    - id: Evakuacijos valdymo sistema. Nepertraukiamo maitinimo šaltinis     # visible_unique_electrical             NSIK: %P10.MA.RBA
+      examples:
+      - Evakuacijos sistemos nepertraukiamo maitinimo šaltinis
+      - Evakuacijos sistemos UPS
+      classifications:
+        NSIK LF: "%P10"
+        NSIK LT: MA
+        NSIK LK: RBA
+      ifcType:
+      - IfcElectricalElement
+      - IfcElectricFlowStorageDeviceTypeEnum
+      stages:
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+    - id: Evakuacijos valdymo sistemos akumuliatorių baterija                # visible_unique_electrical             NSIK: %P10.MA.GBA
+      examples:
+      - Evakuacijos valdymo sistemos akumuliatorių baterija
+      - Evakuacijos valdymo sistemos akumuliatorius
+      ifcType:
+      - IfcElectricalElement
+      - IfcElectricFlowStorageDeviceTypeEnum
+      classifications:
+        NSIK LF: "%P10"
+        NSIK LT: MA
+        NSIK LK: GBA
+      stages:
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            Pset_ElectricalDeviceCommon.PowerCapacity:
+              description: Akumuliatorių baterijos talpa, Ah.
+            Pset_ElectricalDeviceCommon.RatedVoltage: {}
             <<: *prop_external

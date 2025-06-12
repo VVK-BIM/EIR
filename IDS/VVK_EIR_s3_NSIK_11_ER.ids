@@ -961,6 +961,11 @@
                         <simpleValue>Name</simpleValue>
                     </name>
                 </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
                 <property cardinality="required">
                     <propertySet>
                         <simpleValue>Pset_ConstructionAdministration</simpleValue>
@@ -1104,6 +1109,11 @@
                 </property>
             </applicability>
             <requirements>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
                 <attribute cardinality="required">
                     <name>
                         <simpleValue>Name</simpleValue>
@@ -1287,6 +1297,11 @@
                         <simpleValue>Name</simpleValue>
                     </name>
                 </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
                 <property cardinality="required">
                     <propertySet>
                         <simpleValue>Pset_ConstructionAdministration</simpleValue>
@@ -1430,6 +1445,11 @@
                 </property>
             </applicability>
             <requirements>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
                 <attribute cardinality="required">
                     <name>
                         <simpleValue>Name</simpleValue>
@@ -3491,30 +3511,6 @@
                 </property>
                 <property cardinality="required">
                     <propertySet>
-                        <simpleValue>VVK</simpleValue>
-                    </propertySet>
-                    <baseName>
-                        <simpleValue>Material</simpleValue>
-                    </baseName>
-                </property>
-                <property cardinality="required">
-                    <propertySet>
-                        <simpleValue>VVK</simpleValue>
-                    </propertySet>
-                    <baseName>
-                        <simpleValue>Finish</simpleValue>
-                    </baseName>
-                </property>
-                <property cardinality="required">
-                    <propertySet>
-                        <simpleValue>VVK</simpleValue>
-                    </propertySet>
-                    <baseName>
-                        <simpleValue>Colour</simpleValue>
-                    </baseName>
-                </property>
-                <property cardinality="required">
-                    <propertySet>
                         <simpleValue>Pset_ElectricalDeviceCommon</simpleValue>
                     </propertySet>
                     <baseName>
@@ -3563,7 +3559,7 @@
                 </property>
             </requirements>
         </specification>
-        <specification name="Garsiakalbis" ifcVersion="IFC2X3" identifier="VVK-0000022" instructions="">
+        <specification name="Pastato įgarsinimo sistema. Garsiakalbis" ifcVersion="IFC2X3" identifier="VVK-0000022" instructions="">
             <applicability minOccurs="0" maxOccurs="unbounded">
                 <property>
                     <propertySet>
@@ -3573,7 +3569,7 @@
                         <simpleValue>NSIKcodeLF</simpleValue>
                     </baseName>
                     <value>
-                        <simpleValue>%P10</simpleValue>
+                        <simpleValue>%M30P10</simpleValue>
                     </value>
                 </property>
                 <property>
@@ -3584,7 +3580,7 @@
                         <simpleValue>NSIKcodeLT</simpleValue>
                     </baseName>
                     <value>
-                        <simpleValue>MA</simpleValue>
+                        <simpleValue>MB</simpleValue>
                     </value>
                 </property>
                 <property>
@@ -3729,9 +3725,33 @@
                         <simpleValue>HasProtectiveEarth</simpleValue>
                     </baseName>
                 </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElectricalDeviceCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>IsExternal</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElectricalDeviceCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>IP_Code</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElectricalDeviceCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>IK_Code</simpleValue>
+                    </baseName>
+                </property>
             </requirements>
         </specification>
-        <specification name="Evakuacijos sistemos valdymo blokas" ifcVersion="IFC2X3" identifier="VVK-0000023" instructions="">
+        <specification name="Pastato įgarsinimo sistema. Mikrofonas" ifcVersion="IFC2X3" identifier="VVK-0000023" instructions="">
             <applicability minOccurs="0" maxOccurs="unbounded">
                 <property>
                     <propertySet>
@@ -3741,7 +3761,7 @@
                         <simpleValue>NSIKcodeLF</simpleValue>
                     </baseName>
                     <value>
-                        <simpleValue>%P10</simpleValue>
+                        <simpleValue>%M30P10</simpleValue>
                     </value>
                 </property>
                 <property>
@@ -3752,7 +3772,175 @@
                         <simpleValue>NSIKcodeLT</simpleValue>
                     </baseName>
                     <value>
-                        <simpleValue>MA</simpleValue>
+                        <simpleValue>MB</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLK</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>BXA</simpleValue>
+                    </value>
+                </property>
+            </applicability>
+            <requirements>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                </attribute>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ConstructionAdministration</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>SpecificationSectionNumber</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElementComponentCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Status</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Height</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Width</simpleValue>
+                    </baseName>
+                </property>
+                <property dataType="IFCLENGTHMEASURE" cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_QuantityTakeOff</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Length</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Material</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Finish</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>VVK</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>Colour</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElectricalDeviceCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>IsExternal</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElectricalDeviceCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>IP_Code</simpleValue>
+                    </baseName>
+                </property>
+                <property cardinality="required">
+                    <propertySet>
+                        <simpleValue>Pset_ElectricalDeviceCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>IK_Code</simpleValue>
+                    </baseName>
+                </property>
+            </requirements>
+        </specification>
+        <specification name="Pastato įgarsinimo sistemos valdymo blokas" ifcVersion="IFC2X3" identifier="VVK-0000024" instructions="">
+            <applicability minOccurs="0" maxOccurs="unbounded">
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLF</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>%M3010</simpleValue>
+                    </value>
+                </property>
+                <property>
+                    <propertySet>
+                        <simpleValue>Classification</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NSIKcodeLT</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>MB</simpleValue>
                     </value>
                 </property>
                 <property>
@@ -3923,7 +4111,7 @@
                 </property>
             </requirements>
         </specification>
-        <specification name="Evakuacijos sistemos korpusas (skydelis)" ifcVersion="IFC2X3" identifier="VVK-0000024" instructions="">
+        <specification name="Pastato įgarsinimo sistemos korpusas (skydelis)" ifcVersion="IFC2X3" identifier="VVK-0000025" instructions="">
             <applicability minOccurs="0" maxOccurs="unbounded">
                 <property>
                     <propertySet>
@@ -3933,7 +4121,7 @@
                         <simpleValue>NSIKcodeLF</simpleValue>
                     </baseName>
                     <value>
-                        <simpleValue>%P10</simpleValue>
+                        <simpleValue>%M3010</simpleValue>
                     </value>
                 </property>
                 <property>
@@ -3944,7 +4132,7 @@
                         <simpleValue>NSIKcodeLT</simpleValue>
                     </baseName>
                     <value>
-                        <simpleValue>MA</simpleValue>
+                        <simpleValue>MB</simpleValue>
                     </value>
                 </property>
                 <property>
@@ -4115,7 +4303,7 @@
                 </property>
             </requirements>
         </specification>
-        <specification name="Elektros skirstytuvas" ifcVersion="IFC2X3" identifier="VVK-0000025" instructions="">
+        <specification name="Pastato įgarsinimo sistemos elektros skirstytuvas" ifcVersion="IFC2X3" identifier="VVK-0000026" instructions="">
             <applicability minOccurs="0" maxOccurs="unbounded">
                 <property>
                     <propertySet>
@@ -4125,7 +4313,7 @@
                         <simpleValue>NSIKcodeLF</simpleValue>
                     </baseName>
                     <value>
-                        <simpleValue>%P10</simpleValue>
+                        <simpleValue>%M3010</simpleValue>
                     </value>
                 </property>
                 <property>
@@ -4136,7 +4324,7 @@
                         <simpleValue>NSIKcodeLT</simpleValue>
                     </baseName>
                     <value>
-                        <simpleValue>MA</simpleValue>
+                        <simpleValue>MB</simpleValue>
                     </value>
                 </property>
                 <property>
@@ -4307,7 +4495,7 @@
                 </property>
             </requirements>
         </specification>
-        <specification name="Nepertraukiamo maitinimo šaltinis" ifcVersion="IFC2X3" identifier="VVK-0000026" instructions="">
+        <specification name="Pastato įgarsinimo sistema. Nepertraukiamo maitinimo šaltinis" ifcVersion="IFC2X3" identifier="VVK-0000027" instructions="">
             <applicability minOccurs="0" maxOccurs="unbounded">
                 <property>
                     <propertySet>
@@ -4317,7 +4505,7 @@
                         <simpleValue>NSIKcodeLF</simpleValue>
                     </baseName>
                     <value>
-                        <simpleValue>%P10</simpleValue>
+                        <simpleValue>%M3010</simpleValue>
                     </value>
                 </property>
                 <property>
@@ -4328,7 +4516,7 @@
                         <simpleValue>NSIKcodeLT</simpleValue>
                     </baseName>
                     <value>
-                        <simpleValue>MA</simpleValue>
+                        <simpleValue>MB</simpleValue>
                     </value>
                 </property>
                 <property>
@@ -4427,30 +4615,6 @@
                 </property>
                 <property cardinality="required">
                     <propertySet>
-                        <simpleValue>VVK</simpleValue>
-                    </propertySet>
-                    <baseName>
-                        <simpleValue>Material</simpleValue>
-                    </baseName>
-                </property>
-                <property cardinality="required">
-                    <propertySet>
-                        <simpleValue>VVK</simpleValue>
-                    </propertySet>
-                    <baseName>
-                        <simpleValue>Finish</simpleValue>
-                    </baseName>
-                </property>
-                <property cardinality="required">
-                    <propertySet>
-                        <simpleValue>VVK</simpleValue>
-                    </propertySet>
-                    <baseName>
-                        <simpleValue>Colour</simpleValue>
-                    </baseName>
-                </property>
-                <property cardinality="required">
-                    <propertySet>
                         <simpleValue>Pset_ElectricalDeviceCommon</simpleValue>
                     </propertySet>
                     <baseName>
@@ -4471,30 +4635,6 @@
                     </propertySet>
                     <baseName>
                         <simpleValue>HasProtectiveEarth</simpleValue>
-                    </baseName>
-                </property>
-                <property cardinality="required">
-                    <propertySet>
-                        <simpleValue>Pset_ElectricalDeviceCommon</simpleValue>
-                    </propertySet>
-                    <baseName>
-                        <simpleValue>IsExternal</simpleValue>
-                    </baseName>
-                </property>
-                <property cardinality="required">
-                    <propertySet>
-                        <simpleValue>Pset_ElectricalDeviceCommon</simpleValue>
-                    </propertySet>
-                    <baseName>
-                        <simpleValue>IP_Code</simpleValue>
-                    </baseName>
-                </property>
-                <property cardinality="required">
-                    <propertySet>
-                        <simpleValue>Pset_ElectricalDeviceCommon</simpleValue>
-                    </propertySet>
-                    <baseName>
-                        <simpleValue>IK_Code</simpleValue>
                     </baseName>
                 </property>
             </requirements>
