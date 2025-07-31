@@ -5,214 +5,138 @@
 # 07.10 - Vandentiekis ir nuotekų šalinimas. Lauko tinklai
 #
 
-prop_g:   &prop_g
-  - Pset_QuantityTakeOff.Heigth
-  - Pset_QuantityTakeOff.Width
-  - Pset_QuantityTakeOff.Length
-
 prop:     &prop
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
+  Name: {}
+  Type: {}
+  Pset_ConstructionAdministration.SpecificationSectionNumber: {}
+  Pset_ElementComponentCommon.Status: {}
   
-prop_s2u: &prop_s2_u
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Tag
+prop_u:     &prop_u
+  <<: *prop
+  Tag: {}
+  Name: {}
+  Type: {}
+  Pset_ElementComponentCommon.Status: {}
 
-prop_s3:  &prop_s3
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Type
-  - Pset_ConstructionAdministration.SpecificationSectionNumber
-  - VVK.Material
-  - Pset_QuantityTakeOff.Heigth
-  - Pset_QuantityTakeOff.Width
-  - Pset_QuantityTakeOff.Length
+prop_g:   &prop_g
+  Pset_QuantityTakeOff.Height: {}
+  Pset_QuantityTakeOff.Width: {}
+  Pset_QuantityTakeOff.Length: {}
 
-prop_s3z:  &prop_s3_zone
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Pset_QuantityTakeOff.Width
-  - Pset_QuantityTakeOff.Area
+prop_ga:   &prop_g_area
+  <<: *prop_g
+  Pset_QuantityTakeOff.Area: {}
   
-prop_s3_pipe:  &prop_s3_pipe
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Type
-  - Pset_ConstructionAdministration.SpecificationSectionNumber
-  - VVK.Material
-  - Pset_QuantityTakeOff.Diameter
-  - Pset_QuantityTakeOff.Length
 
-prop_s3_valve:  &prop_s3_valve
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Type
-  - Tag
-  - Pset_ConstructionAdministration.SpecificationSectionNumber
-  - VVK.Material
-  - Pset_QuantityTakeOff.Diameter
+prop_thick:     &prop_g_thickness
+  Pset_QuantityTakeOff.Length: {}
+  Pset_QuantityTakeOff.Thickness: {}
 
-prop_vu:  &prop_s3_v
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Type
-  - Pset_ConstructionAdministration.SpecificationSectionNumber
-  - VVK.Material
-  - Pset_QuantityTakeOff.Heigth
-  - Pset_QuantityTakeOff.Width
-  - Pset_QuantityTakeOff.Length
-  - VVK.Finish
-  - VVK.Colour
-  
-prop_s3u: &prop_s3_u
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Type
-  - Tag
-  - Pset_ConstructionAdministration.SpecificationSectionNumber
-  - VVK.Material
-  - Pset_QuantityTakeOff.Heigth
-  - Pset_QuantityTakeOff.Width
-  - Pset_QuantityTakeOff.Length
-  
-prop_vu:  &prop_s3_vu
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Type
-  - Tag
-  - Pset_ConstructionAdministration.SpecificationSectionNumber
-  - VVK.Material
-  - Pset_QuantityTakeOff.Heigth
-  - Pset_QuantityTakeOff.Width
-  - Pset_QuantityTakeOff.Length
-  - VVK.Finish
-  - VVK.Colour
+prop_g_valve:   &prop_g_valve
+  Pset_QuantityTakeOff.Diameter: {}
 
-prop_ue:  &prop_s3_ue
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Type
-  - Tag
-  - Pset_ConstructionAdministration.SpecificationSectionNumber
-  - VVK.Material
-  - Pset_QuantityTakeOff.Heigth
-  - Pset_QuantityTakeOff.Width
-  - Pset_QuantityTakeOff.Length
-  - Pset_ElectricalDeviceCommon.NominalPowerConsumption
   
-prop_vue: &prop_s3_vue
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Type
-  - Tag
-  - Pset_ConstructionAdministration.SpecificationSectionNumber
-  - VVK.Material
-  - Pset_QuantityTakeOff.Heigth
-  - Pset_QuantityTakeOff.Width
-  - Pset_QuantityTakeOff.Length
-  - VVK.Finish
-  - VVK.Colour
-  - Pset_ElectricalDeviceCommon.NominalPowerConsumption
-  
-prop_vue: &prop_s3_vue_x
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Type
-  - Tag
-  - Pset_ConstructionAdministration.SpecificationSectionNumber
-  - VVK.Material
-  - Pset_QuantityTakeOff.Heigth
-  - Pset_QuantityTakeOff.Width
-  - Pset_QuantityTakeOff.Length
-  - VVK.Finish
-  - VVK.Colour
-  - Pset_ElectricalDeviceCommon.NominalPowerConsumption
-  - Pset_ElectricalDeviceCommon.IsExternal
-  
-  
-s2:       &stageS2_common
-  lod: 200
-  properties: *prop
-  
-s2_u:     &stageS2_unique
-  lod: 200
-  properties: *prop_s2_u
+prop_g_pipe:   &prop_g_pipe
+  Pset_QuantityTakeOff.Length: {}
+  Pset_QuantityTakeOff.Diameter: {}
 
-s3:       &stageS3_common
-  lod: 300
-  properties: *prop_s3
+prop_vis:     &prop_vis
+  VVK.Material: {}
+  VVK.Finish: {}
+  VVK.Colour: {}
 
-s3_pipe:  &stageS3_pipe
-  lod: 300
-  properties: *prop_s3_pipe
+prop_e_sens:     &prop_e_sensor
+  Pset_ElectricalDeviceCommon.IP_Code: {}
+  Pset_ElectricalDeviceCommon.IK_Code: {}
+  Pset_ElectricalDeviceCommon.InsulationStandardClass: {}
+  
+prop_e:     &prop_e
+  Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
+  <<: *prop_e_sensor
 
-s3_valve: &stageS3_valve
-  lod: 300
-  properties: *prop_s3_valve
-  
-s3_zone:  &stageS3_zone
-  lod: 300
-  properties: *prop_s3_zone
-  
-s3_u:     &stageS3_unique
-  lod: 300
-  properties: *prop_s3_u
+prop_e_cable:     &prop_e_cable
+  Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
+  Pset_ElectricalDeviceCommon.InsulationStandardClass: {}
+  Pset_ElementComponentCommon.FireRating: {}
 
-s3_vu:    &stageS3_visible
-  lod: 300
-  properties: *prop_s3_v
+prop_e_device:    &prop_e_device
+  Pset_ElectricalDeviceCommon.IP_Code: {}
+  Pset_ElectricalDeviceCommon.IK_Code: {}
+  Pset_ElectricalDeviceCommon.InsulationStandardClass: {}
+  Pset_ElectricalDeviceCommon.RatedVoltage: {}
+  Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
   
-s3_vu:    &stageS3_visible_unique
-  lod: 300
-  properties: *prop_s3_vu
+prop_ext_cable:  &prop_external
+  Pset_ElementComponentCommon.IsExternal: {}
+  
+prop_mat:     &prop_material
+  VVK.Material: {}
 
-s3_vue:   &stageS3_visible_unique_electrical
-  lod: 300
-  properties: *prop_s3_vue
-  
-s3_vue_x: &stageS3_visible_unique_electrical_external
-  lod: 300
-  properties: *prop_s3_vue_x
-  
-s3_ue:    &stageS3_unique_electrical
-  lod: 300
-  properties: *prop_s3_ue
 
+ifc_sens:    &type_sensor
+  - IfcSensor
+  - IfcSensorType
+  - IfcSensorTypeEnum
+  
 ifc_linear:  &type_linear
   - IfcFlowSegment
   - IfcFlowSegmentType
   - IfcFlowSegmentTypeEnum
+  
 ifc_e:       &type_e
   - IfcDistributionControlElement
   - IfcDistributionControlElementType
   - IfcDistributionControlElementTypeEnum
+  
 ifc_w:       &type_well
   - IfcFlowTerminal
-  - IfcFlowTerminalType
-  - IfcFlowTerminalTypeEnum
+  - IfcFlowTerminalElementType
+  - IfcFlowTerminalElementTypeEnum
+
+ifc_cover:    &type_covering
+  - IcfCovering
+  
+ifc_plate: &type_plate
+  - IfcPlate
+  - IfcPlateType
 
 ifc_f:       &type_flow
   - IfcFlowController
   - IfcFlowControllerType
   - IfcFlowControllerTypeEnum
   
+ifc_post: &type_post
+  - IfcColumn
+  - IfcColumnType
+  
+ifc_foot:  &type_footing
+  - IfcPile
+  - IfcPileType
+  
 # project file
 
 LVN:
     id: "07.10"
     name: Vandentiekis ir nuotekų šalinimas. Lauko tinklai
+    stages:
+      s0:
+        lod: 275
+      s2:
+        lod: 200
+      s3:
+        lod: 200
+      s4:
+        lod: 350
+        properties:
+        - Pset_ManufacturerTypeInformation.ArticleNumber
+        - Pset_ManufacturerTypeInformation.Manufacturer
+      s5:
+        lod: 350
+        properties:
+        - VVK.RelatedDocumentationURI
+      s6:
+        lod: 500
+        
     elements:
 # geriamo vandens vandentiekis
     - id: Vandentiekio šulinys                                              # unique                       NSIK: %F10.JB.XMC
@@ -221,58 +145,99 @@ LVN:
       - Inspektavimo šulinys
       - Inžinerinių tinklu kamera
       - Komunikacijų šulinys
-      ifcType: *type_well
       classifications:
         NSIK LF: "%F10"
         NSIK LT: JB
         NSIK LK: XMC
+      ifcType: *type_well
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            Pset_QuantityTakeOff.Height:
+              descr: Stačiakampio šulinio ilgis plane
+              memo: Jei taikoma
+            Pset_QuantityTakeOff.Width:
+              descr: Stačiakampio šulinio plotis plane
+              memo: Jei taikoma
+            Pset_QuantityTakeOff.Length:
+              descr: Šulinio aukštis
+            Pset_QuantityTakeOff.Diameter: 
+              descr: Apvalaus šulinio diametras
+              memo: Jei taikoma
+            <<: *prop_material
+            <<: *prop_external
         
     - id: Geriamo vandens sistemos tinklo informacinis ženklas              # visible_unique               NSIK: %F10.JB.PHD
       examples:
       - Sargelis
       - Informacinis ženklas
-      ifcType: 
-      - IfcPlate
-      - IfcPlateType
       classifications:
         NSIK LF: "%F10"
         NSIK LT: JB
         NSIK LK: PHD
+      ifcType: *type_plate
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
         
     - id: Geriamo vandens sistemos tinklo informacinio ženklo laikiklis     # visible_unique               NSIK: %F10.JB.UBD
       examples:
       - Sargelio stovas
       - Informacinio ženklo stovas
-      ifcType: 
-      - IfcColumn
-      - IfcColumnType
       classifications:
         NSIK LF: "%F10"
         NSIK LT: JB
         NSIK LK: UBD
+      ifcType: *type_post
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
     
     - id: Geriamo vandens sistemos informacinio ženklo laikiklio pamatas    # unique                       NSIK: %F10.JB.ULD
       examples:
       - Pamatas
-      ifcType: 
-      - IfcPile
-      - IfcPileType
       classifications:
         NSIK LF: "%F10"
         NSIK LT: JB
         NSIK LK: ULD
+      ifcType: *type_footing
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
         
     - id: Geriamo vandens sistemos vamzdis                                  # pipe                         NSIK: %F10.JB.WBB
       classifications:
@@ -281,8 +246,17 @@ LVN:
         NSIK LK: WBB
       ifcType: *type_linear
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_pipe
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g_pipe
+            <<: *prop_material
+            <<: *prop_external
         
     - id: Geriamo vandens sistemos sklendė                                  # valve                        NSIK: %F10.JB.%QMA10
       examples:
@@ -294,8 +268,37 @@ LVN:
         NSIK LK: "%QMA10"
       ifcType: *type_flow
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_valve
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g_valve
+            <<: *prop_material
+            <<: *prop_external
+    
+    - id: Geriamo vandens sistemos izoliacija                               # common                       NSIK: %F10.JB.RQA       Uc: Pr_25_57_06
+      classifications:
+        NSIK LF: "%F10"
+        NSIK LT: JB
+        NSIK LK: RQA
+        Uniclass: Pr_25_57_06
+      ifcType: *type_covering
+      stages:
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g_thickness
+            <<: *prop_material
+            <<: *prop_external
 
 # technologinis vandentiekis
     - id: Technologinio vandentiekio šulinys                                      # unique                       NSIK: %F30.JB.XMC
@@ -304,58 +307,99 @@ LVN:
       - Inspektavimo šulinys
       - Inžinerinių tinklu kamera
       - Komunikacijų šulinys
-      ifcType: *type_well
       classifications:
         NSIK LF: "%F30"
         NSIK LT: JB
         NSIK LK: XMC
+      ifcType: *type_well
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            Pset_QuantityTakeOff.Height:
+              descr: Stačiakampio šulinio ilgis plane
+              memo: Jei taikoma
+            Pset_QuantityTakeOff.Width:
+              descr: Stačiakampio šulinio plotis plane
+              memo: Jei taikoma
+            Pset_QuantityTakeOff.Length:
+              descr: Šulinio aukštis
+            Pset_QuantityTakeOff.Diameter: 
+              descr: Apvalaus šulinio diametras
+              memo: Jei taikoma
+            <<: *prop_material
+            <<: *prop_external
         
     - id: Technologinio vandens sistemos tinklo informacinis ženklas              # visible_unique               NSIK: %F30.JB.PHD
       examples:
       - Sargelis
       - Informacinis ženklas
-      ifcType: 
-      - IfcPlate
-      - IfcPlateType
       classifications:
         NSIK LF: "%F30"
         NSIK LT: JB
         NSIK LK: PHD
+      ifcType: *type_plate
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
         
     - id: Technologinio vandens sistemos tinklo informacinio ženklo laikiklis     # visible_unique               NSIK: %F30.JB.UBD
       examples:
       - Sargelio stovas
       - Informacinio ženklo stovas
-      ifcType: 
-      - IfcColumn
-      - IfcColumnType
       classifications:
         NSIK LF: "%F30"
         NSIK LT: JB
         NSIK LK: UBD
+      ifcType: *type_post
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
     
     - id: Technologinio vandens sistemos informacinio ženklo laikiklio pamatas    # unique                       NSIK: %F30.JB.ULD
       examples:
       - Pamatas
-      ifcType: 
-      - IfcPile
-      - IfcPileType
       classifications:
         NSIK LF: "%F30"
         NSIK LT: JB
         NSIK LK: ULD
+      ifcType: *type_footing
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
     
     - id: Technologinio vandens sistemos vamzdis                                  # pipe                         NSIK: %F30.JB.WBB
       classifications:
@@ -364,8 +408,17 @@ LVN:
         NSIK LK: WBB
       ifcType: *type_linear
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_pipe
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g_pipe
+            <<: *prop_material
+            <<: *prop_external
     
     - id: Technologinio vandens sistemos sklendė                                  # valve                        NSIK: %F30.JB.%QMA10
       examples:
@@ -377,9 +430,37 @@ LVN:
         NSIK LK: "%QMA10"
       ifcType: *type_flow
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_valve
-
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g_valve
+            <<: *prop_material
+            <<: *prop_external
+    
+    - id: Technologinio vandens sistemos izoliacija                               # common                       NSIK: %F30.JB.RQA      Uc: Pr_25_57_06
+      classifications:
+        NSIK LF: "%F30"
+        NSIK LT: JB
+        NSIK LK: RQA
+        Uniclass: Pr_25_57_06
+      ifcType: *type_covering
+      stages:
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g_thickness
+            <<: *prop_material
+            <<: *prop_external
 
 # buitinės nuotekos
     - id: Buitinių nuoteku sistemos šulinys                                  # unique                       NSIK: %G10.%JD20.XMC
@@ -388,58 +469,99 @@ LVN:
       - Inspektavimo šulinys
       - Inžinerinių tinklu kamera
       - Komunikacijų šulinys
-      ifcType: *type_well
       classifications:
         NSIK LF: "%G10"
         NSIK LT: "%JD20"
         NSIK LK: XMC
+      ifcType: *type_well
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            Pset_QuantityTakeOff.Height:
+              descr: Stačiakampio šulinio ilgis plane
+              memo: Jei taikoma
+            Pset_QuantityTakeOff.Width:
+              descr: Stačiakampio šulinio plotis plane
+              memo: Jei taikoma
+            Pset_QuantityTakeOff.Length:
+              descr: Šulinio aukštis
+            Pset_QuantityTakeOff.Diameter: 
+              descr: Apvalaus šulinio diametras
+              memo: Jei taikoma
+            <<: *prop_material
+            <<: *prop_external
         
     - id: Buitinių nuoteku sistemos tinklo informacinis ženklas              # visible_unique               NSIK: %G10.%JD20.PHD
       examples:
       - Sargelis
       - Informacinis ženklas
-      ifcType: 
-      - IfcPlate
-      - IfcPlateType
       classifications:
         NSIK LF: "%G10"
         NSIK LT: "%JD20"
         NSIK LK: PHD
+      ifcType: *type_plate
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
         
     - id: Buitinių nuoteku sistemos tinklo informacinio ženklo laikiklis     # visible_unique               NSIK: %G10.%JD20.UBD
       examples:
       - Sargelio stovas
       - Informacinio ženklo stovas
-      ifcType: 
-      - IfcColumn
-      - IfcColumnType
       classifications:
         NSIK LF: "%G10"
         NSIK LT: "%JD20"
         NSIK LK: UBD
+      ifcType: *type_post
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
     
     - id: Buitinių nuoteku sistemos informacinio ženklo laikiklio pamatas    # unique                       NSIK: %G10.%JD20.ULD
       examples:
       - Pamatas
-      ifcType: 
-      - IfcPile
-      - IfcPileType
       classifications:
         NSIK LF: "%G10"
         NSIK LT: "%JD20"
         NSIK LK: ULD
+      ifcType: *type_footing
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
     
     - id: Buitinių nuoteku sistemos vamzdis                                  # pipe                         NSIK: %G10.%JD20.WBB
       classifications:
@@ -448,8 +570,17 @@ LVN:
         NSIK LK: WBB
       ifcType: *type_linear
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_pipe
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g_pipe
+            <<: *prop_material
+            <<: *prop_external
     
     - id: Buitinių nuoteku sistemos sklendė                                  # valve                        NSIK: %G10.%JD20.%QMA10
       examples:
@@ -461,8 +592,17 @@ LVN:
         NSIK LK: "%QMA10"
       ifcType: *type_flow
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_valve
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g_valve
+            <<: *prop_material
+            <<: *prop_external
     
     - id: Buitinių nuoteku sistemos vožtuvas                                 # valve                        NSIK: %G10.%JD20.RMC
       examples:
@@ -473,8 +613,17 @@ LVN:
         NSIK LK: RMC
       ifcType: *type_flow
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_valve
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g_valve
+            <<: *prop_material
+            <<: *prop_external
         
     - id: Buitinių nuotekų sistemos talpa                                    # unique                       NSIK: %G10.%JD20.CMA
       classifications:
@@ -483,31 +632,102 @@ LVN:
         NSIK LK: CMA
       ifcType: *type_well
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            Pset_QuantityTakeOff.Volume: 
+              descr: Projektinis darbinis tūris
+            <<: *prop_material
+            <<: *prop_external
     
-    - id: Buitinių slėginių nuoteku sistemos vamzdis                             # pipe                         NSIK: %G10.%JD40.WBB
+    - id: Buitinių nuoteku sistemos izoliacija                               # common                       NSIK: %G10.%JD20.RQA    Uc: Pr_25_57_06
+      classifications:
+        NSIK LF: "%G10"
+        NSIK LT: "%JD20"
+        NSIK LK: RQA
+        Uniclass: Pr_25_57_06
+      ifcType: *type_covering
+      stages:
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g_thickness
+            <<: *prop_material
+            <<: *prop_external
+        
+    - id: Buitinių slėginių nuoteku sistemos vamzdis                         # pipe                         NSIK: %G10.%JD40.WBB
       classifications:
         NSIK LF: "%G10"
         NSIK LT: "%JD40"
         NSIK LK: WBB
       ifcType: *type_linear
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_pipe
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g_pipe
+            <<: *prop_material
+            <<: *prop_external
         
     
     
-    - id: Buitinių slėginių nuoteku sistemos siurblys                            # unique_electrical            NSIK: %G10.%JD40.GPB
+    - id: Buitinių slėginių nuoteku sistemos siurblys                        # unique_electrical            NSIK: %G10.%JD40.GPB
       classifications:
         NSIK LF: "%G10"
         NSIK LT: "%JD40"
         NSIK LK: GPB
       ifcType: *type_e
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_unique_electrical
-
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: 
+              descr: Prijungimo diametras
+            <<: *prop_e_device
+            <<: *prop_material
+            <<: *prop_external
+    
+    - id: Buitinių slėginių nuoteku sistemos izoliacija                      # common                       NSIK: %G10.%JD40.RQA    Uc: Pr_25_57_06
+      classifications:
+        NSIK LF: "%G10"
+        NSIK LT: "%JD40"
+        NSIK LK: RQA
+        Uniclass: Pr_25_57_06
+      ifcType: *type_covering
+      stages:
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g_thickness
+            <<: *prop_material
+            <<: *prop_external
 
 # lietaus nuotekos
     - id: Lietaus nuoteku sistemos šulinys                                  # unique                       NSIK: %G20.%JD10.XMC
@@ -516,58 +736,99 @@ LVN:
       - Inspektavimo šulinys
       - Inžinerinių tinklu kamera
       - Komunikacijų šulinys
-      ifcType: *type_well
       classifications:
         NSIK LF: "%G20"
         NSIK LT: "%JD10"
         NSIK LK: XMC
+      ifcType: *type_well
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            Pset_QuantityTakeOff.Height:
+              descr: Stačiakampio šulinio ilgis plane
+              memo: Jei taikoma
+            Pset_QuantityTakeOff.Width:
+              descr: Stačiakampio šulinio plotis plane
+              memo: Jei taikoma
+            Pset_QuantityTakeOff.Length:
+              descr: Šulinio aukštis
+            Pset_QuantityTakeOff.Diameter: 
+              descr: Apvalaus šulinio diametras
+              memo: Jei taikoma
+            <<: *prop_material
+            <<: *prop_external
         
     - id: Lietaus nuoteku sistemos tinklo informacinis ženklas              # visible_unique               NSIK: %G20.%JD10.PHD
       examples:
       - Sargelis
       - Informacinis ženklas
-      ifcType: 
-      - IfcPlate
-      - IfcPlateType
       classifications:
         NSIK LF: "%G20"
         NSIK LT: "%JD10"
         NSIK LK: PHD
+      ifcType: *type_plate
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
         
     - id: Lietaus nuoteku sistemos tinklo informacinio ženklo laikiklis     # visible_unique               NSIK: %G20.%JD10.UBD
       examples:
       - Sargelio stovas
       - Informacinio ženklo stovas
-      ifcType: 
-      - IfcColumn
-      - IfcColumnType
       classifications:
         NSIK LF: "%G20"
         NSIK LT: "%JD10"
         NSIK LK: UBD
+      ifcType: *type_post
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
     
     - id: Lietaus nuoteku sistemos informacinio ženklo laikiklio pamatas    # unique                       NSIK: %G20.%JD10.ULD
       examples:
       - Pamatas
-      ifcType: 
-      - IfcPile
-      - IfcPileType
       classifications:
         NSIK LF: "%G20"
         NSIK LT: "%JD10"
         NSIK LK: ULD
+      ifcType: *type_footing
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
     
     - id: Lietaus nuoteku sistemos vamzdis                                  # pipe                         NSIK: %G20.%JD10.WBB
       classifications:
@@ -576,8 +837,17 @@ LVN:
         NSIK LK: WBB
       ifcType: *type_linear
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_pipe
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g_pipe
+            <<: *prop_material
+            <<: *prop_external
     
     - id: Lietaus nuoteku sistemos sklendė                                  # valve                        NSIK: %G20.%JD10.%QMA10
       examples:
@@ -589,8 +859,17 @@ LVN:
         NSIK LK: "%QMA10"
       ifcType: *type_flow
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_valve
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g_valve
+            <<: *prop_material
+            <<: *prop_external
     
     - id: Lietaus nuoteku sistemos vožtuvas                                 # valve                        NSIK: %G20.%JD10.RMC
       examples:
@@ -601,8 +880,17 @@ LVN:
         NSIK LK: RMC
       ifcType: *type_flow
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_valve
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g_valve
+            <<: *prop_material
+            <<: *prop_external
     
     - id: Lietaus surinkimo latakas                                         # pipe                         NSIK: %G20.%JD10.XKD
       classifications:
@@ -611,8 +899,17 @@ LVN:
         NSIK LK: XKD
       ifcType: *type_linear
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_pipe
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
         
     - id: Lietaus nuoteku sistemos atskirtuvas                              # unique                       NSIK: %G20.%JD10.XKD
       examples:
@@ -624,8 +921,19 @@ LVN:
         NSIK LK: XKD
       ifcType: *type_well
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_unique
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            Pset_QuantityTakeOff.Volume: 
+              descr: Projektinis darbinis tūris
+            <<: *prop_material
+            <<: *prop_external
         
     - id: Lietaus nuotekų sistemos talpa                                    # unique                       NSIK: %G20.%JD10.CMA
       classifications:
@@ -634,29 +942,100 @@ LVN:
         NSIK LK: CMA
       ifcType: *type_well
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            Pset_QuantityTakeOff.Volume: 
+              descr: Projektinis darbinis tūris
+            <<: *prop_material
+            <<: *prop_external
         
-    - id: Lietaus slėginių nuoteku sistemos vamzdis                             # pipe                         NSIK: %G20.%JD40.WBB
+    - id: Lietaus nuoteku sistemos izoliacija                               # common                       NSIK: %G20.%JD10.RQA    Uc: Pr_25_57_06
+      classifications:
+        NSIK LF: "%G20"
+        NSIK LT: "%JD10"
+        NSIK LK: RQA
+        Uniclass: Pr_25_57_06
+      ifcType: *type_covering
+      stages:
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g_thickness
+            <<: *prop_material
+            <<: *prop_external
+    
+    - id: Lietaus slėginių nuoteku sistemos vamzdis                         # pipe                         NSIK: %G20.%JD40.WBB
       classifications:
         NSIK LF: "%G20"
         NSIK LT: "%JD40"
         NSIK LK: WBB
       ifcType: *type_linear
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_pipe
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g_pipe
+            <<: *prop_material
+            <<: *prop_external
     
-    - id: Lietaus slėginių nuoteku sistemos siurblys                            # unique_electrical            NSIK: %G20.%JD40.GPB
+    - id: Lietaus slėginių nuoteku sistemos siurblys                        # unique_electrical            NSIK: %G20.%JD40.GPB
       classifications:
         NSIK LF: "%G20"
         NSIK LT: "%JD40"
         NSIK LK: GPB
       ifcType: *type_e
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_unique_electrical
-
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: 
+              descr: Prijungimo diametras
+            <<: *prop_e_device
+            <<: *prop_material
+            <<: *prop_external
+    
+    - id: Lietaus slėginių nuoteku sistemos izoliacija                      # common                       NSIK: %G20.%JD40.RQA    Uc: Pr_25_57_06
+      classifications:
+        NSIK LF: "%G20"
+        NSIK LT: "%JD40"
+        NSIK LK: RQA
+        Uniclass: Pr_25_57_06
+      ifcType: *type_covering
+      stages:
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g_thickness
+            <<: *prop_material
+            <<: *prop_external
 
 # drenažas
     - id: Drenažo sistemos šulinys                                  # unique                       NSIK: %G20.%JD20.XMC
@@ -665,58 +1044,99 @@ LVN:
       - Inspektavimo šulinys
       - Inžinerinių tinklu kamera
       - Komunikacijų šulinys
-      ifcType: *type_well
       classifications:
         NSIK LF: "%G20"
         NSIK LT: "%JD20"
         NSIK LK: XMC
+      ifcType: *type_well
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            Pset_QuantityTakeOff.Height:
+              descr: Stačiakampio šulinio ilgis plane
+              memo: Jei taikoma
+            Pset_QuantityTakeOff.Width:
+              descr: Stačiakampio šulinio plotis plane
+              memo: Jei taikoma
+            Pset_QuantityTakeOff.Length:
+              descr: Šulinio aukštis
+            Pset_QuantityTakeOff.Diameter: 
+              descr: Apvalaus šulinio diametras
+              memo: Jei taikoma
+            <<: *prop_material
+            <<: *prop_external
         
     - id: Drenažo sistemos tinklo informacinis ženklas              # visible_unique               NSIK: %G20.%JD20.PHD
       examples:
       - Sargelis
       - Informacinis ženklas
-      ifcType: 
-      - IfcPlate
-      - IfcPlateType
       classifications:
         NSIK LF: "%G20"
         NSIK LT: "%JD20"
         NSIK LK: PHD
+      ifcType: *type_plate
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
         
     - id: Drenažo sistemos tinklo informacinio ženklo laikiklis     # visible_unique               NSIK: %G20.%JD20.UBD
       examples:
       - Sargelio stovas
       - Informacinio ženklo stovas
-      ifcType: 
-      - IfcColumn
-      - IfcColumnType
       classifications:
         NSIK LF: "%G20"
         NSIK LT: "%JD20"
         NSIK LK: UBD
+      ifcType: *type_post
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
     
     - id: Drenažo sistemos informacinio ženklo laikiklio pamatas    # unique                       NSIK: %G20.%JD20.ULD
       examples:
       - Pamatas
-      ifcType: 
-      - IfcPile
-      - IfcPileType
       classifications:
         NSIK LF: "%G20"
         NSIK LT: "%JD20"
         NSIK LK: ULD
+      ifcType: *type_footing
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
     
     - id: Drenažo sistemos vamzdis                                  # pipe                         NSIK: %G20.%JD20.WBB
       classifications:
@@ -725,8 +1145,17 @@ LVN:
         NSIK LK: WBB
       ifcType: *type_linear
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_pipe
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g_pipe
+            <<: *prop_material
+            <<: *prop_external
     
     - id: Drenažo sistemos sklendė                                  # valve                        NSIK: %G20.%JD20.%QMA10
       examples:
@@ -738,8 +1167,17 @@ LVN:
         NSIK LK: "%QMA10"
       ifcType: *type_flow
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_valve
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g_valve
+            <<: *prop_material
+            <<: *prop_external
     
     - id: Drenažo sistemos vožtuvas                                 # valve                        NSIK: %G20.%JD20.RMC
       examples:
@@ -750,10 +1188,18 @@ LVN:
         NSIK LK: RMC
       ifcType: *type_flow
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_valve
-    
-        
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g_valve
+            <<: *prop_material
+            <<: *prop_external
+
     - id: Drenažo sistemos atskirtuvas                              # unique                       NSIK: %G20.%JD20.XKD
       examples:
       - Naftos produktų gaudyklė
@@ -764,8 +1210,19 @@ LVN:
         NSIK LK: XKD
       ifcType: *type_well
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_unique
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            Pset_QuantityTakeOff.Volume: 
+              descr: Projektinis darbinis tūris
+            <<: *prop_material
+            <<: *prop_external
         
     - id: Drenažo sistemos talpa                                    # unique                       NSIK: %G20.%JD20.CMA
       classifications:
@@ -774,33 +1231,100 @@ LVN:
         NSIK LK: CMA
       ifcType: *type_well
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            Pset_QuantityTakeOff.Volume: 
+              descr: Projektinis darbinis tūris
+            <<: *prop_material
+            <<: *prop_external
     
-    - id: Drenažo slėginių nuoteku sistemos vamzdis                     # pipe                         NSIK: %G20.%JD40.WBB
+    - id: Drenažo sistemos izoliacija                               # common                       NSIK: %G20.%JD20.RQA       Uc: Pr_25_57_06
+      classifications:
+        NSIK LF: "%G20"
+        NSIK LT: "%JD20"
+        NSIK LK: RQA
+        Uniclass: Pr_25_57_06
+      ifcType: *type_covering
+      stages:
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g_thickness
+            <<: *prop_material
+            <<: *prop_external
+    
+    - id: Drenažo slėginių nuoteku sistemos vamzdis                 # pipe                         NSIK: %G20.%JD40.WBB
       classifications:
         NSIK LF: "%G20"
         NSIK LT: "%JD40"
         NSIK LK: WBB
       ifcType: *type_linear
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_pipe
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g_pipe
+            <<: *prop_material
+            <<: *prop_external
     
-    - id: Drenažo slėginių nuoteku sistemos siurblys                    # unique_electrical            NSIK: %G20.%JD40.GPB
+    - id: Drenažo slėginių nuoteku sistemos siurblys                # unique_electrical            NSIK: %G20.%JD40.GPB
       classifications:
         NSIK LF: "%G20"
         NSIK LT: "%JD40"
         NSIK LK: GPB
       ifcType: *type_e
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_unique_electrical
-
-
-
-
-
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: 
+              descr: Prijungimo diametras
+            <<: *prop_e_device
+            <<: *prop_material
+            <<: *prop_external
+    
+    - id: Drenažo slėginių nuoteku sistemos izoliacija              # common                       NSIK: %G20.%JD40.RQA       Uc: Pr_25_57_06
+      classifications:
+        NSIK LF: "%G20"
+        NSIK LT: "%JD40"
+        NSIK LK: RQA
+        Uniclass: Pr_25_57_06
+      ifcType: *type_covering
+      stages:
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g_thickness
+            <<: *prop_material
+            <<: *prop_external
 
 # technologinės nuotekos
     - id: Technologinių nuoteku sistemos šulinys                                  # unique                       NSIK: %G30.%JD20.XMC
@@ -809,58 +1333,99 @@ LVN:
       - Inspektavimo šulinys
       - Inžinerinių tinklu kamera
       - Komunikacijų šulinys
-      ifcType: *type_well
       classifications:
         NSIK LF: "%G30"
         NSIK LT: "%JD20"
         NSIK LK: XMC
+      ifcType: *type_well
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            Pset_QuantityTakeOff.Height:
+              descr: Stačiakampio šulinio ilgis plane
+              memo: Jei taikoma
+            Pset_QuantityTakeOff.Width:
+              descr: Stačiakampio šulinio plotis plane
+              memo: Jei taikoma
+            Pset_QuantityTakeOff.Length:
+              descr: Šulinio aukštis
+            Pset_QuantityTakeOff.Diameter: 
+              descr: Apvalaus šulinio diametras
+              memo: Jei taikoma
+            <<: *prop_material
+            <<: *prop_external
         
     - id: Technologinių nuoteku sistemos tinklo informacinis ženklas              # visible_unique               NSIK: %G30.%JD20.PHD
       examples:
       - Sargelis
       - Informacinis ženklas
-      ifcType: 
-      - IfcPlate
-      - IfcPlateType
       classifications:
         NSIK LF: "%G30"
         NSIK LT: "%JD20"
         NSIK LK: PHD
+      ifcType: *type_plate
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
         
     - id: Technologinių nuoteku sistemos tinklo informacinio ženklo laikiklis     # visible_unique               NSIK: %G30.%JD20.UBD
       examples:
       - Sargelio stovas
       - Informacinio ženklo stovas
-      ifcType: 
-      - IfcColumn
-      - IfcColumnType
       classifications:
         NSIK LF: "%G30"
         NSIK LT: "%JD20"
         NSIK LK: UBD
+      ifcType: *type_post
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_visible_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
     
     - id: Technologinių nuoteku sistemos informacinio ženklo laikiklio pamatas    # unique                       NSIK: %G30.%JD20.ULD
       examples:
       - Pamatas
-      ifcType: 
-      - IfcPile
-      - IfcPileType
       classifications:
         NSIK LF: "%G30"
         NSIK LT: "%JD20"
         NSIK LK: ULD
+      ifcType: *type_footing
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
     
     - id: Technologinių nuoteku sistemos vamzdis                                  # pipe                         NSIK: %G30.%JD20.WBB
       classifications:
@@ -869,8 +1434,17 @@ LVN:
         NSIK LK: WBB
       ifcType: *type_linear
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_pipe
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g_pipe
+            <<: *prop_material
+            <<: *prop_external
     
     - id: Technologinių nuoteku sistemos sklendė                                  # valve                        NSIK: %G30.%JD20.%QMA10
       examples:
@@ -882,8 +1456,17 @@ LVN:
         NSIK LK: "%QMA10"
       ifcType: *type_flow
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_valve
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g_valve
+            <<: *prop_material
+            <<: *prop_external
     
     - id: Technologinių nuoteku sistemos vožtuvas                                 # valve                        NSIK: %G30.%JD20.RMC
       examples:
@@ -894,8 +1477,17 @@ LVN:
         NSIK LK: RMC
       ifcType: *type_flow
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_valve
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g_valve
+            <<: *prop_material
+            <<: *prop_external
     
     - id: Technologinių nuoteku sistemos talpa                                    # unique                       NSIK: %G30.%JD20.CMA
       classifications:
@@ -904,31 +1496,127 @@ LVN:
         NSIK LK: CMA
       ifcType: *type_well
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            Pset_QuantityTakeOff.Volume: 
+              descr: Projektinis darbinis tūris
+            <<: *prop_material
+            <<: *prop_external
     
-    - id: Technologinių slėginių nuoteku sistemos vamzdis                             # pipe                         NSIK: %G30.%JD40.WBB
+    - id: Technologinių nuoteku sistemos izoliacija                               # common                       NSIK: %G30.%JD20.RQA       Uc: Pr_25_57_06
+      classifications:
+        NSIK LF: "%G30"
+        NSIK LT: "%JD20"
+        NSIK LK: RQA
+        Uniclass: Pr_25_57_06
+      ifcType: *type_covering
+      stages:
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g_thickness
+            <<: *prop_material
+            <<: *prop_external
+    
+    - id: Technologinių slėginių nuoteku sistemos vamzdis                         # pipe                         NSIK: %G30.%JD40.WBB
       classifications:
         NSIK LF: "%G30"
         NSIK LT: "%JD40"
         NSIK LK: WBB
       ifcType: *type_linear
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_pipe
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g_pipe
+            <<: *prop_material
+            <<: *prop_external
         
-    - id: Technologinių slėginių nuoteku sistemos siurblys                            # unique_electrical            NSIK: %G30.%JD40.GPB
+    - id: Technologinių slėginių nuoteku sistemos siurblys                        # unique_electrical            NSIK: %G30.%JD40.GPB
       classifications:
         NSIK LF: "%G30"
         NSIK LT: "%JD40"
         NSIK LK: GPB
       ifcType: *type_e
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_unique_electrical
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: 
+              descr: Prijungimo diametras
+            <<: *prop_e_device
+            <<: *prop_material
+            <<: *prop_external
 
-
-
+    - id: Technologinių slėginių nuoteku sistemos izoliacija                      # common                       NSIK: %G30.%JD40.RQA       Uc: Pr_25_57_06
+      classifications:
+        NSIK LF: "%G30"
+        NSIK LT: "%JD40"
+        NSIK LK: RQA
+        Uniclass: Pr_25_57_06
+      ifcType: *type_covering
+      stages:
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g_thickness
+            <<: *prop_material
+            <<: *prop_external
+    
+    - id: Technologinių slėginių nuoteku sistemos tinklo apsaugos zona            # zone                                  NSIK: <E>DCB <L>Q.%HH10
+      classifications:
+        NSIK LF: "%G30"
+        NSIK LT: "%JD40"
+        NSIK B: DCB
+      ifcType: 
+      - IfcSpace
+      - IfcSpaceType
+      stages:
+        s2: 
+          Pset_QuantityTakeOff.Width: {}
+          Pset_ElementComponentCommon.Status: {}
+        s3: 
+          Pset_QuantityTakeOff.Width: {}
+    
+    - id: Technologinių slėginių nuoteku sistemos aptarnavimo erdvė               # zone                                  NSIK: <E>DCB <L>Q.%HH10
+      classifications:
+        NSIK LF: "%G30"
+        NSIK LT: "%JD40"
+        NSIK B: DCB
+      ifcType: 
+      - IfcSpace
+      - IfcSpaceType
+      stages:
+        s2: {}
+        s3: {}
 
 # /var/tmp
 

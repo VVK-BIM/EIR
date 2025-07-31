@@ -248,23 +248,29 @@ ifcType_ve:  &type_vessel
     id: "15"
     name: Šilumos gamyba
     stages:
-      s0:
+      s1:
         lod: 275
+        log: 2
       s2:
         lod: 200
+        log: 2
       s3:
         lod: 300
+        log: 2
       s4:
         lod: 350
+        log: 2
         properties:
         - Pset_ManufacturerTypeInformation.ArticleNumber
         - Pset_ManufacturerTypeInformation.Manufacturer
       s5:
         lod: 350
+        log: 2
         properties:
         - VVK.RelatedDocumentationURI
       s6:
         lod: 500
+        log: 2
     elements:
     
     - id: Vamzdis                                            #+ &stages_piping                                  NSIK: H.HD.WPA         Uc: Pr_65_52_63
@@ -277,29 +283,35 @@ ifcType_ve:  &type_vessel
       - IfcPipeSegment
       - IfcPipeSegmentType
       stages:
-        s0:
+        s1:
           lod: 300
+          log: 2
           properties:
             <<: *prop
         s2: 
           lod: 200
+          log: 2
         s3: 
           lod: 300
+          log: 2
           properties:
             <<: *prop
             <<: *prop_equipment_mech
         s4: 
           lod: 350
+          log: 2
           properties:
             <<: *prop
             <<: *prop_equipment_mech
         s5: 
           lod: 350
+          log: 2
           properties:
             <<: *prop
             <<: *prop_equipment_mech
         s6: 
           lod: 350
+          log: 2
           properties:
             <<: *prop
             <<: *prop_equipment_mech
@@ -314,19 +326,23 @@ ifcType_ve:  &type_vessel
       - IfcPipeFitting
       - IfcPipeFittingType
       stages:
-        s0:
+        s1:
           lod: 300
+          log: 2
           properties:
             <<: *prop
         s2: 
           lod: 200
+          log: 2
         s3: 
           lod: 300
+          log: 2
           properties:
             <<: *prop
             <<: *prop_equipment_mech
         s4: 
           lod: 350
+          log: 2
           properties:
             <<: *prop
             <<: *prop_equipment_mech
@@ -341,29 +357,35 @@ ifcType_ve:  &type_vessel
       - IfcPipeFitting
       - IfcPipeFittingType
       stages:
-        s0:
+        s1:
           lod: 300
+          log: 2
           properties:
             <<: *prop
         s2: 
           lod: 200
+          log: 2
         s3: 
           lod: 300
+          log: 2
           properties:
             <<: *prop
             <<: *prop_equipment_mech
         s4: 
           lod: 350
+          log: 2
           properties:
             <<: *prop
             <<: *prop_equipment_mech
         s5: 
           lod: 350
+          log: 2
           properties:
             <<: *prop
             <<: *prop_equipment_mech
         s6: 
           lod: 350
+          log: 2
           properties:
             <<: *prop
             <<: *prop_equipment_mech
@@ -379,8 +401,9 @@ ifcType_ve:  &type_vessel
       - Rotacinis siurblys
       ifcType: *type_pump
       stages:
-        s0:
+        s1:
           lod: 300
+          log: 2
           properties:
             <<: *prop
         s2: 
@@ -389,6 +412,7 @@ ifcType_ve:  &type_vessel
             <<: *prop
         s3: 
           lod: 300
+          log: 2
           properties:
             <<: *prop
             <<: *prop_u
@@ -399,6 +423,7 @@ ifcType_ve:  &type_vessel
             <<: *prop_equipment_mech
         s4: 
           lod: 350
+          log: 2
       
     - id: Kompresorinė šaldymo mašina                        #+  *stages_unique_heavy_electrical_equipment +    NSIK: H.HD.ECC         Uc: Pr_60_60_13_04
       classifications:
@@ -418,16 +443,19 @@ ifcType_ve:  &type_vessel
       - Čileris
       - Šaldytuvas
       stages:
-        s0:
+        s1:
           lod: 300
+          log: 2
           properties:
             <<: *prop
         s2: 
           lod: 200
+          log: 2
           properties:
             <<: *prop
         s3: 
           lod: 300
+          log: 2
           properties:
             <<: *prop
             <<: *prop_u
@@ -437,6 +465,11 @@ ifcType_ve:  &type_vessel
             <<: *prop_equipment_mech
         s4: 
           lod: 350
+          log: 2
+        s5: 
+          log: 2
+        s6: 
+          log: 2
 
     - id: Šilumokaitis                                       #+ &stages_unique_heavy_equipment                  NSIK: H.HD.EGC         Uc: Pr_60_60_38_62
       classifications:
@@ -452,16 +485,19 @@ ifcType_ve:  &type_vessel
       - IfcTankType
       - IfcTankTypeEnum
       stages:
-        s0:
+        s1:
           lod: 300
+          log: 2
           properties:
             <<: *prop
         s2: 
           lod: 200
+          log: 2
           properties:
             <<: *prop
         s3: 
           lod: 300
+          log: 2
           properties:
             <<: *prop
             <<: *prop_u
@@ -470,6 +506,7 @@ ifcType_ve:  &type_vessel
             <<: *prop_equipment_mech
         s4: 
           lod: 350
+          log: 2
  
     - id: Šilumos siurblys                                   #+ &stageS2_S3_electrical_equipment                NSIK: H.HD.EGA         Uc: Pr_70_60_37
       classifications:
@@ -479,16 +516,19 @@ ifcType_ve:  &type_vessel
         Uniclass: Pr_70_60_37
       ifcType: *type_pump
       stages:
-        s0:
+        s1:
           lod: 300
+          log: 2
           properties:
             <<: *prop
         s2: 
           lod: 200
+          log: 2
           properties:
             <<: *prop
         s3: 
           lod: 300
+          log: 2
           properties:
             <<: *prop
             <<: *prop_u
@@ -498,6 +538,7 @@ ifcType_ve:  &type_vessel
             <<: *prop_equipment_mech
         s4: 
           lod: 350
+          log: 2
 
     - id: Cirkuliacinis siurblys                             #+   *stages_unique_heavy_electrical_equipment     NSIK: H.HD.%GPB1010    Uc: Pr_65_53_86_12
       classifications:
@@ -507,12 +548,18 @@ ifcType_ve:  &type_vessel
         Uniclass: Pr_65_53_86_12
       ifcType: *type_pump
       stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
         s2: 
           lod: 200
           properties:
             <<: *prop
         s3: 
           lod: 300
+          log: 2
           properties:
             <<: *prop
             <<: *prop_u
@@ -523,6 +570,12 @@ ifcType_ve:  &type_vessel
             <<: *prop_equipment_mech
         s4: 
           lod: 350
+          log: 2
+        s5: 
+          lod: 350
+          log: 2
+        s6: 
+          log: 2
 
     - id: Apsauginis vožtuvas                                #+                                                 NSIK: H.HD.FLA         Uc: Pr_65_54_95_65
       classifications:
@@ -532,12 +585,18 @@ ifcType_ve:  &type_vessel
         Uniclass: Pr_65_54_95_65
       ifcType: *type_ctrl_valve
       stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
         s2: 
           lod: 200
           properties:
             <<: *prop
         s3: 
           lod: 300
+          log: 2
           properties:
             <<: *prop
             <<: *prop_u
@@ -545,6 +604,7 @@ ifcType_ve:  &type_vessel
             <<: *prop_equipment_mech
         s4: 
           lod: 350
+          log: 2
 
     - id: Filtras                                            #+                                                 NSIK: H.HD.HQB         Uc: Pr_60_55_97_41
       classifications:
@@ -553,12 +613,18 @@ ifcType_ve:  &type_vessel
         NSIK LK: HQB
         Uniclass: Pr_60_55_97_41
       ifcType: 
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
         s2: 
           lod: 200
           properties:
             <<: *prop
         s3: 
           lod: 300
+          log: 2
           properties:
             <<: *prop
             <<: *prop_u
@@ -566,6 +632,7 @@ ifcType_ve:  &type_vessel
             <<: *prop_equipment_volume_mass
         s4: 
           lod: 350
+          log: 2
 
     - id: Išsiplėtimo indas                                  #+   *stageS2_S3_unique_heavy_equipment            NSIK: H.HD.FLE         Uc: Pr_60_50_20_28
       classifications:
@@ -575,12 +642,19 @@ ifcType_ve:  &type_vessel
         Uniclass: Pr_60_50_20_28 
       ifcType: *type_vessel
       stages: 
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
         s2: 
           lod: 200
+          log: 2
           properties:
             <<: *prop
         s3: 
           lod: 300
+          log: 2
           properties:
             <<: *prop
             <<: *prop_u
@@ -588,6 +662,7 @@ ifcType_ve:  &type_vessel
             <<: *prop_equipment_volume_mass
         s4: 
           lod: 350
+          log: 2
 
     - id: Šulinys                                            #+                                                 NSIK: H.HD.XMC         Uc: Ss_50_35_06
       classifications:
@@ -596,12 +671,19 @@ ifcType_ve:  &type_vessel
         NSIK LK: XMC
         Uniclass: Ss_50_35_06
       ifcType:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop_u
         s2: 
           lod: 200
+          log: 2
           properties:
             <<: *prop_u
         s3: 
           lod: 300
+          log: 2
           properties:
             <<: *prop_u
             Pset_QuantityTakeOff.Length:
@@ -611,6 +693,7 @@ ifcType_ve:  &type_vessel
             Pset_QuantityTakeOff.Diameter: {}
         s4: 
           lod: 350
+          log: 2
           
     - id: Akumuliacinė talpa                                 #+   *stages_unique_heavy_equipment_with_volume    NSIK: H.HD.CPA         Uc; Pr_60_50_20
       classifications:
@@ -622,12 +705,19 @@ ifcType_ve:  &type_vessel
       examples:
       - Šilumos akumuliavimo skysčiuose talpykla
       stages: 
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
         s2: 
           lod: 200
+          log: 2
           properties:
             <<: *prop
         s3: 
           lod: 300
+          log: 2
           properties:
             <<: *prop
             <<: *prop_u
@@ -635,6 +725,7 @@ ifcType_ve:  &type_vessel
             <<: *prop_equipment_volume_mass
         s4: 
           lod: 350
+          log: 2
 
 
     - id: Akumuliacinė talpa su elektriniu šildymo elementu  #+   *stageS3_heavy_equipment_with_volume          NSIK: H.HD.%CPA2010    Uc: Pr_60_50_20
@@ -645,12 +736,22 @@ ifcType_ve:  &type_vessel
         Uniclass: Pr_60_50_20
       ifcType: *type_vessel
       stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_volume_mass
+            <<: *prop_equipment_e
         s2: 
           lod: 200
+          log: 2
           properties:
             <<: *prop
         s3: 
           lod: 300
+          log: 2
           properties:
             <<: *prop
             <<: *prop_u
@@ -659,6 +760,7 @@ ifcType_ve:  &type_vessel
             <<: *prop_equipment_e
         s4: 
           lod: 350
+          log: 2
 
 
     - id: Sklendė                                            #+   *stages_unique_equipment                      NSIK: H.HD.%QMA10      Uc: Pr_65_54_95
@@ -669,12 +771,20 @@ ifcType_ve:  &type_vessel
         Uniclass: Pr_65_54_95
       ifcType: *type_ctrl_valve
       stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
         s2: 
           lod: 200
           properties:
             <<: *prop
         s3: 
           lod: 300
+          log: 2
           properties:
             <<: *prop
             <<: *prop_u
@@ -682,6 +792,7 @@ ifcType_ve:  &type_vessel
             <<: *prop_equipment_mech
         s4: 
           lod: 350
+          log: 2
 
     - id: Oro atskirtuvas                                    #+   *stages_unique_equipment                      NSIK: H.HD.%HQB40      Uc: Pr_65_54_93_05
       classifications:
@@ -691,12 +802,21 @@ ifcType_ve:  &type_vessel
         Uniclass: Pr_65_54_93_05
       ifcType: *type_ctrl_valve
       stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
         s2: 
           lod: 200
           properties:
             <<: *prop
         s3: 
           lod: 300
+          log: 2
           properties:
             <<: *prop
             <<: *prop_u
@@ -704,6 +824,7 @@ ifcType_ve:  &type_vessel
             <<: *prop_equipment_mech
         s4: 
           lod: 350
+          log: 2
 
           
     - id: Balansinis ventilis                                #+   *stages_unique_equipment                      NSIK: H.HD.%RNA20      Uc: Pr_65_54_95_86
@@ -714,12 +835,21 @@ ifcType_ve:  &type_vessel
         Uniclass: Pr_65_54_95_86
       ifcType: *type_ctrl_valve
       stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
         s2: 
           lod: 200
           properties:
             <<: *prop
         s3: 
           lod: 300
+          log: 2
           properties:
             <<: *prop
             <<: *prop_u
@@ -727,6 +857,7 @@ ifcType_ve:  &type_vessel
             <<: *prop_equipment_mech
         s4: 
           lod: 350
+          log: 2
 
     - id: Balansavimo ventilis su matavimo antgaliais        #+   *stages_unique_equipment                      NSIK: H.HD.%RNA2010    Uc: Pr_65_54_95_86
       classifications:
@@ -736,12 +867,21 @@ ifcType_ve:  &type_vessel
         Uniclass: Pr_65_54_95_86
       ifcType: *type_ctrl_valve
       stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
         s2: 
           lod: 200
           properties:
             <<: *prop
         s3: 
           lod: 300
+          log: 2
           properties:
             <<: *prop
             <<: *prop_u
@@ -749,6 +889,7 @@ ifcType_ve:  &type_vessel
             <<: *prop_equipment_mech
         s4: 
           lod: 350
+          log: 2
   
     - id: Termometras                                        #+   *stages_measuring_equipment                   NSIK: H.HD.BTA         Uc: Pr_65_52_34_88
       classifications:
@@ -758,12 +899,21 @@ ifcType_ve:  &type_vessel
         Uniclass: Pr_65_52_34_88
       ifcType:  *type_ctrl_equipment
       stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
         s2: 
           lod: 200
           properties:
             <<: *prop
         s3: 
           lod: 300
+          log: 2
           properties:
             <<: *prop
             <<: *prop_u
@@ -771,6 +921,7 @@ ifcType_ve:  &type_vessel
             <<: *prop_equipment_mech
         s4: 
           lod: 350
+          log: 2
 
     - id: Vandens skaitiklis                                 #+   *stages_measuring_equipment                   NSIK: H.HD.%BHA20      Uc: Pr_80_51_51_97
       classifications:
@@ -780,12 +931,21 @@ ifcType_ve:  &type_vessel
         Uniclass: Pr_80_51_51_97
       ifcType: *type_ctrl_equipment
       stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
         s2: 
           lod: 200
           properties:
             <<: *prop
         s3: 
           lod: 300
+          log: 2
           properties:
             <<: *prop
             <<: *prop_u
@@ -793,6 +953,7 @@ ifcType_ve:  &type_vessel
             <<: *prop_equipment_mech
         s4: 
           lod: 350
+          log: 2
 
     - id: Šiluminės energijos skaitiklis                     #+   *stages_measuring_equipment                   NSIK: H.HD.BHB         Uc: Pr_80_51_51_37
       classifications:
@@ -802,12 +963,21 @@ ifcType_ve:  &type_vessel
         Uniclass: Pr_80_51_51_37
       ifcType:  *type_ctrl_equipment
       stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
         s2: 
           lod: 200
           properties:
             <<: *prop
         s3: 
           lod: 300
+          log: 2
           properties:
             <<: *prop
             <<: *prop_u
@@ -815,6 +985,7 @@ ifcType_ve:  &type_vessel
             <<: *prop_equipment_mech
         s4: 
           lod: 350
+          log: 2
 
     - id: Elektros skaitiklis                                #+   *stages_measuring_equipment                   NSIK: H.HD.BHC         Uc: Pr_80_51_51_98
       classifications:
@@ -824,12 +995,21 @@ ifcType_ve:  &type_vessel
         Uniclass: Pr_80_51_51_98
       ifcType:  *type_ctrl_equipment
       stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
         s2: 
           lod: 200
           properties:
             <<: *prop
         s3: 
           lod: 300
+          log: 2
           properties:
             <<: *prop
             <<: *prop_u
@@ -837,6 +1017,7 @@ ifcType_ve:  &type_vessel
             <<: *prop_equipment_mech
         s4: 
           lod: 350
+          log: 2
 
     - id: Manometras                                         #+   *stages_measuring_equipment                   NSIK: H.HD.BPA         Uc: Pr_80_51_51_67
       classifications:
@@ -848,12 +1029,21 @@ ifcType_ve:  &type_vessel
       - Slėgio indikatorius
       ifcType:  *type_ctrl_equipment
       stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
         s2: 
           lod: 200
           properties:
             <<: *prop
         s3: 
           lod: 300
+          log: 2
           properties:
             <<: *prop
             <<: *prop_u
@@ -861,6 +1051,7 @@ ifcType_ve:  &type_vessel
             <<: *prop_equipment_mech
         s4: 
           lod: 350
+          log: 2
 
     - id: Slėgio relė                                        #+   *stages_measuring_equipment                   NSIK: H.HD.BPB         Uc: Pr_75_50_76_97
       classifications:
@@ -872,12 +1063,21 @@ ifcType_ve:  &type_vessel
       - Slėgio jungiklis
       ifcType: *type_ctrl_equipment
       stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
         s2: 
           lod: 200
           properties:
             <<: *prop
         s3: 
           lod: 300
+          log: 2
           properties:
             <<: *prop
             <<: *prop_u
@@ -885,6 +1085,7 @@ ifcType_ve:  &type_vessel
             <<: *prop_equipment_mech
         s4: 
           lod: 350
+          log: 2
 
 
 

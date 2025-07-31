@@ -40,7 +40,7 @@ prop_e:     &prop_e
   Pset_ElectricalDeviceCommon.HasProtectiveEarth: {}
   
 prop_external:   &prop_external
-  Pset_ElectricalDeviceCommon.IsExternal: {}
+  Pset_ElementComponentCommon.IsExternal: {}
   Pset_ElectricalDeviceCommon.IP_Code: {}
   Pset_ElectricalDeviceCommon.IK_Code: {}
   
@@ -161,23 +161,33 @@ GSS:
     id: "13"
     name: Gaisro saugos sistema
     stages:
-      s0:
+      s1:
         lod: 275
+        log: 2
+        properties:
+          Pset_ManufacturerTypeInformation.ArticleNumber: {}
+          Pset_ManufacturerTypeInformation.Manufacturer: {}
+          VVK.RelatedDocumentationURI: {}
       s2:
         lod: 200
+        log: 2
       s3:
         lod: 300
+        log: 2
       s4:
         lod: 350
+        log: 2
         properties:
-        - Pset_ManufacturerTypeInformation.ArticleNumber
-        - Pset_ManufacturerTypeInformation.Manufacturer
+          Pset_ManufacturerTypeInformation.ArticleNumber: {}
+          Pset_ManufacturerTypeInformation.Manufacturer: {}
       s5:
         lod: 350
+        log: 2
         properties:
-        - VVK.RelatedDocumentationURI
+          VVK.RelatedDocumentationURI: {}
       s6:
         lod: 500
+        log: 6
     elements:
     - id: Įrangos ir/ar kabelių dėklas               # common                                NSIK: P.LB.UBA
       examples:
@@ -190,6 +200,10 @@ GSS:
         NSIK LK: UBA
       ifcType: *type_linear
       stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
         s2: 
           lod: 200
           properties:
@@ -212,6 +226,13 @@ GSS:
         NSIK LK: KEB
       ifcType: *type_e
       stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -234,6 +255,12 @@ GSS:
       - Rankinis gaisro pavojaus mygtukas
       ifcType: *type_e
       stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -256,6 +283,13 @@ GSS:
         NSIK LK: "%KEB10"
       ifcType: *type_e
       stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -301,6 +335,13 @@ GSS:
         NSIK LT: LB
         NSIK LK: UCA
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -323,6 +364,12 @@ GSS:
       - Dūmų jutiklis
       ifcType: *type_e
       stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -344,6 +391,13 @@ GSS:
       - Optinis spindulinis jutiklis
       ifcType: *type_e
       stages:
+        s1:
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -365,6 +419,10 @@ GSS:
       - Atšvaitas spinduliniam dūmų jutikliui
       ifcType: *type_e
       stages:
+        s1: 
+          properties:
+            <<: *prop_g
+            <<: *prop_vis
         s2: 
           lod: 200
           properties:
@@ -384,6 +442,12 @@ GSS:
       - Aspiracinis gaisro daviklis
       ifcType: *type_e
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -405,7 +469,12 @@ GSS:
       - Temperatūrinis gaisro jutiklis
       ifcType: *type_e
       stages:
-        s2: 
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+        s2:
           lod: 200
           properties:
             <<: *prop
@@ -426,7 +495,14 @@ GSS:
       - Gaisro signalizacijos blykstė
       ifcType: *type_e
       stages:
-        s2: 
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2:
           lod: 200
           properties:
             <<: *prop
@@ -450,6 +526,13 @@ GSS:
       - Gaisro signalizacijos sirena
       ifcType: *type_e
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -473,7 +556,14 @@ GSS:
       - Gaisro signalizacijos sirena su blykste
       ifcType: *type_e
       stages:
-        s2: 
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2:
           lod: 200
           properties:
             <<: *prop
@@ -496,7 +586,14 @@ GSS:
       - Evakuacijos valdymo sistemos garsiakalbis
       ifcType: *type_e
       stages:
-        s2: 
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2:
           lod: 200
           properties:
             <<: *prop
@@ -521,6 +618,13 @@ GSS:
         NSIK LT: LB
         NSIK LK: GBA
       stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            Pset_ElectricalDeviceCommon.PowerCapacity:
+              description: Akumuliatorių baterijos talpa, Ah.
+            Pset_ElectricalDeviceCommon.RatedVoltage: {}
         s2: 
           lod: 200
           properties:
@@ -547,7 +651,13 @@ GSS:
       - IfcAudioVisualAppliance
       - IfcAudioVisualApplianceType
       stages:
-        s2: 
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+        s2:
           lod: 200
           properties:
             <<: *prop
@@ -569,6 +679,13 @@ GSS:
         NSIK LK: "%KEB10"
       ifcType: *type_e
       stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -601,7 +718,14 @@ GSS:
         NSIK LT: MA
         NSIK LK: UCA
       stages:
-        s2: 
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2:
           lod: 200
           properties:
             <<: *prop
@@ -624,6 +748,14 @@ GSS:
         NSIK LT: MA
         NSIK LK: XDE
       stages:
+        s1:
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -649,6 +781,12 @@ GSS:
       - IfcElectricalElement
       - IfcElectricFlowStorageDeviceTypeEnum
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -660,6 +798,7 @@ GSS:
             <<: *prop_g
             <<: *prop_e
             <<: *prop_external
+            
     - id: Evakuacijos valdymo sistemos akumuliatorių baterija                # visible_unique_electrical             NSIK: %P10.MA.GBA
       examples:
       - Evakuacijos valdymo sistemos akumuliatorių baterija
@@ -672,7 +811,16 @@ GSS:
         NSIK LT: MA
         NSIK LK: GBA
       stages:
-        s2: 
+        s1:
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            Pset_ElectricalDeviceCommon.PowerCapacity:
+              description: Akumuliatorių baterijos talpa, Ah.
+            Pset_ElectricalDeviceCommon.RatedVoltage: {}
+            <<: *prop_external
+        s2:
           lod: 200
           properties:
             <<: *prop

@@ -42,7 +42,7 @@ prop_e:     &prop_e
   Pset_ElectricalDeviceCommon.HasProtectiveEarth: {}
   
 prop_external:   &prop_external
-  Pset_ElectricalDeviceCommon.IsExternal: {}
+  Pset_ElementComponentCommon.IsExternal: {}
   Pset_ElectricalDeviceCommon.IP_Code: {}
   Pset_ElectricalDeviceCommon.IK_Code: {}
   
@@ -170,21 +170,30 @@ AS:
     stages:
       s0:
         lod: 275
+      s1:
+        lod: 275
+        log: 2
+        properties:
+          Pset_ManufacturerTypeInformation.ArticleNumber: {}
+          Pset_ManufacturerTypeInformation.Manufacturer: {}
+          VVK.RelatedDocumentationURI: {}
       s2:
         lod: 200
       s3:
         lod: 300
       s4:
         lod: 350
+        log: 2
         properties:
-        - Pset_ManufacturerTypeInformation.ArticleNumber
-        - Pset_ManufacturerTypeInformation.Manufacturer
+          Pset_ManufacturerTypeInformation.ArticleNumber: {}
+          Pset_ManufacturerTypeInformation.Manufacturer: {}
       s5:
         lod: 350
         properties:
-        - VVK.RelatedDocumentationURI
+          VVK.RelatedDocumentationURI: {}
       s6:
         lod: 500
+        log: 6
         
     elements:
     - id: Įrangos ir/ar kabelių dėklas                 # common                                NSIK: P.LE.UBA
@@ -198,6 +207,13 @@ AS:
         NSIK LK: UBA
       ifcType: *type_linear
       stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: {}
+            <<: *prop_material
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -225,6 +241,13 @@ AS:
         NSIK LK: KEB
       ifcType: *type_e
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -247,6 +270,12 @@ AS:
       - Pavojaus mygtukas
       ifcType: *type_sensor
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -269,6 +298,13 @@ AS:
         NSIK LK: "%KEB10"
       ifcType: *type_e
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -291,6 +327,12 @@ AS:
         NSIK LK: "%KEB20"
       ifcType: *type_e
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
         s2: 
           lod: 200
           properties:
@@ -313,6 +355,13 @@ AS:
         NSIK LT: LE
         NSIK LK: UCA
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -335,6 +384,12 @@ AS:
       - PIR daviklis
       ifcType: *type_sensor
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -357,6 +412,12 @@ AS:
       - Smūgio daviklis
       ifcType: *type_sensor
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -378,6 +439,12 @@ AS:
       - Dūžio daviklis
       ifcType: *type_sensor
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -399,6 +466,12 @@ AS:
       - Lazerinis barjeras
       ifcType: *type_sensor
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -420,6 +493,12 @@ AS:
       - Atšvaitas spinduliniam optiniam jutikliui
       ifcType: *type_sensor
       stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -441,6 +520,11 @@ AS:
       - Šiluminis daviklis
       ifcType: *type_sensor
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
         s2: 
           lod: 200
           properties:
@@ -461,6 +545,12 @@ AS:
       - Magnetinis kontaktas
       ifcType: *type_sensor
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -485,6 +575,13 @@ AS:
       - IfcLamp
       - IfcLampType
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -510,6 +607,13 @@ AS:
       - IfcAlarm
       - IfcAlarmType
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -535,6 +639,13 @@ AS:
       - IfcAlarm
       - IfcAlarmType
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -559,6 +670,12 @@ AS:
       - Nuotolinis kortelių skaitytuvas
       ifcType: *type_sensor
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -581,6 +698,12 @@ AS:
       - Mifare skaitytuvas
       ifcType: *type_sensor
       stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -602,6 +725,12 @@ AS:
       - RFID skaitytuvas
       ifcType: *type_sensor
       stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -624,6 +753,12 @@ AS:
       - QR kodų skeneris
       ifcType: *type_sensor
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -646,6 +781,12 @@ AS:
       - Dallas-key skaitytuvas
       ifcType: *type_sensor
       stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -666,6 +807,13 @@ AS:
       ifcType: 
       - IfcDiscreteAccessory
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -693,6 +841,12 @@ AS:
       - Vaizdo makera su pašvietimu
       ifcType: *type_e
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
         s2: 
           lod: 200
           properties:
@@ -716,6 +870,12 @@ AS:
       - PTZ pultas
       ifcType: *type_e
       stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
         s2: 
           lod: 200
           properties:
@@ -739,6 +899,12 @@ AS:
       - DVR
       ifcType: *type_e
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
         s2: 
           lod: 200
           properties:
@@ -763,6 +929,11 @@ AS:
       - UTP lizdas
       ifcType: *type_e
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
         s2: 
           lod: 200
           properties:
@@ -786,6 +957,11 @@ AS:
       - Duomenų paskirstymo panelė
       ifcType: *type_e
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
         s2: 
           lod: 200
           properties:
@@ -807,6 +983,13 @@ AS:
         NSIK LT: LF
         NSIK LK: UCA
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -830,6 +1013,13 @@ AS:
         NSIK LT: LF
         NSIK LK: XDE
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
         s2: 
           lod: 200
           properties:
@@ -855,6 +1045,13 @@ AS:
       - IfcElectricalElement
       - IfcElectricFlowStorageDeviceTypeEnum
       stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
         s2: 
           lod: 200
           properties:

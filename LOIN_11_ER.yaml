@@ -41,7 +41,7 @@ prop_e:     &prop_e
   Pset_ElectricalDeviceCommon.HasProtectiveEarth: {}
   
 prop_external:   &prop_external
-  Pset_ElectricalDeviceCommon.IsExternal: {}
+  Pset_ElementComponentCommon.IsExternal: {}
   Pset_ElectricalDeviceCommon.IP_Code: {}
   Pset_ElectricalDeviceCommon.IK_Code: {}
   
@@ -170,21 +170,33 @@ ER:
     stages:
       s0:
         lod: 275
+      s1:
+        lod: 275
+        log: 2
+        properties:
+          Pset_ManufacturerTypeInformation.ArticleNumber: {}
+          Pset_ManufacturerTypeInformation.Manufacturer: {}
+          VVK.RelatedDocumentationURI: {}
       s2:
         lod: 200
+        log: 2
       s3:
         lod: 300
+        log: 2
       s4:
         lod: 350
+        log: 2
         properties:
-        - Pset_ManufacturerTypeInformation.ArticleNumber
-        - Pset_ManufacturerTypeInformation.Manufacturer
+          Pset_ManufacturerTypeInformation.ArticleNumber: {}
+          Pset_ManufacturerTypeInformation.Manufacturer: {}
       s5:
         lod: 350
+        log: 2
         properties:
-        - VVK.RelatedDocumentationURI
+          VVK.RelatedDocumentationURI: {}
       s6:
         lod: 500
+        log: 6
 
     elements:
     - id: Įrangos ir/ar kabelių dėklas                 # common                        NSIK: M.HJ.UBA
@@ -198,12 +210,17 @@ ER:
         NSIK LK: UBA
       ifcType: *type_linear
       stages:
-        s2:
-          lod: 200
+        s1:
           properties:
             <<: *prop
-        s3: 
-          lod: 300
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: {}
+            <<: *prop_material
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
           properties:
             <<: *prop
             <<: *prop_g
@@ -222,12 +239,16 @@ ER:
         NSIK LK: KEC
       ifcType: *type_e
       stages:
-        s2:
-          lod: 200
+        s1:
           properties:
             <<: *prop
-        s3: 
-          lod: 300
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
           properties:
             <<: *prop
             <<: *prop_g
@@ -243,12 +264,16 @@ ER:
       - Telefonų stotis
       ifcType: *type_e
       stages:
-        s2:
-          lod: 200
+        s1:
           properties:
             <<: *prop
-        s3: 
-          lod: 300
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
           properties:
             <<: *prop
             <<: *prop_g
@@ -265,12 +290,16 @@ ER:
       - PBX stotelė
       ifcType: *type_e
       stages:
-        s2:
-          lod: 200
+        s1:
           properties:
             <<: *prop
-        s3: 
-          lod: 300
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
           properties:
             <<: *prop
             <<: *prop_g
@@ -287,12 +316,15 @@ ER:
       - Vietinio ryšio telefono aparatas
       ifcType: *type_e
       stages:
-        s2:
-          lod: 200
+        s1:
           properties:
             <<: *prop
-        s3: 
-          lod: 300
+            <<: *prop_g
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
           properties:
             <<: *prop
             <<: *prop_g
@@ -307,12 +339,16 @@ ER:
         NSIK LK: KGA
       ifcType: *type_e
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
         s2:
-          lod: 200
           properties:
             <<: *prop
-        s3: 
-          lod: 300
+        s3:
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -329,12 +365,16 @@ ER:
         NSIK LK: KGB
       ifcType: *type_e
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
         s2:
-          lod: 200
           properties:
             <<: *prop
-        s3: 
-          lod: 300
+        s3:
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -351,12 +391,16 @@ ER:
         NSIK LK: KGC
       ifcType: *type_e
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
         s2:
-          lod: 200
           properties:
             <<: *prop
-        s3: 
-          lod: 300
+        s3:
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -372,12 +416,16 @@ ER:
         NSIK LK: TFD
       ifcType: *type_e
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
         s2:
-          lod: 200
           properties:
             <<: *prop
-        s3: 
-          lod: 300
+        s3:
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -391,12 +439,17 @@ ER:
         NSIK LK: WHA
       ifcType: *type_linear
       stages:
-        s2:
-          lod: 200
+        s1:
           properties:
             <<: *prop
-        s3: 
-          lod: 300
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: {}
+            <<: *prop_material
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
           properties:
             <<: *prop
             <<: *prop_g
@@ -414,12 +467,16 @@ ER:
       - IfcDistributionElement
       - IfcDistributionElementType
       stages:
-        s2: 
-          lod: 200
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+        s2:
           properties:
             <<: *prop
-        s3: 
-          lod: 300
+        s3:
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -436,12 +493,16 @@ ER:
       - IfcDistributionElement
       - IfcDistributionElementType
       stages:
-        s2: 
-          lod: 200
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+        s2:
           properties:
             <<: *prop
-        s3: 
-          lod: 300
+        s3:
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -457,12 +518,17 @@ ER:
         NSIK LK: KED
       ifcType: *type_e
       stages:
-        s2: 
-          lod: 200
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2:
           properties:
             <<: *prop
-        s3: 
-          lod: 300
+        s3:
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -477,12 +543,17 @@ ER:
         NSIK LK: WGB
       ifcType: *type_linear
       stages:
-        s2: 
-          lod: 200
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: {}
+            <<: *prop_material
+            <<: *prop_external
+        s2:
           properties:
             <<: *prop
         s3: 
-          lod: 300
           properties:
             <<: *prop
             <<: *prop_g
@@ -500,12 +571,15 @@ ER:
       - IfcDistributionElement
       - IfcDistributionElementType
       stages:
-        s2: 
-          lod: 200
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+        s2:
           properties:
             <<: *prop
-        s3: 
-          lod: 300
+        s3:
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -524,12 +598,15 @@ ER:
       - IfcDistributionElement
       - IfcDistributionElementType
       stages:
-        s2: 
-          lod: 200
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+        s2:
           properties:
             <<: *prop
-        s3: 
-          lod: 300
+        s3:
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -545,12 +622,14 @@ ER:
       ifcType: 
       - IfcEquipmentElement
       stages:
-        s2: 
-          lod: 200
+        s1:
+          properties:
+            <<: *prop_g
+            <<: *prop_vis
+        s2:
           properties:
             <<: *prop
         s3: 
-          lod: 300
           properties:
             <<: *prop_g
             <<: *prop_vis
@@ -564,12 +643,17 @@ ER:
         NSIK LK: "%KEB20"
       ifcType: *type_e
       stages:
-        s2: 
-          lod: 200
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2:
           properties:
             <<: *prop
         s3: 
-          lod: 300
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -595,12 +679,17 @@ ER:
         NSIK LT: HJ
         NSIK LK: UCA
       stages:
-        s2: 
-          lod: 200
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2:
           properties:
             <<: *prop
         s3: 
-          lod: 300
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -618,12 +707,17 @@ ER:
         NSIK LT: HJ
         NSIK LK: XDE
       stages:
-        s2: 
-          lod: 200
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2:
           properties:
             <<: *prop
         s3: 
-          lod: 300
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -643,12 +737,16 @@ ER:
         NSIK LT: HJ
         NSIK LK: RBA
       stages:
-        s2: 
-          lod: 200
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+        s2:
           properties:
             <<: *prop
         s3: 
-          lod: 300
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -668,12 +766,17 @@ ER:
       - IfcAudioVisualAppliance
       - IfcAudioVisualApplianceType
       stages:
-        s2: 
-          lod: 200
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2:
           properties:
             <<: *prop
-        s3: 
-          lod: 300
+        s3:
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -692,12 +795,16 @@ ER:
       - IfcAudioVisualAppliance
       - IfcAudioVisualApplianceType
       stages:
-        s2: 
-          lod: 200
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+        s2:
           properties:
             <<: *prop
         s3: 
-          lod: 300
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -715,12 +822,17 @@ ER:
         NSIK LK: "%KEB10"
       ifcType: *type_e
       stages:
-        s2: 
-          lod: 200
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2:
           properties:
             <<: *prop
         s3: 
-          lod: 300
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -747,12 +859,17 @@ ER:
         NSIK LT: MB
         NSIK LK: UCA
       stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
         s2: 
-          lod: 200
           properties:
             <<: *prop
         s3: 
-          lod: 300
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -770,12 +887,17 @@ ER:
         NSIK LT: MB
         NSIK LK: XDE
       stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
         s2: 
-          lod: 200
           properties:
             <<: *prop
         s3: 
-          lod: 300
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -795,12 +917,15 @@ ER:
       - IfcElectricalElement
       - IfcElectricFlowStorageDeviceTypeEnum
       stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
         s2: 
-          lod: 200
           properties:
             <<: *prop
         s3: 
-          lod: 300
           properties:
             <<: *prop_u
             <<: *prop_g
