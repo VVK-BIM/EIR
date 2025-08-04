@@ -57,6 +57,14 @@ prop_e_device:    &prop_e_device
   Pset_ElectricalDeviceCommon.RatedVoltage: {}
   Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
   
+prop_e_psu: &prop_e_psu
+  Pset_ElectricalDeviceCommon.RatedVoltage: {}
+  Pset_ElectricalDeviceCommon.RatedCurrent: {}
+  Pset_ElectricalDeviceCommon.NominalFrequencyRange: {}
+  Pset_ElectricalDeviceCommon.IP_Code: {}
+  Pset_ElectricalDeviceCommon.IK_Code: {}
+  Pset_ElectricalDeviceCommon.InsulationStandardClass: {}
+  
 prop_ext_cable:  &prop_external
   Pset_ElementComponentCommon.IsExternal: {}
   
@@ -142,10 +150,10 @@ LE:
             <<: *prop_e_device
             <<: *prop_material
             <<: *prop_external
-        s2:
+        s3:
           properties:
             <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -170,10 +178,10 @@ LE:
             <<: *prop_g
             <<: *prop_material
             <<: *prop_external
-        s2:
+        s3:
           properties:
             <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -197,13 +205,10 @@ LE:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
-            <<: *prop_material
             <<: *prop_external
-        s2:
+        s4:
           properties:
             <<: *prop
-        s3:
-          properties:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
@@ -225,15 +230,11 @@ LE:
         s1:
           properties:
             <<: *prop_u
-            <<: *prop_g
             <<: *prop_vis
-            <<: *prop_material
             <<: *prop_external
-        s2:
-          properties:
-            <<: *prop
         s3:
           properties:
+            <<: *prop
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
@@ -254,14 +255,11 @@ LE:
         s1:
           properties:
             <<: *prop_u
-            <<: *prop_g
             <<: *prop_material
             <<: *prop_external
-        s2:
+        s4: 
           properties:
             <<: *prop
-        s3: 
-          properties:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_material
@@ -284,10 +282,7 @@ LE:
             <<: *prop_e_cable
             <<: *prop_material
             <<: *prop_external_cable
-        s2:
-          properties:
-            <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop
             <<: *prop_g_cable
@@ -308,12 +303,8 @@ LE:
             <<: *prop_g_cable
             Pset_ElectricalDeviceCommon.RatedVoltage: {}
             Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
-            <<: *prop_material
             <<: *prop_external_cable
-        s2:
-          properties:
-            <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop
             <<: *prop_g_cable
@@ -336,10 +327,7 @@ LE:
             <<: *prop_e_cable
             <<: *prop_material
             <<: *prop_external_cable
-        s2:
-          properties:
-            <<: *prop
-        s3: 
+        s4: 
           properties:
             <<: *prop
             <<: *prop_g_cable
@@ -362,10 +350,7 @@ LE:
             Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
             <<: *prop_material
             <<: *prop_external_cable
-        s2:
-          properties:
-            <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop
             <<: *prop_g_cable
@@ -388,10 +373,7 @@ LE:
             <<: *prop_e_cable
             <<: *prop_material
             <<: *prop_external_cable
-        s2:
-          properties:
-            <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop
             <<: *prop_g_cable
@@ -413,10 +395,7 @@ LE:
             <<: *prop_e_cable
             <<: *prop_material
             <<: *prop_external_cable
-        s2:
-          properties:
-            <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop
             <<: *prop_g_cable
@@ -442,11 +421,9 @@ LE:
             <<: *prop_e_device
             <<: *prop_material
             <<: *prop_external
-        s2:
+        s4:
           properties:
             <<: *prop
-        s3:
-          properties:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_e_device
@@ -472,10 +449,10 @@ LE:
             <<: *prop_e_device
             <<: *prop_material
             <<: *prop_external
-        s2:
+        s3:
           properties:
             <<: *prop
-        s3: 
+        s4: 
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -497,10 +474,10 @@ LE:
             Pset_QuantityTakeOff.Diameter: {}
             <<: *prop_material
             Pset_ElementComponentCommon.IsExternal: {}
-        s2:
+        s3:
           properties:
             <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop
             <<: *prop_g
@@ -522,10 +499,10 @@ LE:
             Pset_QuantityTakeOff.Diameter: {}
             <<: *prop_material
             Pset_ElementComponentCommon.IsExternal: {}
-        s2:
+        s3:
           properties:
             <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop
             <<: *prop_g
@@ -542,11 +519,18 @@ LE:
       - IfcSpace
       - IfcSpaceType
       stages:
-        s2: 
-          Pset_QuantityTakeOff.Width: {}
-          Pset_ElementComponentCommon.Status: {}
-        s3: 
-          Pset_QuantityTakeOff.Width: {}
+        s1:
+          properties:
+            Pset_QuantityTakeOff.Width: {}
+            Pset_QuantityTakeOff.Area: {}
+            Pset_ElementComponentCommon.Status: {}
+        s2:
+          properties:
+            Pset_QuantityTakeOff.Width: {}
+            Pset_ElementComponentCommon.Status: {}
+        s4:
+          properties:
+            Pset_QuantityTakeOff.Area: {}
     
     - id: Žemos įtampos elektros kabelių trasos apsaugos zona                                 # zone         NSIK: <E>DCB <L>K.HG
       classifications:
@@ -566,9 +550,9 @@ LE:
           properties:
             Pset_QuantityTakeOff.Width: {}
             Pset_ElementComponentCommon.Status: {}
-        s3:
+        s4:
           properties:
-            Pset_QuantityTakeOff.Width: {}
+            Pset_QuantityTakeOff.Area: {}
     
     - id: "10/0,4kV įtampos transformatorius"
       ifcType: 
@@ -587,11 +571,9 @@ LE:
             Pset_ElectricalDeviceCommon.InsulationStandardClass: {}
             Pset_ElectricalDeviceCommon.RatedVoltage: {}
             <<: *prop_external
-        s2:
+        s4:
           properties:
             <<: *prop
-        s3:
-          properties:
             <<: *prop_u
             <<: *prop_g
             Pset_ElectricalDeviceCommon.IP_Code: {}
@@ -617,11 +599,9 @@ LE:
             <<: *prop_g
             <<: *prop_e_device
             <<: *prop_external
-        s2:
+        s4: 
           properties:
             <<: *prop
-        s3: 
-          properties:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_e_device
@@ -646,11 +626,9 @@ LE:
             Pset_ElectricalDeviceCommon.InsulationStandardClass: {}
             Pset_ElectricalDeviceCommon.RatedVoltage: {}
             <<: *prop_external
-        s2:
+        s4:
           properties:
             <<: *prop
-        s3:
-          properties:
             <<: *prop_u
             <<: *prop_g
             Pset_ElectricalDeviceCommon.IP_Code: {}
@@ -672,10 +650,10 @@ LE:
             <<: *prop_g_cable
             <<: *prop_material
             <<: *prop_external_cable
-        s2:
+        s3:
           properties:
             <<: *prop
-        s3: 
+        s4: 
           properties:
             <<: *prop
             <<: *prop_g_cable
@@ -695,10 +673,10 @@ LE:
             <<: *prop_g_cable
             <<: *prop_material
             <<: *prop_external_cable
-        s2:
+        s3:
           properties:
             <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop
             <<: *prop_g_cable
@@ -718,10 +696,10 @@ LE:
             <<: *prop_g_cable
             <<: *prop_material
             <<: *prop_external_cable
-        s2:
+        s3:
           properties:
             <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop
             <<: *prop_g_cable
@@ -741,10 +719,10 @@ LE:
             <<: *prop_g_cable
             <<: *prop_material
             <<: *prop_external_cable
-        s2:
+        s3:
           properties:
             <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop
             <<: *prop_g_cable
@@ -770,10 +748,10 @@ LE:
             <<: *prop_e_device
             <<: *prop_material
             <<: *prop_external
-        s2:
+        s3:
           properties:
             <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -798,10 +776,10 @@ LE:
             <<: *prop_g
             <<: *prop_material
             <<: *prop_external
-        s2:
+        s3:
           properties:
             <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -830,10 +808,10 @@ LE:
             <<: *prop_material
             <<: *prop_e
             <<: *prop_external
-        s2:
+        s3:
           properties:
             <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -864,10 +842,10 @@ LE:
             <<: *prop_material
             <<: *prop_e
             <<: *prop_external
-        s2:
+        s3:
           properties:
             <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -898,7 +876,7 @@ LE:
         s2:
           properties:
             <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -923,10 +901,10 @@ LE:
             <<: *prop_g
             <<: *prop_material
             <<: *prop_external
-        s2:
+        s3:
           properties:
             <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -945,29 +923,19 @@ LE:
       stages:
         s1:
           properties:
-            <<: *prop_u
-            <<: *prop_g
-            <<: *prop_vis
-            Pset_ElectricalDeviceCommon.IP_Code: {}
-            Pset_ElectricalDeviceCommon.IK_Code: {}
-            Pset_ElectricalDeviceCommon.InsulationStandardClass: {}
-            Pset_ElectricalDeviceCommon.RatedVoltage: {}
-            Pset_ElectricalDeviceCommon.RatedCurrent: {}
-            <<: *prop_external
-        s2:
-          properties:
             <<: *prop
-        s3:
-          properties:
-            <<: *prop_u
             <<: *prop_g
-            <<: *prop_vis
-            Pset_ElectricalDeviceCommon.IP_Code: {}
-            Pset_ElectricalDeviceCommon.IK_Code: {}
-            Pset_ElectricalDeviceCommon.InsulationStandardClass: {}
-            Pset_ElectricalDeviceCommon.RatedVoltage: {}
-            Pset_ElectricalDeviceCommon.RatedCurrent: {}
+            <<: *prop_u
             <<: *prop_external
+            <<: *prop_e_sensor
+            <<: *prop_e_device
+        s4: 
+          properties:
+            <<: *prop_g
+            <<: *prop_u
+            <<: *prop_external
+            <<: *prop_e_sensor
+            <<: *prop_e_device
     
     - id: Mygtukas                                                          # sensor                                NSIK: Q.%HH10.SJB
       examples:
@@ -980,16 +948,15 @@ LE:
       stages:
         s1:
           properties:
+            <<: *prop
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
             <<: *prop_e_sensor
             <<: *prop_external
-        s2:
+        s4:
           properties:
             <<: *prop
-        s3:
-          properties:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
@@ -1005,16 +972,15 @@ LE:
       stages:
         s1:
           properties:
+            <<: *prop
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
             <<: *prop_e_sensor
             <<: *prop_external
-        s2:
+        s4:
           properties:
             <<: *prop
-        s3:
-          properties:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
@@ -1032,16 +998,15 @@ LE:
       stages:
         s1:
           properties:
+            <<: *prop
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
             <<: *prop_e_sensor
             <<: *prop_external
-        s2:
+        s4:
           properties:
             <<: *prop
-        s3:
-          properties:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
@@ -1059,16 +1024,15 @@ LE:
       stages:
         s1:
           properties:
+            <<: *prop
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
             <<: *prop_e_sensor
             <<: *prop_external
-        s2:
+        s4:
           properties:
             <<: *prop
-        s3:
-          properties:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
@@ -1086,16 +1050,15 @@ LE:
       stages:
         s1:
           properties:
+            <<: *prop
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
             <<: *prop_e_sensor
             <<: *prop_external
-        s2:
+        s4: 
           properties:
             <<: *prop
-        s3: 
-          properties:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
@@ -1113,16 +1076,15 @@ LE:
       stages:
         s1:
           properties:
+            <<: *prop
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
             <<: *prop_e_sensor
             <<: *prop_external
-        s2:
+        s4:
           properties:
             <<: *prop
-        s3:
-          properties:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
@@ -1142,16 +1104,15 @@ LE:
       stages:
         s1:
           properties:
+            <<: *prop
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
             <<: *prop_e
             <<: *prop_external
-        s2:
+        s4:
           properties:
             <<: *prop
-        s3:
-          properties:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
@@ -1174,19 +1135,16 @@ LE:
       stages:
         s1:
           properties:
+            <<: *prop
             <<: *prop_u
             <<: *prop_g
-            <<: *prop_e
-            <<: *prop_external
-        s2:
+            <<: *prop_e_psu
+        s4:
           properties:
             <<: *prop
-        s3:
-          properties:
             <<: *prop_u
             <<: *prop_g
-            <<: *prop_e
-            <<: *prop_external
+            <<: *prop_e_psu
 
     - id: Apšvietimo sistemos pastovios srovės maitinimo blokas             # unique electrical                     NSIK: Q.%HH10.TCB
       examples:
@@ -1201,17 +1159,18 @@ LE:
       - IfcFlowStorageDevice
       - IfcDistributionElement
       stages:
-        s1: 
+        s1:
           properties:
-            <<: *prop_g
-            <<: *prop_e
-        s2: 
-          properties:
+            <<: *prop
             <<: *prop_u
-        s3: 
-          properties:
             <<: *prop_g
-            <<: *prop_e
+            <<: *prop_e_psu
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e_psu
 
     - id: Sklypo apšvietimas. Įžemiklis                                     # pipe                                  NSIK: %P20.%HH10.QCA
       classifications:
@@ -1226,10 +1185,7 @@ LE:
             <<: *prop_g_cable
             <<: *prop_material
             <<: *prop_external_cable
-        s2:
-          properties:
-            <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop
             <<: *prop_g_cable
@@ -1249,10 +1205,7 @@ LE:
             <<: *prop_g
             <<: *prop_material
             <<: *prop_external_cable
-        s2:
-          properties:
-            <<: *prop
-        s3: 
+        s4: 
           properties:
             <<: *prop
             <<: *prop_g
@@ -1272,10 +1225,7 @@ LE:
             <<: *prop_g_cable
             <<: *prop_material
             <<: *prop_external_cable
-        s2:
-          properties:
-            <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop
             <<: *prop_g_cable
@@ -1296,10 +1246,7 @@ LE:
             <<: *prop_e_cable
             <<: *prop_material
             <<: *prop_external_cable
-        s2:
-          properties:
-            <<: *prop
-        s3: 
+        s4: 
           properties:
             <<: *prop
             <<: *prop_g_cable
@@ -1321,10 +1268,7 @@ LE:
             <<: *prop_e_cable
             <<: *prop_material
             <<: *prop_external_cable
-        s2:
-          properties:
-            <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop
             <<: *prop_g_cable
@@ -1346,10 +1290,7 @@ LE:
             <<: *prop_e_cable
             <<: *prop_material
             <<: *prop_external_cable
-        s2:
-          properties:
-            <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop
             <<: *prop_g_cable
@@ -1371,10 +1312,10 @@ LE:
             Pset_QuantityTakeOff.Diameter: {}
             <<: *prop_material
             Pset_ElementComponentCommon.IsExternal: {}
-        s2:
+        s3:
           properties:
             <<: *prop
-        s3: 
+        s4: 
           properties:
             <<: *prop
             <<: *prop_g
@@ -1382,7 +1323,7 @@ LE:
             <<: *prop_material
             Pset_ElementComponentCommon.IsExternal: {}
     
-    - id: Apšvietimo tinklo instaliacijos, aptarnavimo erdvė ar inžinerinis koridorius   # zone                                  NSIK: <E>DCB <L>Q.%HH10
+    - id: Apšvietimo tinklo instaliacijos erdvė ar inžinerinis koridorius   # zone                                  NSIK: <E>DCB <L>Q.%HH10
       classifications:
         NSIK LF: Q
         NSIK LT: "%HH10"
@@ -1399,9 +1340,21 @@ LE:
         s2: 
           properties:
             Pset_QuantityTakeOff.Width: {}
-            Pset_ElementComponentCommon.Status: {}
-        s3:
-          properties:
-            Pset_QuantityTakeOff.Width: {}
             Pset_QuantityTakeOff.Area: {}
+            Pset_ElementComponentCommon.Status: {}
+            
+    - id: Apšvietimo tinklo aptarnavimo erdvė     # zone          NSIK: <E>DCB <L>%Q20.%HH10
+      classifications:
+        NSIK LF: Q
+        NSIK LT: "%HH10"
+        NSIK B: "%DCB1001"
+      ifcType: 
+      - IfcSpace
+      - IfcSpaceType
+      stages:
+        s1:
+          properties:
+            Pset_ElementComponentCommon.Status: {}
+        s4:
+          properties:
             Pset_ElementComponentCommon.Status: {}

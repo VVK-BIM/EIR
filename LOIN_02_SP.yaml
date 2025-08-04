@@ -5,9 +5,72 @@
 # 02 - Sklypo planas
 #
 
+prop:     &prop
+  Name: {}
+  Type: {}
+  Pset_ConstructionAdministration.SpecificationSectionNumber:
+  - examples:
+    - SP-TS-13.4
+  Pset_ElementComponentCommon.Status: {}
+
+prop_g:   &prop_g
+  Pset_QuantityTakeOff.Height: {}
+  Pset_QuantityTakeOff.Width: {}
+  Pset_QuantityTakeOff.Length: {}
+
+prop_g:   &prop_g_area
+  Pset_QuantityTakeOff.Height: {}
+  Pset_QuantityTakeOff.Area: {}
+  Pset_QuantityTakeOff.Length: {}
+  
+prop_vis:     &prop_vis
+  VVK.Material: {}
+  VVK.Finish: {}
+  VVK.Colour: {}
+  
+prop_foliage: &prop_folliage
+  Pset_VegetationCommon.LocalName: {}
+  Pset_VegetationCommon.BotanicalName: {}
+
+prop_e:     &prop_e
+  Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
+  Pset_ElectricalDeviceCommon.IP_Code: {}
+  Pset_ElectricalDeviceCommon.IK_Code: {}
+  Pset_ElectricalDeviceCommon.InsulationStandardClass: {}
+  Pset_ElectricalDeviceCommon.RatedVoltage: {}
+
 SP:
     id: "02"
     name: Sklypo planas
+    stages:
+      s1:
+        lod: 275
+        log: 2
+        properties:
+          Pset_ManufacturerTypeInformation.ArticleNumber: {}
+          Pset_ManufacturerTypeInformation.Manufacturer: {}
+          VVK.RelatedDocumentationURI: {}
+      s2:
+        lod: 200
+        log: 2
+      s3:
+        lod: 200
+        log: 2
+      s4:
+        lod: 350
+        log: 2
+        properties:
+          Pset_ManufacturerTypeInformation.ArticleNumber: {}
+          Pset_ManufacturerTypeInformation.Manufacturer: {}
+      s5:
+        lod: 350
+        log: 2
+        properties:
+          VVK.RelatedDocumentationURI: {}
+      s6:
+        lod: 500
+        log: 6
+        
     elements:
     - id: Lauko danga                  # NSIK A.CB.NCA               , &sp_stages_coverings
       description: Komponentas, sudarantis viršutinę išorinės erdvės dangą ar dangos konstrukcijos viršutinį sluoksnį
@@ -17,33 +80,22 @@ SP:
         NSIK LT: CB
         NSIK LK: NCA
       ifcType: IfcCovering
-      stages: &sp_stages_coverings
-        s3:
-          lod: 200
+      stages:
+        s1:
           properties:
-          - Name:
-            - examples:
-              - Gumos danga
-          - Pset_ElementComponentCommon.Status
-          - Type:
-            - examples:
-              - L1
-          - VVK.Material:
-            - examples:
-              - Gumos danga
-          - VVK.Finish
-          - VVK.Colour
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - SP-TS-1.1
-          - Pset_QuantityTakeOff.Depth:
-            - examples:
-              - 50
-          - Pset_QuantityTakeOff.Area:
-            - examples:
-              - 100.00
-          
-      
+            <<: *prop
+            <<: *prop_vis
+            Pset_QuantityTakeOff.Heigth: {}
+            Pset_QuantityTakeOff.Area: {}
+        s2:
+          properties:
+            <<: *prop
+            <<: *prop_vis
+        s3:
+          properties:
+            Pset_QuantityTakeOff.Heigth: {}
+            Pset_QuantityTakeOff.Area: {}
+
     - id: Augalinė danga               # NSIK A.CF.NCG           , &sp_stages_coverings_greenery
       examples:
       - Žolės velėna
@@ -53,104 +105,104 @@ SP:
         NSIK LT: CF
         NSIK LK: NCG
       ifcType: IfcCovering
-      stages: &sp_stages_coverings_greenery
-        s3:
-          lod: 200
+      stages:
+        s1:
           properties:
-          - Name:
+            <<: *prop
+            <<: *prop_folliage
+            Pset_ElementComponentCommon.Status: {}
+            Pset_QuantityTakeOff.Heigth:
             - examples:
-              - Gumos danga
-          - Pset_ElementComponentCommon.Status
-          - Type:
+              - 600
+            Pset_QuantityTakeOff.Area: {}
+        s2:
+          properties:
+            <<: *prop
+            <<: *prop_folliage
+            Pset_ElementComponentCommon.Status: {}
+        s3:
+          properties:
+            Pset_QuantityTakeOff.Heigth:
             - examples:
-              - V1
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - SP-TS-1.1
-          - Pset_QuantityTakeOff.Depth:
-            - examples:
-              - 50
-          - Pset_QuantityTakeOff.Area:
-            - examples:
-              - 100.00
-      
+              - 600
+            Pset_QuantityTakeOff.Area: {}
+
     - id: Medis                        # NSIK A.AA.TRA           , &sp_stages_single_greenery
       classifications:
         NSIK LF: A
         NSIK LT: RA
         NSIK LK: TRA
-      ifcType: IfcCovering
-      stages: &sp_stages_single_greenery
-        s3:
-          lod: 200
+      ifcType: 
+      - IfcGeographicElement
+      - IfcGeographicElementType
+      stages:
+        s1:
           properties:
-          - Name:
+            <<: *prop
+            <<: *prop_folliage
+            Pset_ElementComponentCommon.Status: {}
+            Pset_QuantityTakeOff.Heigth:
             - examples:
-              - Spygliuotis
-              - Lapuotis
-            - memo: Naujai sodinamiems medžiams - nurodoma ir medžio rūšis
-          - Pset_ElementComponentCommon.Status
-          - Tag:
+              - 600
+            Pset_QuantityTakeOff.Diameter:
             - examples:
-              - MS-0042
-              - L-42
-              - 5689
-            - memo: Numeravimas, pagal architektų sprendimą
-          - Type:
-            - examples:
-              - Blindė
-              - Bukas
+              - 400
+              - 0.400
+            - descr: Augalo diametras
+        s2:
+          properties:
+            <<: *prop
+            <<: *prop_folliage
+            Pset_ElementComponentCommon.Status: {}
+        s3:
+          properties:
           - Pset_QuantityTakeOff.Heigth:
             - examples:
-              - 4000
-            - memo: Aukštis nurodomas naujai sodinamiems medžiams
+              - 600
           - Pset_QuantityTakeOff.Diameter:
             - examples:
               - 240
               - 0.240
-            - memo: Diametras nurodomas ir naujai sodinamiems medžiams
-            - descr: Kamieno apimtis 1 m aukštyje
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - SP-TS-1.3
+            - descr: Augalo kamieno diametras
 
     - id: Krūmas                       # NSIK A.RA.TRB
       classifications:
         NSIK LF: A
         NSIK LT: RA
         NSIK LK: TRB
-      ifcType: IfcCovering
+      ifcType: 
+      - IfcGeographicElement
+      - IfcGeographicElementType
       stages:
-        << : *sp_stages_single_greenery
-        s3:
-          lod: 200
+        s1:
           properties:
-          - Name:
-            - examples:
-              - Gyvatvorė
-            - memo: Naujai sodinamiems augalams nurodoma ir rūšis
-          - Pset_ElementComponentCommon.Status
-          - Tag:
-            - examples:
-              - KS-0042
-            - memo: Numeravimas, pagal architektų sprendimą
-          - Type:
-            - examples:
-              - Blindė
-          - Pset_QuantityTakeOff.Heigth:
+            <<: *prop
+            <<: *prop_folliage
+            Pset_ElementComponentCommon.Status: {}
+            Pset_QuantityTakeOff.Heigth:
             - examples:
               - 600
-            - memo: Aukštis nurodomas naujai sodinamiems augalams
-          - Pset_QuantityTakeOff.Diameter:
+            Pset_QuantityTakeOff.Diameter:
             - examples:
               - 400
               - 0.400
             - descr: Augalo diametras
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+        s2:
+          properties:
+            <<: *prop
+            <<: *prop_folliage
+            Pset_ElementComponentCommon.Status: {}
+        s3:
+          properties:
+            Pset_QuantityTakeOff.Heigth:
             - examples:
-              - SP-TS-1.3.2
-          
-          
+              - 600
+            Pset_QuantityTakeOff.Diameter:
+            - examples:
+              - 400
+              - 0.400
+            - descr: Augalo diametras
+
     - id: Atsisėdimas                  # NSIK S.RB.CLC
       classifications:
         NSIK LF: S
@@ -160,30 +212,21 @@ SP:
       - IfcFurniture
       - IfcFurnitureType
       stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+        s2:
+          properties:
+            <<: *prop
         s3:
           properties:
-          - Name:
-            - examples:
-              - Lauko suoliukas
-          - Pset_ElementComponentCommon.Status
-          - Type:
-            - examples:
-              - SL-1
-          - VVK.Material:
-            - examples:
-              - Plienas AISI 316
-          - VVK.Finish:
-            - examples:
-              - Natūrali išvaizda
-          - VVK.Colour
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - SP-TS-1.4
-          - Pset_QuantityTakeOff.Heigth
-          - Pset_QuantityTakeOff.Length
-          - Pset_QuantityTakeOff.Width
-          lod: 200
-      
+            <<: *prop_g
+        s4:
+          properties:
+            <<: *prop_vis
+
     - id: Transporto priemonės stovas  # NSIK S.RB.UAJ
       examples:
       - Dviračių stovas
@@ -198,32 +241,21 @@ SP:
         NSIK LT: RB
         NSIK LK: UAJ
       stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+        s2:
+          properties:
+            <<: *prop
         s3:
           properties:
-          - Name:
-            - examples:
-              - Dviračių stovas
-          - Pset_ElementComponentCommon.Status
-          - Type:
-            - examples:
-              - DS-1
-          - VVK.Material
-          - VVK.Finish
-          - VVK.Colour
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - SP-TS-2.1
-          - Pset_QuantityTakeOff.Heigth:
-            - examples:
-              - 900
-          - Pset_QuantityTakeOff.Length:
-            - examples:
-              - 900
-          - Pset_QuantityTakeOff.Width:
-            - examples:
-              - 100
-          lod: 300
-      
+            <<: *prop_g
+        s4:
+          properties:
+            <<: *prop_vis
+
     - id: Konteineris                  # NSIK G.RB.CNA
       classifications:
         NSIK LF: G
@@ -233,68 +265,47 @@ SP:
       - IfcFurniture
       - IfcFurnitureType
       stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+            Pset_QuantityTakeOff.Volume: {}
+        s2:
+          properties:
+            <<: *prop
         s3:
           properties:
-          - Name:
-            - examples:
-              - Atliekų konteineris
-          - Pset_ElementComponentCommon.Status
-          - Type:
-            - examples:
-              - KT-1
-          - VVK.Material:
-            - examples:
-              - Polipropilenas
-          - VVK.Finish
-          - VVK.Colour
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - SP-TS-3.1
-          - Pset_QuantityTakeOff.Heigth:
-            - examples:
-              - 1000
-          - Pset_QuantityTakeOff.Length:
-            - examples:
-              - 1200
-          - Pset_QuantityTakeOff.Width:
-            - examples:
-              - 800
-          - Pset_QuantityTakeOff.Volume:
-            - examples:
-              - 0.200
-          lod: 200
-      
+            <<: *prop_g
+            Pset_QuantityTakeOff.Volume: {}
+        s4:
+          properties:
+            <<: *prop_vis
+
     - id: Šviestuvas                   # NSIK Q.HH.UAC
       classifications:
         NSIK LF: Q
         NSIK LT: HH
         NSIK LK: UAC
-      ifcType: IfcCovering
+      ifcType: 
+      - IfcLightFixture
+      - IfcLightFixtureType
       stages:
-        s3:
+        s1:
           properties:
-          - Name:
-            - examples:
-              - Lauko apšvietimo stulpas si integruotu šviesos šaltiniu
-          - Pset_ElementComponentCommon.Status
-          - Type:
-            - examples:
-              - LŠ-1
-          - VVK.Material:
-            - examples:
-              - CorTen plienas
-          - VVK.Finish
-          - VVK.Colour
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - SP-TS-5.3
-          - Pset_ElectricalDeviceCommon.NominalPowerConsumption
-          - Pset_ServiceLifeFactors.OutdoorEnvironment:
-            - examples:
-              - XC1
-            - units: Tekstas
-            - descr: XO, XC1  Aplinkos agresyvumo klasė  (jei taikoma)
-          lod: 200
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+        s2:
+          properties:
+            <<: *prop
+        s4:
+          properties:
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            Pset_QuantityTakeOff.Weigth: {}
 
     - id: Sporto įrenginys             # NSIK S.RC.SZB
       examples:
@@ -304,78 +315,50 @@ SP:
         NSIK LF: S
         NSIK LT: RC
         NSIK LK: SZB
-      ifcType: IfcCovering
+      ifcType: 
+      - IfcFurniture
+      - IfcFurnitureType
       stages:
-        s3:
-          lod: 200
+        s1:
           properties:
-          - Name:
-            - examples:
-              - Dviračio treniruoklis
-          - Pset_ElementComponentCommon.Status
-          - Type:
-            - examples:
-              - SP-1
-          - VVK.Material
-          - VVK.Finish:
-            - examples:
-              - Dažomas miltelinus būdu
-          - VVK.Colour
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - SP-TS-11.1
-          - Pset_QuantityTakeOff.Heigth:
-            - examples:
-              - 900
-          - Pset_QuantityTakeOff.Length:
-            - examples:
-              - 1800
-          - Pset_QuantityTakeOff.Width:
-            - examples:
-              - 750
-          - Pset_QuantityTakeOff.Weigth:
-            - examples:
-              - 100
-          
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+        s2:
+          properties:
+            <<: *prop
+        s4:
+          properties:
+            <<: *prop_g
+            <<: *prop_vis
+            Pset_QuantityTakeOff.Weigth: {}
+
     - id: Vaikų žaidimų įrenginys      # NSIK S.AA.SZC
       examples:
       - Karstyklė
       - karuselė
       - laipiojimo tiltelis
-      ifcType: IfcCovering
+      ifcType: 
+      - IfcFurniture
+      - IfcFurnitureType
       classifications:
         NSIK LF: S
         NSIK LT: AA
         NSIK LK: SZC
       stages:
-        s3:
+        s1:
           properties:
-          - Name:
-            - examples:
-              - Sūpynės
-          - Pset_ElementComponentCommon.Status
-          - Type:
-            - examples:
-              - VŽ-1
-          - VVK.Material
-          - VVK.Finish
-          - VVK.Colour
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - SP-TS-11.2
-          - Pset_QuantityTakeOff.Heigth:
-            - examples:
-              - 2200
-          - Pset_QuantityTakeOff.Length:
-            - examples:
-              - 2000
-          - Pset_QuantityTakeOff.Width:
-            - examples:
-              - 800
-          - Pset_QuantityTakeOff.Weigth:
-            - examples:
-              - 100
-          lod: 200
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+        s2:
+          properties:
+            <<: *prop
+        s4:
+          properties:
+            <<: *prop_g
+            <<: *prop_vis
+            Pset_QuantityTakeOff.Weigth: {}
 
     - id: Tvora                        # NSIK B.BD.RUA
       examples:
@@ -384,71 +367,44 @@ SP:
         NSIK LF: B
         NSIK LT: BD
         NSIK LK: RUA
-      ifcType: IfcCovering
+      ifcType: IfcRailing
       stages:
-        s3:
-          lod: 300
+        s1:
           properties:
-          - Name:
-            - examples:
-              - Tvora
-          - Pset_ElementComponentCommon.Status
-          - Type:
-            - examples:
-              - T-1
-          - VVK.Material
-          - VVK.Finish:
-            - examples:
-              - Plastizuotas tinklas
-          - VVK.Colour
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - 'SP-TS-13.1'
-          - Pset_QuantityTakeOff.Heigth:
-            - examples:
-              - 1500
-          - Pset_QuantityTakeOff.Length:
-            - examples:
-              - 8000
-          - Pset_QuantityTakeOff.Width
-          
-    
+            <<: *prop
+            <<: *prop_g_area
+            <<: *prop_vis
+        s2:
+          properties:
+            <<: *prop
+        s4:
+          properties:
+            <<: *prop_g_area
+            <<: *prop_vis
+
     - id: Vartai                       # NSIK B.BD.QQF
       examples:
       - Atidaromas užtvaras
       - praėjimo vartai tvoroje
-      ifcType: IfcCovering
+      ifcType: IfcRailing
       classifications:
         NSIK LF: B
         NSIK LT: BD
         NSIK LK: QQF
       stages:
-        s3:
+        s1:
           properties:
-          - Name:
-            - examples:
-              - Pravažiamo vartai
-          - Pset_ElementComponentCommon.Status
-          - Type:
-            - examples:
-              - V-1
-          - VVK.Material
-          - VVK.Finish
-          - VVK.Colour
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - SP-TS-2.3
-          - Galingumas:
-            - examples:
-              - 500
-            - memo: Vartų elektrinės pavaros projektinė galia.
-          - Pset_QuantityTakeOff.Heigth:
-            - examples:
-              - 1200
-          - Pset_QuantityTakeOff.Width:
-            - examples:
-              - 4000
-          lod: 200
+            <<: *prop
+            <<: *prop_g_area
+            <<: *prop_vis
+        s2:
+          properties:
+            <<: *prop
+            <<: *prop_g_area
+        s4:
+          properties:
+            <<: *prop_vis
+            <<: *prop_e
 
     - id: Apsauginis turėklas          # NSIK F.FQ.FQD
       examples:
@@ -462,29 +418,19 @@ SP:
         NSIK LK: FQD
         Uniclass: EF_25_55_28
       stages:
-        s3:
-          lod: 300
+        s1:
           properties:
-          - Name
-          - Pset_ElementComponentCommon.Status
-          - Type:
-            - examples:
-              - AT-1
-          - VVK.Material
-          - VVK.Finish
-          - VVK.Colour
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - SP-TS-13.3
-          - Pset_QuantityTakeOff.Heigth:
-            - examples:
-              - 1200
-          - Pset_QuantityTakeOff.Length:
-            - examples:
-              - 4500
-          - Pset_QuantityTakeOff.Width:
-            - examples:
-              - 200
+            <<: *prop
+            <<: *prop_g_area
+            <<: *prop_vis
+        s2:
+          properties:
+            <<: *prop
+            <<: *prop_g_area
+        s4:
+          properties:
+            <<: *prop_vis
+
     - id: Batų valymo grotelės          # NSIK A.AA.%HQB10
       examples:
       - Kojų valymo grotelės
@@ -496,27 +442,16 @@ SP:
         NSIK LK: "%HQB10"
         Uniclass: Pr_25_96_30_31
       stages:
-        s3:
-          lod: 300
+        s1:
           properties:
-          - Name
-          - Pset_ElementComponentCommon.Status
-          - Type:
-            - examples:
-              - CG-01
-          - VVK.Material
-          - VVK.Finish
-          - VVK.Colour
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - SP-TS-13.4
-          - Pset_QuantityTakeOff.Heigth:
-            - examples:
-              - 80
-          - Pset_QuantityTakeOff.Length:
-            - examples:
-              - 2500
-          - Pset_QuantityTakeOff.Width:
-            - examples:
-              - 800
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+        s2:
+          properties:
+            <<: *prop
+        s4:
+          properties:
+            <<: *prop_g
+            <<: *prop_vis
 

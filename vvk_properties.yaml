@@ -1,13 +1,13 @@
 Name: 
     type: IfcLabel
-    units: String
+    valueType: String
     examples:
     - Gumos danga
     description: Elemento pavadinimas
   
 Tag:
     type: IfcLabel
-    units: String
+    valueType: String
     examples:
     - GR-10
     - K-01
@@ -16,36 +16,36 @@ Tag:
 
 Type:
   type: IfcLabel
-  units: String
+  valueType: String
   examples:
     - L1
   description: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas medžiagų ir kiekių žiniaraščiuose
 
 Classification.NSIKcodeB:
   type: IfcLabel
-  units: String
+  valueType: String
   allowedValues: [A, A+, B, B+, C, C+, D, D+, E, E+, F, F+, P, P+]
   description: Klasifikatoriaus kodas pagal NSIK <B> generalinę klasę
 
 Classification.NSIKcodeLT:
   type: IfcLabel
-  units: String
+  valueType: String
   allowedValues: [B, C, D, E, F, G, H, K, L, M, "N", P, S ]
   description: Klasifikatoriaus kodas pagal NSIK <LT> generalinę klasę
 
 Classification.NSIKcodeLF:
   type: IfcLabel
-  units: String
+  valueType: String
   description: Klasifikatoriaus kodas pagal NSIK <LF> generalinę klasę
       
 Classification.NSIKcodeLK:
   type: IfcLabel
-  units: String
+  valueType: String
   description: Klasifikatoriaus kodas pagal NSIK <LK> generalinę klasę
 
 Pset_ElementComponentCommon.Status:
     type: IfcLabel
-    units: String
+    valueType: String
     examples:
       - Projektuojamas
     description: Elemento būsena
@@ -59,6 +59,7 @@ Pset_ElementComponentCommon.Status:
 Pset_ConstructionAdministration.SpecificationSectionNumber:
   type: IfcLabel
   units: String
+  valueType: String
   examples:
     - SA-TS-1.1
     - SA-TS-C.BA.%CDD1042
@@ -68,6 +69,7 @@ Pset_ConstructionAdministration.SpecificationSectionNumber:
 
 Pset_QuantityTakeOff.Heigth: &prop_Height
     type: IfcLengthMeasure
+    valueType: Real
     examples:
       - 120
       - 5.600
@@ -79,6 +81,7 @@ Pset_QuantityTakeOff.NominalHeight: *prop_Height
 
 Pset_QuantityTakeOff.Width: &prop_Width
     type: IfcLengthMeasure
+    valueType: Real
     units: Real
     examples:
       - 120
@@ -90,6 +93,7 @@ Pset_QuantityTakeOff.NominalWidth: *prop_Width
 
 Pset_QuantityTakeOff.Length: &prop_Length
     type: IfcLengthMeasure
+    valueType: Real
     units: Real
     examples:
       - 1600
@@ -101,6 +105,7 @@ Pset_QuantityTakeOff.NominalLength: *prop_Length
 
 Pset_QuantityTakeOff.Depth: &prop_Depth
   type: IfcLengthMeasure
+  valueType: Real
   units: Real
   examples:
     - 120
@@ -110,7 +115,7 @@ Pset_QuantityTakeOff.Depth: &prop_Depth
 Pset_QuantityTakeOff.NominalDepth: *prop_Depth
 
 Pset_QuantityTakeOff.Diameter: &prop_Diameter
-  type: IfcLengthMeasure
+  valueType: Real
   units: Real
   examples:
     - 600
@@ -122,6 +127,7 @@ Pset_QuantityTakeOff.NominalDiameter: *prop_Diameter
 
 Pset_QuantityTakeOff.Area: &prop_Area
     type: IfcAreaMeasure
+    valueType: Real
     units: Real
     examples:
       - 4.20
@@ -132,6 +138,7 @@ Pset_QuantityTakeOff.NetArea: *prop_Area
 
 Pset_QuantityTakeOff.Weigth: &prop_Weight
     type: IfcWeightMeasure
+    valueType: Real
     units: Real
     examples:
       - 80
@@ -141,6 +148,7 @@ Pset_QuantityTakeOff.Weigth: &prop_Weight
 
 Pset_QuantityTakeOff.Volume:
     type: IfcVolumeMeasure
+    valueType: Real
     units: Real
     examples:
       - 80.500
@@ -150,6 +158,7 @@ Pset_QuantityTakeOff.Volume:
 
 Pset_QuantityTakeOff.Power: &prop_Power
     type: IfcPowerMeasure
+    valueType: Real
     units: Real
     examples:
       - 80
@@ -172,6 +181,7 @@ Pset_QuantityTakeOff.VolumetricFlowRate
 VVK.Energetinė klasė:
     type: IfcLabel
     units: String
+    valueType: String
     examples:
       - A++
       - C
@@ -192,6 +202,7 @@ VVK.Energetinė klasė:
 VVK.LevelName:
     type: IfcLabel
     units: String
+    valueType: String
     examples:
       - '1'
       - '2'
@@ -202,7 +213,7 @@ VVK.LevelName:
 # patikrinti
 VVK.AcousticRating:
   type: IfcLabel
-  valueType: Integer
+  valueType: String
 
 # patikrinti
 VVK.Korpusas:
@@ -214,6 +225,7 @@ VVK.Korpusas:
 # patikrinti
 VVK.IsArchitecturalExposed:
   type: IfcBoolean
+  valueType: Boolean
 
 # patikrinti
 VVK.RelatedDocumentationURI:
@@ -225,7 +237,7 @@ VVK.RelatedDocumentationURI:
 # patikrinti
 VVK.Energetinė klasė:
   type: IfcLabel
-  units: String
+  valueType: String
   examples:
     - A++
     - C
@@ -245,7 +257,7 @@ VVK.Energetinė klasė:
 # patikrinti
 VVK.ASSEMBLY MARK:
   type: IfcLabel
-  units: String
+  valueType: String
   examples:
     - 80
     - 18
@@ -267,31 +279,72 @@ VVK.FireResistanceRating:
     description: Statinio atsparumu ugniai laipsnis
 
 # patikrinti
-VVK.FireRating:
+Pset_DoorCommon.FireRating:
   type: IfcLabel
+  valueType: String
+  allowedValues:
+  - E [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - I [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - EI [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - EW [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - EI_2 [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - EI_2 [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]-Cs
+
+Pset_WindowCommon.FireRating:
+  type: IfcLabel
+  valueType: String
+  allowedValues:
+  - E [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - I [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - EI [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - EW [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - EW_2 [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+
+Pset_WallCommon.FireRating:
+  type: IfcLabel
+  valueType: String
   allowedValues:
   - R [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
   - E [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
   - I [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
   - EI [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
-  - EW [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
   - REI [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
   - R-M [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
-  - EI_2 [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
-  - EI_2 [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]-Cs
 
+Pset_SlabCommon.FireRating:
+  type: IfcLabel
+  valueType: String
+  allowedValues:
+  - R [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - E [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - I [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - EI [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - REI [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - R-M [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  
 # patikrinti
 VVK.Combustability:
   type: IfcLabel
+  valueType: String
   units: String
   examples:
     - A2
     - B-s3,d0
   description: Medžiagos degumo klasė
 
+Pset_ElementComponentCommon.EgressCode:
+    type: IfcLabel
+    valueType: String
+    examples:
+      - EN 179
+      - EN 1125
+    units: String
+    description: Evakuacinio išėjimo elementams taikomas standartas
+
 # patikrinti
 Pset_ServiceLifeFactors.OutdoorEnvironment:
     type: IfcLabel
+    valueType: String
     examples:
       - XC3
       - XC6
@@ -304,6 +357,7 @@ Pset_ServiceLifeFactors.OutdoorEnvironment:
 # patikrinti
 VVK.Material:
     type: IfcLabel
+    valueType: String
     units: String
     examples:
       - Guma
@@ -317,6 +371,7 @@ VVK.Material:
 # patikrinti
 VVK.Colour:
     type: IfcLabel
+    valueType: String
     units: String
     examples:
       - RAL 9003 'Signal white'
@@ -327,6 +382,7 @@ VVK.Colour:
 # patikrinti
 VVK.Finish:
   type: IfcLabel
+  valueType: String
   units: String
   examples:
     - Dažomas milteliniu būdu
@@ -340,6 +396,7 @@ Pset_EnvironmentalCondition.MaximumWindSpeed:
 
 VVK.OperationalConditionsClass:
   type: IfcLabel
+  valueType: String
   units: String
   examples:
     - XC4

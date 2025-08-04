@@ -5,1245 +5,688 @@
 # 07.01 - Vandentiekis
 #
 
+prop_g:   &prop_g
+  Pset_QuantityTakeOff.Height: {}
+  Pset_QuantityTakeOff.Width: {}
+  Pset_QuantityTakeOff.Length: {}
+
+prop_g_d:   &prop_g_diam
+  Pset_QuantityTakeOff.Length: {}
+  Pset_QuantityTakeOff.Diameter: {}
+
+prop:     &prop
+  Name: {}
+  System: {}
+  Pset_ElementComponentCommon.Status: {}
+  Pset_ConstructionAdministration.SpecificationSectionNumber: {}
+  
+prop_u: &prop_u
+  <<: *prop
+  Tag: {}
+  
+prop_well: &prop_well
+  Pset_QuantityTakeOff.Diameter: {}
+  Pset_QuantityTakeOff.Volume: {}
+  
+prop_pump: &prop_pump
+  Pset_PumpTypeCommon.ConnectionSize: {}
+  Pset_PumpTypeCommon.TemperatureRange: {}
+  Pset_PumpTypeCommon.NominalRotationSpeed: {}
+
+prop_e_device: &prop_e_device
+  Pset_ElectricalDeviceCommon.RatedVoltage: {}
+  Pset_ElectricalDeviceCommon.NominalFrequencyRange: {}
+  Pset_ElectricalDeviceCommon.HasProtectiveEarth: {}
+  Pset_ElectricalDeviceCommon.InsulationStandardClass: {}
+  Pset_ElectricalDeviceCommon.IP_Code: {}
+  Pset_ElectricalDeviceCommon.IK_Code: {}
+  Pset_ElectricalDeviceCommon.Power: {}
+  Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
+
+prop_mass: &prop_mass
+  Pset_ElementComponentCommon.Weight: {}
+
+
+#prop_s3_well: &prop_s3_well_round
+#  - Name
+#  - System
+#  - Pset_ElementComponentCommon.Status
+#  - Tag
+#  - Pset_QuantityTakeOff.Heigth
+#  - Pset_QuantityTakeOff.Diameter
+#  - Pset_QuantityTakeOff.Volume
+  
+#prop_s3:  &prop_s3
+#  - Name
+#  - System
+#  - Pset_ElementComponentCommon.Status
+#  - Type
+#  - Pset_ConstructionAdministration.SpecificationSectionNumber
+#  - VVK.Material
+#  - Pset_QuantityTakeOff.Heigth
+#  - Pset_QuantityTakeOff.Width
+#  - Pset_QuantityTakeOff.Length
+
+prop_zone:  &prop_zone
+  System: {}
+  Pset_ElementComponentCommon.Status: {}
+  Pset_QuantityTakeOff.Width: {}
+  Pset_QuantityTakeOff.Area: {}
+  
+#prop_s3_pipe:  &prop_s3_pipe
+#  - Name
+#  - System
+#  - Pset_ElementComponentCommon.Status
+#  - Type
+#  - Pset_ConstructionAdministration.SpecificationSectionNumber
+#  - VVK.Material
+#  - Pset_QuantityTakeOff.Diameter
+#  - Pset_QuantityTakeOff.Length
+
+#prop_s3_valve:  &prop_s3_valve
+#  - Name
+#  - System
+#  - Pset_ElementComponentCommon.Status
+#  - Type
+#  - Pset_ConstructionAdministration.SpecificationSectionNumber
+#  - VVK.Material
+#  - Pset_QuantityTakeOff.Diameter
+
+#prop_s3_valve:  &prop_s3_unique_valve
+#  - Name
+#  - System
+#  - Pset_ElementComponentCommon.Status
+#  - Type
+#  - Tag
+#  - Pset_ConstructionAdministration.SpecificationSectionNumber
+#  - VVK.Material
+#  - Pset_QuantityTakeOff.Diameter
+  
+prop_vis:  &prop_vis
+  VVK.Material: {}
+  VVK.Finish: {}
+  VVK.Colour: {}
+  
+# prop_s3u: &prop_s3_u
+  # - Name
+  # - System
+  # - Pset_ElementComponentCommon.Status
+  # - Type
+  # - Tag
+  # - Pset_ConstructionAdministration.SpecificationSectionNumber
+  # - VVK.Material
+  # - Pset_QuantityTakeOff.Heigth
+  # - Pset_QuantityTakeOff.Width
+  # - Pset_QuantityTakeOff.Length
+  
+# prop_vu:  &prop_s3_vu
+  # - Name
+  # - System
+  # - Pset_ElementComponentCommon.Status
+  # - Type
+  # - Tag
+  # - Pset_ConstructionAdministration.SpecificationSectionNumber
+  # - VVK.Material
+  # - Pset_QuantityTakeOff.Heigth
+  # - Pset_QuantityTakeOff.Width
+  # - Pset_QuantityTakeOff.Length
+  # - VVK.Finish
+  # - VVK.Colour
+
+# prop_ue:  &prop_s3_ue
+  # - Name
+  # - System
+  # - Pset_ElementComponentCommon.Status
+  # - Type
+  # - Tag
+  # - Pset_ConstructionAdministration.SpecificationSectionNumber
+  # - VVK.Material
+  # - Pset_QuantityTakeOff.Heigth
+  # - Pset_QuantityTakeOff.Width
+  # - Pset_QuantityTakeOff.Length
+  # - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+  
+# prop_vue: &prop_s3_vue
+  # - Name
+  # - System
+  # - Pset_ElementComponentCommon.Status
+  # - Type
+  # - Tag
+  # - Pset_ConstructionAdministration.SpecificationSectionNumber
+  # - VVK.Material
+  # - Pset_QuantityTakeOff.Heigth
+  # - Pset_QuantityTakeOff.Width
+  # - Pset_QuantityTakeOff.Length
+  # - VVK.Finish
+  # - VVK.Colour
+  # - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+  
+# prop_vue: &prop_s3_vue_x
+  # - Name
+  # - System
+  # - Pset_ElementComponentCommon.Status
+  # - Type
+  # - Tag
+  # - Pset_ConstructionAdministration.SpecificationSectionNumber
+  # - VVK.Material
+  # - Pset_QuantityTakeOff.Heigth
+  # - Pset_QuantityTakeOff.Width
+  # - Pset_QuantityTakeOff.Length
+  # - VVK.Finish
+  # - VVK.Colour
+  # - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+  # - Pset_ElectricalDeviceCommon.IsExternal
+  
+  
+# s2:       &stageS2_common
+  # lod: 200
+  # properties: *prop
+  
+# s2_u:     &stageS2_unique
+  # lod: 200
+  # properties: *prop_s2_u
+
+# s3:       &stageS3_common
+  # lod: 300
+  # properties: *prop_s3
+
+# s3_pipe:  &stageS3_pipe
+  # lod: 300
+  # properties: *prop_s3_pipe
+
+# s3_valve: &stageS3_valve
+  # lod: 300
+  # properties: *prop_s3_valve
+# s3_u_valve: &stageS3_unique_valve
+  # lod: 300
+  # properties: *prop_s3_unique_valve
+# s3_zone:  &stageS3_zone
+  # lod: 300
+  # properties: *prop_s3_zone
+  
+# s3_u:     &stageS3_unique
+  # lod: 300
+  # properties: *prop_s3_u
+
+# s3_w:     &stageS3_well
+  # lod: 300
+  # properties: *prop_s3_well
+# s3_vu:    &stageS3_visible
+  # lod: 300
+  # properties: *prop_s3_v
+  
+# s3_vu:    &stageS3_visible_unique
+  # lod: 300
+  # properties: *prop_s3_vu
+
+# s3_vue:   &stageS3_visible_unique_electrical
+  # lod: 300
+  # properties: *prop_s3_vue
+  
+# s3_vue_x: &stageS3_visible_unique_electrical_external
+  # lod: 300
+  # properties: *prop_s3_vue_x
+  
+# s3_ue:    &stageS3_unique_electrical
+  # lod: 300
+  # properties: *prop_s3_ue
+
+ifc_linear:  &type_linear
+  - IfcFlowSegment
+  - IfcFlowSegmentType
+  - IfcFlowSegmentTypeEnum
+ifc_e:       &type_e
+  - IfcDistributionControlElement
+  - IfcDistributionControlElementType
+  - IfcDistributionControlElementTypeEnum
+ifc_w:       &type_well
+  - IfcFlowTerminal
+  - IfcFlowTerminalType
+  - IfcFlowTerminalTypeEnum
+ifc_f:       &type_flow
+  - IfcFlowController
+  - IfcFlowControllerType
+  - IfcFlowControllerTypeEnum
+
+# elements
 VN.V:
     id: "07.01"
     name: Vandentiekis
+    stages:
+      s1:
+        lod: 275
+        log: 2
+      s2:
+        lod: 200
+        log: 2
+      s3:
+        lod: 300
+        log: 2
+      s4:
+        lod: 350
+        log: 2
+        properties:
+          Pset_ManufacturerTypeInformation.ArticleNumber: {}
+          Pset_ManufacturerTypeInformation.Manufacturer: {}
+      s5:
+        lod: 350
+        log: 2
+        properties:
+        - VVK.RelatedDocumentationURI
+      s6:
+        lod: 500
+        log: 6
+        
     elements:
-    - id: Izoliacija
-      ifcType: IcfCovering
+    - id: Geriamo vandens sistemos vamzdis                               # pipe             NSIK: %F10.JB.WPA
+      examples:
+      - Daugiasluoksnis vamzdis
+      - Plieninis cinkuotas vamzdžis
+      - Plieninis besiūlis vamzdis
       classifications:
-        NSIK LF: D
-        NSIK LT: BE
-        NSIK LK: RQA
-        Uniclass: Pr_65_52_61_42
-      stages:
-        s3:
-          lod: 300
-          properties:
-          - VVK.LevelName:
-            - examples:
-              - Stogas
-          - Name:
-            - examples:
-              - Antikondensacinė izoliacija
-              - Akmens vatos kevalas
-          - Pset_ElementComponentCommon.Status
-          - Type:
-            - examples:
-              - I-10
-          - VVK.Material:
-            - examples:
-              - Akmens vats, padengta aliuminio folija
-              - Poliuretanas
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-            - VN.V-TS-1.2
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-          - Ifc__.Depth:
-            - examples:
-              - 150
-          - Ifc__.Area:
-            - examples:
-              - 100
-    
-    - id: Vamzdis
-      classifications:
-        NSIK LF: F
+        NSIK LF: "%F10"
         NSIK LT: JB
         NSIK LK: WPA
       stages:
-        s3:
-          lod: 300
+        s1:
           properties:
-          - VVK.LevelName:
-            - examples:
-              - 1 aukštas
-          - Name:
-            - examples:
-              - Daugiasluoksnis vamzdis
-              - Plieninis cinkuotas vamzdžis
-              - Plieninis besiūlis vamzdis
-          - Pset_ElementComponentCommon.Status
-          - Type:
-            - examples:
-              - DV-1
-          - VVK.Material:
-            - examples:
-              - Nerūdijantis plienas
-            - memo: Pildoma, jei tokia savybė aktuali
-          - VVK.Apdaila:
-            - examples:
-              - Gruntuojamas, dažomas
-            - memo: Pildoma, jei tokia savybė aktuali
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - VN.V-TS-1.2
-          - Ifc__.Length:
-            - examples:
-              - 5000
-          - Diametras:
-            - examples:
-              - 50
-      
-    - id: Bidė
-      classifications:
-        NSIK LF: F
-        NSIK LT: JB
-        NSIK LK: XKA
-      stages:
+            <<: *prop
+            <<: *prop_g_diam
+            <<: *prop_vis
         s3:
-          lod: 300
           properties:
-          - Aukštas
-          - Name:
-            - examples:
-              - Higieninis dušas
-          - Pset_ElementComponentCommon.Status
-          - Type:
-            - examples:
-              - BD-1
-          - VVK.Material:
-            - examples:
-              - Keramika
-            - memo: Pildoma, jei tokia savybė aktuali
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - VN.V-TS-1.2
-          - Ifc__.Heigth:
-            - examples:
-              - 500
-          - Ifc__.Length:
-            - examples:
-              - 450
-          - Ifc__.Width:
-            - examples:
-              - 450          
-      
-    - id: Skysčio reguliavimo vožtuvas
+            <<: *prop_g_diam
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_vis
+        
+    - id: Geriamo vandens sistemos išardoma jungtis                      # valve            NSIK: %F10.JB.XMA
       examples:
-      - Čiaupas
-      - maišytuvas
-      classifications:
-        NSIK LF: F
-        NSIK LT: JB
-        NSIK LK: QNA
-      stages:
-        s3:
-          lod: 300
-          properties:
-          - Aukštas
-          - Name:
-            - examples:
-              - Vandens čiaupas
-          - Pset_ElementComponentCommon.Status
-          - Type:
-            - examples:
-              - ČP-1
-          - VVK.Material:
-            - examples:
-              - Bronza
-            - memo: Pildoma, jei tokia savybė aktuali
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - examples:
-              - Chromuotas
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - VN.V-TS-1.2
-          - Ifc__.Heigth:
-            - examples:
-              - 154
-          - Ifc__.Length:
-            - examples:
-              - 126
-          - Ifc__.Width:
-            - examples:
-              - 39
-          - Diametras:
-            - examples:
-              - 20
-            - descr: Pajungimo diametras
-      
-    - id: Srauto energijos skaitiklis
-      examples:
-      - Karšto vandens skaitiklis
-      - vandens apskaitos prietaisas
-      - šalto vandens skaitiklis
-      classifications:
-        NSIK LF: F
-        NSIK LT: JB
-        NSIK LK: BHA
-      stages:
-        s3:
-          lod: 300
-          properties:
-          - Aukštas
-          - Name:
-            - examples:
-              - Šalto vandens skaitiklis
-          - Pset_ElementComponentCommon.Status
-          - Type:
-            - examples:
-              - VSK-1
-          - VVK.Material:
-            - examples:
-              - Žalvaris
-            - memo: Pildoma, jei tokia savybė aktuali
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - VN.V-TS-1.2
-          - Ifc__.Length:
-            - examples:
-              - 110
-          - Diametras:
-            - examples:
-              - 20
-            - descr: Pajungimo diametras
-      
-    - id: Išardoma jungtis
-      examples:
-      - Flanšinės
+      - Flanšinė jungtis
       - Suveržiama jungtis
       classifications:
-        NSIK LF: F
+        NSIK LF: "%F10"
         NSIK LT: JB
         NSIK LK: XMA
       stages:
-        s3:
-          lod: 300
+        s1:
           properties:
-          - Aukštas
-          - Name:
-            - examples:
-              - Flanšinė alkūnė
-          - Pset_ElementComponentCommon.Status
-          - Type:
-            - examples:
-              - FD-1
-          - VVK.Material:
-            - examples:
-              - Kalusis ketus
-            - memo: Pildoma, jei tokia savybė aktuali
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - examples:
-              - Gruntuojama, dažoma
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - VN.V-TS-1.2
-          - Diametras:
-            - examples:
-              - 250
-            - descr: Pajungimo diametras
-          
-    - id: Neišardoma jungtis
+            <<: *prop
+            <<: *prop_g_diam
+            <<: *prop_vis
+        s3:
+          properties:
+            <<: *prop_g_diam
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_vis
+        
+    - id: Geriamo vandens sistemos neišardoma jungtis                    # valve            NSIK: %F10.JB.XMB
       examples:
       - Presuojamas trišakis
-      - Virinama  alkūnė
+      - Virinama alkūnė
+      - Presuojama alkūnė
       classifications:
-        NSIK LF: F
+        NSIK LF: "%F10"
         NSIK LT: JB
         NSIK LK: XMB
       stages:
-        s3:
-          lod: 300
+        s1:
           properties:
-          - Aukštas
-          - Name:
-            - examples:
-              - Presuojama alkūnė
-          - Pset_ElementComponentCommon.Status
-          - Type:
-            - examples:
-              - FD-1
-          - VVK.Material:
-            - examples:
-              - Plastikas
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - examples:
-              - Gruntuojama, dažoma
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - VN.V-TS-1.2
-          - Diametras:
-            - examples:
-              - 32
-            - descr: Pajungimo diametras
-          
-    - id: Skysčių vožtuvas, sklendė
+            <<: *prop
+            <<: *prop_g_diam
+            <<: *prop_vis
+        s3:
+          properties:
+            <<: *prop_g_diam
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_vis
+        
+    - id: Geriamo vandens sistemos vožtuvas, sklendė                     # unique_valve     NSIK: %F10.JB.QNA
       examples:
       - Apsauginis vožtuvas
-      - apsauginė skysčio sklendė
+      - Apsauginė skysčio sklendė
+      - Skysčio reguliavimo vožtuvas
+      - Maišytuvas
+      - Čiaupas
       classifications:
-        NSIK LF: F
+        NSIK LF: "%F10"
         NSIK LT: JB
         NSIK LK: QNA
       stages:
-        s3:
-          lod: 300
+        s1:
           properties:
-          - Aukštas
-          - Name:
-            - examples:
-              - Apsauginis vožtuvas
-              - Sklendė
-          - Pset_ElementComponentCommon.Status
-          - Type:
-            - examples:
-              - AV-1
-          - VVK.Material:
-            - examples:
-              - Žalvaris
-            - memo: Pildoma, jei tokia savybė aktuali
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - examples:
-              - Chromuotas
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - VNN.V-TS-1.2
-          - Diametras:
-            - examples:
-              - 20
-            - descr: Pajungimo diametras
-      
-    - classifications:
-        NSIK LF: F
+            <<: *prop_u
+            <<: *prop_g_diam
+            <<: *prop_vis
+        s3:
+          properties:
+            <<: *prop_g_diam
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_vis
+    
+    - id: Geriamojo vandens talpa                                        # well             NSIK: %F10.JB.CNA
+      classifications:
+        NSIK LF: "%F10"
+        NSIK LT: JB
+        NSIK LK: CNA
+      ifcType: *type_well
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_well
+            <<: *prop_mass
+        s3:
+          properties:
+            <<: *prop_g
+            <<: *prop_mass
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_well
+    
+    - id: Geriamo vandens skaitiklis                                     # unique_valve     NSIK: %F10.JB.BHA
+      examples:
+      - Karšto vandens skaitiklis
+      - vandens apskaitos prietaisas
+      - Šalto vandens skaitiklis
+      classifications:
+        NSIK LF: "%F10"
+        NSIK LT: JB
+        NSIK LK: BHA
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g_diam
+            <<: *prop_vis
+        s3:
+          properties:
+            <<: *prop_g_diam
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_vis
+
+    - id: Geriamo vandens sistemos teigiamo darbinio tūrio siurblys      # unique           NSIK: %F10.JB.GPA
+      examples:
+      - Vandens siurblys
+      - Slėgio sukėlimo siurblys
+      classifications:
+        NSIK LF: "%F10"
         NSIK LT: JB
         NSIK LK: GPA
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g_diam
+            <<: *prop_vis
+            <<: *prop_pump
+            <<: *prop_e_device
+            <<: *prop_mass
         s3:
           properties:
-          - VVK.LevelName:
-            - examples:
-              - 1 aukštas
-            - units: Tekstas
-          - Name:
-            - examples:
-              - Vandens siurblys 3.6 bar
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - VS-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
-                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - Nerūdijantis plienas
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 1.2
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          - Galingumas:
-            - examples:
-              - 0.6
-            - memo: '*Arba TS nuoroda'
-            - units: W
-            - descr: Elemento projektinė galia. Elektriniams prietaisams - elektrinė
-                galia, šiluminiams ir jiems prilygintims - šiluminė galia
-          - Diametras:
-            - examples:
-              - 20
-            - units: mm
-            - descr: Pajungimo diametras
-          lod: 300
-      id: Teigiamo darbinio tūrio siurblys
-    - classifications:
-        NSIK LF: F
+            <<: *prop_g_diam
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_pump
+            <<: *prop_e_device
+        s5:
+          properties:
+            <<: *prop_mass
+    
+    - id: Geriamo vandens sistemos izoliacija                            # common           NSIK: %F10.JB.RQA      Uc: Pr_65_52_61_42
+      examples:
+      - Antikondensacinė izoliacija
+      - Akmens vatos kevalas
+      ifcType: IcfCovering
+      classifications:
+        NSIK LF: "%F10"
         NSIK LT: JB
         NSIK LK: RQA
+        Uniclass: Pr_65_52_61_42
       stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g_diam
+            <<: *prop_vis
         s3:
           properties:
-          - VVK.LevelName:
-            - examples:
-              - 1 aukštas
-            - units: Tekstas
-          - Name:
-            - examples:
-              - Šiluminė izoliacija
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - AŠI-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
-                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - Akmens vata
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 1.2
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          - Ifc__.Depth:
-            - examples:
-              - 100
-            - units: mm
-            - descr: Storis, mm (0 dešimtainių skaitmenų) arba m (3 dešimtainiai skaitmenys)
-          - Diametras:
-            - examples:
-              - 110
-            - units: mm
-            - descr: Vamzdyno diametras, mm
-          lod: 300
-      id: Izoliacija
-      examples:
-      - Antikondensacinė
-      - šiluminė
-      - akustinė izoliacija
-  
-    - classifications:
-        NSIK LF: F
-        NSIK LT: JB
-        NSIK LK: UCA
-      stages:
-        s3:
+            <<: *prop_g_diam
+        s4:
           properties:
-          - VVK.LevelName:
-            - examples:
-              - 1 aukštas
-            - units: Tekstas
-          - Name:
-            - examples:
-              - Gaisrinio čiaupo dėžė
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - GČ-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
-                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 1.2
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          - Ifc__.Heigth:
-            - examples:
-              - 520
-            - units: mm
-            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Ifc__.Length:
-            - examples:
-              - 400
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Ifc__.Width:
-            - examples:
-              - 180
-            - units: mm
-            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          lod: 300
-      id: Gaisrinio čiaupo dėžė
+            <<: *prop
+            <<: *prop_vis
+
+
+    - id: Technologinio vandens sistemos vamzdis                               # pipe             NSIK: %F30.JB.WPA
       examples:
-      - Gaisrinio čiaupo dėžė (VN dalyje neprojektuojama
-      - numatyta SA dalyje - ugnies gesintuvai)
-    - classifications:
-        NSIK LF: F
+      - Daugiasluoksnis vamzdis
+      - Plieninis cinkuotas vamzdžis
+      - Plieninis besiūlis vamzdis
+      classifications:
+        NSIK LF: "%F30"
         NSIK LT: JB
         NSIK LK: WPA
       stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g_diam
+            <<: *prop_vis
         s3:
           properties:
-          - VVK.LevelName:
-            - examples:
-              - 1 aukštas
-            - units: Tekstas
-          - Name:
-            - examples:
-              - Daugiasluoksniai vamzdžiai, plieniniai vamzdžiai
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - DV-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
-                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - Nerūdijantis plienas
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 1.2
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          - Ifc__.Length:
-            - examples:
-              - 5000
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Diametras:
-            - examples:
-              - 50
-            - units: mm
-            - descr: Gaminio diametras
-          lod: 300
-      id: Vamzdis
-    - classifications:
-        NSIK LF: F
-        NSIK LT: JB
-        NSIK LK: XKA
-      stages:
-        s3:
+            <<: *prop_g_diam
+        s4:
           properties:
-          - VVK.LevelName:
-            - examples:
-              - 1 aukštas
-            - units: Tekstas
-          - Name:
-            - examples:
-              - Plautuvė
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - PL-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
-                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - Keramika
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 1.2
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          - Ifc__.Heigth:
-            - examples:
-              - 140
-            - units: mm
-            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Ifc__.Length:
-            - examples:
-              - 430
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Ifc__.Width:
-            - examples:
-              - 360
-            - units: mm
-            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          lod: 300
-      id: Praustuvas
+            <<: *prop
+            <<: *prop_vis
+        
+    - id: Technologinio vandens sistemos išardoma jungtis                      # valve            NSIK: %F30.JB.XMA
       examples:
-      - Dubens pavidalo santechnikos prietaisas su skysčio išleidimo įtaisu
-      - kriauklė
-      - plautuvė
-      - praustuvas
-    - classifications:
-        NSIK LF: F
-        NSIK LT: JB
-        NSIK LK: XKA
-      stages:
-        s3:
-          properties:
-          - VVK.LevelName:
-            - examples:
-              - 1 aukštas
-            - units: Tekstas
-          - Name:
-            - examples:
-              - Higieninis dušas
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - BD-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
-                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - Keramika
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 1.2
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          - Ifc__.Heigth:
-            - examples:
-              - 500
-            - units: mm
-            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Ifc__.Length:
-            - examples:
-              - 450
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Ifc__.Width:
-            - examples:
-              - 450
-            - units: mm
-            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          lod: 300
-      id: Bidė
-    - classifications:
-        NSIK LF: F
-        NSIK LT: JB
-        NSIK LK: XKB
-      stages:
-        s3:
-          properties:
-          - VVK.LevelName:
-            - examples:
-              - 1 aukštas
-            - units: Tekstas
-          - Name:
-            - examples:
-              - Tualetas
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - KL-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
-                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - Keramika
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 1.2
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          - Ifc__.Heigth:
-            - examples:
-              - 775
-            - units: mm
-            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Ifc__.Length:
-            - examples:
-              - 383
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Ifc__.Width:
-            - examples:
-              - 675
-            - units: mm
-            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          lod: 300
-      id: Klozetas
-      examples:
-      - Tualetas
-      - tualetas su bakeliu
-      - unitazas
-      - WC
-      - įleidžiamas klozetas
-    - classifications:
-        NSIK LF: F
-        NSIK LT: JB
-        NSIK LK: QNA
-      stages:
-        s3:
-          properties:
-          - VVK.LevelName:
-            - examples:
-              - 1 aukštas
-            - units: Tekstas
-          - Name:
-            - examples:
-              - Vandens čiaupas
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - ČP-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
-                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - Keramika
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 1.2
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          - Ifc__.Heigth:
-            - examples:
-              - 154
-            - units: mm
-            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Ifc__.Length:
-            - examples:
-              - 126
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Ifc__.Width:
-            - examples:
-              - 39
-            - units: mm
-            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Diametras:
-            - examples:
-              - 20
-            - units: mm
-            - descr: Pajungimo diametras
-          lod: 300
-      id: Skysčio reguliavimo vožtuvas
-      examples:
-      - Čiaupas
-      - maišytuvas
-    - classifications:
-        NSIK LF: F
-        NSIK LT: JB
-        NSIK LK: BHA
-      stages:
-        s3:
-          properties:
-          - VVK.LevelName:
-            - examples:
-              - 1 aukštas
-            - units: Tekstas
-          - Name:
-            - examples:
-              - Šalto vandens skaitiklis
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - VSK-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
-                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - Žalvaris
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 1.2
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          - Ifc__.Length:
-            - examples:
-              - 110
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Diametras:
-            - examples:
-              - 20
-            - units: mm
-            - descr: Pajungimo diametras
-          lod: 300
-      id: Srauto energijos skaitiklis
-      examples:
-      - Karšto vandens skaitiklis
-      - vandens apskaitos prietaisas
-      - šalto vandens skaitiklis
-    - classifications:
-        NSIK LF: F
+      - Flanšinė jungtis
+      - Suveržiama jungtis
+      classifications:
+        NSIK LF: "%F30"
         NSIK LT: JB
         NSIK LK: XMA
       stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g_diam
+            <<: *prop_vis
         s3:
           properties:
-          - VVK.LevelName:
-            - examples:
-              - 1 aukštas
-            - units: Tekstas
-          - Name:
-            - examples:
-              - Flanšinė alkūnė
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - FD-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
-                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - Kalusis ketus
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 1.2
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          - Diametras:
-            - examples:
-              - 20
-            - units: mm
-            - descr: Pajungimo diametras
-          lod: 300
-      id: Išardoma jungtis
+            <<: *prop_g_diam
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_vis
+        
+    - id: Technologinio vandens sistemos neišardoma jungtis                    # valve            NSIK: %F30.JB.XMB
       examples:
-      - Flanšinės
-      - fasoninės dalys
-    - classifications:
-        NSIK LF: F
+      - Presuojamas trišakis
+      - Virinama alkūnė
+      - Presuojama alkūnė
+      classifications:
+        NSIK LF: "%F30"
         NSIK LT: JB
         NSIK LK: XMB
       stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g_diam
+            <<: *prop_vis
         s3:
           properties:
-          - VVK.LevelName:
-            - examples:
-              - 1 aukštas
-            - units: Tekstas
-          - Name:
-            - examples:
-              - Presuojama alkūnė
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - FD-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
-                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - Plastikas
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Colour:
-            - examples:
-              - Žr. TS
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 1.2
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          - Diametras:
-            - examples:
-              - 32
-            - units: mm
-            - descr: Pajungimo diametras
-          lod: 300
-      id: Neišardoma jungtis
+            <<: *prop_g_diam
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_vis
+        
+    - id: Technologinio vandens sistemos vožtuvas, sklendė                     # unique_valve     NSIK: %F30.JB.QNA
       examples:
-      - Presuojamos
-      - virinamos fasoninės dalys
-    - classifications:
-        NSIK LF: F
+      - Apsauginis vožtuvas
+      - Apsauginė skysčio sklendė
+      - Skysčio reguliavimo vožtuvas
+      - Maišytuvas
+      - Čiaupas
+      classifications:
+        NSIK LF: "%F30"
         NSIK LT: JB
         NSIK LK: QNA
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g_diam
+            <<: *prop_vis
         s3:
           properties:
-          - VVK.LevelName:
-            - examples:
-              - 1 aukštas
-            - units: Tekstas
-          - Name:
-            - examples:
-              - Apsauginis vožtuvas, sklendė
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - AV-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
-                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - Žalvaris
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 1.2
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          - Diametras:
-            - examples:
-              - 20
-            - units: mm
-            - descr: Pajungimo diametras
-          lod: 300
-      id: Skysčių vožtuvas, sklendė
-      examples:
-      - Apsauginis vožtuvas
-      - apsauginė skysčio sklendė
-    - classifications:
-        NSIK LF: F
-        NSIK LT: JB
-        NSIK LK: RQA
-      stages:
-        s3:
+            <<: *prop_g_diam
+        s4:
           properties:
-          - VVK.LevelName:
-            - examples:
-              - 1 aukštas
-            - units: Tekstas
-          - Name:
-            - examples:
-              - Šiluminė izoliacija
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - AŠI-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
-                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - Akmens vata
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 1.2
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          - Ifc__.Depth:
-            - examples:
-              - 100
-            - units: mm
-            - descr: Storis, mm (0 dešimtainių skaitmenų) arba m (3 dešimtainiai skaitmenys)
-          - Diametras:
-            - examples:
-              - 110
-            - units: mm
-            - descr: Vamzdyno diametras, mm
-          lod: 300
-      id: Izoliacija
-      examples:
-      - Antikondensacinė
-      - šiluminė
-      - akustinė izoliacija
-    - classifications:
-        NSIK LF: F
+            <<: *prop_u
+            <<: *prop_vis
+    
+    - id: Technologinio vandens talpa                                          # well             NSIK: %F30.JB.CNA
+      classifications:
+        NSIK LF: "%F30"
         NSIK LT: JB
         NSIK LK: CNA
+      ifcType: *type_well
       stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_well
+            <<: *prop_mass
         s3:
           properties:
-          - VVK.LevelName:
-            - examples:
-              - 1 aukštas
-            - units: Tekstas
-          - Name:
-            - examples:
-              - Geriamojo vandens talpa
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - GČ-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
-                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 1.2
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          - Ifc__.Heigth:
-            - examples:
-              - 520
-            - units: mm
-            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Ifc__.Length:
-            - examples:
-              - 400
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Ifc__.Width:
-            - examples:
-              - 180
-            - units: mm
-            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          lod: 300
-      id: Geriamojo vandens talpa
+            <<: *prop_g
+            <<: *prop_mass
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_well
+    
+    - id: Technologinio vandens skaitiklis                                     # unique_valve     NSIK: %F30.JB.BHA
+      examples:
+      - Karšto vandens skaitiklis
+      - vandens apskaitos prietaisas
+      - Šalto vandens skaitiklis
+      classifications:
+        NSIK LF: "%F30"
+        NSIK LT: JB
+        NSIK LK: BHA
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g_diam
+            <<: *prop_vis
+        s3:
+          properties:
+            <<: *prop_g_diam
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_vis
+
+    - id: Technologinio vandens sistemos teigiamo darbinio tūrio siurblys      # unique           NSIK: %F30.JB.GPA
+      examples:
+      - Vandens siurblys
+      - Slėgio sukėlimo siurblys
+      classifications:
+        NSIK LF: "%F30"
+        NSIK LT: JB
+        NSIK LK: GPA
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g_diam
+            <<: *prop_vis
+            <<: *prop_pump
+            <<: *prop_e_device
+            <<: *prop_mass
+        s3:
+          properties:
+            <<: *prop_g_diam
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_pump
+            <<: *prop_e_device
+        s5:
+          properties:
+            <<: *prop_mass
+    
+    - id: Technologinio vandens sistemos izoliacija                            # common           NSIK: %F30.JB.RQA      Uc: Pr_65_52_61_42
+      examples:
+      - Antikondensacinė izoliacija
+      - Akmens vatos kevalas
+      ifcType: IcfCovering
+      classifications:
+        NSIK LF: "%F30"
+        NSIK LT: JB
+        NSIK LK: RQA
+        Uniclass: Pr_65_52_61_42
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g_diam
+            <<: *prop_vis
+        s3:
+          properties:
+            <<: *prop_g_diam
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_vis
+    
+    
 
 
 
+# /var/tmp
+    - id: Gaisrinio čiaupo dėžė                             # common           NSIK: %F30.JB.UCA
+      classifications:
+        NSIK LF: "%F30"
+        NSIK LT: JB
+        NSIK LK: UCA
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+        s3:
+          properties:
+            <<: *prop_g
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_vis

@@ -2,9 +2,138 @@
 # NSIK ver 0.9, 2023-09-01
 # https://nsiklab.lt 
 
-ERDVĖS_:
+s_common: &s_common
+  Name: {}
+  LongName: {}
+  
+s0_common: &s0_common
+  <<: *s_common
+  Qto_SpaceBaseQuantities.NetFloorArea: {}
+
+s2: &s2
+  <<: *s_common
+  Pset_SpaceCommon.HandicapAccessible: {}
+  Pset_SpaceCommon.PubliclyAccessible: {}
+  Pset_SpaceCommon.IsExternal: {}
+  
+  Qto_SpaceBaseQuantities.NetFloorArea: {}
+  
+s2_common: &s2_common
+  <<: *s2
+  Pset_SpaceOccupancyRequirements.OccupancyNumber: {}
+
+s2_traffic_g: &s2_traffic_geometry
+  Pset_QuantityTakeOff.Width: {}
+  Pset_QuantityTakeOff.Length: {}
+  Pset_QuantityTakeOff.Heigth: {}
+
+s3_traffic: &s3_traffic
+  <<: *s_common
+  Pset_SpaceCommon.IsExternal: {}
+  Pset_SpaceCommon.HandicapAccessible: {}
+  Pset_SpaceCommon.PubliclyAccessible: {}
+  Qto_SpaceBaseQuantities.NetFloorArea: {}
+
+s3_type: &s3_type
+  Pset_SpaceOccupancyRequirements.OccupancyType: {}
+  Qto_BodyGeometryValidation.GrossVolume: {}
+
+s3_fire: &s3_fire
+  Pset_SpaceFireSafetyRequirements.FireCompartment:
+    description: Gaisrinis skyrius, kuriai priskirta patalpa
+    units: String
+    ifcUnits: IfcLabel
+  Pset_SpaceFireSafetyRequirements.FireRiskFactor: {}
+  Pset_SpaceFireSafetyRequirements.AirPressurization: {}
+  Pset_SpaceFireSafetyRequirements.SprinklerProtection: {}
+
+s3_hvac: &s3_hvac
+  Pset_SpaceHVACDesign.AirConditioning: {}
+  Pset_SpaceHVACDesign.MechanicalVentilation: {}
+  Pset_SpaceHVACDesign.NaturalVentilation: {}
+  Pset_SpaceHVACDesign.NaturalVentilationRate: {}
+
+s3_mech: &s3_mech_common
+  Pset_SpaceMEPDesign.DrinkableWater: {}
+  Pset_SpaceMEPDesign.Sewerage: {}
+
+s3_mech_spec: &s3_mech_special
+  Pset_SpaceMEPDesign.TechicalWater: {}
+  Pset_SpaceMEPDesign.TechnicalSewerage: {}
+  Pset_SpaceMEPDesign.NaturalGas: {}
+  Pset_SpaceMEPDesign.Oxygen: {}
+  Pset_SpaceMEPDesign.CompressedAir: {}
+  
+s3_electrical: &s3_electrical
+  Pset_SpaceLightingDesign.Illuminance: {}
+  
+s3_usage: &s3_usage
+  <<: *s3_type
+  <<: *s3_mech_common
+  Pset_SpaceOccupancyRequirements.AreaPerOccupant: {}
+  <<: *s3_fire
+  <<: *s3_hvac
+  <<: *s3_electrical
+
+s3_technical: &s3_technical
+  <<: *s3_type
+  <<: *s3_mech_common
+  <<: *s3_fire
+  <<: *s3_hvac
+  <<: *s3_electrical
+  
+s4_env: &s4_env
+  Qto_SpaceBaseQuantities.NetCeilingArea: {}
+  Qto_SpaceBaseQuantities.NetWallArea: {}
+  
+  Pset_PropertyAgreement.Restrictions: {}
+  
+  Pset_SpaceHVACDesign.HumidityMin: {}
+  Pset_SpaceHVACDesign.HumidityMax: {}
+  Pset_SpaceHVACDesign.TemperatureMin: {}
+  Pset_SpaceHVACDesign.TemperatureMax: {}
+
+s5_covering: &s5_covering
+  Pset_SpaceCoveringRequirements.FloorCovering: {}
+  Pset_SpaceCoveringRequirements.WallCovering: {}
+  Pset_SpaceCoveringRequirements.CeilingCovering: {}
+  
+  Qto_SpaceBaseQuantities.NetCeilingArea: {}
+  Qto_SpaceBaseQuantities.NetWallArea: {}
+
+s6_cleaning:  &s6_cleaning
+  Pset_FacilityManagement.NetGlazedArea:
+    description: Patalpos įstiklintų paviršių plotas
+    units: Real
+    ifcUnits: IfcAreaMeasure
+  Pset_FacilityManagement.CleaningRequired: {}
+  Pset_FacilityManagement.CleaningInterval: {}
+  Pset_FacilityManagement.CleaningContract: {}
+
+
+_ERDVĖS_:
   id: "00"
   name: Erdvės ir patalpos
+  stages:
+      s1:
+        lod: 275
+        log: 2
+      s2:
+        lod: 200
+        log: 2
+      s3:
+        lod: 300
+        log: 2
+      s4:
+        lod: 350
+        log: 2
+      s5:
+        lod: 350
+        log: 2
+      s6:
+        lod: 500
+        log: 2
+        
   elements:
   - id: Privati gyvenamoji erdvė        # NSIK B = AAA         &space_types , &stages_spaces_with_persons
     classifications:
@@ -12,232 +141,1023 @@ ERDVĖS_:
     ifcType: &space_types
     - IfcSpace
     - IfcSpaceType
-    stages: &stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
       s2:
         lod: 200
         properties:
-        - Name | LongName
-        - Pset_SpaceCommon.HandicapAccessible
-        - Pset_SpaceCommon.PubliclyAccessible
-        - Qto_SpaceBaseQuantities.NetFloorArea
-        - Pset_SpaceOccupancyRequirements.OccupancyNumber
+        <<: *s2_common
       s3:
         lod: 300
         properties:
-        - Pset_SpaceOccupancyRequirements.AreaPerOccupant
-        - Qto_BodyGeometryValidation.GrossVolume
-        - Pset_SpaceFireSafetyRequirements.FireRiskFactor
-        - Pset_SpaceFireSafetyRequirements.AirPressurization
-        - Pset_SpaceFireSafetyRequirements.SprinklerProtection
+        <<: *s3_usage
       s4:
-        lod: 300
+        lod: 350
         properties:
-        - Pset_SpaceHVACDesign.HumidityMin
-        - Pset_SpaceHVACDesign.HumidityMax
-        - Pset_SpaceHVACDesign.TemperatureMin
-        - Pset_SpaceHVACDesign.TemperatureMax
-        - Pset_SpaceHVACDesign.MechanicalVentilation
-        - Pset_SpaceLightingDesign.Illuminance 
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
   - id: Svetainė                        #   NSIK B = %AAA10
     classifications:
       NSIK B: "%AAA10"
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
   - id: Vaiko kambarys                  #   NSIK B = %AAA20
     classifications:
       NSIK B: "%AAA20"
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
   - id: Miegamasis                      #   NSIK B = %AAA30
     classifications:
       NSIK B: "%AAA30"
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
   - id: Bendrabučio kambarys            #   NSIK B = %AAA40
     classifications:
       NSIK B: "%AAA40"
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
   - id: Privati virtuvė                 #   NSIK B = %AAA50
     classifications:
       NSIK B: "%AAA50"
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
       
-  - id: Valgomasis                      #    NSIK B = %AAA60
+  - id: Valgomasis                      #   NSIK B = %AAA60
     classifications:
       NSIK B: "%AAA60"
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
   - id: Viešbučio kambarys              #   NSIK B = %AAA70
     classifications:
       NSIK B: "%AAA70"
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
    
   - id: Vienuolyno celė                 #   NSIK B = %AAA80
     classifications:
       NSIK B: "%AAA80"
     ifcType: *space_types
-    stages: *stages_spaces_with_persons    
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
       
   - id: Bendra erdvė                    # NSIK B = AAB
     classifications:
       NSIK B: AAB
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
       
   - id: Poilsio kambarys                #   NSIK B = %AAB10
     classifications:
       NSIK B: "%AAB10"
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
       
   - id: Vaikų miegamasis                #   NSIK B = %AAB20
     classifications:
       NSIK B: "%AAB20"
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
   - id: Laikinos prieglaudos patalpa    #   NSIK B = %AAB30
     classifications:
       NSIK B: "%AAB30"
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
   - id: Žaidimų kambarys                #   NSIK B = %AAB40
     classifications:
       NSIK B: "%AAB40"
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
       
   - id: Fitoterapijos erdvė             #   NSIK B = %AAB50
     classifications:
       NSIK B: "%AAB50"
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
       
   - id: Tarpinė erdvė                   # NSIK B = AAC
     classifications:
       NSIK B: AAC
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
       
   - id: Holas                           #   NSIK B = %AAC10
     classifications:
       NSIK B: "%AAC10"
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
   - id: Fojė                            #   NSIK B = %AAC20
     classifications:
       NSIK B: "%AAC20"
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
   - id: Rūkomasis                       #   NSIK B = %AAC30
     classifications:
       NSIK B: "%AAC30"
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
   - id: Kiemas                          # NSIK B = AAD
     classifications:
       NSIK B: AAD
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
   - id: Atriumas                        #   NSIK B = %AAD10
     classifications:
       NSIK B: "%AAD10"
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
   - id: Terasa                          #   NSIK B = %AAD20
     classifications:
       NSIK B: "%AAD20"
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
   - id: Sanitarinis mazgas              # NSIK B = ABA
     classifications:
       NSIK B: ABA
     ifcType:  *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
   - id: Tualetas                        # NSIK B = ABB
     classifications:
       NSIK B: ABB
     ifcType:  *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
       
   - id: Kūdikių vystymo kambarys        # NSIK B = ABC
     classifications:
       NSIK B: ABC
     ifcType:  *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
   - id: Persirengimo kambarys           # NSIK B = ABD
     classifications:
       NSIK B: ABD
     ifcType:  *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
   - id: Dušas                           # NSIK B = ABE
     classifications:
       NSIK B: ABE
     ifcType:  *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
   - id: Pirtis                          # NSIK B = ABF
     classifications:
       NSIK B: ABF
     ifcType:  *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
   - id: Slėptuvė                        # NSIK B = ACA
     classifications:
       NSIK B: ACA
     ifcType:  *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
   - id: Kamera                          # NSIK B = ACB
     classifications:
       NSIK B: ACB
     ifcType:  *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
   - id: Biuras                              # NSIK B = BAA ,   &stages_spaces_with_persons
     classifications:
       NSIK B: BAA
-    examples:
-    - Kabinetas
+    #examples:
+    #- Kabinetas
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
   - id: Posėdžių erdvė                      # NSIK B = BAB
     classifications:
       NSIK B: BAB
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
   - id: Priimamasis                         # NSIK B = BAC
     classifications:
       NSIK B: BAC
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
   - id: Pardavimų erdvė                     # NSIK B = BAD
     classifications:
       NSIK B: BAD
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
   - id: Mokymų erdvė                        # NSIK B = BAE
     classifications:
@@ -247,7 +1167,31 @@ ERDVĖS_:
     - Darželio grupė
     - Lauko klasė
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
   - id: Skaitykla                           # NSIK B = BAF
     classifications:
@@ -256,7 +1200,31 @@ ERDVĖS_:
     - Skaitykla
     - Biblioteka
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
   - id: Skalbykla                           # NSIK B = BAG
     classifications:
@@ -267,7 +1235,31 @@ ERDVĖS_:
     ifcType: 
     - IfcSpace
     - IfcSpaceType
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
   - id: Gydymo erdvė                        # NSIK B = BAH
     classifications:
@@ -276,7 +1268,31 @@ ERDVĖS_:
     - Skalbykla
     - Plovykla
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
     
   - id: Tyrimų erdvė                        # NSIK B = BAJ
     classifications:
@@ -285,7 +1301,31 @@ ERDVĖS_:
     - Skalbykla
     - Plovykla
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
     
   - id: Stebėjimo erdvė                     # NSIK B = BAK
     classifications:
@@ -294,7 +1334,31 @@ ERDVĖS_:
     - Skalbykla
     - Plovykla
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
     
   - id: Apžiūros erdvė                      # NSIK B = BAL
     classifications:
@@ -303,7 +1367,31 @@ ERDVĖS_:
     - Skalbykla
     - Plovykla
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
   - id: Medijų dirbtuvės                    # NSIK B = BAM
     classifications:
@@ -312,7 +1400,31 @@ ERDVĖS_:
     - Skalbykla
     - Plovykla
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
     
     
   - id: Virtuvė                             # NSIK B = BBA
@@ -322,7 +1434,31 @@ ERDVĖS_:
     - Virtuvė
     - Virtuvėlė
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
   - id: Medžiagų dirbtuvės                  # NSIK B = BBB
     classifications:
@@ -331,7 +1467,31 @@ ERDVĖS_:
     - Medžio dirbtuvės
     - Metalo dirbtuvės
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
   - id: Mechanizmų cechas                   # NSIK B = BBC
     classifications:
@@ -341,7 +1501,31 @@ ERDVĖS_:
     - IT dirbtuvės
     - FabLab dirbtuvės
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
   - id: Studija                             # NSIK B = BBD
     classifications:
@@ -350,7 +1534,31 @@ ERDVĖS_:
     - Keramikos dirbtuvės
     - Siuvimo dirbtuvės
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
     
   - id: Pakavimo vieta                      # NSIK B = BBE
     classifications:
@@ -359,7 +1567,31 @@ ERDVĖS_:
     - Keramikos dirbtuvės
     - Siuvimo dirbtuvės
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
   - id: Mokslinių tyrimu laboratorija       # NSIK B = BCA
     classifications:
@@ -368,7 +1600,31 @@ ERDVĖS_:
     - Chemijos laboratorija
     - Fizikos laboratorija
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
   - id: Medžiagų laboratorija               # NSIK B = BCB
     classifications:
@@ -377,7 +1633,31 @@ ERDVĖS_:
     - Maisto laboratorija
     - Virusų laboratorija
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
     
   - id: Biologijos laboratorija             # NSIK B = BCC
     classifications:
@@ -386,7 +1666,31 @@ ERDVĖS_:
     - Maisto laboratorija
     - Virusų laboratorija
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
   - id: Sporto salė                         # NSIK B = BDA
     classifications:
@@ -396,7 +1700,31 @@ ERDVĖS_:
     - Čiuožykla
     - Plaukimo salė
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
   - id: Treniruočių patalpa                 # NSIK B = BDB
     classifications:
@@ -406,7 +1734,31 @@ ERDVĖS_:
     - Treniruokliu patalpa
     - Treniruoklių zona
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
   - id: Repeticijų patalpa                  # NSIK B = BDC
     classifications:
@@ -415,7 +1767,31 @@ ERDVĖS_:
     - Baleto salė
     - Choro salė
     ifcType: *space_types
-    stages: *stages_spaces_with_persons 
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
   
   - id: Scena                               # NSIK B = BDD
@@ -426,7 +1802,31 @@ ERDVĖS_:
     - Perklausų scena
     - Amfiteatras
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
   - id: Žaidimų kambarys                    # NSIK B = BDE
     classifications:
@@ -434,7 +1834,31 @@ ERDVĖS_:
     examples:
     - Vaikų žaidimu erdvė
     ifcType: *space_types
-    stages: *stages_spaces_with_persons 
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
   - id: Valgymo erdvė                       # NSIK B = BEA
     classifications:
@@ -443,7 +1867,31 @@ ERDVĖS_:
     - Kavinė
     - Valgykla
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
   - id: Salė                                # NSIK B = BEB
     classifications:
@@ -454,7 +1902,31 @@ ERDVĖS_:
     - Aktų salė
     - Aula
     ifcType: *space_types
-    stages: *stages_spaces_with_persons 
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
   - id: Galerija                            # NSIK B = BEC
     classifications:
@@ -465,7 +1937,31 @@ ERDVĖS_:
     - Aktų salė
     - Aula
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
     
   - id: Religinių apeigų erdvė              # NSIK B = BED
     classifications:
@@ -476,7 +1972,31 @@ ERDVĖS_:
     - Aktų salė
     - Aula
     ifcType: *space_types
-    stages: *stages_spaces_with_persons 
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2_common
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_usage
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
     
   - id: Atliekų laikymo erdvė                                # NSIK B = CAA , &stages_spaces_no_persons
     classifications:
@@ -486,43 +2006,93 @@ ERDVĖS_:
     - Šiukšlių patalpa
     - Atliekų konteinerių patalpa
     ifcType: *space_types
-    stages: &stages_spaces_no_persons
-      s2:
-        lod: 300
+    stages:
+      s1:
+        lod: 275
         properties:
-        - Name | LongName
-        - Pset_SpaceCommon.IsExternal
-        - Pset_SpaceCommon.HandicapAccessible
-        - Pset_SpaceCommon.PubliclyAccessible
-        - Qto_SpaceBaseQuantities.NetFloorArea
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
       s3:
         lod: 300
         properties:
-        - Qto_BodyGeometryValidation.GrossVolume
-        - Pset_SpaceFireSafetyRequirements.FireRiskFactor
-        - Pset_SpaceFireSafetyRequirements.AirPressurization
-        - Pset_SpaceFireSafetyRequirements.SprinklerProtection
+        <<: *s3_technical
       s4:
-        lod: 300
+        lod: 350
         properties:
-        - Pset_SpaceHVACDesign.HumidityMin
-        - Pset_SpaceHVACDesign.HumidityMax
-        - Pset_SpaceHVACDesign.TemperatureMin
-        - Pset_SpaceHVACDesign.TemperatureMax
-        - Pset_SpaceHVACDesign.MechanicalVentilation
-        - Pset_SpaceLightingDesign.Illuminance
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
+
 
   - id: Chemikalų laikymo erdvė                              # NSIK B = CAB
     classifications:
       NSIK B: CAB
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
-
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+        <<: *s3_mech_special
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
+    
   - id: Vaistų laikymo erdvė                                 # NSIK B = CAC
     classifications:
       NSIK B: CAC
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
   - id: Archyvo laikymo erdvė                                # NSIK B = CAD
     classifications:
@@ -532,56 +2102,272 @@ ERDVĖS_:
     - Vadovėlių saugykla
     - Įrašų archyvo patalpa
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
   - id: Skysčių laikymo erdvė                                # NSIK B = CAE
     classifications:
       NSIK B: CAE
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+        <<: *s3_mech_special
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
   - id: Žaliavų laikymo erdvė                                # NSIK B = CAF
     classifications:
       NSIK B: CAF
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
   - id: Maisto laikymo erdvė                                 # NSIK B = CAG
     classifications:
       NSIK B: CAG
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
     
   - id: Vertybių laikymo erdvė                               # NSIK B = CAH
     classifications:
       NSIK B: CAH
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
     
   - id: Pakuočių laikymo erdvė                               # NSIK B = CAJ
     classifications:
       NSIK B: CAJ
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
   - id: Drabužių laikymo erdvė                               # NSIK B = CAK
     classifications:
       NSIK B: CAK
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
   - id: Statybinių medžiagų laikymo erdvė                    # NSIK B = CAL
     classifications:
       NSIK B: CAL
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
   - id: Sprogmenų laikymo erdvė                              # NSIK B = CAM
     classifications:
       NSIK B: CAM
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
-    
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
   - id: Atsargų laikymo erdvė                                # NSIK B = CAN
     classifications:
@@ -589,7 +2375,31 @@ ERDVĖS_:
     examples:
     - Sandėliukas
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
   - id: Baldų laikymo erdvė                                  # NSIK B = CBA
     classifications:
@@ -598,7 +2408,31 @@ ERDVĖS_:
     - Baldų saugojimo patalpa
     - Užkulisiai
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
   - id: Įrankių laikymo erdvė                                # NSIK B = CBB
     classifications:
@@ -608,7 +2442,31 @@ ERDVĖS_:
     - Daržinė
     - Sodo priežiūros įreankių sandėlis
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
   - id: Prietaisų laikymo erdvė                              # NSIK B = CBC
     classifications:
@@ -617,7 +2475,31 @@ ERDVĖS_:
     - Aparatūros saugykla
     - Medicininės įrangos saugykla
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
   - id: Transporto priemonės laikymo erdvė                   # NSIK B = CBD
     classifications:
@@ -629,504 +2511,1880 @@ ERDVĖS_:
     - Prieplauka
     - Elingas
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+        <<: *s3_mech_special
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
   - id: Narvas                                               # NSIK B = CCA
     classifications:
       NSIK B: CCA
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
   - id: Gardas                                               # NSIK B = CCB
     classifications:
       NSIK B: CCB
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
     
   - id: Tvartas                                              # NSIK B = CCC
     classifications:
       NSIK B: CCC
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
   - id: Vandens aptvėrimas gyvūnams                          # NSIK B = CCD
     classifications:
       NSIK B: CCC
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+
     
   - id: Akvariumas                                           #   NSIK B = %CCD10
     classifications:
       NSIK B: "%CCD10"
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
   - id: Vidaus sodinimo erdvė                                # NSIK B = CDA
     classifications:
       NSIK B: ABB
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
   - id: Lauko sodinimo erdvė                                 # NSIK B = CDB , &stages_external_spaces_no_persons
     classifications:
       NSIK B: CDB
     ifcType: *space_types
-    stages: &stages_external_spaces_no_persons
-      s2:
-        lod: 300
+    stages:
+      s1:
+        lod: 275
         properties:
-        - Name | LongName
-        - Pset_SpaceCommon.IsExternal
-        - Pset_SpaceCommon.HandicapAccessible
-        - Pset_SpaceCommon.PubliclyAccessible
-        - Qto_SpaceBaseQuantities.NetFloorArea
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
       s3:
         lod: 300
         properties:
-        - Pset_SpaceFireSafetyRequirements.FireRiskFactor
+        <<: *s3_technical
       s4:
-        lod: 300
+        lod: 350
         properties:
-        - Pset_SpaceLightingDesign.Illuminance
-  
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+
   - id: Laidojimo namų koplyčia                              # NSIK B = CEA
     classifications:
       NSIK B: CEA
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
   - id: Kripta                                               # NSIK B = CEB
     classifications:
       NSIK B: CEB
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
-  - id: Elektros instaliacijos erdvė                         # NSIK B = DAA
+  - id: Elektros instaliacijos erdvė                       # NSIK B = DAA
     classifications:
       NSIK B: DAA
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
-  - id: Informacinių technologijų (IT) įrangos erdvė         # NSIK B = DAB
+  - id: Informacinių technologijų (IT) įrangos erdvė       # NSIK B = DAB
     classifications:
       NSIK B: DAB
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
   
-  - id: Mechaninės instaliacijos erdvė                       # NSIK B = DAC
+  - id: Mechaninės instaliacijos erdvė                     # NSIK B = DAC
     classifications:
       NSIK B: DAC
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
-  - id: Inžinerinės instaliacijos erdvė                      # NSIK B = DAD
+  - id: Inžinerinės instaliacijos erdvė                    # NSIK B = DAD
     classifications:
       NSIK B: DAD
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
-  - id: Vandens apskaitos erdvė                              #   NSIK B = %DAD10
+  - id: Vandens apskaitos erdvė                            #   NSIK B = %DAD10
     classifications:
       NSIK B: "%DAD10"
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
-  - id: Šilumos punktas                                      #   NSIK B = %DAD20
+  - id: Šilumos punktas                                    #   NSIK B = %DAD20
     classifications:
       NSIK B: "%DAD20"
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
-  - id: Ventkamera                                           #   NSIK B = %DAD30
+  - id: Ventkamera                                         #   NSIK B = %DAD30
     classifications:
       NSIK B: "%DAD30"
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
     
-  - id: Dujų punktas                                         #   NSIK B = %DAD40
+  - id: Dujų punktas                                       #   NSIK B = %DAD40
     classifications:
       NSIK B: "%DAD40"
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
-  - id: Gaisrų gesinimos įrangos erdvė                       #   NSIK B = %DAD50
+  - id: Gaisrų gesinimos įrangos erdvė                     #   NSIK B = %DAD50
     classifications:
       NSIK B: "%DAD50"
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
-  - id: Šaldymo įrangos erdvė                                #  NSIK B = %DAD60
+  - id: Šaldymo įrangos erdvė                              #  NSIK B = %DAD60
     classifications:
       NSIK B: "%DAD60"
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
-  - id: Valdymo įrangos erdvė                                # NSIK B = DBA
+  - id: Valdymo įrangos erdvė                              # NSIK B = DBA
     classifications:
       NSIK B: DBA
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
-  - id: Gamybos erdvė                                        # NSIK B = DBB
+  - id: Gamybos erdvė                                      # NSIK B = DBB
     classifications:
       NSIK B: DBB
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
-  - id: Aptarnavimo įrangos erdvė                            # NSIK B = DBC
+  - id: Aptarnavimo įrangos erdvė                          # NSIK B = DBC
     classifications:
       NSIK B: DBC
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
-  - id: Analizės įrangos erdvė                               # NSIK B = DBD
+  - id: Analizės įrangos erdvė                             # NSIK B = DBD
     classifications:
       NSIK B: DBD
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
-  - id: Įrangos darbinė erdvė                                # NSIK B = DCA
+  - id: Įrangos darbinė erdvė                              # NSIK B = DCA
     classifications:
       NSIK B: DCA
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+      s2:
+        lod: 200
+      s3:
+        lod: 300
+      s4:
+        lod: 350
+      s5:
+        lod: 350
+      s6:
+        lod: 500
     
-  - id: Įrangos prieigos erdvė                               # NSIK B = DCB
+  - id: Įrangos prieigos erdvė                             # NSIK B = DCB
     classifications:
       NSIK B: DCA
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
-  - id: Vestibiulis                                          # NSIK B = EAA
+  - id: Vestibiulis                                      # NSIK B = EAA
     classifications:
       NSIK B: EAA
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
-  - id: Oro užsklanda                                        # NSIK B = EAB
+  - id: Oro užsklanda                                    # NSIK B = EAB
     classifications:
       NSIK B: EAB
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
-  - id: Koridorius                                           # NSIK B = EAC
+  - id: Koridorius                                       # NSIK B = EAC
     classifications:
       NSIK B: EAC
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
-  - id: Laiptinė                                             # NSIK B = EAD
+  - id: Laiptinė                                         # NSIK B = EAD
     classifications:
       NSIK B: EAD
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
-  - id: Lifto erdvė                                          # NSIK B = EAE
+  - id: Lifto erdvė                                      # NSIK B = EAE
     classifications:
       NSIK B: EAE
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
-  - id: Portikas                                             # NSIK B = EAF
+  - id: Portikas                                         # NSIK B = EAF
     classifications:
       NSIK B: EAF
     ifcType: *space_types
-    stages: *stages_spaces_with_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
-  - id: Aptarnavimo tunelis                                  # NSIK B = EBA
+  - id: Aptarnavimo tunelis                              # NSIK B = EBA
     classifications:
       NSIK B: EBA
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
-  - id: Šachta                                               # NSIK B = EBB
+  - id: Šachta                                           # NSIK B = EBB
     classifications:
       NSIK B: EBB
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
     
-  - id: Ortakis                                              # NSIK B = EBC
+  - id: Ortakis                                          # NSIK B = EBC
     classifications:
       NSIK B: EBC
     ifcType: *space_types
-    stages: *stages_spaces_no_persons
+    stages:
+      s1:
+        lod: 275
+      s2:
+        lod: 200
+      s3:
+        lod: 300
+      s4:
+        lod: 350
+      s5:
+        lod: 350
+
 
   - id: Važiuojamoji dalis                                   # NSIK B = FAA
     classifications:
       NSIK B: FAA
     ifcType: *space_types
-    stages: &stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
       s2:
         lod: 300
         properties:
-        - Name | LongName
-        - Pset_SpaceCommon.IsExternal
-        - Pset_SpaceCommon.HandicapAccessible
-        - Pset_SpaceCommon.PubliclyAccessible
-        - Qto_SpaceBaseQuantities.NetFloorArea
-        - Pset_QuantityTakeOff.Width
-        - Pset_QuantityTakeOff.Length
-        - Pset_QuantityTakeOff.Heigth
+        <<: *s2_traffic_geometry
       s3:
         lod: 300
         properties:
-        - Pset_SpaceLightingDesign.Illuminance
-    
+        <<: *s3_traffic
+        <<: *s3_electrical
+        
   - id: Eismo juosta                                         # NSIK B = FAB
     classifications:
       NSIK B: FAB
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
 
   - id: Greitėjimo ir (arba) lėtėjimo juosta                 #   NSIK B = %FAB10
     classifications:
       NSIK B: "%FAB10"
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
 
   - id: Kelkraštis                                           # NSIK B = FAC
     classifications:
       NSIK B: FAC
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
 
   - id: Kelio vidinis šlaitas                                #   NSIK B = %FAC10
     classifications:
       NSIK B: "%FAC10"
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
     
   - id: Kelio išorinis šlaitas                               #   NSIK B = %FAC20
     classifications:
       NSIK B: "%FAC20"
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
 
   - id: Sustojimo vieta                                      # NSIK B = FAD
     classifications:
       NSIK B: FAD
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
 
   - id: Lygiagreti sustojimo vieta                           #   NSIK B = %FAD10
     classifications:
       NSIK B: "%FAD10"
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
 
   - id: Poilsio aikštelė                                     #   NSIK B = %FAD20
     classifications:
       NSIK B: "%FAD20"
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
 
   - id: Sankryža                                             # NSIK B = FAE
     classifications:
       NSIK B: FAE
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
 
   - id: Nuovaža                                              # NSIK B = FAF
     classifications:
       NSIK B: FAF
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
 
   - id: Įvaža ir (arba) išvaža                               #   NSIK B = %FAF10
     classifications:
       NSIK B: "%FAF10"
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
     
 
   - id: Pėsčiųjų takas                                       # NSIK B = FBA
     classifications:
       NSIK B: FBA
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
 
   - id: Dviračių takas                                       # NSIK B = FBB
     classifications:
       NSIK B: FBB
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
 
   - id: Dviračių ir pėsčiųjų takas                           # NSIK B = FBC
     classifications:
       NSIK B: FBC
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 275
+        properties:
+        <<: *s0_common
+      s2:
+        lod: 200
+        properties:
+        <<: *s2
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_technical
+      s4:
+        lod: 350
+        properties:
+        <<: *s4_env
+      s5:
+        lod: 350
+        properties:
+        <<: *s5_covering
+      s6:
+        lod: 500
+        properties:
+        <<: *s6_cleaning
 
   - id: Gyvūnų takas                                         # NSIK B = FBD
     classifications:
       NSIK B: FBD
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
 
   - id: Orlaivių kilimo ir tūpimo takas                      # NSIK B = FCA
     classifications:
       NSIK B: FCA
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
 
   - id: Orlaivių riedėjimo takas                             # NSIK B = FCB
     classifications:
       NSIK B: FCB
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
     
   - id: Geležinkelio bėgių kelias                            # NSIK B = FDA
     classifications:
       NSIK B: FDA
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
 
   - id: Geležinkelio pervaža                                 # NSIK B = FDB
     classifications:
       NSIK B: FDB
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
     
   - id: Farvateris                                           # NSIK B = FEA
     classifications:
       NSIK B: FEA
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
 
   - id: Šliuzas                                              # NSIK B = FEB
     classifications:
       NSIK B: FEB
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
 
   - id: Skiriamoji juosta                                    # NSIK B = FFA
     classifications:
       NSIK B: FFA
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
 
   - id: Saugumo salelė                                       #   NSIK B = %FFA10
     classifications:
       NSIK B: "%FFA10"
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
 
   - id: Skiriamoji salelė                                    #   NSIK B = %FFA20
     classifications:
       NSIK B: "%FFA20"
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
 
   - id: Platforma                                            # NSIK B = FFB
     classifications:
       NSIK B: FFB
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
 
   - id: Autobusų stotelė                                     #   NSIK B = %FFB10
     classifications:
       NSIK B: "%FFB10"
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
 
   - id: Geležinkelio platforma                               #   NSIK B = %FFB20
     classifications:
       NSIK B: "%FFB20"
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
 
   - id: Eismo informacijos erdvė                             # NSIK B = FFC
     classifications:
       NSIK B: FFC
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
 
   - id: Perėja                                               #   NSIK B = %FFC10
     classifications:
       NSIK B: "%FFC10"
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
 
   - id: Artumo gabaritas                                     # NSIK B = FFD
     classifications:
       NSIK B: FFD
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
 
   - id: Eismo ribojimo erdvė                                 # NSIK B = FFE
     classifications:
       NSIK B: FFE
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+        <<: *s3_electrical
 
   - id: Nuolaužų srauto erdvė                                # NSIK B = PAA
     classifications:
       NSIK B: PAA
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
 
-  - id: Kietųjų medžiagų srauto erdvė                        # NSIK B = PAB
+  - id: Kietųjų medžiagų srauto erdvė                    # NSIK B = PAB
     classifications:
       NSIK B: PAB
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
 
-  - id: Dujų srauto erdvė                                    # NSIK B = PAC
+  - id: Dujų srauto erdvė                                # NSIK B = PAC
     classifications:
       NSIK B: PAB
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
     
-  - id: Skysčio srauto vieta                                 # NSIK B = PAD
+  - id: Skysčio srauto vieta                             # NSIK B = PAD
     classifications:
       NSIK B: PAD
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
 
-  - id: Kelio griovys                                        #   NSIK B = %PAD10
+  - id: Kelio griovys                                    #   NSIK B = %PAD10
     classifications:
       NSIK B: "%PAD10"
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
 
-  - id: Plazmos srauto erdvė                                 # NSIK B = PAE
+  - id: Plazmos srauto erdvė                             # NSIK B = PAE
     classifications:
       NSIK B: PAE
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
 
-  - id: Dūmų susidarymo erdvė                                # NSIK B = PAF
+  - id: Dūmų susidarymo erdvė                            # NSIK B = PAF
     classifications:
       NSIK B: PAF
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
 
-  - id: Elektros energijos srauto erdvė                      # NSIK B = PBA
+  - id: Elektros energijos srauto erdvė                  # NSIK B = PBA
     classifications:
       NSIK B: PBA
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
 
-  - id: Šiluminės energijos srauto erdvė                     # NSIK B = PBB
+  - id: Šiluminės energijos srauto erdvė                 # NSIK B = PBB
     classifications:
       NSIK B: PBB
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
 
-  - id: Mechaninės energijos srauto erdvė                    # NSIK B = PBC
+  - id: Mechaninės energijos srauto erdvė                # NSIK B = PBC
     classifications:
       NSIK B: PBC
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
 
-  - id: Sprogimo vieta                                       # NSIK B = PBD
+  - id: Sprogimo vieta                                   # NSIK B = PBD
     classifications:
       NSIK B: PBD
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic
 
-  - id: Degimo proceso vieta                                 # NSIK B = PBE
+  - id: Degimo proceso vieta                             # NSIK B = PBE
     classifications:
       NSIK B: PBE
     ifcType: *space_types
-    stages: *stages_traffic_spaces
+    stages:
+      s1:
+        lod: 300
+        properties:
+        <<: *s3_traffic
+      s2:
+        lod: 300
+        properties:
+        <<: *s2_traffic_geometry
+      s3:
+        lod: 300
+        properties:
+        <<: *s3_traffic

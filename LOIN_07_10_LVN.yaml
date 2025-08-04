@@ -119,23 +119,29 @@ LVN:
     id: "07.10"
     name: Vandentiekis ir nuotekų šalinimas. Lauko tinklai
     stages:
-      s0:
+      s1:
         lod: 275
+        log: 2
       s2:
         lod: 200
+        log: 2
       s3:
         lod: 200
+        log: 2
       s4:
         lod: 350
+        log: 2
         properties:
         - Pset_ManufacturerTypeInformation.ArticleNumber
         - Pset_ManufacturerTypeInformation.Manufacturer
       s5:
         lod: 350
+        log: 2
         properties:
         - VVK.RelatedDocumentationURI
       s6:
         lod: 500
+        log: 6
         
     elements:
 # geriamo vandens vandentiekis

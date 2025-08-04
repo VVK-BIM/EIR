@@ -42,13 +42,27 @@ prop_e_sens:     &prop_e_sensor
   Pset_ElectricalDeviceCommon.InsulationStandardClass: {}
   
 prop_e:     &prop_e
-  Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
+  Pset_ElectricalDeviceCommon.RatedVoltage: {}
+  Pset_ElectricalDeviceCommon.NominalFrequencyRange: {}
   <<: *prop_e_sensor
-
-prop_e_cable:     &prop_e_cable
-  Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
+  
+prop_e_psu: &prop_e_psu
+  Pset_ElectricalDeviceCommon.RatedVoltage: {}
+  Pset_ElectricalDeviceCommon.RatedCurrent: {}
+  Pset_ElectricalDeviceCommon.NominalFrequencyRange: {}
+  Pset_ElectricalDeviceCommon.IP_Code: {}
+  Pset_ElectricalDeviceCommon.IK_Code: {}
   Pset_ElectricalDeviceCommon.InsulationStandardClass: {}
-  Pset_ElementComponentCommon.FireRating: {}
+  
+
+prop_cable:     &prop_cable
+  Pset_CableSegmentTypeCableSegment.NumberOfCores: {}
+  Pset_CableSegmentTypeCableSegment.RatedTemperature: {}
+  Pset_CableSegmentTypeCableSegment.CurrentCarryingCapacity: {}
+  Pset_CableSegmentTypeCableSegment.InsulationVoltage: {}
+  Pset_CableSegmentTypeCableSegment.RatedVoltage: {}
+  Pset_CableSegmentTypeCableSegment.InsulationStandardClass: {}
+  Pset_CableSegmentTypeCableSegment.FireRating: {}
 
 prop_e_device:    &prop_e_device
   Pset_ElectricalDeviceCommon.IP_Code: {}
@@ -56,6 +70,11 @@ prop_e_device:    &prop_e_device
   Pset_ElectricalDeviceCommon.InsulationStandardClass: {}
   Pset_ElectricalDeviceCommon.RatedVoltage: {}
   Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
+  Pset_ElectricalDeviceCommon.HasProtectiveEarth: {}
+
+prop_light: &prop_light
+  Pset_LampTypeCommon.ColourTemperature: {}
+  Pset_LampTypeCommon.ColourRenderingIndex: {}
   
 prop_ext_cable:  &prop_external
   Pset_ElementComponentCommon.IsExternal: {}
@@ -182,14 +201,14 @@ E:
           properties:
             <<: *prop
             <<: *prop_g_cable
-            <<: *prop_e_cable
+            <<: *prop_cable
             <<: *prop_material
             <<: *prop_external_cable
         s4:
           properties:
             <<: *prop
             <<: *prop_g_cable
-            <<: *prop_e_cable
+            <<: *prop_cable
             <<: *prop_material
             <<: *prop_external_cable
         
@@ -204,14 +223,14 @@ E:
           properties:
             <<: *prop
             <<: *prop_g_cable
-            <<: *prop_e_cable
+            <<: *prop_cable
             <<: *prop_material
             <<: *prop_external_cable
         s4: 
           properties:
             <<: *prop
             <<: *prop_g_cable
-            <<: *prop_e_cable
+            <<: *prop_cable
             <<: *prop_material
             <<: *prop_external_cable
 
@@ -226,14 +245,14 @@ E:
           properties:
             <<: *prop
             <<: *prop_g_cable
-            <<: *prop_e_cable
+            <<: *prop_cable
             <<: *prop_material
             <<: *prop_external_cable
         s4: 
           properties:
             <<: *prop
             <<: *prop_g_cable
-            <<: *prop_e_cable
+            <<: *prop_cable
             <<: *prop_material
             <<: *prop_external_cable
         
@@ -248,14 +267,14 @@ E:
           properties:
             <<: *prop
             <<: *prop_g_cable
-            <<: *prop_e_cable
+            <<: *prop_cable
             <<: *prop_material
             <<: *prop_external_cable
         s4: 
           properties:
             <<: *prop
             <<: *prop_g_cable
-            <<: *prop_e_cable
+            <<: *prop_cable
             <<: *prop_material
             <<: *prop_external_cable
 
@@ -538,12 +557,10 @@ E:
         s1:
           properties:
             Pset_QuantityTakeOff.Width: {}
-            Pset_QuantityTakeOff.Area: {}
             Pset_ElementComponentCommon.Status: {}
-        s4:
+        s3:
           properties:
             Pset_QuantityTakeOff.Width: {}
-            Pset_QuantityTakeOff.Area: {}
             Pset_ElementComponentCommon.Status: {}
     
     - id: Jėgos tinklo aptarnavimo erdvė                 # zone                          NSIK: <E>DCB <L>K.HG
@@ -595,12 +612,14 @@ E:
           properties:
             <<: *prop
             <<: *prop_g_cable
+            <<: *prop_cable
             <<: *prop_material
             <<: *prop_external_cable
         s4: 
           properties:
             <<: *prop
             <<: *prop_g_cable
+            <<: *prop_cable
             <<: *prop_material
             <<: *prop_external_cable
 
@@ -699,9 +718,9 @@ E:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
-            <<: *prop_e
             <<: *prop_external
             <<: *prop_e_device
+            <<: *prop_light
         s3: 
           properties:
             <<: *prop_g
@@ -710,9 +729,9 @@ E:
         s4:
           properties:
             <<: *prop_u
-            <<: *prop_e
             <<: *prop_external
             <<: *prop_e_device
+            <<: *prop_light
       
     - id: Lauko šviestuvas                                                 # visible_unique_electrical_external    NSIK: Q.%HH10.%UAC10
       examples:
@@ -733,9 +752,9 @@ E:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
-            <<: *prop_e
             <<: *prop_external
             <<: *prop_e_device
+            <<: *prop_light
         s3: 
           properties:
             <<: *prop_g
@@ -744,9 +763,9 @@ E:
         s4:
           properties:
             <<: *prop_u
-            <<: *prop_e
             <<: *prop_external
             <<: *prop_e_device
+            <<: *prop_light
 
     - id: Jungiklis                                                        # sensor                                NSIK: Q.%HH10.SJA
       examples:
@@ -996,11 +1015,13 @@ E:
             <<: *prop_e_device
             <<: *prop_material
             <<: *prop_external
+        s3:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
         s4:
           properties:
             <<: *prop
-            <<: *prop_u
-            <<: *prop_g
             <<: *prop_e_device
             <<: *prop_material
             <<: *prop_external
@@ -1022,7 +1043,7 @@ E:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
-            <<: *prop_e
+            <<: *prop_e_device
             <<: *prop_external
         s4:
           properties:
@@ -1030,7 +1051,7 @@ E:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
-            <<: *prop_e
+            <<: *prop_e_device
             <<: *prop_external
     
     - id: Apšvietimo sistemos kintamos srovės maitinimo blokas             # unique electrical                     NSIK: Q.%HH10.TCA
@@ -1052,14 +1073,14 @@ E:
             <<: *prop
             <<: *prop_u
             <<: *prop_g
-            <<: *prop_e
+            <<: *prop_e_psu
             <<: *prop_external
         s4:
           properties:
             <<: *prop
             <<: *prop_u
             <<: *prop_g
-            <<: *prop_e
+            <<: *prop_e_psu
             <<: *prop_external
 
     - id: Apšvietimo sistemos pastovios srovės maitinimo blokas            # unique electrical                     NSIK: Q.%HH10.TCB
@@ -1078,12 +1099,17 @@ E:
         s1:
           properties:
             <<: *prop
+            <<: *prop_u
             <<: *prop_g
-            <<: *prop_e
+            <<: *prop_e_psu
+            <<: *prop_external
         s4: 
           properties:
+            <<: *prop
+            <<: *prop_u
             <<: *prop_g
-            <<: *prop_e
+            <<: *prop_e_psu
+            <<: *prop_external
     
     - id: Apšvietimo tinklo elektros kabelis                               # pipe                                  NSIK: Q.%HH10.WDB
       classifications:
@@ -1096,14 +1122,14 @@ E:
           properties:
             <<: *prop
             <<: *prop_g_cable
-            <<: *prop_e_cable
+            <<: *prop_cable
             <<: *prop_material
             <<: *prop_external_cable
         s4:
           properties:
             <<: *prop
             <<: *prop_g_cable
-            <<: *prop_e_cable
+            <<: *prop_cable
             <<: *prop_material
             <<: *prop_external_cable
 
@@ -1118,17 +1144,14 @@ E:
           properties:
             <<: *prop
             <<: *prop_g_cable
-            <<: *prop_e_cable
+            <<: *prop_cable
             <<: *prop_material
             <<: *prop_external_cable
-        s2:
-          properties:
-            <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop
             <<: *prop_g_cable
-            <<: *prop_e_cable
+            <<: *prop_cable
             <<: *prop_material
             <<: *prop_external_cable
         
@@ -1143,17 +1166,14 @@ E:
           properties:
             <<: *prop
             <<: *prop_g_cable
-            <<: *prop_e_cable
+            <<: *prop_cable
             <<: *prop_material
             <<: *prop_external_cable
-        s2:
-          properties:
-            <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop
             <<: *prop_g_cable
-            <<: *prop_e_cable
+            <<: *prop_cable
             <<: *prop_material
             <<: *prop_external_cable
     
@@ -1171,20 +1191,18 @@ E:
             Pset_QuantityTakeOff.Diameter: {}
             <<: *prop_material
             Pset_ElementComponentCommon.IsExternal: {}
-        s2:
+        s3:
           properties:
             <<: *prop
-        s3: 
+        s4: 
           properties:
             <<: *prop
             <<: *prop_g
             Pset_QuantityTakeOff.Diameter: {}
             <<: *prop_material
             Pset_ElementComponentCommon.IsExternal: {}
-        
 
-
-    - id: Apšvietimo tinklo aptarnavimo, instaliacijos erdvė ar inžinerinis koridorius      # zone                                  NSIK: <E>DCB <L>Q.%HH10
+    - id: Apšvietimo tinklo instaliacijos erdvė ar inžinerinis koridorius      # zone                                  NSIK: <E>DCB <L>Q.%HH10
       classifications:
         NSIK LF: Q
         NSIK LT: "%HH10"
@@ -1196,14 +1214,12 @@ E:
         s1:
           properties:
             Pset_QuantityTakeOff.Width: {}
-            Pset_QuantityTakeOff.Area: {}
             Pset_ElementComponentCommon.Status: {}
-        s4:
+        s3:
           properties:
-            Pset_QuantityTakeOff.Width: {}
-            Pset_QuantityTakeOff.Area: {}
-            Pset_ElementComponentCommon.Status: {}
-            
+              Pset_QuantityTakeOff.Width: {}
+              Pset_ElementComponentCommon.Status: {}
+
     - id: Apšvietimo tinklo aptarnavimo erdvė       # zone                                  NSIK: <E>DCB <L>Q.%HH10
       classifications:
         NSIK LF: Q
@@ -1237,17 +1253,19 @@ E:
             <<: *prop
             <<: *prop_u
             <<: *prop_g
-            <<: *prop_e
             <<: *prop_external
-        s2:
+            <<: *prop_e_device
+            <<: *prop_light
+        s3:
           properties:
             <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop_u
             <<: *prop_g
-            <<: *prop_e
             <<: *prop_external
+            <<: *prop_e_device
+            <<: *prop_light
     
     - id: Avarinis šviestuvas                                                               # visible_unique_electrical_external    NSIK: %Q20.%HH10.%PHD50
       examples:
@@ -1266,17 +1284,19 @@ E:
             <<: *prop
             <<: *prop_u
             <<: *prop_g
-            <<: *prop_e
             <<: *prop_external
-        s2:
+            <<: *prop_e_device
+            <<: *prop_light
+        s3:
           properties:
             <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop_u
             <<: *prop_g
-            <<: *prop_e
             <<: *prop_external
+            <<: *prop_e_device
+            <<: *prop_light
 
     - id: Avarinio ar evakuacinio apšvietimo sistemos akumuliatorių baterija                # visible_unique_electrical             NSIK: %Q20.%HH10.GBA
       examples:
@@ -1298,17 +1318,17 @@ E:
             Pset_ElectricalDeviceCommon.PowerCapacity:
               description: Akumuliatorių baterijos talpa, Ah.
             Pset_ElectricalDeviceCommon.RatedVoltage: {}
+            Pset_ElectricalDeviceCommon.RatedCurrent: {}
             <<: *prop_external
-        s2:
+        s4:
           properties:
             <<: *prop
-        s3:
-          properties:
             <<: *prop_u
             <<: *prop_g
             Pset_ElectricalDeviceCommon.PowerCapacity:
               description: Akumuliatorių baterijos talpa, Ah.
             Pset_ElectricalDeviceCommon.RatedVoltage: {}
+            Pset_ElectricalDeviceCommon.RatedCurrent: {}
             <<: *prop_external
     
     - id: Avarinio ar evakuacinio apšvietimo sistemos UPS                                   # visible_unique_electrical             NSIK: %Q20.%HH10.RBA
@@ -1328,16 +1348,14 @@ E:
             <<: *prop
             <<: *prop_u
             <<: *prop_g
-            <<: *prop_e
+            <<: *prop_e_psu
             <<: *prop_external
-        s2:
+        s4:
           properties:
             <<: *prop
-        s3:
-          properties:
             <<: *prop_u
             <<: *prop_g
-            <<: *prop_e
+            <<: *prop_e_psu
             <<: *prop_external
 
     - id: Avarinio ar evakuacinio apšvietimo sistemos kintamos srovės maitinimo blokas      # unique electrical                     NSIK: %Q20.%HH10.TCA
@@ -1359,16 +1377,14 @@ E:
             <<: *prop
             <<: *prop_u
             <<: *prop_g
-            <<: *prop_e
+            <<: *prop_e_psu
             <<: *prop_external
-        s2: 
+        s4: 
           properties:
             <<: *prop
-        s3: 
-          properties:
             <<: *prop_u
             <<: *prop_g
-            <<: *prop_e
+            <<: *prop_e_psu
             <<: *prop_external
 
     - id: Avarinio ar evakuacinio apšvietimo sistemos korpusas (skydelis)                   # visible_unique_electrical             NSIK: %Q20.%HH10.UCA
@@ -1400,10 +1416,10 @@ E:
             <<: *prop_e_device
             <<: *prop_material
             <<: *prop_external
-        s2:
+        s3:
           properties:
             <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -1428,17 +1444,15 @@ E:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
-            <<: *prop_e
+            <<: *prop_e_device
             <<: *prop_external
-        s2:
+        s4:
           properties:
             <<: *prop
-        s3:
-          properties:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
-            <<: *prop_e
+            <<: *prop_e_device
             <<: *prop_external
             
     - id: Avarinio ar evakuacinio apšvietimo sistemos pastovios srovės maitinimo blokas     # unique electrical                     NSIK: %Q20.%HH10.TCB
@@ -1456,16 +1470,16 @@ E:
       stages:
         s1:
           properties:
+            <<: *prop
             <<: *prop_u
             <<: *prop_g
-            <<: *prop_e
-        s2:
+            <<: *prop_e_psu
+        s4:
           properties:
+            <<: *prop
             <<: *prop_u
-        s3:
-          properties:
             <<: *prop_g
-            <<: *prop_e
+            <<: *prop_e_psu
     
     - id: Avarinio ar evakuacinio apšvietimo sistemos elektros kabelis                      # pipe                                  NSIK: %Q20.%HH10.WDB
       classifications:
@@ -1478,17 +1492,14 @@ E:
           properties:
             <<: *prop
             <<: *prop_g_cable
-            <<: *prop_e_cable
+            <<: *prop_cable
             <<: *prop_material
             <<: *prop_external_cable
-        s2:
-          properties:
-            <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop
             <<: *prop_g_cable
-            <<: *prop_e_cable
+            <<: *prop_cable
             <<: *prop_material
             <<: *prop_external_cable
 
@@ -1503,17 +1514,14 @@ E:
           properties:
             <<: *prop
             <<: *prop_g_cable
-            <<: *prop_e_cable
+            <<: *prop_cable
             <<: *prop_material
             <<: *prop_external_cable
-        s2:
-          properties:
-            <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop
             <<: *prop_g_cable
-            <<: *prop_e_cable
+            <<: *prop_cable
             <<: *prop_material
             <<: *prop_external_cable
         
@@ -1528,17 +1536,14 @@ E:
           properties:
             <<: *prop
             <<: *prop_g_cable
-            <<: *prop_e_cable
+            <<: *prop_cable
             <<: *prop_material
             <<: *prop_external_cable
-        s2:
-          properties:
-            <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop
             <<: *prop_g_cable
-            <<: *prop_e_cable
+            <<: *prop_cable
             <<: *prop_material
             <<: *prop_external_cable
     
@@ -1556,10 +1561,10 @@ E:
             Pset_QuantityTakeOff.Diameter: {}
             <<: *prop_material
             Pset_ElementComponentCommon.IsExternal: {}
-        s2:
+        s3:
           properties:
             <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop
             <<: *prop_g
@@ -1578,9 +1583,11 @@ E:
       stages:
         s1:
           properties:
+            Pset_QuantityTakeOff.Width: {}
             Pset_ElementComponentCommon.Status: {}
-        s4:
+        s3:
           properties:
+            Pset_QuantityTakeOff.Width: {}
             Pset_ElementComponentCommon.Status: {}
             
     - id: Avarinio ar evakuacinio apšvietimo sistemos aptarnavimo erdvė     # zone          NSIK: <E>DCB <L>%Q20.%HH10
@@ -1594,13 +1601,9 @@ E:
       stages:
         s1:
           properties:
-            Pset_QuantityTakeOff.Width: {}
-            Pset_QuantityTakeOff.Area: {}
             Pset_ElementComponentCommon.Status: {}
         s4:
           properties:
-            Pset_QuantityTakeOff.Width: {}
-            Pset_QuantityTakeOff.Area: {}
             Pset_ElementComponentCommon.Status: {}
 
 # Siukšlytės

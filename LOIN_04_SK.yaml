@@ -5,389 +5,364 @@
 # 04 - Statinio konstrukcijos
 #
 
+prop_g:   &prop_g
+  Pset_QuantityTakeOff.Height: {}
+  Pset_QuantityTakeOff.Width: {}
+  Pset_QuantityTakeOff.Length: {}
+
+prop_g:   &prop_av
+  Pset_QuantityTakeOff.Area: {}
+  Pset_QuantityTakeOff.Volume: {}
+  
+prop_g:   &prop_av_member
+  Pset_QuantityTakeOff.Area: {}
+  Pset_QuantityTakeOff.Volume: {}
+  Pset_QuantityTakeOff.NetSurfaceArea: {}
+
+prop_mat:     &prop_mat
+  VVK.Material: {}
+
+prop_vis:     &prop_vis
+  VVK.Finish: {}
+  VVK.Colour: {}
+  
+prop:     &prop
+  Name: {}
+  Type: {}
+  Pset_ElementComponentCommon.Status: {}
+  Pset_ConstructionAdministration.SpecificationSectionNumber: {}
+  
+prop_s2u: &prop_s2_u
+  - Name
+  - Type
+  - Pset_ElementComponentCommon.Status
+  - Tag
+
+prop_s3:  &prop_s3
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+
+prop_s3:  &prop_s3_pipe
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Diameter
+  - Pset_QuantityTakeOff.Length
+prop_vu:  &prop_s3_v
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - VVK.Finish
+  - VVK.Colour
+  
+prop_u: &prop_u
+  Name: {}
+  Pset_ElementComponentCommon.IsExternal: {}
+  Type: {}
+  Tag: {}
+  Pset_ConstructionAdministration.SpecificationSectionNumber: {}
+  Pset_ElementComponentCommon.Status:
+    - examples:
+      - Projektuojamas
+    - units: Tekstas
+    - descr: Elemento būsena
+  Pset_ServiceLifeFactors.OutdoorEnvironment:
+    - examples:
+      - XC1
+    - units: Tekstas
+    - descr: XO, XC1  Aplinkos agresyvumo klasė
+
+
+
+prop_vu:  &prop_s3_vu
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Tag
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - VVK.Finish
+  - VVK.Colour
+
+prop_ue:  &prop_s3_ue
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Tag
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+  
+prop_vue: &prop_s3_vue
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Tag
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - VVK.Finish
+  - VVK.Colour
+  - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+  
+prop_vue: &prop_s3_vue_x
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Tag
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - VVK.Finish
+  - VVK.Colour
+  #- Pset_ElectricalDeviceCommon.NominalPowerConsumption
+  #- Pset_ElectricalDeviceCommon.IsExternal
+  
+  
+
+
+ifc_e:      &type_linear
+  - IfcFlowSegment
+  - IfcFlowSegmentType
+  - IfcFlowSegmentTypeEnum
+  
+ifc_e:      &type_e
+  - IfcDistributionControlElement
+  - IfcDistributionControlElementType
+  - IfcDistributionControlElementTypeEnum
+
+
 SK:
     id: "04"
     name: Statinio konstrukcijos
+    stages:
+      s1:
+        lod: 275
+        log: 2
+      s2:
+        lod: 200
+        log: 2
+      s3:
+        lod: 300
+        log: 2
+      s4:
+        lod: 350
+        log: 2
+        properties:
+          Pset_ManufacturerTypeInformation.ArticleNumber: {}
+          Pset_ManufacturerTypeInformation.Manufacturer: {}
+      s5:
+        lod: 350
+        log: 2
+        properties:
+          VVK.RelatedDocumentationURI: {}
+      s6:
+        lod: 500
+        log: 6
     elements:
-    - id: Dušo padėklas
+    
+
+    - id: Gruntinis inkaras                 # unique             NSIK: B.BB.ULF
       classifications:
-        NSIK LF: S
-        NSIK LT: RC
-        NSIK LK: XKC
+        NSIK LF: B
+        NSIK LT: BB
+        NSIK LK: ULF
       stages:
-        s3:
+        s1:
           properties:
-          - VVK.LevelName:
-            - examples:
-              - 1 aukštas
-            - units: Tekstas
-          - Name:
-            - examples:
-              - Pisuaras
-            - units: Tekstas
-            - descr: Elemento pavadinimas
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - DP-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
-                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - Keramika
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - TS 1.2
-            - units: Tekstas
-            - descr: Techninės specifikacijos Nr.
-          - Ifc__.Heigth:
-            - examples:
-              - 535
-            - units: mm
-            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Ifc__.Length:
-            - examples:
-              - 285
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Ifc__.Width:
-            - examples:
-              - 315
-            - units: mm
-            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          lod: 300
-      
-    - id: Atraminė siena
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_u
+            <<: *prop_av
+            <<: *prop_mat
+        s3: 
+          properties:
+            <<: *prop_g
+            <<: *prop_mat
+        s4: 
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_av
+
+    - id: Blokas              # common              NSIK: B.BB.ULG
+      examples:
+      - Pamatų blokas
+      - Juostinis pamatas
+      classifications:
+        NSIK LF: B
+        NSIK LT: BB
+        NSIK LK: ULG
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_u
+            <<: *prop_av
+            <<: *prop_mat
+        s3: 
+          properties:
+            <<: *prop_g
+            <<: *prop_mat
+        s4: 
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_av
+#        s2: *stageS2_common
+#        s3: *stageS3_common
+#        s4: *stageS4_common
+#        s4: *stageS5_common
+        
+    - id: Polis (Pamatai)                           # unique             NSIK: B.BB.ULC
+      classifications:
+        NSIK LF: B
+        NSIK LT: BB
+        NSIK LK: ULC
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_u
+            <<: *prop_av
+            <<: *prop_mat
+        s3: 
+          properties:
+            <<: *prop_g
+            <<: *prop_mat
+        s4: 
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_av
+
+    - id: Atraminė siena                            # common             NSIK: B.BB.ULC
       classifications:
         NSIK LF: B
         NSIK LT: BD
         NSIK LK: ULL
       stages:
-        s3:
+        s1:
           properties:
-          - VVK.LevelName:
-            - examples:
-              - 1 aukštas
-            - units: Tekstas
-          - Name:
-            - examples:
-              - Atraminė siena
-            - units: Tekstas
-            - descr: Sutrumpintas pavadinimas modelio erdvėje (pagal tipą)
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - units: Tekstas
-            - descr: Elemento būsena
-          - ASSEMBLY MARK: &id026
-            - examples:
-              - SL-86503
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Assembly/Cast
-                Unit Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - C30/37
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Ifc__.Heigth:
-            - examples:
-              - 2000
-            - units: mm
-            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Ifc__.Length:
-            - examples:
-              - 15000
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Ifc__.Depth:
-            - examples:
-              - 200
-            - units: mm
-            - descr: Storis, mm (0 dešimtainių skaitmenų) arba m (3 dešimtainiai skaitmenys)
-          - Ifc__.Area:
-            - examples:
-              - 10
-            - units: m²
-            - descr: Elemento plotas, m²
-          - Ifc__.Volume:
-            - examples:
-              - 10
-            - units: m³
-            - descr: Elemento tūris, m³
-          - Pset_ServiceLifeFactors.OutdoorEnvironment:
-            - examples:
-                - XC1
-            - units: Tekstas
-            - descr: XO, XC1  Aplinkos agresyvumo klasė  (jei taikoma)
-          lod: 300
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_u
+            <<: *prop_av
+            <<: *prop_mat
+        s3: 
+          properties:
+            <<: *prop_g
+            <<: *prop_mat
+        s4: 
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_av
       
-    - id: Siena
+    - id: Siena                                     # unique             NSIK: B.BD.ULM
       classifications:
         NSIK LF: B
         NSIK LT: BD
         NSIK LK: ULM
       stages:
-        s3:
+        s1:
           properties:
-          - VVK.LevelName:
-            - examples:
-              - 1 aukštas
-          - Name:
-            - examples:
-              - Apkrovas laikanti siena
-            - descr: Sutrumpintas pavadinimas modelio erdvėje (pagal tipą)
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - descr: Elemento būsena
-          - ASSEMBLY MARK:
-            - examples:
-              - BW-86503
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Assembly/Cast
-                Unit Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - C30/37
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Ifc__.Heigth:
-            - examples:
-              - 2000
-            - units: mm
-            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Ifc__.Length:
-            - examples:
-              - 2000
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Ifc__.Depth:
-            - examples:
-              - 200
-            - units: mm
-            - descr: Storis, mm (0 dešimtainių skaitmenų) arba m (3 dešimtainiai skaitmenys)
-          - Ifc__.Area:
-            - examples:
-              - 10
-            - units: m²
-            - descr: Elemento plotas, m²
-          - Ifc__.Volume:
-            - examples:
-              - 10
-            - units: m³
-            - descr: Elemento tūris, m³
-          - Atsparumo ugniai laipsnis (jei taikoma): &id027
-            - examples:
-              - R90 (REI60)
-            - units: Tekstas
-          - Pset_ServiceLifeFactors.OutdoorEnvironment:
-            - examples:
-              - XC1
-          lod: 300
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_u
+            <<: *prop_av
+            <<: *prop_mat
+        s3: 
+          properties:
+            <<: *prop_g
+            <<: *prop_mat
+        s4: 
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_av
       
-    - id: Santvara
+    - id: Santvara                                  # unique             NSIK: B.BC.ULS
       classifications:
         NSIK LF: B
         NSIK LT: BC
         NSIK LK: ULS
       stages:
-        s3:
+        s1:
           properties:
-          - VVK.LevelName:
-            - examples:
-              - 1 aukštas
-          - Name:
-            - examples:
-              - Santvara
-            - descr: Sutrumpintas pavadinimas modelio erdvėje (pagal tipą)
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - descr: Elemento būsena
-          - ASSEMBLY MARK:
-            - examples:
-              - T-86503
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Assembly/Cast
-                Unit Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - S355
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Ifc__.Heigth:
-            - examples:
-              - 2400
-            - units: mm
-            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Ifc__.Length:
-            - examples:
-              - 24000
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Ifc__.Width:
-            - examples:
-              - 200
-            - units: mm
-            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Ifc__.Weigth:
-            - examples:
-              - 1000
-            - units: kg
-            - descr: Elemento svoris
-          - Atsparumo ugniai laipsnis (jei taikoma):
-            - examples:
-              - R90 (REI60)
-            - units: Tekstas
-          - Pset_ServiceLifeFactors.OutdoorEnvironment:
-            - examples:
-              - XC1
-          lod: 300
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_u
+            <<: *prop_av
+            <<: *prop_mat
+        s3: 
+          properties:
+            <<: *prop_g
+            <<: *prop_mat
+        s4: 
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_av
+        
       
-    - id: Kolona
+    - id: Kolona                                    # unique             NSIK: B.BD.ULD
       classifications:
         NSIK LF: B
         NSIK LT: BD
         NSIK LK: ULD
       stages:
-        s3:
+        s1:
           properties:
-          - VVK.LevelName:
-            - examples:
-              - 1 aukštas
-          - Name:
-            - examples:
-              - Kolona
-            - descr: Sutrumpintas pavadinimas modelio erdvėje (pagal tipą)
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - descr: Elemento būsena
-          - ASSEMBLY MARK:
-            - examples:
-              - CF-86503
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Assembly/Cast
-                Unit Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - C30/37
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Ifc__.Heigth:
-            - examples:
-              - 3500
-            - units: mm
-            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Ifc__.Length:
-            - examples:
-              - 500
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Ifc__.Width:
-            - examples:
-              - 500
-            - units: mm
-            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Diametras:
-            - examples:
-              - 350
-            - units: mm
-            - descr: Gaminio diametras (pildoma, apvalaus skerspjūvio gaminiams)
-          - Ifc__.Volume:
-            - examples:
-              - 2
-            - units: m³
-            - descr: Elemento tūris, m³
-          - Ifc__.Weigth:
-            - examples:
-              - 2000
-            - units: kg
-            - descr: Elemento svoris
-          - Atsparumo ugniai laipsnis (jei taikoma):
-            - examples:
-              - R90 (REI60)
-            - units: Tekstas
-          - Pset_ServiceLifeFactors.OutdoorEnvironment
-          lod: 300
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_u
+            <<: *prop_av
+            <<: *prop_mat
+        s3: 
+          properties:
+            <<: *prop_g
+            <<: *prop_mat
+        s4: 
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_av
+        
       
-    - id: Sija
+    - id: Sija                                      # unique             NSIK: B.BC.ULE
       examples:
       - Sąrama
       - tarpaukštinė sija
@@ -396,77 +371,25 @@ SK:
         NSIK LT: BC
         NSIK LK: ULE
       stages:
-        s3:
+        s1:
           properties:
-          - VVK.LevelName:
-            - examples:
-              - 1 aukštas
-          - Name:
-            - examples:
-              - Sąrama
-            - descr: Sutrumpintas pavadinimas modelio erdvėje (pagal tipą)
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - descr: Elemento būsena
-          - ASSEMBLY MARK:
-            - examples:
-              - B-86503
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Assembly/Cast
-                Unit Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - C30/37
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Ifc__.Heigth:
-            - examples:
-              - 600
-            - units: mm
-            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Ifc__.Length:
-            - examples:
-              - 6000
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Ifc__.Width:
-            - examples:
-              - 400
-            - units: mm
-            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Ifc__.Volume:
-            - examples:
-              - 2
-            - units: m³
-            - descr: Elemento tūris, m³
-          - Ifc__.Weigth:
-            - examples:
-              - 2000
-            - units: kg
-            - descr: Elemento svoris
-          - Atsparumo ugniai laipsnis:
-            - examples:
-              - R90 (REI60)
-            - units: Tekstas
-          - Pset_ServiceLifeFactors.OutdoorEnvironment
-          lod: 300
+            <<: *prop
+            <<: *prop_mat
+            <<: *prop_g
+            <<: *prop_u
+            <<: *prop_av
+        s3: 
+          properties:
+            <<: *prop_g
+            <<: *prop_mat
+        s4: 
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_av
+        
       
-    - id: Plokštė
+    - id: Plokštė                                   # unique             NSIK: C.BC.ULK
       examples:
       - Monolitinama perdanga
       - lauko laiptų pamatinė plokštė
@@ -477,368 +400,70 @@ SK:
         NSIK LT: BC
         NSIK LK: ULK
       stages:
-        s3:
+        s1:
           properties:
-          - VVK.LevelName:
-            - examples:
-              - 1 aukštas
-          - Name:
-            - examples:
-              - Monolitinama perdanga
-            - descr: Sutrumpintas pavadinimas modelio erdvėje (pagal tipą)
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - descr: Elemento būsena
-          - ASSEMBLY MARK:
-            - examples:
-              - PL-86502
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Assembly/Cast
-                Unit Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - C30/37
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Ifc__.Length:
-            - examples:
-              - 6000
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Ifc__.Width:
-            - examples:
-              - 1200
-            - units: mm
-            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Storis (jei taikoma): &id028
-            - examples:
-              - 200
-            - units: mm
-            - descr: Storis (jei taikoma), mm (0 dešimtainių skaitmenų) arba m (3
-                dešimtainiai skaitmenys)
-          - Ifc__.Area:
-            - examples:
-              - 1
-            - units: m²
-            - descr: Elemento plotas, m²
-          - Ifc__.Volume:
-            - examples:
-              - 2.05
-            - units: m³
-            - descr: Elemento tūris, m³
-          - Ifc__.Weigth:
-            - examples:
-              - 2950
-            - units: kg
-            - descr: Elemento svoris
-          - Atsparumo ugniai laipsnis:
-            - examples:
-              - R90 (REI60)
-            - units: Tekstas
-          - Pset_ServiceLifeFactors.OutdoorEnvironment
-          lod: 300
+            <<: *prop
+            <<: *prop_mat
+            <<: *prop_g
+            <<: *prop_u
+            <<: *prop_av
+        s3: 
+          properties:
+            <<: *prop_g
+            <<: *prop_mat
+        s4: 
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_av
       
-    - id: Tarpinė aikštelė
+    - id: Tarpinė aikštelė                          # unique             NSIK: C.AF.XSA
       classifications:
         NSIK LF: C
         NSIK LT: AF
         NSIK LK: XSA
       stages:
-        s3:
+        s1:
           properties:
-          - VVK.LevelName:
-            - examples:
-              - 2 aukštas
-          - Name:
-            - examples:
-              - Laiptų aikštelė
-            - descr: Sutrumpintas pavadinimas modelio erdvėje (pagal tipą)
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - descr: Elemento būsena
-          - ASSEMBLY MARK:
-            - examples:
-              - SL-86502
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Assembly/Cast
-                Unit Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - C30/37
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Ifc__.Length:
-            - examples:
-              - 2000
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Ifc__.Width:
-            - examples:
-              - 2000
-            - units: mm
-            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Ifc__.Depth:
-            - examples:
-              - 200
-            - units: mm
-            - descr: Storis, mm (0 dešimtainių skaitmenų) arba m (3 dešimtainiai skaitmenys)
-          - Ifc__.Volume:
-            - examples:
-              - 2.05
-            - units: m³
-            - descr: Elemento tūris, m³
-          - Ifc__.Weigth:
-            - examples:
-              - 2950
-            - units: kg
-            - descr: Elemento svoris
-          - Atsparumo ugniai laipsnis:
-            - examples:
-              - R90 (REI60)
-            - units: Tekstas
-          - Pset_ServiceLifeFactors.OutdoorEnvironment
-          lod: 300
+            <<: *prop
+            <<: *prop_mat
+            <<: *prop_g
+            <<: *prop_u
+            <<: *prop_av
+        s3: 
+          properties:
+            <<: *prop_g
+            <<: *prop_mat
+        s4: 
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_av
       
-    - id: Laiptatakis
+    - id: Laiptatakis                               # unique             NSIK: C.AC.XSB
       classifications:
         NSIK LF: C
         NSIK LT: AC
         NSIK LK: XSB
       stages:
-        s3:
+        s1:
           properties:
-          - VVK.LevelName:
-            - examples:
-              - 2 aukštas
-          - Name:
-            - examples:
-              - Laiptų maršas
-            - descr: Sutrumpintas pavadinimas modelio erdvėje (pagal tipą)
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - descr: Elemento būsena
-          - ASSEMBLY MARK:
-            - examples:
-              - S-86502
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Assembly/Cast
-                Unit Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - C30/37
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Ifc__.Length:
-            - examples:
-              - 2000
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Ifc__.Width:
-            - examples:
-              - 2000
-            - units: mm
-            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Ifc__.Depth:
-            - examples:
-              - 200
-            - units: mm
-            - descr: Storis, mm (0 dešimtainių skaitmenų) arba m (3 dešimtainiai skaitmenys)
-          - Ifc__.Volume:
-            - examples:
-              - 2.1
-            - units: m³
-            - descr: Elemento tūris, m³
-          - Ifc__.Weigth:
-            - examples:
-              - 3000
-            - units: kg
-            - descr: Elemento svoris
-          - Atsparumo ugniai laipsnis:
-            - examples:
-              - R90 (REI60)
-            - units: Tekstas
-          - Pset_ServiceLifeFactors.OutdoorEnvironment
-          lod: 300
-      
-    - id: Blokas (Pamatai)
-      examples:
-      - Pamatų blokas
-      - juostinis pamatas
-      classifications:
-        NSIK LF: B
-        NSIK LT: BB
-        NSIK LK: ULG
-      stages:
-        s3:
+            <<: *prop
+            <<: *prop_mat
+            <<: *prop_g
+            <<: *prop_u
+            <<: *prop_av_member
+        s3: 
           properties:
-          - VVK.LevelName:
-            - examples:
-              - Rūsys
-          - Name:
-            - examples:
-              - Galvena
-            - descr: Sutrumpintas pavadinimas modelio erdvėje (pagal tipą)
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - descr: Elemento būsena
-          - ASSEMBLY MARK:
-            - examples:
-              - F-86502
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Assembly/Cast
-                Unit Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - C30/37
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - Ifc__.Heigth:
-            - examples:
-              - 600
-            - units: mm
-            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Ifc__.Length:
-            - examples:
-              - 6000
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Ifc__.Width:
-            - examples:
-              - 200
-            - units: mm
-            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Ifc__.Volume:
-            - examples:
-              - 0.8
-            - units: m³
-            - descr: Elemento tūris, m³
-          - Ifc__.Weigth:
-            - examples:
-              - 1500
-            - units: kg
-            - descr: Elemento svoris
-          - Atsparumo ugniai laipsnis:
-            - examples:
-              - R90 (REI60)
-            - units: Tekstas
-          - Pset_ServiceLifeFactors.OutdoorEnvironment
-          lod: 300
-      
-    - id: Polis (Pamatai)
-      classifications:
-        NSIK LF: B
-        NSIK LT: BB
-        NSIK LK: ULC
-      stages:
-        s3:
+            <<: *prop_g
+            <<: *prop_mat
+        s4: 
           properties:
-          - VVK.LevelName:
-            - examples:
-              - Rūsys
-          - Name:
-            - examples:
-              - Polis
-            - descr: Sutrumpintas pavadinimas modelio erdvėje (pagal tipą)
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - descr: Elemento būsena
-          - ASSEMBLY MARK:
-            - examples:
-              - F-81502
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Assembly/Cast
-                Unit Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - C30/37
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - Ifc__.Length:
-            - examples:
-              - 6000
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Diametras:
-            - examples:
-              - 600
-            - units: mm
-            - descr: Gaminio diametras
-          - Ifc__.Volume:
-            - examples:
-              - 1
-            - units: m³
-            - descr: Elemento tūris, m³
-          - Ifc__.Weigth:
-            - examples:
-              - 4200
-          - Atsparumo ugniai laipsnis:
-            - examples:
-              - R90 (REI60)
-            - units: Tekstas
-          - Pset_ServiceLifeFactors.OutdoorEnvironment
-          lod: 300
-      
-    - id: Izoliacija
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_av_member
+    
+    - id: Izoliacija                                # unique             NSIK: D.BE.RQA
       examples:
       - šilumos izoliacija
       - vėjo izoliacija
@@ -848,54 +473,26 @@ SK:
         NSIK LT: BE
         NSIK LK: RQA
       stages:
-        s3:
+        s1:
           properties:
-          - VVK.LevelName:
-            - examples:
-              - Stogas
-          - Name:
-            - examples:
-              - Šiluminė izoliacija
-            - descr: Sutrumpintas pavadinimas modelio erdvėje (pagal tipą)
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - I-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
-                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - EPS100
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Ifc__.Depth:
-            - examples:
-              - 150
-            - units: mm
-            - descr: Storis, mm (0 dešimtainių skaitmenų) arba m (3 dešimtainiai skaitmenys)
-          - Ifc__.Area:
-            - examples:
-              - 100
-            - units: m²
-            - descr: Elemento plotas, m²
-          lod: 300
-      
-    - id: Grindų dangos pasluosnių konstrukcija
+            <<: *prop
+            <<: *prop_mat
+            <<: *prop_g
+            <<: *prop_u
+            <<: *prop_av
+            Pset_QuantityTakeOff.Thickness: {}
+        s3: 
+          properties:
+            <<: *prop_g
+            <<: *prop_mat
+            Pset_QuantityTakeOff.Thickness: {}
+        s4: 
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_av
+    
+    - id: Grindų dangos pasluoksnių konstrukcija    # unique             NSIK: C.BF.UMC
       examples:
       - dangą laikanti konstrukciją, išskyrus perdangos plokštę
       - išlyginamasis sluoksnis
@@ -905,549 +502,191 @@ SK:
         NSIK LT: BF
         NSIK LK: UMC
       stages:
-        s3:
+        s1:
           properties:
-          - VVK.LevelName:
-            - examples:
-              - Stogas
-          - Name:
-            - examples:
-              - Laikantysis grindų sluoksnis
-            - descr: Sutrumpintas pavadinimas modelio erdvėje (pagal tipą)
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - GK-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
-                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - C25/30
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Ifc__.Depth:
-            - examples:
-              - 400
-            - units: mm
-            - descr: Storis, mm (0 dešimtainių skaitmenų) arba m (3 dešimtainiai skaitmenys)
-          - Ifc__.Area:
-            - examples:
-              - 100
-            - units: m²
-            - descr: Elemento plotas, m²
-          - Ifc__.Volume:
-            - examples:
-              - 6
-            - units: m³
-            - descr: Elemento tūris, m³
-          - Ifc__.Weigth:
-            - examples:
-              - 6750
-            - units: kg
-            - descr: Elemento svoris
-          - Pset_ServiceLifeFactors.OutdoorEnvironment
-          lod: 300
+            <<: *prop
+            <<: *prop_mat
+            <<: *prop_g
+            <<: *prop_u
+            <<: *prop_av
+            Pset_QuantityTakeOff.Thickness: {}
+        s3: 
+          properties:
+            <<: *prop_g
+            <<: *prop_mat
+            Pset_QuantityTakeOff.Thickness: {}
+        s4: 
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_av
+            
       
-    - id: Pamato šiluminė izoliacija
+    - id: Pamato šiluminė izoliacija                # unique             NSIK: B.BD.RQA
       classifications:
         NSIK LF: B
         NSIK LT: BB
         NSIK LK: RQA
       stages:
-        s3:
+        s1:
           properties:
-          - VVK.LevelName:
-            - examples:
-              - Stogas
-          - Name:
-            - examples:
-              - Šiluminė izoliacija
-            - descr: Sutrumpintas pavadinimas modelio erdvėje (pagal tipą)
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - I-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
-                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - EPS100
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Ifc__.Depth:
-            - examples:
-              - 150
-            - units: mm
-            - descr: Storis, mm (0 dešimtainių skaitmenų) arba m (3 dešimtainiai skaitmenys)
-          - Ifc__.Area:
-            - examples:
-              - 100
-            - units: m²
-            - descr: Elemento plotas, m²
-          lod: 300
-      
-    - id: Stogo sudėtinė sistema
+            <<: *prop
+            <<: *prop_mat
+            <<: *prop_g
+            <<: *prop_u
+            <<: *prop_av
+            Pset_QuantityTakeOff.Thickness: {}
+        s3: 
+          properties:
+            <<: *prop_g
+            <<: *prop_mat
+            Pset_QuantityTakeOff.Thickness: {}
+        s4: 
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_av
+    
+    - id: Šlaitinio stogo sistema                   # unique             NSIK: D.AE.UMC
       classifications:
         NSIK LF: D
         NSIK LT: AE
         NSIK LK: UMC
       stages:
-        s3:
+        s1:
           properties:
-          - VVK.LevelName:
-            - examples:
-              - Stogas
-          - Name:
-            - examples:
-              - Šiluminė izoliacija
-            - descr: Sutrumpintas pavadinimas modelio erdvėje (pagal tipą)
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - descr: Elemento būsena
-          - Type:
-            - examples:
-              - I-1
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit
-                Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - EPS100
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Ifc__.Depth:
-            - examples:
-              - 150
-            - units: mm
-            - descr: Storis, mm (0 dešimtainių skaitmenų) arba m (3 dešimtainiai skaitmenys)
-          - Ifc__.Area:
-            - examples:
-              - 100
-            - units: m²
-            - descr: Elemento plotas, m²
-          lod: 300
-      
-    - id: Siena
+            <<: *prop
+            <<: *prop_mat
+            <<: *prop_g
+            <<: *prop_u
+            <<: *prop_av
+            Pset_QuantityTakeOff.Thickness: {}
+        s3: 
+          properties:
+            <<: *prop_g
+            <<: *prop_mat
+            Pset_QuantityTakeOff.Thickness: {}
+        s4: 
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_av
+    
+    - id: Stogo santvara                            # unique             NSIK: D.%AE10.UBF
       classifications:
-        NSIK LF: B
-        NSIK LT: BD
-        NSIK LK: ULM
+        NSIK LF: D
+        NSIK LT: "%AE10"
+        NSIK LK: UBF
       stages:
-        s3:
+        s1:
           properties:
-          - VVK.LevelName:
-            - examples:
-              - 1 aukštas
-          - Name:
-            - examples:
-              - Apkrovas laikanti siena
-            - descr: Sutrumpintas pavadinimas modelio erdvėje (pagal tipą)
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - descr: Elemento būsena
-          - ASSEMBLY MARK:
-            - examples:
-              - BW-86503
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Assembly/Cast
-                Unit Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - C30/37
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Ifc__.Heigth:
-            - examples:
-              - 2000
-            - units: mm
-            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Ifc__.Length:
-            - examples:
-              - 2000
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Ifc__.Depth:
-            - examples:
-              - 200
-            - units: mm
-            - descr: Storis, mm (0 dešimtainių skaitmenų) arba m (3 dešimtainiai skaitmenys)
-          - Ifc__.Area:
-            - examples:
-              - 10
-            - units: m²
-            - descr: Elemento plotas, m²
-          - Ifc__.Volume:
-            - examples:
-              - 10
-            - units: m³
-            - descr: Elemento tūris, m³
-          - Atsparumo ugniai laipsnis (jei taikoma):
-            - examples:
-              - R90 (REI60)
-            - units: Tekstas
-          - Pset_ServiceLifeFactors.OutdoorEnvironment
-          lod: 300
-      
-    - id: Kolona
+            <<: *prop
+            <<: *prop_mat
+            <<: *prop_g
+            <<: *prop_u
+            <<: *prop_av_member
+            Pset_QuantityTakeOff.Thickness: {}
+        s3: 
+          properties:
+            <<: *prop_g
+            <<: *prop_mat
+            Pset_QuantityTakeOff.Thickness: {}
+        s4: 
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_av_member
+        
+    - id: Gegnė                                     # unique             NSIK: D.%AE20.ULE
       classifications:
-        NSIK LF: B
-        NSIK LT: BD
-        NSIK LK: ULD
+        NSIK LF: D
+        NSIK LT: "%AE20"
+        NSIK LK: ULE
       stages:
-        s3:
+        s1:
           properties:
-          - VVK.LevelName:
-            - examples:
-              - 1 aukštas
-          - Name:
-            - examples:
-              - Kolona
-            - descr: Sutrumpintas pavadinimas modelio erdvėje (pagal tipą)
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - descr: Elemento būsena
-          - ASSEMBLY MARK:
-            - examples:
-              - CF-86503
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Assembly/Cast
-                Unit Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - C30/37
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Ifc__.Heigth:
-            - examples:
-              - 3500
-            - units: mm
-            - descr: Gaminio aukštis arba storis, mm  (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Ifc__.Length:
-            - examples:
-              - 500
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Ifc__.Width:
-            - examples:
-              - 500
-            - units: mm
-            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Diametras:
-            - examples:
-              - 350
-            - units: mm
-            - descr: Gaminio diametras (pildoma, apvalaus skerspjūvio gaminiams)
-          - Ifc__.Volume:
-            - examples:
-              - 2
-            - units: m³
-            - descr: Elemento tūris, m³
-          - Ifc__.Weigth:
-            - examples:
-              - 2000
-            - units: kg
-            - descr: Elemento svoris
-          - Atsparumo ugniai laipsnis (jei taikoma):
-            - examples:
-              - R90 (REI60)
-            - units: Tekstas
-          - Pset_ServiceLifeFactors.OutdoorEnvironment
-          lod: 300
-      
-    - id: Plokštė
+            <<: *prop
+            <<: *prop_mat
+            <<: *prop_g
+            <<: *prop_u
+            <<: *prop_av_member
+        s3: 
+          properties:
+            <<: *prop_g
+            <<: *prop_mat
+        s4: 
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_av_member
+        
+    - id: Mūrlotas                                  # unique             NSIK: D.%AE20.ULQ
+      classifications:
+        NSIK LF: D
+        NSIK LT: "%AE20"
+        NSIK LK: ULQ
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_mat
+            <<: *prop_g
+            <<: *prop_u
+            <<: *prop_av_member
+        s3: 
+          properties:
+            <<: *prop_g
+            <<: *prop_mat
+        s4: 
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_av_member
+        
+    - id: Templė                                    # unique             NSIK: D.%AE20.ULF
       examples:
-      - Monolitinama perdanga
-      - lauko laiptų pamatinė plokštė
-      - perdangos plokštė
-      - polių galvena
+      - Styga
       classifications:
-        NSIK LF: C
-        NSIK LT: BC
-        NSIK LK: ULK
+        NSIK LF: D
+        NSIK LT: "%AE20"
+        NSIK LK: ULF
       stages:
-        s3:
+        s1:
           properties:
-          - VVK.LevelName:
-            - examples:
-              - 1 aukštas
-          - Name:
-            - examples:
-              - Monolitinama perdanga
-            - descr: Sutrumpintas pavadinimas modelio erdvėje (pagal tipą)
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - descr: Elemento būsena
-          - ASSEMBLY MARK:
-            - examples:
-              - PL-86502
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Assembly/Cast
-                Unit Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - C30/37
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Ifc__.Length:
-            - examples:
-              - 6000
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Ifc__.Width:
-            - examples:
-              - 1200
-            - units: mm
-            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Storis (jei taikoma):
-            - examples:
-              - 200
-            - units: mm
-            - descr: Storis (jei taikoma), mm (0 dešimtainių skaitmenų) arba m (3
-                dešimtainiai skaitmenys)
-          - Ifc__.Area:
-            - examples:
-              - 1
-            - units: m²
-            - descr: Elemento plotas, m²
-          - Ifc__.Volume:
-            - examples:
-              - 2.05
-            - units: m³
-            - descr: Elemento tūris, m³
-          - Ifc__.Weigth:
-            - examples:
-              - 2950
-            - units: kg
-            - descr: Elemento svoris
-          - Atsparumo ugniai laipsnis:
-            - examples:
-              - R90 (REI60)
-            - units: Tekstas
-          - Pset_ServiceLifeFactors.OutdoorEnvironment
-          lod: 300
-      
-    - id: Laiptatakis
+            <<: *prop
+            <<: *prop_mat
+            <<: *prop_g
+            <<: *prop_u
+            <<: *prop_av_member
+        s3: 
+          properties:
+            <<: *prop_g
+            <<: *prop_mat
+        s4: 
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_av_member
+        
+    - id: Šlaitinio stogo danga                     # unique             NSIK: D.%AE20.FSD
       classifications:
-        NSIK LF: C
-        NSIK LT: AC
-        NSIK LK: XSB
+        NSIK LF: D
+        NSIK LT: "%AE20"
+        NSIK LK: FSD
       stages:
-        s3:
+        s1:
           properties:
-          - VVK.LevelName:
-            - examples:
-              - 2 aukštas
-          - Name:
-            - examples:
-              - Laiptų maršas
-            - descr: Sutrumpintas pavadinimas modelio erdvėje (pagal tipą)
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - descr: Elemento būsena
-          - ASSEMBLY MARK:
-            - examples:
-              - S-86502
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Assembly/Cast
-                Unit Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - C30/37
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - VVK.Colour:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant
-                spalvyną ir spalvos pavadinimą, jei žinomas
-          - Ifc__.Length:
-            - examples:
-              - 2000
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Ifc__.Width:
-            - examples:
-              - 2000
-            - units: mm
-            - descr: Gaminio plotis arba storis, mm (0 dešimtainių skaitmenų) arba
-                m (3 dešimtainiai skaitmenys)
-          - Ifc__.Depth:
-            - examples:
-              - 200
-            - units: mm
-            - descr: Storis, mm (0 dešimtainių skaitmenų) arba m (3 dešimtainiai skaitmenys)
-          - Ifc__.Volume:
-            - examples:
-              - 2.1
-            - units: m³
-            - descr: Elemento tūris, m³
-          - Ifc__.Weigth:
-            - examples:
-              - 3000
-            - units: kg
-            - descr: Elemento svoris
-          - Atsparumo ugniai laipsnis:
-            - examples:
-              - R90 (REI60)
-            - units: Tekstas
-          - Pset_ServiceLifeFactors.OutdoorEnvironment
-          lod: 300
-      
-    - id: Gruntinis inkaras
-      classifications:
-        NSIK LF: B
-        NSIK LT: BB
-        NSIK LK: ULC
-      stages:
-        s3:
+            <<: *prop
+            <<: *prop_mat
+            <<: *prop_g
+            <<: *prop_u
+            Pset_QuantityTakeOff.Area: {}
+        s3: 
           properties:
-          - VVK.LevelName:
-            - examples:
-              - Rūsys
-          - Name:
-            - examples:
-              - Gruntinis inkaras
-            - descr: Sutrumpintas pavadinimas modelio erdvėje (pagal tipą)
-          - Pset_ElementComponentCommon.Status:
-            - examples:
-              - Projektuojamas
-            - descr: Elemento būsena
-          - ASSEMBLY MARK:
-            - examples:
-              - F-81502
-            - units: Tekstas
-            - descr: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Assembly/Cast
-                Unit Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas
-                medžiagų ir kiekių žiniaraščiuose
-          - VVK.Material:
-            - examples:
-              - C30/37
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento medžiaga
-          - VVK.Apdaila:
-            - memo: Pildoma, jei tokia savybė aktuali
-            - units: Tekstas
-            - descr: Pagrindinė elemento apdaila
-          - Ifc__.Length:
-            - examples:
-              - 6000
-            - units: mm
-            - descr: Gaminio ilgis, mm  (0 dešimtainių skaitmenų) arba m (3 dešimtainiai
-                skaitmenys)
-          - Diametras:
-            - examples:
-              - 600
-            - units: mm
-            - descr: Gaminio diametras
-          - Ifc__.Volume:
-            - examples:
-              - 1
-            - units: m³
-            - descr: Elemento tūris, m³
-          - Ifc__.Weigth:
-            - examples:
-              - 7500
-          - Atsparumo ugniai laipsnis:
-            - examples:
-              - R 90
-              - R 60
-          - Pset_ServiceLifeFactors.OutdoorEnvironment
-          lod: 300
-
-      
-
-
+            <<: *prop_g
+            <<: *prop_mat
+        s4: 
+          properties:
+            <<: *prop
+            <<: *prop_u
+            Pset_QuantityTakeOff.Area: {}

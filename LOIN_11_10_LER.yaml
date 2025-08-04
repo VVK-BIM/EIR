@@ -118,7 +118,7 @@ LER:
         s2:
           properties:
             <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -143,11 +143,9 @@ LER:
             <<: *prop_g
             <<: *prop_vis
             <<: *prop_external
-        s2:
+        s4:
           properties:
             <<: *prop
-        s3:
-          properties:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
@@ -171,10 +169,10 @@ LER:
             <<: *prop_g
             <<: *prop_vis
             <<: *prop_external
-        s2:
+        s3:
           properties:
             <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -195,13 +193,9 @@ LER:
         s1:
           properties:
             <<: *prop
-            <<: *prop_g
             <<: *prop_material
             <<: *prop_external
-        s2:
-          properties:
-            <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop
             <<: *prop_g
@@ -222,10 +216,7 @@ LER:
             Pset_QuantityTakeOff.Diameter: {}
             <<: *prop_material
             <<: *prop_external
-        s2:
-          properties:
-            <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop
             <<: *prop_g
@@ -247,10 +238,10 @@ LER:
             Pset_QuantityTakeOff.Diameter: {}
             <<: *prop_material
             Pset_ElectricalDeviceCommon.IsExternal: {}
-        s2:
+        s3:
           properties:
             <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop
             <<: *prop_g
@@ -273,11 +264,9 @@ LER:
             <<: *prop_g
             <<: *prop_e
             <<: *prop_external
-        s2:
+        s4:
           properties:
             <<: *prop
-        s3:
-          properties:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_e
@@ -299,11 +288,9 @@ LER:
             <<: *prop_g
             <<: *prop_e
             <<: *prop_external
-        s2:
+        s4:
           properties:
             <<: *prop
-        s3:
-          properties:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_e
@@ -325,11 +312,9 @@ LER:
             <<: *prop_g
             <<: *prop_e
             <<: *prop_external
-        s2:
+        s4:
           properties:
             <<: *prop
-        s3:
-          properties:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_e
@@ -350,11 +335,9 @@ LER:
             <<: *prop_g
             <<: *prop_e
             <<: *prop_external
-        s2:
+        s4:
           properties:
             <<: *prop
-        s3:
-          properties:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_e
@@ -374,10 +357,7 @@ LER:
             Pset_QuantityTakeOff.Diameter: {}
             <<: *prop_material
             <<: *prop_external
-        s2:
-          properties:
-            <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop
             <<: *prop_g
@@ -401,12 +381,9 @@ LER:
             <<: *prop_g
             <<: *prop_vis
             <<: *prop_external
-        s2:
-          lod: 200
+        s4:
           properties:
             <<: *prop
-        s3:
-          properties:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
@@ -428,11 +405,9 @@ LER:
             <<: *prop_g
             <<: *prop_vis
             <<: *prop_external
-        s2:
+        s4:
           properties:
             <<: *prop
-        s3:
-          properties:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
@@ -454,11 +429,9 @@ LER:
             <<: *prop_vis
             <<: *prop_e
             <<: *prop_external
-        s2:
+        s4:
           properties:
             <<: *prop
-        s3:
-          properties:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
@@ -479,10 +452,7 @@ LER:
             Pset_QuantityTakeOff.Diameter: {}
             <<: *prop_material
             <<: *prop_external
-        s2:
-          properties:
-            <<: *prop
-        s3: 
+        s4: 
           properties:
             <<: *prop
             <<: *prop_g
@@ -505,10 +475,10 @@ LER:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
-        s2:
+        s3:
           properties:
             <<: *prop
-        s3: 
+        s4: 
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -533,11 +503,9 @@ LER:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
-        s2:
+        s4:
           properties:
             <<: *prop
-        s3:
-          properties:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
@@ -556,11 +524,9 @@ LER:
           properties:
             <<: *prop_g
             <<: *prop_vis
-        s2:
+        s4:
           properties:
             <<: *prop
-        s3:
-          properties:
             <<: *prop_g
             <<: *prop_vis
     
@@ -580,11 +546,9 @@ LER:
             <<: *prop_vis
             <<: *prop_e
             <<: *prop_external
-        s2:
+        s4:
           properties:
             <<: *prop
-        s3:
-          properties:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
@@ -616,10 +580,10 @@ LER:
             <<: *prop_vis
             <<: *prop_e
             <<: *prop_external
-        s2:
+        s3:
           properties:
             <<: *prop
-        s3:
+        s4:
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -644,11 +608,9 @@ LER:
             <<: *prop_vis
             <<: *prop_e
             <<: *prop_external
-        s2:
+        s4:
           properties:
             <<: *prop
-        s3:
-          properties:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
@@ -673,11 +635,9 @@ LER:
             <<: *prop_g
             <<: *prop_e
             <<: *prop_external
-        s2: 
+        s4: 
           properties:
             <<: *prop
-        s3: 
-          properties:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_e
@@ -702,9 +662,5 @@ LER:
           properties:
             Pset_QuantityTakeOff.Width: {}
             Pset_QuantityTakeOff.Area: {}
-        s3:
-          properties:
-            Pset_QuantityTakeOff.Width: {}
-            Pset_QuantityTakeOff.Area: {}
             Pset_ElementComponentCommon.Status: {}
-          
+        

@@ -261,13 +261,13 @@ ifcType_ve:  &type_vessel
         lod: 350
         log: 2
         properties:
-        - Pset_ManufacturerTypeInformation.ArticleNumber
-        - Pset_ManufacturerTypeInformation.Manufacturer
+          Pset_ManufacturerTypeInformation.ArticleNumber: {}
+          Pset_ManufacturerTypeInformation.Manufacturer: {}
       s5:
         lod: 350
         log: 2
         properties:
-        - VVK.RelatedDocumentationURI
+          VVK.RelatedDocumentationURI: {}
       s6:
         lod: 500
         log: 2
@@ -424,6 +424,7 @@ ifcType_ve:  &type_vessel
         s4: 
           lod: 350
           log: 2
+          properties: {}
       
     - id: Kompresorinė šaldymo mašina                        #+  *stages_unique_heavy_electrical_equipment +    NSIK: H.HD.ECC         Uc: Pr_60_60_13_04
       classifications:
@@ -466,6 +467,7 @@ ifcType_ve:  &type_vessel
         s4: 
           lod: 350
           log: 2
+          properties: {}
         s5: 
           log: 2
         s6: 
@@ -507,6 +509,7 @@ ifcType_ve:  &type_vessel
         s4: 
           lod: 350
           log: 2
+          properties: {}
  
     - id: Šilumos siurblys                                   #+ &stageS2_S3_electrical_equipment                NSIK: H.HD.EGA         Uc: Pr_70_60_37
       classifications:
