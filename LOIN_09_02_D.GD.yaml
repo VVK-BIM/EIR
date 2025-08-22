@@ -2,7 +2,7 @@
 # NSIK ver 0.9, 2023-09-01
 # https://nsiklab.lt 
 #
-# 07.02 - Gaisro vandentiekis
+# 09.02 - Dujotiekis. Gesinimas dujomis
 #
 
 
@@ -245,107 +245,77 @@ ifc_f:       &type_flow
 
 # elements
 
-VN.GV:
-    id: "07.02"
-    name: Gaisro vandentiekis
-    stages:
-      s0:
-        lod: 275
-      s2:
-        lod: 200
-      s3:
-        lod: 300
-      s4:
-        lod: 350
-        properties:
-        - Pset_ManufacturerTypeInformation.ArticleNumber
-        - Pset_ManufacturerTypeInformation.Manufacturer
-      s5:
-        lod: 350
-        properties:
-        - VVK.RelatedDocumentationURI
-      s6:
-        lod: 500
+D.GD:
+    id: "09.02"
+    name: Dujotiekis. Gesinimas dujomis
     elements:
 
-    - id: Gaisrinio vandentiekio vandens sistemos vamzdis                       # pipe             NSIK: %F20.PB.WPA
+    - id: Gesinimo dujomis sistemos vamzdis                       # pipe             NSIK: %E40.PB.WPA
       examples:
-      - Plieninis cinkuotas vamzdžis
       - Plieninis besiūlis vamzdis
       classifications:
-        NSIK LF: "%F20"
+        NSIK LF: "%E40"
         NSIK LT: PB
         NSIK LK: WPA
       stages:
         s2: *stageS2_common
         s3: *stageS3_pipe
         
-    - id: Gaisrinio vandentiekio sistemos išardoma jungtis                      # valve            NSIK: %F20.PB.XMA
+    - id: Gesinimo dujomis sistemos išardoma jungtis                      # valve            NSIK: %E40.PB.XMA
       examples:
       - Flanšinė jungtis
       - Suveržiama jungtis
       classifications:
-        NSIK LF: "%F20"
+        NSIK LF: "%E40"
         NSIK LT: PB
         NSIK LK: XMA
       stages:
         s2: *stageS2_common
         s3: *stageS3_valve
         
-    - id: Gaisrinio vandentiekio sistemos neišardoma jungtis                    # valve            NSIK: %F20.PB.XMB
+    - id: Gesinimo dujomis sistemos neišardoma jungtis                    # valve            NSIK: %E40.PB.XMB
       examples:
       - Presuojamas trišakis
       - Virinama alkūnė
       - Presuojama alkūnė
       classifications:
-        NSIK LF: "%F20"
+        NSIK LF: "%E40"
         NSIK LT: PB
         NSIK LK: XMB
       stages:
         s2: *stageS2_common
         s3: *stageS3_valve
         
-    - id: Gaisrinio vandentiekio sistemos čiaupas                               # unique_valve     NSIK: %F20.PB.QNA
+    - id: Gesinimo dujomis sistemos čiaupas                               # unique_valve     NSIK: %E40.PB.QNA
       examples:
       - Skysčio reguliavimo vožtuvas
       - Sklendė
       classifications:
-        NSIK LF: "%F20"
+        NSIK LF: "%E40"
         NSIK LT: PB
         NSIK LK: QNA
       stages:
         s2: *stageS2_common
         s3: *stageS3_unique_valve
     
-    - id: Gaisrinio vandentiekio sistemos vandens talpa                         # well             NSIK: %F20.PB.CNA
+    - id: Gesinimo dujomis sistemos dujų talpa                         # well             NSIK: %E40.PB.CNB
       classifications:
-        NSIK LF: "%F20"
+        NSIK LF: "%E40"
         NSIK LT: PB
-        NSIK LK: CNA
+        NSIK LK: CNB
       ifcType: *type_well
       stages:
         s2: *stageS2_common
         s3: *stageS3_well
     
-    - id: Gaisrinio vandentiekio sistemos teigiamo darbinio tūrio siurblys      # unique           NSIK: %F20.PB.GPA
-      examples:
-      - Vandens siurblys
-      - Slėgio sukėlimo siurblys
-      classifications:
-        NSIK LF: "%F20"
-        NSIK LT: PB
-        NSIK LK: GPA
-      stages:
-        s2: *stageS2_unique
-        s2: *stageS3_unique
-    
-    - id: Gaisrinio vandentiekio sistemos izoliacija                            # common           NSIK: %F20.PB.RQA      Uc: Pr_65_52_61_42
+
+    - id: Gesinimo dujomis sistemos izoliacija                            # common           NSIK: %E40.PB.RQA      Uc: Pr_65_52_61_42
       examples:
       - Antikondensacinė izoliacija
       - Akmens vatos kevalas
       ifcType: IcfCovering
       classifications:
-        NSIK LF: "%F20"
+        NSIK LF: "%E40"
         NSIK LT: PB
         NSIK LK: RQA
         Uniclass: Pr_65_52_61_42
@@ -356,9 +326,9 @@ VN.GV:
 
 
 
-    - id: Jungtis žarnai                             # unique_valve           NSIK: %F20.PB.%FMA10
+    - id: Jungtis žarnai                             # unique_valve           NSIK: %E40.PB.%FMA10
       classifications:
-        NSIK LF: "%F20"
+        NSIK LF: "%E40"
         NSIK LT: PB
         NSIK LK: "%FMA10"
       examples:
@@ -369,121 +339,79 @@ VN.GV:
         s2: *stageS2_common
         s3: *stageS3_unique_valve
         
-    - id: Žarna gaisro gesinimui                             # pipe            NSIK: %F20.PB.WPC
+
+
+    - id: Gaisrinis purkštuvas                               # unique          NSIK: %E40.PB.%RND30
       classifications:
-        NSIK LF: "%F20"
-        NSIK LT: PB
-        NSIK LK: WPC
-      stages:
-        s2: *stageS2_common
-        s3: *stageS3_pipe
-    
-    - id: Ritė                                               # unique          NSIK: %F20.PB.UBA
-      classifications:
-        NSIK LF: "%F20"
-        NSIK LT: PB
-        NSIK LK: UBA
-      stages:
-        s2: *stageS2_common
-        s3: *stageS3_unique
-        
-    - id: Stacionarus gaisro laikiklis gaisro pukštuvui      # unique          NSIK: %F20.PB.UAJ
-      examples:
-      - Lafetas
-      classifications:
-        NSIK LF: "%F20"
-        NSIK LT: PB
-        NSIK LK: UAJ
-      stages:
-        s2: *stageS2_common
-        s3: *stageS3_unique
-    
-    - id: Gaisrinis purkštuvas                               # unique          NSIK: %F20.PB.%RND30
-      examples:
-      - Švirkštas
-      - Sprinkleris
-      - Drenčeris
-      classifications:
-        NSIK LF: "%F20"
+        NSIK LF: "%E40"
         NSIK LT: PB
         NSIK LK: "%RND30"
       stages:
         s2: *stageS2_common
         s3: *stageS3_unique
         
-    - id: Lanksti gaisrinio purkštuvo jungtis                # unique          NSIK: %F20.PB.%UPB20
+    - id: Lanksti gaisrinio purkštuvo jungtis                # unique          NSIK: %E40.PB.%UPB20
       examples:
       - Lanksti jungti su laikikliu
       classifications:
-        NSIK LF: "%F20"
+        NSIK LF: "%E40"
         NSIK LT: PB
         NSIK LK: "%UPB20"
       stages:
         s2: *stageS2_common
         s3: *stageS3_unique
         
-    - id: Gaisrinio purkštuvo kapsulė                        # common          NSIK: %F20.PB.BTB
+
+    - id: Gaisrinio purkštuvo apdaila                        # unique          NSIK: %E40.PB.NCD
+
       classifications:
-        NSIK LF: "%F20"
-        NSIK LT: PB
-        NSIK LK: BTB
-      stages:
-        s2: *stageS2_common
-        s3: *stageS3_common
-    
-    - id: Gaisrinio purkštuvo apdaila                        # unique          NSIK: %F20.PB.NCD
-      examples:
-      - Sprinklerio lėkštutė
-      - Sprinklerio rozetė
-      - Sprinklerio apdaila
-      classifications:
-        NSIK LF: "%F20"
+        NSIK LF: "%E40"
         NSIK LT: PB
         NSIK LK: NCD
       stages:
         s2: *stageS2_common
         s3: *stageS3_unique
         
-    - id: Gaisrinio purkštuvo apsauga                        # unique          NSIK: %F20.PB.FQA
+    - id: Gaisrinio purkštuvo apsauga                        # unique          NSIK: %E40.PB.FQA
       examples:
       - Sprinklerio apsauginės grotelės
       classifications:
-        NSIK LF: "%F20"
+        NSIK LF: "%E40"
         NSIK LT: PB
         NSIK LK: FQA
       stages:
         s2: *stageS2_common
         s3: *stageS3_unique
     
-    - id: Srauto daviklis                                    # unique          NSIK: %F20.PB.BFA
+    - id: Srauto daviklis                                    # unique          NSIK: %E40.PB.BFA
       examples:
       - Srauto daviklis
       classifications:
-        NSIK LF: "%F20"
+        NSIK LF: "%E40"
         NSIK LT: PB
         NSIK LK: BFA
       stages:
         s2: *stageS2_unique
         s3: *stageS3_valve
     
-    - id: Slėgio jungiklis                                   # unique          NSIK: %F20.PB.BFB
+    - id: Slėgio jungiklis                                   # unique          NSIK: %E40.PB.BFB
       examples:
       - Sauso tipo signalinis vožtuvas
       - Šlapio tipo signalinis vožtuvas
       - Slėgio relė
       classifications:
-        NSIK LF: "%F20"
+        NSIK LF: "%E40"
         NSIK LT: PB
         NSIK LK: BFB
       stages:
         s2: *stageS2_unique
         s3: *stageS3_valve
     
-    - id: Slėgio kamera                                      # unique          NSIK: %F20.PB.GPD
+    - id: Slėgio kamera                                      # unique          NSIK: %E40.PB.GPD
       examples:
       - Slėgio užlaikymo kamera
       classifications:
-        NSIK LF: "%F20"
+        NSIK LF: "%E40"
         NSIK LT: PB
         NSIK LK: GPD
       stages:

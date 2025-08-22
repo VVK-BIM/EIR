@@ -6,6 +6,13 @@
 #
 
 
+prop:     &prop
+  Name: {}
+  Type: {}
+  Pset_ConstructionAdministration.SpecificationSectionNumber: {}
+  Pset_ElementComponentCommon.Status: {}
+  
+  
 prop_g:   &prop_g
   Pset_QuantityTakeOff.Height: {}
   Pset_QuantityTakeOff.Width: {}
@@ -15,13 +22,7 @@ prop_ga:   &prop_g_area
   <<: *prop_g
   Pset_QuantityTakeOff.Area: {}
 
-  
-prop:     &prop
-  Name: {}
-  Type: {}
-  Pset_ConstructionAdministration.SpecificationSectionNumber: {}
-  Pset_ElementComponentCommon.Status: {}
-  
+
 prop_u:     &prop_u
   <<: *prop
   Tag: {}
@@ -33,9 +34,24 @@ prop_vis:     &prop_vis
   VVK.Material: {}
   VVK.Finish: {}
   VVK.Colour: {}
-  
+
+prop_removable:    &prop_removable
+  Pset_ElementComponentCommon.Weight: {}
+
 prop_e:     &prop_e
+  Pset_ElectricalDeviceCommon.RatedVoltage: {}
   Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
+  
+prop_e_sens:     &prop_e_sensor
+  <<: *prop_e
+  Pset_ElectricalDeviceCommon.IP_Code: {}
+  Pset_ElectricalDeviceCommon.IK_Code: {}
+  Pset_ElectricalDeviceCommon.InsulationStandardClass: {}
+
+prop_equipment: &prop_equipment
+  <<: *prop_e_sensor
+  Pset_ElectricalDeviceCommon.RatedCurrent: {}
+  Pset_ElectricalDeviceCommon.NominalFrequencyRange: {}
   
 
 ifc_e:     &type_linear
@@ -49,6 +65,11 @@ ifc_e:     &type_e
   - IfcDistributionControlElement
   - IfcDistributionControlElementType
   - IfcDistributionControlElementTypeEnum
+
+ifc_zone:  &type_zone
+  - IfcSpace
+  - IfcSpaceType
+
 
 PVA:
     id: "14"
@@ -65,22 +86,22 @@ PVA:
         log: 2
       s4:
         lod: 350
-        log: 2
+        log: 3
         properties:
           Pset_ManufacturerTypeInformation.ArticleNumber: {}
           Pset_ManufacturerTypeInformation.Manufacturer: {}
       s5:
         lod: 350
-        log: 2
+        log: 3
         properties:
           VVK.RelatedDocumentationURI: {}
       s6:
         lod: 500
         log: 6
-        
-        
+
+
     elements:
-    - id: Įrangos ir/ar kabelių dėklas           # common                                   NSIK: L.LC.UBA
+    - id: Įrangos ir/ar kabelių dėklas                 # common                       NSIK: L.LC.UBA
       examples:
       - Kabelio kanalas
       - kabelio kopėčios
@@ -107,32 +128,39 @@ PVA:
             <<: *prop
             <<: *prop_g
 
-    - id: Infraraudonųjų spindulių jutiklis      # visible unique                           NSIK: P.LE.BRC
+    - id: Infraraudonųjų spindulių jutiklis            # sensor                       NSIK: P.LE.BRC
       classifications:
         NSIK LF: L
         NSIK LT: LE
         NSIK LK: BRC
       ifcType: *type_e
       memo: Elementai, nenumatyti kitose projekto dalyse
-      stages:
+      stages: &stages_s1_s2_s3_s4_sensor
         s1: 
-          lod: 300
+          lod: 275
           properties:
             <<: *prop
             <<: *prop_g
             <<: *prop_vis
-        s2: 
-          lod: 200
-          properties:
-            <<: *prop
+            <<: *prop_u
+            <<: *prop_e_sensor
+        # s2: 
+          # lod: 200
+          # properties:
+            # <<: *prop
         s3: 
           lod: 300
           properties:
             <<: *prop
             <<: *prop_g
             <<: *prop_vis
+        s4: 
+          lod: 350
+          properties:
+            <<: *prop_u
+            <<: *prop_e_sensor
 
-    - id: Temperatūros jutiklis                  # visible unique                           NSIK: L.LC.BTA
+    - id: Temperatūros jutiklis                        # sensor                       NSIK: L.LC.BTA
       classifications:
         NSIK LF: L
         NSIK LT: LC
@@ -141,24 +169,9 @@ PVA:
       - Patalpos termometras
       ifcType: *type_e
       stages: 
-        s1:
-          lod: 300
-          properties:
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_vis
-        s2: 
-          lod: 200
-          properties:
-            <<: *prop
-        s3: 
-          lod: 300
-          properties:
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_vis
-              
-    - id: Dujų jutiklis                          # visible unique                           NSIK: L.LC.BTA
+        <<: *stages_s1_s2_s3_s4_sensor
+
+    - id: Dujų jutiklis                                # sensor                       NSIK: L.LC.BTA
       classifications:
         NSIK LF: L
         NSIK LT: LC
@@ -168,25 +181,10 @@ PVA:
       - Degių dujų daviklis
       ifcType: *type_e
       memo: Elementai, nenumatyti kitose projekto dalyse
-      stages: 
-        s1: 
-          lod: 300
-          properties:
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_vis
-        s2: 
-          lod: 200
-          properties:
-            <<: *prop
-        s3: 
-          lod: 300
-          properties:
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_vis
-    
-    - id: Drėgmės daviklis                       # visible unique                           NSIK: L.LC.BMA
+      stages:  
+        <<: *stages_s1_s2_s3_s4_sensor
+
+    - id: Drėgmės daviklis                             # sensor                       NSIK: L.LC.BMA
       classifications:
         NSIK LF: L
         NSIK LT: LC
@@ -196,25 +194,10 @@ PVA:
       - Sienos drėgmės daviklis
       ifcType: *type_e
       memo: Elementai, nenumatyti kitose projekto dalyse
-      stages:
-        s1: 
-          lod: 300
-          properties:
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_vis
-        s2: 
-          lod: 200
-          properties:
-            <<: *prop
-        s3: 
-          lod: 300
-          properties:
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_vis
-        
-    - id: Drėgmės jungiklis                      # visible unique                           NSIK: L.LC.BMB
+      stages: 
+        <<: *stages_s1_s2_s3_s4_sensor
+
+    - id: Drėgmės jungiklis                            # sensor                       NSIK: L.LC.BMB
       classifications:
         NSIK LF: L
         NSIK LT: LC
@@ -223,25 +206,10 @@ PVA:
       - Patalpos užliejimo daviklis
       ifcType: *type_e
       memo: Elementai, nenumatyti kitose projekto dalyse
-      stages:
-        s1: 
-          lod: 300
-          properties:
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_vis
-        s2: 
-          lod: 200
-          properties:
-            <<: *prop
-        s3: 
-          lod: 300
-          properties:
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_vis
-    
-    - id: Srauto daviklis                        # visible unique                           NSIK: L.LC.BFA
+      stages:       
+        <<: *stages_s1_s2_s3_s4_sensor
+
+    - id: Srauto daviklis                              # sensor                       NSIK: L.LC.BFA
       classifications:
         NSIK LF: L
         NSIK LT: LC
@@ -251,25 +219,10 @@ PVA:
       - Oro srauto daviklis
       ifcType: *type_e
       memo: Elementai, nenumatyti kitose projekto dalyse
-      stages:
-        s1: 
-          lod: 300
-          properties:
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_vis
-        s2: 
-          lod: 200
-          properties:
-            <<: *prop
-        s3: 
-          lod: 300
-          properties:
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_vis
-        
-    - id: Srauto jungiklis                       # visible unique                           NSIK: L.LC.BFB
+      stages:       
+        <<: *stages_s1_s2_s3_s4_sensor
+
+    - id: Srauto jungiklis                             # sensor                       NSIK: L.LC.BFB
       classifications:
         NSIK LF: L
         NSIK LT: LC
@@ -279,25 +232,10 @@ PVA:
       - Oro srauto jungiklis
       memo: Elementai, nenumatyti kitose projekto dalyse
       ifcType: *type_e
-      stages:
-        s1:
-          lod: 300
-          properties:
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_vis
-        s2: 
-          lod: 200
-          properties:
-            <<: *prop
-        s3: 
-          lod: 300
-          properties:
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_vis
-    
-    - id: Šviesos daviklis                       # visible unique                           NSIK: L.LC.BRA
+      stages: 
+        <<: *stages_s1_s2_s3_s4_sensor
+
+    - id: Šviesos daviklis                             # sensor                       NSIK: L.LC.BRA
       classifications:
         NSIK LF: L
         NSIK LT: LC
@@ -306,25 +244,10 @@ PVA:
       - Apšvietimo lygio daviklis
       memo: Elementai, nenumatyti kitose projekto dalyse
       ifcType: *type_e
-      stages:
-        s1: 
-          lod: 300
-          properties:
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_vis
-        s2: 
-          lod: 200
-          properties:
-            <<: *prop
-        s3: 
-          lod: 300
-          properties:
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_vis
-        
-    - id: Šviesos detektorius                    # visible unique                           NSIK: L.LC.BRB
+      stages: 
+        <<: *stages_s1_s2_s3_s4_sensor
+
+    - id: Šviesos detektorius                          # sensor                       NSIK: L.LC.BRB
       classifications:
         NSIK LF: L
         NSIK LT: LC
@@ -333,25 +256,10 @@ PVA:
       - Apšvietimo jungiklis, reaguojantis į fiksuotą apšvietimo lygį
       memo: Elementai, nenumatyti kitose projekto dalyse
       ifcType: *type_e
-      stages:
-        s1:
-          lod: 300
-          properties:
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_vis
-        s2: 
-          lod: 200
-          properties:
-            <<: *prop
-        s3: 
-          lod: 300
-          properties:
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_vis
-    
-    - id: Kietųju dalelių daviklis               # visible unique                           NSIK: L.LC.BQE
+      stages:       
+        <<: *stages_s1_s2_s3_s4_sensor
+
+    - id: Kietųju dalelių daviklis                     # sensor                       NSIK: L.LC.BQE
       classifications:
         NSIK LF: L
         NSIK LT: LC
@@ -360,25 +268,10 @@ PVA:
       - Kietųjų medžiagų koncentracijos ore daviklis
       memo: Elementai, nenumatyti kitose projekto dalyse
       ifcType: *type_e
-      stages:
-        s1: 
-          lod: 300
-          properties:
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_vis
-        s2: 
-          lod: 200
-          properties:
-            <<: *prop
-        s3: 
-          lod: 300
-          properties:
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_vis
-    
-    - id: Kietųju dalelių detektorius            # visible unique                           NSIK: L.LC.%BQF10
+      stages: 
+        <<: *stages_s1_s2_s3_s4_sensor
+
+    - id: Kietųju dalelių detektorius                  # sensor                       NSIK: L.LC.%BQF10
       classifications:
         NSIK LF: L
         NSIK LT: LC
@@ -387,25 +280,10 @@ PVA:
       - Dūmų jutiklis
       memo: Elementai, nenumatyti kitose projekto dalyse
       ifcType: *type_e
-      stages:
-        s1: 
-          lod: 300
-          properties:
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_vis
-        s2: 
-          lod: 200
-          properties:
-            <<: *prop
-        s3: 
-          lod: 300
-          properties:
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_vis
-    
-    - id: Medžiagų daviklis                      # visible unique                           NSIK: L.LC.BZD
+      stages: 
+        <<: *stages_s1_s2_s3_s4_sensor
+
+    - id: Medžiagų daviklis                            # sensor                       NSIK: L.LC.BZD
       classifications:
         NSIK LF: L
         NSIK LT: LC
@@ -414,25 +292,10 @@ PVA:
       - Teršalų detektorius
       memo: Elementai, nenumatyti kitose projekto dalyse
       ifcType: *type_e
-      stages:
-        s1: 
-          lod: 300
-          properties:
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_vis
-        s2: 
-          lod: 200
-          properties:
-            <<: *prop
-        s3: 
-          lod: 300
-          properties:
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_vis
-        
-    - id: Apledėjimo daviklis                    # visible unique                           NSIK: L.LC.%BZD0110
+      stages: 
+        <<: *stages_s1_s2_s3_s4_sensor
+
+    - id: Apledėjimo daviklis                          # sensor                       NSIK: L.LC.%BZD0110
       classifications:
         NSIK LF: L
         NSIK LT: LC
@@ -441,23 +304,10 @@ PVA:
       - Ledo detektorius
       memo: Elementai, nenumatyti kitose projekto dalyse
       ifcType: *type_e
-      stages:
-        s1: 
-          lod: 300
-          properties:
-            <<: *prop_g
-            <<: *prop_vis
-        s2: 
-          lod: 200
-          properties:
-            <<: *prop
-        s3: 
-          lod: 300
-          properties:
-            <<: *prop_g
-            <<: *prop_vis
-    
-    - id: Lygio daviklis                         # visible unique                           NSIK: L.LC.BLA
+      stages: 
+        <<: *stages_s1_s2_s3_s4_sensor
+
+    - id: Lygio daviklis                               # sensor                       NSIK: L.LC.BLA
       classifications:
         NSIK LF: L
         NSIK LT: LC
@@ -466,23 +316,10 @@ PVA:
       - Skysčio lygio indikatorius
       memo: Elementai, nenumatyti kitose projekto dalyse
       ifcType: *type_e
-      stages:
-        s1: 
-          lod: 300
-          properties:
-            <<: *prop_g
-            <<: *prop_vis
-        s2: 
-          lod: 200
-          properties:
-            <<: *prop
-        s3: 
-          lod: 300
-          properties:
-            <<: *prop_g
-            <<: *prop_vis
-        
-    - id: Lygio jungiklis                        # visible unique                           NSIK: L.LC.BLB
+      stages: 
+        <<: *stages_s1_s2_s3_s4_sensor
+
+    - id: Lygio jungiklis                              # sensor                       NSIK: L.LC.BLB
       classifications:
         NSIK LF: L
         NSIK LT: LC
@@ -491,48 +328,42 @@ PVA:
       - Fiksuoto skysčio lygio jungiklis
       memo: Elementai, nenumatyti kitose projekto dalyse
       ifcType: *type_e
-      stages:
-        s1:
-          lod: 300
-          properties:
-            <<: *prop_g
-            <<: *prop_vis
-        s2: 
-          lod: 200
-          properties:
-            <<: *prop
-        s3: 
-          lod: 300
-          properties:
-            <<: *prop_g
-            <<: *prop_vis
-    
-    - id: Meteorologinė stotelė                  # visible unique                           NSIK: L.LC.%BUA1010
+      stages: 
+        <<: *stages_s1_s2_s3_s4_sensor
+
+    - id: Meteorologinė stotelė                        # equipment                    NSIK: L.LC.%BUA1010
       classifications:
         NSIK LF: L
         NSIK LT: LC
         NSIK LK: "%BUA1010"
       ifcType: *type_e
       memo: Elementai, nenumatyti kitose projekto dalyse
-      stages:
+      stages: &stages_s1_s2_s3_s4_equipment
         s1:
-          lod: 300
+          lod: 275
           properties:
+            <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
             <<: *prop_e
-        s2: 
-          lod: 200
-          properties:
-            <<: *prop
+            <<: *prop_equipment
+        # s2: 
+          # lod: 200
+          # properties:
+            # <<: *prop
         s3: 
           lod: 300
           properties:
             <<: *prop_g
             <<: *prop_vis
             <<: *prop_e
+        s4: 
+          lod: 350
+          properties:
+            <<: *prop_u
+            <<: *prop_equipment
     
-    - id: Asmens detektorius                     # visible unique                           NSIK: L.LC.BZC
+    - id: Asmens detektorius                           # sensor                       NSIK: L.LC.BZC
       classifications:
         NSIK LF: L
         NSIK LT: LC
@@ -541,23 +372,10 @@ PVA:
       examples:
       - Buvimo detektorius
       ifcType: *type_e
-      stages:
-        s1: 
-          lod: 300
-          properties:
-            <<: *prop_g
-            <<: *prop_vis
-        s2: 
-          lod: 200
-          properties:
-            <<: *prop
-        s3: 
-          lod: 300
-          properties:
-            <<: *prop_g
-            <<: *prop_vis
-          
-    - id: Valdymo blokas                         # visible unique electrical                NSIK: L.LC.KEB
+      stages: 
+        <<: *stages_s1_s2_s3_s4_sensor
+
+    - id: Valdymo blokas                               # equipment                    NSIK: L.LC.KEB
       examples:
       - Patalpos klimato valdymo pultas
       - Kontroleris
@@ -571,25 +389,10 @@ PVA:
         NSIK LT: LC
         NSIK LK: KEB
       ifcType: *type_e
-      stages:
-        s1: 
-          lod: 300
-          properties:
-            <<: *prop_g
-            <<: *prop_vis
-            <<: *prop_e
-        s2: 
-          lod: 200
-          properties:
-            <<: *prop_u
-        s3: 
-          lod: 300
-          properties:
-            <<: *prop_g
-            <<: *prop_vis
-            <<: *prop_e
+      stages: 
+        <<: *stages_s1_s2_s3_s4_equipment
 
-    - id: Dažnio keitiklis                       # unique electrical                        NSIK: L.LC.TAC
+    - id: Dažnio keitiklis                             # equipment                    NSIK: L.LC.TAC
       examples:
       - 1F dažnio keitiklis
       - 3F dažnio keitiklis
@@ -599,23 +402,10 @@ PVA:
         NSIK LT: LC
         NSIK LK: TAC
       ifcType: *type_e
-      stages:
-        s1: 
-          lod: 300
-          properties:
-            <<: *prop_g
-            <<: *prop_e
-        s2: 
-          lod: 200
-          properties:
-            <<: *prop_u
-        s3: 
-          lod: 300
-          properties:
-            <<: *prop_g
-            <<: *prop_e
+      stages: 
+        <<: *stages_s1_s2_s3_s4_equipment
 
-    - id: Kintamos srovės maitinimo blokas       # unique electrical                        NSIK: L.LC.TCA
+    - id: Kintamos srovės maitinimo blokas             # equipment                    NSIK: L.LC.TCA
       examples:
       - AC maitinimo blokas
       memo: Elementai, nenumatyti kitose projekto dalyse
@@ -628,25 +418,10 @@ PVA:
       - IfcEnergyConversionDevice
       - IfcFlowStorageDevice
       - IfcDistributionElement
-      stages:
-        s1: 
-          lod: 300
-          properties:
-            <<: *prop_u
-            <<: *prop_g
-            <<: *prop_e
-        s2: 
-          lod: 200
-          properties:
-            <<: *prop
-        s3: 
-          lod: 300
-          properties:
-            <<: *prop_u
-            <<: *prop_g
-            <<: *prop_e
-    
-    - id: Pastovios srovės maitinimo blokas      # unique electrical                        NSIK: L.LC.TCB
+      stages: 
+        <<: *stages_s1_s2_s3_s4_equipment
+
+    - id: Pastovios srovės maitinimo blokas            # equipment                    NSIK: L.LC.TCB
       examples:
       - DC maitinimo blokas
       memo: Elementai, nenumatyti kitose projekto dalyse
@@ -659,23 +434,10 @@ PVA:
       - IfcEnergyConversionDevice
       - IfcFlowStorageDevice
       - IfcDistributionElement
-      stages:
-        s1: 
-          lod: 300
-          properties:
-            <<: *prop_g
-            <<: *prop_e
-        s2: 
-          lod: 200
-          properties:
-            <<: *prop_u
-        s3: 
-          lod: 300
-          properties:
-            <<: *prop_g
-            <<: *prop_e
+      stages: 
+        <<: *stages_s1_s2_s3_s4_equipment
 
-    - id: Korpusas (skydelis)                    # visible unique electrical                NSIK: L.LC.UCA
+    - id: Korpusas (skydelis)                          # visible unique electrical    NSIK: L.LC.UCA
       examples:
       - Prietaisų dėžė
       - Automatikos spinta
@@ -694,9 +456,10 @@ PVA:
         NSIK LT: LC
         NSIK LK: UCA
       stages:
-        s2: 
-          lod: 300
+        s1: 
+          lod: 275
           properties:
+            <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
             <<: *prop_e
@@ -711,7 +474,7 @@ PVA:
             <<: *prop_vis
             <<: *prop_e
           
-    - id: Elektrinė pavara ar variklis                  # unique electrical                        NSIK: L.LC.MAA
+    - id: Elektrinė pavara ar variklis                 # equipment                    NSIK: L.LC.MAA
       examples:
       - Ventiliatoriaus variklis
       - ŠVOK sklendės pavara
@@ -723,25 +486,20 @@ PVA:
       ifcType: 
       - IfcElectricMotor
       - IfcElectricMotorType
-      stages:
-        s1: 
-          lod: 300
+      stages: 
+        <<: *stages_s1_s2_s3_s4_equipment
+    
+    - id: PVA įrenginio ar sistemos aptarnavimo erdvė  # zone                         NSIK: <E>%DCB1001 <L>L.LC
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK B: "%DCB1001"
+      ifcType: *type_zone
+      stages: &zone_s1_s2_service
+        s1:
           properties:
-            <<: *prop_u
-            <<: *prop_g
-            <<: *prop_e
-        s2: 
-          lod: 200
+            Pset_ElementComponentCommon.Status: {}
+        s4:
           properties:
-            <<: *prop
-        s3: 
-          lod: 300
-          properties:
-            <<: *prop_u
-            <<: *prop_g
-            <<: *prop_e
-        s4: 
-          lod: 350
-          properties:
-            Pset_QuantityTakeOff.Weight:
+            Pset_ElementComponentCommon.Status: {}
 

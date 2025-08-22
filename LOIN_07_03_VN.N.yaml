@@ -5,172 +5,240 @@
 # 07.03 - Nuotekų šalinimas
 #
 
-prop_g:   &prop_g
-  - Pset_QuantityTakeOff.Heigth
-  - Pset_QuantityTakeOff.Width
-  - Pset_QuantityTakeOff.Length
-
 prop:     &prop
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
+  Name: {}
+  Type: {}
+  Pset_ConstructionAdministration.SpecificationSectionNumber: {}
+  Pset_ElementComponentCommon.Status: {}
   
-prop_s2u: &prop_s2_u
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Tag
-  
-prop_s3_well: &prop_s3_well
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Tag
-  - Pset_QuantityTakeOff.Heigth
-  - Pset_QuantityTakeOff.Width
-  - Pset_QuantityTakeOff.Length
-  - Pset_QuantityTakeOff.Diameter
-  - Pset_QuantityTakeOff.Volume
+prop_u:     &prop_u
+  <<: *prop
+  Tag: {}
+  Name: {}
+  Type: {}
+  Pset_ElementComponentCommon.Status: {}
 
-prop_s3_well: &prop_s3_well_round
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Tag
-  - Pset_QuantityTakeOff.Heigth
-  - Pset_QuantityTakeOff.Diameter
-  - Pset_QuantityTakeOff.Volume
-  
-prop_s3:  &prop_s3
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Type
-  - Pset_ConstructionAdministration.SpecificationSectionNumber
-  - VVK.Material
-  - Pset_QuantityTakeOff.Heigth
-  - Pset_QuantityTakeOff.Width
-  - Pset_QuantityTakeOff.Length
+prop_g:   &prop_g
+  Pset_QuantityTakeOff.Height: {}
+  Pset_QuantityTakeOff.Width: {}
+  Pset_QuantityTakeOff.Length: {}
 
-prop_s3z:  &prop_s3_zone
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Pset_QuantityTakeOff.Width
-  - Pset_QuantityTakeOff.Area
+prop_ga:   &prop_g_area
+  <<: *prop_g
+  Pset_QuantityTakeOff.Area: {}
   
-prop_s3_pipe:  &prop_s3_pipe
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Type
-  - Pset_ConstructionAdministration.SpecificationSectionNumber
-  - VVK.Material
-  - Pset_QuantityTakeOff.Diameter
-  - Pset_QuantityTakeOff.Length
 
-prop_s3_valve:  &prop_s3_valve
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Type
-  - Pset_ConstructionAdministration.SpecificationSectionNumber
-  - VVK.Material
-  - Pset_QuantityTakeOff.Diameter
+prop_thick:     &prop_g_thickness
+  Pset_QuantityTakeOff.Length: {}
+  Pset_QuantityTakeOff.Thickness: {}
 
-prop_s3_valve:  &prop_s3_unique_valve
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Type
-  - Tag
-  - Pset_ConstructionAdministration.SpecificationSectionNumber
-  - VVK.Material
-  - Pset_QuantityTakeOff.Diameter
-  
-prop_vu:  &prop_s3_v
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Type
-  - Pset_QuantityTakeOff.Heigth
-  - Pset_QuantityTakeOff.Width
-  - Pset_QuantityTakeOff.Length
-  - Pset_ConstructionAdministration.SpecificationSectionNumber
-  - VVK.Material
-  - VVK.Finish
-  - VVK.Colour
-  
-  
-  
-prop_s3u: &prop_s3_u
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Type
-  - Tag
-  - Pset_ConstructionAdministration.SpecificationSectionNumber
-  - VVK.Material
-  - Pset_QuantityTakeOff.Heigth
-  - Pset_QuantityTakeOff.Width
-  - Pset_QuantityTakeOff.Length
-  
-prop_vu:  &prop_s3_vu
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Type
-  - Tag
-  - Pset_ConstructionAdministration.SpecificationSectionNumber
-  - VVK.Material
-  - Pset_QuantityTakeOff.Heigth
-  - Pset_QuantityTakeOff.Width
-  - Pset_QuantityTakeOff.Length
-  - VVK.Finish
-  - VVK.Colour
+prop_g_valve:   &prop_g_valve
+  Pset_QuantityTakeOff.Diameter: {}
 
-prop_ue:  &prop_s3_ue
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Type
-  - Tag
-  - Pset_ConstructionAdministration.SpecificationSectionNumber
-  - VVK.Material
-  - Pset_QuantityTakeOff.Heigth
-  - Pset_QuantityTakeOff.Width
-  - Pset_QuantityTakeOff.Length
-  - Pset_ElectricalDeviceCommon.NominalPowerConsumption
   
-prop_vue: &prop_s3_vue
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Type
-  - Tag
-  - Pset_ConstructionAdministration.SpecificationSectionNumber
-  - VVK.Material
-  - Pset_QuantityTakeOff.Heigth
-  - Pset_QuantityTakeOff.Width
-  - Pset_QuantityTakeOff.Length
-  - VVK.Finish
-  - VVK.Colour
-  - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+prop_g_pipe:   &prop_g_pipe
+  Pset_QuantityTakeOff.Length: {}
+  Pset_QuantityTakeOff.Diameter: {}
+
+prop_vis:     &prop_vis
+  VVK.Material: {}
+  VVK.Finish: {}
+  VVK.Colour: {}
+
+prop_e_sens:     &prop_e_sensor
+  Pset_ElectricalDeviceCommon.IP_Code: {}
+  Pset_ElectricalDeviceCommon.IK_Code: {}
+  Pset_ElectricalDeviceCommon.InsulationStandardClass: {}
   
-prop_vue: &prop_s3_vue_x
-  - Name
-  - System
-  - Pset_ElementComponentCommon.Status
-  - Type
-  - Tag
-  - Pset_ConstructionAdministration.SpecificationSectionNumber
-  - VVK.Material
-  - Pset_QuantityTakeOff.Heigth
-  - Pset_QuantityTakeOff.Width
-  - Pset_QuantityTakeOff.Length
-  - VVK.Finish
-  - VVK.Colour
-  - Pset_ElectricalDeviceCommon.NominalPowerConsumption
-  - Pset_ElectricalDeviceCommon.IsExternal
+prop_e:     &prop_e
+  Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
+  <<: *prop_e_sensor
+
+prop_e_cable:     &prop_e_cable
+  Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
+  Pset_ElectricalDeviceCommon.InsulationStandardClass: {}
+  Pset_ElementComponentCommon.FireRating: {}
+
+prop_e_device:    &prop_e_device
+  Pset_ElectricalDeviceCommon.IP_Code: {}
+  Pset_ElectricalDeviceCommon.IK_Code: {}
+  Pset_ElectricalDeviceCommon.InsulationStandardClass: {}
+  Pset_ElectricalDeviceCommon.RatedVoltage: {}
+  Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
+  
+prop_ext_cable:  &prop_external
+  Pset_ElementComponentCommon.IsExternal: {}
+  
+prop_mat:     &prop_material
+  VVK.Material: {}
+
+
+# prop_g:   &prop_g
+  # - Pset_QuantityTakeOff.Heigth
+  # - Pset_QuantityTakeOff.Width
+  # - Pset_QuantityTakeOff.Length
+
+# prop:     &prop
+  # - Name
+  # - System
+  # - Pset_ElementComponentCommon.Status
+  
+# prop_s2u: &prop_s2_u
+  # - Name
+  # - System
+  # - Pset_ElementComponentCommon.Status
+  # - Tag
+  
+# prop_s3_well: &prop_s3_well
+  # - Name
+  # - System
+  # - Pset_ElementComponentCommon.Status
+  # - Tag
+  # - Pset_QuantityTakeOff.Heigth
+  # - Pset_QuantityTakeOff.Width
+  # - Pset_QuantityTakeOff.Length
+  # - Pset_QuantityTakeOff.Diameter
+  # - Pset_QuantityTakeOff.Volume
+
+# prop_s3_well: &prop_s3_well_round
+  # - Name
+  # - System
+  # - Pset_ElementComponentCommon.Status
+  # - Tag
+  # - Pset_QuantityTakeOff.Heigth
+  # - Pset_QuantityTakeOff.Diameter
+  # - Pset_QuantityTakeOff.Volume
+  
+# prop_s3:  &prop_s3
+  # - Name
+  # - System
+  # - Pset_ElementComponentCommon.Status
+  # - Type
+  # - Pset_ConstructionAdministration.SpecificationSectionNumber
+  # - VVK.Material
+  # - Pset_QuantityTakeOff.Heigth
+  # - Pset_QuantityTakeOff.Width
+  # - Pset_QuantityTakeOff.Length
+
+# prop_s3z:  &prop_s3_zone
+  # - System
+  # - Pset_ElementComponentCommon.Status
+  # - Pset_QuantityTakeOff.Width
+  # - Pset_QuantityTakeOff.Area
+  
+# prop_s3_pipe:  &prop_s3_pipe
+  # - Name
+  # - System
+  # - Pset_ElementComponentCommon.Status
+  # - Type
+  # - Pset_ConstructionAdministration.SpecificationSectionNumber
+  # - VVK.Material
+  # - Pset_QuantityTakeOff.Diameter
+  # - Pset_QuantityTakeOff.Length
+
+# prop_s3_valve:  &prop_s3_valve
+  # - Name
+  # - System
+  # - Pset_ElementComponentCommon.Status
+  # - Type
+  # - Pset_ConstructionAdministration.SpecificationSectionNumber
+  # - VVK.Material
+  # - Pset_QuantityTakeOff.Diameter
+
+# prop_s3_valve:  &prop_s3_unique_valve
+  # - Name
+  # - System
+  # - Pset_ElementComponentCommon.Status
+  # - Type
+  # - Tag
+  # - Pset_ConstructionAdministration.SpecificationSectionNumber
+  # - VVK.Material
+  # - Pset_QuantityTakeOff.Diameter
+  
+# prop_vu:  &prop_s3_v
+  # - Name
+  # - System
+  # - Pset_ElementComponentCommon.Status
+  # - Type
+  # - Pset_QuantityTakeOff.Heigth
+  # - Pset_QuantityTakeOff.Width
+  # - Pset_QuantityTakeOff.Length
+  # - Pset_ConstructionAdministration.SpecificationSectionNumber
+  # - VVK.Material
+  # - VVK.Finish
+  # - VVK.Colour
+  
+  
+  
+# prop_s3u: &prop_s3_u
+  # - Name
+  # - System
+  # - Pset_ElementComponentCommon.Status
+  # - Type
+  # - Tag
+  # - Pset_ConstructionAdministration.SpecificationSectionNumber
+  # - VVK.Material
+  # - Pset_QuantityTakeOff.Heigth
+  # - Pset_QuantityTakeOff.Width
+  # - Pset_QuantityTakeOff.Length
+  
+# prop_vu:  &prop_s3_vu
+  # - Name
+  # - System
+  # - Pset_ElementComponentCommon.Status
+  # - Type
+  # - Tag
+  # - Pset_ConstructionAdministration.SpecificationSectionNumber
+  # - VVK.Material
+  # - Pset_QuantityTakeOff.Heigth
+  # - Pset_QuantityTakeOff.Width
+  # - Pset_QuantityTakeOff.Length
+  # - VVK.Finish
+  # - VVK.Colour
+
+# prop_ue:  &prop_s3_ue
+  # - Name
+  # - System
+  # - Pset_ElementComponentCommon.Status
+  # - Type
+  # - Tag
+  # - Pset_ConstructionAdministration.SpecificationSectionNumber
+  # - VVK.Material
+  # - Pset_QuantityTakeOff.Heigth
+  # - Pset_QuantityTakeOff.Width
+  # - Pset_QuantityTakeOff.Length
+  # - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+  
+# prop_vue: &prop_s3_vue
+  # - Name
+  # - System
+  # - Pset_ElementComponentCommon.Status
+  # - Type
+  # - Tag
+  # - Pset_ConstructionAdministration.SpecificationSectionNumber
+  # - VVK.Material
+  # - Pset_QuantityTakeOff.Heigth
+  # - Pset_QuantityTakeOff.Width
+  # - Pset_QuantityTakeOff.Length
+  # - VVK.Finish
+  # - VVK.Colour
+  # - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+  
+# prop_vue: &prop_s3_vue_x
+  # - Name
+  # - System
+  # - Pset_ElementComponentCommon.Status
+  # - Type
+  # - Tag
+  # - Pset_ConstructionAdministration.SpecificationSectionNumber
+  # - VVK.Material
+  # - Pset_QuantityTakeOff.Heigth
+  # - Pset_QuantityTakeOff.Width
+  # - Pset_QuantityTakeOff.Length
+  # - VVK.Finish
+  # - VVK.Colour
+  # - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+  # - Pset_ElectricalDeviceCommon.IsExternal
   
   
 s2:       &stageS2_common
@@ -248,6 +316,30 @@ ifc_f:       &type_flow
 VN.N:
     id: "07.03"
     name: Nuotekų šalinimas
+    stages:
+      s1:
+        lod: 275
+        log: 2
+      s2:
+        lod: 200
+        log: 2
+      s3:
+        lod: 300
+        log: 2
+      s4:
+        lod: 350
+        log: 2
+        properties:
+          Pset_ManufacturerTypeInformation.ArticleNumber: {}
+          Pset_ManufacturerTypeInformation.Manufacturer: {}
+      s5:
+        lod: 350
+        log: 2
+        properties:
+          VVK.RelatedDocumentationURI: {}
+      s6:
+        lod: 500
+        log: 6
     elements:
     
 # buitinės
@@ -261,8 +353,21 @@ VN.N:
         NSIK LT: "%JD20"
         NSIK LK: WPA
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_pipe
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g_pipe
+            <<: *prop_material
+            <<: *prop_external
+        s3:
+          properties:
+            <<: *prop
+        s4: 
+          properties:
+            <<: *prop
+            <<: *prop_g_pipe
+            <<: *prop_material
+            <<: *prop_external
         
     - id: Buitinių nuotekų sistemos išardoma jungtis                      # valve            NSIK: %G10.%JD20.XMA
       examples:
@@ -301,8 +406,21 @@ VN.N:
         NSIK LT: "%JD20"
         NSIK LK: QNA
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_unique_valve
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g_valve
+            <<: *prop_material
+            <<: *prop_external
+        s3:
+          properties:
+            <<: *prop
+        s4: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g_valve
+            <<: *prop_material
+            <<: *prop_external
     
     - id: Buitinių nuotekų sistemos talpa                                 # well             NSIK: %G10.%JD20.CNA
       classifications:
@@ -714,9 +832,7 @@ VN.N:
         s2: *stageS2_common
         s3: *stageS3_common
         
-
-
-
+# įranga
     - id: Praustuvas                                   # unique           NSIK G.JD.XKA
       examples:
       - Dubens pavidalo santechnikos prietaisas su skysčio išleidimo įtaisu
@@ -728,8 +844,19 @@ VN.N:
         NSIK LT: JD
         NSIK LK: XKA
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: 
+              descr: Nuotekų sistemos prijungimo diametras
+            <<: *prop_material
+            <<: *prop_external
     
     - id: Plautuvė                                     # unique           NSIK G.JD.%XKA10
       examples:
@@ -742,10 +869,21 @@ VN.N:
         NSIK LT: JD
         NSIK LK: "%XKA10"
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: 
+              descr: Nuotekų sistemos prijungimo diametras
+            <<: *prop_material
+            <<: *prop_external
         
-    - id: Plautuvė technologinių snuotekų sistemoje    # unique           NSIK %G30.JD.%XKA10
+    - id: Plautuvė technologinių nuotekų sistemoje    # unique           NSIK %G30.JD.%XKA10
       examples:
       - Pramoninės virtuvės plautuvė
       classifications:
@@ -753,8 +891,19 @@ VN.N:
         NSIK LT: JD
         NSIK LK: "%XKA10"
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: 
+              descr: Nuotekų sistemos prijungimo diametras
+            <<: *prop_material
+            <<: *prop_external
     
     - id: Klozetas                                     # unique           NSIK G.JD.XKB
       examples:
@@ -767,8 +916,19 @@ VN.N:
         NSIK LT: JD
         NSIK LK: XKB
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: 
+              descr: Nuotekų sistemos prijungimo diametras
+            <<: *prop_material
+            <<: *prop_external
        
     - id: Bide                                         # unique           NSIK G.JD.%XKA20
       classifications:
@@ -776,8 +936,19 @@ VN.N:
         NSIK LT: JD
         NSIK LK: "%XKA20"
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: 
+              descr: Nuotekų sistemos prijungimo diametras
+            <<: *prop_material
+            <<: *prop_external
       
     - id: Pisuaras                                     # unique           NSIK G.JD.XKC
       classifications:
@@ -785,8 +956,19 @@ VN.N:
         NSIK LT: JD
         NSIK LK: XKC
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: 
+              descr: Nuotekų sistemos prijungimo diametras
+            <<: *prop_material
+            <<: *prop_external
         
     - id: Potinkinis rėmas                             # unique           NSIK G.JD.UBF
       examples:
@@ -798,8 +980,17 @@ VN.N:
         NSIK LT: JD
         NSIK LK: UBF
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
         
   
     - id: Dušo padėklas                                # unique           NSIK G.JD.%XKE50
@@ -808,8 +999,19 @@ VN.N:
         NSIK LT: JD
         NSIK LK: "%XKE50"
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: 
+              descr: Nuotekų sistemos prijungimo diametras
+            <<: *prop_material
+            <<: *prop_external
         
     - id: Kojų vonelė                                # unique           NSIK %G30.JD.%XKE50
       examples:
@@ -819,8 +1021,19 @@ VN.N:
         NSIK LT: JD
         NSIK LK: "%XKE50"
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: 
+              descr: Nuotekų sistemos prijungimo diametras
+            <<: *prop_material
+            <<: *prop_external
     
     - id: Trapas                                       # unique           NSIK G.JD.XKE
       classifications:
@@ -828,8 +1041,20 @@ VN.N:
         NSIK LT: JD
         NSIK LK: XKE
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: 
+              descr: Nuotekų sistemos prijungimo diametras
+            <<: *prop_g_valve
+            <<: *prop_material
+            <<: *prop_external
         
     - id: Įlaja                                        # unique           NSIK G.JD.%XKE30
       examples:
@@ -841,8 +1066,19 @@ VN.N:
         NSIK LT: JD
         NSIK LK: "%XKE30"
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: 
+              descr: Nuotekų sistemos prijungimo diametras
+            <<: *prop_material
+            <<: *prop_external
 
     - id: Pravala                                      # unique           NSIK G.JD.XKF
       examples:
@@ -853,8 +1089,17 @@ VN.N:
         NSIK LT: JD
         NSIK LK: XKF
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g_valve
+            <<: *prop_material
+            <<: *prop_external
 
 
     - id: Vakuumo vožtuvas                             # unique           NSIK G.JD.FLC
@@ -863,8 +1108,17 @@ VN.N:
         NSIK LT: JD
         NSIK LK: FLC
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g_valve
+            <<: *prop_material
+            <<: *prop_external
         
     - id: Sifonas                                      # common           NSIK G.JD.RMD
       examples:
@@ -876,8 +1130,18 @@ VN.N:
         NSIK LT: JD
         NSIK LK: RMD
       stages:
-        s2: *stageS2_common
-        s3: *stageS3_common
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g_valve
+            <<: *prop_material
+            <<: *prop_external
+
         
     - id: Atskirtuvas                                  # unique           NSIK %G30.JD.HQB
       examples:
@@ -886,21 +1150,55 @@ VN.N:
         NSIK LF: "%G30"
         NSIK LT: JD
         NSIK LK: HQB
+      ifcType: *type_well
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            Pset_QuantityTakeOff.Height:
+              memo: Jei taikoma
+            Pset_QuantityTakeOff.Width:
+              memo: Jei taikoma
+            Pset_QuantityTakeOff.Length:
+            Pset_QuantityTakeOff.Diameter: 
+              memo: Jei taikoma
+            <<: *prop_material
+            <<: *prop_external
     
-    - id: Riebalų gaudyklė                             # unique           NSIK %G30.JD.XKD
+    - id: Skysčių gaudyklė                             # unique           NSIK %G30.JD.XKD
       examples:
       - Riebalų gaudyklė
-      - Naftos produktų Riebalų gaudyklė
+      - Naftos produktų gaudyklė
       classifications:
         NSIK LF: "%G30"
         NSIK LT: JD
         NSIK LK: XKD
+      ifcType: *type_well
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            Pset_QuantityTakeOff.Height:
+              memo: Jei taikoma
+            Pset_QuantityTakeOff.Width:
+              memo: Jei taikoma
+            Pset_QuantityTakeOff.Length:
+            Pset_QuantityTakeOff.Diameter: 
+              memo: Jei taikoma
+            <<: *prop_material
+            <<: *prop_external
      
 
     - id: Ventiliacijos kaminėlis                      # unique           NSIK G.JD.%FSD10
@@ -912,6 +1210,14 @@ VN.N:
         NSIK LT: JD
         NSIK LK: "%FSD10"
       stages:
-        s2: *stageS2_unique
-        s3: *stageS3_unique
-      
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g_valve
+            <<: *prop_material
+            <<: *prop_external

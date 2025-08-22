@@ -56,6 +56,8 @@ T.S:
         NSIK LF: S
         NSIK LT: RB
         NSIK LK: SZB
+      ifcType:
+      - IfcFurnishingElement
       stages:
         s3:
           lod: 300
