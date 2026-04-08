@@ -5,28 +5,83 @@
 # 03 - Statinio architektūra
 #
    
-prop_g:   &prop_g
-  Pset_QuantityTakeOff.Height: {}
-  Pset_QuantityTakeOff.Width: {}
-  Pset_QuantityTakeOff.Length: {}
+   
 
+prop_g:   &prop_g_l
+  Pset_QuantityTakeOff.Length:
+    valueType: Integer | Real
+
+prop_g:   &prop_g_h
+  Pset_QuantityTakeOff.Height:
+    valueType: Integer | Real
+
+prop_g:   &prop_g_w
+  Pset_QuantityTakeOff.Width: 
+    valueType: Integer | Real 
+
+prop_g:   &prop_g_t
+  Pset_QuantityTakeOff.Thickness:
+    valueType: Integer | Real
+
+prop_g:   &prop_g_a
+  Pset_QuantityTakeOff.Area:
+    valueType: Integer | Real
+
+prop_g:   &prop_g_v
+  Pset_QuantityTakeOff.Volume:
+    valueType: Integer | Real
+    
+prop_p:    &prop_p_fr
+  Pset_ElementComponentCommon.FireRating: {}
+
+prop_FR:     &prop_p_fire
+  <<: *prop_p_fr
+  Pset_ElementComponentCommon.FlammabilityRating: {}
+
+prop_g:   &prop_g
+  <<: [*prop_g_w, *prop_g_l, *prop_g_h]
+
+prop_g:   &prop_g_lh
+  <<: *prop_g_h
+  <<: *prop_g_l
+    
 prop_g:   &prop_g_lha
-  Pset_QuantityTakeOff.Height: {}
-  Pset_QuantityTakeOff.Length: {}
-  Pset_QuantityTakeOff.Area: {}
+  <<: [*prop_g_h, *prop_g_l, *prop_g_a]
   
 prop_g:   &prop_g_area
-  Pset_QuantityTakeOff.Area: {}
+  <<: *prop_g_a
+
+prop_g:   &prop_g_lwa
+  <<: [*prop_g_w, *prop_g_l, *prop_g_a]
+
+prop_g:   &prop_g_tav
+  <<: [*prop_g_t, *prop_g_a, *prop_g_v]
+
+prop_g:   &prop_g_av
+  <<: *prop_g_v
+  <<: *prop_g_a
+
 
 prop:     &prop
-  Name: {}
-  Type: {}
+  VVK.Name: {}
+  VVK.ElementType: {}
+  VVK.RelatedDrawing: {}
   Pset_ConstructionAdministration.SpecificationSectionNumber: {}
   Pset_ElementComponentCommon.Status: {}
-  
-prop:     &prop_u
-  Tag: {}
 
+prop:     &prop_external
+  Pset_ElementComponentCommon.IsExternal: {}
+  
+prop:     &prop_s5
+  VVK.RelatedDocumentationURI: {}
+
+prop:     &prop_u
+  <<: *prop
+  VVK.Tag: {}
+
+prop_vis:     &prop_mat
+  VVK.Material: {}
+  
 prop_vis:     &prop_vis
   VVK.Material: {}
   VVK.Finish: {}
@@ -40,7 +95,6 @@ prop_phys_s4:    &prop_env
     - descr: XO, XC1  Aplinkos agresyvumo klasė
 
 prop_element_s3:     &prop_element_s3
-  Pset_ElementComponentCommon.Tag: {}
   Pset_ElementComponentCommon.IsExternal: {}
   Pset_ElementComponentCommon.ThermalConductivity: {}
   Pset_ServiceLifeFactors.OutdoorEnvironment:
@@ -54,14 +108,13 @@ prop_phys_s4:     &prop_phys_s4
   Pset_ElementComponentCommon.AirTightnessRating: {}
   Pset_ElementComponentCommon.MechanicalLoadRating: {}
   
-prop_FR:     &prop_FR
-  Pset_ElementComponentCommon.FireRating: {}
-  Pset_ElementComponentCommon.FlammabilityRating: {}
+
   
 
 prop_electrical_s3: &prop_e
   Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
-  Pset_ElectricalDeviceCommon.RatedVoltage: {}
+  Pset_ElectricalDeviceCommon.NominalVoltage: {}
+  Pset_ElectricalDeviceCommon.NominalCurrent: {}
   
 prop_electrical_s4: &prop_e_device
   Pset_ElectricalDeviceCommon.IK_Code: {}
@@ -100,6 +153,7 @@ prop_s3:  &prop_s3_pipe
   - VVK.Material
   - Pset_QuantityTakeOff.Diameter
   - Pset_QuantityTakeOff.Length
+
 prop_vu:  &prop_s3_v
   - Name
   - System
@@ -352,40 +406,129 @@ SA:
         log: 6
         
     elements:
-    - id: Siena                                                 #  common                  NSIK: B.AD.ULM
+    - id: Siena                          #  NSIK+ISO:  B.AD.ULM
       classifications:
         NSIK LF: B
         NSIK LT: AD
         NSIK LK: ULM
+        ISO81346 CF: B
+        ISO81346 CT: AD
+        ISO81346 CC: ULM
       ifcType:
       - IfcWall
       - IfcWallType
-      stages:
+      stages:  &stages_s1_s2_s3_s4_s5_s6_wall
         s1:
           properties: 
             <<: *prop
-            <<: *prop_g_area
+            <<: *prop_g_tav
             <<: *prop_vis
             <<: *prop_u
             <<: *prop_loads_s4
         s2:
           properties: 
             <<: *prop
+            <<: *prop_g_tav
+            <<: *prop_vis
         s3: 
           properties:
-            <<: *prop_g_area
             <<: *prop
+            <<: *prop_g_tav
             <<: *prop_vis
         s4:
           properties:
             <<: *prop_u
             <<: *prop_loads_s4
-        
-    - id: Sienos danga                                          # +  common                  NSIK: B.AD.NCB  
+
+    - id: Siena                          #  NSIK:      B.%AD20.ULM
+      classifications:
+        NSIK LF: B
+        NSIK LT: "%AD20"
+        NSIK LK: ULM
+      ifcType:
+      - IfcWall
+      - IfcWallType
+      stages: 
+        <<: *stages_s1_s2_s3_s4_s5_s6_wall
+
+    - id: Kilnojama pertvara             #  NSIK:      B.%AD70.%ULM30
+      classifications:
+        NSIK LF: B
+        NSIK LT: "%AD70"
+        NSIK LK: "%ULM30"
+      ifcType:
+      - IfcWall
+      - IfcWallType
+      stages: 
+        <<: *stages_s1_s2_s3_s4_s5_s6_wall
+
+
+    - id: Siena                          #  NSIK+ISO:  B.BD.ULM
+      classifications:
+        NSIK LF: B
+        NSIK LT: BD
+        NSIK LK: ULM
+        ISO81346 CF: B
+        ISO81346 CT: BD
+        ISO81346 CC: ULM
+      ifcType:
+      - IfcWall
+      - IfcWallType
+      stages: 
+        <<: *stages_s1_s2_s3_s4_s5_s6_wall
+
+    - id: Siena                          #  NSIK:      B.%BD10.%ULM10
+      classifications:
+        NSIK LF: B
+        NSIK LT: "%BD10"
+        NSIK LK: "%ULM10"
+      ifcType:
+      - IfcWall
+      - IfcWallType
+      stages: 
+        <<: *stages_s1_s2_s3_s4_s5_s6_wall
+
+    - id: Mūrinė siena                   #  NSIK:      B.BD.%ULM10
+      classifications:
+        NSIK LF: B
+        NSIK LT: BD
+        NSIK LK: "%ULM10"
+      ifcType:
+      - IfcWall
+      - IfcWallType
+      stages: 
+        <<: *stages_s1_s2_s3_s4_s5_s6_wall
+
+    - id: Monolitinė siena               #  NSIK:      B.BD.%ULM20
+      classifications:
+        NSIK LF: B
+        NSIK LT: BD
+        NSIK LK: "%ULM20"
+      ifcType:
+      - IfcWall
+      - IfcWallType
+      stages: 
+        <<: *stages_s1_s2_s3_s4_s5_s6_wall
+
+    - id: Surenkama siena                #  NSIK:      B.BD.%ULM30
+      classifications:
+        NSIK LF: B
+        NSIK LT: BD
+        NSIK LK: "%ULM30"
+      ifcType:
+      - IfcWall
+      - IfcWallType
+      stages: 
+        <<: *stages_s1_s2_s3_s4_s5_s6_wall
+
+    - id: Sienos danga                   #  NSIK+ISO:  B.AD.NCB  
       classifications:
         NSIK LF: B
         NSIK LT: AD
         NSIK LK: NCB
+        ISO81346 CF: B
+        ISO81346 CT: AD
+        ISO81346 CC: NCB
       examples:
       - Sienos apdaila
       - Sienos apdaras
@@ -400,28 +543,33 @@ SA:
         s1:
           properties: 
             <<: *prop
-            <<: *prop_g_area
+            <<: *prop_g_tav
             <<: *prop_vis
             <<: *prop_u
-            <<: *prop_loads_s4
         s2:
           properties: 
             <<: *prop
+            <<: *prop_g_tav
         s3: 
           properties:
-            <<: *prop_g_area
             <<: *prop
+            <<: *prop_g_tav
             <<: *prop_vis
         s4:
           properties:
+            <<: *prop
+            <<: *prop_g_tav
+            <<: *prop_vis
             <<: *prop_u
-            <<: *prop_loads_s4
 
-    - id: Skaidri vertikali atitvara                            # +  common                  NSIK: D.BD.NAA
+    - id: Skaidri vertikali atitvara     #  NSIK+ISO:  D.BD.NAA
       classifications:
         NSIK LF: D
         NSIK LT: BD
         NSIK LK: NAA
+        ISO81346 CF: D
+        ISO81346 CT: BD
+        ISO81346 CC: NAA
       examples:
       - Stiklinė pertvara
       - Modulinė įstiklinta pertvara
@@ -441,6 +589,7 @@ SA:
             <<: *prop_g_area
             <<: *prop
             <<: *prop_vis
+            <<: *prop_element_s3
         s4:
           properties:
             <<: *prop_u
@@ -448,7 +597,7 @@ SA:
 
 # sienos komponentai
 
-    - id: Užbaigtą paviršių suformuojantis gaminys              # +  unique                  NSIK: B.AD.NCH
+    - id: Užbaigtą paviršių suformuojantis gaminys               #  NSIK+ISO:  B.AD.NCH
       examples:
       - Prieduobė
       - Fasado apdailos plokštės
@@ -456,6 +605,9 @@ SA:
         NSIK LF: B
         NSIK LT: AD
         NSIK LK: NCH
+        ISO81346 CF: B
+        ISO81346 CT: AD
+        ISO81346 CC: NCH
       ifcType:
       - IfcCovering
       - IfcCoveringType
@@ -484,12 +636,56 @@ SA:
           properties:
             <<: *prop_u
             <<: *prop_loads_s4
+            <<: *prop_p_fire
+            
+    - id: Sienos viršutinis profilis                             #  NSIK+ISO:  B.AD.NDB
+      examples:
+      - Apskardinimas
+      - Horizontali paprapeto plokštė
+      classifications:
+        NSIK LF: B
+        NSIK LT: AD
+        NSIK LK: NDB
+        ISO81346 CF: B
+        ISO81346 CT: AD
+        ISO81346 CC: NDB
+      ifcType:
+      - IfcCovering
+      - IfcCoveringType
+      - IfcWall
+      - IfcWallType
+      stages:
+        s1:  
+          properties: 
+            <<: *prop
+            <<: *prop_g_lwa
+            <<: *prop_vis
+            <<: *prop_u
+            <<: *prop_loads_s4
+        s2:  
+          lod: 200
+          properties: 
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g_lwa
+            <<: *prop_vis
+        s4:
+          lod: 350
+          properties:
+            <<: *prop_u
+            <<: *prop_loads_s4
         
-    - id: Grotelės sienoje ar fasade                            # +  unique                  NSIK: B.AD.RND
+    - id: Grotelės sienoje ar fasade                             #  NSIK+ISO:  B.AD.RND
       classifications:
         NSIK LF: B
         NSIK LT: AD
         NSIK LK: RND
+        ISO81346 CF: B
+        ISO81346 CT: AD
+        ISO81346 CC: RND
       memo: Nepriklausančios inžinerinei įrangai (pvz dekoratyvinis elementas); architektūriškai dengiančios vieną ar kelias inžinerinės įrangos sistemas
       ifcType:
       - IfcAirTerminal
@@ -515,7 +711,54 @@ SA:
           properties:
             <<: *prop_u
 
-    - id: Pavienės akustinės plokštės ir akustiniai elementai   # +  common                  NSIK: B.AD.RQC
+    - id: Skaidrios vertikalios plokštės                         #  NSIK+ISO:  B.AD.NAA
+      examples:
+      - Skaidri atitvara
+      classifications:
+        NSIK LF: B
+        NSIK LT: AD
+        NSIK LK: NAA
+        ISO81346 CF: B
+        ISO81346 CT: AD
+        ISO81346 CC: NAA
+      ifcType:
+      - IfcCovering
+      - IfcCoveringType
+      - IfcWall
+      - IfcWallType
+      stages:
+        s1:  
+          properties: 
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g_area
+            <<: *prop_vis
+            <<: *prop_p_fire
+            <<: *prop_phys_s4
+            
+        s2:  
+          properties: 
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop
+            <<: *prop_g_area
+            <<: *prop_vis
+            <<: *prop_p_fire
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g_area
+            <<: *prop_vis
+            <<: *prop_p_fire
+            <<: *prop_phys_s4
+            
+        s5:
+          properties:
+            <<: *prop_s5
+
+    - id: Pavienės akustinės plokštės ir akustiniai elementai    #  NSIK+ISO:  B.AD.RQC
       examples:
       - Akustinė plokštė and sienos
       - Pavienis akustinis elementas ant sienos
@@ -524,6 +767,9 @@ SA:
         NSIK LF: B
         NSIK LT: AD
         NSIK LK: RQC
+        ISO81346 CF: B
+        ISO81346 CT: AD
+        ISO81346 CC: RQC
       ifcType:
       - IfcCovering
       - IfcCoveringType
@@ -548,8 +794,8 @@ SA:
         s4:
           properties:
             <<: *prop_u
-        
-    - id: Turėklai ir porankiai pastato viduje                  # unique                     NSIK: B.BD.FQD
+
+    - id: Turėklai ir porankiai pastato viduje                   #  NSIK+ISO:  B.BD.FQD
       examples:
       - Porankis
       - Apsauginis tinklas
@@ -557,6 +803,9 @@ SA:
         NSIK LF: B
         NSIK LT: BD
         NSIK LK: FQD
+        ISO81346 CF: B
+        ISO81346 CT: BD
+        ISO81346 CC: FQD
       ifcType:
       - IfcRailing
       - IfcRailingType
@@ -579,13 +828,10 @@ SA:
           properties:
             <<: *prop_env
 
-    - id: Balkonų turėklai ir porankiai                         # unique                     NSIK: B.AH.FQD
-      examples:
-      - Porankis
-      - Apsauginis tinklas
+    - id: Apsauginis turėklas                                    #  NSIK:      B.%CL10.FQD
       classifications:
         NSIK LF: B
-        NSIK LT: AH
+        NSIK LT: "%CL10"
         NSIK LK: FQD
       ifcType:
       - IfcRailing
@@ -603,17 +849,154 @@ SA:
             <<: *prop
         s3:
           properties:
+            <<: *prop_g
             <<: *prop_g_area
             <<: *prop_vis
         s4:
           properties:
             <<: *prop_env
 
-    - id: Stogelis                                              # +  common                  NSIK: D.BE.FSD
+    - id: Balkonų turėklai ir porankiai                          #  NSIK+ISO:  B.AH.FQD
+      examples:
+      - Porankis
+      - Apsauginis tinklas
+      classifications:
+        NSIK LF: B
+        NSIK LT: AH
+        NSIK LK: FQD
+        ISO81346 CF: B
+        ISO81346 CT: AH
+        ISO81346 CC: FQD
+      ifcType:
+      - IfcRailing
+      - IfcRailingType
+      stages:
+        s1:
+          properties: 
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_g_area
+            <<: *prop_vis
+            <<: *prop_env
+        s2:
+          properties: 
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop_g_area
+            <<: *prop_vis
+        s4:
+          properties:
+            <<: *prop_env
+
+    - id: Laiptų turėklai ir porankiai                           #  NSIK+ISO:  C.AF.FQD
+      examples:
+      - Porankis
+      - Apsauginis tinklas
+      classifications:
+        NSIK LF: C
+        NSIK LT: AF
+        NSIK LK: FQD
+        ISO81346 CF: C
+        ISO81346 CT: AF
+        ISO81346 CC: FQD
+      ifcType:
+      - IfcRailing
+      - IfcRailingType
+      stages:
+        s1:
+          properties: 
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_g_area
+            <<: *prop_vis
+            <<: *prop_env
+        s2:
+          properties: 
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop_g_area
+            <<: *prop_vis
+        s4:
+          properties:
+            <<: *prop_env
+
+    - id: Stogelis                                               #  NSIK+ISO:  D.BE.FSD
       classifications:
         NSIK LF: D
         NSIK LT: BE
         NSIK LK: FSD
+        ISO81346 CF: D
+        ISO81346 CT: BE
+        ISO81346 CC: FSD
+      ifcType:
+      - IfcCovering
+      - IfcCoveringType
+      - IfcRoof
+      - IfcRoofType
+      stages:
+        s1:
+          properties: 
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_g_area
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_env_s4
+        s2:
+          properties: 
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop_g
+            <<: *prop_g_area
+            <<: *prop_u
+            <<: *prop_vis
+        s4:
+          properties:
+            <<: *prop_env_s4
+            
+    - id: Stogelis                                               #  NSIK+ISO:  D.AE.FSD
+      classifications:
+        NSIK LF: D
+        NSIK LT: AE
+        NSIK LK: FSD
+        ISO81346 CF: D
+        ISO81346 CT: AE
+        ISO81346 CC: FSD
+      ifcType:
+      - IfcCovering
+      - IfcCoveringType
+      - IfcRoof
+      - IfcRoofType
+      stages:
+        s1:
+          properties: 
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_g_area
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_env_s4
+        s2:
+          properties: 
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop_g
+            <<: *prop_g_area
+            <<: *prop_u
+            <<: *prop_vis
+        s4:
+          properties:
+            <<: *prop_env_s4
+
+    - id: Stogelis                                               #  NSIK:      D.AE.%FSD20
+      classifications:
+        NSIK LF: D
+        NSIK LT: AE
+        NSIK LK: "%FSD20"
       ifcType:
       - IfcCovering
       - IfcCoveringType
@@ -641,11 +1024,15 @@ SA:
           properties:
             <<: *prop_env_s4
     
-    - id: Palangė                                               # +  common                  NSIK: B.AD.NCF
+    - id: Palangė                                                #  NSIK+ISO:  B.AD.NCF
       classifications:
         NSIK LF: B
         NSIK LT: AD
         NSIK LK: NCF
+        ISO81346 CF: B
+        ISO81346 CT: AD
+        ISO81346 CC: NCF
+        
       ifcType:
       - IfcCovering
       - IfcCoveringType
@@ -670,8 +1057,76 @@ SA:
         s4:
           properties:
             <<: *prop_u
+            
+    - id: Angokraštis                                            #  NSIK+ISO:  B.AD.NEE
+      classifications:
+        NSIK LF: B
+        NSIK LT: AD
+        NSIK LK: NEE
+        ISO81346 CF: B
+        ISO81346 CT: AD
+        ISO81346 CC: NEE
         
-    - id: Kopėčios                                                         # + unique                   NSIK: %P10.PB.XSC
+      ifcType:
+      - IfcCovering
+      - IfcCoveringType
+      - IfcSlab
+      - IfcSlabType
+      stages:
+        s1:
+          properties: 
+            <<: *prop
+            <<: *prop_g_area
+            <<: *prop_vis
+        s2:  
+          properties: 
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop
+            <<: *prop_g_area
+            <<: *prop_vis
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_g_area
+            <<: *prop_vis
+        
+    - id: Kopėčios                                               #  NSIK+ISO:  P.PB.XSC
+      examples:
+      - Gaisrinės kopėčios
+      - Kopėčios patekimui ant stogo
+      classifications:
+        NSIK LF: P
+        NSIK LT: PB
+        NSIK LK: FMF
+        ISO81346 CF: P
+        ISO81346 CT: PB
+        ISO81346 CC: FMF
+      ifcType:
+      - IfcStair
+      - IfcStairType
+      - IfcStairLADDER
+      stages:
+        s1:
+          properties: 
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_env_s4
+        s2:  
+          properties: 
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop_g
+            <<: *prop_u
+            <<: *prop_vis
+        s4:
+          properties:
+            <<: *prop_env_s4
+    - id: Kopėčios                                               #  NSIK:     %P10.PB.XSC
       examples:
       - Gaisrinės kopėčios
       - Kopėčios patekimui ant stogo
@@ -705,11 +1160,50 @@ SA:
 
 # grindys
 
-    - id: Grindų danga                                                     # +  common                  NSIK: C.AC.NCC
+    - id: Sija                                                              #  NSIK+ISO: C.BC.ULE
+      classifications:
+        NSIK LF: C
+        NSIK LT: BC
+        NSIK LK: ULE
+        ISO81346 CF: C
+        ISO81346 CT: BC
+        ISO81346 CC: ULE
+      stages:   &stages_s1_s2_s3_s4_s5_s6_volume_fr
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_g_av
+            <<: *prop_mat
+            <<: *prop_p_fr
+        s2:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_g_av
+        s3: 
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_g_av
+            <<: *prop_mat
+            <<: *prop_p_fr
+        s4: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_g_av
+            <<: *prop_mat
+            <<: *prop_p_fr
+
+    - id: Grindų danga                                                      #  NSIK+ISO: C.AC.NCC
       classifications:
         NSIK LF: C
         NSIK LT: AC
         NSIK LK: NCC
+        ISO81346 CF: C
+        ISO81346 CT: AC
+        ISO81346 CC: NCC
       ifcType:
       - IfcSlab
       - IfcSlabType
@@ -736,16 +1230,56 @@ SA:
             <<: *prop_u
             <<: *prop_loads_s4
 
-    - id: Grindjuostės                                                     # +  common                  NSIK: B.AD.NEB
+    - id: Grindjuostės                                                      #  NSIK+ISO: C.AC.NEB
       classifications:
         NSIK LF: C
         NSIK LT: AC
         NSIK LK: NEB
+        ISO81346 CF: C
+        ISO81346 CT: AC
+        ISO81346 CC: NEB
+        
       stages:
         s1: 
           properties: 
             <<: *prop
-            <<: *prop_g
+            <<: *prop_g_lh
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_element_s3
+        s2: 
+          properties: 
+            <<: *prop
+            <<: *prop_g_lh
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g_lh
+            <<: *prop_vis
+            <<: *prop_element_s3
+        s4:
+          properties:
+            <<: *prop_u
+
+    - id: Apsauginiai turėklai ir porankiai pastato viduje                  #  NSIK+ISO: B.AD.FQD
+      examples:
+      - Porankis
+      - Apsauginis tinklas
+      classifications:
+        NSIK LF: B
+        NSIK LT: AD
+        NSIK LK: FQD
+        ISO81346 CF: B
+        ISO81346 CT: AD
+        ISO81346 CC: FQD
+      ifcType:
+      - IfcRailing
+      - IfcRailingType
+      stages:
+        s1: 
+          properties: 
+            <<: *prop
+            <<: *prop_g_lha
             <<: *prop_u
             <<: *prop_vis
             <<: *prop_element_s3
@@ -753,16 +1287,56 @@ SA:
         s2: 
           properties: 
             <<: *prop
-            <<: *prop_g
+            <<: *prop_g_lha
         s3:
           properties:
+            <<: *prop
+            <<: *prop_g_lha
             <<: *prop_vis
             <<: *prop_element_s3
         s4:
           properties:
             <<: *prop_u
-
-    - id: Laiptų turėklai ir porankiai pastato viduje                      # unique                   NSIK: MF.FQ.FQD
+        
+    - id: Apsauginiai horizontalūs turėklai ir aptvėrimai pastato viduje    #  NSIK+ISO: C.AC.FQD
+      examples:
+      - Porankis
+      - Apsauginis tinklas
+      classifications:
+        NSIK LF: C
+        NSIK LT: AC
+        NSIK LK: FQD
+        ISO81346 CF: C
+        ISO81346 CT: AC
+        ISO81346 CC: FQD
+      ifcType:
+      - IfcRailing
+      - IfcRailingType
+      stages:
+        s1: 
+          properties: 
+            <<: *prop
+            <<: *prop_g_lha
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_element_s3
+            <<: *prop_phys_s4
+        s2: 
+          properties: 
+            <<: *prop
+            <<: *prop_g_lha
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g_lha
+            <<: *prop_vis
+            <<: *prop_element_s3
+        s4:
+          properties:
+            <<: *prop_u
+        
+        
+    - id: Laiptų turėklai ir porankiai pastato viduje                       #  NSIK+ISO: B.AF.FQD
       examples:
       - Porankis
       - Apsauginis tinklas
@@ -770,6 +1344,9 @@ SA:
         NSIK LF: B
         NSIK LT: AF
         NSIK LK: FQD
+        ISO81346 CF: B
+        ISO81346 CT: AF
+        ISO81346 CC: FQD
       ifcType:
       - IfcRailing
       - IfcRailingType
@@ -788,13 +1365,15 @@ SA:
             <<: *prop_g_lha
         s3:
           properties:
+            <<: *prop
+            <<: *prop_g_lha
             <<: *prop_vis
             <<: *prop_element_s3
         s4:
           properties:
             <<: *prop_u
         
-    - id: Pandusų turėklai ir porankiai pastato viduje                     # unique                   NSIK: MF.FQ.FQD
+    - id: Pandusų turėklai ir porankiai pastato viduje                      #  NSIK+ISO: B.AG.FQD
       examples:
       - Porankis
       - Apsauginis tinklas
@@ -802,6 +1381,9 @@ SA:
         NSIK LF: B
         NSIK LT: AG
         NSIK LK: FQD
+        ISO81346 CF: B
+        ISO81346 CT: AG
+        ISO81346 CC: FQD
       ifcType:
       - IfcRailing
       - IfcRailingType
@@ -820,18 +1402,159 @@ SA:
             <<: *prop_g_lha
         s3:
           properties:
+            <<: *prop
+            <<: *prop_g_lha
             <<: *prop_vis
             <<: *prop_element_s3
         s4:
           properties:
             <<: *prop_u
 
+
+#
+# horizontalūs paviršiai
+#
+    - id: Kojų valymo grotelės              #  NSIK+ISO:  A.AA.HQB
+      classifications:
+        NSIK LF: A
+        NSIK LT: AA
+        NSIK LK: HQB
+        ISO81346 CF: A
+        ISO81346 CT: AA
+        ISO81346 CC: HQB
+        
+      ifcType:
+      - IfcCovering
+      - IfcCoveringType
+      - IfcFlowTerminal     # nes surenkamas vanduo
+      stages:
+        s1: 
+          properties: 
+            <<: *prop
+            <<: *prop_g_area
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_element_s3
+            <<: *prop_phys_s4
+        s2: 
+          properties: 
+            <<: *prop
+            <<: *prop_g_area
+
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g_area
+            <<: *prop_vis
+            <<: *prop_element_s3
+        s4:
+          properties:
+            <<: *prop_u
+    - id: Kojų valymo grotelės              #  NSIK:      A.AA.%HQB10
+      classifications:
+        NSIK LF: A
+        NSIK LT: AA
+        NSIK LK: "%HQB10"
+        
+      ifcType:
+      - IfcCovering
+      - IfcCoveringType
+      - IfcFlowTerminal     # nes surenkamas vanduo
+      stages:
+        s1: 
+          properties: 
+            <<: *prop
+            <<: *prop_g_area
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_element_s3
+            <<: *prop_phys_s4
+        s2: 
+          properties: 
+            <<: *prop
+            <<: *prop_g_area
+
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g_area
+            <<: *prop_vis
+            <<: *prop_element_s3
+        s4:
+          properties:
+            <<: *prop_u
+
+    - id: Horozontalios grotelės            #  NSIK+ISO:  A.AA.NAC
+      classifications:
+        NSIK LF: A
+        NSIK LT: AA
+        NSIK LK: NAC
+        ISO81346 CF: A
+        ISO81346 CT: AA
+        ISO81346 CC: NAC
+      stages:
+        s1:  
+          properties: 
+            <<: *prop
+            <<: *prop_g_area
+            <<: *prop_vis
+            <<: *prop_u
+        s2:
+          properties: 
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop
+            <<: *prop_g_area
+            <<: *prop_vis
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_g_area
+            <<: *prop_vis
+            <<: *prop_u
+
+    - id: Laiptai gruntiniame paviršiuje    #  NSIK+ISO:  A.CK.UBC
+      classifications:
+        NSIK LF: A
+        NSIK LT: CK
+        NSIK LK: UBC
+        ISO81346 CF: A
+        ISO81346 CT: CK
+        ISO81346 CC: UBC
+      stages:
+        s1:  
+          properties: 
+            <<: *prop
+            <<: *prop_g_area
+            <<: *prop_vis
+            <<: *prop_u
+        s2:
+          properties: 
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop
+            <<: *prop_g_area
+            <<: *prop_vis
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_g_area
+            <<: *prop_vis
+            <<: *prop_u
+#
 # lubos
-    - id: Lubų apdaila                                                     # +  common                  NSIK: C.AD.NCD
+#
+    - id: Lubų apdaila                                                     #  NSIK+ISO:  C.AD.NCD
       classifications:
         NSIK LF: C
         NSIK LT: AC
         NSIK LK: NCD
+        ISO81346 CF: C
+        ISO81346 CT: AC
+        ISO81346 CC: NCD
+        
       ifcType:
       - IfcCovering
       - IfcCoveringType
@@ -848,15 +1571,18 @@ SA:
           properties: 
             <<: *prop
             <<: *prop_g_area
+
         s3:
           properties:
+            <<: *prop
+            <<: *prop_g_area
             <<: *prop_vis
             <<: *prop_element_s3
         s4:
           properties:
             <<: *prop_u
 
-    - id: Akustinės lubų plokštės ir pavieniai lubų akustiniai elementai   # +  common                  NSIK: B.AD.RQC
+    - id: Akustinės lubų plokštės ir pavieniai lubų akustiniai elementai   #  NSIK+ISO:  B.AD.RQC
       examples:
       - Akustinė lubų plokštė
       - Pakabintas akustinis elementas
@@ -864,6 +1590,9 @@ SA:
         NSIK LF: C
         NSIK LT: AC
         NSIK LK: RQC
+        ISO81346 CF: C
+        ISO81346 CT: AC
+        ISO81346 CC: RQC
       ifcType:
       - IfcCovering
       - IfcCoveringType
@@ -894,7 +1623,7 @@ SA:
 
 
 # Durys
-    - id: Durys                                                            # +  unique                   NSIK: B.AD.QQC
+    - id: Durys                                                            #  NSIK+ISO:  B.AD.QQC
       examples:
       - Išorinės durys
       - Vidinės durys
@@ -905,10 +1634,13 @@ SA:
         NSIK LF: B
         NSIK LT: AD
         NSIK LK: QQC
+        ISO81346 CF: B
+        ISO81346 CT: AD
+        ISO81346 CC: QQC
       ifcType:
       - IfcDoor
       - IfcDoorType
-      stages:
+      stages: &stages_s1_s2_s3_s4_s5_s6_door
         s1: 
           properties: 
             <<: *prop
@@ -925,92 +1657,164 @@ SA:
             <<: *prop_g
             <<: *prop_g_area
         s3:
+          lod: 350
+          log: 3
           properties:
             <<: *prop_u
             <<: *prop_vis
             <<: *prop_element_s3
             Pset_ElementComponentCommon.EgressCode: {}
         s4:
+          lod: 350
+          log: 3
           properties:
             <<: *prop_phys_s4
-        
-    - id: Priešgaisrinės durys                                             # +  unique                   NSIK: B.AD.FME
+
+    - id: Durys                                                            #  NSIK+ISO:  B.BD.QQC
+      examples:
+      - Išorinės durys
+      - Vidinės durys
+      - lifto durys
+      - vidinės durys
+      memo: durys, kurioms nekeliami atsparumo ugniai reikalavimai
+      classifications:
+        NSIK LF: B
+        NSIK LT: BD
+        NSIK LK: QQC
+        ISO81346 CF: B
+        ISO81346 CT: BD
+        ISO81346 CC: QQC
+      ifcType:
+      - IfcDoor
+      - IfcDoorType
+      stages: 
+        <<: *stages_s1_s2_s3_s4_s5_s6_door
+
+    - id: Vartai                                                           #  NSIK+ISO:  B.AD.QQF
+      examples:
+      - Garažo vartai
+      - Kiemo vartai
+      classifications:
+        NSIK LF: B
+        NSIK LT: AD
+        NSIK LK: QQF
+        ISO81346 CF: B
+        ISO81346 CT: AD
+        ISO81346 CC: QQF
+      ifcType:
+      - IfcDoor
+      - IfcDoorType
+      stages: 
+        <<: *stages_s1_s2_s3_s4_s5_s6_door
+            
+    - id: Vartai                                                           #  NSIK+ISO:  B.BD.QQF
+      examples:
+      - Garažo vartai
+      classifications:
+        NSIK LF: B
+        NSIK LT: BD
+        NSIK LK: QQF
+        ISO81346 CF: B
+        ISO81346 CT: BD
+        ISO81346 CC: QQF
+      ifcType:
+      - IfcDoor
+      - IfcDoorType
+      stages: 
+        <<: *stages_s1_s2_s3_s4_s5_s6_door
+
+    - id: Priešgaisrinės durys                                             #  NSIK+ISO: B.AD.FME
       examples:
       - Plieninės durys
       classifications:
         NSIK LF: B
         NSIK LT: AD
         NSIK LK: FME
+        ISO81346 CF: B
+        ISO81346 CT: AD
+        ISO81346 CC: FME
       ifcType:
       - IfcDoor
       - IfcDoorType
       stages:
         s1: 
           properties: 
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_g_area
             <<: *prop_u
             <<: *prop_vis
+            <<: *prop_g_lha
             <<: *prop_element_s3
-            <<: *prop_FR
+            <<: *prop_p_fr
             <<: *prop_phys_s4
+            <<: *prop_env_s4
             Pset_ElementComponentCommon.EgressCode: {}
         s2: 
           properties: 
             <<: *prop
-            <<: *prop_g
-            <<: *prop_g_area
+            <<: *prop_g_lha
         s3:
           properties:
-            <<: *prop_u
+            <<: *prop
             <<: *prop_vis
+            <<: *prop_g_lha
             <<: *prop_element_s3
-            <<: *prop_FR
+            <<: *prop_p_fr
             Pset_ElementComponentCommon.EgressCode: {}
         s4:
           properties:
+            <<: *prop
+            <<: *prop_vis
+            <<: *prop_g_lha
+            <<: *prop_element_s3
+            <<: *prop_p_fr
             <<: *prop_phys_s4
+            <<: *prop_env_s4
+            Pset_ElementComponentCommon.EgressCode: {}
 
 # langai
 
-    - id: Nevarstomas langas                                               # + unique                   NSIK: B.AD.QQA
+    - id: Nevarstomas langas          #  NSIK+ISO: B.AD.QQA
       examples:
       - Įstiklintas fasadas
       classifications:
         NSIK LF: B
         NSIK LT: AD
         NSIK LK: QQA
+        ISO81346 CF: B
+        ISO81346 CT: AD
+        ISO81346 CC: QQA
       ifcType:
       - IfcWindow
       - IfcWindowType
       stages:
         s1: 
           properties: 
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_g_area
             <<: *prop_u
             <<: *prop_vis
+            <<: *prop_g_lha
             <<: *prop_element_s3
-            <<: *prop_FR
+            <<: *prop_p_fr
             <<: *prop_env_s4
         s2: 
           properties: 
             <<: *prop
-            <<: *prop_g
-            <<: *prop_g_area
+            <<: *prop_g_lha
         s3:
           properties:
-            <<: *prop_u
+            <<: *prop
             <<: *prop_vis
+            <<: *prop_g_lha
             <<: *prop_element_s3
-            <<: *prop_FR
+            <<: *prop_p_fr
         s4:
           properties:
+            <<: *prop
+            <<: *prop_vis
+            <<: *prop_g_lha
+            <<: *prop_element_s3
+            <<: *prop_p_fr
             <<: *prop_env_s4
 
-    - id: Varstomas langas                                                 # + unique                   NSIK: B.AD.QQB
+    - id: Varstomas langas            #  NSIK+ISO: B.AD.QQB
       examples:
       - Langų blokas
       - įstiklintos balkono durys
@@ -1018,37 +1822,198 @@ SA:
         NSIK LF: B
         NSIK LT: AD
         NSIK LK: QQB
+        ISO81346 CF: B
+        ISO81346 CT: AD
+        ISO81346 CC: QQB
       ifcType:
       - IfcWindow
       - IfcWindowType
       stages:
         s1: 
           properties: 
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_g_area
             <<: *prop_u
             <<: *prop_vis
+            <<: *prop_g_lha
             <<: *prop_element_s3
-            <<: *prop_FR
+            <<: *prop_p_fr
             <<: *prop_phys_s4
         s2: 
           properties: 
             <<: *prop
-            <<: *prop_g
-            <<: *prop_g_area
+            <<: *prop_g_lha
         s3:
+          lod: 350
+          log: 3
+          properties:
+            <<: *prop
+            <<: *prop_vis
+            <<: *prop_g_lha
+            <<: *prop_element_s3
+            <<: *prop_p_fr
+        s4:
+          lod: 350
+          log: 3
+          properties:
+            <<: *prop
+            <<: *prop_vis
+            <<: *prop_g_lha
+            <<: *prop_element_s3
+            <<: *prop_p_fr
+            <<: *prop_phys_s4
+
+    - id: Durys                       #  NSIK+ISO: B.AD.QQC
+      examples:
+      - Vidinės durys
+      - Lauko durys
+      classifications:
+        NSIK LF: B
+        NSIK LT: AD
+        NSIK LK: QQC
+        ISO81346 CF: B
+        ISO81346 CT: AD
+        ISO81346 CC: QQC
+      ifcType:
+      - IfcDoor
+      - IfcDoorType
+      stages:
+        s1: 
+          properties: 
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_g_lha
+            <<: *prop_element_s3
+            <<: *prop_p_fr
+            <<: *prop_phys_s4
+        s2: 
+          properties: 
+            <<: *prop
+            <<: *prop_g_lha
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_vis
+            <<: *prop_g_lha
+            <<: *prop_element_s3
+            <<: *prop_p_fr
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_vis
+            <<: *prop_g_lha
+            <<: *prop_element_s3
+            <<: *prop_p_fr
+            <<: *prop_phys_s4
+            
+
+    
+    - id: Langinė                     #  NSIK+ISO: B.AD.RQG
+      examples:
+      - Stacionari langinė
+      - Varstoma langinė
+      classifications:
+        NSIK LF: B
+        NSIK LT: AD
+        NSIK LK: RQG
+        ISO81346 CF: B
+        ISO81346 CT: AD
+        ISO81346 CC: RQG
+      ifcType:
+      - IfcDoor
+      - IfcDoorType
+      stages:
+        s1: 
+          properties: 
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_g_lha
+            <<: *prop_element_s3
+            <<: *prop_p_fire
+            <<: *prop_phys_s4
+        s2: 
+          properties: 
+            <<: *prop
+            <<: *prop_g_lha
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_vis
+            <<: *prop_g_lha
+            <<: *prop_element_s3
+            <<: *prop_p_fr
+        s4:
           properties:
             <<: *prop_u
             <<: *prop_vis
+            <<: *prop_g_lha
             <<: *prop_element_s3
-            <<: *prop_FR
+            <<: *prop_p_fire
+            <<: *prop_phys_s4
+
+    - id: Žaliuzės                    #  NSIK+ISO: B.AD.RQF
+      classifications:
+        NSIK LF: B
+        NSIK LT: AD
+        NSIK LK: RQF
+        ISO81346 CF: B
+        ISO81346 CT: AD
+        ISO81346 CC: RQF
+      ifcType:
+      - IfcDoor
+      - IfcDoorType
+      stages:
+        s1: 
+          properties: 
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_g_lha
+            <<: *prop_element_s3
+            <<: *prop_phys_s4
+        s2: 
+          properties: 
+            <<: *prop
+            <<: *prop_g_lha
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_vis
+            <<: *prop_g_lha
+            <<: *prop_element_s3
+            <<: *prop_p_fr
         s4:
           properties:
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_g_lha
+            <<: *prop_element_s3
             <<: *prop_phys_s4
 
 # furnintūra
-    - id: Durų užraktas (korpusas)                                                            # +  unique                   NSIK: %S20.KL.QSA
+    - id: Durų užraktas (korpusas)    #  NSIK+ISO:  S.KL.QSA
+      examples:
+      - Spyna
+      - Skląstis
+      - Elektromechaninė spyna
+      classifications:
+        NSIK LF: S
+        NSIK LT: KL
+        NSIK LK: QSA
+        ISO81346 CF: S
+        ISO81346 CT: KL
+        ISO81346 CC: QSA
+      stages:
+        s1: 
+          properties: 
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+            Pset_ElementComponentCommon.EgressCode: {}
+        s4: 
+          properties: 
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+            Pset_ElementComponentCommon.EgressCode: {}
+    - id: Durų užraktas (korpusas)    #  NSIK:     %S20.KL.QSA
       examples:
       - Spyna
       - Skląstis
@@ -1071,7 +2036,32 @@ SA:
             <<: *prop_vis
             Pset_ElementComponentCommon.EgressCode: {}
             
-    - id: Durų rankena                                                            # +  unique                   NSIK: %S20.KL.QSA
+    - id: Durų rankena                #  NSIK+ISO:  S.KL.QSA
+      examples:
+      - Strypinė rankena
+      - Nulenkiama rankena
+      - Spaudžiama rankena
+      classifications:
+        NSIK LF: S
+        NSIK LT: KL
+        NSIK LK: SGD
+        ISO81346 CF: S
+        ISO81346 CT: KL
+        ISO81346 CC: SGD
+      stages:
+        s1: 
+          properties: 
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+            Pset_ElementComponentCommon.EgressCode: {}
+        s4: 
+          properties: 
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+            Pset_ElementComponentCommon.EgressCode: {}
+    - id: Durų rankena                #  NSIK:     %S20.KL.QSA
       examples:
       - Strypinė rankena
       - Nulenkiama rankena
@@ -1096,11 +2086,47 @@ SA:
 
 
 # stogai
-    - id: Skaidri stogo atitvara                                           # +  area                  NSIK: D.BE.NAA
+
+    - id: Stogo danga                   #  NSIK+ISO:  D.AE.NCE
+      classifications:
+        NSIK LF: D
+        NSIK LT: AE
+        NSIK LK: NCE
+        ISO81346 CF: D
+        ISO81346 CT: AE
+        ISO81346 CC: NCE
+      stages:
+        s1:
+          properties: 
+            <<: *prop
+            <<: *prop_g_area
+            <<: *prop_vis
+            <<: *prop_env
+        s2:
+          properties: 
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g_area
+            <<: *prop_vis
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_g_area
+            <<: *prop_vis
+            <<: *prop_env
+    
+    
+    
+    - id: Skaidri stogo atitvara        #  NSIK+ISO:  D.BE.NAA
       classifications:
         NSIK LF: D
         NSIK LT: BE
         NSIK LK: NAA
+        ISO81346 CF: D
+        ISO81346 CT: BE
+        ISO81346 CC: NAA
       stages:
         s1:
           properties: 
@@ -1124,7 +2150,7 @@ SA:
             Pset_ElementComponentCommon.PermissiblePavementLoad: {}
 
 # stogų komponentai
-    - id: Apsauginis turėklas                                              # unique                   NSIK: D.BF.FQD
+    - id: Apsauginis turėklas           #  NSIK+ISO:  D.BF.FQD
       examples:
       - Apsauginė tvorelė
       - Sniego gaudyklė
@@ -1135,6 +2161,9 @@ SA:
         NSIK LF: D
         NSIK LT: BF
         NSIK LK: FQD
+        ISO81346 CF: D
+        ISO81346 CT: BF
+        ISO81346 CC: FQD
       ifcType:
       - IfcRailing
       - IfcRailingType
@@ -1158,11 +2187,178 @@ SA:
           properties:
             <<: *prop_env
 
-    - id: Lauko danga                                                      # +  common                  NSIK: D.BF.NCA
+
+
+    - id: Apsauginis turėklas           #  NSIK+ISO:  D.AE.FQD
+      examples:
+      - Apsauginė tvorelė
+      - Sniego gaudyklė
+      - Lynas aukštalipiams prisitvirtinti
+      - Profilis fasadų valymo įrangos pritvirtinimui
+      memo: Elementas, neskirtas atriboti žmones nuo pavojingos vietos. Terasų turėklus žr. prie grindų komponentų.
+      classifications:
+        NSIK LF: D
+        NSIK LT: AE
+        NSIK LK: FQD
+        ISO81346 CF: D
+        ISO81346 CT: AE
+        ISO81346 CC: FQD
+      ifcType:
+      - IfcRailing
+      - IfcRailingType
+      stages:
+        s1:
+          properties: 
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_g_area
+            <<: *prop_vis
+            <<: *prop_env
+        s2:
+          properties: 
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop_g
+            <<: *prop_g_area
+            <<: *prop_vis
+        s4:
+          properties:
+            <<: *prop_env
+
+    
+    - id: Grotelės stoge                #  NSIK+ISO:  D.AE.NAC
+      classifications:
+        NSIK LF: D
+        NSIK LT: AE
+        NSIK LK: NAC
+        ISO81346 CF: D
+        ISO81346 CT: AE
+        ISO81346 CC: NAC
+      memo: Nepriklausančios inžinerinei įrangai (pvz dekoratyvinis elementas); architektūriškai dengiančios vieną ar kelias inžinerinės įrangos sistemas
+      ifcType:
+      - IfcAirTerminal
+      - IfcAirTerminalType
+      - IfcAirTerminalGRILLE
+      stages:
+        s1:  
+          properties: 
+            <<: *prop
+            <<: *prop_g_area
+            <<: *prop_vis
+            <<: *prop_u
+        s2:
+          properties: 
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop
+            <<: *prop_g_area
+            <<: *prop_vis
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_g_area
+            <<: *prop_vis
+            <<: *prop_u
+    
+    - id: Liukas                        #  NSIK+ISO:  B.AD.QQD
+      examples:
+      - Išlipimo liukas
+      - Skaidrus išlipimo liukas
+      classifications:
+        NSIK LF: B
+        NSIK LT: AD
+        NSIK LK: QQD
+        ISO81346 CF: B
+        ISO81346 CT: AD
+        ISO81346 CC: QQD
+      ifcType:
+      - IfcDoor
+      - IfcDoorType
+      stages:
+        s1: 
+          properties: 
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_g_lha
+            <<: *prop_element_s3
+            <<: *prop_p_fr
+            <<: *prop_phys_s4
+        s2: 
+          properties: 
+            <<: *prop
+            <<: *prop_g_lha
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_vis
+            <<: *prop_g_lha
+            <<: *prop_element_s3
+            <<: *prop_p_fr
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_g_lha
+            <<: *prop_element_s3
+            <<: *prop_p_fr
+            <<: *prop_phys_s4
+    
+    - id: Liukas                        #  NSIK+ISO:  D.AE.QQD
+      examples:
+      - Išlipimo liukas
+      - Skaidrus išlipimo liukas
+      classifications:
+        NSIK LF: D
+        NSIK LT: AE
+        NSIK LK: QQD
+        ISO81346 CF: D
+        ISO81346 CT: AE
+        ISO81346 CC: QQD
+      ifcType:
+      - IfcDoor
+      - IfcDoorType
+      stages:
+        s1: 
+          properties: 
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_g_lha
+            <<: *prop_element_s3
+            <<: *prop_p_fr
+            <<: *prop_phys_s4
+        s2: 
+          properties: 
+            <<: *prop
+            <<: *prop_g_lha
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_vis
+            <<: *prop_g_lha
+            <<: *prop_element_s3
+            <<: *prop_p_fr
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_g_lha
+            <<: *prop_element_s3
+            <<: *prop_p_fr
+            <<: *prop_phys_s4
+    
+    - id: Papildoma danga               #  NSIK+ISO:  D.BF.NCA
       classifications:
         NSIK LF: D
         NSIK LT: BF
         NSIK LK: NCA
+        ISO81346 CF: D
+        ISO81346 CT: BF
+        ISO81346 CC: NCA
+      examples:
+      - Šaknų barjeras
+      - Aptarnavimo takas
       stages:
         s1:
           properties: 
@@ -1181,11 +2377,14 @@ SA:
           properties:
             <<: *prop_env
         
-    - id: Takas įrangos aptarnavimui                                       # +  common                  NSIK: D.BF.%NCA70
+    - id: Takas įrangos aptarnavimui    #  NSIK:      D.BF.%NCA70
       classifications:
         NSIK LF: D
         NSIK LT: BF
         NSIK LK: "%NCA70"
+        ISO81346 CF: D
+        ISO81346 CT: BF
+        ISO81346 CC: NCA70
       ifcType:
       - IfcCovering
       - IfcCoveringType
@@ -1208,12 +2407,157 @@ SA:
             <<: *prop_env
             Pset_ElementComponentCommon.PermissiblePavementLoad: {}
 
+
+    - id: Apskardinimas                 #  NSIK+ISO:  D.AE.NED
+      examples:
+      - Sienos viršutinis profilis
+      - Horizontali paprapeto plokštė
+      classifications:
+        NSIK LF: D
+        NSIK LT: AE
+        NSIK LK: NED
+        ISO81346 CF: D
+        ISO81346 CT: AE
+        ISO81346 CC: NED
+      ifcType:
+      - IfcCovering
+      - IfcCoveringType
+      - IfcWall
+      - IfcWallType
+      stages:
+        s1:  
+          properties: 
+            <<: *prop
+            <<: *prop_g_lwa
+            <<: *prop_vis
+            <<: *prop_u
+        s2:  
+          lod: 200
+          properties: 
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g_lwa
+            <<: *prop_vis
+        s4:
+          lod: 350
+          properties:
+            <<: *prop
+            <<: *prop_g_lwa
+            <<: *prop_vis
+            <<: *prop_u
+
+    - id: Latakas (gaminys)             #  NSIK+ISO:  D.AE.WMB
+      examples:
+      - Skardinis latakas
+      - Horizontali paprapeto plokštė
+      classifications:
+        NSIK LF: D
+        NSIK LT: AE
+        NSIK LK: WMB
+        ISO81346 CF: D
+        ISO81346 CT: AE
+        ISO81346 CC: WMB
+      ifcType:
+      - IfcCovering
+      - IfcCoveringType
+      - IfcWall
+      - IfcWallType
+      stages:
+        s1:  
+          properties: 
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g_lwa
+            <<: *prop_vis
+        s2:  
+          lod: 200
+          properties: 
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g_lwa
+            <<: *prop_vis
+        s4:
+          lod: 350
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g_lwa
+            <<: *prop_vis
+
+
 # įranga
-    - id: Dūmų užuolaida                                                   # unique                   NSIK: J.HF.FMF
+
+    - id: Karnizas                       #  NSIK+ISO:  S.RB.PLA
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: PLA
+        ISO81346 CF: S
+        ISO81346 CT: RB
+        ISO81346 CC: PLA
+      ifcType:
+      - IfcRailing
+      - IfcRailingType
+      stages:
+        s1:
+          properties: 
+            <<: *prop_u
+            <<: *prop_g_l
+            <<: *prop_vis
+        s2:
+          properties: {}
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g_l
+            <<: *prop_vis
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g_l
+            <<: *prop_vis
+
+    - id: Žaliuzės                       #  NSIK+ISO:  S.RB.RQF
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: RQF
+        ISO81346 CF: S
+        ISO81346 CT: RB
+        ISO81346 CC: RQF
+      stages:
+        s1:
+          properties: 
+            <<: *prop_u
+            <<: *prop_g_lwa
+            <<: *prop_vis
+        s2:
+          properties: {}
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g_lwa
+            <<: *prop_vis
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g_lwa
+            <<: *prop_vis
+
+    - id: Dūmų užuolaida                 #  NSIK+ISO:  J.HF.FMF
       classifications:
         NSIK LF: J
         NSIK LT: HF
         NSIK LK: FMF
+        ISO81346 CF: J
+        ISO81346 CT: HF
+        ISO81346 CC: FMF
       ifcType:
       - IfcCovering
       - IfcCoveringType
@@ -1239,14 +2583,18 @@ SA:
           properties:
             <<: *prop_env
 
-    - id: Surenkama scena                                                            # +  common                  NSIK: S.RC.UBE
+    - id: Baldas                         #  NSIK+ISO:  S.RB.CLC
       examples:
-      - Modulinė scena
-      - Modulinė pakyla
+      - Kėdė
+      - Spinta
       classifications:
         NSIK LF: S
-        NSIK LT: RC
-        NSIK LK: UBE
+        NSIK LT: RB
+        NSIK LK: CLC
+        ISO81346 CF: S
+        ISO81346 CT: RB
+        ISO81346 CC: CLC
+        
       stages:
         s1:
           properties: 
@@ -1262,15 +2610,19 @@ SA:
             <<: *prop_g
         s3:
           properties:
-            <<: *prop_u
-            <<: *prop_g_area
+            <<: *prop
+            <<: *prop_g
             <<: *prop_vis
         s4:
           properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
             <<: *prop_env
             Pset_ElementComponentCommon.PermissiblePavementLoad: {}
 
-    - id: Praėjimo varteliai                                               # +  unique                  NSIK: S.KL.RUC
+    
+    - id: Praėjimo varteliai             #  NSIK+ISO:  S.KL.RUC
       ifcType:
       - IfcDoor
       - IfcDoorType
@@ -1281,6 +2633,9 @@ SA:
         NSIK LF: S
         NSIK LT: KL
         NSIK LK: RUC
+        ISO81346 CF: S
+        ISO81346 CT: KL
+        ISO81346 CC: RUC
       stages:
         s1:
           properties: 
@@ -1305,7 +2660,7 @@ SA:
             <<: *prop_e_device
             <<: *prop_env
 
-    - id: Liftas                                                           # +  unique_electrical       NSIK: N.JM.GMB
+    - id: Liftas                         #  NSIK+ISO:  N.JM.GMB
       ifcType:
       - IfcTransportElement
       - IfcTransportElementType
@@ -1313,6 +2668,9 @@ SA:
         NSIK LF: N
         NSIK LT: JM
         NSIK LK: GMB
+        ISO81346 CF: N
+        ISO81346 CT: JM
+        ISO81346 CC: GMB
       stages:
         s1:
           properties: 
@@ -1322,20 +2680,23 @@ SA:
             <<: *prop_e
             <<: *prop_vis
             <<: *prop_env
-        s1:
+        s2:
           properties: 
             <<: *prop
+            <<: *prop_u
             <<: *prop_g
         s3:
           properties:
+            <<: *prop
             <<: *prop_u
+            <<: *prop_g
             <<: *prop_e
             <<: *prop_vis
         s4:
           properties:
             <<: *prop_env
 
-    - id: Ugnies gesintuvas                                                # unique                     NSIK: P.PB.FMD
+    - id: Ugnies gesintuvas              #  NSIK+ISO:  P.PB.FMD
       examples:
       - Angliarūgšties gesintuvas
       - Miltelinis gesintuvas
@@ -1346,6 +2707,9 @@ SA:
         NSIK LF: P
         NSIK LT: PB
         NSIK LK: FMD
+        ISO81346 CF: P
+        ISO81346 CT: PB
+        ISO81346 CC: FMD
       stages:
         s3: 
           properties: 
@@ -1358,4 +2722,282 @@ SA:
             Pset_QuantityTakeOff.CapacityWeight: 
             - units: Svoris, kg
             - descr: Ugnies gesintuvo užpildo svoris
+    
+    
+    - id: Šviestuvas (pilnas gaminys)    #  NSIK+ISO:  Q.HH.EAA
+      #ifcType:
+      #- IfcTransportElement
+      #- IfcTransportElementType
+      examples:
+      - Avarinis šviestuvas
+      - Evakuacijos šviestuvas
+      classifications:
+        NSIK LF: Q
+        NSIK LT: HH
+        NSIK LK: EAA
+        ISO81346 CF: Q
+        ISO81346 CT: HH
+        ISO81346 CC: EAA
+      stages:
+        s1:
+          properties: 
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_vis
+            <<: *prop_env
+        s1:
+          properties: 
+            <<: *prop
+            <<: *prop_g
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_vis
+        s4:
+          properties:
+            <<: *prop_env
+
+    - id: Šviestuvo korpusas             #  NSIK+ISO:  Q.HH.UAC
+      #ifcType:
+      #- IfcTransportElement
+      #- IfcTransportElementType
+      examples:
+      - Sviestuvo korpusas
+      classifications:
+        NSIK LF: Q
+        NSIK LT: HH
+        NSIK LK: UAC
+        ISO81346 CF: Q
+        ISO81346 CT: HH
+        ISO81346 CC: UAC
+      stages:
+        s1:
+          properties: 
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_env
+        s1:
+          properties: 
+            <<: *prop
+            <<: *prop_g
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+        s4:
+          properties:
+            <<: *prop_env
             
+            
+    - id: Smūginė apsauga                #  NSIK+ISO:  S.RC.FNB
+      examples:
+      - Atmušėjas
+      - Ratų atmušėjas
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: FNB
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: FNB
+        
+      stages:
+        s1:
+          properties: 
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_env
+        s2:
+          properties: 
+            <<: *prop
+            <<: *prop_g
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_env
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_env
+            
+    - id: Kilnojamos kopėčios            #  NSIK+ISO:  S.RC.XSC
+      examples:
+      - Darbinės kopėčios
+      - Pernešamos kopėčios
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: XSC
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: XSC
+      ifcType:
+      - IfcStair
+      - IfcStairType
+      - IfcStairLADDER
+      stages:
+        s1:
+          properties: 
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_u
+            <<: *prop_vis
+        s2:  
+          properties: 
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_u
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_u
+            <<: *prop_vis
+
+    - id: Laikanti platforma             #  NSIK+ISO:  S.RC.UBE
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: UBE
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: UBE
+      stages:
+        s1:
+          properties: 
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+        s2:
+          properties: {}
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+
+
+#
+# santechnika
+#
+
+    - id: Praustuvas         #  NSIK+ISO:  G.JD.XKA
+      classifications:
+        NSIK LF: G
+        NSIK LT: JD
+        NSIK LK: XKA
+        ISO81346 CF: G
+        ISO81346 CT: JD
+        ISO81346 CC: XKA
+      stages: &flow_device
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_mat
+            <<: *prop_external
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_mat
+        s4: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_mat
+            <<: *prop_external
+
+    - id: Praustuvas         #  NSIK+ISO:  G.RD.XKA
+      classifications:
+        NSIK LF: G
+        NSIK LT: RD
+        NSIK LK: XKA
+        ISO81346 CF: G
+        ISO81346 CT: RD
+        ISO81346 CC: XKA
+      stages: 
+        <<: *flow_device
+
+    - id: Klozetas           #  NSIK+ISO:  G.JD.XKB
+      classifications:
+        NSIK LF: G
+        NSIK LT: JD
+        NSIK LK: XKB
+        ISO81346 CF: G
+        ISO81346 CT: JD
+        ISO81346 CC: XKB
+      stages: 
+        <<: *flow_device
+        
+    - id: Klozetas           #  NSIK+ISO:  G.RD.XKB
+      classifications:
+        NSIK LF: G
+        NSIK LT: RD
+        NSIK LK: XKB
+        ISO81346 CF: G
+        ISO81346 CT: RD
+        ISO81346 CC: XKB
+      stages: 
+        <<: *flow_device
+
+    - id: Pisuaras           #  NSIK+ISO:  G.JD.XKC
+      classifications:
+        NSIK LF: G
+        NSIK LT: JD
+        NSIK LK: XKC
+        ISO81346 CF: G
+        ISO81346 CT: JD
+        ISO81346 CC: XKC
+      stages: 
+        <<: *flow_device
+
+    - id: Pisuaras           #  NSIK+ISO:  G.RD.XKC
+      classifications:
+        NSIK LF: G
+        NSIK LT: RD
+        NSIK LK: XKC
+        ISO81346 CF: G
+        ISO81346 CT: RD
+        ISO81346 CC: XKC
+      stages: 
+        <<: *flow_device
+
+    - id: Stogo įlaja        #  NSIK+ISO:  D.JD.XKE
+      classifications:
+        NSIK LF: D
+        NSIK LT: JD
+        NSIK LK: XKE
+        ISO81346 CF: D
+        ISO81346 CT: JD
+        ISO81346 CC: XKE
+      stages: 
+        <<: *flow_device
+
+    - id: Stogo įlaja        #  NSIK:      D.JD.%XKE30
+      classifications:
+        NSIK LF: D
+        NSIK LT: JD
+        NSIK LK: "%XKE30"
+      stages: 
+        <<: *flow_device
