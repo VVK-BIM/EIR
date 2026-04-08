@@ -7,20 +7,25 @@
 
 
 prop_g:   &prop_g
-  Pset_QuantityTakeOff.Height: {}
-  Pset_QuantityTakeOff.Width: {}
-  Pset_QuantityTakeOff.Length: {}
+  Pset_QuantityTakeOff.Height: 
+    valueType: Integer | Real 
+  Pset_QuantityTakeOff.Width: 
+    valueType: Integer | Real 
+  Pset_QuantityTakeOff.Length: 
+    valueType: Integer | Real 
 
 prop_ga:   &prop_g_area
   <<: *prop_g
-  Pset_QuantityTakeOff.Area: {}
+  Pset_QuantityTakeOff.Area: 
+    valueType: Integer | Real 
 
   
 prop:     &prop
-  Name: {}
-  Type: {}
-  Pset_ConstructionAdministration.SpecificationSectionNumber: {}
+  VVK.Name: {}
+  VVK.ElementType: {}
+  Pset_ElementCommon.System: {}
   Pset_ElementComponentCommon.Status: {}
+  Pset_ConstructionAdministration.SpecificationSectionNumber: {}
 
 prop_vis:     &prop_vis
   VVK.Material: {}
@@ -29,21 +34,25 @@ prop_vis:     &prop_vis
 
 prop_u:     &prop_u
   <<: *prop
-  Tag: {}
-  Name: {}
-  Type: {}
-  Pset_ElementComponentCommon.Status: {}
+  VVK.Tag: {}
 
 prop_e:     &prop_e
-  Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
-  Pset_ElectricalDeviceCommon.RatedVoltage: {}
+  Pset_ElectricalDeviceCommon.NominalPowerConsumption: 
+    valueType: Integer | Real 
+  Pset_ElectricalDeviceCommon.RatedVoltage: 
+    valueType: Integer | Real 
   Pset_ElectricalDeviceCommon.HasProtectiveEarth: {}
-  
-prop_external:   &prop_external
-  Pset_ElementComponentCommon.IsExternal: {}
   Pset_ElectricalDeviceCommon.IP_Code: {}
   Pset_ElectricalDeviceCommon.IK_Code: {}
   
+prop_external:   &prop_external
+  Pset_ElementComponentCommon.IsExternal: {}
+  
+prop_e_sens:     &prop_e_sensor
+  <<: *prop_e
+  Pset_ElectricalDeviceCommon.IP_Code: {}
+  Pset_ElectricalDeviceCommon.IK_Code: {}
+  Pset_ElectricalDeviceCommon.InsulationStandardClass: {}
 
 prop_s2u: &prop_s2_u
   - Name
@@ -189,6 +198,174 @@ GSS:
         lod: 500
         log: 6
     elements:
+    
+    - id: Kietųju medžiagų detektorius      #    ISO: P.LB.BQF
+      classifications:
+        NSIK LF: P
+        NSIK LT: LB
+        NSIK LK: BQF
+        
+        ISO81346 CF: P
+        ISO81346 CT: LB
+        ISO81346 CC: BQF
+      examples:
+      - Dūmų jutiklis
+      ifcType: *type_e
+      stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+
+    - id: Signalinė lempa (GSS)        # NSIK+ISO: P.LB.PFA
+      classifications:
+        NSIK LF: P
+        NSIK LT: LB
+        NSIK LK: PFA
+        # Uniclass: Pr_70_75_06_50
+        ISO81346 CF: P
+        ISO81346 CT: LB
+        ISO81346 CC: PFA
+      # examples:
+      # - Evakuacijos valdymo sistemos garsiakalbis
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
+    - id: Signalinė lempa (evakuacijos valdymas)        # NSIK+ISO: P.MA.PFA
+      classifications:
+        NSIK LF: P
+        NSIK LT: MA
+        NSIK LK: PFA
+        # Uniclass: Pr_70_75_06_50
+        ISO81346 CF: P
+        ISO81346 CT: MA
+        ISO81346 CC: PFA
+      # examples:
+      # - Evakuacijos valdymo sistemos garsiakalbis
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
+    - id: Ryšo įrenginys         # NSIK+ISO: P.LB.KEC
+      classifications:
+        NSIK LF: P
+        NSIK LT: LB
+        NSIK LK: KEC
+        # Uniclass: Pr_70_75_06_50
+        ISO81346 CF: P
+        ISO81346 CT: LB
+        ISO81346 CC: KEC
+      # examples:
+      # - Evakuacijos valdymo sistemos garsiakalbis
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+            
+    - id: Temperatūros jungiklis          #    NSIK+ISO: P.LB.BTB
+      classifications:
+        NSIK LF: P
+        NSIK LT: LB
+        NSIK LK: BTB
+        ISO81346 CF: P
+        ISO81346 CT: LB
+        ISO81346 CC: BTB
+      examples:
+      - Termorelė
+      ifcType: *type_e
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      stages: &stages_s1_s2_s3_s4_sensor
+        s1: 
+          lod: 275
+          log: 2
+          properties:
+            <<: [*prop_u, *prop_g, *prop_vis, *prop_e_sensor]
+        # s2: 
+          # lod: 200
+          # properties:
+            # <<: *prop
+        s3: 
+          lod: 300
+          log: 2
+          properties:
+            <<: [*prop_u, *prop_g, *prop_vis]
+        s4: 
+          lod: 350
+          log: 3
+          properties:
+            <<: [*prop_u, *prop_e_sensor]
+      # override:
+        # Name:
+          # examples:
+            # - CO2 koncentracijos daviklis
+            
     - id: Įrangos ir/ar kabelių dėklas               # common                                NSIK: P.LB.UBA
       examples:
       - Kabelio kanalas
@@ -224,6 +401,9 @@ GSS:
         NSIK LF: P
         NSIK LT: LB
         NSIK LK: KEB
+        ISO81346 CF: P
+        ISO81346 CT: LB
+        ISO81346 CC: KEB
       ifcType: *type_e
       stages:
         s1: 
@@ -251,6 +431,9 @@ GSS:
         NSIK LF: P
         NSIK LT: LB
         NSIK LK: SJB
+        ISO81346 CF: P
+        ISO81346 CT: LB
+        ISO81346 CC: SJB
       examples:
       - Rankinis gaisro pavojaus mygtukas
       ifcType: *type_e
@@ -485,12 +668,15 @@ GSS:
             <<: *prop_g
             <<: *prop_vis
 
-    - id: Blykstė                                    # visible_unique_electrical_external    NSIK: P.LB.PJA          Uc: Pr_75_80_30_97
+    - id: Blykstė        #    NSIK+ISO: P.LB.PJA          Uc: Pr_75_80_30_97
       classifications:
         NSIK LF: P
         NSIK LT: LB
         NSIK LK: PJA
         Uniclass: Pr_75_80_30_97
+        ISO81346 CF: P
+        ISO81346 CT: LB
+        ISO81346 CC: PJA
       examples:
       - Gaisro signalizacijos blykstė
       ifcType: *type_e

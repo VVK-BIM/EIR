@@ -1,0 +1,737 @@
+# v 0.5a
+# NSIK ver 0.9, 2023-09-01
+# https://nsiklab.lt 
+#
+# 05 - Technologinės dalys
+# Architektūros technoligija. Klasių įranga 
+#
+
+# !include common_properties.yaml
+# !include common_ifc_types.yaml
+
+
+prop:     &prop
+  VVK.Name: {}
+  VVK.ElementType: {}
+  VVK.RelatedDrawing: {}
+  Pset_ConstructionAdministration.SpecificationSectionNumber: {}
+  Pset_ElementComponentCommon.Status: {}
+
+prop_u:     &prop_u
+  <<: *prop
+  VVK.Tag: {}
+
+prop_g:   &prop_g_l
+  Pset_QuantityTakeOff.Length:
+    valueType: Integer | Real
+
+prop_g:   &prop_g_h
+  Pset_QuantityTakeOff.Height:
+    valueType: Integer | Real
+
+prop_g:   &prop_g_w
+  Pset_QuantityTakeOff.Width:
+    valueType: Integer | Real
+
+prop_g_area:   &prop_g_a
+  Pset_QuantityTakeOff.Area:
+    valueType: Integer | Real
+
+prop_g_tav:   &prop_g_t
+  Pset_QuantityTakeOff.Thickness:
+    valueType: Integer | Real
+
+prop_g_tav:   &prop_g_v
+  Pset_QuantityTakeOff.Volume:
+    valueType: Integer | Real
+
+
+prop_g:   &prop_g
+  <<: *prop_g_l
+  <<: *prop_g_h
+  <<: *prop_g_w
+
+prop_g_area:   &prop_g_area
+  <<: *prop_g_a
+ 
+prop_g_lh:   &prop_g_lh
+  <<: *prop_g_l
+  <<: *prop_g_h
+
+
+prop_g:   &prop_g_lwa
+  <<: *prop_g_l
+  <<: *prop_g_w
+  <<: *prop_g_a
+    
+prop_g_tav:   &prop_g_tav
+  <<: *prop_g_t
+  <<: *prop_g_a
+  <<: *prop_g_v
+  
+
+prop_vis:     &prop_vis
+  VVK.Material: {}
+  VVK.Finish: {}
+  VVK.Colour: {}
+
+prop_env:    &prop_env
+  Pset_ServiceLifeFactors.OutdoorEnvironment:
+    - examples:
+      - XC1
+    - units: Tekstas
+    - descr: XO, XC1  Aplinkos agresyvumo klasė
+    
+prop_element_s3:     &prop_element_s3
+  Pset_ServiceLifeFactors.OutdoorEnvironment:
+    - examples:
+      - XC1
+    - units: Tekstas
+    - descr: XO, XC1  Aplinkos agresyvumo klasė
+  Pset_ElementComponentCommon.IsExternal: {}
+  Pset_ElementComponentCommon.ThermalConductivity: {}
+  
+
+prop_electrical_s3: &prop_e
+  Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
+  Pset_ElectricalDeviceCommon.NominalVoltage: {}
+  Pset_ElectricalDeviceCommon.NominalCurrent: {}
+
+
+
+T.A: # Architektūros technoligija. Klasių įranga 
+    # Architektūros technoligija. Klasių įranga 
+    
+    
+    elements:
+    # - id: Ekranas   # S.%RC1040.PHA
+      # classifications:
+        # NSIK LF: S
+        # NSIK LT: '%RC1040'
+        # NSIK LK: PHA
+      # stages:
+        # s3:
+          # lod: 300
+          # properties:
+          # - Aukštas
+          # - Name:
+            # - examples:
+              # - Interaktyvi lenta
+          # - Pset_ElementComponentCommon.Status
+          # - Type:
+            # - examples:
+              # - T-1
+          # - VVK.Material:
+            # - memo: Pildoma, jei tokia savybė aktuali
+          # - VVK.Apdaila:
+            # - memo: Pildoma, jei tokia savybė aktuali
+          # - VVK.Colour:
+            # - memo: Pildoma, jei tokia savybė aktuali
+          # - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            # - examples:
+              # - TS 2.1
+          # - Galingumas:
+            # - examples:
+              # - 200
+          # - Ifc__.Heigth:
+            # - examples:
+              # - 800
+          # - Ifc__.Width:
+            # - examples:
+              # - 1600
+          # - Ifc__.Depth:
+            # - examples:
+              # - 80
+          # - Ifc__.Weigth:
+            # - examples:
+              # - 30
+    
+    # - id: Laikanti platforma  # S.%RB1040.UBE
+      # examples:
+      # - Mokytojo
+      # - mokinių ir laboratoriniai stalai; teisėjų
+      # - sekretoriato stalas; lyginimo lenta; virtuvės gamybinis stalas
+      # classifications:
+        # NSIK LF: S
+        # NSIK LT: '%RB1040'
+        # NSIK LK: UBE
+      # stages:
+        # s3:
+          # lod: 300
+          # properties:
+          # - Aukštas
+          # - Name:
+            # - examples:
+              # - Stalas
+          # - Pset_ElementComponentCommon.Status
+          # - Type:
+            # - examples:
+              # - B-1
+          # - VVK.Material
+          # - VVK.Apdaila
+          # - VVK.Colour
+          # - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            # - examples:
+              # - TS 2.1
+          # - Ifc__.Heigth:
+            # - examples:
+              # - 900
+          # - Ifc__.Length:
+            # - examples:
+              # - 1200
+          # - Ifc__.Width:
+            # - examples:
+              # - 800
+
+    - id: Lentyna                         # NSIK+ISO    S.RB.CLB
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: CLB
+        ISO81346 CF: S
+        ISO81346 CT: RB
+        ISO81346 CC: CLB
+      stages:    &furniture_general
+        s1:
+          lod: 275
+          log: 2
+          properties: 
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_env
+        s2:
+          lod: 200
+          log: 2
+          properties: 
+            <<: *prop
+            <<: *prop_g
+        s3:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+        s4:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_env
+
+    - id: Atsisėdimas                         # NSIK+ISO    S.RB.CLC
+      examples:
+      - Kėdė
+      - suoliukas
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: CLC
+        ISO81346 CF: S
+        ISO81346 CT: RB
+        ISO81346 CC: CLC
+      stages:    
+        <<: *furniture_general
+
+    - id: Spintelė                         # NSIK+ISO    S.RB.CMB
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: CMB
+        ISO81346 CF: S
+        ISO81346 CT: RB
+        ISO81346 CC: CMB
+      stages:    
+        <<: *furniture_general
+
+    - id: Konteineris                         # NSIK+ISO    S.RB.CNA
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: CNA
+        ISO81346 CF: S
+        ISO81346 CT: RB
+        ISO81346 CC: CNA
+      stages:    
+        <<: *furniture_general
+    - id: Laikanti platforma                         # NSIK+ISO    S.RB.UBE
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: UBE
+        ISO81346 CF: S
+        ISO81346 CT: RB
+        ISO81346 CC: UBE
+      stages:    
+        <<: *furniture_general
+
+
+    - id: Atsisėdimas # S.%RB1040.CLC
+      examples:
+      - Mokytojo
+      - mokinių bei laboratorinės kėdės; žiūrovų tribūnos; gimnastikos suoliukas
+      classifications:
+        NSIK LF: S
+        NSIK LT: "%RB1040"
+        NSIK LK: CLC
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Kėdė
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - K-1
+          - VVK.Material
+          - VVK.Apdaila
+          - VVK.Colour
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+          - Ifc__.Heigth:
+            - examples:
+              - 1200
+          - Ifc__.Length:
+            - examples:
+              - 500
+          - Ifc__.Width:
+            - examples:
+              - 500
+    
+    - id: Spintelė  # S.%RB1040.CMB
+      classifications:
+        NSIK LF: S
+        NSIK LT: '%RB1040'
+        NSIK LK: CMB
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Spintelė
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - B-1
+          - VVK.Material
+          - VVK.Apdaila
+          - VVK.Colour
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+          - Ifc__.Heigth:
+            - examples:
+              - 1800
+          - Ifc__.Length:
+            - examples:
+              - 600
+          - Ifc__.Width:
+            - examples:
+              - 600
+    
+    - id: Praustuvas  # S.%RB1040.XKA
+      examples:
+      - Plautuvė; demonstracinis stalas su plautuve; stalas su gilumine vonia;
+      - stalas su plautuve prie indaplovės
+      classifications:
+        NSIK LF: S
+        NSIK LT: "%RB1040"
+        NSIK LK: XKA
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Laboratorinis stalas su plautuve
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - PL-1
+          - VVK.Material
+          - VVK.Apdaila
+          - VVK.Colour
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+          - Ifc__.Heigth:
+            - examples:
+              - 900
+          - Ifc__.Length:
+            - examples:
+              - 1200
+          - Ifc__.Width:
+            - examples:
+              - 800
+    
+    - id: Gaubtas # S.%RC1040.UCC
+      examples:
+      - Traukos spinta; spinta reagentams su ištraukimu (jeigu tokia bus);
+      - ventiliacinė oro nutraukimo rankovė; ventiliacinis gaubtas
+      classifications:
+        NSIK LF: S
+        NSIK LT: '%RC1040'
+        NSIK LK: UCC
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Traukos spinta
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - G-1
+          - VVK.Material
+          - VVK.Apdaila
+          - VVK.Colour
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+          - Galingumas:
+            - examples:
+              - 200
+          - Ifc__.Heigth:
+            - examples:
+              - 2870
+          - Ifc__.Length:
+            - examples:
+              - 1800
+          - Ifc__.Width:
+            - examples:
+              - 1200
+          - Diametras:
+            - examples:
+              - 200
+            - descr: Gaminio diametras (apvalaus skerspjūvio ortakiams), mm
+
+    - id: Lentyna # S.%RB1040.CLB
+      classifications:
+        NSIK LF: S
+        NSIK LT: '%RB1040'
+        NSIK LK: CLB
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Sandėliavimo lentyna, stelažai
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - B-1
+          - VVK.Material
+          - VVK.Apdaila
+          - VVK.Colour
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+          - Ifc__.Heigth:
+            - examples:
+              - 2000
+          - Ifc__.Length:
+            - examples:
+              - 1000
+          - Ifc__.Width:
+            - examples:
+              - 600
+    
+
+# įranga, T_MG                 NSIK: S.RC
+    - id: Laikrodis                         # NSIK+ISO    S.RC.BKA
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: BKA
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: BKA
+      stages:    &equipment_general
+        s1:
+          lod: 275
+          log: 2
+          properties: 
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_env
+            <<: *prop_e
+        s2:
+          lod: 200
+          log: 2
+          properties: 
+            <<: *prop
+            <<: *prop_g
+        s3:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+        s4:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_env
+            <<: *prop_e
+
+    - id: Svarstyklės                         # NSIK+ISO    S.RC.BWA
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: BWA
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: BWA
+      stages:    
+        <<: *equipment_general
+    
+    - id: Skaitikis                         # NSIK+ISO    S.RC.BZA
+      examples:
+      - Kasos aparatas
+      - Praeinančių asmenų skaitiklis
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: BZA
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: BZA
+      stages:    
+        <<: *equipment_general
+    
+    - id: Indukcinis šildytuvas                          # NSIK+ISO    S.RC.EBF
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: EBF
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: EBF
+      stages:    
+        <<: *equipment_general
+        
+    - id: Šaldytuvas                          # NSIK+ISO    S.RC.ECC
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: ECC
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: ECC
+      stages:    
+        <<: *equipment_general
+        
+    - id: Mikrobangų krosnelė                          # NSIK+ISO    S.RC.EEB
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: EEB
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: EEB
+      stages:    
+        <<: *equipment_general
+    
+    - id: Pašildantis įrenginys                           # NSIK+ISO    S.RC.EGC
+      examples:
+      - Sriubinė
+      - Marmitas
+      - Lėkščįų šildytuvas
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: EGC
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: EGC
+      stages:    
+        <<: *equipment_general
+        
+    - id: Indaplovė                           # NSIK+ISO    S.RC.HKA
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: HKA
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: HKA
+      stages:    
+        <<: *equipment_general
+    
+    - id: Džiovyklė                           # NSIK+ISO    S.RC.HPA
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: HPA
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: HPA
+      stages:    
+        <<: *equipment_general
+        
+    - id: Maišyklė                           # NSIK+ISO    S.RC.HWA
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: HWA
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: HWA
+      stages:    
+        <<: *equipment_general
+
+# gamybos įranga
+
+    - id: Liejimo įrenginys                           # NSIK+ISO    S.RC.HJA
+      examples:
+      - 3D spausdintuvas
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: HJA
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: HJA
+      stages:    
+        <<: *equipment_general
+        
+    - id: Lygintuvas                           # NSIK+ISO    S.RC.TBA
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: TBA
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: TBA
+      stages:    
+        <<: *equipment_general
+        
+    - id: Gręžimo mašina                            # NSIK+ISO    S.RC.TMA
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: TMA
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: TMA
+      stages:    
+        <<: *equipment_general
+
+    - id: Terminis pjaustiklis                             # NSIK+ISO    S.RC.TMB
+      examples:
+      - Lazerinė plaustyklė
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: TMB
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: TMB
+      stages:    
+        <<: *equipment_general
+    
+    - id: Gaubtas                             # NSIK+ISO    S.RC.UCC
+      examples:
+      - Garų surinkikas
+      - Dūmų surinkikas
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: UCC
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: UCC
+      stages:    
+        <<: *equipment_general    
+# garsas, vaizdas, šviesa
+    - id: Aktyvus ekranas                           # NSIK+ISO    S.RC.PHA
+      examples:
+      - SMART board
+      - Televizorius
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: PHA
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: PHA
+      stages:    
+        <<: *equipment_general
+
+    - id: Projektorius                           # NSIK+ISO    S.RC.PHB
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: PHB
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: PHB
+      stages:    
+        <<: *equipment_general
+
+    - id: Garsiakalbis                           # NSIK+ISO    S.RC.PJA
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: PJA
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: PJA
+      stages:    
+        <<: *equipment_general
+        
+    - id: Sija                           # NSIK+ISO    S.RC.ULE
+      examples:
+      - Sila apšvietimo įrangai
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: ULE
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: ULE
+      stages:    
+        <<: *equipment_general
+        
+# sporto įranga
+    - id: Sporto įrenginys                         # NSIK+ISO    S.RB.SZB
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: SZB
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: SZB
+      stages:    
+        <<: *furniture_general
+        
+    - id: Sporto įrenginio jungtys                         # NSIK+ISO    S.RB.UQB
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: UQB
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: UQB
+      stages:    
+        <<: *furniture_general

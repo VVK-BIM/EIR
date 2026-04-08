@@ -5,36 +5,72 @@
 # 10 - Elektrotechnika
 #
 
+prop_g:   &prop_g_l
+  Pset_QuantityTakeOff.Length: 
+    valueType: Integer | Real 
+
+prop_g:   &prop_g_w
+  Pset_QuantityTakeOff.Width: 
+    valueType: Integer | Real 
+
+prop_g:   &prop_g_h
+  Pset_QuantityTakeOff.Height: 
+    valueType: Integer | Real 
+
+prop_g:   &prop_g_d
+  Pset_QuantityTakeOff.Diameter: 
+    valueType: Integer | Real 
+    
+prop_g:   &prop_g_lw
+  <<: *prop_g_l
+  <<: *prop_g_w
+  
 prop_g:   &prop_g
-  Pset_QuantityTakeOff.Height: {}
-  Pset_QuantityTakeOff.Width: {}
-  Pset_QuantityTakeOff.Length: {}
+  <<: *prop_g_l
+  <<: *prop_g_w
+  <<: *prop_g_h
+  
 
 prop_ga:   &prop_g_area
   <<: *prop_g
-  Pset_QuantityTakeOff.Area: {}
+  Pset_QuantityTakeOff.Area: 
+    valueType: Integer | Real 
   
 prop_g_cable:   &prop_g_cable
-  Pset_QuantityTakeOff.Length: {}
-  Pset_QuantityTakeOff.Diameter: {}
+  Pset_QuantityTakeOff.Length: 
+    valueType: Integer | Real 
+  Pset_QuantityTakeOff.Diameter: 
+    valueType: Integer
 
 prop:     &prop
-  Name: {}
-  Type: {}
+  VVK.Name: {}
+  VVK.ElementType: {}
   Pset_ConstructionAdministration.SpecificationSectionNumber: {}
+  Pset_ElementCommon.System: {}
   Pset_ElementComponentCommon.Status: {}
   
 prop_u:     &prop_u
   <<: *prop
-  Tag: {}
-  Name: {}
-  Type: {}
-  Pset_ElementComponentCommon.Status: {}
+  VVK.Tag: {}
 
+
+prop_mat:     &prop_material
+  VVK.Material: {}
+  
 prop_vis:     &prop_vis
   VVK.Material: {}
   VVK.Finish: {}
   VVK.Colour: {}
+
+prop_vis:     &prop_vis_mc
+  VVK.Material: {}
+  VVK.Colour: {}
+  
+prop_e_sens:     &prop_e_basic
+  Pset_ElectricalDeviceCommon.RatedVoltage: 
+    valueType: Integer
+  Pset_ElectricalDeviceCommon.NominalPower: 
+    valueType: Integer | Real
 
 prop_e_sens:     &prop_e_sensor
   Pset_ElectricalDeviceCommon.IP_Code: {}
@@ -42,13 +78,16 @@ prop_e_sens:     &prop_e_sensor
   Pset_ElectricalDeviceCommon.InsulationStandardClass: {}
   
 prop_e:     &prop_e
-  Pset_ElectricalDeviceCommon.RatedVoltage: {}
+  Pset_ElectricalDeviceCommon.RatedVoltage: 
+    valueType: Integer
+  Pset_ElectricalDeviceCommon.NominalPowerConsumption: 
+    valueType: Integer | Real 
   Pset_ElectricalDeviceCommon.NominalFrequencyRange: {}
-  <<: *prop_e_sensor
   
 prop_e_psu: &prop_e_psu
-  Pset_ElectricalDeviceCommon.RatedVoltage: {}
-  Pset_ElectricalDeviceCommon.RatedCurrent: {}
+  <<: *prop_e
+  Pset_ElectricalDeviceCommon.RatedCurrent: 
+    valueType: Integer | Real 
   Pset_ElectricalDeviceCommon.NominalFrequencyRange: {}
   Pset_ElectricalDeviceCommon.IP_Code: {}
   Pset_ElectricalDeviceCommon.IK_Code: {}
@@ -59,19 +98,29 @@ prop_cable:     &prop_cable
   Pset_CableSegmentTypeCableSegment.NumberOfCores: {}
   Pset_CableSegmentTypeCableSegment.RatedTemperature: {}
   Pset_CableSegmentTypeCableSegment.CurrentCarryingCapacity: {}
-  Pset_CableSegmentTypeCableSegment.InsulationVoltage: {}
-  Pset_CableSegmentTypeCableSegment.RatedVoltage: {}
+  Pset_CableSegmentTypeCableSegment.InsulationVoltage: 
+    valueType: Integer
+  Pset_CableSegmentTypeCableSegment.RatedVoltage: 
+    valueType: Integer
   Pset_CableSegmentTypeCableSegment.InsulationStandardClass: {}
   Pset_CableSegmentTypeCableSegment.FireRating: {}
 
 prop_e_device:    &prop_e_device
+  <<: *prop_e
   Pset_ElectricalDeviceCommon.IP_Code: {}
   Pset_ElectricalDeviceCommon.IK_Code: {}
   Pset_ElectricalDeviceCommon.InsulationStandardClass: {}
-  Pset_ElectricalDeviceCommon.RatedVoltage: {}
-  Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
   Pset_ElectricalDeviceCommon.HasProtectiveEarth: {}
 
+prop_e_socket:    &prop_e_socket
+  Pset_ElectricalDeviceCommon.RatedVoltage: 
+    valueType: Integer
+  Pset_ElectricalDeviceCommon.RatedCurrent: 
+    valueType: Integer | Real
+  Pset_ElectricalDeviceCommon.IP_Code: {}
+  Pset_ElectricalDeviceCommon.InsulationStandardClass: {}
+  Pset_ElectricalDeviceCommon.HasProtectiveEarth: {}
+  
 prop_light: &prop_light
   Pset_LampTypeCommon.ColourTemperature: {}
   Pset_LampTypeCommon.ColourRenderingIndex: {}
@@ -82,8 +131,6 @@ prop_ext_cable:  &prop_external
 prop_ext_cable:  &prop_external_cable
   Pset_ElementComponentCommon.IsExternal: {}
 
-prop_mat:     &prop_material
-  VVK.Material: {}
 
 ifc_lin:      &type_linear
   - IfcFlowSegment
@@ -138,7 +185,100 @@ E:
         
     elements:
 # jėgos tinklas
-    - id: Įrangos ir/ar kabelių dėklas                                               # common                        NSIK: K.HG.UBA
+
+
+    - id: Fotovoltinis modulis   #    NSIK+ISO: K.HG.GCA
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: GCA
+        ISO81346 CF: K
+        ISO81346 CT: HG
+        ISO81346 CC: GCA
+      stages:
+        s1:
+          properties:
+            <<: *prop_g_lw
+            <<: *prop_u
+            <<: *prop_e_basic
+            <<: *prop_external
+
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g_lw
+            <<: *prop_e_basic
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_g_lw
+            <<: *prop_e_basic
+            <<: *prop_external
+
+
+
+    - id: Įrangos ir/ar kabelių mechaninė apsauga                  # NSIK+ISO: K.HG.FNB
+      examples:
+      - Kabelio kanalas
+      - kabelio kopėčios
+      - kabelio lovelis
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: FNB
+        
+        ISO81346 CF: K
+        ISO81346 CT: HG
+        ISO81346 CC: FNB
+      ifcType: *type_linear
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
+
+
+    - id: Įrangos ir/ar kabelių mechaninė apsauga                  # NSIK:     K.HG.%FNB20
+      examples:
+      - Kabelio kanalas
+      - kabelio kopėčios
+      - kabelio lovelis
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: "%FNB20"
+        
+      ifcType: *type_linear
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
+
+
+    - id: Įrangos ir/ar kabelių dėklas                             # NSIK+ISO: K.HG.UBA
       examples:
       - Kabelio kanalas
       - kabelio kopėčios
@@ -147,6 +287,9 @@ E:
         NSIK LF: K
         NSIK LT: HG
         NSIK LK: UBA
+        ISO81346 CF: K
+        ISO81346 CT: HG
+        ISO81346 CC: UBA
       ifcType: *type_linear
       stages:
         s1:
@@ -212,6 +355,39 @@ E:
             <<: *prop_material
             <<: *prop_external_cable
         
+
+    - id: AC generatorius   #    NSIK+ISO: K.HG.GAA
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: GAA
+        ISO81346 CF: K
+        ISO81346 CT: HG
+        ISO81346 CC: GAA
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_u
+            <<: *prop_e_device
+            <<: *prop_vis
+            <<: *prop_external
+
+        s3:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e_device
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e_device
+            <<: *prop_external
+
+
     - id: Žemos įtampos elektros kabelis nepertraukiamo elektros tiekimo sistemai    # pipe                          NSIK: K.%HG30.WDB
       classifications:
         NSIK LF: K
@@ -234,7 +410,7 @@ E:
             <<: *prop_material
             <<: *prop_external_cable
 
-    - id: Valdymo kabelis                                                            # pipe                          NSIK: K.HG.WGA
+    - id: Valdymo kabelis           # pipe    NSIK: K.HG.WGA
       classifications:
         NSIK LF: K
         NSIK LT: HG
@@ -256,7 +432,7 @@ E:
             <<: *prop_material
             <<: *prop_external_cable
         
-    - id: Duomenų kabelis                                                            # pipe                          NSIK: K.HG.WGB
+    - id: Duomenų kabelis           # pipe    NSIK: K.HG.WGB
       classifications:
         NSIK LF: K
         NSIK LT: HG
@@ -278,7 +454,7 @@ E:
             <<: *prop_material
             <<: *prop_external_cable
 
-    - id: Jungiklis                                                                  # sensor                        NSIK: K.HG.SJA
+    - id: Jungiklis                 # sensor  NSIK: K.HG.SJA
       examples:
       - Jungiklis
       - Įvadinis jungiklis
@@ -291,29 +467,28 @@ E:
       stages:
         s1:
           properties:
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_vis
             <<: *prop_u
-            <<: *prop_e_sensor
+            <<: *prop_g_lw
+            <<: *prop_vis_mc
+            <<: *prop_e_basic
             <<: *prop_external
             <<: *prop_e_sensor
-            Pset_ElectricalDeviceCommon.RatedVoltage: {}
-            Pset_ElectricalDeviceCommon.RatedCurrent: {}
         s3: 
           properties:
-            <<: *prop_g
-            <<: *prop_vis
+            <<: *prop
+            <<: *prop_g_lw
+            <<: *prop_vis_mc
+            <<: *prop_e_basic
         s4:
           properties:
             <<: *prop_u
-            <<: *prop_e_sensor
+            <<: *prop_g_lw
+            <<: *prop_vis_mc
+            <<: *prop_e_basic
             <<: *prop_external
             <<: *prop_e_sensor
-            Pset_ElectricalDeviceCommon.RatedVoltage: {}
-            Pset_ElectricalDeviceCommon.RatedCurrent: {}
 
-    - id: Automatinis jungiklis                                                      # unique_electrical_external    NSIK: K.HG.FCB
+    - id: Automatinis jungiklis     # unique_electrical_external    NSIK: K.HG.FCB
       examples:
       - Automatinis jungiklis
       - Viršsrovio jungiklis
@@ -341,7 +516,7 @@ E:
             Pset_ElectricalDeviceCommon.RatedVoltage: {}
             Pset_ElectricalDeviceCommon.RatedCurrent: {}
 
-    - id: Mygtukas                                                                   # sensor                        NSIK: K.HG.SJB
+    - id: Mygtukas                  # sensor  NSIK: K.HG.SJB
       examples:
       - Įrangos valdymo mygtukas
       - Blokavimo mygtukas
@@ -353,29 +528,28 @@ E:
       stages:
         s1:
           properties:
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_vis
             <<: *prop_u
-            <<: *prop_e_sensor
+            <<: *prop_g_lw
+            <<: *prop_vis_mc
+            <<: *prop_e_basic
             <<: *prop_external
             <<: *prop_e_sensor
-            Pset_ElectricalDeviceCommon.RatedVoltage: {}
-            Pset_ElectricalDeviceCommon.RatedCurrent: {}
         s3: 
           properties:
-            <<: *prop_g
-            <<: *prop_vis
+            <<: *prop
+            <<: *prop_g_lw
+            <<: *prop_vis_mc
+            <<: *prop_e_basic
         s4:
           properties:
             <<: *prop_u
-            <<: *prop_e_sensor
+            <<: *prop_g_lw
+            <<: *prop_vis_mc
+            <<: *prop_e_basic
             <<: *prop_external
             <<: *prop_e_sensor
-            Pset_ElectricalDeviceCommon.RatedVoltage: {}
-            Pset_ElectricalDeviceCommon.RatedCurrent: {}
 
-    - id: Valdymo elementas                                                          # stageS3_unique_electrical     NSIK: K.HG.KEB
+    - id: Valdymo elementas         # stageS3_unique_electrical     NSIK: K.HG.KEB
       examples:
       - Kontroleris
       - Kontaktorius
@@ -388,26 +562,88 @@ E:
       stages:
         s1:
           properties:
-            <<: *prop
-            <<: *prop_g
             <<: *prop_u
-            <<: *prop_e_device
-            <<: *prop_material
+            <<: *prop_g_lw
+            <<: *prop_vis_mc
+            <<: *prop_e_basic
             <<: *prop_external
-            Pset_ElectricalDeviceCommon.RatedVoltage: {}
-            Pset_ElectricalDeviceCommon.RatedCurrent: {}
+            <<: *prop_e_sensor
+        s3: 
+          properties:
+            <<: *prop
+            <<: *prop_g_lw
+            <<: *prop_vis_mc
+            <<: *prop_e_basic
         s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g_lw
+            <<: *prop_vis_mc
+            <<: *prop_e_basic
+            <<: *prop_external
+            <<: *prop_e_sensor
+
+    - id: Elektromobilio įkrovimo stotelė   #    NSIK: K.HG.%TBA10
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: "%TBA10"
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e_basic
+            <<: *prop_external
+            <<: *prop_e_sensor
+        s3: 
           properties:
             <<: *prop
             <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e_basic
+        s4:
+          properties:
             <<: *prop_u
-            <<: *prop_e_device
-            <<: *prop_material
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e_basic
             <<: *prop_external
-            Pset_ElectricalDeviceCommon.RatedVoltage: {}
-            Pset_ElectricalDeviceCommon.RatedCurrent: {}
-    
-    - id: Korpusas (skydelis)                                                        # visible_unique_electrical     NSIK: K.HG.UCA
+
+    - id: Dvikryptis keitiklis   #    NSIK+ISO: K.HG.TBC
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: TBC
+        ISO81346 CF: K
+        ISO81346 CT: HG
+        ISO81346 CC: TBC
+      stages:
+        s1:
+          properties:
+            <<: *prop_g_lw
+            <<: *prop_u
+            <<: *prop_e_basic
+            <<: *prop_vis
+            <<: *prop_external
+
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g_lw
+            <<: *prop_vis
+            <<: *prop_e_basic
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_g_lw
+            <<: *prop_vis
+            <<: *prop_e_basic
+            <<: *prop_external
+
+    - id: Korpusas (skydelis)      #    NSIK+ISO: K.HG.UCA
       examples:
       - Apskaitos skydas
       - Tranzitinis skydas
@@ -427,31 +663,209 @@ E:
         NSIK LF: K
         NSIK LT: HG
         NSIK LK: UCA
+        ISO81346 CF: K
+        ISO81346 CT: HG
+        ISO81346 CC: UCA
       stages:
         s1:
           properties:
-            <<: *prop
             <<: *prop_g
             <<: *prop_u
             <<: *prop_e_device
+            <<: *prop_vis
+            <<: *prop_external
+
+        s3:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e_device
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e_device
+            <<: *prop_external
+
+    - id: Inžinerinė spinta             #  NSIK:     K.HG.%UCA10
+      examples:
+      - Kabelių skydas
+      ifcType: 
+        '2x3':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        '4':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        - IfcDistributionChamberElement
+        - IfcDistributionChamberElementType
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: "%UCA10"
+      stages:
+        s1:
+          properties:
+            <<: *prop_g
+            <<: *prop_u
+            <<: *prop_e_device
+            <<: *prop_vis
+            <<: *prop_external
+
+        s3:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+            
+    - id: Paskirstymo dėžutė            #  NSIK:     K.HG.%UCA20
+      examples:
+      - Kabelių skydas
+      ifcType: 
+        '2x3':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        '4':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        - IfcDistributionChamberElement
+        - IfcDistributionChamberElementType
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: "%UCA20"
+      stages:
+        s1:
+          properties:
+            <<: *prop_g
+            <<: *prop_u
+            <<: *prop_e_device
+            <<: *prop_vis
+            <<: *prop_external
+
+        s3:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+
+    - id: Komunikacijų šulinys         #  NSIK+ISO: K.HG.XMC
+      ifcType: 
+        '2x3':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        '4':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        - IfcDistributionChamberElement
+        - IfcDistributionChamberElementType
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: XMC
+        ISO81346 CF: K
+        ISO81346 CT: HG
+        ISO81346 CC: XMC
+      stages:
+        s1:
+          properties:
+            <<: *prop_g
+            <<: *prop_u
             <<: *prop_material
             <<: *prop_external
-            Pset_ElectricalDeviceCommon.RatedVoltage: {}
-            Pset_ElectricalDeviceCommon.RatedCurrent: {}
+        s3:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
+            
+    - id: Stulpas      #    NSIK+ISO: K.HG.UBD
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: UBD
+        ISO81346 CF: K
+        ISO81346 CT: HG
+        ISO81346 CC: UBD
+      stages:
+        s1:
+          properties:
+            <<: *prop_g
+            <<: *prop_u
+            <<: *prop_material
+            <<: *prop_external
+        s2:
+          properties: {}
         s3:
           properties:
             <<: *prop
             <<: *prop_g
-            <<: *prop_u
+            <<: *prop_material
         s4:
           properties:
-            <<: *prop_e_device
+            <<: *prop_u
+            <<: *prop_g
             <<: *prop_material
             <<: *prop_external
-            Pset_ElectricalDeviceCommon.RatedVoltage: {}
-            Pset_ElectricalDeviceCommon.RatedCurrent: {}
 
-    - id: Kištukinis lizdas                                                          # visible_unique_electrical     NSIK: K.HG.XDD
+
+
+
+    - id: Žemos įtampos elektros lizdas   #    NSIK+ISO: K.HG.XDB
+      examples:
+      - Garso kolonėlių lizdas
+      ifcType: *type_e
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: XDB
+        ISO81346 CF: K
+        ISO81346 CT: HG
+        ISO81346 CC: XDB
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g_lw
+            <<: *prop_material
+            <<: *prop_external
+            <<: *prop_e_socket
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g_lw
+            <<: *prop_material
+            <<: *prop_external
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g_lw
+            <<: *prop_material
+            <<: *prop_external
+            <<: *prop_e_socket
+
+    - id: Kištukinis lizdas   # visible_unique_electrical     NSIK: K.HG.XDD
       examples:
       - Elektros lizdas
       - IEC 90309 lizdas
@@ -464,16 +878,11 @@ E:
       stages:
         s1:
           properties:
-            <<: *prop
             <<: *prop_u
             <<: *prop_g
             <<: *prop_material
             <<: *prop_external
-            Pset_ElectricalDeviceCommon.IP_Code: {}
-            Pset_ElectricalDeviceCommon.IK_Code: {}
-            Pset_ElectricalDeviceCommon.InsulationStandardClass: {}
-            Pset_ElectricalDeviceCommon.RatedVoltage: {}
-            Pset_ElectricalDeviceCommon.RatedCurrent: {}
+            <<: *prop_e_socket
         s3:
           properties:
             <<: *prop
@@ -483,9 +892,12 @@ E:
         s4:
           properties:
             <<: *prop_u
-            <<: *prop_e_device
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
+            <<: *prop_e_socket
 
-    - id: Žemos įtampos transformatorius                                             # stageS3_unique_electrical     NSIK: K.HG.BAA
+    - id: Žemos įtampos transformatorius    # stageS3_unique_electrical     NSIK: K.HG.BAA
       examples:
       - 230/12 V transformatorius
       - 230/48 V transformatorius
@@ -513,7 +925,7 @@ E:
             <<: *prop_material
             <<: *prop_external
 
-    - id: Srovės transformatorius                                                    # stageS3_unique_electrical     NSIK: K.HG.BCA
+    - id: Srovės transformatorius      # stageS3_unique_electrical     NSIK: K.HG.BCA
       examples:
       - Srovės matavimo transformatorius
       ifcType: 
@@ -545,7 +957,7 @@ E:
             <<: *prop_material
             <<: *prop_external
 
-    - id: Jėgos tinklo instaliacijos erdvė ar inžinerinis koridorius                 # zone                          NSIK: <E>DCB <L>K.HG
+    - id: Jėgos tinklo instaliacijos erdvė ar inžinerinis koridorius      # zone                          NSIK: <E>DCB <L>K.HG
       classifications:
         NSIK LF: K
         NSIK LT: HG
@@ -563,7 +975,7 @@ E:
             Pset_QuantityTakeOff.Width: {}
             Pset_ElementComponentCommon.Status: {}
     
-    - id: Jėgos tinklo aptarnavimo erdvė                 # zone                          NSIK: <E>DCB <L>K.HG
+    - id: Jėgos tinklo aptarnavimo erdvė    # zone                          NSIK: <E>DCB <L>K.HG
       classifications:
         NSIK LF: K
         NSIK LT: HG
@@ -580,8 +992,8 @@ E:
             Pset_ElementComponentCommon.Status: {}
 
 
-# įžeminimas
-    - id: Įžeminimo elektrodas                                                   # pipe        NSIK: %P20.HG.XEE
+# įžeminimas P.HG
+    - id: Įžeminimo elektrodas      # pipe        NSIK: %P20.HG.XEE
       classifications:
         NSIK LF: "%P20"
         NSIK LT: HG
@@ -601,7 +1013,7 @@ E:
             <<: *prop_material
             <<: *prop_external_cable
 
-    - id: Įžeminimo kabelis                                                      # pipe        NSIK: %P20.HG.WEB
+    - id: Įžeminimo kabelis         # pipe        NSIK: %P20.HG.WEB
       classifications:
         NSIK LF: "%P20"
         NSIK LT: HG
@@ -623,7 +1035,9 @@ E:
             <<: *prop_material
             <<: *prop_external_cable
 
-    - id: Įžeminimo šyna                                                         # pipe        NSIK: %P20.HG.XEF
+
+            
+    - id: Įžeminimo šyna            # pipe        NSIK: %P20.HG.XEF
       classifications:
         NSIK LF: "%P20"
         NSIK LT: HG
@@ -636,6 +1050,11 @@ E:
             <<: *prop_g_cable
             <<: *prop_material
             <<: *prop_external_cable
+        s3: 
+          properties:
+            <<: *prop
+            <<: *prop_g_cable
+            <<: *prop_material
         s4: 
           properties:
             <<: *prop
@@ -643,7 +1062,7 @@ E:
             <<: *prop_material
             <<: *prop_external_cable
 
-    - id: Įžemiklis                                                              # pipe        NSIK: %P20.HG.QCA
+    - id: Įžemiklis                 # pipe        NSIK: %P20.HG.QCA
       classifications:
         NSIK LF: "%P20"
         NSIK LT: HG
@@ -663,7 +1082,7 @@ E:
             <<: *prop_material
             <<: *prop_external_cable
 
-    - id: Įžeminimo tinklo apsaugos zona                                         # zone        NSIK: <E>DCB <L>%P20.HG
+    - id: Įžeminimo tinklo apsaugos zona  # zone        NSIK: <E>DCB <L>%P20.HG
       classifications:
         NSIK LF: "%P20"
         NSIK LT: HG
@@ -683,7 +1102,7 @@ E:
             Pset_QuantityTakeOff.Area: {}
             Pset_ElementComponentCommon.Status: {}
           
-    - id: Įžeminimo tinklo elemento aptarnavimo erdvė                            # zone        NSIK: <E>DCB <L>%P20.HG
+    - id: Įžeminimo tinklo elemento aptarnavimo erdvė # zone    NSIK: <E>DCB <L>%P20.HG
       classifications:
         NSIK LF: "%P20"
         NSIK LT: HG
@@ -698,7 +1117,234 @@ E:
         s4:
           properties:
             Pset_ElementComponentCommon.Status: {}
-# apšvietimas
+#
+
+# žaibosauga P.PD
+
+    - id: Įžeminimo elektrodas (žaibosaiga) #    NSIK+ISO: P.PD.XEE
+      classifications:
+        NSIK LF: P
+        NSIK LT: PD
+        NSIK LK: XEE
+        ISO81346 CF: P
+        ISO81346 CT: PD
+        ISO81346 CC: XEE
+      ifcType: *type_linear
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external_cable
+        s3: 
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_material
+        s4: 
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external_cable
+
+    - id: Įžeminimo kabelis    #    NSIK+ISO: P.PD.WEB
+      classifications:
+        NSIK LF: P
+        NSIK LT: PD
+        NSIK LK: WEB
+        ISO81346 CF: P
+        ISO81346 CT: PD
+        ISO81346 CC: WEB
+      ifcType: *type_linear
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g_cable
+            <<: *prop_cable
+            <<: *prop_material
+            <<: *prop_external_cable
+        s4: 
+          properties:
+            <<: *prop
+            <<: *prop_g_cable
+            <<: *prop_cable
+            <<: *prop_material
+            <<: *prop_external_cable
+
+    - id: Įžeminimo šyna       #    NSIK+ISO: P.PD.XEF
+      classifications:
+        NSIK LF: P
+        NSIK LT: PD
+        NSIK LK: XEF
+        ISO81346 CF: P
+        ISO81346 CT: PD
+        ISO81346 CC: XEF
+      ifcType: *type_linear
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g_cable
+            <<: *prop_material
+            <<: *prop_external_cable
+        s3: 
+          properties:
+            <<: *prop
+            <<: *prop_g_cable
+            <<: *prop_material
+            <<: *prop_external_cable
+        s4: 
+          properties:
+            <<: *prop
+            <<: *prop_g_cable
+            <<: *prop_material
+            <<: *prop_external_cable
+
+    - id: Įžemiklis            #    NSIK+ISO: P.PD.QCA
+      classifications:
+        NSIK LF: P
+        NSIK LT: PD
+        NSIK LK: QCA
+        ISO81346 CF: P
+        ISO81346 CT: PD
+        ISO81346 CC: QCA
+      ifcType: *type_linear
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g_cable
+            <<: *prop_material
+            <<: *prop_external_cable
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_g_cable
+            <<: *prop_material
+            <<: *prop_external_cable
+
+    - id: Įžeminimo tinklo apsaugos zona              #  NSIK: <E>DCB <L>P.PD
+      classifications:
+        NSIK LF: P
+        NSIK LT: PD
+        NSIK B: DCB
+      ifcType: 
+      - IfcSpace
+      - IfcSpaceType
+      stages:
+        s1:
+          properties:
+            Pset_QuantityTakeOff.Width: {}
+            Pset_QuantityTakeOff.Area: {}
+            Pset_ElementComponentCommon.Status: {}
+        s4:
+          properties:
+            Pset_QuantityTakeOff.Width: {}
+            Pset_QuantityTakeOff.Area: {}
+            Pset_ElementComponentCommon.Status: {}
+          
+    - id: Įžeminimo tinklo elemento aptarnavimo erdvė #  NSIK: <E>DCB <L>P.PD
+      classifications:
+        NSIK LF: P
+        NSIK LT: PD
+        NSIK B: DCB
+      ifcType: 
+      - IfcSpace
+      - IfcSpaceType
+      stages:
+        s1:
+          properties:
+            Pset_ElementComponentCommon.Status: {}
+        s4:
+          properties:
+            Pset_ElementComponentCommon.Status: {}
+
+#
+
+
+
+
+# apšvietimas      QQ.HH
+#
+
+    - id: Apšvietimo sistemos korpusas (skydelis)                          # visible_unique_electrical             NSIK+ISO: Q.HH.UCA
+      ifcType: 
+        '2x3':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        '4':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        - IfcDistributionChamberElement
+        - IfcDistributionChamberElementType
+      classifications:
+        NSIK LF: Q
+        NSIK LT: HH
+        NSIK LK: UCA
+        ISO81346 CF: Q
+        ISO81346 CT: HH
+        ISO81346 CC: UCA
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e_device
+            <<: *prop_material
+            <<: *prop_external
+        s3:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_e_device
+            <<: *prop_material
+            <<: *prop_external
+
+
+    - id: Šviestuvas                                                       # visible_unique_electrical_external    NSIK: Q.HH.UAC
+      examples:
+      - Lubinis šviestuvas
+      - Sieninis šviestuvas
+      - Dekoratyvinis šviestuvas
+      ifcType: 
+      - IfcLightFixture
+      - IfcLightFixtureType
+      classifications:
+        NSIK LF: Q
+        NSIK LT: HH
+        NSIK LK: UAC
+        ISO81346 CF: Q
+        ISO81346 CT: HH
+        ISO81346 CC: UAC
+      stages:
+        s1: 
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+            <<: *prop_e_device
+            <<: *prop_light
+        s3: 
+          properties:
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_external
+            <<: *prop_e_device
+            <<: *prop_light
+
     - id: Vidaus šviestuvas                                                # visible_unique_electrical_external    NSIK: Q.%HH10.%UAC20
       examples:
       - Lubinis šviestuvas
@@ -826,6 +1472,128 @@ E:
             <<: *prop_e_sensor
             <<: *prop_e_device
     
+
+
+    - id: Būvio daviklis                                                   #    NSIK+ISO: Q.HH.BUB
+      classifications:
+        NSIK LF: Q
+        NSIK LT: HH
+        NSIK LK: BUB
+        ISO81346 CF: Q
+        ISO81346 CT: HH
+        ISO81346 CC: BUB
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_u
+            <<: *prop_external
+            <<: *prop_e_sensor
+            <<: *prop_e_device
+        s3: 
+          properties:
+            <<: [*prop, *prop_g, *prop_e_basic]
+        s4: 
+          properties:
+            <<: *prop_g
+            <<: *prop_u
+            <<: *prop_external
+            <<: *prop_e_sensor
+            <<: *prop_e_device
+
+    - id: Jungiklis                                                        # sensor                                NSIK: Q.HH.SJA
+      classifications:
+        NSIK LF: Q
+        NSIK LT: HH
+        NSIK LK: SJA
+        ISO81346 CF: Q
+        ISO81346 CT: HH
+        ISO81346 CC: SJA
+      ifcType: *type_sensor
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e_sensor
+            <<: *prop_external
+
+        s3: 
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e_sensor
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e_sensor
+            <<: *prop_external
+    
+
+
+    - id: Stulpas                                                          #    NSIK+ISO: Q.HH.UBD
+      classifications:
+        NSIK LF: Q
+        NSIK LT: HH
+        NSIK LK: UBD
+        ISO81346 CF: Q
+        ISO81346 CT: HH
+        ISO81346 CC: UBD
+      stages:
+        s1:
+          properties:
+            <<: *prop_g
+            <<: *prop_u
+            <<: *prop_material
+            <<: *prop_external
+        s2:
+          properties: {}
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_material
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
+
+    - id: Stulpo pamatas                                                         #    NSIK+ISO: Q.HH.ULG
+      classifications:
+        NSIK LF: Q
+        NSIK LT: HH
+        NSIK LK: ULG
+        ISO81346 CF: Q
+        ISO81346 CT: HH
+        ISO81346 CC: ULG
+      stages:
+        s1:
+          properties:
+            <<: *prop_g
+            <<: *prop_u
+            <<: *prop_material
+            <<: *prop_external
+        s2:
+          properties: {}
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_material
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
     - id: Mygtukas                                                         # sensor                                NSIK: Q.%HH10.SJB
       examples:
       - Šviesos įjungimo mygtukas
@@ -899,6 +1667,13 @@ E:
             <<: *prop_vis
             <<: *prop_e_sensor
             <<: *prop_external
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e_sensor
+            
         s4:
           properties:
             <<: *prop
@@ -960,7 +1735,71 @@ E:
             <<: *prop_e_sensor
             <<: *prop_external
             
-    - id: Asmens detektorius                                               # sensor                                NSIK: Q.%HH10.BZC
+
+
+    - id: Padėties jungiklis      #    NSIK+ISO: Q.HH.BGB
+      classifications:
+        NSIK LF: Q
+        NSIK LT: HH
+        NSIK LK: BGB
+        ISO81346 CF: Q
+        ISO81346 CT: HH
+        ISO81346 CC: BGB
+      examples:
+      - Buvimo detektorius
+      ifcType: *type_sensor
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e_sensor
+            <<: *prop_external
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e_sensor
+            <<: *prop_external
+
+    - id: Asmens detektorius      #    NSIK+ISO: Q.HH.BZC
+      classifications:
+        NSIK LF: Q
+        NSIK LT: HH
+        NSIK LK: BZC
+        ISO81346 CF: Q
+        ISO81346 CT: HH
+        ISO81346 CC: BZC
+      examples:
+      - Buvimo detektorius
+      ifcType: *type_sensor
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e_sensor
+            <<: *prop_external
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e_sensor
+            <<: *prop_external
+
+    - id: Asmens detektorius      #    NSIK: Q.%HH10.BZC
       classifications:
         NSIK LF: Q
         NSIK LT: "%HH10"
@@ -984,6 +1823,159 @@ E:
             <<: *prop_g
             <<: *prop_vis
             <<: *prop_e_sensor
+            <<: *prop_external
+
+
+    - id: Elektrinis šviesos šaltinis  #    NSIK: Q.HH.EAA
+      examples:
+      - Lempa
+      # ifcType: 
+        # '2x3':
+        # - IfcJunctionBox
+        # - IfcJunctionBoxType
+        # '4':
+        # - IfcJunctionBox
+        # - IfcJunctionBoxType
+        # - IfcDistributionChamberElement
+        # - IfcDistributionChamberElementType
+      classifications:
+        NSIK LF: Q
+        NSIK LT: HH
+        NSIK LK: EAA
+        ISO81346 CF: Q
+        ISO81346 CT: HH
+        ISO81346 CC: EAA
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_light
+            <<: *prop_external
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_light
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_light
+            <<: *prop_external
+
+    - id: Apšvietimo stulpas (be šviestuvo)    # NSIK: Q.%HH10.UBD
+      classifications:
+        NSIK LF: Q
+        NSIK LT: "%HH10"
+        NSIK LK: UBD
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g_l
+            <<: *prop_g_d
+            <<: *prop_vis
+            <<: *prop_external
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g_l
+            <<: *prop_g_d
+            <<: *prop_vis
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g_l
+            <<: *prop_g_d
+            <<: *prop_vis
+            <<: *prop_external
+
+    - id: Apšvietimo sistemos korpusas (skydelis)                          # visible_unique_electrical             NSIK: K.HH.UCA
+      examples:
+      - Apskaitos skydas
+      - Elektros spinta
+      ifcType: 
+        '2x3':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        '4':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        - IfcDistributionChamberElement
+        - IfcDistributionChamberElementType
+      classifications:
+        NSIK LF: K
+        NSIK LT: HH
+        NSIK LK: UCA
+        ISO81346 CF: K
+        ISO81346 CT: HH
+        ISO81346 CC: UCA
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e_device
+            <<: *prop_material
+            <<: *prop_external
+        s3:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_e_device
+            <<: *prop_material
+            <<: *prop_external
+            
+    - id: Apšvietimo sistemos korpusas (skydelis)                          # visible_unique_electrical             NSIK: Q.HH.UCA
+      examples:
+      - Apskaitos skydas
+      - Tranzitinis skydas
+      - Kabelių skydas
+      - Elektros spinta
+      - Grindinė dėžutė
+      ifcType: 
+        '2x3':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        '4':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        - IfcDistributionChamberElement
+        - IfcDistributionChamberElementType
+      classifications:
+        NSIK LF: Q
+        NSIK LT: HH
+        NSIK LK: UCA
+        ISO81346 CF: Q
+        ISO81346 CT: HH
+        ISO81346 CC: UCA
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e_device
+            <<: *prop_material
+            <<: *prop_external
+        s3:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_e_device
+            <<: *prop_material
             <<: *prop_external
 
     - id: Apšvietimo sistemos korpusas (skydelis)                          # visible_unique_electrical             NSIK: Q.%HH10.UCA
@@ -1026,6 +2018,45 @@ E:
             <<: *prop_material
             <<: *prop_external
     
+
+    - id: Apšvietimo sistemos valdymo blokas                               # visible_unique_electrical_external    NSIK+ISO: Q.HH.KEB
+      examples:
+      - KNX kontroleris
+      - Kontaktorius
+      - DALI valdiklis
+      classifications:
+        NSIK LF: Q
+        NSIK LT: HH
+        NSIK LK: KEB
+        
+        ISO81346 CF: Q
+        ISO81346 CT: HH
+        ISO81346 CC: KEB
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e_device
+            <<: *prop_external
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e_device
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e_device
+            <<: *prop_external
+
     - id: Apšvietimo sistemos valdymo blokas                               # visible_unique_electrical_external    NSIK: Q.%HH10.KEB
       examples:
       - KNX kontroleris
@@ -1236,7 +2267,9 @@ E:
           properties:
             Pset_ElementComponentCommon.Status: {}
         
-# avarinis ir evakuacinis apšvietimas
+#
+# avarinis ir evakuacinis apšvietimas  QQ.HH
+#
     - id: Evakuacinis šviestuvas                                                            # visible_unique_electrical_external    NSIK: %Q20.%HH10.%PHA10
       examples:
       - Evakuacijos krypties šviestuvas
@@ -1350,6 +2383,12 @@ E:
             <<: *prop_g
             <<: *prop_e_psu
             <<: *prop_external
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e_psu
         s4:
           properties:
             <<: *prop

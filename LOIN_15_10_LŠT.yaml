@@ -1,0 +1,1448 @@
+# v 0.5a
+# NSIK ver 0.9, 2023-09-01
+# https://nsiklab.lt 
+#
+# 15 - Šilumos gamyba
+# 
+
+
+properties: &props
+  VVK.Name: {}
+  VVK.System: {}
+  Pset_ElementComponentCommon.Status: {}
+  VVK.ElementType: {}
+  Pset_ConstructionAdministration.SpecificationSectionNumber: {}
+  VVK.Material: {}
+  VVK.Finish:
+    - memo: Pildoma, jei tokia savybė aktuali
+  VVK.Colour:
+    - memo: Pildoma, jei tokia savybė aktuali
+  Pset_QuantityTakeOff.Heigth: 
+    valueType: Integer | Real 
+  Pset_QuantityTakeOff.Width: 
+    valueType: Integer | Real
+  Pset_QuantityTakeOff.Length: 
+    valueType: Integer | Real
+  Pset_QuantityTakeOff.Diameter: 
+    valueType: Integer | Real
+  #- Pset_QuantityTakeOff.Diameter | Pset_QuantityTakeOff.NominalDiameter
+  
+properties_e: &props_equipment
+  VVK.Name: {}
+  VVK.System: {}
+  Pset_ElementComponentCommon.Status: {}
+  VVK.Tag: {}
+  VVK.ElementType: {}
+  Pset_ConstructionAdministration.SpecificationSectionNumber: {}
+  VVK.Material: {}
+  VVK.Finish:
+    - memo: Pildoma, jei tokia savybė aktuali
+  VVK.Colour:
+    - memo: Pildoma, jei tokia savybė aktuali
+  Pset_QuantityTakeOff.Heigth: 
+    valueType: Integer | Real
+  Pset_QuantityTakeOff.Width: 
+    valueType: Integer | Real
+  Pset_QuantityTakeOff.Length: 
+    valueType: Integer | Real
+  Pset_QuantityTakeOff.Diameter: 
+    valueType: Integer | Real
+  #- Pset_QuantityTakeOff.Diameter | Pset_QuantityTakeOff.NominalDiameter
+
+prop_g:   &prop_g
+  Pset_QuantityTakeOff.Height: 
+    valueType: Integer | Real
+  Pset_QuantityTakeOff.Width: 
+    valueType: Integer | Real
+  Pset_QuantityTakeOff.Length: 
+    valueType: Integer | Real
+    
+prop_g_well: &prop_g_well
+  Pset_QuantityTakeOff.Length:
+    valueType: Integer | Real
+    descr: Šulinio ar kameros aukštis nuo dugno iki viršutinės perdangos, nevertinant įlipimo dalies aukščio
+  Pset_QuantityTakeOff.Diameter:
+    valueType: Integer
+    descr: Apvalaus šulinio diametras
+
+prop_ga:   &prop_g_area
+  <<: *prop_g
+  Pset_QuantityTakeOff.Area: 
+    valueType: Integer | Real
+
+prop_e:     &prop_e
+  Pset_ElementComponentCommon.PowerConsumption: 
+    valueType: Integer | Real
+  Pset_ElementComponentCommon.NominalPowerConsumption: 
+    valueType: Integer | Real
+
+prop_e_device: &prop_e_device
+  Pset_ElectricalDeviceCommon.NominalPowerConsumption: 
+    valueType: Integer | Real
+
+prop_e_device: &prop_e_device_s4
+  Pset_ElectricalDeviceCommon.RatedVoltage: 
+    valueType: Integer
+  Pset_ElectricalDeviceCommon.NominalFrequencyRange: {}
+  Pset_ElectricalDeviceCommon.HasProtectiveEarth: {}
+  Pset_ElectricalDeviceCommon.InsulationStandardClass: {}
+  Pset_ElectricalDeviceCommon.IP_Code: {}
+  Pset_ElectricalDeviceCommon.IK_Code: {}
+  Pset_ElectricalDeviceCommon.Power: {}
+  Pset_ElectricalDeviceCommon.NominalPowerConsumption: 
+    valueType: Integer | Real
+
+properties_d: &prop_equipment_mech
+  Pset_QuantityTakeOff.Diameter: 
+    valueType: Integer | Real
+    descr: Elemento prijungimo sriegis
+
+
+prop_vis:  &prop_material
+  VVK.Material: {}
+
+prop_vis:  &prop_vis
+  VVK.Material: {}
+  VVK.Finish: {}
+  VVK.Colour: {}
+
+prop_ext:  &prop_external
+  Pset_ElementComponentCommon.IsExternal: {}
+  
+prop:     &prop
+  VVK.Name: {}
+  VVK.ElementType: {}
+  Pset_ElementCommon.System: {}
+  # System: {}
+  Pset_ElementComponentCommon.Status: {}
+  Pset_ConstructionAdministration.SpecificationSectionNumber: {}
+
+
+prop_u:     &prop_u
+  <<: *prop
+  VVK.Tag: {}
+  
+prop_g_valve:   &prop_g_valve
+  Pset_QuantityTakeOff.Diameter:
+    valueType: Integer | Real
+
+prop_g_pipe:   &prop_g_pipe
+  Pset_QuantityTakeOff.Length:
+    valueType: Integer | Real
+  Pset_QuantityTakeOff.Diameter:
+    valueType: Integer | Real
+    
+ifc_w:       &type_well
+  - IfcFlowTerminal
+  - IfcFlowTerminalType
+  - IfcFlowTerminalTypeEnum
+
+
+properties_v: &props_equipment_v
+  - VVK.Name
+  - VVK.System
+  - Pset_ElementComponentCommon.Status
+  - VVK.Tag
+  - VVK.ElementType
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - VVK.Finish:
+    - memo: Pildoma, jei tokia savybė aktuali
+  - VVK.Colour:
+    - memo: Pildoma, jei tokia savybė aktuali
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - Pset_QuantityTakeOff.Diameter
+  - Pset_QuantityTakeOff.Volume:
+    - examples:
+      - 0.500
+    - units: m³
+    - descr: Elemento darbinis tūris, m³
+
+
+properties_v: &prop_equipment_volume
+  - Pset_QuantityTakeOff.Weight:
+    - examples:
+      - 50
+    - units: kg
+    - descr: Elemento svoris
+
+properties_m: &prop_equipment_mass
+  - Pset_QuantityTakeOff.Volume:
+    - examples:
+      - 0.500
+    - units: m³
+    - descr: Elemento darbinis tūris, m³
+
+properties_vm: &prop_equipment_volume_mass
+  <<: *prop_equipment_volume
+  <<: *prop_equipment_mass
+    
+properties_heh: &prop_equipment_e
+  - Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
+    
+properties_heh: &props_equipment_heh
+  - VVK.Name
+  - VVK.System
+  - Pset_ElementComponentCommon.Status
+  - VVK.Tag
+  - VVK.ElementType
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - VVK.Finish:
+    - memo: Pildoma, jei tokia savybė aktuali
+  - VVK.Colour:
+    - memo: Pildoma, jei tokia savybė aktuali
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - Pset_QuantityTakeOff.Diameter
+  - Pset_QuantityTakeOff.Weight:
+    - examples:
+      - 50
+    - units: kg
+    - descr: Elemento svoris
+    - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+    - Pset_QuantityTakeOff.VolumetricFlowRate
+    
+properties_hep: &props_equipment_hep
+  - VVK.Name
+  - VVK.System
+  - Pset_ElementComponentCommon.Status
+  - VVK.Tag
+  - VVK.ElementType
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - VVK.Finish:
+    - memo: Pildoma, jei tokia savybė aktuali
+  - VVK.Colour:
+    - memo: Pildoma, jei tokia savybė aktuali
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - Pset_QuantityTakeOff.Diameter
+  - Pset_QuantityTakeOff.Weight:
+    - examples:
+      - 50
+    - units: kg
+    - descr: Elemento svoris
+    - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+    
+properties_heph: &props_equipment_heph
+  - VVK.Name
+  - VVK.System
+  - Pset_ElementComponentCommon.Status
+  - VVK.Tag
+  - VVK.ElementType
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - VVK.Finish:
+    - memo: Pildoma, jei tokia savybė aktuali
+  - VVK.Colour:
+    - memo: Pildoma, jei tokia savybė aktuali
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - Pset_QuantityTakeOff.Diameter
+  - Pset_QuantityTakeOff.Weight:
+    - examples:
+      - 50
+    - units: kg
+    - descr: Elemento svoris
+    - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+    - Pset_QuantityTakeOff.VolumetricFlowRate
+    
+properties_vh: &props_equipment_vh
+  - VVK.Name
+  - VVK.System
+  - Pset_ElementComponentCommon.Status
+  - VVK.Tag
+  - VVK.ElementType
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - VVK.Finish:
+    - memo: Pildoma, jei tokia savybė aktuali
+  - VVK.Colour:
+    - memo: Pildoma, jei tokia savybė aktuali
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - Pset_QuantityTakeOff.Diameter
+  - Pset_QuantityTakeOff.Weight:
+    - examples:
+      - 50
+    - units: kg
+    - descr: Elemento svoris
+  - Pset_QuantityTakeOff.Volume:
+    - examples:
+      - 0.500
+    - units: m³
+    - descr: Elemento darbinis tūris, m³
+    
+
+ifcType_e:                 &type_ctrl_equipment
+  - IfcFlowMeter
+  - IfcFlowMeterType
+  - IfcFlowMeterTypeEnum
+  - IfcFlowController
+  - IfcFlowControllerType
+  - IfcFlowControllerTypeEnum
+
+ifcType_v:  &type_ctrl_valve
+  - IfcValve
+  - IfcValveType
+  - IfcValveTypeEnum
+  - IfcFlowController
+  - IfcFlowControllerType
+  - IfcFlowControllerTypeEnum
+
+ifc_f:       &type_flow
+  - IfcFlowController
+  - IfcFlowControllerType
+  - IfcFlowControllerTypeEnum
+  
+ifcType_p:  &type_pump
+  '2x3': 
+  - IfcFlowController
+  - IfcFlowControllerType
+  - IfcFlowControllerTypeEnum
+  '4': 
+  - IfcPump
+  - IfcPumpType
+  - IfcPumpTypeEnum
+  - IfcFlowController
+  - IfcFlowControllerType
+  - IfcFlowControllerTypeEnum
+
+ifcType_ve:  &type_vessel
+  - IfcTank
+  - IfcTankType
+  - IfcTankTypeEnum
+  
+ifc_e:       &type_e
+  - IfcDistributionControlElement
+  - IfcDistributionControlElementType
+  - IfcDistributionControlElementTypeEnum
+
+ŠT:
+    id: "15"
+    name: Šilumos gamyba
+    stages:
+      s1:
+        lod: 275
+        log: 2
+      s2:
+        lod: 200
+        log: 2
+      s3:
+        lod: 300
+        log: 2
+      s4:
+        lod: 350
+        log: 2
+        properties:
+          Pset_ManufacturerTypeInformation.ArticleNumber: {}
+          Pset_ManufacturerTypeInformation.Manufacturer: {}
+      s5:
+        lod: 350
+        log: 2
+        properties:
+          VVK.RelatedDocumentationURI: {}
+      s6:
+        lod: 500
+        log: 2
+    elements:
+    
+    - id: Vamzdis                                            #     NSIK: H.HD.WPA         Uc: Pr_65_52_63
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: WPA
+        Uniclass: Pr_65_52_63
+        ISO81346 CF: H
+        ISO81346 CT: HD
+        ISO81346 CC: WPA
+      ifcType: 
+      - IfcPipeSegment
+      - IfcPipeSegmentType
+      stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_g_pipe
+            <<: *prop_vis
+        s2: 
+          lod: 200
+          log: 2
+        s3: 
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_g_pipe
+            <<: *prop_vis
+        s4: 
+          lod: 350
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_g_pipe
+            <<: *prop_vis
+        s5: 
+          lod: 350
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_g_pipe
+            <<: *prop_vis
+        s6: 
+          lod: 350
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_g_pipe
+            <<: *prop_vis
+
+
+    - id: Akumuliacinė talpa                                 # NSIK+ISO: H.HD.CMA
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: CMA
+        ISO81346 CF: H
+        ISO81346 CT: HD
+        ISO81346 CC: CMA
+      ifcType: *type_well
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_g_well
+            Pset_QuantityTakeOff.Volume:
+              valueType: Integer | Real
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_vis
+            <<: *prop_g_well
+            Pset_QuantityTakeOff.Volume:
+              valueType: Integer | Real
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_g_well
+            Pset_QuantityTakeOff.Volume:
+              <<: *prop_vis
+
+    - id: Šilumokaitis                                       # NSIK+ISO: H.HD.EGC
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: EGC
+        ISO81346 CF: H
+        ISO81346 CT: HD
+        ISO81346 CC: EGC
+      ifcType: *type_well
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_vis
+            Pset_QuantityTakeOff.Volume:
+              valueType: Integer | Real
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_vis
+            Pset_QuantityTakeOff.Volume:
+              valueType: Integer | Real
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_vis
+            Pset_QuantityTakeOff.Volume:
+              <<: *prop_vis
+
+    - id: Šildymo sistemos sistemos teigiamo slėgio siurblys # NSIK+ISO: H.HD.GPA
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: GPA
+        ISO81346 CF: H
+        ISO81346 CT: HD
+        ISO81346 CC: GPA
+      ifcType: *type_e
+      stages:
+        s1:
+          lod: 200
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_e_device
+            <<: *prop_e_device_s4
+
+        s3: 
+          log: 2
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_e_device
+            <<: *prop_equipment_mech
+            <<: *prop_material
+        s4: 
+          log: 3
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e_device
+            <<: *prop_equipment_mech
+            <<: *prop_material
+            <<: *prop_external
+
+    - id: Vandens tiekimo sistemos atbulinis vožtuvas        # NSIK+ISO: H.HD.QMA
+      examples:
+      - Ventilis
+      - Sklendė
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: QMA
+        ISO81346 CF: H
+        ISO81346 CT: HD
+        ISO81346 CC: QMA
+      ifcType: *type_flow
+      stages:  &stages_s1_s3_s4_valve
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g_valve
+            <<: *prop_material
+            <<: *prop_external
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g_valve
+            <<: *prop_material
+        s4: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g_valve
+            <<: *prop_material
+            <<: *prop_external
+
+    - id: Šildymo sistemos izoliacija                        # NSIK+ISO: H.HD.RQA         Uc: Pr_25_57_06
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: RQA
+        Uniclass: Pr_25_57_06
+        ISO81346 CF: H
+        ISO81346 CT: HD
+        ISO81346 CC: RQA
+      ifcType: *type_covering
+      stages: &stages_s1_s4_insulation
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g_thickness
+            <<: *prop_material
+            <<: *prop_external
+        s3: 
+          properties:
+            <<: *prop
+            <<: *prop_g_thickness
+            <<: *prop_material
+            <<: *prop_external
+        s4: 
+          properties:
+            <<: *prop
+            <<: *prop_g_thickness
+            <<: *prop_material
+            <<: *prop_external
+            
+    - id: Išardoma vamzdžių jungtis                          #+                                                 NSIK: H.HD.XMA         Uc: Pr_65_52_63
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: XMA
+        Uniclass: Pr_65_52_63
+        ISO81346 CF: H
+        ISO81346 CT: HD
+        ISO81346 CC: XMA
+      ifcType: 
+      - IfcPipeFitting
+      - IfcPipeFittingType
+      stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+        s2: 
+          lod: 200
+          log: 2
+        s3: 
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_equipment_mech
+        s4: 
+          lod: 350
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_equipment_mech
+    
+    - id: Neišardoma vamzdžių jungtis                        #+                                                 NSIK: H.HD.XMB         Uc: Pr_65_52_63
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: XMB
+        Uniclass: Pr_65_52_63
+        ISO81346 CF: H
+        ISO81346 CT: HD
+        ISO81346 CC: XMB
+      ifcType: 
+      - IfcPipeFitting
+      - IfcPipeFittingType
+      stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+        s2: 
+          lod: 200
+          log: 2
+        s3: 
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_material
+            <<: *prop_equipment_mech
+        s4: 
+          lod: 350
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_material
+            <<: *prop_equipment_mech
+        s5: 
+          lod: 350
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_material
+            <<: *prop_equipment_mech
+        s6: 
+          lod: 350
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_material
+            <<: *prop_equipment_mech
+
+    - id: Siurblys                                           #+   *stages_unique_heavy_electrical_equipment     NSIK: H.HD.GPB         Uc: Pr_65_53_86
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: GPB
+        Uniclass: Pr_65_53_86
+      examples:
+      - Cirkuliacinis siurblys
+      - Rotacinis siurblys
+      ifcType: *type_pump
+      stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            Pset_QuantityTakeOff.VolumetricFlowRate: {}
+            <<: *prop_g
+            <<: *prop_equipment_mass
+            <<: *prop_equipment_e
+            <<: *prop_equipment_mech
+        s4: 
+          lod: 350
+          log: 2
+          properties: {}
+      
+    - id: Kompresorinė šaldymo mašina                        #+  *stages_unique_heavy_electrical_equipment +    NSIK: H.HD.ECC         Uc: Pr_60_60_13_04
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: ECC
+        Uniclass: Pr_60_60_13_04
+      ifcType:
+      - IfcHeatExchanger
+      - IfcHeatExchangerType
+      - IfcHeatExchangerTypeEnum
+      - IfcFlowController
+      - IfcFlowControllerType
+      - IfcFlowControllerTypeEnum
+      examples:
+      - Kompresorinė šaldymo mašina
+      - Čileris
+      - Šaldytuvas
+      stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+        s2: 
+          lod: 200
+          log: 2
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mass
+            <<: *prop_equipment_e
+            <<: *prop_equipment_mech
+        s4: 
+          lod: 350
+          log: 2
+          properties: {}
+        s5: 
+          log: 2
+        s6: 
+          log: 2
+
+    - id: Šilumokaitis                                       #+ &stages_unique_heavy_equipment                  NSIK: H.HD.EGC         Uc: Pr_60_60_38_62
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: EGC
+        Uniclass: Pr_60_60_38_62
+      ifcType:
+      - IfcHeatExchanger
+      - IfcHeatExchangerType
+      - IfcHeatExchangerTypeEnum
+      - IfcTank
+      - IfcTankType
+      - IfcTankTypeEnum
+      stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+        s2: 
+          lod: 200
+          log: 2
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mass
+            <<: *prop_equipment_mech
+        s4: 
+          lod: 350
+          log: 2
+          properties: {}
+ 
+    - id: Šilumos siurblys                                   #+ &stageS2_S3_electrical_equipment                NSIK: H.HD.EGA         Uc: Pr_70_60_37
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: EGA
+        Uniclass: Pr_70_60_37
+      ifcType: *type_pump
+      stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+        s2: 
+          lod: 200
+          log: 2
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mass
+            <<: *prop_equipment_e
+            <<: *prop_equipment_mech
+        s4: 
+          lod: 350
+          log: 2
+
+    - id: Cirkuliacinis siurblys                             #+   *stages_unique_heavy_electrical_equipment     NSIK: H.HD.%GPB1010    Uc: Pr_65_53_86_12
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: '%GPB1010'
+        Uniclass: Pr_65_53_86_12
+      ifcType: *type_pump
+      stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            Pset_QuantityTakeOff.VolumetricFlowRate: {}
+            <<: *prop_equipment_mass
+            <<: *prop_equipment_e
+            <<: *prop_equipment_mech
+        s4: 
+          lod: 350
+          log: 2
+        s5: 
+          lod: 350
+          log: 2
+        s6: 
+          log: 2
+
+    - id: Apsauginis vožtuvas                                #+                                                 NSIK: H.HD.FLA         Uc: Pr_65_54_95_65
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: FLA
+        Uniclass: Pr_65_54_95_65
+      ifcType: *type_ctrl_valve
+      stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
+        s4: 
+          lod: 350
+          log: 2
+
+    - id: Filtras                                            #+                                                 NSIK: H.HD.HQB         Uc: Pr_60_55_97_41
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: HQB
+        Uniclass: Pr_60_55_97_41
+      #ifcType: 
+      stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_volume_mass
+        s4: 
+          lod: 350
+          log: 2
+
+    - id: Išsiplėtimo indas                                  #+   *stageS2_S3_unique_heavy_equipment            NSIK: H.HD.FLE         Uc: Pr_60_50_20_28
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: FLE
+        Uniclass: Pr_60_50_20_28 
+      ifcType: *type_vessel
+      stages: 
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+        s2: 
+          lod: 200
+          log: 2
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_volume_mass
+        s4: 
+          lod: 350
+          log: 2
+
+    - id: Šulinys                                            #+                                                 NSIK: H.HD.XMC         Uc: Ss_50_35_06
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: XMC
+        Uniclass: Ss_50_35_06
+      #ifcType:
+      stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop_u
+        s2: 
+          lod: 200
+          log: 2
+          properties:
+            <<: *prop_u
+        s3: 
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop_u
+            Pset_QuantityTakeOff.Length:
+            - examples:
+              - 2.500
+            - descr: Elemento aukštis, m
+            Pset_QuantityTakeOff.Diameter: {}
+        s4: 
+          lod: 350
+          log: 2
+          
+    - id: Akumuliacinė talpa                                 #  NSIK+ISO: H.HD.CPA        Uc: Pr_60_50_20_10
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: CPA
+        Uniclass Pr: Pr_60_50_20_10   # Buffer vessels 
+        ISO81346 CF: H
+        ISO81346 CT: HD
+        ISO81346 CC: CPA
+      ifcType: *type_vessel
+      examples:
+      - Šilumos akumuliavimo skysčiuose talpykla
+      stages: 
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+        s2: 
+          lod: 200
+          log: 2
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_volume_mass
+        s4: 
+          lod: 350
+          log: 2
+
+
+    - id: Akumuliacinė talpa su elektriniu šildymo elementu  #  NSIK:     H.HD.%CPA2010   Uc: Pr_60_50_20_78
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: "%CPA2010"
+        Uniclass: Pr_60_50_20_78  # Single feed indirect hot water storage cylinders 
+      ifcType: *type_vessel
+      stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_volume_mass
+            <<: *prop_equipment_e
+        s2: 
+          lod: 200
+          log: 2
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_volume_mass
+            <<: *prop_equipment_e
+        s4: 
+          lod: 350
+          log: 2
+
+
+
+    - id: Sklendė                                            #  NSIK+ISO: H.HD.QMA        Uc: Pr_65_54_95
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: QMA
+        Uniclass: Pr_65_54_95   #  Building services valves
+      ifcType: *type_ctrl_valve
+      stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
+        s4: 
+          lod: 350
+          log: 2
+
+    - id: Sklendė                                            #  NSIK:     H.HD.%QMA10
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: "%QMA10"
+      ifcType: *type_ctrl_valve
+      stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
+        s4: 
+          lod: 350
+          log: 2
+
+    - id: Oro atskirtuvas                                    #  NSIK:     H.HD.%HQB40     Uc: Pr_65_54_93_05
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: "%HQB40"
+        Uniclass: Pr_65_54_93_05  # Automatic air vents
+      ifcType: *type_ctrl_valve
+      stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
+        s4: 
+          lod: 350
+          log: 2
+
+          
+    - id: Balansinis ventilis                                #  NSIK:     H.HD.%RNA20     Uc: Pr_65_54_95_86
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: "%RNA20"
+        Uniclass: Pr_65_54_95_86  # Thermostatic balancing valves 
+      ifcType: *type_ctrl_valve
+      stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
+        s4: 
+          lod: 350
+          log: 2
+
+    - id: Balansavimo ventilis su matavimo antgaliais        #  NSIK:     H.HD.%RNA2010
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: '%RNA2010'
+      ifcType: *type_ctrl_valve
+      stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
+        s4: 
+          lod: 350
+          log: 2
+  
+    - id: Termometras                                        #  NSIK+ISO: H.HD.BTA        Uc: Pr_65_52_34_88
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: BTA
+        Uniclass Pr: Pr_65_52_34_88 # Temperature gauges
+        ISO81346 CF: H
+        ISO81346 CT: HD
+        ISO81346 CC: BTA
+        
+      ifcType:  *type_ctrl_equipment
+      stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
+        s4: 
+          lod: 350
+          log: 2
+
+    - id: Vandens skaitiklis                                 #  NSIK+ISO: H.HD.BHA        Uc: Pr_80_51_51_97
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: BHA
+        Uniclass: Pr_80_51_51_97  # Water meters
+        ISO81346 CF: H
+        ISO81346 CT: HD
+        ISO81346 CC: BHA
+      ifcType: *type_ctrl_equipment
+      stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
+        s4: 
+          lod: 350
+          log: 2
+
+    - id: Vandens skaitiklis                                 #  NSIK:     H.HD.%BHA20 
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: "%BHA20"
+      ifcType: *type_ctrl_equipment
+      stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
+        s4: 
+          lod: 350
+          log: 2
+
+    - id: Šiluminės energijos skaitiklis                     #  NSIK+ISO: H.HD.BHB        Uc: Pr_80_51_51_37
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: BHB
+        Uniclass: Pr_80_51_51_37 # Heat meters
+        ISO81346 CF: H
+        ISO81346 CT: HD
+        ISO81346 CC: BHB
+      ifcType:  *type_ctrl_equipment
+      stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
+        s4: 
+          lod: 350
+          log: 2
+
+    - id: Elektros skaitiklis                                #  NSIK+ISO: H.HD.BHC        Uc: Pr_80_51_51_98
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: BHC
+        Uniclass: Pr_80_51_51_98   # Wattmeters
+        ISO81346 CF: H
+        ISO81346 CT: HD
+        ISO81346 CC: BHC
+      ifcType:  *type_ctrl_equipment
+      stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
+        s4: 
+          lod: 350
+          log: 2
+
+    - id: Manometras                                         #  NSIK+ISO: H.HD.BPA        Uc: Pr_80_51_51_67
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: BPA
+        Uniclass: Pr_80_51_51_67   # Pressure meters
+        ISO81346 CF: H
+        ISO81346 CT: HD
+        ISO81346 CC: BPA
+      examples:
+      - Slėgio indikatorius
+      ifcType:  *type_ctrl_equipment
+      stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
+        s4: 
+          lod: 350
+          log: 2
+
+    - id: Slėgio relė                                        #  NSIK+ISO: H.HD.BPB        Uc: Pr_75_50_76_97
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: BPP
+        Uniclass: Pr_75_50_76_97   # Water pressure sensors
+        ISO81346 CF: H
+        ISO81346 CT: HD
+        ISO81346 CC: BPP
+      examples:
+      - Slėgio jungiklis
+      ifcType: *type_ctrl_equipment
+      stages:
+        s1:
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          log: 2
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_equipment_mech
+        s4: 
+          lod: 350
+          log: 2
+
+
+

@@ -1,0 +1,1518 @@
+# v 0.5a
+# NSIK ver 0.9, 2023-09-01
+# https://nsiklab.lt 
+#
+# 07.01 - Vandentiekis
+#
+
+prop_g:   &prop_g
+  Pset_QuantityTakeOff.Height: 
+    valueType: Integer | Real
+  Pset_QuantityTakeOff.Width: 
+    valueType: Integer | Real
+  Pset_QuantityTakeOff.Length: 
+    valueType: Integer | Real
+
+prop_g_d:   &prop_g_diam
+  Pset_QuantityTakeOff.Length: 
+    valueType: Integer | Real
+  Pset_QuantityTakeOff.Diameter: 
+    valueType: Integer | Real
+
+prop_thick:     &prop_g_thickness
+  Pset_QuantityTakeOff.Length:
+    valueType: Integer | Real
+  Pset_QuantityTakeOff.Thickness: {}
+
+prop:     &prop
+  VVK.Name: {}
+  VVK.ElementType: {}
+  Pset_ElementCommon.System: {}
+  # System: {}
+  Pset_ElementComponentCommon.Status: {}
+  Pset_ConstructionAdministration.SpecificationSectionNumber: {}
+  
+prop_u: &prop_u
+  <<: *prop
+  VVK.Tag: {}
+  
+prop_well: &prop_well
+  Pset_QuantityTakeOff.Diameter: 
+    valueType: Integer | Real
+  Pset_QuantityTakeOff.Volume: 
+    valueType: Integer | Real
+  
+prop_pump: &prop_pump
+  Pset_PumpTypeCommon.ConnectionSize: 
+    valueType: Integer | Real
+  Pset_PumpTypeCommon.TemperatureRange: {}
+  Pset_PumpTypeCommon.NominalRotationSpeed: {}
+
+prop_g_valve:   &prop_g_valve
+  Pset_QuantityTakeOff.Diameter:
+    valueType: Integer | Real
+
+prop_g_well: &prop_g_well
+  Pset_QuantityTakeOff.Length:
+    valueType: Integer | Real
+    descr: Šulinio ar kameros aukštis nuo dugno iki viršutinės perdangos, nevertinant įlipimo dalies aukščio
+  Pset_QuantityTakeOff.Diameter:
+    valueType: Integer
+    descr: Apvalaus šulinio diametras
+#  Pset_QuantityTakeOff.Width:
+#    descr: Stačiakampio šulinio ar kameros plotis plane
+#    memo: Jei taikoma
+#  Pset_QuantityTakeOff.Length:
+#    descr: Stačiakampio šulinio ar kameros ilgis plane
+
+prop_g_pipe:   &prop_g_pipe
+  Pset_QuantityTakeOff.Length:
+    valueType: Integer | Real
+  Pset_QuantityTakeOff.Diameter:
+    valueType: Integer
+    
+prop_e_device: &prop_e_device
+  Pset_ElectricalDeviceCommon.RatedVoltage: 
+    valueType: Integer
+  Pset_ElectricalDeviceCommon.NominalFrequencyRange: {}
+  Pset_ElectricalDeviceCommon.HasProtectiveEarth: {}
+  Pset_ElectricalDeviceCommon.InsulationStandardClass: {}
+  Pset_ElectricalDeviceCommon.IP_Code: {}
+  Pset_ElectricalDeviceCommon.IK_Code: {}
+  Pset_ElectricalDeviceCommon.Power: {}
+  Pset_ElectricalDeviceCommon.NominalPowerConsumption: 
+    valueType: Integer | Real
+  
+prop_e_sens:     &prop_e_sensor
+  Pset_ElectricalDeviceCommon.IP_Code: {}
+  Pset_ElectricalDeviceCommon.IK_Code: {}
+  Pset_ElectricalDeviceCommon.InsulationStandardClass: {}
+  
+prop_e:     &prop_e
+  Pset_ElectricalDeviceCommon.NominalPowerConsumption: 
+    valueType: Integer | Real
+  <<: *prop_e_sensor
+
+prop_mass: &prop_mass
+  Pset_ElementComponentCommon.Weight: 
+    valueType: Integer | Real
+  
+prop_ext_cable:  &prop_external
+  Pset_ElementComponentCommon.IsExternal: {}
+
+prop_vis:  &prop_vis
+  VVK.Material: {}
+  VVK.Finish: {}
+  VVK.Colour: {}
+  
+prop_mat:     &prop_material
+  VVK.Material: {}
+    # allowedValues:
+    # - Plastikas
+    # - Betonas
+    # - PVC
+
+#prop_s3_well: &prop_s3_well_round
+#  - Name
+#  - System
+#  - Pset_ElementComponentCommon.Status
+#  - Tag
+#  - Pset_QuantityTakeOff.Heigth
+#  - Pset_QuantityTakeOff.Diameter
+#  - Pset_QuantityTakeOff.Volume
+  
+#prop_s3:  &prop_s3
+#  - Name
+#  - System
+#  - Pset_ElementComponentCommon.Status
+#  - Type
+#  - Pset_ConstructionAdministration.SpecificationSectionNumber
+#  - VVK.Material
+#  - Pset_QuantityTakeOff.Heigth
+#  - Pset_QuantityTakeOff.Width
+#  - Pset_QuantityTakeOff.Length
+
+prop_zone:  &prop_zone
+  System: {}
+  Pset_ElementComponentCommon.Status: {}
+  Pset_QuantityTakeOff.Width:
+    valueType: Integer | Real
+  Pset_QuantityTakeOff.Area:
+    valueType: Integer | Real
+  
+#prop_s3_pipe:  &prop_s3_pipe
+#  - Name
+#  - System
+#  - Pset_ElementComponentCommon.Status
+#  - Type
+#  - Pset_ConstructionAdministration.SpecificationSectionNumber
+#  - VVK.Material
+#  - Pset_QuantityTakeOff.Diameter
+#  - Pset_QuantityTakeOff.Length
+
+#prop_s3_valve:  &prop_s3_valve
+#  - Name
+#  - System
+#  - Pset_ElementComponentCommon.Status
+#  - Type
+#  - Pset_ConstructionAdministration.SpecificationSectionNumber
+#  - VVK.Material
+#  - Pset_QuantityTakeOff.Diameter
+
+#prop_s3_valve:  &prop_s3_unique_valve
+#  - Name
+#  - System
+#  - Pset_ElementComponentCommon.Status
+#  - Type
+#  - Tag
+#  - Pset_ConstructionAdministration.SpecificationSectionNumber
+#  - VVK.Material
+#  - Pset_QuantityTakeOff.Diameter
+  
+
+  
+# prop_s3u: &prop_s3_u
+  # - Name
+  # - System
+  # - Pset_ElementComponentCommon.Status
+  # - Type
+  # - Tag
+  # - Pset_ConstructionAdministration.SpecificationSectionNumber
+  # - VVK.Material
+  # - Pset_QuantityTakeOff.Heigth
+  # - Pset_QuantityTakeOff.Width
+  # - Pset_QuantityTakeOff.Length
+  
+# prop_vu:  &prop_s3_vu
+  # - Name
+  # - System
+  # - Pset_ElementComponentCommon.Status
+  # - Type
+  # - Tag
+  # - Pset_ConstructionAdministration.SpecificationSectionNumber
+  # - VVK.Material
+  # - Pset_QuantityTakeOff.Heigth
+  # - Pset_QuantityTakeOff.Width
+  # - Pset_QuantityTakeOff.Length
+  # - VVK.Finish
+  # - VVK.Colour
+
+# prop_ue:  &prop_s3_ue
+  # - Name
+  # - System
+  # - Pset_ElementComponentCommon.Status
+  # - Type
+  # - Tag
+  # - Pset_ConstructionAdministration.SpecificationSectionNumber
+  # - VVK.Material
+  # - Pset_QuantityTakeOff.Heigth
+  # - Pset_QuantityTakeOff.Width
+  # - Pset_QuantityTakeOff.Length
+  # - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+  
+# prop_vue: &prop_s3_vue
+  # - Name
+  # - System
+  # - Pset_ElementComponentCommon.Status
+  # - Type
+  # - Tag
+  # - Pset_ConstructionAdministration.SpecificationSectionNumber
+  # - VVK.Material
+  # - Pset_QuantityTakeOff.Heigth
+  # - Pset_QuantityTakeOff.Width
+  # - Pset_QuantityTakeOff.Length
+  # - VVK.Finish
+  # - VVK.Colour
+  # - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+  
+# prop_vue: &prop_s3_vue_x
+  # - Name
+  # - System
+  # - Pset_ElementComponentCommon.Status
+  # - Type
+  # - Tag
+  # - Pset_ConstructionAdministration.SpecificationSectionNumber
+  # - VVK.Material
+  # - Pset_QuantityTakeOff.Heigth
+  # - Pset_QuantityTakeOff.Width
+  # - Pset_QuantityTakeOff.Length
+  # - VVK.Finish
+  # - VVK.Colour
+  # - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+  # - Pset_ElectricalDeviceCommon.IsExternal
+  
+
+
+ifc_linear:  &type_linear
+  - IfcFlowSegment
+  - IfcFlowSegmentType
+  - IfcFlowSegmentTypeEnum
+ifc_e:       &type_e
+  - IfcDistributionControlElement
+  - IfcDistributionControlElementType
+  - IfcDistributionControlElementTypeEnum
+ifc_w:       &type_well
+  - IfcFlowTerminal
+  - IfcFlowTerminalType
+  - IfcFlowTerminalTypeEnum
+ifc_f:       &type_flow
+  - IfcFlowController
+  - IfcFlowControllerType
+  - IfcFlowControllerTypeEnum
+  
+ifc_cover:    &type_covering
+  - IcfCovering
+  
+ifc_zone:  &type_zone
+  - IfcSpace
+  - IfcSpaceType
+
+# elements
+VN.V:
+    id: "07.01"
+    name: Vandentiekis
+    stages:
+      s1:
+        lod: 275
+        log: 2
+      s2:
+        lod: 200
+        log: 2
+      s3:
+        lod: 300
+        log: 2
+      s4:
+        lod: 350
+        log: 2
+        properties:
+          Pset_ManufacturerTypeInformation.ArticleNumber: {}
+          Pset_ManufacturerTypeInformation.Manufacturer: {}
+      s5:
+        lod: 350
+        log: 2
+        properties:
+        - VVK.RelatedDocumentationURI
+      s6:
+        lod: 500
+        log: 6
+        
+    elements:
+
+# vandentiekis, bendras atvejis
+# vandens tiekimo sustema F.JB
+
+    - id: Geriamo vandens skaitiklis                        # NSIK+ISO: F.JB.BHA
+      examples:
+      - Karšto vandens skaitiklis
+      - vandens apskaitos prietaisas
+      - Šalto vandens skaitiklis
+      classifications:
+        NSIK LF: F
+        NSIK LT: JB
+        NSIK LK: BHA
+        ISO81346 CF: F
+        ISO81346 CT: JB
+        ISO81346 CC: BHA
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g_diam
+            <<: *prop_vis
+        s3:
+          properties:
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_g_diam
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_g_diam
+            
+    - id: Geriamo vandens skaitiklis                        # NSIK+ISO: F.QA.BFA
+      examples:
+      - Karšto vandens skaitiklis
+      - vandens apskaitos prietaisas
+      - Šalto vandens skaitiklis
+      classifications:
+        NSIK LF: F
+        NSIK LT: QA
+        NSIK LK: BFA
+        ISO81346 CF: F
+        ISO81346 CT: QA
+        ISO81346 CC: BFA
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g_diam
+            <<: *prop_vis
+        s3:
+          properties:
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_g_diam
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_g_diam
+    
+    - id: Geriamojo vandens talpa                           # NSIK+ISO: F.JB.CMA
+      classifications:
+        NSIK LF: F
+        NSIK LT: JB
+        NSIK LK: CMA
+        ISO81346 CF: F
+        ISO81346 CT: JB
+        ISO81346 CC: CMA
+      ifcType: *type_well
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_g_well
+            Pset_QuantityTakeOff.Volume:
+              valueType: Integer | Real
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+            Pset_QuantityTakeOff.Volume:
+              valueType: Integer | Real
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_g_well
+            Pset_QuantityTakeOff.Volume:
+              valueType: Integer | Real
+    
+    - id: Geriamojo vandens šildytuvas                      # NSIK+ISO: F.JB.CPA
+      classifications:
+        NSIK LF: F
+        NSIK LT: JB
+        NSIK LK: CPA
+        ISO81346 CF: F
+        ISO81346 CT: JB
+        ISO81346 CC: CPA
+      ifcType: *type_well
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_well
+            <<: *prop_mass
+        s3:
+          properties:
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_well
+            <<: *prop_mass
+            <<: *prop_e
+
+    - id: Elektrinis katilas                                # NSIK+ISO: F.JB.EBA
+      classifications:
+        NSIK LF: F
+        NSIK LT: JB
+        NSIK LK: EBA
+        ISO81346 CF: F
+        ISO81346 CT: JB
+        ISO81346 CC: EBA
+      ifcType: *type_well
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_well
+            <<: *prop_mass
+        s3:
+          properties:
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_well
+            <<: *prop_mass
+            <<: *prop_e
+    
+    - id: Vandentiekio sistemos teigiamo slėgio siurblys    # NSIK+ISO: F.JB.GPA
+      classifications:
+        NSIK LF: F
+        NSIK LT: JB
+        NSIK LK: GPA
+        ISO81346 CF: F
+        ISO81346 CT: JB
+        ISO81346 CC: GPA
+      ifcType: *type_e
+      stages:
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          log: 2
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            Pset_QuantityTakeOff.Diameter: 
+              descr: Prijungimo diametras
+            <<: *prop_e_device
+            <<: *prop_material
+            <<: *prop_external
+            
+            
+    - id: Vandens tiekimo sistemos izoliacija               # NSIK+ISO: F.JB.RQA         Uc: Pr_25_57_06
+      classifications:
+        NSIK LF: F
+        NSIK LT: JB
+        NSIK LK: RQA
+        Uniclass: Pr_25_57_06
+        ISO81346 CF: F
+        ISO81346 CT: JB
+        ISO81346 CC: RQA
+      ifcType: *type_covering
+      stages: &stages_s1_s4_insulation
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g_thickness
+            <<: *prop_material
+            <<: *prop_external
+        s3: 
+          properties:
+            <<: *prop
+            <<: *prop_g_thickness
+            <<: *prop_material
+            <<: *prop_external
+        s4: 
+          properties:
+            <<: *prop
+            <<: *prop_g_thickness
+            <<: *prop_material
+            <<: *prop_external
+
+
+    - id: Vandens tiekimo sistemos atbulinis vožtuvas       # NSIK+ISO: F.JB.RMA
+      examples:
+      - Ventilis
+      - Sklendė
+      classifications:
+        NSIK LF: F
+        NSIK LT: JB
+        NSIK LK: RMA
+        ISO81346 CF: F
+        ISO81346 CT: JB
+        ISO81346 CC: RMA
+      ifcType: *type_flow
+      stages:  &stages_s1_s3_s4_valve
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g_valve
+            <<: *prop_material
+            <<: *prop_external
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g_valve
+            <<: *prop_material
+        s4: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g_valve
+            <<: *prop_material
+            <<: *prop_external
+
+    - id: Vandens tiekimo sistemos sklendė                  # NSIK+ISO: F.JB.RNA
+      examples:
+      - Ventilis
+      - Sklendė
+      classifications:
+        NSIK LF: F
+        NSIK LT: JB
+        NSIK LK: RNA
+        ISO81346 CF: F
+        ISO81346 CT: JB
+        ISO81346 CC: RNA
+      ifcType: *type_flow
+      stages:  
+        <<: *stages_s1_s3_s4_valve 
+
+    - id: Filtras                                           # NSIK+IOS: F.JB.HQB         Uc: Pr_60_55_97_41
+      classifications:
+        NSIK LF: F
+        NSIK LT: JB
+        NSIK LK: HQB
+        Uniclass: Pr_60_55_97_41
+        ISO81346 CF: F
+        ISO81346 CT: JB
+        ISO81346 CC: HQB
+      #ifcType: 
+      stages:
+        <<: *stages_s1_s3_s4_valve 
+
+    - id: Gaisrinis čiaupas                              # NSIK+ISO: F.JB.RND
+      examples:
+      - Ventilis
+      - Sklendė
+      classifications:
+        NSIK LF: F
+        NSIK LT: JB
+        NSIK LK: RND
+        ISO81346 CF: F
+        ISO81346 CT: JB
+        ISO81346 CC: RND
+      ifcType: *type_flow
+      stages:  
+        <<: *stages_s1_s3_s4_valve 
+        
+    - id: Vandens tiekimo sistemos vožtuvas              # NSIK+ISO: F.JB.QNA
+      examples:
+      - Ventilis
+      - Sklendė
+      classifications:
+        NSIK LF: F
+        NSIK LT: JB
+        NSIK LK: QNA
+        ISO81346 CF: F
+        ISO81346 CT: JB
+        ISO81346 CC: QNA
+      ifcType: *type_flow
+      stages:  
+        <<: *stages_s1_s3_s4_valve
+
+    - id: Vandens tiekimo sistemos vožtuvas              # NSIK+ISO: F.JB.QMA
+      examples:
+      - Ventilis
+      - Sklendė
+      classifications:
+        NSIK LF: F
+        NSIK LT: JB
+        NSIK LK: QMA
+        ISO81346 CF: F
+        ISO81346 CT: JB
+        ISO81346 CC: QMA
+      ifcType: *type_flow
+      stages:  
+        <<: *stages_s1_s3_s4_valve
+
+    - id: Išardoma jungtis                               # NSIK+ISO: F.JB.XMA
+      examples:
+      - Srieginis atjungimo intarpas
+      - Flanšinė jungtis
+      classifications:
+        NSIK LF: F
+        NSIK LT: JB
+        NSIK LK: XMA
+        ISO81346 CF: F
+        ISO81346 CT: JB
+        ISO81346 CC: XMA
+      ifcType: *type_flow
+      stages:  
+        <<: *stages_s1_s3_s4_valve 
+
+    - id: Neišardoma jungtis                               # NSIK+ISO: F.JB.XMB
+      examples:
+      - Suvirinta tiesi jungtis
+      - Presuojama tiesi jungtis
+      classifications:
+        NSIK LF: F
+        NSIK LT: JB
+        NSIK LK: XMB
+        ISO81346 CF: F
+        ISO81346 CT: JB
+        ISO81346 CC: XMB
+      ifcType: *type_flow
+      stages:  
+        <<: *stages_s1_s3_s4_valve 
+
+    - id: Kampinė jungtis                                # NSIK+ISO: F.JB.XMD
+      examples:
+      - Alkūnė
+      classifications:
+        NSIK LF: F
+        NSIK LT: JB
+        NSIK LK: XMD
+        ISO81346 CF: F
+        ISO81346 CT: JB
+        ISO81346 CC: XMD
+      ifcType: *type_flow
+      stages:  
+        <<: *stages_s1_s3_s4_valve 
+        
+    - id: Šakotuvas                                      # NSIK+ISO: F.JB.XME
+      examples:
+      - Trišakis
+      - Keturšakis
+      - Kolektorus
+      classifications:
+        NSIK LF: F
+        NSIK LT: JB
+        NSIK LK: XME
+        ISO81346 CF: F
+        ISO81346 CT: JB
+        ISO81346 CC: XME
+      ifcType: *type_flow
+      stages:  
+        <<: *stages_s1_s3_s4_valve 
+        
+    - id: Vandentiekio šulinys                           # NSIK+ISO: F.JB.XMC
+      examples:
+      - Apžiūros šulinys
+      - Inspektavimo šulinys
+      - Inžinerinių tinklu kamera
+      - Komunikacijų šulinys
+      classifications:
+        NSIK LF: F
+        NSIK LT: JB
+        NSIK LK: XMC
+        # Uniclass EF: ""
+        # Uniclass Ss: ""
+        Uniclass Pr: Pr_60_50
+        ISO81346 CF: F
+        ISO81346 CT: JB
+        ISO81346 CC: XMC
+      ifcType: *type_well
+      stages: &stages_s1_s3_s4_well
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_material
+            <<: *prop_external
+            <<: *prop_g_well
+        s3:
+          properties:
+            <<: *prop_u
+            <<: *prop_g_well
+            <<: *prop_material
+            
+        s4: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g_well
+            <<: *prop_material
+            <<: *prop_external
+
+    - id: Vandens tiekimo sistemos vamzdis               # NSIK+ISO: F.JB.WPA
+      classifications:
+        NSIK LF: F
+        NSIK LT: JB
+        NSIK LK: WPA
+        ISO81346 CF: F
+        ISO81346 CT: JB
+        ISO81346 CC: WPA
+        # Uniclass EF: ""
+        # Uniclass Ss: ""
+        Uniclass Pr: Pr_65_52_63
+      ifcType: *type_linear
+      stages: &stages_s1_s3_s4_pipe
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g_pipe
+            <<: *prop_material
+            <<: *prop_external
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g_pipe
+            <<: *prop_material
+        s4: 
+          properties:
+            <<: *prop_g_pipe
+            <<: *prop_material
+            <<: *prop_external
+    
+    
+    - id: Vandens tiekimo sistemos vamzdis. Šaltojo vandentiekio sistema          # NSIK+ISO: F.%JB10.WPA
+      classifications:
+        NSIK LF: F
+        NSIK LT: "%JB10"
+        NSIK LK: WPA
+        
+        # Uniclass Pr: Pr_65_52_63
+      ifcType: *type_linear
+      stages: 
+        <<: *stages_s1_s3_s4_pipe
+
+    - id: Vandens tiekimo sistemos vamzdis. Karštojo vandentiekio sistema          # NSIK+ISO: F.%JB20.WPA
+      classifications:
+        NSIK LF: F
+        NSIK LT: "%JB20"
+        NSIK LK: WPA
+        
+        # Uniclass Pr: Pr_65_52_63
+      ifcType: *type_linear
+      stages: 
+        <<: *stages_s1_s3_s4_pipe
+
+    - id: Vandens tiekimo tinklo apsaugos zona           # NSIK+ISO: <E>DCB/<L>F.JB
+      classifications:
+        NSIK LF: F
+        NSIK LT: JB
+        NSIK B: DCB
+        ISO81346 CF: F
+        ISO81346 CT: JB
+        ISO81346 CS: DCB
+      ifcType: *type_zone
+      stages: &zone_s1_s2_prot
+        s1:
+          properties:
+            Pset_QuantityTakeOff.Width: {}
+            Pset_QuantityTakeOff.Area: {}
+            Pset_ElementComponentCommon.Status: {}
+        s2: 
+          properties:
+            Pset_QuantityTakeOff.Width: {}
+            Pset_QuantityTakeOff.Area: {}
+            Pset_ElementComponentCommon.Status: {}
+        s3: 
+          properties:
+            # Pset_QuantityTakeOff.Width: {}
+            Pset_QuantityTakeOff.Area: {}
+            Pset_ElementComponentCommon.Status: {}
+# nuotekų sistema
+
+    # - id: Nuoteku sistemos vamzdžio stogelis           # NSIK+ISO: G.JD.FSD
+      # examples:
+      # - Stogelis
+      # classifications:
+        # NSIK LF: G
+        # NSIK LT: JD
+        # NSIK LK: FSD
+        # ISO81346 CF: G
+        # ISO81346 CT: JD
+        # ISO81346 CC: FSD
+      # ifcType: *type_flow
+      # stages:  
+        # <<: *stages_s1_s3_s4_valve
+        
+    # - id: Nuoteku sistemos teigiamo slėgio siurblys    # NSIK+ISO: G.JD.GPA
+      # classifications:
+        # NSIK LF: G
+        # NSIK LT: JD
+        # NSIK LK: GPA
+        # ISO81346 CF: G
+        # ISO81346 CT: JD
+        # ISO81346 CC: GPA
+      # ifcType: *type_e
+      # stages:
+        # s2:
+          # lod: 200
+          # properties:
+            # <<: *prop
+        # s3: 
+          # log: 2
+          # lod: 300
+          # properties:
+            # <<: *prop_u
+            # <<: *prop_g
+            # <<: *prop_e
+            # Pset_QuantityTakeOff.Diameter: 
+              # descr: Prijungimo diametras
+            # <<: *prop_e_device
+            # <<: *prop_material
+            # <<: *prop_external
+    
+    # - id: Sifonas                                      # NSIK+ISO: G.JD.RMD
+      # examples:
+      # - Stogelis
+      # classifications:
+        # NSIK LF: G
+        # NSIK LT: JD
+        # NSIK LK: RMD
+        # ISO81346 CF: G
+        # ISO81346 CT: JD
+        # ISO81346 CC: RMD
+      # ifcType: *type_flow
+      # stages:  
+        # <<: *stages_s1_s3_s4_valve
+        
+    # - id: Nuotekų sistemos izoliacija                  # NSIK+ISO: G.JD.RQA
+      # classifications:
+        # NSIK LF: G
+        # NSIK LT: JD
+        # NSIK LK: RQA
+        # Uniclass: Pr_25_57_06
+        # ISO81346 CF: G
+        # ISO81346 CT: JD
+        # ISO81346 CC: RQA
+      # ifcType: *type_covering
+      # stages: 
+        # <<: *stages_s1_s4_insulation
+
+    # - id: Nuotekų sistemos vožtuvas                    # NSIK+ISO: G.JD.QNA
+      # examples:
+      # - Ventilis
+      # - Sklendė
+      # classifications:
+        # NSIK LF: G
+        # NSIK LT: JD
+        # NSIK LK: QNA
+        # ISO81346 CF: G
+        # ISO81346 CT: JD
+        # ISO81346 CC: QNA
+      # ifcType: *type_flow
+      # stages:  
+        # <<: *stages_s1_s3_s4_valve
+
+    # - id: Nuotekų surinkimo šulinys                    # NSIK+ISO: G.JD.XKG
+      # examples:
+      # - Įtekėjimo dėžė
+      # - Atviras Įtekėjimo šulinys
+      # classifications:
+        # NSIK LF: G
+        # NSIK LT: JD
+        # NSIK LK: XKG
+        # Uniclass EF: ""
+        # Uniclass Ss: ""
+        # Uniclass Pr: Pr_60_50
+        # ISO81346 CF: G
+        # ISO81346 CT: JD
+        # ISO81346 CC: XKG
+      # ifcType: *type_well
+      # stages: 
+        # <<: *stages_s1_s3_s4_well
+        
+    # - id: Nuotekų šulinys                              # NSIK+ISO: G.JD.XMC
+      # examples:
+      # - Apžiūros šulinys
+      # - Inspektavimo šulinys
+      # - Inžinerinių tinklu kamera
+      # - Komunikacijų šulinys
+      # classifications:
+        # NSIK LF: G
+        # NSIK LT: JD
+        # NSIK LK: XMC
+        # Uniclass EF: ""
+        # Uniclass Ss: ""
+        # Uniclass Pr: Pr_60_50
+        # ISO81346 CF: G
+        # ISO81346 CT: JD
+        # ISO81346 CC: XMC
+      # ifcType: *type_well
+      # stages: 
+        # <<: *stages_s1_s3_s4_well
+
+    
+    # - id: Nuotekų sistemos išardoma jungtis            # NSIK+ISO: G.JD.XMA
+      # examples:
+      # - Srieginis atjungimo intarpas
+      # classifications:
+        # NSIK LF: G
+        # NSIK LT: JD
+        # NSIK LK: XMA
+        # ISO81346 CF: G
+        # ISO81346 CT: JD
+        # ISO81346 CC: XMA
+      # ifcType: *type_flow
+      # stages:  
+        # <<: *stages_s1_s3_s4_valve
+        
+    # - id: Nuotekų sistemos kampinė jungtis             # NSIK+ISO: G.JD.XMD
+      # examples:
+      # - Alkūnė
+      # classifications:
+        # NSIK LF: G
+        # NSIK LT: JD
+        # NSIK LK: XMD
+        # ISO81346 CF: G
+        # ISO81346 CT: JD
+        # ISO81346 CC: XMD
+      # ifcType: *type_flow
+      # stages:  
+        # <<: *stages_s1_s3_s4_valve
+        
+    # - id: Šakotuvas                                    # NSIK+ISO: G.JD.XME
+      # examples:
+      # - Trišakis
+      # - Keturšakis
+      # - Kolektorus
+      # classifications:
+        # NSIK LF: G
+        # NSIK LT: JD
+        # NSIK LK: XME
+        # ISO81346 CF: G
+        # ISO81346 CT: JD
+        # ISO81346 CC: XME
+      # ifcType: *type_flow
+      # stages:  
+        # <<: *stages_s1_s3_s4_valve 
+        
+    # - id: Trapas                                       # NSIK+ISO: G.JD.XKE
+      # classifications:
+        # NSIK LF: G
+        # NSIK LT: JD
+        # NSIK LK: XKE
+        # ISO81346 CF: G
+        # ISO81346 CT: JD
+        # ISO81346 CC: XKE
+      # ifcType: *type_flow
+      # stages:
+        # s1:
+          # properties:
+            # <<: *prop
+            # <<: *prop_u
+            # <<: *prop_g
+            # <<: *prop_g_valve
+            # <<: *prop_material
+            # <<: *prop_external
+        # s3:
+          # properties:
+            # <<: *prop
+            # <<: *prop_g
+            # <<: *prop_g_valve
+            # <<: *prop_material
+        # s4: 
+          # properties:
+            # <<: *prop
+            # <<: *prop_u
+            # <<: *prop_g
+            # <<: *prop_g_valve
+            # <<: *prop_material
+            # <<: *prop_external
+
+    # - id: Pravala                                      # NSIK+ISO: G.JD.XKF
+      # classifications:
+        # NSIK LF: G
+        # NSIK LT: JD
+        # NSIK LK: XKF
+        # ISO81346 CF: G
+        # ISO81346 CT: JD
+        # ISO81346 CC: XKF
+      # ifcType: *type_flow
+      # stages:
+        # s1:
+          # properties:
+            # <<: *prop_u
+            # <<: *prop_g_valve
+            # <<: *prop_material
+            # <<: *prop_external
+        # s3:
+          # properties:
+            # <<: *prop
+            # <<: *prop_g_valve
+            # <<: *prop_material
+        # s4: 
+          # properties:
+            # <<: *prop_u
+            # <<: *prop_g_valve
+            # <<: *prop_material
+            # <<: *prop_external
+    
+    # - id: Nuotekų sistemos vamzdis                     # NSIK+ISO: G.JD.WPA
+      # classifications:
+        # NSIK LF: G
+        # NSIK LT: JD
+        # NSIK LK: WPA
+        # ISO81346 CF: G
+        # ISO81346 CT: JD
+        # ISO81346 CC: WPA
+        Uniclass EF: ""
+        Uniclass Ss: ""
+        # Uniclass Pr: Pr_65_52_63
+      # ifcType: *type_linear
+      # stages: 
+        # <<: *stages_s1_s3_s4_pipe
+
+    # - id: Lietaus nuotekų surinkimo latakas            # NSIK+ISO: G.JD.WMB
+      # classifications:
+        # NSIK LF: G
+        # NSIK LT: JD
+        # NSIK LK: WMB
+        # ISO81346 CF: G
+        # ISO81346 CT: JD
+        # ISO81346 CC: WMB
+      # ifcType: *type_linear
+      # stages:
+        # s2:
+          # lod: 200
+          # properties:
+            # <<: *prop
+        # s3: 
+          # lod: 300
+          # properties:
+            # <<: *prop
+            # <<: *prop_g
+            # <<: *prop_material
+            # <<: *prop_external
+        # s4: 
+          # lod: 300
+          # properties:
+            # <<: *prop_u
+            # <<: *prop_g
+            # <<: *prop_material
+            # <<: *prop_external
+    # - id: Nuotekų šalinimo tinklo apsaugos zona        # NSIK+ISO: <E>DCB/<L>G.JD
+      # classifications:
+        # NSIK LF: G
+        # NSIK LT: JD
+        # NSIK B: DCB
+        # ISO81346 CF: G
+        # ISO81346 CT: JD
+        # ISO81346 CS: DCB
+      # ifcType: *type_zone
+      # stages: 
+        # <<: *zone_s1_s2_prot
+
+
+# geriamo vandens sistema        
+    - id: Geriamo vandens sistemos išardoma jungtis                      # valve            NSIK: %F10.JB.XMA
+      examples:
+      - Flanšinė jungtis
+      - Suveržiama jungtis
+      classifications:
+        NSIK LF: "%F10"
+        NSIK LT: JB
+        NSIK LK: XMA
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g_diam
+            <<: *prop_vis
+        s3:
+          properties:
+            <<: *prop_g_diam
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_vis
+
+
+    
+    - id: Geriamo vandens sistemos vamzdis                               # pipe             NSIK: %F10.JB.WPA
+      examples:
+      - Daugiasluoksnis vamzdis
+      - Plieninis cinkuotas vamzdžis
+      - Plieninis besiūlis vamzdis
+      classifications:
+        NSIK LF: "%F10"
+        NSIK LT: JB
+        NSIK LK: WPA
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g_diam
+            <<: *prop_vis
+        s3:
+          properties:
+            <<: *prop_g_diam
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_vis
+        
+    - id: Geriamo vandens sistemos išardoma jungtis                      # valve            NSIK: %F10.JB.XMA
+      examples:
+      - Flanšinė jungtis
+      - Suveržiama jungtis
+      classifications:
+        NSIK LF: "%F10"
+        NSIK LT: JB
+        NSIK LK: XMA
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g_diam
+            <<: *prop_vis
+        s3:
+          properties:
+            <<: *prop_g_diam
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_vis
+        
+    - id: Geriamo vandens sistemos neišardoma jungtis                    # valve            NSIK: %F10.JB.XMB
+      examples:
+      - Presuojamas trišakis
+      - Virinama alkūnė
+      - Presuojama alkūnė
+      classifications:
+        NSIK LF: "%F10"
+        NSIK LT: JB
+        NSIK LK: XMB
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g_diam
+            <<: *prop_vis
+        s3:
+          properties:
+            <<: *prop_g_diam
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_vis
+        
+    - id: Geriamo vandens sistemos vožtuvas, sklendė                     # unique_valve     NSIK: %F10.JB.QNA
+      examples:
+      - Apsauginis vožtuvas
+      - Apsauginė skysčio sklendė
+      - Skysčio reguliavimo vožtuvas
+      - Maišytuvas
+      - Čiaupas
+      classifications:
+        NSIK LF: "%F10"
+        NSIK LT: JB
+        NSIK LK: QNA
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g_diam
+            <<: *prop_vis
+        s3:
+          properties:
+            <<: *prop_g_diam
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_vis
+    
+    - id: Geriamojo vandens talpa                                        # well             NSIK: %F10.JB.CNA
+      classifications:
+        NSIK LF: "%F10"
+        NSIK LT: JB
+        NSIK LK: CNA
+      ifcType: *type_well
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_well
+            <<: *prop_mass
+        s3:
+          properties:
+            <<: *prop_g
+            <<: *prop_mass
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_well
+    
+    - id: Geriamo vandens skaitiklis                                     # unique_valve     NSIK: %F10.JB.BHA
+      examples:
+      - Karšto vandens skaitiklis
+      - vandens apskaitos prietaisas
+      - Šalto vandens skaitiklis
+      classifications:
+        NSIK LF: "%F10"
+        NSIK LT: JB
+        NSIK LK: BHA
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g_diam
+            <<: *prop_vis
+        s3:
+          properties:
+            <<: *prop_g_diam
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_vis
+
+    - id: Geriamo vandens sistemos teigiamo darbinio tūrio siurblys      # unique           NSIK: %F10.JB.GPA
+      examples:
+      - Vandens siurblys
+      - Slėgio sukėlimo siurblys
+      classifications:
+        NSIK LF: "%F10"
+        NSIK LT: JB
+        NSIK LK: GPA
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g_diam
+            <<: *prop_vis
+            <<: *prop_pump
+            <<: *prop_e_device
+            <<: *prop_mass
+        s3:
+          properties:
+            <<: *prop_g_diam
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_pump
+            <<: *prop_e_device
+        s5:
+          properties:
+            <<: *prop_mass
+    
+    - id: Geriamo vandens sistemos izoliacija                            # common           NSIK: %F10.JB.RQA      Uc: Pr_65_52_61_42
+      examples:
+      - Antikondensacinė izoliacija
+      - Akmens vatos kevalas
+      ifcType: IcfCovering
+      classifications:
+        NSIK LF: "%F10"
+        NSIK LT: JB
+        NSIK LK: RQA
+        Uniclass: Pr_65_52_61_42
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g_diam
+            <<: *prop_vis
+        s3:
+          properties:
+            <<: *prop_g_diam
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_vis
+
+
+    - id: Technologinio vandens sistemos vamzdis                               # pipe             NSIK: %F30.JB.WPA
+      examples:
+      - Daugiasluoksnis vamzdis
+      - Plieninis cinkuotas vamzdžis
+      - Plieninis besiūlis vamzdis
+      classifications:
+        NSIK LF: "%F30"
+        NSIK LT: JB
+        NSIK LK: WPA
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g_diam
+            <<: *prop_vis
+        s3:
+          properties:
+            <<: *prop_g_diam
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_vis
+        
+    - id: Technologinio vandens sistemos išardoma jungtis                      # valve            NSIK: %F30.JB.XMA
+      examples:
+      - Flanšinė jungtis
+      - Suveržiama jungtis
+      classifications:
+        NSIK LF: "%F30"
+        NSIK LT: JB
+        NSIK LK: XMA
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g_diam
+            <<: *prop_vis
+        s3:
+          properties:
+            <<: *prop_g_diam
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_vis
+        
+    - id: Technologinio vandens sistemos neišardoma jungtis                    # valve            NSIK: %F30.JB.XMB
+      examples:
+      - Presuojamas trišakis
+      - Virinama alkūnė
+      - Presuojama alkūnė
+      classifications:
+        NSIK LF: "%F30"
+        NSIK LT: JB
+        NSIK LK: XMB
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g_diam
+            <<: *prop_vis
+        s3:
+          properties:
+            <<: *prop_g_diam
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_vis
+        
+    - id: Technologinio vandens sistemos vožtuvas, sklendė                     # unique_valve     NSIK: %F30.JB.QNA
+      examples:
+      - Apsauginis vožtuvas
+      - Apsauginė skysčio sklendė
+      - Skysčio reguliavimo vožtuvas
+      - Maišytuvas
+      - Čiaupas
+      classifications:
+        NSIK LF: "%F30"
+        NSIK LT: JB
+        NSIK LK: QNA
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g_diam
+            <<: *prop_vis
+        s3:
+          properties:
+            <<: *prop_g_diam
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_vis
+    
+    - id: Technologinio vandens talpa                                          # well             NSIK: %F30.JB.CNA
+      classifications:
+        NSIK LF: "%F30"
+        NSIK LT: JB
+        NSIK LK: CNA
+      ifcType: *type_well
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_well
+            <<: *prop_mass
+        s3:
+          properties:
+            <<: *prop_g
+            <<: *prop_mass
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_well
+    
+    - id: Technologinio vandens skaitiklis                                     # unique_valve     NSIK: %F30.JB.BHA
+      examples:
+      - Karšto vandens skaitiklis
+      - vandens apskaitos prietaisas
+      - Šalto vandens skaitiklis
+      classifications:
+        NSIK LF: "%F30"
+        NSIK LT: JB
+        NSIK LK: BHA
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g_diam
+            <<: *prop_vis
+        s3:
+          properties:
+            <<: *prop_g_diam
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_vis
+
+    - id: Technologinio vandens sistemos teigiamo darbinio tūrio siurblys      # unique           NSIK: %F30.JB.GPA
+      examples:
+      - Vandens siurblys
+      - Slėgio sukėlimo siurblys
+      classifications:
+        NSIK LF: "%F30"
+        NSIK LT: JB
+        NSIK LK: GPA
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g_diam
+            <<: *prop_vis
+            <<: *prop_pump
+            <<: *prop_e_device
+            <<: *prop_mass
+        s3:
+          properties:
+            <<: *prop_g_diam
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_pump
+            <<: *prop_e_device
+        s5:
+          properties:
+            <<: *prop_mass
+    
+    - id: Technologinio vandens sistemos izoliacija                            # common           NSIK: %F30.JB.RQA      Uc: Pr_65_52_61_42
+      examples:
+      - Antikondensacinė izoliacija
+      - Akmens vatos kevalas
+      ifcType: IcfCovering
+      classifications:
+        NSIK LF: "%F30"
+        NSIK LT: JB
+        NSIK LK: RQA
+        Uniclass: Pr_65_52_61_42
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g_diam
+            <<: *prop_vis
+        s3:
+          properties:
+            <<: *prop_g_diam
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_vis
+    
+    
+
+
+
+# /var/tmp
+    - id: Gaisrinio čiaupo dėžė                             # common           NSIK: %F30.JB.UCA
+      classifications:
+        NSIK LF: "%F30"
+        NSIK LT: JB
+        NSIK LK: UCA
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+        s3:
+          properties:
+            <<: *prop_g
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_vis

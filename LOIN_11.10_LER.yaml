@@ -1,0 +1,816 @@
+# v 0.5a
+# NSIK ver 0.9, 2023-09-01
+# https://nsiklab.lt 
+#
+# 11.10 - Elektroniniai ryšiai. Lauko tinklai
+#
+
+prop_g:   &prop_g_l
+  Pset_QuantityTakeOff.Length: 
+    valueType: Integer | Real 
+
+prop_g:   &prop_g_w
+  Pset_QuantityTakeOff.Width: 
+    valueType: Integer | Real 
+
+prop_g:   &prop_g_h
+  Pset_QuantityTakeOff.Height: 
+    valueType: Integer | Real 
+
+prop_g_d:   &prop_g_d
+  Pset_QuantityTakeOff.Diameter: 
+    valueType: Integer | Real 
+    
+prop_g_lw:  &prop_g_lw
+  <<: [*prop_g_l, *prop_g_w]
+
+prop_g_ld:  &prop_g_ld
+  <<: [*prop_g_l, *prop_g_d]
+
+prop_g_wh:  &prop_g_wh
+  <<: [*prop_g_h, *prop_g_w]
+  
+prop_g_a:       &prop_g_a
+  Pset_QuantityTakeOff.Area: 
+    valueType: Integer | Real 
+  
+prop_g:     &prop_g
+  <<: [*prop_g_l, *prop_g_w, *prop_g_h]
+
+prop_thick:     &prop_g_thickness
+  <<: *prop_g_l
+  Pset_QuantityTakeOff.Thickness:
+    valueType: Integer | Real
+
+prop_g_a:       &prop_g_area
+  <<: *prop_g
+  <<: *prop_g_a
+  
+prop_g_cable:   &prop_g_cable
+  <<: *prop_g_l
+  <<: *prop_g_d
+
+prop:       &prop
+  VVK.Name: {}
+  VVK.ElementType: {}
+  Pset_ConstructionAdministration.SpecificationSectionNumber: {}
+  Pset_ElementCommon.System: {}
+  Pset_ElementComponentCommon.Status: {}
+  
+prop_u:     &prop_u
+  <<: *prop
+  VVK.Tag: {}
+
+prop_mat:   &prop_material
+  VVK.Material: {}
+  
+prop_vis:   &prop_vis
+  VVK.Material: {}
+  VVK.Finish: {}
+  VVK.Colour: {}
+
+prop_e:     &prop_e
+  Pset_ElectricalDeviceCommon.NominalPowerConsumption: 
+    valueType: Integer | Real 
+  Pset_ElectricalDeviceCommon.RatedVoltage: 
+    valueType: Integer
+  Pset_ElectricalDeviceCommon.HasProtectiveEarth: {}
+
+prop_e:     &prop_h_e
+  Pset_ElementComponentCommon.PowerConsumption: 
+    valueType: Integer | Real 
+  Pset_ElementComponentCommon.NominalPowerConsumption: 
+    valueType: Integer | Real 
+
+prop_p:     &prop_p_w
+  Pset_ElementComponentCommon.Weight:
+    valueType: Integer | Real 
+    
+prop_p:     &prop_p_fr
+  Pset_ElementComponentCommon.FireRating: {}
+
+
+prop_external:   &prop_external
+  Pset_ElementComponentCommon.IsExternal: {}
+  Pset_ElectricalDeviceCommon.IP_Code: {}
+  Pset_ElectricalDeviceCommon.IK_Code: {}
+
+ifc_e:      &type_linear
+  - IfcFlowSegment
+  - IfcFlowSegmentType
+  - IfcFlowSegmentTypeEnum
+  
+ifc_e:      &type_e
+  - IfcDistributionControlElement
+  - IfcDistributionControlElementType
+  - IfcDistributionControlElementTypeEnum
+  
+ifc_w:      &type_well
+  - IfcFlowTerminal
+  - IfcFlowTerminalElementType
+  - IfcFlowTerminalElementTypeEnum
+
+LER:
+    id: "11.10"
+    name: Elektoniniai ryšiai. Lauko tinklai
+    stages:
+      s0:
+        lod: 275
+        log: 2
+      s1:
+        lod: 275
+        log: 2
+        properties:
+          Pset_ManufacturerTypeInformation.ArticleNumber: {}
+          Pset_ManufacturerTypeInformation.Manufacturer: {}
+          VVK.RelatedDocumentationURI: {}
+      s2:
+        lod: 200
+        log: 2
+      s3:
+        lod: 200
+        log: 2
+      s4:
+        lod: 350
+        log: 2
+        properties:
+          Pset_ManufacturerTypeInformation.ArticleNumber: {}
+          Pset_ManufacturerTypeInformation.Manufacturer: {}
+      s5:
+        lod: 350
+        log: 2
+        properties:
+          VVK.RelatedDocumentationURI: ()
+      s6:
+        lod: 500
+        log: 6
+    
+    elements:
+    - id: Šulinys                                  # NSIK+ISO:  M.HJ.XMC    Uc: Pr_65_70_11_21
+
+      examples:
+      - Apžiūros šulinys
+      - inspektavimo šulinys
+      - kamera
+      - komunikacijų šulinys
+      ifcType: *type_well
+      classifications:
+        NSIK LF: M
+        NSIK LT: HJ
+        NSIK LK: XMC
+        Uniclass Pr: Pr_65_70_11_21   # Cable access chambers
+        ISO81346 CF: M
+        ISO81346 CT: HJ
+        ISO81346 CC: XMC
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
+            
+
+    - id: Tinklo informacinis ženklas              # NSIK+ISO: M.HJ.PHD    Uc: Pr_40_10_57_12 
+      examples:
+      - Sargelis
+      - Informacinis ženklas
+      ifcType: 
+      - IfcPlate
+      - IfcPlateType
+      classifications:
+        NSIK LF: M
+        NSIK LT: HJ
+        NSIK LK: PHD
+        Uniclass Pr: Pr_40_10_57_12  #Cable marker tags 
+        ISO81346 CF: M
+        ISO81346 CT: HJ
+        ISO81346 CC: PHD
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+
+    - id: Tinklo informacinio ženklo laikiklis     # NSIK+ISO: M.HJ.UBD    Uc: Pr_40_10_57_50  
+      examples:
+      - Sargelio stovas
+      - Informacinio ženklo stovas
+      ifcType: 
+      - IfcColumn
+      - IfcColumnType
+      classifications:
+        NSIK LF: M
+        NSIK LT: HJ
+        NSIK LK: UBD
+        Uniclass Pr: Pr_40_10_57_50  # Marker posts 
+        ISO81346 CF: M
+        ISO81346 CT: HJ
+        ISO81346 CC: UBD
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+        s3:
+          properties:
+            <<: *prop
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+
+    - id: Informacinio ženklo laikiklio pamatas    # NSIK+ISO: M.HJ.ULD
+      examples:
+      - Pamatas
+      ifcType: 
+      - IfcPile
+      - IfcPileType
+      classifications:
+        NSIK LF: M
+        NSIK LT: HJ
+        NSIK LK: ULD
+        ISO81346 CF: M
+        ISO81346 CT: HJ
+        ISO81346 CC: ULD
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_material
+            <<: *prop_external
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
+
+    - id: Duomenų kabelis                          # NSIK+ISO: M.HJ.WGB    Uc: Pr_65_70_48
+      classifications:
+        NSIK LF: M
+        NSIK LT: HJ
+        NSIK LK: WGB
+        Uniclass Pr: Pr_65_70_48 # Low-voltage cables
+        ISO81346 CF: M
+        ISO81346 CT: HJ
+        ISO81346 CC: WGB
+      ifcType: *type_linear
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: {}
+            <<: *prop_material
+            <<: *prop_external
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: {}
+            <<: *prop_material
+            <<: *prop_external
+
+    - id: Duomenų kabelio dėklas                   # NSIK+ISO: M.HJ.UBA    Uc: Pr_65_52_61_65
+      classifications:
+        NSIK LF: M
+        NSIK LT: HJ
+        NSIK LK: UBA
+        Uniclass Pr: Pr_65_52_61_65 # Plastics ducts for electric cables
+        ISO81346 CF: M
+        ISO81346 CT: HJ
+        ISO81346 CK: UBA
+      ifcType: *type_linear
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g_l
+            <<: *prop_g_d
+            <<: *prop_material
+            Pset_ElectricalDeviceCommon.IsExternal: {}
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g_l
+            <<: *prop_g_d
+            <<: *prop_material
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_g_l
+            <<: *prop_g_d
+            <<: *prop_material
+            Pset_ElectricalDeviceCommon.IsExternal: {}
+            
+
+    - id: Duomenų kabelių trasos apsaugos zona     # NSIK: <E>DCB/<L>M.HJ    ISO CS: DCB/ ISO: M.HJ    Uc: SL_75_10
+      classifications:
+        NSIK LF: M
+        NSIK LT: HJ
+        NSIK B: DCB
+        Uniclass SL: SL_75_10  # Communications spaces
+        ISO81346 CF: M
+        ISO81346 CT: HJ
+        ISO81346 CS: DCB
+      ifcType: 
+      - IfcSpace
+      - IfcSpaceType
+      stages:
+        s1:
+          properties:
+            Pset_QuantityTakeOff.Width: {}
+            Pset_QuantityTakeOff.Area: {}
+            Pset_ElementComponentCommon.Status: {}
+        s2:
+          properties:
+            Pset_QuantityTakeOff.Width: {}
+            Pset_QuantityTakeOff.Area: {}
+            Pset_ElementComponentCommon.Status: {}
+
+    - id: Ryšių spinta/ rėmas                      # NSIK+ISO: M.HJ.UCA    Uc: Pr_80_77_27_42 
+      examples:
+      - Ryšių skydelis
+      - Ryšių spinta
+      ifcType: 
+        '2x3':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        '4':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        - IfcDistributionChamberElement
+        - IfcDistributionChamberElementType
+      classifications:
+        NSIK LF: M
+        NSIK LT: HJ
+        NSIK LK: UCA
+        Uniclass Pr: Pr_80_77_27_42  # IT and telecommunications equipment racks
+        ISO81346 CF: M
+        ISO81346 CT: HJ
+        ISO81346 CC: UCA
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s3:
+          properties:
+            <<: *prop
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
+#
+# tik NSIK
+#
+    - id: Optinio tinklo komutatorius              # visible_unique_electrical    NSIK: %M10.HJ.KGA
+      examples:
+      - Optikos panelė
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: KGA
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+        
+    - id: Optinio tinklo maršrutizatorius          # visible_unique_electrical    NSIK: %M10.HJ.KGB
+      examples:
+      - Optinis maršrutizatorius
+      - Optinis keitiklis
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: KGB
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+    
+    - id: Optinio tinklo kartotuvas                # visible_unique_electrical    NSIK: %M10.HJ.KGC
+      examples:
+      - Optinis kartotuvas
+      - Optinis stiprintuvas
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: KGC
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+        
+    - id: Optinis transiveris                      # unique_electrical            NSIK: %M10.HJ.TFD
+      examples:
+      - Optinis keitiklis
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: TFD
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+        
+    - id: Optinis kabelis                          # pipe                         NSIK: %M10.HJ.WHA
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: WHA
+      ifcType: *type_linear
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: {}
+            <<: *prop_material
+            <<: *prop_external
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: {}
+            <<: *prop_material
+            <<: *prop_external
+    
+    - id: Optinė jungtis                           # visible_unique               NSIK: %M10.HJ.XHA
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: XHA
+      ifcType:
+      - IfcEquipmentElement
+      - IfcDistributionElement
+      - IfcDistributionElementType
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+        
+    - id: Daugialypė jungtis                       # visible_unique               NSIK: %M10.HJ.XZA
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: XZA
+      ifcType:
+      - IfcEquipmentElement
+      - IfcDistributionElement
+      - IfcDistributionElementType
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+    
+    - id: Maršrutizatorius                         # unique_electrical            NSIK: %M10.HJ.KED
+      examples:
+      - Laidinio tinklo maršrutizatorius
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: KED
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        
+    - id: Ryšių kabelis                            # unique_electrical            NSIK: %M10.HJ.WGB
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: WGB
+      ifcType: *type_linear
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: {}
+            <<: *prop_material
+            <<: *prop_external
+        s4: 
+          properties:
+            <<: *prop
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: {}
+            <<: *prop_material
+            <<: *prop_external
+        
+    - id: Ryšių įrangos lizdas                     # unique_electrical            NSIK: %M10.HJ.XGA
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: XGA
+      ifcType:
+      - IfcEquipmentElement
+      - IfcDistributionElement
+      - IfcDistributionElementType
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+        s3:
+          properties:
+            <<: *prop
+        s4: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+    
+    - id: Ryšių įrangos komutacinė panelė          # unique_electrical            NSIK: %M10.HJ.XGC
+      examples:
+      - Plintas
+      - Komutacinė panelė
+      ifcType: 
+      - IfcEquipmentElement
+      - IfcDistributionElement
+      - IfcDistributionElementType
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: XGC
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+        
+    - id: Dengianti panelė                         # unique_electrical            NSIK: %M10.HJ.NAB
+      examples:
+      - Kabelių tvarkymo panelė
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: NAB
+      ifcType: 
+      - IfcEquipmentElement
+      stages:
+        s1:
+          properties:
+            <<: *prop_g
+            <<: *prop_vis
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+    
+    - id: Išplėtimo modulis                        # unique_electrical            NSIK: %M10.HJ.%KEB20
+      examples:
+      - Įrangos išplėtimo modulis
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: "%KEB20"
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
+    - id: Korpusas (skydelis)                      # visible_unique_electrical    NSIK: %M10.HJ.UCA
+      examples:
+      - Ryšių skydelis
+      - Ryšių spinta
+      ifcType: 
+        '2x3':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        '4':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        - IfcDistributionChamberElement
+        - IfcDistributionChamberElementType
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: UCA
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s3:
+          properties:
+            <<: *prop
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        
+    - id: Elektros skirstytuvas                    # visible_unique_electrical    NSIK: %M10.HJ.XDE
+      examples:
+      - Ryšių sistemos elektros šakotuvas
+      - Elektros šakotuvas ryšių sistemos įrangai
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: XDE
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        
+    - id: Nepertraukiamo maitinimo šaltinis        # visible_unique_electrical    NSIK: %M10.HJ.RBA
+      examples:
+      - Ryšiu sistemos nepertraukiamo maitinimo šaltinis
+      - Ryšių sistemos UPS
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: RBA
+      ifcType:
+      - IfcElectricalElement
+      - IfcElectricFlowStorageDeviceTypeEnum
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+        s4: 
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+
+
+    - id: Duomenų kabelių trasos apsaugos zona     # zone                         NSIK: <E>DCB <L>%M10.HJ
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK B: DCB
+      ifcType: 
+      - IfcSpace
+      - IfcSpaceType
+      stages:
+        s1:
+          properties:
+            Pset_QuantityTakeOff.Width: {}
+            Pset_QuantityTakeOff.Area: {}
+            Pset_ElementComponentCommon.Status: {}
+        s2:
+          properties:
+            Pset_QuantityTakeOff.Width: {}
+            Pset_QuantityTakeOff.Area: {}
+            Pset_ElementComponentCommon.Status: {}
+        

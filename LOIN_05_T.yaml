@@ -3,11 +3,6 @@
 # https://nsiklab.lt 
 #
 # 05 - Technologinės dalys
-#
 
-!include ./LOIN_05_T_A.yaml
-!include ./LOIN_05_T_SV_BAS.yaml
-!include ./LOIN_05_T_S.yaml
-!include ./LOIN_05_T_G.yaml
-!include ./LOIN_05_T_MG.yaml
-!include ./LOIN_05_T_GVŠ.yaml
+
+!include LOIN_05.03_T_A.yaml

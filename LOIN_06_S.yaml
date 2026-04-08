@@ -2,45 +2,582 @@
 # NSIK ver 0.9, 2023-09-01
 # https://nsiklab.lt 
 #
-# 06 - Susisiekimas
+# 02 - Sklypo planas
 #
 
-S:
-    id: "06"
-    name: Susisiekimas
+
+
+prop:     &prop
+  VVK.Name: {}
+  VVK.ElementType: {}
+  Pset_ElementComponentCommon.Status: {}
+
+prop:     &prop_u
+  VVK.Tag: {}
+
+prop_g:   &prop_g
+  Pset_QuantityTakeOff.Height:
+    valueType: Integer | Real
+  Pset_QuantityTakeOff.Width:
+    valueType: Integer | Real
+  Pset_QuantityTakeOff.Length:
+    valueType: Integer | Real
+
+prop_g:   &prop_gv
+  Pset_QuantityTakeOff.Height:
+    valueType: Integer | Real
+  Pset_QuantityTakeOff.Width:
+    valueType: Integer | Real
+  Pset_QuantityTakeOff.Length:
+    valueType: Integer | Real
+  Pset_QuantityTakeOff.Volume:
+    valueType: Integer | Real
+    
+    
+prop_g_lh:   &prop_g_lh
+  Pset_QuantityTakeOff.Height:
+    valueType: Integer | Real
+  Pset_QuantityTakeOff.Length:
+    valueType: Integer | Real
+    
+prop_g_lh:   &prop_g_hd
+  Pset_QuantityTakeOff.Height:
+    valueType: Integer | Real
+  Pset_QuantityTakeOff.Diameter:
+    valueType: Integer | Real
+
+prop_g_lw:   &prop_g_lw
+  Pset_QuantityTakeOff.Length:
+    valueType: Integer | Real
+  Pset_QuantityTakeOff.Width:
+    valueType: Integer | Real
+    
+prop_g_lha:   &prop_g_lha
+  Pset_QuantityTakeOff.Height:
+    valueType: Integer | Real
+  Pset_QuantityTakeOff.Width:
+    valueType: Integer | Real
+  Pset_QuantityTakeOff.Area:
+    valueType: Integer | Real
+
+prop_g:   &prop_g_area
+  Pset_QuantityTakeOff.Area:
+    valueType: Integer | Real
+
+prop_g:   &prop_g_lwa
+  Pset_QuantityTakeOff.Length:
+    valueType: Integer | Real
+  Pset_QuantityTakeOff.Width:
+    valueType: Integer | Real
+  Pset_QuantityTakeOff.Area:
+    valueType: Integer | Real
+
+prop_g:   &prop_g_tav
+  Pset_QuantityTakeOff.Thickness:
+    valueType: Integer | Real
+  Pset_QuantityTakeOff.Area:
+    valueType: Integer | Real
+  Pset_QuantityTakeOff.Volume:
+    valueType: Integer | Real
+
+
+prop_vis:     &prop_vis
+  VVK.Material: {}
+  VVK.Finish: {}
+  VVK.Colour: {}
+
+prop_foliage: &prop_folliage
+  Pset_ElementComponentCommon.Status: {}
+  Pset_VegetationCommon.LocalName: {}
+  Pset_VegetationCommon.BotanicalName: {}
+  
+prop_foliage: &prop_folliage_tree
+  Pset_QuantityTakeOff.Diameter:
+    valueType: Integer | Real
+    examples:
+    - 400
+    - 0.400
+    descr: Medžio kamieno diametras 1,1-,12 m aukštyje nuo grunto
+  Pset_QuantityTakeOff.Height:
+    valueType: Integer | Real
+    examples:
+    - 8500
+    - 6500
+    descr: Medžio preliminarus aukštis
+    
+prop_foliage: &prop_folliage_bush
+  Pset_QuantityTakeOff.Diameter:
+    valueType: Integer | Real
+    examples:
+    - 2000
+    - 2.400
+    descr: Projektinis augalo vainiko diametras
+  Pset_QuantityTakeOff.Height:
+    valueType: Integer | Real
+    examples:
+    - 2500
+    - 2.400
+    descr: Projektinis augalo aukštis
+
+prop_e:     &prop_e
+  Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
+  Pset_ElectricalDeviceCommon.IP_Code: {}
+  Pset_ElectricalDeviceCommon.IK_Code: {}
+  Pset_ElectricalDeviceCommon.InsulationStandardClass: {}
+  Pset_ElectricalDeviceCommon.RatedVoltage: {}
+  Pset_ElectricalDeviceCommon.HasProtectiveEarth: {}
+
+prop:     &prop_s3
+  VVK.RelatedDrawing: {}
+  Pset_ConstructionAdministration.SpecificationSectionNumber:
+  - examples:
+    - SP-TS-13.4
+
+prop:     &prop_s5
+  VVK.RelatedDocumentationURI: {}
+
+prop_phys_s4:    &prop_env
+  Pset_ServiceLifeFactors.OutdoorEnvironment:
+    - examples:
+      - XC1
+    - units: Tekstas
+    - descr: XO, XC1  Aplinkos agresyvumo klasė
+
+prop_element_s3:     &prop_element_s3
+  Pset_ElementComponentCommon.IsExternal: {}
+  Pset_ElementComponentCommon.ThermalConductivity: {}
+  Pset_ServiceLifeFactors.OutdoorEnvironment:
+    - examples:
+      - XC1
+    - units: Tekstas
+    - descr: XO, XC1  Aplinkos agresyvumo klasė
+
+prop_phys_s4:     &prop_phys_s4
+  Pset_ElementComponentCommon.WaterTightnessRating: {}
+  Pset_ElementComponentCommon.AirTightnessRating: {}
+  Pset_ElementComponentCommon.MechanicalLoadRating: {}
+  
+prop_FR:     &prop_FR
+  Pset_ElementComponentCommon.FireRating: {}
+  Pset_ElementComponentCommon.FlammabilityRating: {}
+
+  
+prop_electrical_s4: &prop_e_device
+  Pset_ElectricalDeviceCommon.IK_Code: {}
+  Pset_ElectricalDeviceCommon.IP_Code: {}
+  Pset_ElectricalDeviceCommon.HasProtectiveEarth: {}
+  
+
+prop_loads_s4: &prop_loads_s4
+  Pset_ElementComponentCommon.PermissiblePavementLoad: {}
+  
+prop_env_s4: &prop_env_s4
+  Pset_ElectricalDeviceCommon.HasProtectiveEarth: {}
+
+
+
+SMG:
+    id: "02"
+    name: Sklypo planas
+    stages:
+      s1:
+        lod: 275
+        log: 2
+        properties:
+          Pset_ManufacturerTypeInformation.ArticleNumber: {}
+          Pset_ManufacturerTypeInformation.Manufacturer: {}
+          VVK.RelatedDocumentationURI: {}
+      s2:
+        lod: 200
+        log: 2
+      s3:
+        lod: 200
+        log: 2
+      s4:
+        lod: 350
+        log: 2
+        properties:
+          Pset_ManufacturerTypeInformation.ArticleNumber: {}
+          Pset_ManufacturerTypeInformation.Manufacturer: {}
+      s5:
+        lod: 350
+        log: 2
+        properties:
+          VVK.RelatedDocumentationURI: {}
+      s6:
+        lod: 500
+        log: 6
+
+
     elements:
-    - id: Apsauginis turėklas
-      examples:
-      - Apsauginis turėklas
-      - porankis
-      - apsauginė tvorelė
+
+    - id: Esamas gruntas                       # NSIK+ISO    A.BA.UUA               ,
+      description: Komponentas, sudarantis viršutinę išorinės erdvės dangą ar dangos konstrukcijos viršutinį sluoksnį
+      memo: Paviršius modeliuojamas kaip plokštuma/tūris apytikslio dydžio, formos. Tikslioje vietoje.
       classifications:
-        NSIK LF: F
-        NSIK LT: FQ
-        NSIK LK: FQD
+        NSIK LF: A
+        NSIK LT: BA
+        NSIK LK: UUA
+        ISO81346 CF: A
+        ISO81346 CT: BA
+        ISO81346 CC: UUA
+      ifcType: IfcCovering
       stages:
+        s1:
+          properties:
+            VVK.Name: {}
+            VVK.ElementType: {}
+            Pset_QuantityTakeOff.Area: {}
+        s2:
+          properties:
+            VVK.Name: {}
+            Pset_QuantityTakeOff.Area: {}
         s3:
           properties:
-          - Name
-          - Pset_ElementComponentCommon.Status
-          - Type:
-            - examples:
-              - AT-1
-          - VVK.Material
-          - VVK.Apdaila
-          - VVK.Colour
-          - Pset_ConstructionAdministration.SpecificationSectionNumber:
-            - examples:
-              - S-TS-1.1
-          - Ifc__.Heigth:
-            - examples:
-              - 1.800
-          - Ifc__.Length:
-            - examples:
-              - 45.200
-          - Ifc__.Width:
-            - examples:
-              - 0.0800
-          lod: 200
-      
+            VVK.Name: {}
+            VVK.ElementType: {}
+            Pset_QuantityTakeOff.Area: {}
+        s4:
+          properties:
+            VVK.Name: {}
+            VVK.ElementType: {}
+            Pset_QuantityTakeOff.Area: {}
+        s5:
+          properties:
+            VVK.Name: {}
+            VVK.ElementType: {}
+            Pset_QuantityTakeOff.Area: {}
+        s6:
+          properties:
+            VVK.Name: {}
+            VVK.ElementType: {}
+            Pset_QuantityTakeOff.Area: {}
+            
+    - id: Eismui skirta danga                  # NSIK+ISO    A.AA.NCA               ,
+      description: Komponentas, sudarantis viršutinę išorinės erdvės dangą ar dangos konstrukcijos viršutinį sluoksnį
+      memo: Paviršius modeliuojamas kaip plokštuma/tūris apytikslio dydžio, formos. Tikslioje vietoje.
+      classifications:
+        NSIK LF: A
+        NSIK LT: AA
+        NSIK LK: NCA
+        ISO81346 CF: A
+        ISO81346 CT: AA
+        ISO81346 CC: NCA
+      ifcType: IfcCovering
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g_tav
+            <<: *prop_vis
+        s2:
+          properties:
+            <<: *prop
+            <<: *prop_g_area
+            <<: *prop_vis
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_s3
+            <<: *prop_g_tav
+            <<: *prop_vis
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_s3
+            <<: *prop_u
+            <<: *prop_g_tav
+            <<: *prop_vis
+            <<: *prop_loads_s4
+        s5:
+            properties:
+            <<: *prop
+            <<: *prop_s3
+            <<: *prop_u
+            <<: *prop_g_tav
+            <<: *prop_vis
+            <<: *prop_loads_s4
+            <<: *prop_s5
+        s6:
+            properties:
+            <<: *prop
+            <<: *prop_s3
+            <<: *prop_u
+            <<: *prop_g_tav
+            <<: *prop_vis
+            <<: *prop_loads_s4
+            <<: *prop_s5
 
+
+    - id: Lauko danga                          # NSIK+ISO    A.CB.NCA               ,
+      description: Komponentas, sudarantis viršutinę išorinės erdvės dangą ar dangos konstrukcijos viršutinį sluoksnį
+      memo: Paviršius modeliuojamas kaip plokštuma/tūris apytikslio dydžio, formos. Tikslioje vietoje.
+      classifications:
+        NSIK LF: A
+        NSIK LT: CB
+        NSIK LK: NCA
+        ISO81346 CF: A
+        ISO81346 CT: CB
+        ISO81346 CC: NCA
+      ifcType: IfcCovering
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g_tav
+            <<: *prop_vis
+        s2:
+          properties:
+            <<: *prop
+            <<: *prop_g_area
+            <<: *prop_vis
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_s3
+            <<: *prop_g_tav
+            <<: *prop_vis
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_s3
+            <<: *prop_u
+            <<: *prop_g_tav
+            <<: *prop_vis
+        s5:
+            properties:
+            <<: *prop
+            <<: *prop_s3
+            <<: *prop_u
+            <<: *prop_g_tav
+            <<: *prop_vis
+            <<: *prop_s5
+        s6:
+            properties:
+            <<: *prop
+            <<: *prop_s3
+            <<: *prop_u
+            <<: *prop_g_tav
+            <<: *prop_vis
+            <<: *prop_s5
+
+    - id: Eismui skirta augalinė danga         # NSIK+ISO    A.AA.NCG           ,
+      examples:
+      - Apželdintas korys
+      - Apželdintas betonas
+      classifications:
+        NSIK LF: A
+        NSIK LT: AA
+        NSIK LK: NCG
+        ISO81346 CF: A
+        ISO81346 CT: AA
+        ISO81346 CC: NCG
+      ifcType: IfcCovering
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g_tav
+            <<: *prop_vis
+        s2:
+          properties:
+            <<: *prop
+            <<: *prop_g_area
+            <<: *prop_vis
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_s3
+            <<: *prop_g_tav
+            <<: *prop_vis
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g_tav
+            <<: *prop_vis
+            <<: *prop_s3
+            <<: *prop_loads_s4
+            <<: *prop_env
+        s5:
+            properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g_tav
+            <<: *prop_vis
+            <<: *prop_s3
+            <<: *prop_s5
+            <<: *prop_loads_s4
+            <<: *prop_env
+            
+        s6:
+            properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g_tav
+            <<: *prop_vis
+            <<: *prop_s3
+            <<: *prop_s5
+            <<: *prop_loads_s4
+            <<: *prop_env
+    
+    - id: Augalinė danga                       # NSIK+ISO    A.CF.NCG           ,
+      examples:
+      - Žolės velėna
+      - žydinti pieva
+      classifications:
+        NSIK LF: A
+        NSIK LT: CF
+        NSIK LK: NCG
+        ISO81346 CF: A
+        ISO81346 CT: CF
+        ISO81346 CC: NCG
+      ifcType: IfcCovering
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g_tav
+            <<: *prop_vis
+        s2:
+          properties:
+            <<: *prop
+            <<: *prop_g_area
+            <<: *prop_vis
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_s3
+            <<: *prop_g_tav
+            <<: *prop_vis
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_s3
+            <<: *prop_u
+            <<: *prop_g_tav
+            <<: *prop_vis
+        s5:
+            properties:
+            <<: *prop
+            <<: *prop_s3
+            <<: *prop_u
+            <<: *prop_g_tav
+            <<: *prop_vis
+            <<: *prop_s5
+        s6:
+            properties:
+            <<: *prop
+            <<: *prop_s3
+            <<: *prop_u
+            <<: *prop_g_tav
+            <<: *prop_vis
+            <<: *prop_s5
+
+
+# kelio elementai
+    - id: Kelio bortas         # NSIK+ISO    A.CD.NDA               ,
+      classifications:
+        NSIK LF: A
+        NSIK LT: CD
+        NSIK LK: NDA
+        ISO81346 CF: A
+        ISO81346 CT: CD
+        ISO81346 CC: NDA
+      ifcType: IfcRailing
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g_lw
+            <<: *prop_vis
+        s2:
+          properties:
+            <<: *prop
+            <<: *prop_g_lw
+            <<: *prop_vis
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_s3
+            <<: *prop_g_lw
+            <<: *prop_vis
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_s3
+            <<: *prop_u
+            <<: *prop_g_lw
+            <<: *prop_vis
+            
+        s5:
+            properties:
+            <<: *prop
+            <<: *prop_s3
+            <<: *prop_u
+            <<: *prop_g_lw
+            <<: *prop_vis
+            <<: *prop_s5
+        s6:
+            properties:
+            <<: *prop
+            <<: *prop_s3
+            <<: *prop_u
+            <<: *prop_g_lw
+            <<: *prop_vis
+            <<: *prop_s5
+    
+    - id: Vejos bortas         # NSIK+ISO    A.CF.NDA               ,
+      classifications:
+        NSIK LF: A
+        NSIK LT: CF
+        NSIK LK: NDA
+        ISO81346 CF: A
+        ISO81346 CT: CF
+        ISO81346 CC: NDA
+      ifcType: IfcRailing
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g_lw
+            <<: *prop_vis
+        s2:
+          properties:
+            <<: *prop
+            <<: *prop_g_lw
+            <<: *prop_vis
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_s3
+            <<: *prop_g_lw
+            <<: *prop_vis
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_s3
+            <<: *prop_u
+            <<: *prop_g_lw
+            <<: *prop_vis
+            
+        s5:
+            properties:
+            <<: *prop
+            <<: *prop_s3
+            <<: *prop_u
+            <<: *prop_g_lw
+            <<: *prop_vis
+            <<: *prop_s5
+        s6:
+            properties:
+            <<: *prop
+            <<: *prop_s3
+            <<: *prop_u
+            <<: *prop_g_lw
+            <<: *prop_vis
+            <<: *prop_s5

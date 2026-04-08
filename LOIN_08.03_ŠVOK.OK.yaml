@@ -1,0 +1,686 @@
+# v 0.5a
+# NSIK ver 0.9, 2023-09-01
+# https://nsiklab.lt 
+
+
+prop_g:   &prop_g_l
+  Pset_QuantityTakeOff.Length: 
+    valueType: Integer | Real 
+
+prop_g:   &prop_g_w
+  Pset_QuantityTakeOff.Width: 
+    valueType: Integer | Real 
+
+prop_g:   &prop_g_h
+  Pset_QuantityTakeOff.Height: 
+    valueType: Integer | Real 
+
+prop_g_d:   &prop_g_d
+  Pset_QuantityTakeOff.Diameter: 
+    valueType: Integer | Real 
+    
+prop_g_lw:  &prop_g_lw
+  <<: [*prop_g_l, *prop_g_w]
+
+prop_g_ld:  &prop_g_ld
+  <<: [*prop_g_l, *prop_g_d]
+
+prop_g_wh:  &prop_g_wh
+  <<: [*prop_g_h, *prop_g_w]
+  
+prop_g_a:       &prop_g_a
+  Pset_QuantityTakeOff.Area: 
+    valueType: Integer | Real 
+  
+prop_g:     &prop_g
+  <<: [*prop_g_l, *prop_g_w, *prop_g_h]
+
+prop_thick:     &prop_g_thickness
+  <<: *prop_g_l
+  Pset_QuantityTakeOff.Thickness:
+    valueType: Integer | Real
+
+prop_g_a:       &prop_g_area
+  <<: *prop_g
+  <<: *prop_g_a
+  
+prop_g_cable:   &prop_g_cable
+  <<: *prop_g_l
+  <<: *prop_g_d
+
+prop:       &prop
+  VVK.Name: {}
+  VVK.ElementType: {}
+  Pset_ConstructionAdministration.SpecificationSectionNumber: {}
+  Pset_ElementCommon.System: {}
+  Pset_ElementComponentCommon.Status: {}
+  
+prop_u:     &prop_u
+  <<: *prop
+  VVK.Tag: {}
+
+prop_mat:   &prop_material
+  VVK.Material: {}
+  
+prop_vis:   &prop_vis
+  VVK.Material: {}
+  VVK.Finish: {}
+  VVK.Colour: {}
+
+
+prop_e:     &prop_e
+  Pset_ElectricalDeviceCommon.NominalPowerConsumption: 
+    valueType: Integer | Real 
+  Pset_ElectricalDeviceCommon.RatedVoltage: 
+    valueType: Integer
+  Pset_ElectricalDeviceCommon.HasProtectiveEarth: {}
+
+prop_e:     &prop_h_e
+  Pset_ElementComponentCommon.PowerConsumption: 
+    valueType: Integer | Real 
+  Pset_ElementComponentCommon.NominalPowerConsumption: 
+    valueType: Integer | Real 
+
+prop_p:     &prop_p_w
+  Pset_ElementComponentCommon.Weight:
+    valueType: Integer | Real 
+    
+prop_p:     &prop_p_fr
+  Pset_ElementComponentCommon.FireRating: {}
+
+
+
+ŠVOK.OK:
+    elements:
+    
+      
+    - id: Vamzdis    #H.HC.WPA
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: WPA
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: WPA
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g_l
+            <<: *prop_g_d
+            <<: *prop_material
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g_l
+            <<: *prop_g_d
+            <<: *prop_material
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_g_l
+            <<: *prop_g_d
+            <<: *prop_material
+
+
+      
+    - id: Šalto oro pūstuvas                          # NSIK+ISO: H.HC.ECB
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: ECB
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: ECB
+      stages: &device_electrical
+        s3:
+          lod: 300
+          log: 2
+          properties:
+           <<: *prop
+           <<: *prop_vis
+           <<: *prop_g
+           <<: *prop_e
+        s4:
+          lod: 350
+          log: 3
+          properties:
+           <<: *prop_u
+           <<: *prop_vis
+           <<: *prop_g
+           <<: *prop_e
+      
+    - id: Elektrinis erdvės šildytuvas (radiatorius)  # NSIK+ISO: H.HC.EBG
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: EBG
+        ISO81346 CF: H
+        ISO81346 CT: HD
+        ISO81346 CC: EBG
+      stages:
+        <<: *device_electrical
+
+    - id: Vėsintuvas                                  # NSIK+ISO: H.HC.EQD
+      examples:
+      - Išorinis kondicionieriaus blokas
+      - čileris
+      - šalčio mašina
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: EQD
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: EQD
+      stages:
+        <<: *device_electrical
+
+    - id: Ventiliatorius                              # NSIK+ISO: H.HC.GQB
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: GQB
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: GQB
+      stages:
+        <<: *device_electrical
+      
+    - id: Izoliacija                       # NSIK+ISO: J.HC.RQA
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: RQA
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: RQA
+      examples:
+      - Šiluminė izoliacija
+      - antikondensacinė izoliacija
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_g_d
+            <<: *prop_g_thickness
+            <<: *prop_material
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_g_a
+            <<: *prop_g_thickness
+            <<: *prop_material
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_g_a
+            <<: *prop_g_thickness
+            <<: *prop_material
+
+    - id: Triukšmo slopinimo komponentas   # NSIK+ISO: H.HC.RQC
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: RQC
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: RQC
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_g_d
+            <<: *prop_material
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_g_d
+            <<: *prop_material
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_g_d
+            <<: *prop_material
+
+    - id: Skaitiklis                       # NSIK+ISO: H.HC.BHB
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: BHB
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: BHB
+      ifcType: 
+      - IfcFlowController
+      - IfcFlowControllerType
+      - IfcFlowControllerTypeEnum
+      stages: 
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_g_d
+            <<: *prop_material
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_g_d
+            <<: *prop_material
+        s4: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_g_d
+            <<: *prop_material
+            <<: *prop_e
+
+    - id: Daugiaparametris jutiklis        # NSIK+ISO: H.HC.BUA
+      examples:
+      - Patalpos klimato kontrolės blokas
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: BUA
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: BUA
+      stages:
+        s3:
+          lod: 300
+          log: 2
+          properties:
+           <<: *prop
+           <<: *prop_vis
+           <<: *prop_g
+           <<: *prop_e
+        s4:
+          lod: 350
+          log: 3
+          properties:
+           <<: *prop_u
+           <<: *prop_vis
+           <<: *prop_g
+           <<: *prop_e
+
+    - id: Vėsinimo plokštė          # NSIK+ISO: H.HC.EQB
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: EQB
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: EQB
+      stages:
+        s3:
+          lod: 300
+          log: 2
+          properties:
+           <<: *prop
+           <<: *prop_u
+           <<: *prop_vis
+           <<: *prop_g
+           <<: *prop_e
+           <<: *prop_p_w
+        s4:
+          lod: 350
+          log: 2
+          properties:
+           <<: *prop
+           <<: *prop_u
+           <<: *prop_vis
+           <<: *prop_g
+           <<: *prop_e
+           <<: *prop_p_w
+
+    - id: Šalto oro pūstuvas        # NSIK+ISO: H.HC.EQC
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: EQC
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: EQC
+      examples:
+      - Kondicionieriaus vidinis blokas
+      stages:
+        s3:
+          lod: 300
+          log: 2
+          properties:
+           <<: *prop_u
+           <<: *prop_vis
+           <<: *prop_g
+           <<: *prop_e
+           <<: *prop_p_w
+        s4:
+          lod: 350
+          log: 2
+          properties:
+           <<: *prop_u
+           <<: *prop_vis
+           <<: *prop_g
+           <<: *prop_e
+           <<: *prop_p_w
+
+    - id: Grotelės                  # NSIK+ISO:  H.HC.NAC
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: NAC
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: NAC
+      stages:
+        s3:
+          lod: 300
+          log: 2
+          properties:
+           <<: *prop
+           <<: *prop_vis
+           <<: *prop_g_wh
+           <<: *prop_g_d
+        s4:
+          lod: 350
+          log: 2
+          properties:
+           <<: *prop
+           <<: *prop_vis
+           <<: *prop_g_wh
+           <<: *prop_g_d
+
+
+    - id: Izoliacija                # NSIK+ISO: H.HC.RQA
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: RQA
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: RQA
+      examples:
+      - Šiluminė izoliacija
+      - antikondensacinė izoliacija
+      stages:
+        s3:
+          lod: 300
+          log: 2
+          properties:
+           <<: *prop
+           <<: *prop_vis
+           <<: *prop_g_l
+           <<: *prop_g_thickness
+           <<: *prop_p_fr
+        s4:
+          lod: 350
+          log: 2
+          properties:
+           <<: *prop
+           <<: *prop_vis
+           <<: *prop_g_l
+           <<: *prop_g_d
+           <<: *prop_g_area
+           <<: *prop_g_thickness
+           <<: *prop_p_fr
+
+    - id: Skysčio srauto ribotuvas  # NSIK+ISO: H.HC.RNA
+      examples:
+      - Balansinis ventilis
+      - sklendė
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: RNA
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: RNA
+      stages:   &stages_s1_s3_s4_valve
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g_d
+            <<: *prop_material
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g_d
+            <<: *prop_material
+        s4: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g_d
+            <<: *prop_material
+
+    - id: Difuzorius           # NSIK+ISO: H.HC.RND
+      classifications:
+        NSIK LF: J
+        NSIK LT: HC
+        NSIK LK: RND
+        ISO81346 CF: J
+        ISO81346 CT: HC
+        ISO81346 CC: RND
+      stages:
+        <<: *stages_s1_s3_s4_valve
+        
+    - id: Oro skirstytuvas           # NSIK: H.HC.%RND10
+      classifications:
+        NSIK LF: J
+        NSIK LT: HC
+        NSIK LK: "%RND10"
+      stages:
+        <<: *stages_s1_s3_s4_valve
+
+    - id: Kampinė jungtis      # NSIK+ISO: H.HC.XMD
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: XMD
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: XMD
+      stages:
+        <<: *stages_s1_s3_s4_valve
+
+    - id: Šakotuvas            # NSIK+ISO: H.HC.XME
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: XME
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: XME
+      stages:
+        <<: *stages_s1_s3_s4_valve
+
+    - id: Atskirtuvas          # NSIK+ISO: H.HC.HQB
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: HQB
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: HQB
+      ifcType: 
+      - IfcFlowController
+      - IfcFlowControllerType
+      - IfcFlowControllerTypeEnum
+      stages: 
+        <<: *stages_s1_s3_s4_valve
+
+    - id: Sklendė              # NSIK+ISO: H.HC.QMA
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: QMA
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: QMA
+      ifcType: 
+      - IfcFlowController
+      - IfcFlowControllerType
+      - IfcFlowControllerTypeEnum
+      stages: 
+        <<: *stages_s1_s3_s4_valve
+
+    - id: Atbulinis vožtuvas   # NSIK+ISO: H.HC.RMA
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: RMA
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: RMA
+      ifcType: 
+      - IfcFlowController
+      - IfcFlowControllerType
+      - IfcFlowControllerTypeEnum
+      stages: 
+        <<: *stages_s1_s3_s4_valve
+
+
+    - id: Sifonas              # NSIK+ISO: H.HC.RMD
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: RMD
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: RMD
+      ifcType: 
+      - IfcFlowController
+      - IfcFlowControllerType
+      - IfcFlowControllerTypeEnum
+      stages: 
+        <<: *stages_s1_s3_s4_valve
+
+    - id: Vamzdis              # NSIK+ISO: H.HC.WPA
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: WPA
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: WPA
+      stages:
+        s3:
+          lod: 300
+          log: 2
+          properties:
+           <<: *prop
+           <<: *prop_vis
+           <<: *prop_g_ld
+        s4:
+          lod: 350
+          log: 2
+          properties:
+           <<: *prop
+           <<: *prop_vis
+           <<: *prop_g_ld
+
+    - id: Ortakis              # NSIK+ISO: H.HC.WPB
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: WPB
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: WPB
+      stages:
+        s3:
+          lod: 300
+          log: 2
+          properties:
+           <<: *prop
+           <<: *prop_vis
+           <<: *prop_g_l
+           <<: *prop_g_wh
+           <<: *prop_g_d
+           <<: *prop_p_fr
+        s4:
+          lod: 350
+          log: 2
+          properties:
+           <<: *prop
+           <<: *prop_vis
+           <<: *prop_g_l
+           <<: *prop_g_wh
+           <<: *prop_g_d
+           <<: *prop_p_fr
+
+
+    - id: Išardoma jungtis     # NSIK+ISO: H.HC.XMA
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: XMA
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: XMA
+      ifcType: 
+      - IfcFlowController
+      - IfcFlowControllerType
+      - IfcFlowControllerTypeEnum
+      stages: 
+        <<: *stages_s1_s3_s4_valve
+        
+    - id: Neišardoma jungtis   # NSIK+ISO: H.HC.XMB
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: XMB
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: XMB
+      stages:
+        <<: *stages_s1_s3_s4_valve
+        # s3:
+          # lod: 300
+          # log: 2
+          # properties:
+           # <<: *prop
+           # <<: *prop_material
+           # <<: *prop_g_d
+        # s4:
+          # lod: 350
+          # log: 3
+          # properties:
+           # <<: *prop
+           # <<: *prop_material
+           # <<: *prop_g_d
+    
+    - id: Kampinė jungtis      # NSIK+ISO: H.HC.XMD
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: XMD
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: XMD
+      ifcType: 
+      - IfcFlowController
+      - IfcFlowControllerType
+      - IfcFlowControllerTypeEnum
+      stages: 
+        <<: *stages_s1_s3_s4_valve
+        
+    - id: Srauto šakotuvas     # NSIK+ISO: H.HC.XME
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: XME
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: XME
+      ifcType: 
+      - IfcFlowController
+      - IfcFlowControllerType
+      - IfcFlowControllerTypeEnum
+      stages: 
+        <<: *stages_s1_s3_s4_valve

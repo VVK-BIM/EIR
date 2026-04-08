@@ -7,19 +7,25 @@
 
 
 prop_g:   &prop_g
-  Pset_QuantityTakeOff.Height: {}
-  Pset_QuantityTakeOff.Width: {}
-  Pset_QuantityTakeOff.Length: {}
+  Pset_QuantityTakeOff.Height: 
+    valueType: Integer | Real 
+  Pset_QuantityTakeOff.Width: 
+    valueType: Integer | Real 
+  Pset_QuantityTakeOff.Length: 
+    valueType: Integer | Real 
 
 prop_ga:   &prop_g_area
   <<: *prop_g
-  Pset_QuantityTakeOff.Area: {}
+  Pset_QuantityTakeOff.Area: 
+    valueType: Integer | Real 
 
 prop:     &prop
-  Name: {}
-  Type: {}
-  Pset_ConstructionAdministration.SpecificationSectionNumber: {}
+  VVK.Name: {}
+  VVK.ElementType: {}
+  Pset_ElementCommon.System: {}
   Pset_ElementComponentCommon.Status: {}
+  Pset_ConstructionAdministration.SpecificationSectionNumber: {}
+  
 
 prop_mat:     &prop_material
   VVK.Material: {}
@@ -31,21 +37,22 @@ prop_vis:     &prop_vis
 
 prop_u:     &prop_u
   <<: *prop
-  Tag: {}
-  Name: {}
-  Type: {}
-  Pset_ElementComponentCommon.Status: {}
-
+  VVK.Tag: {}
+  
 prop_e:     &prop_e
-  Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
-  Pset_ElectricalDeviceCommon.RatedVoltage: {}
+  Pset_ElectricalDeviceCommon.NominalPowerConsumption: 
+    valueType: Integer | Real 
+  Pset_ElectricalDeviceCommon.RatedVoltage: 
+    valueType: Integer
   Pset_ElectricalDeviceCommon.HasProtectiveEarth: {}
   
 prop_external:   &prop_external
   Pset_ElementComponentCommon.IsExternal: {}
+
+prop_external:   &prop_external_s4
+  <<: *prop_external
   Pset_ElectricalDeviceCommon.IP_Code: {}
   Pset_ElectricalDeviceCommon.IK_Code: {}
-  
 
 
 prop_s2u: &prop_s2_u
@@ -196,6 +203,9 @@ AS:
         log: 6
         
     elements:
+#   
+# signalizacija, P.LE
+#
     - id: Įrangos ir/ar kabelių dėklas                 # common                                NSIK: P.LE.UBA
       examples:
       - Kabelio kanalas
@@ -261,20 +271,24 @@ AS:
             <<: *prop_e
             <<: *prop_external
 
-    - id: Avarinis paspaudimo mygtukas                 # visible_unique                        NSIK: P.LE.SJB
+
+    - id: Apsaugos centralė          #    NSIK+ISO: P.LE.KEB
       classifications:
         NSIK LF: P
         NSIK LT: LE
-        NSIK LK: SJB
-      examples:
-      - Pavojaus mygtukas
-      ifcType: *type_sensor
+        NSIK LK: KEB
+        
+        ISO81346 CF: P
+        ISO81346 CT: LE
+        ISO81346 CC: KEB
+      ifcType: *type_e
       stages:
         s1:
           properties:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
+            <<: *prop_e
             <<: *prop_external
         s2: 
           lod: 200
@@ -286,12 +300,11 @@ AS:
             <<: *prop_u
             <<: *prop_g
             <<: *prop_vis
+            <<: *prop_e
             <<: *prop_external
 
-    - id: Signalizacijos centralė                      # visible_unique_electrical             NSIK: P.LE.%KEB10
-      examples:
-      - Signalizacijos centralė
-      - Signalizacijos centralės kartotuvas
+
+    - id: Apsaugos centralė          #    NSIK: P.LE.%KEB10
       classifications:
         NSIK LF: P
         NSIK LT: LE
@@ -316,6 +329,90 @@ AS:
             <<: *prop_g
             <<: *prop_vis
             <<: *prop_e
+            <<: *prop_external
+            
+    - id: Avarinis paspaudimo mygtukas   #    NSIK+ISO: P.LE.SJB
+      classifications:
+        NSIK LF: P
+        NSIK LT: LE
+        NSIK LK: SJB
+        ISO81346 CF: P
+        ISO81346 CT: LE
+        ISO81346 CC: SJB
+      examples:
+      - Pavojaus mygtukas
+      ifcType: *type_sensor
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+
+    - id: Klaviatūra   #    NSIK: P.LE.%SJB10
+      classifications:
+        NSIK LF: P
+        NSIK LT: LE
+        NSIK LK: "%SJB10"
+      examples:
+      - Pavojaus mygtukas
+      ifcType: *type_sensor
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+
+    - id: Pavojaus mygtukas   #    NSIK: P.LE.%SJB20
+      classifications:
+        NSIK LF: P
+        NSIK LT: LE
+        NSIK LK: "%SJB20"
+      examples:
+      - Pavojaus mygtukas
+      ifcType: *type_sensor
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
             <<: *prop_external
 
     - id: Išplėtimo modulis                            # unique_electrical                     NSIK: P.LE.%KEB20
@@ -375,6 +472,65 @@ AS:
             <<: *prop_e
             <<: *prop_external
 
+    - id: Komutacinis skydas                          # visible_unique_electrical             NSIK+ISO: P.LE.XGC
+      ifcType: *type_e
+      classifications:
+        NSIK LF: P
+        NSIK LT: LE
+        NSIK LK: XGC
+        
+        ISO81346 CF: P
+        ISO81346 CT: LE
+        ISO81346 CC: XGC
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+
+    - id: Judesio daviklis                             # NSIK+ISO: P.LE.BGB
+      classifications:
+        NSIK LF: P
+        NSIK LT: LE
+        NSIK LK: BGB
+        ISO81346 CF: P
+        ISO81346 CT: LE
+        ISO81346 CC: BGB
+      examples:
+      - PIR daviklis
+      ifcType: *type_sensor
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+
     - id: Judesio daviklis                             # visible_unique                        NSIK: P.LE.%BGB30
       classifications:
         NSIK LF: P
@@ -430,6 +586,38 @@ AS:
             <<: *prop_vis
             <<: *prop_external
 
+
+    - id: Stiklo dūžio daviklis                        #  NSIK+ISO: P.LE.BXB
+      classifications:
+        NSIK LF: P
+        NSIK LT: LE
+        NSIK LK: BXB
+        
+        ISO81346 CF: P
+        ISO81346 CT: LE
+        ISO81346 CC: BXB
+      examples:
+      - Dūžio daviklis
+      ifcType: *type_sensor
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+
     - id: Stiklo dūžio daviklis                        # visible_unique                        NSIK: P.LE.%BXB10
       classifications:
         NSIK LF: P
@@ -457,11 +645,11 @@ AS:
             <<: *prop_vis
             <<: *prop_external
 
-    - id: Optinis spindulinis jutiklis                 # visible_unique                        NSIK: P.LE.%BQF3010
+    - id: Optinis spindulinis jutiklis   #    NSIK: P.LE.%BQF10
       classifications:
         NSIK LF: P
         NSIK LT: LE
-        NSIK LK: "%BQF3010"
+        NSIK LK: "%BQF10"
       examples:
       - Lazerinis barjeras
       ifcType: *type_sensor
@@ -659,12 +847,169 @@ AS:
             <<: *prop_e
             <<: *prop_external
 
-# praėjimo kontrolė
-    - id: EM kortelių skaitytuvas                      # visible_unique_electrical_external    NSIK: P.LE.BYB         Uc: 
+
+    - id: Telefonspynė  #    NSIK+ISO: P.LE.KFE
       classifications:
         NSIK LF: P
         NSIK LT: LE
+        NSIK LK: KFE
+        #Uniclass: ""
+        ISO81346 CF: P
+        ISO81346 CT: LE
+        ISO81346 CC: KFE
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+
+    - id: Vaizdo ekranas  #    NSIK+ISO: P.LE.PHA
+      classifications:
+        NSIK LF: P
+        NSIK LT: LE
+        NSIK LK: PHA
+        #Uniclass: ""
+        ISO81346 CF: P
+        ISO81346 CT: LE
+        ISO81346 CC: PHA
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+
+
+    - id: Įgarsinimo sistema. Garsiakalbis #   NSIK: P.LE.PJA      
+      classifications:
+        NSIK LF: P
+        NSIK LT: LE
+        NSIK LK: PJA
+        Uniclass: Pr_70_75_06_50
+        ISO81346 CF: P
+        ISO81346 CT: LE
+        ISO81346 CC: PJA
+      ifcType: 
+      - IfcAudioVisualAppliance
+      - IfcAudioVisualApplianceType
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+
+#
+#  praėjimo kontrolės sistema, NSIK +ISO P.LD
+#
+    - id: Padėties jungiklis                      # visible_unique_electrical_external    NSIK+ISO: P.LE.BGB
+      classifications:
+        NSIK LF: P
+        NSIK LT: LE
+        NSIK LK: BGB
+        ISO81346 CF: P
+        ISO81346 CT: LE
+        ISO81346 CC: BGB
+      ifcType: *type_sensor
+      stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+
+    - id: Kontaktinis skaitytuvas                      # visible_unique_electrical_external    NSIK+ISO: P.LE.BYA         Uc: 
+      classifications:
+        NSIK LF: P
+        NSIK LT: LD
+        NSIK LK: BYA
+        ISO81346 CF: P
+        ISO81346 CT: LD
+        ISO81346 CC: BYA
+      examples:
+      - Lustų skaitytuvas
+      - Dallas-key skaitytuvas
+      ifcType: *type_sensor
+      stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+    
+
+            
+    - id: EM kortelių skaitytuvas   #    NSIK+ISO: P.LD.BYB         Uc: 
+      classifications:
+        NSIK LF: P
+        NSIK LT: LD
         NSIK LK: BYB
+        ISO81346 CF: P
+        ISO81346 CT: LD
+        ISO81346 CC: BYB
       memo: Skaitytuvai, nepatenkantys į RFID ir NFC technologijas
       examples:
       - Nuotolinis kortelių skaitytuvas
@@ -688,10 +1033,10 @@ AS:
             <<: *prop_vis
             <<: *prop_external
         
-    - id: NFC kortelių skaitytuvas                     # visible_unique_electrical_external    NSIK: P.LE.%BYB20      Uc: 
+    - id: NFC kortelių skaitytuvas  #    NSIK: P.LD.%BYB20      Uc: 
       classifications:
         NSIK LF: P
-        NSIK LT: LE
+        NSIK LT: LD
         NSIK LK: "%BYB20"
       examples:
       - NFC skaitytuvas
@@ -716,10 +1061,10 @@ AS:
             <<: *prop_vis
             <<: *prop_external
 
-    - id: RFID kortelių skaitytuvas                    # visible_unique_electrical_external    NSIK: P.LE.%BYB30      Uc: 
+    - id: RFID kortelių skaitytuvas                    # visible_unique_electrical_external    NSIK: P.LD.%BYB30      Uc: 
       classifications:
         NSIK LF: P
-        NSIK LT: LE
+        NSIK LT: LD
         NSIK LK: "%BYB30"
       examples:
       - RFID skaitytuvas
@@ -743,11 +1088,14 @@ AS:
             <<: *prop_vis
             <<: *prop_external
 
-    - id: Optinis skaitytuvas                          # visible_unique_electrical_external    NSIK: P.LE.BYC         Uc: 
+    - id: Optinis skaitytuvas                          # visible_unique_electrical_external    NSIK: P.LD.BYC         Uc: 
       classifications:
         NSIK LF: P
-        NSIK LT: LE
+        NSIK LT: LD
         NSIK LK: BYC
+        ISO81346 CF: P
+        ISO81346 CT: LD
+        ISO81346 CC: BYC
       examples:
       - Akies rainelės skaitytuvas
       - QR kodų skeneris
@@ -771,39 +1119,15 @@ AS:
             <<: *prop_vis
             <<: *prop_external
 
-    - id: Kontaktinis skaitytuvas                      # visible_unique_electrical_external    NSIK: P.LE.BYA         Uc: 
-      classifications:
-        NSIK LF: P
-        NSIK LT: LE
-        NSIK LK: BYA
-      examples:
-      - Lustų skaitytuvas
-      - Dallas-key skaitytuvas
-      ifcType: *type_sensor
-      stages:
-        s1: 
-          properties:
-            <<: *prop_u
-            <<: *prop_g
-            <<: *prop_vis
-            <<: *prop_external
-        s2: 
-          lod: 200
-          properties:
-            <<: *prop
-        s3: 
-          lod: 300
-          properties:
-            <<: *prop_u
-            <<: *prop_g
-            <<: *prop_vis
-            <<: *prop_external
 
-    - id: Elektromagnetas                              # visible_unique_electrical_external    NSIK: P.LE.MBB         Uc: 
+    - id: Elektromagnetas                              # visible_unique_electrical_external    NSIK: P.LD.MBB         Uc: 
       classifications:
         NSIK LF: P
-        NSIK LT: LE
+        NSIK LT: LD
         NSIK LK: MBB
+        ISO81346 CF: P
+        ISO81346 CT: LD
+        ISO81346 CC: MBB
       ifcType: 
       - IfcDiscreteAccessory
       stages:
@@ -827,13 +1151,165 @@ AS:
             <<: *prop_e
             <<: *prop_external
 
-# vaizdo stebėjimas
+    - id: Valdymo pultas          #    NSIK+ISO: P.LD.KEB
+      classifications:
+        NSIK LF: P
+        NSIK LT: LD
+        NSIK LK: KEB
+        
+        ISO81346 CF: P
+        ISO81346 CT: LD
+        ISO81346 CC: KEB
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
+    - id: Valdymo blokas          #    NSIK+ISO: P.LD.KFE
+      classifications:
+        NSIK LF: P
+        NSIK LT: LD
+        NSIK LK: KFE
+        
+        ISO81346 CF: P
+        ISO81346 CT: LD
+        ISO81346 CC: KFE
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
+    - id: Ekranas          #    NSIK+ISO: P.LD.PHA
+      classifications:
+        NSIK LF: P
+        NSIK LT: LD
+        NSIK LK: PHA
+        
+        ISO81346 CF: P
+        ISO81346 CT: LD
+        ISO81346 CC: PHA
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
+    - id: Spyna                              # visible_unique_electrical_external    NSIK: P.LD.QSA
+      classifications:
+        NSIK LF: P
+        NSIK LT: LD
+        NSIK LK: QSA
+        ISO81346 CF: P
+        ISO81346 CT: LD
+        ISO81346 CC: QSA
+      ifcType: 
+      - IfcDiscreteAccessory
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
+# vaizdo stebėjimas  #  NSIK+ISO P.LF
     - id: Vaizdo kamera                                # visible_unique_electrical_external    NSIK: P.LF.BXC
       classifications:
         NSIK LF: P
         NSIK LT: LF
         NSIK LK: BXC
         Uniclass: ""
+      examples:
+      - Vaizdo kamera
+      - Kupolinė kamera
+      - Valdoma kamera
+      - Vaizdo makera su pašvietimu
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            
+    - id: Vaizdo kamera                                # visible_unique_electrical_external    NSIK: P.LF.%BXC20
+      classifications:
+        NSIK LF: P
+        NSIK LT: LF
+        NSIK LK: "%BXC20"
       examples:
       - Vaizdo kamera
       - Kupolinė kamera
@@ -917,6 +1393,7 @@ AS:
             <<: *prop_vis
             <<: *prop_e
 
+
     - id: Vaizdo kamerų prijungimo lizdas              # visible_unique                        NSIK: P.LF."%XGA10"
       classifications:
         NSIK LF: P
@@ -945,6 +1422,7 @@ AS:
             <<: *prop_g
             <<: *prop_vis
         
+
     - id: Vaizdo kamerų komutacinė panelė              # visible_unique                        NSIK: P.LF."%XGC10"
       classifications:
         NSIK LF: P
@@ -1065,3 +1543,367 @@ AS:
             <<: *prop_e
             <<: *prop_external
 
+# įeigos kontrolė, P.KL
+    - id: Valdoma spyna (įeigos kontrolė).  #   NSIK: P.KL.QSA      
+      classifications:
+        NSIK LF: P
+        NSIK LT: KL
+        NSIK LK: QSA
+        # Uniclass: Pr_70_75_06_50
+        ISO81346 CF: P
+        ISO81346 CT: KL
+        ISO81346 CC: QSA
+      # ifcType: 
+      # - IfcAudioVisualAppliance
+      # - IfcAudioVisualApplianceType
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+        s2:
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            # <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            
+
+#
+# Perspėjimo sistema P.MA. Išravėti
+#
+    - id: Perspėjimo sistemos korpusas (skydelis)    #  NSIK+ISO: P.MA.UCA
+      examples:
+      - Pastato įgarsinimo sistemos prietaisų dėžė
+      - Pastato įgarsinimo sistemos spinta
+      - Pastato įgarsinimo valdymo sistemos įrenginių spinta
+      ifcType: 
+        '2x3':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        '4':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        - IfcDistributionChamberElement
+        - IfcDistributionChamberElementType
+      classifications:
+        NSIK LF: P
+        NSIK LT: MA
+        NSIK LC: UCA
+        
+        ISO81346 CF: P
+        ISO81346 CT: MA
+        ISO81346 CC: UCA
+      stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2: 
+          properties:
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+            
+    - id: Perspėjimo sistema. Garsiakalbis           #  NSIK+ISO: P.MA.PJA
+      classifications:
+        NSIK LF: P
+        NSIK LT: MA
+        NSIK LK: PJA
+        
+        ISO81346 CF: P
+        ISO81346 CT: MA
+        ISO81346 CC: PJA
+      examples:
+      - Pastato įgarsinimo sistemos garsiakalbis
+      ifcType: 
+      - IfcAudioVisualAppliance
+      - IfcAudioVisualApplianceType
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
+    - id: Perspėjimo sistema. Mikrofonas             #  NSIK+ISO: P.MA.BXA
+      classifications:
+        NSIK LF: P
+        NSIK LT: MA
+        NSIK LK: BXA
+        
+        ISO81346 CF: P
+        ISO81346 CT: MA
+        ISO81346 CC: BXA
+      examples:
+      - Pastato įgarsinimo sistemos mikrofonas su pultu.
+      ifcType: 
+      - IfcAudioVisualAppliance
+      - IfcAudioVisualApplianceType
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+
+            
+    - id: Perspėjimo sistemos valdymo blokas                        #  NSIK+ISO: P.MA.KEB
+      examples:
+      - Pastato įgarsinimo sistemos kontroleris
+      - Pastato įgarsinimo sistemos valdiklis
+      classifications:
+        NSIK LF: P
+        NSIK LT: MA
+        NSIK LK: KEB
+        
+        ISO81346 CF: P
+        ISO81346 CT: MA
+        ISO81346 CC: KEB
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
+    - id: Perspėjimo sistemos korpusas (skydelis)                   #  NSIK+ISO: P.MA.UCA
+      examples:
+      - Pastato įgarsinimo sistemos prietaisų dėžė
+      - Pastato įgarsinimo sistemos spinta
+      - Pastato įgarsinimo valdymo sistemos įrenginių spinta
+      ifcType: 
+        '2x3':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        '4':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        - IfcDistributionChamberElement
+        - IfcDistributionChamberElementType
+      classifications:
+        NSIK LF: P
+        NSIK LT: MA
+        NSIK LK: UCA
+        
+        ISO81346 CF: P
+        ISO81346 CT: MA
+        ISO81346 CC: UCA
+      stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2: 
+          properties:
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+    
+    - id: Perspėjimo sistemos kompiuteris                   #  NSIK+ISO: P.MA.KEA
+      classifications:
+        NSIK LF: P
+        NSIK LT: MA
+        NSIK LK: KEA
+        
+        ISO81346 CF: P
+        ISO81346 CT: MA
+        ISO81346 CC: KEA
+      stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+        s2: 
+          properties:
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+    
+    - id: Perspėjimo sistema. Signalinė lempa           #  NSIK+ISO: P.MA.PFA
+      classifications:
+        NSIK LF: P
+        NSIK LT: MA
+        NSIK LK: PFA
+        
+        ISO81346 CF: P
+        ISO81346 CT: MA
+        ISO81346 CC: PFA
+      examples:
+      - Pastato įgarsinimo sistemos garsiakalbis
+      ifcType: 
+      - IfcAudioVisualAppliance
+      - IfcAudioVisualApplianceType
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+    
+    - id: Perspėjimo sistemos elektros skirstytuvas                 #  NSIK+ISO: P.MA.XDE
+      examples:
+      - Pastato įgarsinimo sistemos sistemos elektros šakotuvas
+      - Elektros šakotuvas pastato įgarsinimo sistemos įrangai
+      ifcType: *type_e
+      classifications:
+        NSIK LF: P
+        NSIK LT: MA
+        NSIK LK: XDE
+        
+        ISO81346 CF: P
+        ISO81346 CT: MA
+        ISO81346 CC: XDE
+      stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2: 
+          properties:
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
+    - id: Perspėjimo sistema. Nepertraukiamo maitinimo šaltinis     #  NSIK+ISO: P.MA.RBA
+      examples:
+      - Pastato įgarsinimo sistemos nepertraukiamo maitinimo šaltinis
+      - Pastato įgarsinimo sistemos UPS
+      classifications:
+        NSIK LF: P
+        NSIK LT: MA
+        NSIK LK: RBA
+        
+        ISO81346 CF: P
+        ISO81346 CT: MA
+        ISO81346 CC: RBA
+      ifcType:
+      - IfcElectricalElement
+      - IfcElectricFlowStorageDeviceTypeEnum
+      stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+        s2: 
+          properties:
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+    
+    - id: Perspėjimo sistema. Maitinimo šaltinis     #  NSIK+ISO: P.MA.TCB
+      classifications:
+        NSIK LF: P
+        NSIK LT: MA
+        NSIK LK: TCB
+        
+        ISO81346 CF: P
+        ISO81346 CT: MA
+        ISO81346 CC: TCB
+      ifcType:
+      - IfcElectricalElement
+      - IfcElectricFlowStorageDeviceTypeEnum
+      stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+        s2: 
+          properties:
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+
+#

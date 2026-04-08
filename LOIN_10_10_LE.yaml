@@ -6,30 +6,34 @@
 #
 
 prop_g:   &prop_g
-  Pset_QuantityTakeOff.Height: {}
-  Pset_QuantityTakeOff.Width: {}
-  Pset_QuantityTakeOff.Length: {}
+  Pset_QuantityTakeOff.Height: 
+    valueType: Integer | Real 
+  Pset_QuantityTakeOff.Width: 
+    valueType: Integer | Real 
+  Pset_QuantityTakeOff.Length: 
+    valueType: Integer | Real 
 
 prop_ga:   &prop_g_area
   <<: *prop_g
-  Pset_QuantityTakeOff.Area: {}
+  Pset_QuantityTakeOff.Area: 
+    valueType: Integer | Real 
   
 prop_g_cable:   &prop_g_cable
-  Pset_QuantityTakeOff.Length: {}
-  Pset_QuantityTakeOff.Diameter: {}
+  Pset_QuantityTakeOff.Length: 
+    valueType: Integer | Real 
+  Pset_QuantityTakeOff.Diameter: 
+    valueType: Integer | Real 
 
 prop:     &prop
-  Name: {}
-  Type: {}
-  Pset_ConstructionAdministration.SpecificationSectionNumber: {}
+  VVK.Name: {}
+  VVK.ElementType: {}
+  Pset_ElementCommon.System: {}
   Pset_ElementComponentCommon.Status: {}
+  Pset_ConstructionAdministration.SpecificationSectionNumber: {}
   
 prop_u:     &prop_u
   <<: *prop
-  Tag: {}
-  Name: {}
-  Type: {}
-  Pset_ElementComponentCommon.Status: {}
+  VVK.Tag: {}
 
 prop_vis:     &prop_vis
   VVK.Material: {}
@@ -42,11 +46,13 @@ prop_e_sens:     &prop_e_sensor
   Pset_ElectricalDeviceCommon.InsulationStandardClass: {}
   
 prop_e:     &prop_e
-  Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
+  Pset_ElectricalDeviceCommon.NominalPowerConsumption: 
+    valueType: Integer | Real 
   <<: *prop_e_sensor
 
 prop_e_cable:     &prop_e_cable
-  Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
+  Pset_ElectricalDeviceCommon.NominalPowerConsumption: 
+    valueType: Integer | Real 
   Pset_ElectricalDeviceCommon.InsulationStandardClass: {}
   Pset_ElementComponentCommon.FireRating: {}
 
@@ -54,12 +60,16 @@ prop_e_device:    &prop_e_device
   Pset_ElectricalDeviceCommon.IP_Code: {}
   Pset_ElectricalDeviceCommon.IK_Code: {}
   Pset_ElectricalDeviceCommon.InsulationStandardClass: {}
-  Pset_ElectricalDeviceCommon.RatedVoltage: {}
-  Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
+  Pset_ElectricalDeviceCommon.RatedVoltage: 
+    valueType: Integer
+  Pset_ElectricalDeviceCommon.NominalPowerConsumption: 
+    valueType: Integer | Real 
   
 prop_e_psu: &prop_e_psu
-  Pset_ElectricalDeviceCommon.RatedVoltage: {}
-  Pset_ElectricalDeviceCommon.RatedCurrent: {}
+  Pset_ElectricalDeviceCommon.RatedVoltage: 
+    valueType: Integer
+  Pset_ElectricalDeviceCommon.RatedCurrent: 
+    valueType: Integer | Real 
   Pset_ElectricalDeviceCommon.NominalFrequencyRange: {}
   Pset_ElectricalDeviceCommon.IP_Code: {}
   Pset_ElectricalDeviceCommon.IK_Code: {}
