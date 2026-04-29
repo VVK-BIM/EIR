@@ -809,7 +809,7 @@ SA:
       ifcType:
       - IfcRailing
       - IfcRailingType
-      stages:
+      stages: &stages_s1_s6_railing
         s1:
           properties: 
             <<: *prop
@@ -822,6 +822,7 @@ SA:
             <<: *prop
         s3:
           properties:
+            <<: *prop
             <<: *prop_g_area
             <<: *prop_vis
         s4:
@@ -837,24 +838,25 @@ SA:
       - IfcRailing
       - IfcRailingType
       stages:
-        s1:
-          properties: 
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_g_area
-            <<: *prop_vis
-            <<: *prop_env
-        s2:
-          properties: 
-            <<: *prop
-        s3:
-          properties:
-            <<: *prop_g
-            <<: *prop_g_area
-            <<: *prop_vis
-        s4:
-          properties:
-            <<: *prop_env
+        <<: *stages_s1_s6_railing
+        # s1:
+          # properties: 
+            # <<: *prop
+            # <<: *prop_g
+            # <<: *prop_g_area
+            # <<: *prop_vis
+            # <<: *prop_env
+        # s2:
+          # properties: 
+            # <<: *prop
+        # s3:
+          # properties:
+            # <<: *prop_g
+            # <<: *prop_g_area
+            # <<: *prop_vis
+        # s4:
+          # properties:
+            # <<: *prop_env
 
     - id: Balkonų turėklai ir porankiai                          #  NSIK+ISO:  B.AH.FQD
       examples:
@@ -871,23 +873,24 @@ SA:
       - IfcRailing
       - IfcRailingType
       stages:
-        s1:
-          properties: 
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_g_area
-            <<: *prop_vis
-            <<: *prop_env
-        s2:
-          properties: 
-            <<: *prop
-        s3:
-          properties:
-            <<: *prop_g_area
-            <<: *prop_vis
-        s4:
-          properties:
-            <<: *prop_env
+        <<: *stages_s1_s6_railing
+        # s1:
+          # properties: 
+            # <<: *prop
+            # <<: *prop_g
+            # <<: *prop_g_area
+            # <<: *prop_vis
+            # <<: *prop_env
+        # s2:
+          # properties: 
+            # <<: *prop
+        # s3:
+          # properties:
+            # <<: *prop_g_area
+            # <<: *prop_vis
+        # s4:
+          # properties:
+            # <<: *prop_env
 
     - id: Laiptų turėklai ir porankiai                           #  NSIK+ISO:  C.AF.FQD
       examples:
@@ -904,23 +907,24 @@ SA:
       - IfcRailing
       - IfcRailingType
       stages:
-        s1:
-          properties: 
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_g_area
-            <<: *prop_vis
-            <<: *prop_env
-        s2:
-          properties: 
-            <<: *prop
-        s3:
-          properties:
-            <<: *prop_g_area
-            <<: *prop_vis
-        s4:
-          properties:
-            <<: *prop_env
+        <<: *stages_s1_s6_railing
+        # s1:
+          # properties: 
+            # <<: *prop
+            # <<: *prop_g
+            # <<: *prop_g_area
+            # <<: *prop_vis
+            # <<: *prop_env
+        # s2:
+          # properties: 
+            # <<: *prop
+        # s3:
+          # properties:
+            # <<: *prop_g_area
+            # <<: *prop_vis
+        # s4:
+          # properties:
+            # <<: *prop_env
 
     - id: Stogelis                                               #  NSIK+ISO:  D.BE.FSD
       classifications:
@@ -1099,10 +1103,10 @@ SA:
       classifications:
         NSIK LF: P
         NSIK LT: PB
-        NSIK LK: FMF
+        NSIK LK: XSC
         ISO81346 CF: P
         ISO81346 CT: PB
-        ISO81346 CC: FMF
+        ISO81346 CC: XSC
       ifcType:
       - IfcStair
       - IfcStairType
@@ -1133,7 +1137,7 @@ SA:
       classifications:
         NSIK LF: "%P10"
         NSIK LT: PB
-        NSIK LK: FMF
+        NSIK LK: XSC
       ifcType:
       - IfcStair
       - IfcStairType
@@ -1275,12 +1279,11 @@ SA:
       ifcType:
       - IfcRailing
       - IfcRailingType
-      stages:
+      stages:   &stages_s1_s6_railing_internal
         s1: 
           properties: 
-            <<: *prop
-            <<: *prop_g_lha
             <<: *prop_u
+            <<: *prop_g_lha
             <<: *prop_vis
             <<: *prop_element_s3
             <<: *prop_phys_s4
@@ -1297,6 +1300,10 @@ SA:
         s4:
           properties:
             <<: *prop_u
+            <<: *prop_g_lha
+            <<: *prop_vis
+            <<: *prop_element_s3
+            <<: *prop_phys_s4
         
     - id: Apsauginiai horizontalūs turėklai ir aptvėrimai pastato viduje    #  NSIK+ISO: C.AC.FQD
       examples:
@@ -1313,27 +1320,28 @@ SA:
       - IfcRailing
       - IfcRailingType
       stages:
-        s1: 
-          properties: 
-            <<: *prop
-            <<: *prop_g_lha
-            <<: *prop_u
-            <<: *prop_vis
-            <<: *prop_element_s3
-            <<: *prop_phys_s4
-        s2: 
-          properties: 
-            <<: *prop
-            <<: *prop_g_lha
-        s3:
-          properties:
-            <<: *prop
-            <<: *prop_g_lha
-            <<: *prop_vis
-            <<: *prop_element_s3
-        s4:
-          properties:
-            <<: *prop_u
+        <<: *stages_s1_s6_railing_internal
+        # s1: 
+          # properties: 
+            # <<: *prop
+            # <<: *prop_g_lha
+            # <<: *prop_u
+            # <<: *prop_vis
+            # <<: *prop_element_s3
+            # <<: *prop_phys_s4
+        # s2: 
+          # properties: 
+            # <<: *prop
+            # <<: *prop_g_lha
+        # s3:
+          # properties:
+            # <<: *prop
+            # <<: *prop_g_lha
+            # <<: *prop_vis
+            # <<: *prop_element_s3
+        # s4:
+          # properties:
+            # <<: *prop_u
         
         
     - id: Laiptų turėklai ir porankiai pastato viduje                       #  NSIK+ISO: B.AF.FQD
@@ -1351,27 +1359,28 @@ SA:
       - IfcRailing
       - IfcRailingType
       stages:
-        s1: 
-          properties: 
-            <<: *prop
-            <<: *prop_g_lha
-            <<: *prop_u
-            <<: *prop_vis
-            <<: *prop_element_s3
-            <<: *prop_phys_s4
-        s2: 
-          properties: 
-            <<: *prop
-            <<: *prop_g_lha
-        s3:
-          properties:
-            <<: *prop
-            <<: *prop_g_lha
-            <<: *prop_vis
-            <<: *prop_element_s3
-        s4:
-          properties:
-            <<: *prop_u
+        <<: *stages_s1_s6_railing_internal
+        # s1: 
+          # properties: 
+            # <<: *prop
+            # <<: *prop_g_lha
+            # <<: *prop_u
+            # <<: *prop_vis
+            # <<: *prop_element_s3
+            # <<: *prop_phys_s4
+        # s2: 
+          # properties: 
+            # <<: *prop
+            # <<: *prop_g_lha
+        # s3:
+          # properties:
+            # <<: *prop
+            # <<: *prop_g_lha
+            # <<: *prop_vis
+            # <<: *prop_element_s3
+        # s4:
+          # properties:
+            # <<: *prop_u
         
     - id: Pandusų turėklai ir porankiai pastato viduje                      #  NSIK+ISO: B.AG.FQD
       examples:
@@ -1388,27 +1397,28 @@ SA:
       - IfcRailing
       - IfcRailingType
       stages:
-        s1: 
-          properties: 
-            <<: *prop
-            <<: *prop_g_lha
-            <<: *prop_u
-            <<: *prop_vis
-            <<: *prop_element_s3
-            <<: *prop_phys_s4
-        s2: 
-          properties: 
-            <<: *prop
-            <<: *prop_g_lha
-        s3:
-          properties:
-            <<: *prop
-            <<: *prop_g_lha
-            <<: *prop_vis
-            <<: *prop_element_s3
-        s4:
-          properties:
-            <<: *prop_u
+        <<: *stages_s1_s6_railing_internal
+        # s1: 
+          # properties: 
+            # <<: *prop
+            # <<: *prop_g_lha
+            # <<: *prop_u
+            # <<: *prop_vis
+            # <<: *prop_element_s3
+            # <<: *prop_phys_s4
+        # s2: 
+          # properties: 
+            # <<: *prop
+            # <<: *prop_g_lha
+        # s3:
+          # properties:
+            # <<: *prop
+            # <<: *prop_g_lha
+            # <<: *prop_vis
+            # <<: *prop_element_s3
+        # s4:
+          # properties:
+            # <<: *prop_u
 
 
 #
@@ -1484,7 +1494,35 @@ SA:
           properties:
             <<: *prop_u
 
-    - id: Horozontalios grotelės            #  NSIK+ISO:  A.AA.NAC
+    - id: Atskiroji pakopa            #  NSIK+ISO:  A.AF.UBC
+      classifications:
+        NSIK LF: A
+        NSIK LT: AF
+        NSIK LK: UBC
+        ISO81346 CF: A
+        ISO81346 CT: AF
+        ISO81346 CC: UBC
+      stages:
+        s1:  
+          properties: 
+            <<: *prop_u
+            <<: *prop_g_lwa
+            <<: *prop_vis
+        s2:
+          properties: 
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop
+            <<: *prop_g_lwa
+            <<: *prop_vis
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g_lwa
+            <<: *prop_vis
+            
+    - id: Horizontalios grotelės            #  NSIK+ISO:  A.AA.NAC
       classifications:
         NSIK LF: A
         NSIK LT: AA
@@ -1643,10 +1681,9 @@ SA:
       stages: &stages_s1_s2_s3_s4_s5_s6_door
         s1: 
           properties: 
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_g_area
             <<: *prop_u
+            <<: [*prop_g_w, *prop_g_h]
+            <<: *prop_g_area
             <<: *prop_vis
             <<: *prop_element_s3
             <<: *prop_phys_s4
@@ -1654,13 +1691,15 @@ SA:
         s2: 
           properties: 
             <<: *prop
-            <<: *prop_g
+            <<: [*prop_g_w, *prop_g_h]
             <<: *prop_g_area
         s3:
           lod: 350
           log: 3
           properties:
-            <<: *prop_u
+            <<: *prop
+            <<: [*prop_g_w, *prop_g_h]
+            <<: *prop_g_area
             <<: *prop_vis
             <<: *prop_element_s3
             Pset_ElementComponentCommon.EgressCode: {}
@@ -1668,7 +1707,13 @@ SA:
           lod: 350
           log: 3
           properties:
+            <<: *prop_u
+            <<: [*prop_g_w, *prop_g_h]
+            <<: *prop_g_area
+            <<: *prop_vis
+            <<: *prop_element_s3
             <<: *prop_phys_s4
+            Pset_ElementComponentCommon.EgressCode: {}
 
     - id: Durys                                                            #  NSIK+ISO:  B.BD.QQC
       examples:
@@ -1723,6 +1768,22 @@ SA:
       stages: 
         <<: *stages_s1_s2_s3_s4_s5_s6_door
 
+    - id: Vartai lauko sienoje                                                           #  NSIK+ISO:  B.CL.QQF
+      examples:
+      - Garažo vartai
+      classifications:
+        NSIK LF: B
+        NSIK LT: CL
+        NSIK LK: QQF
+        ISO81346 CF: B
+        ISO81346 CT: CL
+        ISO81346 CC: QQF
+      ifcType:
+      - IfcDoor
+      - IfcDoorType
+      stages: 
+        <<: *stages_s1_s2_s3_s4_s5_s6_door
+        
     - id: Priešgaisrinės durys                                             #  NSIK+ISO: B.AD.FME
       examples:
       - Plieninės durys
@@ -2168,24 +2229,25 @@ SA:
       - IfcRailing
       - IfcRailingType
       stages:
-        s1:
-          properties: 
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_g_area
-            <<: *prop_vis
-            <<: *prop_env
-        s2:
-          properties: 
-            <<: *prop
-        s3:
-          properties:
-            <<: *prop_g
-            <<: *prop_g_area
-            <<: *prop_vis
-        s4:
-          properties:
-            <<: *prop_env
+        <<: *stages_s1_s6_railing
+        # s1:
+          # properties: 
+            # <<: *prop
+            # <<: *prop_g
+            # <<: *prop_g_area
+            # <<: *prop_vis
+            # <<: *prop_env
+        # s2:
+          # properties: 
+            # <<: *prop
+        # s3:
+          # properties:
+            # <<: *prop_g
+            # <<: *prop_g_area
+            # <<: *prop_vis
+        # s4:
+          # properties:
+            # <<: *prop_env
 
 
 
@@ -2207,24 +2269,25 @@ SA:
       - IfcRailing
       - IfcRailingType
       stages:
-        s1:
-          properties: 
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_g_area
-            <<: *prop_vis
-            <<: *prop_env
-        s2:
-          properties: 
-            <<: *prop
-        s3:
-          properties:
-            <<: *prop_g
-            <<: *prop_g_area
-            <<: *prop_vis
-        s4:
-          properties:
-            <<: *prop_env
+        <<: *stages_s1_s6_railing
+        # s1:
+          # properties: 
+            # <<: *prop
+            # <<: *prop_g
+            # <<: *prop_g_area
+            # <<: *prop_vis
+            # <<: *prop_env
+        # s2:
+          # properties: 
+            # <<: *prop
+        # s3:
+          # properties:
+            # <<: *prop_g
+            # <<: *prop_g_area
+            # <<: *prop_vis
+        # s4:
+          # properties:
+            # <<: *prop_env
 
     
     - id: Grotelės stoge                #  NSIK+ISO:  D.AE.NAC

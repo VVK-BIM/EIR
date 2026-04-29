@@ -21,6 +21,10 @@ prop_g:   &prop_g_l
   Pset_QuantityTakeOff.Length: 
     valueType: Integer | Real 
 
+prop_g:   &prop_g_h
+  Pset_QuantityTakeOff.Height: 
+    valueType: Integer | Real
+    
 prop_g:   &prop_g_w
   Pset_QuantityTakeOff.Width: 
     valueType: Integer | Real 
@@ -297,15 +301,32 @@ SK:
             <<: *prop_g_av
             <<: *prop_mat
             <<: *prop_p_w
-            
-        
-    - id: Polis (Pamatai)                           # unique             NSIK+ISO: B.BB.ULC
+
+    - id: Rostverkas              # common              NSIK+ISO: B.AB.%ULG30
       classifications:
         NSIK LF: B
-        NSIK LT: BB
+        NSIK LT: AB
+        NSIK LK: "%ULG30"
+      stages: 
+        <<: *stages_s1_s2_s3_s4_s5_s6_volume
+        
+    - id: Rostverkas (perdangai)              # common              NSIK: C.AB.%ULG30
+      classifications:
+        NSIK LF: C
+        NSIK LT: AB
+        NSIK LK: "%ULG30"
+      stages: 
+        <<: *stages_s1_s2_s3_s4_s5_s6_volume
+        
+
+
+    - id: Polis (Pamatai)                           # unique             NSIK+ISO: B.AB.ULC
+      classifications:
+        NSIK LF: B
+        NSIK LT: AB
         NSIK LK: ULC
         ISO81346 CF: B
-        ISO81346 CT: BB
+        ISO81346 CT: AB
         ISO81346 CC: ULC
       stages:
         <<: *stages_s1_s2_s3_s4_s5_s6_volume_unique
@@ -328,6 +349,28 @@ SK:
             # <<: *prop_g_av
             # <<: *prop_mat
 
+    - id: Polis (Pamatai)                           # unique             NSIK+ISO: B.BB.ULC
+      classifications:
+        NSIK LF: B
+        NSIK LT: BB
+        NSIK LK: ULC
+        ISO81346 CF: B
+        ISO81346 CT: BB
+        ISO81346 CC: ULC
+      stages:
+        <<: *stages_s1_s2_s3_s4_s5_s6_volume_unique
+        
+    - id: Atraminė siena                            # common             NSIK+ISO: B.AD.ULC
+      classifications:
+        NSIK LF: B
+        NSIK LT: AD
+        NSIK LK: ULL
+        ISO81346 CF: B
+        ISO81346 CT: AD
+        ISO81346 CC: ULL
+      stages:
+        <<: *stages_s1_s2_s3_s4_s5_s6_volume_unique
+    
     - id: Atraminė siena                            # common             NSIK+ISO: B.BB.ULC
       classifications:
         NSIK LF: B
@@ -457,8 +500,6 @@ SK:
             <<: *prop_mat
             <<: *prop_p_w
             <<: *prop_p_fr
-        
-      
 
     - id: Kolona                                    # unique             NSIK: B.BD.ULD
       classifications:
@@ -581,6 +622,21 @@ SK:
             <<: *prop_p_w
             <<: *prop_p_fr
 
+    - id: Plokštė                                   # unique             NSIK: C.AC.ULK
+      examples:
+      - Monolitinama perdanga
+      - lauko laiptų pamatinė plokštė
+      - perdangos plokštė
+      - polių galvena
+      classifications:
+        NSIK LF: C
+        NSIK LT: AC
+        NSIK LK: ULK
+        ISO81346 CF: C
+        ISO81346 CT: AC
+        ISO81346 CC: ULK
+      stages: 
+        <<: *stages_s1_s2_s3_s4_s5_s6_volume_blind_unique_fr
       
 
 # laiptų sistema, AF
@@ -641,7 +697,7 @@ SK:
     
 
 # , BE
-    - id: Izoliacija                                # unique             NSIK: D.BE.RQA
+    - id: Izoliacija                                # NSIK+ISO:  D.BE.RQA
       examples:
       - šilumos izoliacija
       - vėjo izoliacija
@@ -673,7 +729,7 @@ SK:
             <<: *prop_mat
             <<: *prop__sheet
     
-    - id: Grindų dangos pasluoksnių konstrukcija    # unique             NSIK: C.BF.UMC
+    - id: Grindų dangos pasluoksnių konstrukcija    # NSIK+ISO:  C.BF.UMC
       examples:
       - dangą laikanti konstrukciją, išskyrus perdangos plokštę
       - išlyginamasis sluoksnis
@@ -707,7 +763,7 @@ SK:
             # <<: *prop_g_av
             
       
-    - id: Pamato šiluminė izoliacija                # unique             NSIK: B.BD.RQA
+    - id: Pamato šiluminė izoliacija                # NSIK+ISO:  B.BD.RQA
       classifications:
         NSIK LF: B
         NSIK LT: BB
@@ -736,7 +792,7 @@ SK:
             # <<: *prop_u
             # <<: *prop_g_av
     
-    - id: Šlaitinio stogo sistema                   # unique             NSIK: D.AE.UMC
+    - id: Šlaitinio stogo sistema                   # NSIK+ISO:  D.AE.UMC
       classifications:
         NSIK LF: D
         NSIK LT: AE
@@ -764,14 +820,22 @@ SK:
             <<: *prop_u
             <<: *prop_g_av
     
-    - id: Stogo santvara                            # unique             NSIK: D.%AE10.UBF
+    - id: Stogo santvara                            # NSIK+ISO:  D.AE.UBF
       classifications:
         NSIK LF: D
-        NSIK LT: "%AE10"
+        NSIK LT: AE
         NSIK LK: UBF
         ISO81346 CF: D
         ISO81346 CT: AE
         ISO81346 CC: UBF
+      stages:
+        <<: *stages_s1_s2_s3_s4_s5_s6_volume_unique_fr
+
+    - id: Stogo santvara                            # NSIK:      D.%AE10.UBF
+      classifications:
+        NSIK LF: D
+        NSIK LT: "%AE10"
+        NSIK LK: UBF
       stages:
         <<: *stages_s1_s2_s3_s4_s5_s6_volume_unique_fr
         # s1:
@@ -794,10 +858,10 @@ SK:
             # <<: *prop_u
             # <<: *prop__member
         
-    - id: Gegnė                                     # unique             NSIK: D.%AE20.ULE
+    - id: Gegnė                                     # NSIK+ISO:  D.AE.ULE
       classifications:
         NSIK LF: D
-        NSIK LT: "%AE20"
+        NSIK LT: AE
         NSIK LK: ULE
         ISO81346 CF: D
         ISO81346 CT: AE
@@ -831,15 +895,31 @@ SK:
             <<: *prop_mat
             <<: *prop_p_w
             <<: *prop_p_fr
-        
-    - id: Mūrlotas                                  # unique             NSIK: D.%AE20.ULQ
+
+    - id: Gegnė                                     # NSIK:      D.%AE20.ULE
       classifications:
         NSIK LF: D
         NSIK LT: "%AE20"
+      stages:   
+        <<: *stages_s1_s2_s3_s4_s5_s6_volume_fr
+
+
+        
+    - id: Mūrlotas                                  # NSIK+ISO:  D.AE.ULQ
+      classifications:
+        NSIK LF: D
+        NSIK LT: AE
         NSIK LK: ULQ
         ISO81346 CF: D
         ISO81346 CT: AE
         ISO81346 CC: ULQ
+      stages:
+        <<: *stages_s1_s2_s3_s4_s5_s6_volume_fr
+    - id: Mūrlotas                                  # NSIK:      D.%AE20.ULQ
+      classifications:
+        NSIK LF: D
+        NSIK LT: "%AE20"
+        NSIK LK: ULQ
       stages:
         <<: *stages_s1_s2_s3_s4_s5_s6_volume_fr
         # s1:
@@ -934,3 +1014,79 @@ SK:
             # <<: *prop
             # <<: *prop_u
             # <<: *prop__member
+
+
+#
+# anturažas
+#
+    - id: Atitvara, turėklas     # common              NSIK: P.AD.FQD
+      classifications:
+        NSIK LF: P
+        NSIK LT: AD
+        NSIK LK: FQD
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g_h
+            <<: *prop_g_l
+            <<: *prop_mat
+        s2:
+          properties:
+            <<: *prop
+            <<: *prop_g_h
+            <<: *prop_g_l
+        s3: 
+          properties:
+            <<: *prop
+            <<: *prop_g_h
+            <<: *prop_g_l
+            <<: *prop_mat
+        s4: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g_h
+            <<: *prop_g_l
+            <<: *prop_mat
+
+    - id: Sija                   # common              NSIK: P.AD.ULE
+      classifications:
+        NSIK LF: P
+        NSIK LT: AD
+        NSIK LK: ULE
+      stages: 
+        <<: *stages_s1_s2_s3_s4_s5_s6_volume
+
+#
+# lauko inžinerija
+#
+    - id: Rostverkas ar galvena elektros stulpams     # common              NSIK: K.BH.%ULG30
+      classifications:
+        NSIK LF: K
+        NSIK LT: BH
+        NSIK LK: "%ULG30"
+      stages: 
+        <<: *stages_s1_s2_s3_s4_s5_s6_volume
+        
+
+    - id: Polis stulpui                           # unique             NSIK+ISO: K.BH.ULC
+      classifications:
+        NSIK LF: K
+        NSIK LT: BH
+        NSIK LK: ULC
+        ISO81346 CF: K
+        ISO81346 CT: BH
+        ISO81346 CC: ULC
+      stages:
+        <<: *stages_s1_s2_s3_s4_s5_s6_volume_unique
+
+    - id: Stulpas šviestuvui                                    # unique             NSIK: K.BH.UBD
+      classifications:
+        NSIK LF: K
+        NSIK LT: BH
+        NSIK LK: UBD
+        ISO81346 CF: K
+        ISO81346 CT: BH
+        ISO81346 CC: UBD
+      stages:
+        <<: *stages_s1_s2_s3_s4_s5_s6_volume_unique_fr

@@ -862,6 +862,38 @@ LER:
 
 ## duomenų perdavimo sistema
 
+    - id: Šulinys                                  # NSIK: %M10.HJ.XMC
+      examples:
+      - Apžiūros šulinys
+      - inspektavimo šulinys
+      - kamera
+      - komunikacijų šulinys
+      ifcType: *type_well
+      classifications:
+        NSIK LF: "%M10"
+        NSIK LT: HJ
+        NSIK LK: XMC
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
     - id: Korpusas (skydelis)                      # NSIK: %M10.HJ.UCA
       examples:
       - Ryšių skydelis
@@ -976,16 +1008,14 @@ LER:
             <<: *prop_vis
             <<: *prop_external
 
-    - id: Duomenų kabelio dėklas                   # NSIK: %M10.HJ.%FNB20
+    - id: Duomenų kabelio dėklas                   # NSIK: %M10.HJ.FNB
       classifications:
         NSIK LF: "%10"
         NSIK LT: HJ
-        NSIK LK: "%FNB20"
+        NSIK LK: FNB
       ifcType: *type_linear
       stages:
         <<: *comm_pipe
-
-
 
 
     - id: Optinio tinklo komutatorius              # NSIK: %M10.HJ.KGA
@@ -1304,42 +1334,6 @@ LER:
             <<: *prop_e
             <<: *prop_external
 
-    - id: Korpusas (skydelis)                      # NSIK: %M10.HJ.UCA
-      examples:
-      - Ryšių skydelis
-      - Ryšių spinta
-      ifcType: 
-        '2x3':
-        - IfcJunctionBox
-        - IfcJunctionBoxType
-        '4':
-        - IfcJunctionBox
-        - IfcJunctionBoxType
-        - IfcDistributionChamberElement
-        - IfcDistributionChamberElementType
-      classifications:
-        NSIK LF: "%M10"
-        NSIK LT: HJ
-        NSIK LK: UCA
-      stages:
-        s1:
-          properties:
-            <<: *prop_u
-            <<: *prop_g
-            <<: *prop_vis
-            <<: *prop_e
-            <<: *prop_external
-        s3:
-          properties:
-            <<: *prop
-        s4:
-          properties:
-            <<: *prop_u
-            <<: *prop_g
-            <<: *prop_vis
-            <<: *prop_e
-            <<: *prop_external
-        
     - id: Elektros skirstytuvas                    # NSIK: %M10.HJ.XDE
       examples:
       - Ryšių sistemos elektros šakotuvas
@@ -1412,4 +1406,63 @@ LER:
             Pset_QuantityTakeOff.Width: {}
             Pset_QuantityTakeOff.Area: {}
             Pset_ElementComponentCommon.Status: {}
-        
+
+
+# INFRA dalis
+
+    - id: Šulinys                                  # NSIK: M.%JL10.XMC
+      examples:
+      - Apžiūros šulinys
+      - inspektavimo šulinys
+      - kamera
+      - komunikacijų šulinys
+      ifcType: *type_well
+      classifications:
+        NSIK LF: M
+        NSIK LT: "%JL10"
+        NSIK LK: XMC
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
+            
+    - id: Rakinasmas dangtis                                  # NSIK: M.%JL10.FQJ
+      classifications:
+        NSIK LF: M
+        NSIK LT: "%JL10"
+        NSIK LK: FQJ
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g_d
+            <<: *prop_material
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop_g_d
+            <<: *prop_material
+        s4:
+          properties:
+            <<: *prop_g_d
+            <<: *prop_material
+            <<: *prop_external

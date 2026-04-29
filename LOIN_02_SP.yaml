@@ -81,6 +81,8 @@ prop_g:   &prop_g_tav
   Pset_QuantityTakeOff.Volume:
     valueType: Integer | Real
 
+prop_vis:     &prop_mat
+  VVK.Material: {}
 
 prop_vis:     &prop_vis
   VVK.Material: {}
@@ -120,6 +122,11 @@ prop_foliage: &prop_folliage_bush
     - 2.400
     descr: Projektinis augalo aukštis
 
+prop_e:     &prop_e_s3
+  Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
+  Pset_ElectricalDeviceCommon.RatedVoltage: {}
+  Pset_ElectricalDeviceCommon.HasProtectiveEarth: {}
+
 prop_e:     &prop_e
   Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
   Pset_ElectricalDeviceCommon.IP_Code: {}
@@ -127,13 +134,18 @@ prop_e:     &prop_e
   Pset_ElectricalDeviceCommon.InsulationStandardClass: {}
   Pset_ElectricalDeviceCommon.RatedVoltage: {}
   Pset_ElectricalDeviceCommon.HasProtectiveEarth: {}
-
+  
 prop:     &prop_s3
-  VVK.RelatedDrawing: {}
   Pset_ConstructionAdministration.SpecificationSectionNumber:
   - examples:
     - SP-TS-13.4
 
+prop:     &prop_s4
+  VVK.RelatedDrawing: {}
+  Pset_ConstructionAdministration.SpecificationSectionNumber:
+  - examples:
+    - SP-TS-13.4
+    
 prop:     &prop_s5
   VVK.RelatedDocumentationURI: {}
 
@@ -265,7 +277,7 @@ SP:
         ISO81346 CT: AA
         ISO81346 CC: NCA
       ifcType: IfcCovering
-      stages:
+      stages: &stages_s1_s6_covering
         s1:
           properties:
             <<: *prop
@@ -310,6 +322,33 @@ SP:
             <<: *prop_loads_s4
             <<: *prop_s5
 
+
+    - id: Trinkelių danga                      # NSIK        A.AA.%NCA50
+      classifications:
+        NSIK LF: A
+        NSIK LT: AA
+        NSIK LK: "%NCA50"
+      ifcType: IfcCovering
+      stages: 
+        <<: *stages_s1_s6_covering
+
+    - id: Surišantis sluoksnis                      # NSIK        A.CA.UMC
+      classifications:
+        NSIK LF: A
+        NSIK LT: CA
+        NSIK LK: UMC
+      ifcType: IfcCovering
+      stages: 
+        <<: *stages_s1_s6_covering
+
+    - id: Betono pagrindo sluoksnis                      # NSIK        A.CA.%UMC30
+      classifications:
+        NSIK LF: A
+        NSIK LT: CA
+        NSIK LK: "%UMC30"
+      ifcType: IfcCovering
+      stages: 
+        <<: *stages_s1_s6_covering
 
     - id: Lauko danga                          # NSIK+ISO    A.CB.NCA               ,
       description: Komponentas, sudarantis viršutinę išorinės erdvės dangą ar dangos konstrukcijos viršutinį sluoksnį
@@ -443,32 +482,32 @@ SP:
             <<: *prop
             <<: *prop_u
             <<: *prop_g_tav
-            <<: *prop_vis
+            <<: *prop_mat
         s2:
           properties:
             <<: *prop
             <<: *prop_g_area
-            <<: *prop_vis
+            <<: *prop_mat
         s3:
           properties:
             <<: *prop
             <<: *prop_s3
             <<: *prop_g_tav
-            <<: *prop_vis
+            <<: *prop_mat
         s4:
           properties:
             <<: *prop
             <<: *prop_s3
             <<: *prop_u
             <<: *prop_g_tav
-            <<: *prop_vis
+            <<: *prop_mat
         s5:
             properties:
             <<: *prop
             <<: *prop_s3
             <<: *prop_u
             <<: *prop_g_tav
-            <<: *prop_vis
+            <<: *prop_mat
             <<: *prop_s5
         s6:
             properties:
@@ -476,11 +515,97 @@ SP:
             <<: *prop_s3
             <<: *prop_u
             <<: *prop_g_tav
-            <<: *prop_vis
+            <<: *prop_mat
             <<: *prop_s5
 
-# želdynai
 
+#
+# pagrindo sluoksniai
+#
+    - id: Pagrindas                        # NSIK+ISO  A.CA.ULA
+      classifications:
+        NSIK LF: A
+        NSIK LT: CA
+        NSIK LK: ULA
+        ISO81346 CF: A
+        ISO81346 CT: CA
+        ISO81346 CC: ULA
+      ifcType: IfcCovering
+      stages: &stages_s1_s6_substrate
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_g_tav
+            <<: *prop_mat
+        s2:
+          properties:
+            <<: *prop
+            <<: *prop_g_area
+            <<: *prop_mat
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_s3
+            <<: *prop_g_tav
+            <<: *prop_mat
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_s3
+            <<: *prop_u
+            <<: *prop_g_tav
+            <<: *prop_mat
+            <<: *prop_loads_s4
+        s5:
+            properties:
+            <<: *prop
+            <<: *prop_s3
+            <<: *prop_u
+            <<: *prop_g_tav
+            <<: *prop_mat
+            <<: *prop_loads_s4
+            <<: *prop_s5
+        s6:
+            properties:
+            <<: *prop
+            <<: *prop_s3
+            <<: *prop_u
+            <<: *prop_g_tav
+            <<: *prop_mat
+            <<: *prop_loads_s4
+            <<: *prop_s5
+
+    - id: Pasluoksnis                      # NSIK      A.CA.%ULA20
+      classifications:
+        NSIK LF: A
+        NSIK LT: CA
+        NSIK LK: "%ULA20"
+      ifcType: IfcCovering
+      stages: 
+        <<: *stages_s1_s6_substrate
+    
+    - id: Pagrindas iš biriųjų medžiagu    # NSIK      A.CA.%ULA30
+      classifications:
+        NSIK LF: A
+        NSIK LT: CA
+        NSIK LK: "%ULA30"
+      ifcType: IfcCovering
+      stages: 
+        <<: *stages_s1_s6_substrate
+        
+    - id: ŠAS pagrindas                    # NSIK      A.CA.%ULA32
+      classifications:
+        NSIK LF: A
+        NSIK LT: CA
+        NSIK LK: "%ULA32"
+      ifcType: IfcCovering
+      stages: 
+        <<: *stages_s1_s6_substrate
+
+#
+# želdynai
+#
     - id: Medis                        # NSIK A.RA.TRA           ,
       classifications:
         NSIK LF: A
@@ -722,17 +847,17 @@ SP:
             <<: *prop
         s3:
           properties:
-            <<: *prop
+            <<: [*prop, *prop_s3]
             <<: *prop_g_lha
             <<: *prop_vis
         s4:
           properties:
-            <<: *prop_u
+            <<: [*prop_u, *prop_s3]
             <<: *prop_g_lha
             <<: *prop_vis
             <<: *prop_env
 
-    - id: Horozontalios grotelės                                         # +  unique                  NSIK: G.%JD10.NAC
+    - id: Horizontalios grotelės                                         # +  unique                  NSIK: G.%JD10.NAC
       classifications:
         NSIK LF: G
         NSIK LT: "%JD10"
@@ -748,12 +873,12 @@ SP:
             <<: *prop
         s3: 
           properties:
-            <<: *prop
+            <<: [*prop, *prop_s3]
             <<: *prop_g_lha
             <<: *prop_vis
         s4:
           properties:
-            <<: *prop_u
+            <<: [*prop_u, *prop_s4]
             <<: *prop_g_lha
             <<: *prop_vis
 
@@ -1368,15 +1493,15 @@ SP:
           lod: 350
           log: 3
           properties:
-            <<: *prop
+            <<: [*prop, *prop_s3]
             <<: *prop_g_lha
             <<: *prop_vis
-            <<: *prop_e
+            <<: *prop_e_s3
         s4:
           lod: 350
           log: 3
           properties:
-            <<: *prop_u
+            <<: [*prop_u, *prop_s4]
             <<: *prop_g_lha
             <<: *prop_vis
             <<: *prop_e
@@ -1437,13 +1562,16 @@ SP:
 
         s3:
           properties:
-            <<: *prop
+            <<: [*prop, *prop_s3]
             <<: *prop_g_area
             <<: *prop_vis
             <<: *prop_element_s3
         s4:
           properties:
-            <<: *prop_u
+            <<: [*prop_u, *prop_s4]
+            <<: *prop_g_area
+            <<: *prop_vis
+            <<: *prop_element_s3
 
 
 # kelio elementai

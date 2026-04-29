@@ -5,24 +5,42 @@
 # 10 - Elektrotechnika. Lauko tinklai
 #
 
-prop_g:   &prop_g
-  Pset_QuantityTakeOff.Height: 
-    valueType: Integer | Real 
-  Pset_QuantityTakeOff.Width: 
-    valueType: Integer | Real 
-  Pset_QuantityTakeOff.Length: 
+prop_g_cable:   &prop_g_l
+  Pset_QuantityTakeOff.Length:
     valueType: Integer | Real 
 
-prop_ga:   &prop_g_area
-  <<: *prop_g
+prop_g_cable:   &prop_g_h
+  Pset_QuantityTakeOff.Height:
+    valueType: Integer | Real 
+
+prop_g_cable:   &prop_g_w
+  Pset_QuantityTakeOff.Width:
+    valueType: Integer | Real 
+
+prop_g_cable:   &prop_g_d
+  Pset_QuantityTakeOff.Diameter:
+    valueType: Integer | Real 
+
+prop_ga:   &prop_g_a
   Pset_QuantityTakeOff.Area: 
     valueType: Integer | Real 
-  
+
+
+prop_g:   &prop_g
+  <<: [*prop_g_l, *prop_g_h, *prop_g_w]
+
+prop_ga:   &prop_g_area
+  <<: [*prop_g, *prop_g_a]
+
+prop_g_cable:   &prop_g_ld
+  <<: *prop_g_l
+  <<: *prop_g_d
+
+
+
 prop_g_cable:   &prop_g_cable
-  Pset_QuantityTakeOff.Length: 
-    valueType: Integer | Real 
-  Pset_QuantityTakeOff.Diameter: 
-    valueType: Integer | Real 
+  <<: *prop_g_l
+
 
 prop:     &prop
   VVK.Name: {}
@@ -310,14 +328,14 @@ LE:
         s1:
           properties:
             <<: *prop
-            <<: *prop_g_cable
+            <<: *prop_g_d
             Pset_ElectricalDeviceCommon.RatedVoltage: {}
             Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
             <<: *prop_external_cable
         s4:
           properties:
             <<: *prop
-            <<: *prop_g_cable
+            <<: *prop_g_d
             Pset_ElectricalDeviceCommon.RatedVoltage: {}
             Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
             <<: *prop_material
@@ -331,6 +349,13 @@ LE:
       ifcType: *type_linear
       stages:
         s1:
+          properties:
+            <<: *prop
+            <<: *prop_g_cable
+            <<: *prop_e_cable
+            <<: *prop_material
+            <<: *prop_external_cable
+        s3: 
           properties:
             <<: *prop
             <<: *prop_g_cable
@@ -355,7 +380,7 @@ LE:
         s1:
           properties:
             <<: *prop
-            <<: *prop_g_cable
+            <<: *prop_g_d
             Pset_ElectricalDeviceCommon.RatedVoltage: {}
             Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
             <<: *prop_material
@@ -363,7 +388,7 @@ LE:
         s4:
           properties:
             <<: *prop
-            <<: *prop_g_cable
+            <<: *prop_g_d
             Pset_ElectricalDeviceCommon.RatedVoltage: {}
             Pset_ElectricalDeviceCommon.NominalPowerConsumption: {}
             <<: *prop_material
@@ -470,6 +495,36 @@ LE:
             <<: *prop_material
             <<: *prop_external
 
+    - id: Korpusas (skydelis)                      #  NSIK: K.HG.%UCA10
+      examples:
+      - Apskaitos skydas
+      - Tranzitinis skydas
+      - Kabelių skydas
+      - Apšveitimo skydas
+      - Elektros spinta
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: "%UCA10"
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e_device
+            <<: *prop_material
+            <<: *prop_external
+        s3:
+          properties:
+            <<: *prop
+        s4: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e_device
+            <<: *prop_material
+            <<: *prop_external
+            
     - id: Aukštos ir vidutinės įtampos elektros kabelio mechaninė apsauga                     # pipe         NSIK: K.JK.FNB
       classifications:
         NSIK LF: K
@@ -500,6 +555,31 @@ LE:
         NSIK LF: K
         NSIK LT: HG
         NSIK LK: FNB
+      ifcType: *type_linear
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: {}
+            <<: *prop_material
+            Pset_ElementComponentCommon.IsExternal: {}
+        s3:
+          properties:
+            <<: *prop
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: {}
+            <<: *prop_material
+            Pset_ElementComponentCommon.IsExternal: {}
+
+    - id: Žemos įtampos elektros kabelio mechaninė apsauga                                    # NSIK: K.HG.%FNB20
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: "%FNB20"
       ifcType: *type_linear
       stages:
         s1:
@@ -703,7 +783,7 @@ LE:
         s1:
           properties:
             <<: *prop
-            <<: *prop_g_cable
+            <<: *prop_g
             <<: *prop_material
             <<: *prop_external_cable
         s3:
@@ -712,7 +792,7 @@ LE:
         s4:
           properties:
             <<: *prop
-            <<: *prop_g_cable
+            <<: *prop_g
             <<: *prop_material
             <<: *prop_external_cable
         
@@ -768,7 +848,84 @@ LE:
             <<: *prop_e_device
             <<: *prop_material
             <<: *prop_external
-            
+
+    - id: Stulpas               #   NSIK+ISO:  Q.HH.UBD
+      classifications:
+        NSIK LF: Q
+        NSIK LT: HH
+        NSIK LK: UBD
+        ISO81346 CF: Q
+        ISO81346 CT: HH
+        ISO81346 CC: UBD
+      ifcType: *type_linear
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      stages:
+        s1: 
+          lod: 300
+          properties:
+            <<: [*prop, *prop_g]
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+            <<: *prop_material
+        s3: 
+          lod: 300
+          properties:
+            <<: [*prop, *prop_g_ld, *prop_vis]
+
+    - id: Gembė                 #   NSIK+ISO:  Q.HH.ULB
+      classifications:
+        NSIK LF: Q
+        NSIK LT: HH
+        NSIK LK: ULB
+        ISO81346 CF: Q
+        ISO81346 CT: HH
+        ISO81346 CC: ULB
+      ifcType: *type_linear
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      stages:
+        s1: 
+          lod: 300
+          properties:
+            <<: [*prop, *prop_g]
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+            <<: *prop_material
+        s3: 
+          lod: 300
+          properties:
+            <<: [*prop, *prop_g_ld, *prop_vis]
+
+
+    - id: Apšvietimo kabelis           # pipe         NSIK: Q.HH.WDB
+      classifications:
+        NSIK LF: Q
+        NSIK LT: HH
+        NSIK LK: WDB
+      ifcType: *type_linear
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g_cable
+            <<: *prop_material
+            <<: *prop_external_cable
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g_cable
+            <<: *prop_material
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_g_cable
+            <<: *prop_material
+            <<: *prop_external_cable
+
+
     - id: Sklypo apšvietimas. Požeminė kamera                               # unique                                NSIK: Q.%HH10.XMC
       examples:
       - Apžiūros šulinys
@@ -796,6 +953,40 @@ LE:
             <<: *prop_material
             <<: *prop_external
 
+    - id: Šviestuvas   # visible_unique                        NSIK: Q.HH.%UAC10
+      examples:
+      - Gatvės šviestuvas
+      - Tako šviestuvas
+      - Dekoratyvinis sklypo šviestuvas
+      memo: Šviestuvas ir jo stiebas yra atskiri eleemntai
+      ifcType: 
+      - IfcLightFixture
+      - IfcLightFixtureType
+      classifications:
+        NSIK LF: Q
+        NSIK LT: HH
+        NSIK LK: "%UAC10"
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_material
+            <<: *prop_e
+            <<: *prop_external
+        s3:
+          properties:
+            <<: *prop
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_material
+            <<: *prop_e
+            <<: *prop_external
+            
     - id: Šviestuvas                                                        # visible_unique                        NSIK: Q.%HH10.%UAC10
       examples:
       - Gatvės šviestuvas
@@ -1232,13 +1423,13 @@ LE:
         s1:
           properties:
             <<: *prop
-            <<: *prop_g_cable
+            <<: *prop_g
             <<: *prop_material
             <<: *prop_external_cable
         s4:
           properties:
             <<: *prop
-            <<: *prop_g_cable
+            <<: *prop_g
             <<: *prop_material
             <<: *prop_external_cable
     
@@ -1313,6 +1504,31 @@ LE:
         NSIK LF: Q
         NSIK LT: "%HH10"
         NSIK LK: FNB
+      ifcType: *type_linear
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: {}
+            <<: *prop_material
+            Pset_ElementComponentCommon.IsExternal: {}
+        s3:
+          properties:
+            <<: *prop
+        s4: 
+          properties:
+            <<: *prop
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: {}
+            <<: *prop_material
+            Pset_ElementComponentCommon.IsExternal: {}
+            
+    - id: Apšvietimo tinklo elektros kabelio mechaninė apsauga              #                            NSIK: Q.HH.%FNB20
+      classifications:
+        NSIK LF: Q
+        NSIK LT: HH
+        NSIK LK: "%FNB20"
       ifcType: *type_linear
       stages:
         s1:

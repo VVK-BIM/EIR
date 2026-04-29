@@ -398,7 +398,30 @@ LVN:
             <<: *prop_g_pipe
             <<: *prop_material
             <<: *prop_external
-        
+
+    - id: Rakinasmas dangtis                                  # NSIK: %F10.%JB10.FQJ
+      classifications:
+        NSIK LF: "%F10"
+        NSIK LT: "%JB10"
+        NSIK LK: FQJ
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g_d
+            <<: *prop_material
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop_g_d
+            <<: *prop_material
+        s4:
+          properties:
+            <<: *prop_g_d
+            <<: *prop_material
+            <<: *prop_external
 
     - id: Vandens tiekimo tinklo apsaugos zona    # NSIK+ISO: <E>DCB/<L>F.JB
       classifications:
@@ -1993,6 +2016,49 @@ LVN:
         <<: *zone_s1_s2_service
 
 # lietaus nuotekos
+
+    - id: Rakinasmas dangtis                                  # NSIK: %G20.JD.FQJ
+      classifications:
+        NSIK LF: "%G20"
+        NSIK LT: JD
+        NSIK LK: FQJ
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g_d
+            <<: *prop_material
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop_g_d
+            <<: *prop_material
+        s4:
+          properties:
+            <<: *prop_g_d
+            <<: *prop_material
+            <<: *prop_external
+
+    - id: Lietaus nuoteku sistemos surinkimo šulinys      # unique                       NSIK: %G20.JD.XKG
+      examples:
+      - Apžiūros šulinys
+      - Inspektavimo šulinys
+      - Inžinerinių tinklu kamera
+      - Komunikacijų šulinys
+      classifications:
+        NSIK LF: "%G20"
+        NSIK LT: JD
+        NSIK LK: XKG
+        # Uniclass EF: ""
+        # Uniclass Ss: ""
+        Uniclass Pr: Pr_60_50
+      ifcType: *type_well
+      stages:
+        <<: *stages_s1_s3_s4_well
+
+
     - id: Lietaus nuoteku sistemos šulinys                                  # unique                       NSIK: %G20.%JD10.XMC
       examples:
       - Apžiūros šulinys
