@@ -263,6 +263,20 @@ SK:
             <<: *prop_g_av
             <<: *prop_mat
             <<: *prop_p_w
+        s5: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_g_av
+            <<: *prop_mat
+            <<: *prop_p_w
+        s6:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_g_av
+            <<: *prop_mat
+            <<: *prop_p_w
 
     - id: Blokas              # common              NSIK+ISO: B.BB.ULG
       examples:
@@ -294,7 +308,21 @@ SK:
             <<: *prop_g_av
             <<: *prop_mat
             <<: *prop_p_w
-        s4: 
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_g_av
+            <<: *prop_mat
+            <<: *prop_p_w
+        s5:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_g_av
+            <<: *prop_mat
+            <<: *prop_p_w
+        s6:
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -309,7 +337,7 @@ SK:
         NSIK LK: "%ULG30"
       stages: 
         <<: *stages_s1_s2_s3_s4_s5_s6_volume
-        
+
     - id: Rostverkas (perdangai)              # common              NSIK: C.AB.%ULG30
       classifications:
         NSIK LF: C
@@ -317,8 +345,6 @@ SK:
         NSIK LK: "%ULG30"
       stages: 
         <<: *stages_s1_s2_s3_s4_s5_s6_volume
-        
-
 
     - id: Polis (Pamatai)                           # unique             NSIK+ISO: B.AB.ULC
       classifications:
@@ -330,24 +356,6 @@ SK:
         ISO81346 CC: ULC
       stages:
         <<: *stages_s1_s2_s3_s4_s5_s6_volume_unique
-        # s1:
-          # properties:
-            # <<: *prop_u
-            # <<: *prop_g
-            # <<: *prop_g_av
-            # <<: *prop_mat
-        # s3: 
-          # properties:
-            # <<: *prop
-            # <<: *prop_g
-            # <<: *prop_g_av
-            # <<: *prop_mat
-        # s4: 
-          # properties:
-            # <<: *prop_u
-            # <<: *prop_g
-            # <<: *prop_g_av
-            # <<: *prop_mat
 
     - id: Polis (Pamatai)                           # unique             NSIK+ISO: B.BB.ULC
       classifications:
@@ -359,7 +367,7 @@ SK:
         ISO81346 CC: ULC
       stages:
         <<: *stages_s1_s2_s3_s4_s5_s6_volume_unique
-        
+
     - id: Atraminė siena                            # common             NSIK+ISO: B.AD.ULC
       classifications:
         NSIK LF: B
@@ -381,29 +389,7 @@ SK:
         ISO81346 CC: ULL
       stages:
         <<: *stages_s1_s2_s3_s4_s5_s6_volume_unique
-        # s1:
-          # properties:
-            # <<: *prop_u
-            # <<: *prop_g
-            # <<: *prop_g_av
-            # <<: *prop_mat
-        # s2: 
-          # properties:
-            # <<: *prop
-            # <<: *prop_g_av
-        # s3: 
-          # properties:
-            # <<: *prop
-            # <<: *prop_g
-            # <<: *prop_g_av
-            # <<: *prop_mat
-        # s4: 
-          # properties:
-            # <<: *prop_u
-            # <<: *prop_g
-            # <<: *prop_g_av
-            # <<: *prop_mat
-      
+
     - id: Siena                                     # unique             NSIK: B.BD.ULM
       classifications:
         NSIK LF: B
@@ -438,37 +424,25 @@ SK:
             <<: *prop_mat
             <<: *prop_p_w
             <<: *prop_p_fr
-            
-        # s1:
-          # properties:
-            # <<: *prop
-            # <<: *prop_g
-            # <<: *prop_g_av
-            # <<: *prop_mat
-            # <<: *prop_p_fr
-        # s2:
-          # properties:
-            # <<: *prop
-            # <<: *prop_g
-            # <<: *prop_g_av
-        # s3: 
-          # properties:
-            # <<: *prop
-            # <<: *prop_g
-            # <<: *prop_g_av
-            # <<: *prop_mat
-            # <<: *prop_p_w
-            # <<: *prop_p_fr
-        # s4: 
-          # properties:
-            # <<: *prop_u
-            # <<: *prop_g
-            # <<: *prop_g_av
-            # <<: *prop_mat
-            # <<: *prop_p_w
-            # <<: *prop_p_fr
-        
-      
+        s5:
+          properties:
+            <<: *prop_u
+            <<: *prop_g_l
+            <<: *prop_g_t
+            <<: *prop_g_av
+            <<: *prop_mat
+            <<: *prop_p_w
+            <<: *prop_p_fr
+        s6:
+          properties:
+            <<: *prop_u
+            <<: *prop_g_l
+            <<: *prop_g_t
+            <<: *prop_g_av
+            <<: *prop_mat
+            <<: *prop_p_w
+            <<: *prop_p_fr
+
     - id: Santvara                                  # unique             NSIK: B.BC.ULS
       classifications:
         NSIK LF: B
@@ -484,7 +458,7 @@ SK:
             <<: *prop_g
             <<: *prop_g_av
             <<: *prop_mat
-        s3: 
+        s3:
           properties:
             <<: *prop
             <<: *prop_g
@@ -492,7 +466,23 @@ SK:
             <<: *prop_mat
             <<: *prop_p_w
             <<: *prop_p_fr
-        s4: 
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_g_av
+            <<: *prop_mat
+            <<: *prop_p_w
+            <<: *prop_p_fr
+        s5:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_g_av
+            <<: *prop_mat
+            <<: *prop_p_w
+            <<: *prop_p_fr
+        s6:
           properties:
             <<: *prop_u
             <<: *prop_g
@@ -522,24 +512,7 @@ SK:
         ISO81346 CC: ULD
       stages:
         <<: *stages_s1_s2_s3_s4_s5_s6_volume_unique_fr
-        # s1:
-          # properties:
-            # <<: *prop
-            # <<: *prop_g_av
-            # <<: *prop_u
-            # <<: *prop_g_av
-            # <<: *prop_mat
-        # s3: 
-          # properties:
-            # <<: *prop_g_av
-            # <<: *prop_mat
-        # s4: 
-          # properties:
-            # <<: *prop
-            # <<: *prop_u
-            # <<: *prop_g_av
-        
-      
+
     - id: Sąrama                                    # unique             NSIK+ISO: B.BC.ULE
       examples:
       - Sąrama
@@ -553,22 +526,7 @@ SK:
         ISO81346 CC: ULE
       stages:
         <<: *stages_s1_s2_s3_s4_s5_s6_volume_unique_fr
-        # s1:
-          # properties:
-            # <<: *prop
-            # <<: *prop_mat
-            # <<: *prop_g
-            # <<: *prop_u
-            # <<: *prop_g_av
-        # s3: 
-          # properties:
-            # <<: *prop_g
-            # <<: *prop_mat
-        # s4: 
-          # properties:
-            # <<: *prop
-            # <<: *prop_u
-            # <<: *prop_g_av
+
     - id: Sija                                      # unique             NSIK+ISO: C.BC.ULE
       examples:
       - Tarpaukštinės perdangos sija
@@ -612,7 +570,25 @@ SK:
             <<: *prop_mat
             <<: *prop_p_w
             <<: *prop_p_fr
-        s4: 
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g_lw
+            <<: *prop_g_t
+            <<: *prop_g_av
+            <<: *prop_mat
+            <<: *prop_p_w
+            <<: *prop_p_fr
+        s5:
+          properties:
+            <<: *prop_u
+            <<: *prop_g_lw
+            <<: *prop_g_t
+            <<: *prop_g_av
+            <<: *prop_mat
+            <<: *prop_p_w
+            <<: *prop_p_fr
+        s6:
           properties:
             <<: *prop_u
             <<: *prop_g_lw
@@ -651,23 +627,7 @@ SK:
         ISO81346 CC: XSA
       stages:
         <<: *stages_s1_s2_s3_s4_s5_s6_volume_unique_fr
-        # s1:
-          # properties:
-            # <<: *prop
-            # <<: *prop_mat
-            # <<: *prop_g
-            # <<: *prop_u
-            # <<: *prop_g_av
-        # s3: 
-          # properties:
-            # <<: *prop_g
-            # <<: *prop_mat
-        # s4: 
-          # properties:
-            # <<: *prop
-            # <<: *prop_u
-            # <<: *prop_g_av
-      
+
     - id: Laiptatakis                               # unique             NSIK: C.AF.XSB
       classifications:
         NSIK LF: C
@@ -678,23 +638,6 @@ SK:
         ISO81346 CC: XSB
       stages:
         <<: *stages_s1_s2_s3_s4_s5_s6_volume_unique_fr
-        # s1:
-          # properties:
-            # <<: *prop
-            # <<: *prop_mat
-            # <<: *prop_g
-            # <<: *prop_u
-            # <<: *prop__member
-        # s3: 
-          # properties:
-            # <<: *prop_g
-            # <<: *prop_mat
-        # s4: 
-          # properties:
-            # <<: *prop
-            # <<: *prop_u
-            # <<: *prop__member
-    
 
 # , BE
     - id: Izoliacija                                # NSIK+ISO:  D.BE.RQA
@@ -728,6 +671,16 @@ SK:
             <<: *prop
             <<: *prop_mat
             <<: *prop__sheet
+        s5: 
+          properties:
+            <<: *prop
+            <<: *prop_mat
+            <<: *prop__sheet
+        s6: 
+          properties:
+            <<: *prop
+            <<: *prop_mat
+            <<: *prop__sheet
     
     - id: Grindų dangos pasluoksnių konstrukcija    # NSIK+ISO:  C.BF.UMC
       examples:
@@ -743,26 +696,7 @@ SK:
         ISO81346 CC: UMC
       stages:
         <<: *stages_s1_s2_s3_s4_s5_s6_sheet
-        # s1:
-          # properties:
-            # <<: *prop
-            # <<: *prop_mat
-            # <<: *prop_g
-            # <<: *prop_u
-            # <<: *prop_g_av
-            # Pset_QuantityTakeOff.Thickness: {}
-        # s3: 
-          # properties:
-            # <<: *prop_g
-            # <<: *prop_mat
-            # Pset_QuantityTakeOff.Thickness: {}
-        # s4: 
-          # properties:
-            # <<: *prop
-            # <<: *prop_u
-            # <<: *prop_g_av
-            
-      
+
     - id: Pamato šiluminė izoliacija                # NSIK+ISO:  B.BD.RQA
       classifications:
         NSIK LF: B
@@ -773,25 +707,7 @@ SK:
         ISO81346 CC: RQA
       stages:
         <<: *stages_s1_s2_s3_s4_s5_s6_sheet
-        # s1:
-          # properties:
-            # <<: *prop
-            # <<: *prop_mat
-            # <<: *prop_g
-            # <<: *prop_u
-            # <<: *prop_g_av
-            # Pset_QuantityTakeOff.Thickness: {}
-        # s3: 
-          # properties:
-            # <<: *prop_g
-            # <<: *prop_mat
-            # Pset_QuantityTakeOff.Thickness: {}
-        # s4: 
-          # properties:
-            # <<: *prop
-            # <<: *prop_u
-            # <<: *prop_g_av
-    
+
     - id: Šlaitinio stogo sistema                   # NSIK+ISO:  D.AE.UMC
       classifications:
         NSIK LF: D
@@ -803,10 +719,9 @@ SK:
       stages:
         s1:
           properties:
-            <<: *prop
+            <<: *prop_u
             <<: *prop_mat
             <<: *prop_g
-            <<: *prop_u
             <<: *prop_g_av
             Pset_QuantityTakeOff.Thickness: {}
         s3: 
@@ -814,11 +729,27 @@ SK:
             <<: *prop_g
             <<: *prop_mat
             Pset_QuantityTakeOff.Thickness: {}
-        s4: 
+        s4:
           properties:
-            <<: *prop
             <<: *prop_u
+            <<: *prop_mat
+            <<: *prop_g
             <<: *prop_g_av
+            Pset_QuantityTakeOff.Thickness: {}
+        s5:
+          properties:
+            <<: *prop_u
+            <<: *prop_mat
+            <<: *prop_g
+            <<: *prop_g_av
+            Pset_QuantityTakeOff.Thickness: {}
+        s6:
+          properties:
+            <<: *prop_u
+            <<: *prop_mat
+            <<: *prop_g
+            <<: *prop_g_av
+            Pset_QuantityTakeOff.Thickness: {}
     
     - id: Stogo santvara                            # NSIK+ISO:  D.AE.UBF
       classifications:
@@ -838,25 +769,7 @@ SK:
         NSIK LK: UBF
       stages:
         <<: *stages_s1_s2_s3_s4_s5_s6_volume_unique_fr
-        # s1:
-          # properties:
-            # <<: *prop
-            # <<: *prop_mat
-            # <<: *prop_g
-            # <<: *prop_u
-            # <<: *prop__member
-            # Pset_QuantityTakeOff.Thickness: {}
-        # s3: 
-          # properties:
-            # <<: *prop_g
-            # <<: *prop_mat
-            # <<: *prop__member
-            # Pset_QuantityTakeOff.Thickness: {}
-        # s4: 
-          # properties:
-            # <<: *prop
-            # <<: *prop_u
-            # <<: *prop__member
+
         
     - id: Gegnė                                     # NSIK+ISO:  D.AE.ULE
       classifications:
@@ -895,6 +808,22 @@ SK:
             <<: *prop_mat
             <<: *prop_p_w
             <<: *prop_p_fr
+        s5:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_g_av
+            <<: *prop_mat
+            <<: *prop_p_w
+            <<: *prop_p_fr
+        s6:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_g_av
+            <<: *prop_mat
+            <<: *prop_p_w
+            <<: *prop_p_fr
 
     - id: Gegnė                                     # NSIK:      D.%AE20.ULE
       classifications:
@@ -904,7 +833,28 @@ SK:
         <<: *stages_s1_s2_s3_s4_s5_s6_volume_fr
 
 
+    - id: Kolona                                  # NSIK+ISO:  D.BE.UBD
+      classifications:
+        NSIK LF: D
+        NSIK LT: BE
+        NSIK LK: UBD
+        ISO81346 CF: D
+        ISO81346 CT: BE
+        ISO81346 CC: UBD
+      stages:
+        <<: *stages_s1_s2_s3_s4_s5_s6_volume_fr
         
+    - id: Sija                                  # NSIK+ISO:  D.BE.ULE
+      classifications:
+        NSIK LF: D
+        NSIK LT: BE
+        NSIK LK: ULE
+        ISO81346 CF: D
+        ISO81346 CT: BE
+        ISO81346 CC: ULE
+      stages:
+        <<: *stages_s1_s2_s3_s4_s5_s6_volume_fr
+
     - id: Mūrlotas                                  # NSIK+ISO:  D.AE.ULQ
       classifications:
         NSIK LF: D
@@ -915,6 +865,7 @@ SK:
         ISO81346 CC: ULQ
       stages:
         <<: *stages_s1_s2_s3_s4_s5_s6_volume_fr
+
     - id: Mūrlotas                                  # NSIK:      D.%AE20.ULQ
       classifications:
         NSIK LF: D
@@ -922,26 +873,6 @@ SK:
         NSIK LK: ULQ
       stages:
         <<: *stages_s1_s2_s3_s4_s5_s6_volume_fr
-        # s1:
-          # properties:
-            # <<: *prop
-            # <<: *prop_mat
-            # <<: *prop_g
-            # <<: *prop_u
-            # <<: *prop__member
-        # s3: 
-          # properties:
-            # <<: *prop_g
-            # <<: *prop_mat
-        # s4: 
-          # properties:
-            # <<: *prop
-            # <<: *prop_u
-            # <<: *prop__member
-        
-
-
-
 #
 #  stogas
 #
@@ -967,24 +898,21 @@ SK:
         ISO81346 CC: FSD
       stages:
         <<: *stages_s1_s2_s3_s4_s5_s6_sheet
-        # s1:
-          # properties:
-            # <<: *prop
-            # <<: *prop_mat
-            # <<: *prop_g
-            # <<: *prop_u
-            # Pset_QuantityTakeOff.Area: {}
-        # s3: 
-          # properties:
-            # <<: *prop_g
-            # <<: *prop_mat
-        # s4: 
-          # properties:
-            # <<: *prop
-            # <<: *prop_u
-            # Pset_QuantityTakeOff.Area: {}
 
 
+
+    - id: Templė                      # unique             NSIK: D.BE.ULF
+      examples:
+      - Styga
+      classifications:
+        NSIK LF: D
+        NSIK LT: BE
+        NSIK LK: ULF
+        ISO81346 CF: D
+        ISO81346 CT: BE
+        ISO81346 CC: ULF
+      stages:
+        <<: *stages_s1_s2_s3_s4_s5_s6_volume_unique_fr
 
     - id: Templė                      # unique             NSIK: D.%AE20.ULF
       examples:
@@ -993,9 +921,6 @@ SK:
         NSIK LF: D
         NSIK LT: "%AE20"
         NSIK LK: ULF
-        ISO81346 CF: D
-        ISO81346 CT: AE
-        ISO81346 CC: ULF
       stages:
         <<: *stages_s1_s2_s3_s4_s5_s6_volume_unique_fr
         # s1:
@@ -1036,13 +961,25 @@ SK:
             <<: *prop
             <<: *prop_g_h
             <<: *prop_g_l
-        s3: 
+        s3:
           properties:
             <<: *prop
             <<: *prop_g_h
             <<: *prop_g_l
             <<: *prop_mat
-        s4: 
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g_h
+            <<: *prop_g_l
+            <<: *prop_mat
+        s5: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g_h
+            <<: *prop_g_l
+            <<: *prop_mat
+        s6:
           properties:
             <<: *prop_u
             <<: *prop_g_h

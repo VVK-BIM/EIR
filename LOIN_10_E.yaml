@@ -53,10 +53,9 @@ prop_u:     &prop_u
   <<: *prop
   VVK.Tag: {}
 
-
 prop_mat:     &prop_material
   VVK.Material: {}
-  
+
 prop_vis:     &prop_vis
   VVK.Material: {}
   VVK.Finish: {}
@@ -125,12 +124,8 @@ prop_light: &prop_light
   Pset_LampTypeCommon.ColourTemperature: {}
   Pset_LampTypeCommon.ColourRenderingIndex: {}
   
-prop_ext_cable:  &prop_external
+prop_ext:  &prop_external
   Pset_ElementComponentCommon.IsExternal: {}
-  
-prop_ext_cable:  &prop_external_cable
-  Pset_ElementComponentCommon.IsExternal: {}
-
 
 ifc_lin:      &type_linear
   - IfcFlowSegment
@@ -161,7 +156,6 @@ E:
         properties:
           Pset_ManufacturerTypeInformation.ArticleNumber: {}
           Pset_ManufacturerTypeInformation.Manufacturer: {}
-          VVK.RelatedDocumentationURI: {}
       s2:
         lod: 200
         log: 2
@@ -187,7 +181,7 @@ E:
 # jėgos tinklas
 
 
-    - id: Fotovoltinis modulis   #    NSIK+ISO: K.HG.GCA
+    - id: Fotovoltinis modulis                                                       # 1_3456 NSIK+ISO:  K.HG.GCA
       classifications:
         NSIK LF: K
         NSIK LT: HG
@@ -202,7 +196,6 @@ E:
             <<: *prop_u
             <<: *prop_e_basic
             <<: *prop_external
-
         s3:
           properties:
             <<: *prop
@@ -214,10 +207,20 @@ E:
             <<: *prop_g_lw
             <<: *prop_e_basic
             <<: *prop_external
+        s5:
+          properties:
+            <<: *prop
+            <<: *prop_g_lw
+            <<: *prop_e_basic
+            <<: *prop_external
+        s6:
+          properties:
+            <<: *prop
+            <<: *prop_g_lw
+            <<: *prop_e_basic
+            <<: *prop_external
 
-
-
-    - id: Įrangos ir/ar kabelių mechaninė apsauga                  # NSIK+ISO: K.HG.FNB
+    - id: Įrangos ir/ar kabelių mechaninė apsauga                                    # 1_3456 NSIK+ISO:  K.HG.FNB
       examples:
       - Kabelio kanalas
       - kabelio kopėčios
@@ -231,25 +234,40 @@ E:
         ISO81346 CT: HG
         ISO81346 CC: FNB
       ifcType: *type_linear
-      stages:
+      stages: &stages_protection_round
         s1:
           properties:
             <<: *prop
-            <<: *prop_g
+            <<: [*prop_g_l, *prop_g_d]
             <<: *prop_material
             <<: *prop_external
-        s2:
-          properties:
-            <<: *prop
         s3:
           properties:
             <<: *prop
-            <<: *prop_g
+            <<: [*prop_g_l, *prop_g_d]
+            <<: *prop_material
+            <<: *prop_external
+        s4:
+          properties:
+            <<: *prop
+            <<: [*prop_g_l, *prop_g_d]
+            <<: *prop_material
+            <<: *prop_external
+        s5:
+          properties:
+            <<: *prop
+            <<: [*prop_g_l, *prop_g_d]
+            <<: *prop_material
+            <<: *prop_external
+        s6:
+          properties:
+            <<: *prop
+            <<: [*prop_g_l, *prop_g_d]
             <<: *prop_material
             <<: *prop_external
 
 
-    - id: Įrangos ir/ar kabelių mechaninė apsauga                  # NSIK:     K.HG.%FNB20
+    - id: Įrangos ir/ar kabelių mechaninė apsauga                                    # ****** NSIK:      K.HG.%FNB20
       examples:
       - Kabelio kanalas
       - kabelio kopėčios
@@ -258,27 +276,12 @@ E:
         NSIK LF: K
         NSIK LT: HG
         NSIK LK: "%FNB20"
-        
       ifcType: *type_linear
       stages:
-        s1:
-          properties:
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_material
-            <<: *prop_external
-        s2:
-          properties:
-            <<: *prop
-        s3:
-          properties:
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_material
-            <<: *prop_external
+        <<: *stages_protection_round
 
 
-    - id: Įrangos ir/ar kabelių dėklas                             # NSIK+ISO: K.HG.UBA
+    - id: Įrangos ir/ar kabelių dėklas                                               # 1_3456 NSIK+ISO:  K.HG.UBA
       examples:
       - Kabelio kanalas
       - kabelio kopėčios
@@ -291,23 +294,40 @@ E:
         ISO81346 CT: HG
         ISO81346 CC: UBA
       ifcType: *type_linear
-      stages:
+      stages:  &stages_protection_rect
         s1:
           properties:
             <<: *prop
             <<: *prop_g
-            <<: *prop_material
-            Pset_ElementComponentCommon.IsExternal: {}
+            <<: *prop_vis
+            <<: *prop_external
         s3:
           properties:
             <<: *prop
             <<: *prop_g
-            Pset_ElementComponentCommon.IsExternal: {}
-        s4: 
+            <<: *prop_vis
+            <<: *prop_external
+        s4:
           properties:
-            <<: *prop_material
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+        s5:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+        s6:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+
         
-    - id: Įrangos ir/ar kabelių dėklas nepertraukiamo elektros tiekimo sistemai      # common                        NSIK: K.%HG30.UBA
+    - id: Įrangos ir/ar kabelių dėklas nepertraukiamo elektros tiekimo sistemai      # ****** NSIK:      K.%HG30.UBA
       examples:
       - Kabelio kanalas
       - kabelio kopėčios
@@ -318,42 +338,47 @@ E:
         NSIK LK: UBA
       ifcType: *type_linear
       stages:
-        s1:
-          properties:
-            <<: *prop
-            <<: *prop_g
-            <<: *prop_material
-            Pset_ElementComponentCommon.IsExternal: {}
-        s3:
-          properties:
-            <<: *prop
-            <<: *prop_g
-            Pset_ElementComponentCommon.IsExternal: {}
-        s4: 
-          properties:
-            <<: *prop_material
+        <<: *stages_protection_rect
 
-    - id: Žemos įtampos elektros kabelis                                             # pipe                          NSIK: K.HG.WDB
+    - id: Žemos įtampos elektros kabelis                                             # 1__456 NSIK+ISO:  K.HG.WDB
       classifications:
         NSIK LF: K
         NSIK LT: HG
         NSIK LK: WDB
+        
+        ISO81346 CF: K
+        ISO81346 CT: HG
+        ISO81346 CK: WDB
       ifcType: *type_linear
-      stages:
+      stages:  &stages_cable
         s1:
           properties:
             <<: *prop
             <<: *prop_g_cable
             <<: *prop_cable
             <<: *prop_material
-            <<: *prop_external_cable
+            <<: *prop_external
         s4:
           properties:
             <<: *prop
             <<: *prop_g_cable
             <<: *prop_cable
             <<: *prop_material
-            <<: *prop_external_cable
+            <<: *prop_external
+        s5:
+          properties:
+            <<: *prop
+            <<: *prop_g_cable
+            <<: *prop_cable
+            <<: *prop_material
+            <<: *prop_external
+        s6:
+          properties:
+            <<: *prop
+            <<: *prop_g_cable
+            <<: *prop_cable
+            <<: *prop_material
+            <<: *prop_external
         
 
     - id: AC generatorius   #    NSIK+ISO: K.HG.GAA
@@ -388,71 +413,32 @@ E:
             <<: *prop_external
 
 
-    - id: Žemos įtampos elektros kabelis nepertraukiamo elektros tiekimo sistemai    # pipe                          NSIK: K.%HG30.WDB
+    - id: Žemos įtampos elektros kabelis nepertraukiamo elektros tiekimo sistemai    # ****** NSIK: K.%HG30.WDB
       classifications:
         NSIK LF: K
         NSIK LT: "%HG30"
         NSIK LK: WDB
       ifcType: *type_linear
       stages:
-        s1:
-          properties:
-            <<: *prop
-            <<: *prop_g_cable
-            <<: *prop_cable
-            <<: *prop_material
-            <<: *prop_external_cable
-        s4: 
-          properties:
-            <<: *prop
-            <<: *prop_g_cable
-            <<: *prop_cable
-            <<: *prop_material
-            <<: *prop_external_cable
+        <<: *stages_cable
 
-    - id: Valdymo kabelis           # pipe    NSIK: K.HG.WGA
+    - id: Valdymo kabelis           # ******    NSIK: K.HG.WGA
       classifications:
         NSIK LF: K
         NSIK LT: HG
         NSIK LK: WGA
       ifcType: *type_linear
       stages:
-        s1:
-          properties:
-            <<: *prop
-            <<: *prop_g_cable
-            <<: *prop_cable
-            <<: *prop_material
-            <<: *prop_external_cable
-        s4: 
-          properties:
-            <<: *prop
-            <<: *prop_g_cable
-            <<: *prop_cable
-            <<: *prop_material
-            <<: *prop_external_cable
+        <<: *stages_cable
         
-    - id: Duomenų kabelis           # pipe    NSIK: K.HG.WGB
+    - id: Duomenų kabelis           # ******    NSIK: K.HG.WGB
       classifications:
         NSIK LF: K
         NSIK LT: HG
         NSIK LK: WGB
       ifcType: *type_linear
       stages:
-        s1:
-          properties:
-            <<: *prop
-            <<: *prop_g_cable
-            <<: *prop_cable
-            <<: *prop_material
-            <<: *prop_external_cable
-        s4: 
-          properties:
-            <<: *prop
-            <<: *prop_g_cable
-            <<: *prop_cable
-            <<: *prop_material
-            <<: *prop_external_cable
+        <<: *stages_cable
 
     - id: Jungiklis                 # sensor  NSIK: K.HG.SJA
       examples:
@@ -957,37 +943,60 @@ E:
             <<: *prop_material
             <<: *prop_external
 
-    - id: Jėgos tinklo instaliacijos erdvė ar inžinerinis koridorius      # zone                          NSIK: <E>DCB <L>K.HG
+    - id: Jėgos tinklo instaliacijos erdvė ar inžinerinis koridorius      # 1_3456 NSIK+ISO: <E>DCB <L>K.HG
       classifications:
         NSIK LF: K
         NSIK LT: HG
         NSIK B: DCB
+        
+        ISO81346 CF: K
+        ISO81346 CT: HG
+        ISO81346 CS: DCB
       ifcType: 
       - IfcSpace
       - IfcSpaceType
-      stages:
+      stages: &space_protection
         s1:
           properties:
-            Pset_QuantityTakeOff.Width: {}
+            <<: [*prop_g_area, *prop_g_w]
             Pset_ElementComponentCommon.Status: {}
         s3:
           properties:
-            Pset_QuantityTakeOff.Width: {}
+            <<: [*prop_g_area, *prop_g_w]
             Pset_ElementComponentCommon.Status: {}
+        s4:
+          properties:
+            <<: [*prop_g_area, *prop_g_w]
+            Pset_ElementComponentCommon.Status: {}
+        s5:
+          properties:
+            <<: [*prop_g_area, *prop_g_w]
+            Pset_ElementComponentCommon.Status: {}
+        s6:
+          properties:
+            <<: [*prop_g_area, *prop_g_w]
+            Pset_ElementComponentCommon.Status: {}
+            
     
-    - id: Jėgos tinklo aptarnavimo erdvė    # zone                          NSIK: <E>DCB <L>K.HG
+    - id: Jėgos tinklo aptarnavimo erdvė                                  # 1__456 NSIK:     <E>DCB1000 <L>K.HG
       classifications:
         NSIK LF: K
         NSIK LT: HG
-        NSIK B: "%DCB1001"
+        NSIK B: "%DCB1000"
       ifcType: 
       - IfcSpace
       - IfcSpaceType
-      stages:
+      stages: &space_service
         s1:
           properties:
             Pset_ElementComponentCommon.Status: {}
         s4:
+          properties:
+            Pset_ElementComponentCommon.Status: {}
+        s5:
+          properties:
+            Pset_ElementComponentCommon.Status: {}
+        s6:
           properties:
             Pset_ElementComponentCommon.Status: {}
 
@@ -1005,35 +1014,22 @@ E:
             <<: *prop
             <<: *prop_g
             <<: *prop_material
-            <<: *prop_external_cable
+            <<: *prop_external
         s4: 
           properties:
             <<: *prop
             <<: *prop_g
             <<: *prop_material
-            <<: *prop_external_cable
+            <<: *prop_external
 
-    - id: Įžeminimo kabelis         # pipe        NSIK: %P20.HG.WEB
+    - id: Įžeminimo kabelis         # ******        NSIK: %P20.HG.WEB
       classifications:
         NSIK LF: "%P20"
         NSIK LT: HG
         NSIK LK: WEB
       ifcType: *type_linear
       stages:
-        s1:
-          properties:
-            <<: *prop
-            <<: *prop_g_cable
-            <<: *prop_cable
-            <<: *prop_material
-            <<: *prop_external_cable
-        s4: 
-          properties:
-            <<: *prop
-            <<: *prop_g_cable
-            <<: *prop_cable
-            <<: *prop_material
-            <<: *prop_external_cable
+        <<: *stages_cable
 
 
             
@@ -1049,7 +1045,7 @@ E:
             <<: *prop
             <<: *prop_g_cable
             <<: *prop_material
-            <<: *prop_external_cable
+            <<: *prop_external
         s3: 
           properties:
             <<: *prop
@@ -1060,7 +1056,7 @@ E:
             <<: *prop
             <<: *prop_g_cable
             <<: *prop_material
-            <<: *prop_external_cable
+            <<: *prop_external
 
     - id: Įžemiklis                 # pipe        NSIK: %P20.HG.QCA
       classifications:
@@ -1074,15 +1070,15 @@ E:
             <<: *prop
             <<: *prop_g_cable
             <<: *prop_material
-            <<: *prop_external_cable
+            <<: *prop_external
         s4:
           properties:
             <<: *prop
             <<: *prop_g_cable
             <<: *prop_material
-            <<: *prop_external_cable
+            <<: *prop_external
 
-    - id: Įžeminimo tinklo apsaugos zona  # zone        NSIK: <E>DCB <L>%P20.HG
+    - id: Įžeminimo tinklo apsaugos zona              # ****** NSIK: <E>DCB <L>%P20.HG
       classifications:
         NSIK LF: "%P20"
         NSIK LT: HG
@@ -1091,32 +1087,18 @@ E:
       - IfcSpace
       - IfcSpaceType
       stages:
-        s1:
-          properties:
-            Pset_QuantityTakeOff.Width: {}
-            Pset_QuantityTakeOff.Area: {}
-            Pset_ElementComponentCommon.Status: {}
-        s4:
-          properties:
-            Pset_QuantityTakeOff.Width: {}
-            Pset_QuantityTakeOff.Area: {}
-            Pset_ElementComponentCommon.Status: {}
+        <<: *space_protection
           
-    - id: Įžeminimo tinklo elemento aptarnavimo erdvė # zone    NSIK: <E>DCB <L>%P20.HG
+    - id: Įžeminimo tinklo elemento aptarnavimo erdvė # ****** NSIK: <E>DCB1000 <L>%P20.HG
       classifications:
         NSIK LF: "%P20"
         NSIK LT: HG
-        NSIK B: "%DCB1001"
+        NSIK B: "%DCB1000"
       ifcType: 
       - IfcSpace
       - IfcSpaceType
-      stages:
-        s1:
-          properties:
-            Pset_ElementComponentCommon.Status: {}
-        s4:
-          properties:
-            Pset_ElementComponentCommon.Status: {}
+      stages: 
+        <<: *space_service
 #
 
 # žaibosauga P.PD
@@ -1136,7 +1118,7 @@ E:
             <<: *prop
             <<: *prop_g
             <<: *prop_material
-            <<: *prop_external_cable
+            <<: *prop_external
         s3: 
           properties:
             <<: *prop
@@ -1147,9 +1129,9 @@ E:
             <<: *prop
             <<: *prop_g
             <<: *prop_material
-            <<: *prop_external_cable
+            <<: *prop_external
 
-    - id: Įžeminimo kabelis    #    NSIK+ISO: P.PD.WEB
+    - id: Įžeminimo kabelis    # ******   NSIK+ISO: P.PD.WEB
       classifications:
         NSIK LF: P
         NSIK LT: PD
@@ -1159,20 +1141,7 @@ E:
         ISO81346 CC: WEB
       ifcType: *type_linear
       stages:
-        s1:
-          properties:
-            <<: *prop
-            <<: *prop_g_cable
-            <<: *prop_cable
-            <<: *prop_material
-            <<: *prop_external_cable
-        s4: 
-          properties:
-            <<: *prop
-            <<: *prop_g_cable
-            <<: *prop_cable
-            <<: *prop_material
-            <<: *prop_external_cable
+        <<: *stages_cable
 
     - id: Įžeminimo šyna       #    NSIK+ISO: P.PD.XEF
       classifications:
@@ -1189,19 +1158,19 @@ E:
             <<: *prop
             <<: *prop_g_cable
             <<: *prop_material
-            <<: *prop_external_cable
+            <<: *prop_external
         s3: 
           properties:
             <<: *prop
             <<: *prop_g_cable
             <<: *prop_material
-            <<: *prop_external_cable
+            <<: *prop_external
         s4: 
           properties:
             <<: *prop
             <<: *prop_g_cable
             <<: *prop_material
-            <<: *prop_external_cable
+            <<: *prop_external
 
     - id: Įžemiklis            #    NSIK+ISO: P.PD.QCA
       classifications:
@@ -1218,13 +1187,13 @@ E:
             <<: *prop
             <<: *prop_g_cable
             <<: *prop_material
-            <<: *prop_external_cable
+            <<: *prop_external
         s4:
           properties:
             <<: *prop
             <<: *prop_g_cable
             <<: *prop_material
-            <<: *prop_external_cable
+            <<: *prop_external
 
     - id: Įžeminimo tinklo apsaugos zona              #  NSIK: <E>DCB <L>P.PD
       classifications:
@@ -1246,30 +1215,20 @@ E:
             Pset_QuantityTakeOff.Area: {}
             Pset_ElementComponentCommon.Status: {}
           
-    - id: Įžeminimo tinklo elemento aptarnavimo erdvė #  NSIK: <E>DCB <L>P.PD
+    - id: Įžeminimo tinklo elemento aptarnavimo erdvė # ****** NSIK: <E>DCB1000 <L>P.PD
       classifications:
         NSIK LF: P
         NSIK LT: PD
-        NSIK B: DCB
+        NSIK B: "%DCB1000"
       ifcType: 
       - IfcSpace
       - IfcSpaceType
-      stages:
-        s1:
-          properties:
-            Pset_ElementComponentCommon.Status: {}
-        s4:
-          properties:
-            Pset_ElementComponentCommon.Status: {}
+      stages: 
+        <<: *space_service
 
 #
-
-
-
-
 # apšvietimas      QQ.HH
 #
-
     - id: Apšvietimo sistemos korpusas (skydelis)                          # visible_unique_electrical             NSIK+ISO: Q.HH.UCA
       ifcType: 
         '2x3':
@@ -2142,98 +2101,43 @@ E:
             <<: *prop_e_psu
             <<: *prop_external
     
-    - id: Apšvietimo tinklo elektros kabelis                               # pipe                                  NSIK: Q.%HH10.WDB
+    - id: Apšvietimo tinklo elektros kabelis                               # ****** NSIK: Q.%HH10.WDB
       classifications:
         NSIK LF: Q
         NSIK LT: "%HH10"
         NSIK LK: WDB
       ifcType: *type_linear
       stages:
-        s1:
-          properties:
-            <<: *prop
-            <<: *prop_g_cable
-            <<: *prop_cable
-            <<: *prop_material
-            <<: *prop_external_cable
-        s4:
-          properties:
-            <<: *prop
-            <<: *prop_g_cable
-            <<: *prop_cable
-            <<: *prop_material
-            <<: *prop_external_cable
+        <<: *stages_cable
 
-    - id: Apšvietimo tinklo valdymo kabelis                                # pipe                                  NSIK: Q.%HH10.WGA
+    - id: Apšvietimo tinklo valdymo kabelis                                # ****** NSIK: Q.%HH10.WGA
       classifications:
         NSIK LF: Q
         NSIK LT: "%HH10"
         NSIK LK: WGA
       ifcType: *type_linear
       stages:
-        s1:
-          properties:
-            <<: *prop
-            <<: *prop_g_cable
-            <<: *prop_cable
-            <<: *prop_material
-            <<: *prop_external_cable
-        s4:
-          properties:
-            <<: *prop
-            <<: *prop_g_cable
-            <<: *prop_cable
-            <<: *prop_material
-            <<: *prop_external_cable
+        <<: *stages_cable
         
-    - id: Apšvietimo tinklo duomenų kabelis                                # pipe                                  NSIK: Q.%HH10.WGB
+    - id: Apšvietimo tinklo duomenų kabelis                                # ****** NSIK: Q.%HH10.WGB
       classifications:
         NSIK LF: Q
         NSIK LT: "%HH10"
         NSIK LK: WGB
       ifcType: *type_linear
       stages:
-        s1:
-          properties:
-            <<: *prop
-            <<: *prop_g_cable
-            <<: *prop_cable
-            <<: *prop_material
-            <<: *prop_external_cable
-        s4:
-          properties:
-            <<: *prop
-            <<: *prop_g_cable
-            <<: *prop_cable
-            <<: *prop_material
-            <<: *prop_external_cable
+        <<: *stages_cable
     
-    - id: Apšvietimo tinklo elektros kabelio dėklas                        # pipe                                  NSIK: Q.%HH10.UBA
+    - id: Apšvietimo tinklo elektros kabelio dėklas                        # ****** NSIK: Q.%HH10.UBA
       classifications:
         NSIK LF: Q
         NSIK LT: "%HH10"
         NSIK LK: UBA
       ifcType: *type_linear
       stages:
-        s1:
-          properties:
-            <<: *prop
-            <<: *prop_g
-            Pset_QuantityTakeOff.Diameter: {}
-            <<: *prop_material
-            Pset_ElementComponentCommon.IsExternal: {}
-        s3:
-          properties:
-            <<: *prop
-        s4: 
-          properties:
-            <<: *prop
-            <<: *prop_g
-            Pset_QuantityTakeOff.Diameter: {}
-            <<: *prop_material
-            Pset_ElementComponentCommon.IsExternal: {}
+        <<: *stages_protection_rect
 
-    - id: Apšvietimo tinklo instaliacijos erdvė ar inžinerinis koridorius      # zone                                  NSIK: <E>DCB <L>Q.%HH10
+    - id: Apšvietimo tinklo instaliacijos erdvė ar inžinerinis koridorius      # ****** NSIK: <E>DCB <L>Q.%HH10
       classifications:
         NSIK LF: Q
         NSIK LT: "%HH10"
@@ -2241,31 +2145,19 @@ E:
       ifcType: 
       - IfcSpace
       - IfcSpaceType
-      stages:
-        s1:
-          properties:
-            Pset_QuantityTakeOff.Width: {}
-            Pset_ElementComponentCommon.Status: {}
-        s3:
-          properties:
-              Pset_QuantityTakeOff.Width: {}
-              Pset_ElementComponentCommon.Status: {}
+      stages: 
+        <<: *space_protection
 
-    - id: Apšvietimo tinklo aptarnavimo erdvė       # zone                                  NSIK: <E>DCB <L>Q.%HH10
+    - id: Apšvietimo tinklo aptarnavimo erdvė                                  # ****** NSIK: <E>DCB1000 <L>Q.%HH10
       classifications:
         NSIK LF: Q
         NSIK LT: "%HH10"
-        NSIK B: "%DCB1001"
+        NSIK B: "%DCB1000"
       ifcType: 
       - IfcSpace
       - IfcSpaceType
-      stages:
-        s1:
-          properties:
-            Pset_ElementComponentCommon.Status: {}
-        s4:
-          properties:
-            Pset_ElementComponentCommon.Status: {}
+      stages: 
+        <<: *space_service
         
 #
 # avarinis ir evakuacinis apšvietimas  QQ.HH
@@ -2520,98 +2412,43 @@ E:
             <<: *prop_g
             <<: *prop_e_psu
     
-    - id: Avarinio ar evakuacinio apšvietimo sistemos elektros kabelis                      # pipe                                  NSIK: %Q20.%HH10.WDB
+    - id: Avarinio ar evakuacinio apšvietimo sistemos elektros kabelis                      # ****** NSIK: %Q20.%HH10.WDB
       classifications:
         NSIK LF: "%Q20"
         NSIK LT: "%HH10"
         NSIK LK: WDB
       ifcType: *type_linear
       stages:
-        s1:
-          properties:
-            <<: *prop
-            <<: *prop_g_cable
-            <<: *prop_cable
-            <<: *prop_material
-            <<: *prop_external_cable
-        s4:
-          properties:
-            <<: *prop
-            <<: *prop_g_cable
-            <<: *prop_cable
-            <<: *prop_material
-            <<: *prop_external_cable
+        <<: *stages_cable
 
-    - id: Avarinio ar evakuacinio apšvietimo sistemos valdymo kabelis                       # pipe                                  NSIK: %Q20.%HH10.WGA
+    - id: Avarinio ar evakuacinio apšvietimo sistemos valdymo kabelis                       # ****** NSIK: %Q20.%HH10.WGA
       classifications:
         NSIK LF: "%Q20"
         NSIK LT: "%HH10"
         NSIK LK: WGA
       ifcType: *type_linear
       stages:
-        s1:
-          properties:
-            <<: *prop
-            <<: *prop_g_cable
-            <<: *prop_cable
-            <<: *prop_material
-            <<: *prop_external_cable
-        s4:
-          properties:
-            <<: *prop
-            <<: *prop_g_cable
-            <<: *prop_cable
-            <<: *prop_material
-            <<: *prop_external_cable
+        <<: *stages_cable
         
-    - id: Avarinio ar evakuacinio apšvietimo sistemos duomenų kabelis                       # pipe                                  NSIK: %Q20.%HH10.WGB
+    - id: Avarinio ar evakuacinio apšvietimo sistemos duomenų kabelis                       # ****** NSIK: %Q20.%HH10.WGB
       classifications:
         NSIK LF: "%Q20"
         NSIK LT: "%HH10"
         NSIK LK: WGB
       ifcType: *type_linear
       stages:
-        s1:
-          properties:
-            <<: *prop
-            <<: *prop_g_cable
-            <<: *prop_cable
-            <<: *prop_material
-            <<: *prop_external_cable
-        s4:
-          properties:
-            <<: *prop
-            <<: *prop_g_cable
-            <<: *prop_cable
-            <<: *prop_material
-            <<: *prop_external_cable
+        <<: *stages_cable
     
-    - id: Avarinio ar evakuacinio apšvietimo sistemos kabelio dėklas                        # pipe                                  NSIK: %Q20.%HH10.UBA
+    - id: Avarinio ar evakuacinio apšvietimo sistemos kabelio dėklas                        # ****** NSIK: %Q20.%HH10.UBA
       classifications:
         NSIK LF: "%Q20"
         NSIK LT: "%HH10"
         NSIK LK: UBA
       ifcType: *type_linear
       stages:
-        s1:
-          properties:
-            <<: *prop
-            <<: *prop_g
-            Pset_QuantityTakeOff.Diameter: {}
-            <<: *prop_material
-            Pset_ElementComponentCommon.IsExternal: {}
-        s3:
-          properties:
-            <<: *prop
-        s4:
-          properties:
-            <<: *prop
-            <<: *prop_g
-            Pset_QuantityTakeOff.Diameter: {}
-            <<: *prop_material
-            Pset_ElementComponentCommon.IsExternal: {}
+        <<: *stages_protection_rect
 
-    - id: Avarinio ar evakuacinio apšvietimo sistemos instaliacijos erdvė ar inžinerinis koridorius     # zone          NSIK: <E>DCB <L>%Q20.%HH10
+    - id: Avarinio ar evakuacinio apšvietimo sistemos instaliacijos erdvė ar inžinerinis koridorius    # ****** NSIK: <E>DCB <L>%Q20.%HH10
       classifications:
         NSIK LF: "%Q20"
         NSIK LT: "%HH10"
@@ -2619,30 +2456,18 @@ E:
       ifcType: 
       - IfcSpace
       - IfcSpaceType
-      stages:
-        s1:
-          properties:
-            Pset_QuantityTakeOff.Width: {}
-            Pset_ElementComponentCommon.Status: {}
-        s3:
-          properties:
-            Pset_QuantityTakeOff.Width: {}
-            Pset_ElementComponentCommon.Status: {}
-            
-    - id: Avarinio ar evakuacinio apšvietimo sistemos aptarnavimo erdvė     # zone          NSIK: <E>DCB <L>%Q20.%HH10
+      stages: 
+        <<: *space_protection
+
+    - id: Avarinio ar evakuacinio apšvietimo sistemos aptarnavimo erdvė                                # ****** NSIK: <E>%DCB1000 <L>%Q20.%HH10
       classifications:
         NSIK LF: "%Q20"
         NSIK LT: "%HH10"
-        NSIK B: "%DCB1001"
+        NSIK B: "%DCB1000"
       ifcType: 
       - IfcSpace
       - IfcSpaceType
-      stages:
-        s1:
-          properties:
-            Pset_ElementComponentCommon.Status: {}
-        s4:
-          properties:
-            Pset_ElementComponentCommon.Status: {}
+      stages: 
+        <<: *space_service
 
 # Siukšlytės

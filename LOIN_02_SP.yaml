@@ -16,76 +16,83 @@ prop:     &prop_u
   <<: *prop
   VVK.Tag: {}
 
-prop_g:   &prop_g
+prop_g:   &prop_g_h
   Pset_QuantityTakeOff.Height:
     valueType: Integer | Real
+
+prop_g:   &prop_g_w
   Pset_QuantityTakeOff.Width:
     valueType: Integer | Real
+
+prop_g:   &prop_g_l
   Pset_QuantityTakeOff.Length:
     valueType: Integer | Real
 
-prop_g:   &prop_gv
-  Pset_QuantityTakeOff.Height:
-    valueType: Integer | Real
-  Pset_QuantityTakeOff.Width:
-    valueType: Integer | Real
-  Pset_QuantityTakeOff.Length:
-    valueType: Integer | Real
-  Pset_QuantityTakeOff.Volume:
-    valueType: Integer | Real
-    
-    
-prop_g_lh:   &prop_g_lh
-  Pset_QuantityTakeOff.Height:
-    valueType: Integer | Real
-  Pset_QuantityTakeOff.Length:
-    valueType: Integer | Real
-    
-prop_g_lh:   &prop_g_hd
-  Pset_QuantityTakeOff.Height:
-    valueType: Integer | Real
+prop_g:   &prop_g_d
   Pset_QuantityTakeOff.Diameter:
-    valueType: Integer | Real
-
-prop_g_lw:   &prop_g_lw
-  Pset_QuantityTakeOff.Length:
-    valueType: Integer | Real
-  Pset_QuantityTakeOff.Width:
-    valueType: Integer | Real
-    
-prop_g_lha:   &prop_g_lha
-  Pset_QuantityTakeOff.Height:
-    valueType: Integer | Real
-  Pset_QuantityTakeOff.Width:
-    valueType: Integer | Real
-  Pset_QuantityTakeOff.Area:
     valueType: Integer | Real
 
 prop_g:   &prop_g_area
   Pset_QuantityTakeOff.Area:
     valueType: Integer | Real
 
-prop_g:   &prop_g_lwa
-  Pset_QuantityTakeOff.Length:
-    valueType: Integer | Real
-  Pset_QuantityTakeOff.Width:
-    valueType: Integer | Real
-  Pset_QuantityTakeOff.Area:
-    valueType: Integer | Real
-
-prop_g:   &prop_g_tav
-  Pset_QuantityTakeOff.Thickness:
-    valueType: Integer | Real
-  Pset_QuantityTakeOff.Area:
-    valueType: Integer | Real
+prop_g:   &prop_g_volume
   Pset_QuantityTakeOff.Volume:
     valueType: Integer | Real
+
+prop_g:   &prop_g_thickness
+  Pset_QuantityTakeOff.Thickness:
+    valueType: Integer | Real
+
+
+prop_g:   &prop_g
+  <<: *prop_g_h
+  <<: *prop_g_w
+  <<: *prop_g_l
+
+prop_g:   &prop_gv
+  <<: *prop_g
+  <<: *prop_g_volume
+    
+    
+prop_g_lh:   &prop_g_lh
+  <<: *prop_g_h
+  <<: *prop_g_l
+
+prop_g_lh:   &prop_g_hd
+  <<: *prop_g_h
+  <<: *prop_g_d
+
+
+prop_g_lw:   &prop_g_lw
+  <<: *prop_g_w
+  <<: *prop_g_l
+
+prop_g_lha:   &prop_g_lha
+  <<: *prop_g_h
+  <<: *prop_g_w
+  <<: *prop_g_area
+
+
+
+prop_g:   &prop_g_lwa
+  <<: *prop_g_l
+  <<: *prop_g_w
+  <<: *prop_g_area
+
+prop_g:   &prop_g_ta
+  <<: *prop_g_thickness
+  <<: *prop_g_area
+
+prop_g:   &prop_g_tav
+  <<: *prop_g_ta
+  <<: *prop_g_volume
 
 prop_vis:     &prop_mat
   VVK.Material: {}
 
 prop_vis:     &prop_vis
-  VVK.Material: {}
+  <<: *prop_mat
   VVK.Finish: {}
   VVK.Colour: {}
 
@@ -332,7 +339,7 @@ SP:
       stages: 
         <<: *stages_s1_s6_covering
 
-    - id: Surišantis sluoksnis                      # NSIK        A.CA.UMC
+    - id: Surišantis sluoksnis                 # NSIK        A.CA.UMC
       classifications:
         NSIK LF: A
         NSIK LT: CA
@@ -341,7 +348,7 @@ SP:
       stages: 
         <<: *stages_s1_s6_covering
 
-    - id: Betono pagrindo sluoksnis                      # NSIK        A.CA.%UMC30
+    - id: Betono pagrindo sluoksnis            # NSIK        A.CA.%UMC30
       classifications:
         NSIK LF: A
         NSIK LT: CA
@@ -361,25 +368,29 @@ SP:
         ISO81346 CT: CB
         ISO81346 CC: NCA
       ifcType: IfcCovering
-      stages:
+      stages:  &stages_s123456_site_covering
         s1:
+          log: 2
           properties:
             <<: *prop
             <<: *prop_u
             <<: *prop_g_tav
             <<: *prop_vis
         s2:
+          log: 2
           properties:
             <<: *prop
             <<: *prop_g_area
             <<: *prop_vis
         s3:
+          log: 2
           properties:
             <<: *prop
             <<: *prop_s3
             <<: *prop_g_tav
             <<: *prop_vis
         s4:
+          log: 2
           properties:
             <<: *prop
             <<: *prop_s3
@@ -387,7 +398,8 @@ SP:
             <<: *prop_g_tav
             <<: *prop_vis
         s5:
-            properties:
+          log: 2
+          properties:
             <<: *prop
             <<: *prop_s3
             <<: *prop_u
@@ -395,13 +407,35 @@ SP:
             <<: *prop_vis
             <<: *prop_s5
         s6:
-            properties:
+          log: 2
+          properties:
             <<: *prop
             <<: *prop_s3
             <<: *prop_u
             <<: *prop_g_tav
             <<: *prop_vis
             <<: *prop_s5
+
+    - id: Terasos danga                        # ****** NSIK+ISO    A.BF.NCA               ,
+      classifications:
+        NSIK LF: A
+        NSIK LT: BF
+        NSIK LK: NCA
+        ISO81346 CF: A
+        ISO81346 CT: BF
+        ISO81346 CC: NCA
+      ifcType: IfcCovering
+      stages:
+        <<: *stages_s123456_site_covering
+
+    - id: Terasos danga iš lentų               # ****** NSIK        A.BF.%NCA70               ,
+      classifications:
+        NSIK LF: A
+        NSIK LT: BF
+        NSIK LK: "%NCA70"
+      ifcType: IfcCovering
+      stages:
+        <<: *stages_s123456_site_covering
 
     - id: Eismui skirta augalinė danga         # NSIK+ISO    A.AA.NCG           ,
       examples:
@@ -606,7 +640,7 @@ SP:
 #
 # želdynai
 #
-    - id: Medis                        # NSIK A.RA.TRA           ,
+    - id: Medis                        # 123456 NSIK+ISO:  A.RA.TRA           ,
       classifications:
         NSIK LF: A
         NSIK LT: RA
@@ -664,7 +698,7 @@ SP:
             <<: *prop_folliage
             <<: *prop_folliage_tree
 
-    - id: Krūmas                       # NSIK A.RA.TRB
+    - id: Krūmas                       # 123456 NSIK+ISO:  A.RA.TRB
       classifications:
         NSIK LF: A
         NSIK LT: RA
@@ -721,7 +755,7 @@ SP:
             <<: *prop_folliage
             <<: *prop_folliage_bush
             
-    - id: Žolė                         # NSIK A.RA.TRD
+    - id: Žolė                         # 123456 NSIK+ISO:  A.RA.TRD
       classifications:
         NSIK LF: A
         NSIK LT: RA
@@ -745,7 +779,7 @@ SP:
         s3:
           properties:
             <<: *prop
-            <<: *prop_g_tav
+            <<: *prop_g_ta
             <<: *prop_s3
             <<: *prop_env
             <<: *prop_folliage
@@ -773,7 +807,7 @@ SP:
             <<: *prop_env
             <<: *prop_folliage
 
-    - id: Atsisėdimas                  # NSIK S.RB.CLC
+    - id: Atsisėdimas                  # 123456 NSIK+ISO:  S.RB.CLC
       classifications:
         NSIK LF: S
         NSIK LT: RB
@@ -825,9 +859,63 @@ SP:
             <<: *prop_s5
 
 
+    - id: Pakeltos lysvės              # 123456 NSIK+ISO:  S.RA.CNA
+      classifications:
+        NSIK LF: S
+        NSIK LT: RA
+        NSIK LK: CNA
+        ISO81346 CF: S
+        ISO81346 CT: RA
+        ISO81346 CC: CNA
+      ifcType: 
+      - IfcFurniture
+      - IfcFurnitureType
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_gv
+            <<: *prop_vis
+        s2:
+          properties:
+            <<: *prop
+            <<: *prop_vis
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_gv
+            <<: *prop_vis
+            <<: *prop_s3
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_gv
+            <<: *prop_vis
+            <<: *prop_s3
+            <<: *prop_env
+        s5:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_gv
+            <<: *prop_vis
+            <<: *prop_s3
+            <<: *prop_s5
+            <<: *prop_env
+        s6:
+          properties:
+            <<: *prop
+            <<: *prop_u
+            <<: *prop_gv
+            <<: *prop_vis
+            <<: *prop_s3
+            <<: *prop_s5
+            <<: *prop_env
+
 # anturažas
 
-    - id: Apsauginis turėklas                                   # unique                   NSIK: B.%CL10.FQD
+    - id: Apsauginis turėklas            # NSIK: B.%CL10.FQD
       classifications:
         NSIK LF: B
         NSIK LT: "%CL10"
@@ -857,7 +945,7 @@ SP:
             <<: *prop_vis
             <<: *prop_env
 
-    - id: Horizontalios grotelės                                         # +  unique                  NSIK: G.%JD10.NAC
+    - id: Horizontalios grotelės         # NSIK: G.%JD10.NAC
       classifications:
         NSIK LF: G
         NSIK LT: "%JD10"
@@ -883,7 +971,7 @@ SP:
             <<: *prop_vis
 
 
-    - id: Talpa kitiekms objektams     # NSIK+ISO    S.RB.CNA
+    - id: Talpa kitiekms objektams       # NSIK+ISO:  S.RB.CNA
       examples:
       - Klomba gėlėms
       classifications:
@@ -938,7 +1026,7 @@ SP:
             <<: *prop_s3
             <<: *prop_s5
             <<: *prop_env
-    - id: Transporto priemonės stovas  # NSIK+ISO    S.RB.UAJ
+    - id: Transporto priemonės stovas    # NSIK+ISO:  S.RB.UAJ
       examples:
       - Dviračių stovas
       - paspirtukų stovas
@@ -997,7 +1085,7 @@ SP:
             <<: *prop_env
             <<: *prop_s5
 
-    - id: Dviračių stovas  # NSIK    S.RB.%UAJ10
+    - id: Dviračių stovas                # NSIK:      S.RB.%UAJ10
       ifcType: 
       - IfcFurniture
       - IfcFurnitureType
@@ -1048,7 +1136,7 @@ SP:
             <<: *prop_env
             <<: *prop_s5
 
-    - id: Suoliukas  # NSIK    S.RB.%CLC16
+    - id: Suoliukas                      # NSIK:      S.RB.%CLC16
       examples:
       ifcType: 
       - IfcFurniture
@@ -1098,7 +1186,7 @@ SP:
             <<: *prop_s5
 
 
-    - id: Šiukšlių konteineris               # NSIK+ISO    G.JE.CNA
+    - id: Šiukšlių konteineris           # NSIK+ISO:  G.JE.CNA
       classifications:
         NSIK LF: G
         NSIK LT: JE
@@ -1152,7 +1240,7 @@ SP:
             <<: *prop_s5
             <<: *prop_env
 
-    - id: Šiukšlių dėžė               # NSIK+ISO    G.JE.%CNA21
+    - id: Šiukšlių dėžė                  # NSIK+ISO:  G.JE.%CNA21
       classifications:
         NSIK LF: G
         NSIK LT: JE
@@ -1200,7 +1288,7 @@ SP:
             <<: *prop_s5
             <<: *prop_env
     
-    - id: Vėliavos stulpas                   # NSIK+ISO    S.RB.UBD
+    - id: Vėliavos stulpas               # NSIK+ISO:  S.RB.UBD
       classifications:
         NSIK LF: S
         NSIK LT: RB
@@ -1255,7 +1343,7 @@ SP:
             <<: *prop_s5
             
     
-    - id: Šviestuvas                   # NSIK Q.HH.UAC
+    - id: Šviestuvas                     # NSIK:      Q.HH.UAC
       classifications:
         NSIK LF: Q
         NSIK LT: HH
@@ -1280,7 +1368,7 @@ SP:
             <<: *prop_e
             Pset_QuantityTakeOff.Weigth: {}
 
-    - id: Sporto įrenginys                   # NSIK+ISO    S.RB.SZB
+    - id: Sporto įrenginys               # NSIK+ISO:  S.RB.SZB
       examples:
       - Bėgimo takelis
       - dviračio treniruoklis
@@ -1340,7 +1428,7 @@ SP:
             Pset_QuantityTakeOff.Weigth:
               valueType: Integer | Real
 
-    - id: Vaikų žaidimų įrenginys            # NSIK+ISO    S.RB.SZC
+    - id: Vaikų žaidimų įrenginys        # NSIK+ISO:  S.RB.SZC
       examples:
       - Karstyklė
       - karuselė
@@ -1402,7 +1490,7 @@ SP:
               valueType: Integer | Real
 
 
-    - id: Tvora                              # NSIK+ISO    B.BD.RUA
+    - id: Tvora                          # NSIK+ISO:  B.BD.RUA
       examples:
       - Segmentinė tvora
       classifications:
@@ -1451,7 +1539,7 @@ SP:
             <<: *prop_g_lha
             <<: *prop_vis
 
-    - id: Tvora                              # NSIK+ISO    S.CL.RUA
+    - id: Tvora                          # NSIK+ISO:  S.CL.RUA
       examples:
       - Segmentinė tvora
       classifications:
@@ -1465,7 +1553,7 @@ SP:
       stages:
         <<: *stages_s1_s2_s3_s4_s5_s6_fence
 
-    - id: Vartai                                                            # +  unique                   NSIK: B.BD.QQF
+    - id: Vartai                         # NSIK:      B.BD.QQF
       examples:
       - Garažo vartai
       classifications:
@@ -1509,7 +1597,7 @@ SP:
             
 
 
-    - id: Apsauginis turėklas          # NSIK F.FQ.FQD
+    - id: Apsauginis turėklas            # NSIK:      F.FQ.FQD
       examples:
       - Apsauginis turėklas
       - porankis
@@ -1534,7 +1622,7 @@ SP:
           properties:
             <<: *prop_vis
 
-    - id: Batų valymo grotelės          # NSIK A.AA.%HQB10
+    - id: Batų valymo grotelės           # NSIK:      A.AA.%HQB10
       examples:
       - Kojų valymo grotelės
       - Presuotos cinkuotos grotelės
@@ -1576,7 +1664,7 @@ SP:
 
 # kelio elementai
 
-    - id: Kelio bortas         # NSIK+ISO    A.CD.NDA               ,
+    - id: Kelio bortas               # NSIK+ISO    A.CD.NDA               ,
       classifications:
         NSIK LF: A
         NSIK LT: CD
@@ -1626,8 +1714,20 @@ SP:
             <<: *prop_g_lw
             <<: *prop_vis
             <<: *prop_s5
-    
-    - id: Vejos bortas         # NSIK+ISO    A.CF.NDA               ,
+
+    - id: Kelio bortas               # NSIK+ISO    A.AA.NDA               ,
+      classifications:
+        NSIK LF: A
+        NSIK LT: AA
+        NSIK LK: NDA
+        ISO81346 CF: A
+        ISO81346 CT: AA
+        ISO81346 CC: NDA
+      ifcType: IfcRailing
+      stages: 
+        <<: *stages_s1_s2_s3_s4_s5_s6_gutter
+      
+    - id: Vejos bortas               # NSIK+ISO    A.CF.NDA               ,
       classifications:
         NSIK LF: A
         NSIK LT: CF
@@ -1639,7 +1739,7 @@ SP:
       stages:
         <<: *stages_s1_s2_s3_s4_s5_s6_gutter
 
-    - id: Dirbtinės dangos bortas         # NSIK+ISO    %A50.CF.NDA               ,
+    - id: Dirbtinės dangos bortas    # NSIK+ISO    %A50.CF.NDA               ,
       classifications:
         NSIK LF: "%A50"
         NSIK LT: CF

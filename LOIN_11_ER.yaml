@@ -204,7 +204,7 @@ ER:
         log: 6
 
     elements:
-    - id: Įrangos ir/ar kabelių dėklas. Ryšių sistema   #    NSIK+ISO: M.HJ.UBA
+    - id: Įrangos ir/ar kabelių dėklas. Ryšių sistema   # NSIK+ISO:  M.HJ.UBA
       examples:
       - Kabelio kanalas
       - kabelio kopėčios
@@ -237,7 +237,7 @@ ER:
             <<: *prop_external
 
 
-    - id: Ryšių prietaisas               #    NSIK+ISO: M.HJ.KEB
+    - id: Ryšių prietaisas                     # NSIK+ISO:  M.HJ.KEB
       examples:
       - Kontroleris
       - Valdiklis
@@ -263,7 +263,7 @@ ER:
             <<: *prop_g
             <<: *prop_e
             <<: *prop_external
-    - id: Maršrutizatorius               #    NSIK+ISO: M.HJ.KED
+    - id: Maršrutizatorius                     # NSIK+ISO:  M.HJ.KED
       classifications:
         NSIK LF: M
         NSIK LT: HJ
@@ -288,7 +288,7 @@ ER:
             <<: *prop_g
             <<: *prop_e
             <<: *prop_external
-    - id: Telefono komutatorius                        # visible_unique                NSIK: M.HJ.%KFE10
+    - id: Telefono komutatorius                # NSIK:      M.HJ.%KFE10
       classifications:
         NSIK LF: M
         NSIK LT: HJ
@@ -313,7 +313,7 @@ ER:
             <<: *prop_e
             <<: *prop_external
         
-    - id: PBX telefono komutatorius                    # visible_unique                NSIK: M.HJ.%KFE11
+    - id: PBX telefono komutatorius            # NSIK:      M.HJ.%KFE11
       classifications:
         NSIK LF: M
         NSIK LT: HJ
@@ -339,7 +339,7 @@ ER:
             <<: *prop_e
             <<: *prop_external
     
-    - id: Telefonas                                    # visible_unique                NSIK: M.HJ.TFE
+    - id: Telefonas                            # NSIK+ISO:  M.HJ.TFE
       classifications:
         NSIK LF: M
         NSIK LT: HJ
@@ -363,7 +363,7 @@ ER:
             <<: *prop_g
             <<: *prop_external
     
-    - id: Optinio tinklo komutatorius                  # visible_unique_electrical     NSIK: M.HJ.KGA
+    - id: Optinio tinklo komutatorius          # NSIK+ISO:  M.HJ.KGA
       examples:
       - Optikos panelė
       classifications:
@@ -388,7 +388,7 @@ ER:
             <<: *prop_e
             <<: *prop_external
         
-    - id: Optinio tinklo maršrutizatorius              # visible_unique_electrical     NSIK: M.HJ.KGB
+    - id: Optinio tinklo maršrutizatorius      # NSIK+ISO:  M.HJ.KGB
       examples:
       - Optinis maršrutizatorius
       - Optinis keitiklis
@@ -414,7 +414,7 @@ ER:
             <<: *prop_e
             <<: *prop_external
     
-    - id: Optinio tinklo kartotuvas                    # visible_unique_electrical     NSIK: M.HJ.KGC
+    - id: Optinio tinklo kartotuvas            # NSIK+ISO:  M.HJ.KGC
       examples:
       - Optinis kartotuvas
       - Optinis stiprintuvas
@@ -440,7 +440,7 @@ ER:
             <<: *prop_e
             <<: *prop_external
         
-    - id: Optinis transiveris                          # visible_unique_electrical     NSIK: M.HJ.TFD
+    - id: Optinis transiveris                  # NSIK+ISO:  M.HJ.TFD
       examples:
       - Optinis keitiklis
       classifications:
@@ -465,7 +465,7 @@ ER:
             <<: *prop_e
             <<: *prop_external
         
-    - id: Optinis kabelis                              # pipe                          NSIK: M.HJ.WHA
+    - id: Optinis kabelis                      # NSIK+ISO:  M.HJ.WHA
       classifications:
         NSIK LF: M
         NSIK LT: HJ
@@ -490,7 +490,7 @@ ER:
             <<: *prop_material
             <<: *prop_external
     
-    - id: Optinė jungtis                               # visible_unique                NSIK: M.HJ.XHA
+    - id: Optinė jungtis                       # NSIK+ISO:  M.HJ.XHA
       classifications:
         NSIK LF: M
         NSIK LT: HJ
@@ -516,7 +516,7 @@ ER:
             <<: *prop_vis
             <<: *prop_external
         
-    - id: Daugialypė jungtis                           # visible_unique                NSIK: M.HJ.XZA
+    - id: Daugialypė jungtis                   # NSIK+ISO:  M.HJ.XZA
       classifications:
         NSIK LF: M
         NSIK LT: HJ
@@ -542,7 +542,7 @@ ER:
             <<: *prop_vis
             <<: *prop_external
     
-    - id: Maršrutizatorius                             # unique_electrical             NSIK: M.HJ.KED
+    - id: Maršrutizatorius                     # NSIK+ISO:  M.HJ.KED
       examples:
       - Laidinio tinklo maršrutizatorius
       classifications:
@@ -569,7 +569,7 @@ ER:
             <<: *prop_e
             <<: *prop_external
         
-    - id: Ryšių kabelis                                # unique_electrical             NSIK: M.HJ.WGB
+    - id: Ryšių kabelis                        # NSIK+ISO:  M.HJ.WGB
       classifications:
         NSIK LF: M
         NSIK LT: HJ
@@ -594,7 +594,7 @@ ER:
             <<: *prop_material
             <<: *prop_external
         
-    - id: Ryšių įrangos lizdas                         # unique_electrical             NSIK+ISO: M.HJ.XGA
+    - id: Ryšių įrangos lizdas                 # NSIK+ISO:  M.HJ.XGA
       classifications:
         NSIK LF: M
         NSIK LT: HJ
@@ -621,7 +621,7 @@ ER:
             <<: *prop_g
             <<: *prop_vis
 
-    - id: Signalų perdavimo sistemos lizdas            # unique_electrical             NSIK+ISO: M.HJ.XGA
+    - id: Signalų perdavimo sistemos lizdas    # NSIK+ISO:  M.HJ.XGA
       classifications:
         NSIK LF: M
         NSIK LT: HJ
@@ -648,7 +648,7 @@ ER:
             <<: *prop_g
             <<: *prop_vis
             
-    - id: Ryšių įrangos komutacinė panelė              # unique_electrical             NSIK: M.HJ.XGC
+    - id: Ryšių įrangos komutacinė panelė      # NSIK+ISO:  M.HJ.XGC
       examples:
       - Plintas
       - Komutacinė panelė
@@ -675,7 +675,7 @@ ER:
             <<: *prop_g
             <<: *prop_vis
         
-    - id: Dengianti panelė                             # unique_electrical             NSIK+ISO: M.HJ.NAB
+    - id: Dengianti panelė                     # NSIK+ISO:  M.HJ.NAB
       examples:
       - Kabelių tvarkymo panelė
       classifications:
@@ -700,7 +700,7 @@ ER:
             <<: *prop_g
             <<: *prop_vis
 
-    - id: Išplėtimo modulis                            # unique_electrical             NSIK: M.HJ.%KEB20
+    - id: Išplėtimo modulis                    # NSIK:      M.HJ.%KEB20
       examples:
       - Įrangos išplėtimo modulis
       classifications:
@@ -727,7 +727,7 @@ ER:
             <<: *prop_e
             <<: *prop_external
 
-    - id: Korpusas (skydelis)                          # visible_unique_electrical     NSIK+ISO: M.HJ.UCA
+    - id: Korpusas (skydelis)                  # NSIK+ISO:  M.HJ.UCA
       examples:
       - Ryšių skydelis
       - Ryšių spinta
@@ -766,7 +766,7 @@ ER:
             <<: *prop_e
             <<: *prop_external
         
-    - id: Elektros skirstytuvas                        # visible_unique_electrical     NSIK: M.HJ.XDE
+    - id: Elektros skirstytuvas                # NSIK:      M.HJ.XDE
       examples:
       - Ryšių sistemos elektros šakotuvas
       - Elektros šakotuvas ryšių sistemos įrangai
@@ -794,7 +794,7 @@ ER:
             <<: *prop_e
             <<: *prop_external
 
-    - id: Nepertraukiamo maitinimo šaltinis            # visible_unique_electrical     NSIK: M.HJ.RBA
+    - id: Nepertraukiamo maitinimo šaltinis    # NSIK:      M.HJ.RBA
       examples:
       - Ryšiu sistemos nepertraukiamo maitinimo šaltinis
       - Ryšių sistemos UPS
@@ -826,7 +826,7 @@ ER:
 #
 # Paskirstymo sistema M.JL. Išravėti
 #
-    - id: Įrangos ir/ar kabelių dėklas. Signalų paskirstymo sistema   #    NSIK+ISO: M.JL.FNB
+    - id: Įrangos ir/ar kabelių dėklas. Signalų paskirstymo sistema   # NSIK+ISO:  M.JL.FNB
       examples:
       - Kabelio kanalas
       - kabelio kopėčios
@@ -856,7 +856,7 @@ ER:
             <<: *prop_material
             <<: *prop_external
 
-    - id: Įrangos ir/ar kabelių dėklas. Signalų paskirstymo sistema   #    NSIK:     M.JL.%FNB20
+    - id: Įrangos ir/ar kabelių dėklas. Signalų paskirstymo sistema   # NSIK:      M.JL.%FNB20
       examples:
       - Kabelio kanalas
       - kabelio kopėčios
@@ -885,7 +885,7 @@ ER:
             <<: *prop_external
 
 
-    - id: Maršrutizatorius. Signalų paskirstymo sistema               #    NSIK+ISO: M.JL.KED
+    - id: Maršrutizatorius. Signalų paskirstymo sistema               # NSIK+ISO:  M.JL.KED
       classifications:
         NSIK LF: M
         NSIK LT: JL
@@ -911,7 +911,7 @@ ER:
             <<: *prop_e
             <<: *prop_external
 
-    - id: Įrangos ir/ar kabelių dėklas. Signalų paskirstymo sistema   #    NSIK+ISO: M.JL.UBA
+    - id: Įrangos ir/ar kabelių dėklas. Signalų paskirstymo sistema   # NSIK+ISO:  M.JL.UBA
       examples:
       - Kabelio kanalas
       - kabelio kopėčios
@@ -943,7 +943,45 @@ ER:
             <<: *prop_material
             <<: *prop_external
 
-    - id: Ryšių įrangos lizdas. Signalų paskirstymo sistema           #    NSIK+ISO: M.JL.XGA
+
+    - id: Ryšių sistemos korpusas (skydelis)                          # NSIK+ISO:  M.JL.UCA
+      ifcType: 
+        '2x3':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        '4':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        - IfcDistributionChamberElement
+        - IfcDistributionChamberElementType
+      classifications:
+        NSIK LF: M
+        NSIK LT: JL
+        NSIK LK: UCA
+
+        ISO81346 CF: M
+        ISO81346 CT: JL
+        ISO81346 CC: UCA
+      stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2: 
+          properties:
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
+    - id: Ryšių įrangos lizdas. Signalų paskirstymo sistema           # NSIK+ISO:  M.JL.XGA
       classifications:
         NSIK LF: M
         NSIK LT: JL
@@ -970,7 +1008,7 @@ ER:
             <<: *prop_g
             <<: *prop_vis
 
-    - id: Komutacinis skydas. Signalų paskirstymo sistema             #    NSIK+ISO: M.JL.XGC
+    - id: Komutacinis skydas. Signalų paskirstymo sistema             # NSIK+ISO:  M.JL.XGC
       classifications:
         NSIK LF: M
         NSIK LT: JL
@@ -995,7 +1033,7 @@ ER:
             <<: *prop_vis
 
 
-    - id: Inžinerinė spinta                           # visible unique electrical    NSIK: M.JL.%UCA10
+    - id: Inžinerinė spinta                                           # NSIK:      M.JL.%UCA10
       examples:
       - Prietaisų dėžė
       memo: Elementai, nenumatyti kitose projekto dalyse
@@ -1028,7 +1066,7 @@ ER:
 #
 # Perspėjimo sistema P.MA. Išravėti
 #
-    - id: Perspėjimo sistemos korpusas (skydelis)    #  NSIK+ISO: P.MA.UCA
+    - id: Perspėjimo sistemos korpusas (skydelis)                  # NSIK+ISO:  P.MA.UCA
       examples:
       - Pastato įgarsinimo sistemos prietaisų dėžė
       - Pastato įgarsinimo sistemos spinta
@@ -1069,7 +1107,7 @@ ER:
             <<: *prop_e
             <<: *prop_external
             
-    - id: Perspėjimo sistema. Garsiakalbis           #  NSIK+ISO: P.MA.PJA
+    - id: Perspėjimo sistema. Garsiakalbis                         # NSIK+ISO:  P.MA.PJA
       classifications:
         NSIK LF: P
         NSIK LT: MA
@@ -1102,7 +1140,7 @@ ER:
             <<: *prop_e
             <<: *prop_external
 
-    - id: Perspėjimo sistema. Mikrofonas             #  NSIK+ISO: P.MA.BXA
+    - id: Perspėjimo sistema. Mikrofonas                           # NSIK+ISO:  P.MA.BXA
       classifications:
         NSIK LF: P
         NSIK LT: MA
@@ -1134,7 +1172,7 @@ ER:
             <<: *prop_external
 
             
-    - id: Perspėjimo sistemos valdymo blokas                        # visible_unique_electrical           NSIK: P.MA.%KEB10
+    - id: Perspėjimo sistemos valdymo blokas                       # NSIK:      P.MA.%KEB10
       examples:
       - Pastato įgarsinimo sistemos kontroleris
       - Pastato įgarsinimo sistemos valdiklis
@@ -1166,7 +1204,7 @@ ER:
             <<: *prop_e
             <<: *prop_external
 
-    - id: Perspėjimo sistemos korpusas (skydelis)                   #  NSIK+ISO: P.MA.UCA
+    - id: Perspėjimo sistemos korpusas (skydelis)                  # NSIK+ISO:  P.MA.UCA
       examples:
       - Pastato įgarsinimo sistemos prietaisų dėžė
       - Pastato įgarsinimo sistemos spinta
@@ -1207,7 +1245,7 @@ ER:
             <<: *prop_e
             <<: *prop_external
     
-    - id: Perspėjimo sistemos elektros skirstytuvas                 #  NSIK+ISO: P.MA.XDE
+    - id: Perspėjimo sistemos elektros skirstytuvas                # NSIK+ISO:  P.MA.XDE
       examples:
       - Pastato įgarsinimo sistemos sistemos elektros šakotuvas
       - Elektros šakotuvas pastato įgarsinimo sistemos įrangai
@@ -1239,7 +1277,7 @@ ER:
             <<: *prop_e
             <<: *prop_external
 
-    - id: Perspėjimo sistema. Nepertraukiamo maitinimo šaltinis     #  NSIK+ISO: P.MA.RBA
+    - id: Perspėjimo sistema. Nepertraukiamo maitinimo šaltinis    # NSIK+ISO:  P.MA.RBA
       examples:
       - Pastato įgarsinimo sistemos nepertraukiamo maitinimo šaltinis
       - Pastato įgarsinimo sistemos UPS
@@ -1310,7 +1348,7 @@ ER:
             <<: *prop_e
             <<: *prop_external
             
-    - id: Pastato įgarsinimo sistema. Garsiakalbis                          # visible_unique_electrical_external  NSIK: %M3010.MB.PJA      Uc: Pr_70_75_06_50
+    - id: Pastato įgarsinimo sistema. Garsiakalbis                          # NSIK: %M3010.MB.PJA      Uc: Pr_70_75_06_50
       classifications:
         NSIK LF: "%M30P10"
         NSIK LT: MB
@@ -1340,7 +1378,7 @@ ER:
             <<: *prop_e
             <<: *prop_external
 
-    - id: Pastato įgarsinimo sistema. Mikrofonas                            # visible_unique_electrical_external  NSIK: %M3010.MB.BXA      Uc: 
+    - id: Pastato įgarsinimo sistema. Mikrofonas                            # NSIK: %M3010.MB.BXA      Uc: 
       classifications:
         NSIK LF: "%M30P10"
         NSIK LT: MB
@@ -1368,7 +1406,7 @@ ER:
             <<: *prop_external
 
             
-    - id: Pastato įgarsinimo sistemos valdymo blokas                        # visible_unique_electrical           NSIK: %M3010.MB.%KEB10
+    - id: Pastato įgarsinimo sistemos valdymo blokas                        # NSIK: %M3010.MB.%KEB10
       examples:
       - Pastato įgarsinimo sistemos kontroleris
       - Pastato įgarsinimo sistemos valdiklis
@@ -1396,7 +1434,7 @@ ER:
             <<: *prop_e
             <<: *prop_external
 
-    - id: Pastato įgarsinimo sistemos korpusas (skydelis)                   # visible_unique_electrical           NSIK: %M3010.MB.UCA
+    - id: Pastato įgarsinimo sistemos korpusas (skydelis)                   # NSIK: %M3010.MB.UCA
       examples:
       - Pastato įgarsinimo sistemos prietaisų dėžė
       - Pastato įgarsinimo sistemos spinta
@@ -1433,7 +1471,7 @@ ER:
             <<: *prop_e
             <<: *prop_external
     
-    - id: Pastato įgarsinimo sistemos elektros skirstytuvas                 # visible_unique_electrical           NSIK: %M3010.MB.XDE
+    - id: Pastato įgarsinimo sistemos elektros skirstytuvas                 # NSIK: %M3010.MB.XDE
       examples:
       - Pastato įgarsinimo sistemos sistemos elektros šakotuvas
       - Elektros šakotuvas pastato įgarsinimo sistemos įrangai
@@ -1461,7 +1499,7 @@ ER:
             <<: *prop_e
             <<: *prop_external
 
-    - id: Pastato įgarsinimo sistema. Nepertraukiamo maitinimo šaltinis     # visible_unique_electrical           NSIK: %M3010.MB.RBA
+    - id: Pastato įgarsinimo sistema. Nepertraukiamo maitinimo šaltinis     # NSIK: %M3010.MB.RBA
       examples:
       - Pastato įgarsinimo sistemos nepertraukiamo maitinimo šaltinis
       - Pastato įgarsinimo sistemos UPS

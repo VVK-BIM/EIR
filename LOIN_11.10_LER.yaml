@@ -770,6 +770,54 @@ LER:
             Pset_QuantityTakeOff.Area: {}
             Pset_ElementComponentCommon.Status: {}
             
+
+#
+# M.JL sistema. Išravėti.
+#
+    - id: Ryšių spinta/ rėmas                      # NSIK+ISO:  M.JL.UCA    Uc: Pr_80_77_27_42 
+      examples:
+      - Ryšių skydelis
+      - Ryšių spinta
+      ifcType: 
+        '2x3':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        '4':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        - IfcDistributionChamberElement
+        - IfcDistributionChamberElementType
+      classifications:
+        NSIK LF: M
+        NSIK LT: JL
+        NSIK LK: UCA
+        ISO81346 CF: M
+        ISO81346 CT: JL
+        ISO81346 CC: UCA
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2:
+          properties: {}
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
+
 #
 # tik NSIK
 #
@@ -1443,7 +1491,7 @@ LER:
             <<: *prop_material
             <<: *prop_external
             
-    - id: Rakinasmas dangtis                                  # NSIK: M.%JL10.FQJ
+    - id: Rakinamas dangtis                                  # NSIK: M.%JL10.FQJ
       classifications:
         NSIK LF: M
         NSIK LT: "%JL10"

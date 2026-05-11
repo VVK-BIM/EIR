@@ -206,7 +206,7 @@ AS:
 #   
 # signalizacija, P.LE
 #
-    - id: Įrangos ir/ar kabelių dėklas                 # common                                NSIK: P.LE.UBA
+    - id: Įrangos ir/ar kabelių dėklas         # NSIK: P.LE.UBA
       examples:
       - Kabelio kanalas
       - kabelio kopėčios
@@ -237,7 +237,7 @@ AS:
             <<: *prop_material
             <<: *prop_external
 
-    - id: Signalizacijos valdymo blokas                # visible_unique_electrical             NSIK: P.LE.KEB
+    - id: Signalizacijos valdymo blokas        # NSIK: P.LE.KEB
       examples:
       - Kontroleris
       - Valdiklis
@@ -272,7 +272,7 @@ AS:
             <<: *prop_external
 
 
-    - id: Apsaugos centralė          #    NSIK+ISO: P.LE.KEB
+    - id: Apsaugos centralė                    # NSIK+ISO: P.LE.KEB
       classifications:
         NSIK LF: P
         NSIK LT: LE
@@ -304,7 +304,7 @@ AS:
             <<: *prop_external
 
 
-    - id: Apsaugos centralė          #    NSIK: P.LE.%KEB10
+    - id: Apsaugos centralė                    # NSIK: P.LE.%KEB10
       classifications:
         NSIK LF: P
         NSIK LT: LE
@@ -331,7 +331,37 @@ AS:
             <<: *prop_e
             <<: *prop_external
             
-    - id: Avarinis paspaudimo mygtukas   #    NSIK+ISO: P.LE.SJB
+    - id: Avarinis mygtukas                    # NSIK+ISO: P.LE.SJA
+      classifications:
+        NSIK LF: P
+        NSIK LT: LE
+        NSIK LK: SJA
+        ISO81346 CF: P
+        ISO81346 CT: LE
+        ISO81346 CC: SJA
+      examples:
+      - Pavojaus mygtukas
+      ifcType: *type_sensor
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+
+    - id: Avarinis paspaudimo mygtukas         # NSIK+ISO: P.LE.SJB
       classifications:
         NSIK LF: P
         NSIK LT: LE
@@ -361,7 +391,7 @@ AS:
             <<: *prop_vis
             <<: *prop_external
 
-    - id: Klaviatūra   #    NSIK: P.LE.%SJB10
+    - id: Klaviatūra                           # NSIK: P.LE.%SJB10
       classifications:
         NSIK LF: P
         NSIK LT: LE
@@ -388,7 +418,7 @@ AS:
             <<: *prop_vis
             <<: *prop_external
 
-    - id: Pavojaus mygtukas   #    NSIK: P.LE.%SJB20
+    - id: Pavojaus mygtukas                    # NSIK: P.LE.%SJB20
       classifications:
         NSIK LF: P
         NSIK LT: LE
@@ -415,7 +445,7 @@ AS:
             <<: *prop_vis
             <<: *prop_external
 
-    - id: Išplėtimo modulis                            # unique_electrical                     NSIK: P.LE.%KEB20
+    - id: Išplėtimo modulis                    # NSIK: P.LE.%KEB20
       examples:
       - Signalizacijos centralės išplėtimo modulis
       classifications:
@@ -442,7 +472,7 @@ AS:
             <<: *prop_vis
             <<: *prop_e
 
-    - id: Korpusas (skydelis)                          # visible_unique_electrical             NSIK: P.LE.UCA
+    - id: Korpusas (skydelis)                  # NSIK: P.LE.UCA
       examples:
       - Prietaisų dėžė
       - Automatikos spinta
@@ -472,7 +502,7 @@ AS:
             <<: *prop_e
             <<: *prop_external
 
-    - id: Komutacinis skydas                          # visible_unique_electrical             NSIK+ISO: P.LE.XGC
+    - id: Komutacinis skydas                   # NSIK+ISO: P.LE.XGC
       ifcType: *type_e
       classifications:
         NSIK LF: P
@@ -501,7 +531,7 @@ AS:
             <<: *prop_vis
             <<: *prop_external
 
-    - id: Judesio daviklis                             # NSIK+ISO: P.LE.BGB
+    - id: Judesio daviklis                     # NSIK+ISO: P.LE.BGB
       classifications:
         NSIK LF: P
         NSIK LT: LE
@@ -531,7 +561,7 @@ AS:
             <<: *prop_vis
             <<: *prop_external
 
-    - id: Judesio daviklis                             # visible_unique                        NSIK: P.LE.%BGB30
+    - id: Judesio daviklis                     # NSIK: P.LE.%BGB30
       classifications:
         NSIK LF: P
         NSIK LT: LE
@@ -558,7 +588,7 @@ AS:
             <<: *prop_vis
             <<: *prop_external
 
-    - id: Vibracijos daviklis                          # visible_unique                        NSIK: P.LE.BSG
+    - id: Vibracijos daviklis                  # NSIK: P.LE.BSG
       classifications:
         NSIK LF: P
         NSIK LT: LE
@@ -587,7 +617,7 @@ AS:
             <<: *prop_external
 
 
-    - id: Stiklo dūžio daviklis                        #  NSIK+ISO: P.LE.BXB
+    - id: Stiklo dūžio daviklis                # NSIK+ISO: P.LE.BXB
       classifications:
         NSIK LF: P
         NSIK LT: LE
@@ -618,7 +648,7 @@ AS:
             <<: *prop_vis
             <<: *prop_external
 
-    - id: Stiklo dūžio daviklis                        # visible_unique                        NSIK: P.LE.%BXB10
+    - id: Stiklo dūžio daviklis                # NSIK: P.LE.%BXB10
       classifications:
         NSIK LF: P
         NSIK LT: LE
@@ -645,7 +675,7 @@ AS:
             <<: *prop_vis
             <<: *prop_external
 
-    - id: Optinis spindulinis jutiklis   #    NSIK: P.LE.%BQF10
+    - id: Optinis spindulinis jutiklis         # NSIK: P.LE.%BQF10
       classifications:
         NSIK LF: P
         NSIK LT: LE
@@ -672,7 +702,7 @@ AS:
             <<: *prop_vis
             <<: *prop_external
 
-    - id: Veidrodis                                    # visible                               NSIK: P.LE.WHD
+    - id: Veidrodis                            # NSIK: P.LE.WHD
       classifications:
         NSIK LF: P
         NSIK LT: LE
@@ -699,7 +729,7 @@ AS:
             <<: *prop_vis
             <<: *prop_external
 
-    - id: Infraraudonųjų spindulių jutiklis            # visible_unique                        NSIK: P.LE.BRC
+    - id: Infraraudonųjų spindulių jutiklis    # NSIK: P.LE.BRC
       classifications:
         NSIK LF: P
         NSIK LT: LE
@@ -724,7 +754,7 @@ AS:
             <<: *prop_g
             <<: *prop_vis
 
-    - id: Magnetinio lauko jutiklis                    # visible_unique                        NSIK: P.LE.BED
+    - id: Magnetinio lauko jutiklis            # NSIK: P.LE.BED
       classifications:
         NSIK LF: P
         NSIK LT: LE
@@ -751,7 +781,7 @@ AS:
             <<: *prop_vis
             <<: *prop_external
 
-    - id: Blykstė                                      # visible_unique_electrical_external    NSIK: P.LE.PJA         Uc: Pr_75_80_30_97
+    - id: Blykstė                              # NSIK: P.LE.PJA         Uc: Pr_75_80_30_97
       classifications:
         NSIK LF: P
         NSIK LT: LE
@@ -783,7 +813,7 @@ AS:
             <<: *prop_e
             <<: *prop_external
 
-    - id: Sirena                                       # visible_unique_electrical_external    NSIK: P.LE.PJB         Uc: Pr_75_80_30_30
+    - id: Sirena                               # NSIK: P.LE.PJB         Uc: Pr_75_80_30_30
       classifications:
         NSIK LF: P
         NSIK LT: LE
@@ -815,7 +845,7 @@ AS:
             <<: *prop_e
             <<: *prop_external
 
-    - id: Sirena su blykste                            # visible_unique_electrical_external    NSIK: P.LE.%PJB1010    Uc: Pr_75_50_20_30
+    - id: Sirena su blykste                    # NSIK: P.LE.%PJB1010    Uc: Pr_75_50_20_30
       classifications:
         NSIK LF: P
         NSIK LT: LE
@@ -905,8 +935,9 @@ AS:
             <<: *prop_g
             <<: *prop_vis
             <<: *prop_e
-
-
+#
+# P.LE Įgarsinimas
+#
     - id: Įgarsinimo sistema. Garsiakalbis #   NSIK: P.LE.PJA      
       classifications:
         NSIK LF: P
@@ -941,7 +972,7 @@ AS:
 #
 #  praėjimo kontrolės sistema, NSIK +ISO P.LD
 #
-    - id: Padėties jungiklis                      # visible_unique_electrical_external    NSIK+ISO: P.LE.BGB
+    - id: Padėties jungiklis          # NSIK+ISO: P.LE.BGB
       classifications:
         NSIK LF: P
         NSIK LT: LE
@@ -969,7 +1000,7 @@ AS:
             <<: *prop_vis
             <<: *prop_external
 
-    - id: Kontaktinis skaitytuvas                      # visible_unique_electrical_external    NSIK+ISO: P.LE.BYA         Uc: 
+    - id: Kontaktinis skaitytuvas     # NSIK+ISO: P.LE.BYA         Uc: 
       classifications:
         NSIK LF: P
         NSIK LT: LD
@@ -1002,7 +1033,7 @@ AS:
     
 
             
-    - id: EM kortelių skaitytuvas   #    NSIK+ISO: P.LD.BYB         Uc: 
+    - id: EM kortelių skaitytuvas     # NSIK+ISO: P.LD.BYB         Uc: 
       classifications:
         NSIK LF: P
         NSIK LT: LD
@@ -1033,7 +1064,7 @@ AS:
             <<: *prop_vis
             <<: *prop_external
         
-    - id: NFC kortelių skaitytuvas  #    NSIK: P.LD.%BYB20      Uc: 
+    - id: NFC kortelių skaitytuvas    # NSIK: P.LD.%BYB20      Uc: 
       classifications:
         NSIK LF: P
         NSIK LT: LD
@@ -1274,12 +1305,15 @@ AS:
             <<: *prop_external
 
 # vaizdo stebėjimas  #  NSIK+ISO P.LF
-    - id: Vaizdo kamera                                # visible_unique_electrical_external    NSIK: P.LF.BXC
+    - id: Vaizdo kamera                        # NSIK+ISO:  P.LF.BXC
       classifications:
         NSIK LF: P
         NSIK LT: LF
         NSIK LK: BXC
         Uniclass: ""
+        ISO81346 CF: P
+        ISO81346 CT: LF
+        ISO81346 CC: BXC
       examples:
       - Vaizdo kamera
       - Kupolinė kamera
@@ -1305,7 +1339,7 @@ AS:
             <<: *prop_vis
             <<: *prop_e
             
-    - id: Vaizdo kamera                                # visible_unique_electrical_external    NSIK: P.LF.%BXC20
+    - id: Vaizdo kamera                        # NSIK:      P.LF.%BXC20
       classifications:
         NSIK LF: P
         NSIK LT: LF
@@ -1335,12 +1369,15 @@ AS:
             <<: *prop_vis
             <<: *prop_e
         
-    - id: Vaizdo kamerų valdymo pultas                 # visible_unique_electrical             NSIK: P.LF.SZA
+    - id: Vaizdo kamerų valdymo pultas         # NSIK+ISO: P.LF.SZA
       classifications:
         NSIK LF: P
         NSIK LT: LF
         NSIK LK: SZA
         Uniclass: ""
+        ISO81346 CF: P
+        ISO81346 CT: LF
+        ISO81346 CC: SZA
       examples:
       - Vaizdo kamerų valdymo pultas
       - PTZ pultas
@@ -1364,12 +1401,15 @@ AS:
             <<: *prop_vis
             <<: *prop_e
 
-    - id: Vaizdo įrašymo įrenginys                     # visible_unique_electrical             NSIK: P.LF.KEE
+    - id: Vaizdo įrašymo įrenginys             # NSIK+ISO:  P.LF.KEE
       classifications:
         NSIK LF: P
         NSIK LT: LF
         NSIK LK: KEE
         Uniclass: ""
+        ISO81346 CF: P
+        ISO81346 CT: LF
+        ISO81346 CC: KEE
       examples:
       - Vaizdo įrašymo irenginys
       - DVR
@@ -1394,7 +1434,7 @@ AS:
             <<: *prop_e
 
 
-    - id: Vaizdo kamerų prijungimo lizdas              # visible_unique                        NSIK: P.LF."%XGA10"
+    - id: Vaizdo kamerų prijungimo lizdas      # NSIK: P.LF."%XGA10"
       classifications:
         NSIK LF: P
         NSIK LT: LF
@@ -1423,7 +1463,7 @@ AS:
             <<: *prop_vis
         
 
-    - id: Vaizdo kamerų komutacinė panelė              # visible_unique                        NSIK: P.LF."%XGC10"
+    - id: Vaizdo kamerų komutacinė panelė      # NSIK: P.LF."%XGC10"
       classifications:
         NSIK LF: P
         NSIK LT: LF
@@ -1451,7 +1491,7 @@ AS:
             <<: *prop_g
             <<: *prop_vis
 
-    - id: Korpusas (skydelis)                          # visible_unique_electrical             NSIK: P.LF.UCA
+    - id: Korpusas (skydelis)                  # NSIK+ISO: P.LF.UCA
       examples:
       - Vaizdo kamerų dėžė
       - Vaizdo kamerų sistemos spinta
@@ -1460,6 +1500,10 @@ AS:
         NSIK LF: P
         NSIK LT: LF
         NSIK LK: UCA
+        
+        ISO81346 CF: P
+        ISO81346 CT: LF
+        ISO81346 CC: UCA
       stages:
         s1:
           properties:
@@ -1481,7 +1525,7 @@ AS:
             <<: *prop_e
             <<: *prop_external
 
-    - id: Elektros skirstytuvas                        # visible_unique_electrical             NSIK: P.LF.XDE
+    - id: Elektros skirstytuvas                # NSIK+ISO: P.LF.XDE
       examples:
       - Vaizdo kamerų sistemos elektros šakotuvas
       - Elektros šakotuvas vaizdo kamerų sistemai
@@ -1490,6 +1534,10 @@ AS:
         NSIK LF: P
         NSIK LT: LF
         NSIK LK: XDE
+        
+        ISO81346 CF: P
+        ISO81346 CT: LF
+        ISO81346 CC: XDE
       stages:
         s1:
           properties:
@@ -1511,7 +1559,7 @@ AS:
             <<: *prop_e
             <<: *prop_external
 
-    - id: Nepertraukiamo maitinimo šaltinis            # visible_unique_electrical             NSIK: P.LF.RBA
+    - id: Nepertraukiamo maitinimo šaltinis    # NSIK+ISO:  P.LF.RBA
       examples:
       - Vaizdo kamerų nepertraukiamo maitinimo šaltinis
       - Vaizdo kamerų UPS
@@ -1519,6 +1567,10 @@ AS:
         NSIK LF: P
         NSIK LT: LF
         NSIK LK: RBA
+        
+        ISO81346 CF: P
+        ISO81346 CT: LF
+        ISO81346 CC: RBA
       ifcType:
       - IfcElectricalElement
       - IfcElectricFlowStorageDeviceTypeEnum

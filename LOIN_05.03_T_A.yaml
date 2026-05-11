@@ -183,7 +183,7 @@ T.A: # Architektūros technoligija. Klasių įranga
             # - examples:
               # - 800
 
-    - id: Lentyna                         # NSIK+ISO    S.RB.CLB
+    - id: Lentyna                    # NSIK+ISO    S.RB.CLB
       classifications:
         NSIK LF: S
         NSIK LT: RB
@@ -222,7 +222,7 @@ T.A: # Architektūros technoligija. Klasių įranga
             <<: *prop_vis
             <<: *prop_env
 
-    - id: Atsisėdimas                         # NSIK+ISO    S.RB.CLC
+    - id: Atsisėdimas                # NSIK+ISO    S.RB.CLC
       examples:
       - Kėdė
       - suoliukas
@@ -236,7 +236,7 @@ T.A: # Architektūros technoligija. Klasių įranga
       stages:    
         <<: *furniture_general
 
-    - id: Spintelė                         # NSIK+ISO    S.RB.CMB
+    - id: Spintelė                   # NSIK+ISO    S.RB.CMB
       classifications:
         NSIK LF: S
         NSIK LT: RB
@@ -247,7 +247,7 @@ T.A: # Architektūros technoligija. Klasių įranga
       stages:    
         <<: *furniture_general
 
-    - id: Konteineris                         # NSIK+ISO    S.RB.CNA
+    - id: Konteineris                # NSIK+ISO    S.RB.CNA
       classifications:
         NSIK LF: S
         NSIK LT: RB
@@ -257,7 +257,7 @@ T.A: # Architektūros technoligija. Klasių įranga
         ISO81346 CC: CNA
       stages:    
         <<: *furniture_general
-    - id: Laikanti platforma                         # NSIK+ISO    S.RB.UBE
+    - id: Laikanti platforma         # NSIK+ISO    S.RB.UBE
       classifications:
         NSIK LF: S
         NSIK LT: RB
@@ -600,6 +600,79 @@ T.A: # Architektūros technoligija. Klasių įranga
       stages:    
         <<: *equipment_general
 
+#
+# S.RC baldai. Išnaikinti
+#
+    - id: Lentyna                    # NSIK+ISO    S.RC.CLB
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: CLB
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: CLB
+      stages:
+        <<: *furniture_general
+
+    - id: Atsisėdimas                # NSIK+ISO    S.RC.CLC
+      examples:
+      - Kėdė
+      - suoliukas
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: CLC
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: CLC
+      stages:    
+        <<: *furniture_general
+
+    - id: Spintelė                   # NSIK+ISO    S.RC.CMB
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: CMB
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: CMB
+      stages:    
+        <<: *furniture_general
+
+    - id: Konteineris                # NSIK+ISO    S.RC.CNA
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: CNA
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: CNA
+      stages:    
+        <<: *furniture_general
+
+
+    - id: Stalas                   # NSIK+ISO    S.RC.UBE
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: UBE
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: UBE
+      stages:    
+        <<: *furniture_general
+
+    - id: Plautuvė                   # NSIK+ISO    S.RC.XKA
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: XKA
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: XKA
+      stages:    
+        <<: *furniture_general
+
 # gamybos įranga
 
     - id: Liejimo įrenginys                           # NSIK+ISO    S.RC.HJA
@@ -614,7 +687,72 @@ T.A: # Architektūros technoligija. Klasių įranga
         ISO81346 CC: HJA
       stages:    
         <<: *equipment_general
+
+    - id: Kaitinimo įrenginys                           # NSIK+ISO    S.RC.EBH
+      examples:
+      - Orkaitė
+      - Sterilizatorius
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: EBH
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: EBH
+      stages:    
+        <<: *equipment_general
+
+    - id: Presas                           # NSIK+ISO    S.RC.HJB
+      examples:
+      - Sulčiaspaudė
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: HJB
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: HJB
+      stages:    
+        <<: *equipment_general
+
+    - id: Pjaustytuvas                           # NSIK+ISO    S.RC.HUA
+      examples:
+      - Ploteris
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: HUA
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: HUA
+      stages:    
+        <<: *equipment_general
+
+    - id: Trupintuvas                           # NSIK+ISO    S.RC.HUC
+      examples:
+      - Ploteris
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: HUC
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: HUC
+      stages:    
+        <<: *equipment_general
         
+    - id: Spausdintuvas                           # NSIK+ISO    S.RC.PHC
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: PHC
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: PHC
+      stages:    
+        <<: *equipment_general
+
+
     - id: Lygintuvas                           # NSIK+ISO    S.RC.TBA
       classifications:
         NSIK LF: S

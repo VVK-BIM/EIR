@@ -325,7 +325,7 @@ ifc_e:       &type_e
   - IfcDistributionControlElementType
   - IfcDistributionControlElementTypeEnum
 
-ŠT:
+LŠT:
     id: "15"
     name: Šilumos gamyba
     stages:
