@@ -1,0 +1,1862 @@
+# v 0.5a
+# NSIK ver 0.9, 2023-09-01
+# https://nsiklab.lt 
+#
+# 11 - Elektoniniai ryšiai
+#
+
+prop_g:   &prop_g
+  Pset_QuantityTakeOff.Height: 
+    valueType: Integer | Real 
+  Pset_QuantityTakeOff.Width: 
+    valueType: Integer | Real 
+  Pset_QuantityTakeOff.Length: 
+    valueType: Integer | Real 
+
+prop_ga:   &prop_g_area
+  <<: *prop_g
+  Pset_QuantityTakeOff.Area: 
+    valueType: Integer | Real 
+
+prop:     &prop
+  VVK.Name: {}
+  VVK.ElementType: {}
+  Pset_ElementCommon.System: {}
+  Pset_ElementComponentCommon.Status: {}
+  Pset_ConstructionAdministration.SpecificationSectionNumber: {}
+
+prop_mat:     &prop_material
+  VVK.Material: {}
+
+prop_vis:     &prop_vis
+  <<: *prop_material
+  VVK.Finish: {}
+  VVK.Colour: {}
+
+prop_u:     &prop_u
+  <<: *prop
+  VVK.Tag: {}
+  
+
+prop_e:     &prop_e
+  Pset_ElectricalDeviceCommon.NominalPowerConsumption: 
+    valueType: Integer | Real 
+  Pset_ElectricalDeviceCommon.RatedVoltage: 
+    valueType: Integer
+  Pset_ElectricalDeviceCommon.HasProtectiveEarth: {}
+  
+prop_external:   &prop_external
+  Pset_ElementComponentCommon.IsExternal: {}
+  Pset_ElectricalDeviceCommon.IP_Code: {}
+  Pset_ElectricalDeviceCommon.IK_Code: {}
+  
+prop_s4_add: &prop_s4_add
+  VVK.RelatedDocumentationURI: {}
+
+prop_mfg: &prop_mfg
+  Pset_ManufacturerTypeInformation.ArticleNumber: {}
+  Pset_ManufacturerTypeInformation.Manufacturer: {}
+
+
+prop_s3:  &prop_s3
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+
+prop_s3:  &prop_s3_pipe
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Diameter
+  - Pset_QuantityTakeOff.Length
+prop_vu:  &prop_s3_v
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - VVK.Finish
+  - VVK.Colour
+  
+prop_s3u: &prop_s3_u
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Tag
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  
+prop_vu:  &prop_s3_vu
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Tag
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - VVK.Finish
+  - VVK.Colour
+
+prop_ue:  &prop_s3_ue
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Tag
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+  
+prop_vue: &prop_s3_vue
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Tag
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - VVK.Finish
+  - VVK.Colour
+  - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+  
+prop_vue: &prop_s3_vue_x
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  - Type
+  - Tag
+  - Pset_ConstructionAdministration.SpecificationSectionNumber
+  - VVK.Material
+  - Pset_QuantityTakeOff.Heigth
+  - Pset_QuantityTakeOff.Width
+  - Pset_QuantityTakeOff.Length
+  - VVK.Finish
+  - VVK.Colour
+  - Pset_ElectricalDeviceCommon.NominalPowerConsumption
+  - Pset_ElectricalDeviceCommon.IsExternal
+  
+
+ifc_e:      &type_linear
+  - IfcFlowSegment
+  - IfcFlowSegmentType
+  - IfcFlowSegmentTypeEnum
+  
+ifc_e:      &type_e
+  - IfcDistributionControlElement
+  - IfcDistributionControlElementType
+  - IfcDistributionControlElementTypeEnum
+  
+  
+
+ER:
+    id: "11"
+    name: Elektoniniai ryšiai
+    stages:
+      s0:
+        lod: 275
+      s1:
+        lod: 275
+        log: 2
+        properties:
+          <<: *prop_mfg
+          <<: *prop_s4_add
+      s2:
+        lod: 200
+        log: 2
+      s3:
+        lod: 300
+        log: 2
+      s4:
+        lod: 350
+        log: 2
+        properties:
+          <<: *prop_s4_add
+      s5:
+        lod: 350
+        log: 2
+        properties:
+          <<: *prop_mfg
+          
+      s6:
+        lod: 500
+        log: 6
+
+    elements:
+
+#
+# signalų paskirstymas, M.JL
+#
+    - id: Antena                            # NSIK+ISO:  M.JL.TFB
+      classifications:
+        NSIK: "<L>M.HJ.TFB"
+        NSIK LF: M
+        NSIK LT: JL
+        NSIK LK: TFB
+        
+        ISO81346 CF: M
+        ISO81346 CT: JL
+        ISO81346 CC: TFB
+      examples:
+      - Ryšio antena
+      - GSM signalo antena
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_external
+        s4:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_external
+            <<: *prop_s4_add
+
+#
+# signalų perdavimas, M.HJ
+#
+    - id: Įrangos ir/ar kabelių dėklas                 #               NSIK: M.BH.UBA
+      examples:
+      - Kabelio kanalas
+      - kabelio kopėčios
+      - kabelio lovelis
+      classifications:
+        NSIKc: "<L>M.HJ.UBA"
+        NSIK LF: M
+        NSIK LT: BH
+        NSIK LK: UBA
+        
+        ISO81346 CF: M
+        ISO81346 CT: BH
+        ISO81346 CC: UBA
+      ifcType: *type_linear
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      stages:
+        s1: 
+          lod: 300
+          properties:
+            <<: [*prop, *prop_g]
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+            <<: *prop_material
+        s3: 
+          lod: 300
+          properties:
+            <<: [*prop, *prop_g, *prop_material]
+      override:
+        Name:
+          examples:
+            - Perforuotas kabelinis lovelis
+            - Cinkuotos kabelių kopėčios
+
+
+    - id: Įrangos ir/ar kabelių dėklas. Ryšių sistema   # NSIK+ISO:  M.HJ.UBA
+      examples:
+      - Kabelio kanalas
+      - kabelio kopėčios
+      - kabelio lovelis
+      classifications:
+        NSIKc: "<L>M.HJ.UBA"
+        NSIK LF: M
+        NSIK LT: HJ
+        NSIK LK: UBA
+        ISO81346 CF: M
+        ISO81346 CT: HJ
+        ISO81346 CC: UBA
+      ifcType: *type_linear
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            #Pset_QuantityTakeOff.Diameter: {}
+            <<: *prop_material
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+           # Pset_QuantityTakeOff.Diameter: {}
+            <<: *prop_material
+            <<: *prop_external
+
+
+    - id: Apdailinis rėmelis. Ryšių sistema   # NSIK+ISO:  M.HJ.NCH
+      examples:
+      - Lizdo rėmelis
+      classifications:
+        NSIKc: "<L>M.HJ.NCH"
+        NSIK LF: M
+        NSIK LT: HJ
+        NSIK LK: NCH
+        ISO81346 CF: M
+        ISO81346 CT: HJ
+        ISO81346 CC: NCH
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            #Pset_QuantityTakeOff.Diameter: {}
+            <<: *prop_vis
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+        s5:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+        s6:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+            
+    
+    - id: Ryšių prietaisas                     # NSIK+ISO:  M.HJ.KEB
+      examples:
+      - Kontroleris
+      - Valdiklis
+      memo: Kitos paskirties aktyvus ryšių prietaisas
+      classifications:
+        NSIKc: "<L>M.HJ.KEB"
+        NSIK LF: M
+        NSIK LT: HJ
+        NSIK LK: KEC
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+    - id: Maršrutizatorius                     # NSIK+ISO:  M.HJ.KED
+      classifications:
+        NSIKc: "<L>M.HJ.KED"
+        NSIK LF: M
+        NSIK LT: HJ
+        NSIK LK: KED
+        ISO81346 CF: M
+        ISO81346 CT: HJ
+        ISO81346 CC: KED
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+    - id: Telefono komutatorius                # NSIK:      M.HJ.%KFE10
+      classifications:
+        NSIKc: "<L>M.HJ.%KFE10"
+        NSIK LF: M
+        NSIK LT: HJ
+        NSIK LK: "%KFE10"
+      examples:
+      - Telefonų stotis
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+        
+    - id: PBX telefono komutatorius            # NSIK:      M.HJ.%KFE11
+      classifications:
+        NSIKc: "<L>M.HJ.%KFE11"
+        NSIK LF: M
+        NSIK LT: HJ
+        NSIK LK: "%KFE11"
+      examples:
+      - Žinybinė telefonų stotis
+      - PBX stotelė
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+    
+
+
+
+    - id: Telefonas                            # NSIK+ISO:  M.HJ.TFE
+      classifications:
+        NSIKc: "<L>M.HJ.TFE"
+        NSIK LF: M
+        NSIK LT: HJ
+        NSIK LK: TFE
+      examples:
+      - Telefono aparatas
+      - Vietinio ryšio telefono aparatas
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_external
+    
+    - id: Optinio tinklo komutatorius          # NSIK+ISO:  M.HJ.KGA
+      examples:
+      - Optikos panelė
+      classifications:
+        NSIKc: "<L>M.HJ.KGA"
+        NSIK LF: M
+        NSIK LT: HJ
+        NSIK LK: KGA
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+        
+    - id: Optinio tinklo maršrutizatorius      # NSIK+ISO:  M.HJ.KGB
+      examples:
+      - Optinis maršrutizatorius
+      - Optinis keitiklis
+      classifications:
+        NSIKc: "<L>M.HJ.KGB"
+        NSIK LF: M
+        NSIK LT: HJ
+        NSIK LK: KGB
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+    
+    - id: Optinio tinklo kartotuvas            # NSIK+ISO:  M.HJ.KGC
+      examples:
+      - Optinis kartotuvas
+      - Optinis stiprintuvas
+      classifications:
+        NSIKc: "<L>M.HJ.KGC"
+        NSIK LF: M
+        NSIK LT: HJ
+        NSIK LK: KGC
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+        
+    - id: Optinis transiveris                  # NSIK+ISO:  M.HJ.TFD
+      examples:
+      - Optinis keitiklis
+      classifications:
+        NSIKc: "<L>M.HJ.TFD"
+        NSIK LF: M
+        NSIK LT: HJ
+        NSIK LK: TFD
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+        
+    - id: Optinis kabelis                      # NSIK+ISO:  M.HJ.WHA
+      classifications:
+        NSIKc: "<L>M.HJ.WHA"
+        NSIK LF: M
+        NSIK LT: HJ
+        NSIK LK: WHA
+      ifcType: *type_linear
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: {}
+            <<: *prop_material
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: {}
+            <<: *prop_material
+            <<: *prop_external
+    
+    - id: Optinė jungtis                       # NSIK+ISO:  M.HJ.XHA
+      classifications:
+        NSIKc: "<L>M.HJ.XHA"
+        NSIK LF: M
+        NSIK LT: HJ
+        NSIK LK: XHA
+      ifcType:
+      - IfcEquipmentElement
+      - IfcDistributionElement
+      - IfcDistributionElementType
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+        
+    - id: Daugialypė jungtis                   # NSIK+ISO:  M.HJ.XZA
+      classifications:
+        NSIKc: "<L>M.HJ.XZA"
+        NSIK LF: M
+        NSIK LT: HJ
+        NSIK LK: XZA
+      ifcType:
+      - IfcEquipmentElement
+      - IfcDistributionElement
+      - IfcDistributionElementType
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+    
+    - id: Maršrutizatorius                     # NSIK+ISO:  M.HJ.KED
+      examples:
+      - Laidinio tinklo maršrutizatorius
+      classifications:
+        NSIKc: "<L>M.HJ.KED"
+        NSIK LF: M
+        NSIK LT: HJ
+        NSIK LK: KED
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        
+    - id: Ryšių kabelis                        # NSIK+ISO:  M.HJ.WGB
+      classifications:
+        NSIK LF: M
+        NSIK LT: HJ
+        NSIK LK: WGB
+      ifcType: *type_linear
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: {}
+            <<: *prop_material
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop
+            <<: *prop_g
+            Pset_QuantityTakeOff.Diameter: {}
+            <<: *prop_material
+            <<: *prop_external
+        
+    - id: Ryšių įrangos lizdas                 # NSIK+ISO:  M.HJ.XGA
+      classifications:
+        NSIK: "<L>M.HJ.XGA"
+        NSIK LF: M
+        NSIK LT: HJ
+        NSIK LK: XGA
+        ISO81346 CF: M
+        ISO81346 CT: HJ
+        ISO81346 CC: XGA
+      ifcType:
+      - IfcEquipmentElement
+      - IfcDistributionElement
+      - IfcDistributionElementType
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+
+    # - id: Signalų perdavimo sistemos lizdas    # NSIK+ISO:  M.HJ.XGA
+      # classifications:
+        # NSIK LF: M
+        # NSIK LT: HJ
+        # NSIK LK: XGA
+        # ISO81346 CF: M
+        # ISO81346 CT: HJ
+        # ISO81346 CC: XGA
+      # ifcType:
+      # - IfcEquipmentElement
+      # - IfcDistributionElement
+      # - IfcDistributionElementType
+      # stages:
+        # s1:
+          # properties:
+            # <<: *prop_u
+            # <<: *prop_g
+            # <<: *prop_vis
+        # s2:
+          # properties:
+            # <<: *prop
+        # s3:
+          # properties:
+            # <<: *prop
+            # <<: *prop_g
+            # <<: *prop_vis
+            
+    - id: Ryšių įrangos komutacinė panelė      # NSIK+ISO:  M.HJ.XGC
+      examples:
+      - Plintas
+      - Komutacinė panelė
+      classifications:
+        NSIK LF: M
+        NSIK LT: HJ
+        NSIK LK: XGC
+      ifcType: 
+      - IfcEquipmentElement
+      - IfcDistributionElement
+      - IfcDistributionElementType
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+        
+    - id: Dengianti panelė                     # NSIK+ISO:  M.HJ.NAB
+      examples:
+      - Kabelių tvarkymo panelė
+      classifications:
+        NSIK LF: M
+        NSIK LT: HJ
+        NSIK LK: NAB
+        ISO81346 CF: M
+        ISO81346 CT: HJ
+        ISO81346 CC: NAB
+      ifcType: 
+      - IfcEquipmentElement
+      stages:
+        s1:
+          properties:
+            <<: *prop_g
+            <<: *prop_vis
+        s2:
+          properties:
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop_g
+            <<: *prop_vis
+
+    - id: Išplėtimo modulis                    # NSIK:      M.HJ.%KEB20
+      examples:
+      - Įrangos išplėtimo modulis
+      classifications:
+        NSIK LF: M
+        NSIK LT: HJ
+        NSIK LK: "%KEB20"
+      ifcType: *type_e
+      stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
+    - id: Korpusas (skydelis)                  # NSIK+ISO:  M.HJ.UCA
+      examples:
+      - Ryšių skydelis
+      - Ryšių spinta
+      ifcType: 
+        '2x3':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        '4':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        - IfcDistributionChamberElement
+        - IfcDistributionChamberElementType
+      classifications:
+        NSIK LF: M
+        NSIK LT: HJ
+        NSIK LK: UCA
+        ISO81346 CF: M
+        ISO81346 CT: HJ
+        ISO81346 CC: UCA
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        
+    - id: Elektros skirstytuvas                # NSIK:      M.HJ.XDE
+      examples:
+      - Ryšių sistemos elektros šakotuvas
+      - Elektros šakotuvas ryšių sistemos įrangai
+      ifcType: *type_e
+      classifications:
+        NSIK LF: M
+        NSIK LT: HJ
+        NSIK LK: XDE
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
+    - id: Nepertraukiamo maitinimo šaltinis    # NSIK:      M.HJ.RBA
+      examples:
+      - Ryšiu sistemos nepertraukiamo maitinimo šaltinis
+      - Ryšių sistemos UPS
+      ifcType:
+      - IfcElectricalElement
+      - IfcElectricFlowStorageDeviceTypeEnum
+      classifications:
+        NSIK LF: M
+        NSIK LT: HJ
+        NSIK LK: RBA
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+
+
+
+
+#
+# P.LE išravėti.
+#
+    - id: Pagalbos iškvietimo centralė                     # NSIK+ISO:  P.LE.KEB
+      examples:
+      - Kontroleris
+      - Valdiklis
+      classifications:
+        NSIK LF: P
+        NSIK LT: LE
+        NSIK LK: KEB
+        
+        ISO81346 CF: P
+        ISO81346 CT: LE
+        ISO81346 CC: KEB
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
+    - id: Pagalbos iškvietimo centralė                     # NSIK+ISO:  P.LE.PFA
+      examples:
+      - Kontroleris
+      - Valdiklis
+      classifications:
+        NSIK LF: P
+        NSIK LT: LE
+        NSIK LK: PFA
+        
+        ISO81346 CF: P
+        ISO81346 CT: LE
+        ISO81346 CC: PFA
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+        s4:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
+#
+# Paskirstymo sistema M.JL. Išravėti
+#
+    - id: Įrangos ir/ar kabelių dėklas. Signalų paskirstymo sistema   # NSIK+ISO:  M.JL.FNB
+      examples:
+      - Kabelio kanalas
+      - kabelio kopėčios
+      - kabelio lovelis
+      classifications:
+        NSIK LF: M
+        NSIK LT: JL
+        NSIK LK: FNB
+        ISO81346 CF: M
+        ISO81346 CT: JL
+        ISO81346 CC: FNB
+      ifcType: *type_linear
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
+
+    - id: Įrangos ir/ar kabelių dėklas. Signalų paskirstymo sistema   # NSIK:      M.JL.%FNB20
+      examples:
+      - Kabelio kanalas
+      - kabelio kopėčios
+      - kabelio lovelis
+      classifications:
+        NSIK LF: M
+        NSIK LT: JL
+        NSIK LK: "%FNB20"
+        
+      ifcType: *type_linear
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_material
+            <<: *prop_external
+
+
+    - id: Maršrutizatorius. Signalų paskirstymo sistema               # NSIK+ISO:  M.JL.KED
+      classifications:
+        NSIK LF: M
+        NSIK LT: JL
+        NSIK LK: KED
+        ISO81346 CF: M
+        ISO81346 CT: JL
+        ISO81346 CC: KED
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            <<: *prop_e
+            <<: *prop_external
+
+    - id: Įrangos ir/ar kabelių dėklas. Signalų paskirstymo sistema   # NSIK+ISO:  M.JL.UBA
+      examples:
+      - Kabelio kanalas
+      - kabelio kopėčios
+      - kabelio lovelis
+      classifications:
+        NSIK LF: M
+        NSIK LT: JL
+        NSIK LK: UBA
+        ISO81346 CF: M
+        ISO81346 CT: JL
+        ISO81346 CC: UBA
+      ifcType: *type_linear
+      stages:
+        s1:
+          properties:
+            <<: *prop
+            <<: *prop_g
+            #Pset_QuantityTakeOff.Diameter: {}
+            <<: *prop_material
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop
+            <<: *prop_g
+           # Pset_QuantityTakeOff.Diameter: {}
+            <<: *prop_material
+            <<: *prop_external
+
+
+    - id: Ryšių sistemos korpusas (skydelis)                          # NSIK+ISO:  M.JL.UCA
+      ifcType: 
+        '2x3':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        '4':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        - IfcDistributionChamberElement
+        - IfcDistributionChamberElementType
+      classifications:
+        NSIK LF: M
+        NSIK LT: JL
+        NSIK LK: UCA
+
+        ISO81346 CF: M
+        ISO81346 CT: JL
+        ISO81346 CC: UCA
+      stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2: 
+          properties:
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+    
+    - id: Ryšių sistemos korpusas (skydelis)                          # NSIK+ISO:  M.JL.%UCA20
+      ifcType: 
+        '2x3':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        '4':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        - IfcDistributionChamberElement
+        - IfcDistributionChamberElementType
+      classifications:
+        NSIK: "<L>M.JL.%UCA20"
+        NSIK LF: M
+        NSIK LT: JL
+        NSIK LK: "%UCA20"
+      stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2: 
+          properties:
+            <<: *prop
+        s3: 
+          properties:
+            <<: [*prop_u, *prop_g, *prop_vis]
+            <<: *prop_e
+            <<: *prop_external
+        s4: 
+          properties:
+            <<: [*prop_u, *prop_g, *prop_vis]
+            <<: *prop_e
+            <<: *prop_external
+            <<: *prop_s4_add
+        s5: 
+          properties:
+            <<: [*prop_u, *prop_g, *prop_vis]
+            <<: *prop_e
+            <<: *prop_external
+            <<: *prop_s4_add
+            <<: *prop_mfg
+        s6: 
+          properties:
+            <<: [*prop_u, *prop_g, *prop_vis]
+            <<: *prop_e
+            <<: *prop_external
+            <<: *prop_s4_add
+            <<: *prop_mfg
+
+    - id: Ryšių įrangos lizdas. Signalų paskirstymo sistema           # NSIK+ISO:  M.JL.XGA
+      classifications:
+        NSIK: "<L>M.JL.XGA"
+        NSIK LF: M
+        NSIK LT: JL
+        NSIK LK: XGA
+        ISO81346 CF: M
+        ISO81346 CT: JL
+        ISO81346 CC: XGA
+      ifcType:
+      - IfcEquipmentElement
+      - IfcDistributionElement
+      - IfcDistributionElementType
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: [*prop, *prop_g, *prop_vis]
+        s4:
+          properties:
+            <<: [*prop_u, *prop_g, *prop_vis]
+            <<: *prop_s4_add
+        s5:
+          properties:
+            <<: [*prop_u, *prop_g, *prop_vis]
+            <<: *prop_s4_add
+            <<: *prop_mfg
+        s6:
+          properties:
+            <<: [*prop_u, *prop_g, *prop_vis]
+            <<: *prop_s4_add
+            <<: *prop_mfg
+            
+
+    - id: Komutacinis skydas. Signalų paskirstymo sistema             # NSIK+ISO:  M.JL.XGC
+      classifications:
+        NSIK LF: M
+        NSIK LT: JL
+        NSIK LK: XGC
+        
+        ISO81346 CF: M
+        ISO81346 CT: JL
+        ISO81346 CC: XGC
+      ifcType: 
+      - IfcEquipmentElement
+      stages:
+        s1:
+          properties:
+            <<: *prop_g
+            <<: *prop_vis
+        s2:
+          properties:
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop_g
+            <<: *prop_vis
+
+
+    - id: Inžinerinė spinta                                           # NSIK:      M.JL.%UCA10
+      examples:
+      - Prietaisų dėžė
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      ifcType: 
+        '2x3':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        '4':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        - IfcDistributionChamberElement
+        - IfcDistributionChamberElementType
+      classifications:
+        NSIK: "<L>M.JL.%UCA10"
+        NSIK LF: M
+        NSIK LT: JL
+        NSIK LK: "%UCA10"
+      stages:
+        s1: 
+          lod: 275
+          log: 2
+          properties:
+            <<: [*prop_u, *prop_g, *prop_vis]
+        s2: 
+          lod: 200
+          log: 2
+          properties:
+            <<: *prop_u
+        s3: 
+          lod: 300
+          log: 2
+          properties:
+            <<: [*prop_g, *prop_vis]
+        s4: 
+          lod: 300
+          log: 2
+          properties:
+            <<: [*prop_g, *prop_vis]
+            <<: *prop_s4_add
+            
+        s5: 
+          lod: 300
+          log: 2
+          properties:
+            <<: [*prop_g, *prop_vis]
+            <<: *prop_s4_add
+            <<: *prop_mfg
+        s6: 
+          lod: 300
+          log: 2
+          properties:
+            <<: [*prop_g, *prop_vis]
+            <<: *prop_s4_add
+            <<: *prop_mfg
+#
+# Perspėjimo sistema P.MA. Išravėti
+#
+    - id: Perspėjimo sistemos korpusas (skydelis)                  # NSIK+ISO:  P.MA.UCA
+      examples:
+      - Pastato įgarsinimo sistemos prietaisų dėžė
+      - Pastato įgarsinimo sistemos spinta
+      - Pastato įgarsinimo valdymo sistemos įrenginių spinta
+      ifcType: 
+        '2x3':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        '4':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        - IfcDistributionChamberElement
+        - IfcDistributionChamberElementType
+      classifications:
+        NSIK LF: P
+        NSIK LT: MA
+        NSIK LC: UCA
+        
+        ISO81346 CF: P
+        ISO81346 CT: MA
+        ISO81346 CC: UCA
+      stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2: 
+          properties:
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+            
+    - id: Perspėjimo sistema. Garsiakalbis                         # NSIK+ISO:  P.MA.PJA
+      classifications:
+        NSIK LF: P
+        NSIK LT: MA
+        NSIK LK: PJA
+        
+        ISO81346 CF: P
+        ISO81346 CT: MA
+        ISO81346 CC: PJA
+      examples:
+      - Pastato įgarsinimo sistemos garsiakalbis
+      ifcType: 
+      - IfcAudioVisualAppliance
+      - IfcAudioVisualApplianceType
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
+    - id: Perspėjimo sistema. Mikrofonas                           # NSIK+ISO:  P.MA.BXA
+      classifications:
+        NSIK LF: P
+        NSIK LT: MA
+        NSIK LK: BXA
+        
+        ISO81346 CF: P
+        ISO81346 CT: MA
+        ISO81346 CC: BXA
+      examples:
+      - Pastato įgarsinimo sistemos mikrofonas su pultu.
+      ifcType: 
+      - IfcAudioVisualAppliance
+      - IfcAudioVisualApplianceType
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+
+            
+    - id: Perspėjimo sistemos valdymo blokas                       # NSIK:      P.MA.%KEB10
+      examples:
+      - Pastato įgarsinimo sistemos kontroleris
+      - Pastato įgarsinimo sistemos valdiklis
+      classifications:
+        NSIK LF: P
+        NSIK LT: MA
+        NSIK LK: KEB
+        
+        ISO81346 CF: P
+        ISO81346 CT: MA
+        ISO81346 CC: KEB
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
+    - id: Perspėjimo sistemos korpusas (skydelis)                  # NSIK+ISO:  P.MA.UCA
+      examples:
+      - Pastato įgarsinimo sistemos prietaisų dėžė
+      - Pastato įgarsinimo sistemos spinta
+      - Pastato įgarsinimo valdymo sistemos įrenginių spinta
+      ifcType: 
+        '2x3':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        '4':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        - IfcDistributionChamberElement
+        - IfcDistributionChamberElementType
+      classifications:
+        NSIK LF: P
+        NSIK LT: MA
+        NSIK LK: UCA
+        
+        ISO81346 CF: P
+        ISO81346 CT: MA
+        ISO81346 CC: UCA
+      stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2: 
+          properties:
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+    
+    - id: Perspėjimo sistemos elektros skirstytuvas                # NSIK+ISO:  P.MA.XDE
+      examples:
+      - Pastato įgarsinimo sistemos sistemos elektros šakotuvas
+      - Elektros šakotuvas pastato įgarsinimo sistemos įrangai
+      ifcType: *type_e
+      classifications:
+        NSIK LF: P
+        NSIK LT: MA
+        NSIK LK: XDE
+        
+        ISO81346 CF: P
+        ISO81346 CT: MA
+        ISO81346 CC: XDE
+      stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2: 
+          properties:
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
+    - id: Perspėjimo sistema. Nepertraukiamo maitinimo šaltinis    # NSIK+ISO:  P.MA.RBA
+      examples:
+      - Pastato įgarsinimo sistemos nepertraukiamo maitinimo šaltinis
+      - Pastato įgarsinimo sistemos UPS
+      classifications:
+        NSIK: "<L>P.MA.RBA"
+        NSIK LF: P
+        NSIK LT: MA
+        NSIK LK: RBA
+        
+        ISO81346 CF: P
+        ISO81346 CT: MA
+        ISO81346 CC: RBA
+      ifcType:
+      - IfcElectricalElement
+      - IfcElectricFlowStorageDeviceTypeEnum
+      stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+        s2: 
+          properties:
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+            
+
+#
+# Pastato įgarsinimas M.MB
+#
+    - id: Pastato įgarsinimo sistemos korpusas (skydelis)    #   ISO: M.MB.UCA
+      examples:
+      - Pastato įgarsinimo sistemos prietaisų dėžė
+      - Pastato įgarsinimo sistemos spinta
+      - Pastato įgarsinimo valdymo sistemos įrenginių spinta
+      ifcType: 
+        '2x3':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        '4':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        - IfcDistributionChamberElement
+        - IfcDistributionChamberElementType
+      classifications:
+        ISO81346 CF: M
+        ISO81346 CT: MB
+        ISO81346 CC: UCA
+      stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2: 
+          properties:
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+            
+    - id: Pastato įgarsinimo sistema. Garsiakalbis                          # NSIK: %M3010.MB.PJA      Uc: Pr_70_75_06_50
+      classifications:
+        NSIK LF: "%M30P10"
+        NSIK LT: MB
+        NSIK LK: PJA
+        Uniclass: Pr_70_75_06_50
+      examples:
+      - Pastato įgarsinimo sistemos garsiakalbis
+      ifcType: 
+      - IfcAudioVisualAppliance
+      - IfcAudioVisualApplianceType
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
+    - id: Pastato įgarsinimo sistema. Mikrofonas                            # NSIK: %M3010.MB.BXA      Uc: 
+      classifications:
+        NSIK LF: "%M30P10"
+        NSIK LT: MB
+        NSIK LK: BXA
+      examples:
+      - Pastato įgarsinimo sistemos mikrofonas su pultu.
+      ifcType: 
+      - IfcAudioVisualAppliance
+      - IfcAudioVisualApplianceType
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_external
+
+            
+    - id: Pastato įgarsinimo sistemos valdymo blokas                        # NSIK: %M3010.MB.%KEB10
+      examples:
+      - Pastato įgarsinimo sistemos kontroleris
+      - Pastato įgarsinimo sistemos valdiklis
+      classifications:
+        NSIK LF: "%M3010"
+        NSIK LT: MB
+        NSIK LK: "%KEB10"
+      ifcType: *type_e
+      stages:
+        s1:
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2:
+          properties:
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
+    - id: Pastato įgarsinimo sistemos korpusas (skydelis)                   # NSIK: %M3010.MB.UCA
+      examples:
+      - Pastato įgarsinimo sistemos prietaisų dėžė
+      - Pastato įgarsinimo sistemos spinta
+      - Pastato įgarsinimo valdymo sistemos įrenginių spinta
+      ifcType: 
+        '2x3':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        '4':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        - IfcDistributionChamberElement
+        - IfcDistributionChamberElementType
+      classifications:
+        NSIK LF: "%M3010"
+        NSIK LT: MB
+        NSIK LK: UCA
+      stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2: 
+          properties:
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+    
+    - id: Pastato įgarsinimo sistemos elektros skirstytuvas                 # NSIK: %M3010.MB.XDE
+      examples:
+      - Pastato įgarsinimo sistemos sistemos elektros šakotuvas
+      - Elektros šakotuvas pastato įgarsinimo sistemos įrangai
+      ifcType: *type_e
+      classifications:
+        NSIK LF: "%M3010"
+        NSIK LT: MB
+        NSIK LK: XDE
+      stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+        s2: 
+          properties:
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_vis
+            <<: *prop_e
+            <<: *prop_external
+
+    - id: Pastato įgarsinimo sistema. Nepertraukiamo maitinimo šaltinis     # NSIK: %M3010.MB.RBA
+      examples:
+      - Pastato įgarsinimo sistemos nepertraukiamo maitinimo šaltinis
+      - Pastato įgarsinimo sistemos UPS
+      classifications:
+        NSIK: "<L>%M3010.MA.RBA"
+        NSIK LF: "%M3010"
+        NSIK LT: MB
+        NSIK LK: RBA
+      ifcType:
+      - IfcElectricalElement
+      - IfcElectricFlowStorageDeviceTypeEnum
+      stages:
+        s1: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+        s2: 
+          properties:
+            <<: *prop
+        s3: 
+          properties:
+            <<: *prop_u
+            <<: *prop_g
+            <<: *prop_e
+        s4: 
+          properties:
+            <<: [*prop_u, *prop_g, *prop_e]
+            <<: *prop_s4_add
+            
+        s5: 
+          properties:
+            <<: [*prop_u, *prop_g, *prop_e]
+            <<: *prop_s4_add
+            <<: *prop_mfg
+        s6: 
+          properties:
+            <<: [*prop_u, *prop_g, *prop_e]
+            <<: *prop_s4_add
+            <<: *prop_mfg

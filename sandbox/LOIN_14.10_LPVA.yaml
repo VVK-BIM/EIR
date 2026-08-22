@@ -1,0 +1,927 @@
+# v 0.5a
+# NSIK ver 0.9, 2023-09-01
+# https://nsiklab.lt 
+#
+# 14 - Procesų valdymas ir automatizavimas
+#
+
+
+prop:     &prop
+  VVK.Name: {}
+  VVK.ElementType: {}
+  Pset_ConstructionAdministration.SpecificationSectionNumber: {}
+  Pset_ElementComponentCommon.Status: {}
+  Pset_ElementCommon.System: {}
+  
+  
+prop_g:   &prop_g
+  Pset_QuantityTakeOff.Height: 
+    valueType: Integer | Real 
+  Pset_QuantityTakeOff.Width: 
+    valueType: Integer | Real 
+  Pset_QuantityTakeOff.Length: 
+    valueType: Integer | Real 
+
+prop_g:   &prop_g_ld
+  Pset_QuantityTakeOff.Length: 
+    valueType: Integer | Real 
+  Pset_QuantityTakeOff.Diameter: 
+    valueType: Integer | Real 
+
+
+prop_ga:   &prop_g_area
+  <<: *prop_g
+  Pset_QuantityTakeOff.Area: 
+    valueType: Integer | Real 
+
+
+prop_u:     &prop_u
+  <<: *prop
+  VVK.Tag: {}
+
+prop_vis:     &prop_vis
+  VVK.Material: {}
+  VVK.Finish: {}
+  VVK.Colour: {}
+
+prop_removable:    &prop_removable
+  Pset_ElementComponentCommon.Weight: 
+    valueType: Integer | Real 
+
+prop_e:     &prop_e
+  Pset_ElectricalDeviceCommon.RatedVoltage: 
+    valueType: Integer
+  Pset_ElectricalDeviceCommon.NominalPowerConsumption: 
+    valueType: Integer | Real 
+  
+prop_e_sens:     &prop_e_sensor
+  <<: *prop_e
+  Pset_ElectricalDeviceCommon.IP_Code: {}
+  Pset_ElectricalDeviceCommon.IK_Code: {}
+  Pset_ElectricalDeviceCommon.InsulationStandardClass: {}
+
+prop_equipment: &prop_equipment
+  <<: *prop_e_sensor
+  Pset_ElectricalDeviceCommon.RatedCurrent: {}
+  Pset_ElectricalDeviceCommon.NominalFrequencyRange: {}
+
+prop_vis:  &prop_material
+  VVK.Material: {}
+
+ifc_linear:     &type_linear
+  - IfcFlowSegment
+  - IfcFlowSegmentType
+  - IfcFlowSegmentTypeEnum
+  
+ifc_e:     &type_e
+  - IfcSensor
+  - IfcSensorType
+  - IfcDistributionControlElement
+  - IfcDistributionControlElementType
+  - IfcDistributionControlElementTypeEnum
+
+ifc_zone:  &type_zone
+  - IfcSpace
+  - IfcSpaceType
+
+
+LPVA:
+    id: "14.10"
+    name: Procesų valdymas ir automatizavimas. Lauko tinklai
+    stages:
+      s1:
+        lod: 275
+        log: 2
+      s2:
+        lod: 200
+        log: 2
+      s3:
+        lod: 300
+        log: 2
+      s4:
+        lod: 350
+        log: 3
+        properties:
+          Pset_ManufacturerTypeInformation.ArticleNumber: {}
+          Pset_ManufacturerTypeInformation.Manufacturer: {}
+      s5:
+        lod: 350
+        log: 3
+        properties:
+          VVK.RelatedDocumentationURI: {}
+      s6:
+        lod: 500
+        log: 6
+
+
+    elements:
+
+    - id: Įrangos ir/ar kabelių dėklas                 # common                       NSIK: L.LC.UBA
+      examples:
+      - Kabelio kanalas
+      - kabelio kopėčios
+      - kabelio lovelis
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: UBA
+        ISO81346 CF: L
+        ISO81346 CT: LC
+        ISO81346 CC: UBA
+      ifcType: *type_linear
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      stages:
+        s1: 
+          lod: 300
+          properties:
+            <<: [*prop, *prop_g]
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+            <<: *prop_material
+        s3: 
+          lod: 300
+          properties:
+            <<: [*prop, *prop_g, *prop_material]
+      override:
+        Name:
+          examples:
+            - Perforuotas kabelinis lovelis
+            - Cinkuotos kabelių kopėčios
+
+    - id: Elektros sistemos įrangos ir/ar kabelių dėklas                 # common                       NSIK: K.HG.UBA
+      examples:
+      - Kabelio kanalas
+      - kabelio kopėčios
+      - kabelio lovelis
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: UBA
+        ISO81346 CF: K
+        ISO81346 CT: HG
+        ISO81346 CC: UBA
+      ifcType: *type_linear
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      stages:
+        s1: 
+          lod: 300
+          properties:
+            <<: [*prop, *prop_g]
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+            <<: *prop_material
+        s3: 
+          lod: 300
+          properties:
+            <<: [*prop, *prop_g, *prop_material]
+      override:
+        Name:
+          examples:
+            - Perforuotas kabelinis lovelis
+            - Cinkuotos kabelių kopėčios
+
+
+    - id: Infraraudonųjų spindulių jutiklis            # sensor                       NSIK: P.LE.BRC
+      classifications:
+        NSIK LF: L
+        NSIK LT: LE
+        NSIK LK: BRC
+      ifcType: *type_e
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      stages: &stages_s1_s2_s3_s4_sensor
+        s1: 
+          lod: 275
+          properties:
+            <<: [*prop, *prop_g, *prop_vis, *prop_u, *prop_e_sensor]
+        # s2: 
+          # lod: 200
+          # properties:
+            # <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: [*prop, *prop_g, *prop_vis]
+        s4: 
+          lod: 350
+          properties:
+            <<: [*prop_u, *prop_e_sensor]
+      override:
+        Name:
+          examples:
+            - Nuotolinio valdymo imtuvas
+            
+    - id: Temperatūros jutiklis  #    NSIK+ISO: L.LC.BTA
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: BTA
+        ISO81346 CF: L
+        ISO81346 CT: LC
+        ISO81346 CC: BTA
+      examples:
+      - Patalpos termometras
+      ifcType: *type_e
+      stages: 
+        <<: *stages_s1_s2_s3_s4_sensor
+      override:
+        Name:
+          examples:
+            - Patalpos termostatas
+            
+    - id: Dujų jutiklis          #    NSIK: L.LC.BTA
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: BQA
+      examples:
+      - Patalpos CO2 daviklis
+      - Degių dujų daviklis
+      ifcType: *type_e
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      stages:  
+        <<: *stages_s1_s2_s3_s4_sensor
+      override:
+        Name:
+          examples:
+            - CO2 koncentracijos daviklis
+
+    - id: Drėgmės daviklis       #    NSIK: L.LC.BMA
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: BMA
+      examples:
+      - Patalpos oro drėgmės daviklis
+      - Sienos drėgmės daviklis
+      ifcType: *type_e
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      stages: 
+        <<: *stages_s1_s2_s3_s4_sensor
+      override:
+        Name:
+          examples:
+            - Patalpos drėgmės daviklis
+
+    - id: Drėgmės jungiklis      #    NSIK: L.LC.BMB
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: BMB
+      examples:
+      - Patalpos užliejimo daviklis
+      ifcType: *type_e
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      stages:       
+        <<: *stages_s1_s2_s3_s4_sensor
+      override:
+        Name:
+          examples:
+            - Užliejimo daviklis
+
+    - id: Srauto daviklis        #    NSIK: L.LC.BFA
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: BFA
+      examples:
+      - Vandens srauto daviklis
+      - Oro srauto daviklis
+      ifcType: *type_e
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      stages:       
+        <<: *stages_s1_s2_s3_s4_sensor
+      override:
+        Name:
+          examples:
+            - Vandens naudojimo daviklis
+            - Debito daviklis
+
+    - id: Srauto jungiklis       #    NSIK: L.LC.BFB
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: BFB
+      examples:
+      - Vandens srauto jungiklis
+      - Oro srauto jungiklis
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      ifcType: *type_e
+      stages: 
+        <<: *stages_s1_s2_s3_s4_sensor
+      override:
+        Name:
+          examples:
+            - Vandens naudojimo jungiklis
+
+    - id: Šviesos daviklis       #    NSIK: L.LC.BRA
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: BRA
+      examples:
+      - Apšvietimo lygio daviklis
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      ifcType: *type_e
+      stages: 
+        <<: *stages_s1_s2_s3_s4_sensor
+      override:
+        Name:
+          examples:
+            - Apšviestumo daviklis
+
+    - id: Šviesos detektorius    #    NSIK: L.LC.BRB
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: BRB
+      examples:
+      - Apšvietimo jungiklis, reaguojantis į fiksuotą apšvietimo lygį
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      ifcType: *type_e
+      stages:       
+        <<: *stages_s1_s2_s3_s4_sensor
+      override:
+        Name:
+          examples:
+            - Fotorelė
+
+    - id: Kietųju dalelių daviklis   #    NSIK: L.LC.BQE
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: BQE
+      examples:
+      - Kietųjų medžiagų koncentracijos ore daviklis
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      ifcType: *type_e
+      stages: 
+        <<: *stages_s1_s2_s3_s4_sensor
+      override:
+        Name:
+          examples:
+            - Oro kokybės daviklis
+
+    - id: Kietųju dalelių detektorius                  # sensor                       NSIK: L.LC.%BQF10
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: "%BQF10"
+      examples:
+      - Dūmų jutiklis
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      ifcType: *type_e
+      stages: 
+        <<: *stages_s1_s2_s3_s4_sensor
+      override:
+        Name:
+          examples:
+            - Uždūminimo detektorius
+
+    - id: Medžiagų daviklis                            # sensor                       NSIK: L.LC.BZD
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: BZD
+      examples:
+      - Teršalų detektorius
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      ifcType: *type_e
+      stages: 
+        <<: *stages_s1_s2_s3_s4_sensor
+      override:
+        Name:
+          examples:
+            - Naftos produktų daviklis
+
+    - id: Apledėjimo daviklis                          # sensor                       NSIK: L.LC.%BZD0110
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: "%BZD0110"
+      examples:
+      - Ledo detektorius
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      ifcType: *type_e
+      stages: 
+        <<: *stages_s1_s2_s3_s4_sensor
+      override:
+        Name:
+          examples:
+            - Apledėjimo daviklis
+
+    - id: Lygio daviklis                               # sensor                       NSIK: L.LC.BLA
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: BLA
+      examples:
+      - Skysčio lygio indikatorius
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      ifcType: *type_e
+      stages: 
+        <<: *stages_s1_s2_s3_s4_sensor
+      override:
+        Name:
+          examples:
+            - Skysčio aukščio daviklis
+
+    - id: Lygio jungiklis                              # sensor                       NSIK: L.LC.BLB
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: BLB
+      examples:
+      - Fiksuoto skysčio lygio jungiklis
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      ifcType: *type_e
+      stages: 
+        <<: *stages_s1_s2_s3_s4_sensor
+
+    - id: Meteorologinė stotelė                        # equipment                    NSIK: L.LC.%BUA1010
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: "%BUA1010"
+      ifcType: *type_e
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      stages: &stages_s1_s2_s3_s4_equipment
+        s1:
+          lod: 275
+          properties:
+            <<: [*prop_u, *prop_g, *prop_vis, *prop_e, *prop_equipment]
+        # s2: 
+          # lod: 200
+          # properties:
+            # <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: [*prop_u, *prop_g, *prop_vis, *prop_e]
+        s4: 
+          lod: 350
+          properties:
+            <<: [*prop_u, *prop_g, *prop_vis, *prop_e, *prop_equipment]
+    
+    - id: Asmens detektorius                           # sensor                       NSIK: L.LC.BZC
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: BZC
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      examples:
+      - Buvimo detektorius
+      ifcType: *type_e
+      stages: 
+        <<: *stages_s1_s2_s3_s4_sensor
+
+    - id: Valdymo blokas    #    NSIK+ISO: L.LC.KEB
+      examples:
+      - Patalpos klimato valdymo pultas
+      - Kontroleris
+      - Kontaktorius
+      - Valdiklis
+      - Programuojamas loginis valdiklis
+      - Apskaitos centralė
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: KEB
+        ISO81346 CF: L
+        ISO81346 CT: LC
+        ISO81346 CC: KEB
+      ifcType: *type_e
+      stages: 
+        <<: *stages_s1_s2_s3_s4_equipment
+
+    - id: Dažnio keitiklis                             # equipment                    NSIK: L.LC.TAC
+      examples:
+      - 1F dažnio keitiklis
+      - 3F dažnio keitiklis
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: TAC
+      ifcType: *type_e
+      stages: 
+        <<: *stages_s1_s2_s3_s4_equipment
+
+    - id: Dažnio keitiklis                             # equipment                    NSIK: L.LC.TAC
+      examples:
+      - 1F dažnio keitiklis
+      - 3F dažnio keitiklis
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: TAC
+        ISO81346 CF: L
+        ISO81346 CT: LC
+        ISO81346 CC: TAC
+      ifcType: *type_e
+      stages: 
+        <<: *stages_s1_s2_s3_s4_equipment
+        
+    - id: Kintamos srovės maitinimo blokas             # equipment                    NSIK: L.LC.TCA
+      examples:
+      - AC maitinimo blokas
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: TCA
+      ifcType: 
+      - IfcElectricFlowStorageDevice
+      - IfcEnergyConversionDevice
+      - IfcFlowStorageDevice
+      - IfcDistributionElement
+      stages: 
+        <<: *stages_s1_s2_s3_s4_equipment
+      override:
+        Name:
+          examples:
+            - AC/AC maitinimo blokas
+
+    - id: Pastovios srovės maitinimo blokas            # equipment                    NSIK: L.LC.TCB
+      examples:
+      - DC maitinimo blokas
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: TCB
+      ifcType:
+      - IfcElectricFlowStorageDevice
+      - IfcEnergyConversionDevice
+      - IfcFlowStorageDevice
+      - IfcDistributionElement
+      stages: 
+        <<: *stages_s1_s2_s3_s4_equipment
+
+    - id: Elektros skyriklis         #     NSIK: K.HG.QBA
+      examples:
+      - Atjungiklis
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: QBA
+        ISO81346 CF: K
+        ISO81346 CT: HG
+        ISO81346 CC: QBA
+      ifcType:
+      - IfcElectricFlowStorageDevice
+      - IfcEnergyConversionDevice
+      - IfcFlowStorageDevice
+      - IfcDistributionElement
+      stages: 
+        <<: *stages_s1_s2_s3_s4_equipment
+        
+    - id: Korpusas (skydelis)                          #  NSIK: L.LC.UCA
+      examples:
+      - Prietaisų dėžė
+      - Automatikos spinta
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      ifcType: 
+        '2x3':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        '4':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        - IfcDistributionChamberElement
+        - IfcDistributionChamberElementType
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: UCA
+        ISO81346 CF: L
+        ISO81346 CT: LC
+        ISO81346 CC: UCA
+      stages:
+        s1: 
+          lod: 275
+          properties:
+            <<: [*prop_u, *prop_g, *prop_vis, *prop_e]
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop_u
+        s3: 
+          lod: 300
+          properties:
+            <<: [*prop_g, *prop_vis, *prop_e]
+
+    - id: Inžinerinė spinta                            #  NSIK: L.LC.%UCA10
+      examples:
+      - Prietaisų dėžė
+      - Automatikos spinta
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      ifcType: 
+        '2x3':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        '4':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        - IfcDistributionChamberElement
+        - IfcDistributionChamberElementType
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: "%UCA10"
+      stages:
+        s1: 
+          lod: 275
+          properties:
+            <<: [*prop_u, *prop_g, *prop_vis]
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop_u
+        s3: 
+          lod: 300
+          properties:
+            <<: [*prop_u, *prop_g, *prop_vis]
+
+    - id: Elektros tiekimo sistemos korpusas (skydelis) #     NSIK: L.LC.UCA
+      examples:
+      - Prietaisų dėžė
+      - Automatikos spinta
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      ifcType: 
+        '2x3':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        '4':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        - IfcDistributionChamberElement
+        - IfcDistributionChamberElementType
+      classifications:
+        NSIK LF: K
+        NSIK LT: HG
+        NSIK LK: UCA
+        ISO81346 CF: K
+        ISO81346 CT: HG
+        ISO81346 CC: UCA
+      stages:
+        s1: 
+          lod: 275
+          properties:
+            <<: [*prop_u, *prop_g, *prop_vis, *prop_e]
+        s2: 
+          lod: 200
+          properties:
+            <<: [*prop_u, *prop_g, *prop_vis, *prop_e]
+        s3: 
+          lod: 300
+          properties:
+            <<: [*prop_u, *prop_g, *prop_vis, *prop_e]
+
+    - id: Elektrinė pavara ar variklis                 # equipment                    NSIK: L.LC.MAA
+      examples:
+      - Ventiliatoriaus variklis
+      - ŠVOK sklendės pavara
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK LK: MAA
+      ifcType: 
+      - IfcElectricMotor
+      - IfcElectricMotorType
+      stages: 
+        <<: *stages_s1_s2_s3_s4_equipment
+    
+
+
+    - id: PVA įrenginio ar sistemos aptarnavimo erdvė  # zone                         NSIK: <E>%DCB1001 <L>L.LC
+      classifications:
+        NSIK LF: L
+        NSIK LT: LC
+        NSIK B: "%DCB1001"
+      ifcType: *type_zone
+      stages: &zone_s1_s2_service
+        s1:
+          properties:
+            Pset_ElementComponentCommon.Status: {}
+        s4:
+          properties:
+            Pset_ElementComponentCommon.Status: {}
+
+# F: Eismo valdymo sistema 
+## T: Eismo valdymo sistema 
+
+    - id: Vaizdo jutiklis        # sensor                       NSIK: T.MC.BXC
+      classifications:
+        NSIK LF: T
+        NSIK LT: MC
+        NSIK LK: BXC
+      examples:
+      - Vaizdo kamera
+      - Vaizdo sensorius
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      ifcType: *type_e
+      stages: 
+        <<: *stages_s1_s2_s3_s4_sensor
+      override:
+        Name:
+          examples:
+            - Eismo srauto kamera
+
+    - id: Mygtukas        # sensor                       NSIK: T.MC.SJB
+      classifications:
+        NSIK LF: T
+        NSIK LT: MC
+        NSIK LK: SJB
+      examples:
+      - Šviesoforo mygtukas pėstiesiems
+      - Šviesoforo mygtukas dviratininkams
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      ifcType: *type_e
+      stages: 
+        <<: *stages_s1_s2_s3_s4_sensor
+
+    - id: Stulpas               #   NSIK+ISO:  T.MC.UBD
+      examples:
+      - Šviesoforo stiebas
+      - Kameros stiebas
+      classifications:
+        NSIK LF: T
+        NSIK LT: MC
+        NSIK LK: UBD
+        ISO81346 CF: T
+        ISO81346 CT: MC
+        ISO81346 CC: UBD
+      ifcType: *type_linear
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      stages:
+        s1: 
+          lod: 300
+          properties:
+            <<: [*prop, *prop_g]
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+            <<: *prop_material
+        s3: 
+          lod: 300
+          properties:
+            <<: [*prop, *prop_g_ld, *prop_vis]
+
+    - id: Gembė                 #   NSIK+ISO:  T.MC.ULB
+      examples:
+      - Šviesoforo gembė
+      - Kameros gembė
+      classifications:
+        NSIK LF: T
+        NSIK LT: MC
+        NSIK LK: ULB
+        ISO81346 CF: T
+        ISO81346 CT: MC
+        ISO81346 CC: ULB
+      ifcType: *type_linear
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      stages:
+        s1: 
+          lod: 300
+          properties:
+            <<: [*prop, *prop_g]
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+            <<: *prop_material
+        s3: 
+          lod: 300
+          properties:
+            <<: [*prop, *prop_g_ld, *prop_vis]
+
+    - id: Korpusas (skydelis)   #   NSIK+ISO:  T.MC.UCA
+      examples:
+      - Prietaisų dėžė
+      - Automatikos spinta
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      ifcType: 
+        '2x3':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        '4':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        - IfcDistributionChamberElement
+        - IfcDistributionChamberElementType
+      classifications:
+        NSIK LF: T
+        NSIK LT: MC
+        NSIK LK: UCA
+        ISO81346 CF: T
+        ISO81346 CT: MC
+        ISO81346 CC: UCA
+      stages:
+        s1: 
+          lod: 275
+          properties:
+            <<: [*prop_u, *prop_g, *prop_vis, *prop_e]
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop_u
+        s3: 
+          lod: 300
+          properties:
+            <<: [*prop_g, *prop_vis, *prop_e]
+
+    - id: Inžinerinė spinta     #   NSIK:      T.MC.%UCA10
+      examples:
+      - Prietaisų dėžė
+      - Automatikos spinta
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      ifcType: 
+        '2x3':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        '4':
+        - IfcJunctionBox
+        - IfcJunctionBoxType
+        - IfcDistributionChamberElement
+        - IfcDistributionChamberElementType
+      classifications:
+        NSIK LF: T
+        NSIK LT: MC
+        NSIK LK: "%UCA10"
+      stages:
+        s1: 
+          lod: 275
+          properties:
+            <<: [*prop_u, *prop_g, *prop_vis]
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop_u
+        s3: 
+          lod: 300
+          properties:
+            <<: [*prop_u, *prop_g, *prop_vis, *prop_e]
+
+    - id: Šviesoforas        # NSIK: T.MC.%PFA10
+      classifications:
+        NSIK LF: T
+        NSIK LT: MC
+        NSIK LK: "%PFA10"
+      ifcType: *type_e
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      stages:
+        s1:
+          lod: 275
+          properties:
+            <<: [*prop_u, *prop_g, *prop_vis, *prop_e, *prop_equipment]
+        # s2: 
+          # lod: 200
+          # properties:
+            # <<: *prop
+        s3: 
+          lod: 300
+          properties:
+            <<: [*prop_u, *prop_g, *prop_vis, *prop_e]
+        s4: 
+          lod: 350
+          properties:
+            <<: [*prop_u, *prop_g, *prop_vis, *prop_e, *prop_equipment]
+            
+    - id: Kabelių mechaninė apsauga        #   NSIK: T.MC.%FNB20
+      examples:
+      - Kabelio kanalas
+      - kabelio kopėčios
+      - kabelio lovelis
+      classifications:
+        NSIK LF: T
+        NSIK LT: MC
+        NSIK LK: "%FNB20"
+      ifcType: *type_linear
+      memo: Elementai, nenumatyti kitose projekto dalyse
+      stages:
+        s1: 
+          lod: 300
+          properties:
+            <<: [*prop, *prop_g_ld]
+        s2: 
+          lod: 200
+          properties:
+            <<: *prop
+            <<: *prop_material
+        s3: 
+          lod: 300
+          properties:
+            <<: [*prop, *prop_g_ld, *prop_material]
+      override:
+        Name:
+          examples:
+            - Gofruotas vamzdis

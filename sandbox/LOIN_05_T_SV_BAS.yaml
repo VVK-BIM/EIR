@@ -1,0 +1,815 @@
+# v 0.5a
+# NSIK ver 0.9, 2023-09-01
+# https://nsiklab.lt 
+#
+# 05 - Technologinės dalys
+# baseinų technologija
+#
+
+T.SV.BAS: # baseinų technologija
+    id: "05.SV.BAS"
+    name: Baseinų technologija
+    elements:
+    - id: Dugno purkštukas # S.RC.RND
+      description: Skysčio srautą formuojantis, praleidžiantis ir maišantis įrenginys
+      memo: Elemento geometrija tur būti tokia, kad būtų galima užtikrintai tikrinti susikirtimus su kitomis projekto dalimis.
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: RND
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Purkštukas orui
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - PP-1
+          - VVK.Material
+          - VVK.Colour
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS 2.5
+          - Ifc__.Heigth:
+            - examples:
+              - 10
+          - Ifc__.Length:
+            - examples:
+              - 80
+          - Ifc__.Width:
+            - examples:
+              - 80
+          - Diametras:
+            - examples:
+              - 25
+            - descr: Prijungimo prie teikimo tinklų diametras
+          - Pset_ServiceLifeFactors.OutdoorEnvironment
+
+    - id: Išardoma jungtis # S.RC.XMA
+      description: Išardoma vamzdyno jungtis, sujungianti uždarą srautą.
+      memo: Elemento geometrija tur būti tokia, kad būtų galima užtikrintai tikrinti susikirtimus su kitomis projekto dalimis.
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: XMA
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Šepečio rozetė
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - SJ-1
+          - VVK.Material
+          - VVK.Colour
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS 2.5
+          - Ifc__.Heigth:
+            - examples:
+              - 150
+          - Ifc__.Length:
+            - examples:
+              - 120
+          - Ifc__.Width:
+            - examples:
+              - 120
+          - Diametras:
+            - examples:
+              - 50
+          - Pset_ServiceLifeFactors.OutdoorEnvironment
+
+    - id: Ekranas # S.RC.PHA
+      description: Grafinio vaizdavimo įtaisas, skirtas atvaizduoti dinaminę informaciją
+        ant savo paviršiaus.
+      memo: Elemento geometrija tur būti tokia, kad būtų galima užtikrintai tikrinti
+        susikirtimus su kitomis projekto dalimis.
+      examples:
+      - Švieslentė rodanti laiką
+      - oro ir vandens temepratūrą
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: PHA
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Informacinė švieslentė
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - IE-1
+          - VVK.Material
+          - VVK.Colour
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS 2.3
+          - Galingumas:
+            - examples:
+              - 250
+          - Ifc__.Heigth:
+            - examples:
+              - 1200
+          - Ifc__.Length:
+            - examples:
+              - 2500
+          - Ifc__.Width:
+            - examples:
+              - 150
+          - Pset_ServiceLifeFactors.OutdoorEnvironment
+      
+    - id: Elektros lempa (baseinas) # S.RC.PHA
+      description: Šviesos komponentas, naudojantis elektros energiją.
+      memo: Elemento geometrija tur būti tokia, kad būtų galima užtikrintai tikrinti susikirtimus su kitomis projekto dalimis.
+      examples:
+      - Baseino šviestuvas ir šviesos šaltinis
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: PHA
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Baseino šviestuvas ir šviesos šaltinis
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - IE-1
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS 2.3
+          - Galingumas:
+            - examples:
+              - 250
+          - Ifc__.Heigth:
+            - examples:
+              - 250
+          - Ifc__.Length:
+            - examples:
+              - 200
+          - Ifc__.Width:
+            - examples:
+              - 200
+          - Pset_ServiceLifeFactors.OutdoorEnvironment
+               
+    - id: Automatinis dujų srauto reguliatorius # S.RC.%RNB20
+      description: Inžinerinis įrenginys, automatiniu būdu reguliuojantis dujų srautą.
+      memo: Elemento geometrija tur būti tokia, kad būtų galima užtikrintai tikrinti
+        susikirtimus su kitomis projekto dalimis.
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: '%RNB20'
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Chloro generatorius
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - DG_Cl-1
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS 2.3
+          - Galingumas:
+            - examples:
+              - 150
+          - Ifc__.Heigth:
+            - examples:
+              - 800
+          - Ifc__.Length:
+            - examples:
+              - 600
+          - Ifc__.Width:
+            - examples:
+              - 400
+          - Pset_ServiceLifeFactors.OutdoorEnvironment
+
+    - id: Valdymo blokas # S.RC.KEB
+      description: Valdymo blokas
+      memo: Elemento geometrija tur būti tokia, kad būtų galima užtikrintai tikrinti
+        susikirtimus su kitomis projekto dalimis.
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: KEB
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Valdymo skydas
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - VS-15
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS 2.3
+          - Galingumas:
+            - examples:
+              - 150
+            - memo: Skydui reikalinga elektrinė galia
+          - Ifc__.Heigth:
+            - examples:
+              - 800
+          - Ifc__.Length:
+            - examples:
+              - 600
+          - Ifc__.Width:
+            - examples:
+              - 400
+          - Pset_ServiceLifeFactors.OutdoorEnvironment
+      
+    - id: Šilumokaitis # S.RC.EGC
+      description: Šildymo ir (arba) vėsinimo prietaisas, perduodantis šilumnešio
+        ir (arba) šaltnešio energiją kitam objektui laidumu.
+      memo: Elemento geometrija tur būti tokia, kad būtų galima užtikrintai tikrinti
+        susikirtimus su kitomis projekto dalimis.
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: EGC
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Šilumokaitis
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - VS-01
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS 2.3
+          - Galingumas:
+            - examples:
+              - 150
+            - memo: Šilumokaičio šiluminė galia
+          - Ifc__.Heigth:
+            - examples:
+              - 800
+          - Ifc__.Length:
+            - examples:
+              - 600
+          - Ifc__.Width:
+            - examples:
+              - 400
+          - Pset_ServiceLifeFactors.OutdoorEnvironment
+
+    - id: Dalelių generatorius # S.RC.EUB
+      description: Nejonizuojančiosios spinduliuotės proceso metu daleles skleidžiantis
+        komponentas.
+      memo: Elemento geometrija tur būti tokia, kad būtų galima užtikrintai tikrinti
+        susikirtimus su kitomis projekto dalimis.
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: EUB
+      stages:
+        s3:
+          properties:
+          - VVK.LevelName:
+            - examples:
+              - 1 aukštas
+            - units: Tekstas
+          - Name:
+            - examples:
+              - UV dezinfekcijos blokas
+            - units: Tekstas
+            - descr: Elemento pavadinimas
+          - Pset_ElementComponentCommon.Status:
+            - examples:
+              - Projektuojamas
+            - units: Tekstas
+            - descr: Elemento būsena
+          - Type:
+            - examples:
+              - UVD-01
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS 2.3
+          - Galingumas:
+            - examples:
+              - 150
+            - memo: Elektrinė galia
+          - Ifc__.Heigth:
+            - examples:
+              - 800
+          - Ifc__.Length:
+            - examples:
+              - 600
+          - Ifc__.Width:
+            - examples:
+              - 400
+          - Pset_ServiceLifeFactors.OutdoorEnvironment
+          lod: 300
+      
+    - id: Kompresorius # S.RC.EUB
+      description: Komponentas dujoms, orui arba garui suslėgti ir generuoti atitinkamų
+        savybių šių medžiagų srautą.
+      memo: Elemento geometrija tur būti tokia, kad būtų galima užtikrintai tikrinti
+        susikirtimus su kitomis projekto dalimis.
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: EUB
+      stages:
+        s3:
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Kompresorius su oro rinktuvu
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - OK-01
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS 2.3
+          - Galingumas:
+            - examples:
+              - 150
+          - Ifc__.Heigth:
+            - examples:
+              - 800
+          - Ifc__.Length:
+            - examples:
+              - 600
+          - Ifc__.Width:
+            - examples:
+              - 400
+          - Ifc__.Volume:
+            - examples:
+              - 0.1
+          - Diametras:
+            - examples:
+              - 25
+            - descr: Prijungimo prie vamzyno diametras
+          - Pset_ServiceLifeFactors.OutdoorEnvironment
+          lod: 300
+
+    - id: Kolektorius # S.RC.%XME1010
+      description: Dviejų ir daugiau atšakų (žiedų) fluido paskirstymo komponentas.
+      memo: Elemento geometrija tur būti tokia, kad būtų galima užtikrintai tikrinti
+        susikirtimus su kitomis projekto dalimis.
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: '%XME1010'
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Filtro kolektorius
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - VKV-01
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS 2.3
+          - Ifc__.Heigth:
+            - examples:
+              - 800
+          - Ifc__.Length:
+            - examples:
+              - 600
+          - Ifc__.Width:
+            - examples:
+              - 400
+          - Diametras:
+            - examples:
+              - 75
+
+    - id: Teigiamo darbinio tūrio siurblys # S.RC.GPA
+      description: Skysčio srautą sukuriantis komponentas, perkeliantis įtrauktą skystį
+        į išleidimo angą.
+      memo: Elemento geometrija tur būti tokia, kad būtų galima užtikrintai tikrinti
+        susikirtimus su kitomis projekto dalimis.
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: GPA
+      stages:
+        s3:
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Skysčio siurblys
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - OK-01
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS 2.3
+          - Galingumas:
+            - examples:
+              - 4500
+            - memo: Elektrinė galia
+          - Ifc__.Heigth:
+            - examples:
+              - 800
+          - Ifc__.Length:
+            - examples:
+              - 600
+          - Ifc__.Width:
+            - examples:
+              - 400
+          - Diametras:
+            - examples:
+              - 125
+          - Pset_ServiceLifeFactors.OutdoorEnvironment
+          lod: 300
+
+    - id: Skysčių filtras # S.RC.%HQB20
+      description: Skysčių mechaninio valymo filtras.
+      memo: Elemento geometrija tur būti tokia, kad būtų galima užtikrintai tikrinti
+        susikirtimus su kitomis projekto dalimis.
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: '%HQB20'
+      stages:
+        s3:
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Filtras
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - BVF-02
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS-2.3
+          - Ifc__.Heigth:
+            - examples:
+              - 2000
+          - Ifc__.Length:
+            - examples:
+              - 1800
+          - Ifc__.Width:
+            - examples:
+              - 1800
+          - Ifc__.Volume:
+            - examples:
+              - 3.2
+            - descr: Oro rinktuvo tūris, m³
+          - Diametras:
+            - examples:
+              - 75
+            - descr: Prijungimo prie vamzyno diametras
+          - Pset_ServiceLifeFactors.OutdoorEnvironment
+          lod: 300  
+
+    - id: Korpusas # S.RC.UCA
+      description: Gaubtas, skirtas mechanizmams ar jų dalims apsaugoti nuo išorinio poveikio bei užtikrinti žmonių saugumą (taip pat ir nuo kontakto su elektros srove).
+      memo: Elemento geometrija tur būti tokia, kad būtų galima užtikrintai tikrinti susikirtimus su kitomis projekto dalimis.
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: UCA
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - AV įrangos spinta
+          - Pset_ElementComponentCommon.Status
+          - Tag
+          - Type:
+            - examples:
+              - RS-03
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS-2.3
+          - Galingumas:
+            - examples:
+              - 3500
+            - descr: Maksimali korpuse instaliuotos įrengos elektrinė galia
+          - Ifc__.Heigth:
+            - examples:
+              - 2200
+          - Ifc__.Length:
+            - examples:
+              - 850
+          - Ifc__.Width:
+            - examples:
+              - 850
+          - Pset_ServiceLifeFactors.OutdoorEnvironment
+
+    - id: Maitinimo panelė # S.RC.XDB
+      description: Komutucinė panelė, skirta jėgos tinklo įtampai sujungti ar atjungti.
+      memo: Elemento geometrija tur būti tokia, kad būtų galima užtikrintai tikrinti susikirtimus su kitomis projekto dalimis.
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: XDB
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Jėgos tinklo paskirstymo panelė ryšių spintoje (PDU)
+          - Pset_ElementComponentCommon.Status
+          - Tag
+          - Type:
+            - examples:
+              - RS-03
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS-2.3
+          - Galingumas:
+            - examples:
+              - 3500
+            - descr: Maksimali leidžiama prijungti elektrinė galia
+          - Ifc__.Heigth:
+            - examples:
+              - 44
+          - Ifc__.Length:
+            - examples:
+              - 450
+          - Ifc__.Width:
+            - examples:
+              - 50
+          - Pset_ServiceLifeFactors.OutdoorEnvironment
+
+    - id: Komutacinė panelė # S.RC.XGA
+      description: Signalu komutucinė panelė, skirta <=100 V įtampos signalams sujungti ar atjungti.
+      memo: Elemento geometrija tur būti tokia, kad būtų galima užtikrintai tikrinti susikirtimus su kitomis projekto dalimis.
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: XGA
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - AV signalų komutacinė panelė
+              - Ryšių komutacinė panelė
+          - Pset_ElementComponentCommon.Status
+          - Tag
+          - Type:
+            - examples:
+              - RS-03
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS-2.3
+          - Ifc__.Heigth:
+            - examples:
+              - 2200
+          - Ifc__.Length:
+            - examples:
+              - 850
+          - Ifc__.Width:
+            - examples:
+              - 850
+          - Pset_ServiceLifeFactors.OutdoorEnvironment
+
+    - id: Stalas su plautuve # S.RB.XKA
+      description: Stalas su gamykliškai įmontuota plautuve, perkamas ir montuojamas kaip vienas gaminys.
+      memo: Elemento geometrija tur būti tokia, kad būtų galima užtikrintai tikrinti susikirtimus su kitomis projekto dalimis.
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: XKA
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Demonstracinis stalas su plautuve
+              - Laboratorinis stalas su spintele ir plautuve
+              - Nerūdijančio plieno stalas su dviguba plautuve
+              - Virtuvės spintelė su plautuve
+          - Pset_ElementComponentCommon.Status
+          - Tag
+          - Type:
+            - examples:
+              - RS-03
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS-2.3
+          - Ifc__.Heigth:
+            - examples:
+              - 850
+          - Ifc__.Length:
+            - examples:
+              - 600
+          - Ifc__.Width:
+            - examples:
+              - 600
+          - Pset_ServiceLifeFactors.OutdoorEnvironment
+
+    - id: Trapas # F.HB.XKE
+      description: ''
+      memo: Elemento geometrija tur būti tokia, kad būtų galima užtikrintai tikrinti susikirtimus su kitomis projekto dalimis.
+      classifications:
+        NSIK LF: F
+        NSIK LT: HB
+        NSIK LK: XKE
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Trapas
+          - Pset_ElementComponentCommon.Status
+          - Tag
+          - Type:
+            - examples:
+              - RS-03
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS-2.3
+          - Ifc__.Heigth:
+            - examples:
+              - 180
+          - Ifc__.Length:
+            - examples:
+              - 200
+          - Ifc__.Width:
+            - examples:
+              - 200
+          - Pset_ServiceLifeFactors.OutdoorEnvironment
+  
+    - id: Šepečio rozetė # G.JE.XMA
+      description: ''
+      memo: Elemento geometrija tur būti tokia, kad būtų galima užtikrintai tikrinti susikirtimus su kitomis projekto dalimis.
+      classifications:
+        NSIK LF: G
+        NSIK LT: JE
+        NSIK LK: XMA
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Šepečio rozetė
+          - Pset_ElementComponentCommon.Status
+          - Tag
+          - Type:
+            - examples:
+              - RS-03
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS-2.3
+          - Ifc__.Heigth:
+            - examples:
+              - 2200
+          - Ifc__.Length:
+            - examples:
+              - 850
+          - Ifc__.Width:
+            - examples:
+              - 850
+          - Pset_ServiceLifeFactors.OutdoorEnvironment
+
+    - id: Filtro kolektorius # F.KC.XME
+      description: ''
+      memo: Elemento geometrija tur būti tokia, kad būtų galima užtikrintai tikrinti susikirtimus su kitomis projekto dalimis.
+      classifications:
+        NSIK LF: F
+        NSIK LT: KC
+        NSIK LK: XME
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Filtro kolektorius
+          - Pset_ElementComponentCommon.Status
+          - Tag
+          - Type:
+            - examples:
+              - RS-03
+          - VVK.Material:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - VVK.Colour:
+            - memo: Pildoma, jei tokia savybė aktuali
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS-2.3
+          - Galingumas:
+            - examples:
+              - 500
+            - descr: Maksimali naudojama elektrinė galia
+          - Ifc__.Heigth:
+            - examples:
+              - 2200
+          - Ifc__.Length:
+            - examples:
+              - 850
+          - Ifc__.Width:
+            - examples:
+              - 850
+          - Pset_ServiceLifeFactors.OutdoorEnvironment
+  

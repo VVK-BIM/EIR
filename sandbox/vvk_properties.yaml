@@ -1,0 +1,519 @@
+Name: 
+    type: IfcLabel
+    valueType: String
+    examples:
+    - Gumos danga
+    description: Elemento pavadinimas
+  
+Tag:
+    type: IfcLabel
+    valueType: String
+    examples:
+    - GR-10
+    - K-01
+    - AHU-42
+    description: Elemento tipo žymuo
+
+Type:
+  type: IfcLabel
+  valueType: String
+  examples:
+    - L1
+  description: Elemento tipo unikalus kodas, sudarytas iš elemento tipo (Revit Type Mark) ir elemento bendrinio pavadinimo, kuris turės būti naudojamas medžiagų ir kiekių žiniaraščiuose
+
+# klasifikacijos
+Classification.NSIKcodeB:
+  type: IfcLabel
+  valueType: String
+  allowedValues: [A, A+, B, B+, C, C+, D, D+, E, E+, F, F+, P, P+]
+  description: Klasifikatoriaus kodas pagal NSIK <B> generalinę klasę
+  sources:
+  - VVK.NSIKcodeB
+
+Classification.NSIKcodeLT:
+  type: IfcLabel
+  valueType: String
+  allowedValues: [B, C, D, E, F, G, H, K, L, M, "N", P, S ]
+  description: Klasifikatoriaus kodas pagal NSIK <LT> generalinę klasę
+  sources:
+  - VVK.NSIKcodeLT
+
+Classification.NSIKcodeLF:
+  type: IfcLabel
+  valueType: String
+  description: Klasifikatoriaus kodas pagal NSIK <LF> generalinę klasę
+  sources:
+  - VVK.NSIKcodeLF
+
+Classification.NSIKcodeLK:
+  type: IfcLabel
+  valueType: String
+  description: Klasifikatoriaus kodas pagal NSIK <LK> generalinę klasę
+  sources:
+  - VVK.NSIKcodeLK
+
+Classification.Uniclass.EF.Description:
+  type: IfcLabel
+  valueType: String
+  description: Pavadinimas pagal Uniclass EF klasifikatorių
+  sources:
+  - "VVK.Klasifikatoriaus pavadinimas"
+  
+Classification.Uniclass.EF.Number:
+  type: IfcLabel
+  valueType: String
+  description: Klasifikatoriaus kodas pagal Uniclass EF klasifikatorių
+  sources:
+  - "VVK.Klasifikatoriaus kodas"
+  - VVK.Kodas
+  - "VVK.Uniclass numeris"
+  
+Classification.Uniclass.Pr.Description:
+  type: IfcLabel
+  valueType: String
+  description: Pavadinimas pagal Uniclass Pr klasifikatorių
+  sources:
+  - "VVK.Klasifikatoriaus pavadinimas"
+  
+Classification.Uniclass.Pr.Number:
+  type: IfcLabel
+  valueType: String
+  description: Klasifikatoriaus kodas pagal Uniclass Pr klasifikatorių
+  sources:
+  - "VVK.Klasifikatoriaus kodas"
+  - VVK.Kodas
+  - "VVK.Uniclass numeris"
+  
+Classification.Uniclass.Ss.Description:
+  type: IfcLabel
+  valueType: String
+  description: Pavadinimas pagal Uniclass Ss klasifikatorių
+  sources:
+  - "VVK.Klasifikatoriaus pavadinimas"
+  
+Classification.Uniclass.Ss.Number:
+  type: IfcLabel
+  valueType: String
+  description: Klasifikatoriaus kodas pagal Uniclass Ss klasifikatorių
+  sources:
+  - "VVK.Klasifikatoriaus kodas"
+  - VVK.Kodas
+  - "VVK.Uniclass numeris"
+    
+Classification.ISO81346 CF.Name:
+  type: IfcLabel
+  valueType: String
+  description: Pavadinimas pagal NSIK <LK> generalinę klasę
+  sources:
+  - "VVK.ISO81346 aprašas"
+  - "VVK.ISO81346 pavadinimas"
+  
+Classification.ISO81346 CF:
+  type: IfcLabel
+  valueType: String
+  description: Klasifikatoriaus kodas pagal ISO 81346 / CCI CF klasifikatorių
+  sources:
+  - "VVK.Funkcinės sistemos tipas"
+  
+Classification.ISO81346 CT.Name:
+  type: IfcLabel
+  valueType: String
+  description: Pavadinimas pagal ISO 81346 / CCI CT klasifikatorių
+  sources:
+  - "VVK.ISO81346 aprašas"
+  - "VVK.ISO81346 pavadinimas"
+  
+Classification.ISO81346 CT:
+  type: IfcLabel
+  valueType: String
+  description: Klasifikatoriaus kodas pagal ISO 81346 / CCI CT klasifikatorių
+  sources:
+  - "VVK.Techninės sistemos tipas"
+
+Classification.ISO81346 CC.Name:
+  type: IfcLabel
+  valueType: String
+  description: Pavadinimas pagal ISO 81346 / CCI CC klasifikatorių
+  sources:
+  - "VVK.ISO81346 aprašas"
+  - "VVK.ISO81346 pavadinimas"
+
+Classification.ISO81346 CC:
+  type: IfcLabel
+  valueType: String
+  description: Klasifikatoriaus kodas pagal ISO 81346 / CCI CC klasifikatorių
+  sources:
+  - "VVK.Klasifikatoriaus kodas"
+
+Classification.ISO81346 CS.Name:
+  type: IfcLabel
+  valueType: String
+  description: Pavadinimas pagal ISO 81346 / CCI CS klasifikatorių
+  sources:
+  - "VVK.ISO81346 aprašas"
+  - "VVK.ISO81346 pavadinimas"
+
+Classification.ISO81346 CS:
+  type: IfcLabel
+  valueType: String
+  description: Klasifikatoriaus kodas pagal ISO 81346 / CCI CS klasifikatorių
+  sources:
+  - "VVK.Patalpos kodas"
+
+
+# identifikacija
+Pset_ElementComponentCommon.Status:
+  type: IfcLabel
+  valueType: String
+  examples:
+  - Projektuojamas
+  description: Elemento būsena
+  allowedValues:
+  - Esamas
+  - Ardomas
+  - Remontuojamas
+  - Rekonstruojamas
+  - Projektuojamas
+  sources:
+  - VVK.Statusas
+
+Pset_ConstructionAdministration.SpecificationSectionNumber:
+  type: IfcLabel
+  units: String
+  valueType: String
+  examples:
+    - SA-TS-1.1
+    - SA-TS-C.BA.%CDD1042
+    - T-TS 2.3
+  description: Techninės specifikacijos numeris, nurodant projekto dalies žymenį
+  sources:
+  - "VVK.Techninė specifikacija"
+  
+
+# geometrija
+Pset_QuantityTakeOff.Heigth: &prop_Height
+    type: IfcLengthMeasure
+    valueType: Real
+    examples:
+      - 120
+      - 5.600
+    units: Real
+    memo: Žr. IFC ilgio, pločio ir aukščio apibrėžimus
+    description: Gaminio aukštis arba storis, mm (0 dešimtainių skaitmenų) arba m (3 dešimtainiai skaitmenys)
+    sources:
+    - VVK.Aukštis
+
+Pset_QuantityTakeOff.NominalHeight: *prop_Height
+
+Pset_QuantityTakeOff.Width: &prop_Width
+    type: IfcLengthMeasure
+    valueType: Real
+    units: Real
+    examples:
+      - 120
+      - 0.800
+    memo: Žr. IFC ilgio, pločio ir aukščio apibrėžimus
+    description: Gaminio plotis, mm (0 dešimtainių skaitmenų) arba m (3 dešimtainiai skaitmenys)
+
+Pset_QuantityTakeOff.NominalWidth: *prop_Width
+
+Pset_QuantityTakeOff.Length: &prop_Length
+    type: IfcLengthMeasure
+    valueType: Real
+    units: Real
+    examples:
+      - 1600
+      - 1.600
+    memo: Žr. IFC ilgio, pločio ir aukščio apibrėžimus
+    description: Gaminio ilgis, mm (0 dešimtainių skaitmenų) arba m (3 dešimtainiai skaitmenys)
+    sources:
+    - VVK.Ilgis
+
+Pset_QuantityTakeOff.NominalLength: *prop_Length
+
+Pset_QuantityTakeOff.Depth: &prop_Depth
+  type: IfcLengthMeasure
+  valueType: Real
+  units: Real
+  examples:
+    - 120
+    - 5.600
+  description: Elemento storis, mm (0 dešimtainių skaitmenų) arba m (3 dešimtainiai skaitmenys)
+
+Pset_QuantityTakeOff.NominalDepth: *prop_Depth
+
+Pset_QuantityTakeOff.Diameter: &prop_Diameter
+  valueType: Real
+  units: Real
+  examples:
+    - 600
+    - 0.600
+  description: Gaminio diametras
+  memo: Jei taikomas
+
+Pset_QuantityTakeOff.NominalDiameter: *prop_Diameter
+
+Pset_QuantityTakeOff.Area: &prop_Area
+    type: IfcAreaMeasure
+    valueType: Real
+    units: Real
+    examples:
+      - 4.20
+      - 0.42
+    description: Elemento plotas, m²
+
+Pset_QuantityTakeOff.NetArea: *prop_Area
+
+Pset_QuantityTakeOff.Weigth: &prop_Weight
+    type: IfcWeightMeasure
+    valueType: Real
+    units: Real
+    examples:
+      - 80
+      - 18
+    description: Elemento svoris, kg
+    
+
+Pset_QuantityTakeOff.Volume:
+    type: IfcVolumeMeasure
+    valueType: Real
+    units: Real
+    examples:
+      - 80.500
+      - 0.006    
+    description: Gaminio tūris, m³, 3 dešimtainiai skaitmenys
+
+
+Pset_QuantityTakeOff.Power: &prop_Power
+    type: IfcPowerMeasure
+    valueType: Real
+    units: Real
+    examples:
+      - 80
+      - 18
+    description: Elemento projektinė galia, W.
+    memo: Elektriniams prietaisams - elektrinė galia, šiluminiams ir jiems prilygintims - šiluminė galia
+
+Pset_QuantityTakeOff.NominalPower: *prop_Power
+
+Pset_ElectricalDeviceCommon.NominalPowerConsumption: 
+    <<: *prop_Power
+    description: Elektrinio prietaiso ar įrenginio projektinė elektrinė galia, W.
+    memo: Prietaiso ar įrenginio elektrinė galia. Kito tipo energijos galia (šiluminė, mechaninė ir pan.) nurodoma atitinkamoje savybėje.
+
+# patikrinti    
+Pset_QuantityTakeOff.VolumetricFlowRate:
+    valueType: Real
+    units: Real
+
+
+# patikrinti    
+VVK.Energetinė klasė:
+    type: IfcLabel
+    units: String
+    valueType: String
+    examples:
+      - A++
+      - C
+    allowedValues:
+      - A+++
+      - A++
+      - A+
+      - A
+      - B
+      - C
+      - D
+      - E
+      - F
+      - G
+    description: Statinio arba įrangos energetinė klasė
+
+# patikrinti
+VVK.LevelName:
+    type: IfcLabel
+    units: String
+    valueType: String
+    examples:
+      - '1'
+      - '2'
+      - Rūsys
+      - '0,00 = +242.42'
+    description: Statinio aukštas, kuriam priskirtas elementas
+
+# patikrinti
+VVK.AcousticRating:
+  type: IfcLabel
+  valueType: String
+
+# patikrinti
+VVK.Korpusas:
+  type: IfcLabel
+  valueType: String
+  description: Korpusas ar etapas, jeigu skirstoma
+  examples: 2 etapas
+
+# patikrinti
+VVK.IsArchitecturalExposed:
+  type: IfcBoolean
+  valueType: Boolean
+
+# patikrinti
+VVK.RelatedDocumentationURI:
+  type: IfcURIReference
+  valueType: String
+  description: Nuoroda (URI / URL) į su elementu susijusią dokumentaciją.
+  memo: Nuoroda formuojama į CDE aplinkoje sukurtus katalogus, kuriuose saugoma su elementu susijusi rangos, bandymų, atitikties ir panaši informacija. Atitinkamą šių katalogų informaciją pateikia Rangovas.
+
+# patikrinti
+VVK.ASSEMBLY MARK:
+  type: IfcLabel
+  valueType: String
+  examples:
+    - 80
+    - 18
+  description: Elemento žyma
+
+# patikrinti
+VVK.FireResistanceRating:
+    type: IfcLabel
+    units: String
+    examples:
+      - I-1
+      - II
+    allowedValues:
+      - I-1
+      - I-2
+      - I-3
+      - II
+      - III    
+    description: Statinio atsparumu ugniai laipsnis
+
+# patikrinti
+Pset_DoorCommon.FireRating:
+  type: IfcLabel
+  valueType: String
+  allowedValues:
+  - E [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - I [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - EI [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - EW [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - EI_2 [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - EI_2 [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]-Cs
+
+Pset_WindowCommon.FireRating:
+  type: IfcLabel
+  valueType: String
+  allowedValues:
+  - E [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - I [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - EI [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - EW [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - EW_2 [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+
+Pset_WallCommon.FireRating:
+  type: IfcLabel
+  valueType: String
+  allowedValues:
+  - R [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - E [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - I [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - EI [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - REI [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - R-M [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+
+Pset_SlabCommon.FireRating:
+  type: IfcLabel
+  valueType: String
+  allowedValues:
+  - R [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - E [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - I [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - EI [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - REI [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  - R-M [15 | 20 | 30 | 45 | 60 | 90 | 120 | 180]
+  
+# patikrinti
+VVK.Combustability:
+  type: IfcLabel
+  valueType: String
+  units: String
+  examples:
+    - A2
+    - B-s3,d0
+  description: Medžiagos degumo klasė
+
+Pset_ElementComponentCommon.EgressCode:
+    type: IfcLabel
+    valueType: String
+    examples:
+      - EN 179
+      - EN 1125
+    units: String
+    description: Evakuacinio išėjimo elementams taikomas standartas
+
+# patikrinti
+Pset_ServiceLifeFactors.OutdoorEnvironment:
+    type: IfcLabel
+    valueType: String
+    examples:
+      - XC3
+      - XC6
+      - XO
+      - XC1
+    units: String
+    memo: Jei taikoma
+    description: Elemento aplinkos agresyvumo klasė
+    sources:
+    - "VVK.Aplinkos agresyvumo klasė"
+
+# patikrinti
+VVK.Material:
+    type: IfcLabel
+    valueType: String
+    units: String
+    examples:
+      - Guma
+      - Konstrukcinis plienas 
+      - Nerūdijantis plienas
+      - Plastikas
+      - Betonas
+    memo: Pildoma, jei tokia savybė aktuali
+    description: Pagrindinė elemento medžiaga
+
+# patikrinti
+VVK.Colour:
+    type: IfcLabel
+    valueType: String
+    units: String
+    examples:
+      - RAL 9003 'Signal white'
+      - NCS S-1005-Y
+    memo: Pildoma, jei tokia savybė aktuali
+    description: Dažomo elemento arba jo išorinės ar vidinės pusės spalva, nurodant spalvyną ir spalvos pavadinimą, jei žinomas
+
+# patikrinti
+VVK.Finish:
+  type: IfcLabel
+  valueType: String
+  units: String
+  examples:
+    - Dažomas milteliniu būdu
+    - Glaistomas, dažomas
+    - Impregnuojamas
+  memo: Pildoma, jei tokia savybė aktuali
+  description: Pagrindinė elemento apdaila
+
+Pset_EnvironmentalCondition.MaximumWindSpeed:
+  memo: Nurodomas tik lauke naudojamai įrangai
+
+VVK.OperationalConditionsClass:
+  type: IfcLabel
+  valueType: String
+  units: String
+  examples:
+    - XC4
+    - XF2
+    - XA2
+    - X0
+  description: Aplinkos poveikio klasė pagal EN 206-1
+  memo: Nurodomas tik agresyvioje aplinkoje ar lauke naudojamai įrangai ar elementams

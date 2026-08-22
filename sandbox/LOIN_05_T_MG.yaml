@@ -1,0 +1,318 @@
+# v 0.5a
+# NSIK ver 0.9, 2023-09-01
+# https://nsiklab.lt 
+#
+# 05 - Technologinės dalys
+# maisto gamybos technologija
+#
+
+s2:  &stageS2_common
+  lod: 200
+  properties:
+  - Name
+  - System
+  - Pset_ElementComponentCommon.Status
+  
+s3:  &stageS3_common
+  lod: 300
+  properties:
+    - Type:
+      - examples:
+        - KK-1
+    - Pset_ConstructionAdministration.SpecificationSectionNumber:
+      - examples:
+        - PVA-TS 2.1
+    - VVK.Material:
+      - examples:
+        - Plienas
+        - Plastikas
+    - VVK.Finish:
+      - memo: Pildoma, jei tokia savybė aktuali
+      - examples:
+          - Cinkuotas
+          - Dažytas milteliniu būdu
+    - VVK.Colour:
+      - memo: Pildoma, jei tokia savybė aktuali
+    - Pset_QuantityTakeOff.Heigth:
+      - examples:
+        - 600
+    - Pset_QuantityTakeOff.Width:
+      - examples:
+        - 400
+    - Pset_QuantityTakeOff.Length:
+      - examples:
+        - 150
+
+
+
+T.MG: # maisto gamybos technologija
+    # maisto mamybos technologija
+    elements:
+    - id: Gamybinės virtuvės įranga    # S.RC.HKA
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: HKA
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Indaplovė
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - M-1
+          - VVK.Material
+          - VVK.Apdaila
+          - VVK.Colour
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+          - Galingumas:
+            - examples:
+              - 400
+          - Ifc__.Heigth:
+            - examples:
+              - 850
+          - Ifc__.Length:
+            - examples:
+              - 500
+          - Ifc__.Width:
+            - examples:
+              - 570
+    
+    - id: Darbo stalai           # S.%RB40.UBE
+      examples:
+      - Nerūdijančio plieno stalas
+      - Vežimėlis padėklams
+      - Mokytojo, mokinių ir laboratoriniai stalai
+      - teisėjų sekretoriato stalas
+      - lyginimo lenta
+      - virtuvės gamybinis stalas
+      classifications:
+        NSIK LF: S
+        NSIK LT: "%RB40"
+        NSIK LK: UBE
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Stalas
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - B-1
+          - VVK.Material
+          - VVK.Apdaila
+          - VVK.Colour
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+          - Ifc__.Heigth:
+            - examples:
+              - 900
+          - Ifc__.Length:
+            - examples:
+              - 1200
+          - Ifc__.Width:
+            - examples:
+              - 800
+    
+    - id: Atsisėdimas                  # S.RB.CLC
+      examples:
+      - Mokytojo
+      - mokinių bei laboratorinės kėdės; žiūrovų tribūnos; gimnastikos suoliukas
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: CLC
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Kėdė
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - K-1
+          - VVK.Material
+          - VVK.Apdaila
+          - VVK.Colour
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+          - Ifc__.Heigth:
+            - examples:
+              - 1200
+          - Ifc__.Length:
+            - examples:
+              - 500
+          - Ifc__.Width:
+            - examples:
+              - 500
+    
+    - id: Spintelė                     # S.RB.CMB
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: CMB
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Spintelė
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - B-1
+          - VVK.Material
+          - VVK.Apdaila
+          - VVK.Colour
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+          - Ifc__.Heigth:
+            - examples:
+              - 1800
+          - Ifc__.Length:
+            - examples:
+              - 600
+          - Ifc__.Width:
+            - examples:
+              - 600
+    
+    - id: Praustuvas                   # S.RB.XKA
+      examples:
+      - Plautuvė; demonstracinis stalas su plautuve; stalas su gilumine vonia;
+      - stalas su plautuve prie indaplovės
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: XKA
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Laboratorinis stalas su plautuve
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - PL-1
+          - VVK.Material
+          - VVK.Apdaila
+          - VVK.Colour
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+          - Ifc__.Heigth:
+            - examples:
+              - 900
+          - Ifc__.Length:
+            - examples:
+              - 1200
+          - Ifc__.Width:
+            - examples:
+              - 800
+    
+    - id: Gaubtas                      # S.RC.UCC
+      examples:
+      - Traukos spinta; spinta reagentams su ištraukimu (jeigu tokia bus);
+      - ventiliacinė oro nutraukimo rankovė; ventiliacinis gaubtas
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: UCC
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Traukos spinta
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - G-1
+          - VVK.Material
+          - VVK.Apdaila
+          - VVK.Colour
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - TS 2.1
+          - Galingumas:
+            - examples:
+              - 200
+          - Ifc__.Heigth:
+            - examples:
+              - 2870
+          - Ifc__.Length:
+            - examples:
+              - 1800
+          - Ifc__.Width:
+            - examples:
+              - 1200
+          - Diametras:
+            - examples:
+              - 200
+            - descr: Gaminio diametras (apvalaus skerspjūvio ortakiams), mm
+  
+    - id: Trapas                       # S.RC.XKE
+      description: Skysčio perteklių surenkantis komponentas su hidrauline užtvara.
+      memo: Elemento geometrija tur būti tokia, kad būtų galima užtikrintai tikrinti susikirtimus su kitomis projekto dalimis.
+      examples:
+      - Surinkimo grotelės
+      - Trapo korpusas
+      - Hidraulinės  užtvaros išorinis tūris.
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: XKE
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Surinkimo grotelės su hidrauline užtvara
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - LM-1
+          - VVK.Material
+          - VVK.Colour
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS 2.3
+          - Ifc__.Heigth:
+            - examples:
+              - 10
+          - Ifc__.Length:
+            - examples:
+              - 200
+          - Ifc__.Width:
+            - examples:
+              - 200
+          - Diametras:
+            - examples:
+              - 110
+            - descr: Prijungimo prie tinklų diametras
+          - Pset_ServiceLifeFactors.OutdoorEnvironment
+    
+

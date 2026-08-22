@@ -1,0 +1,347 @@
+
+project:
+  number: "2019-XX"
+  name: "2019-XX-DP_Kalvarijų g.87"
+  address: "Kalvarijų g.87, Vilnius"
+  cde_type: "TC"
+  cde_id: "n6RvGo_lvgs"
+  s6_folder: "60_S6"
+  s6_cde_folder: D6IjQtqDya4
+  local_cde_folder: "60 S6"
+  ifcVersion: 2x3
+  
+  people:
+  - Linas Andrulevičius:
+    email: lin@be-live.lt
+    phone: +370 601 13338
+  - Rimas Bakanauskas:
+    email: rimas@energus.eu
+    phone: +370 640 34723
+  - Povilas Marozas:
+    email: povilas@space-time.studio.lt
+    phone: +370 698 37150
+  - Andrius Ropolas:
+    email: andrius.ropolas@dearch.lt
+    phone: +370 699 8833
+  - Paulius Vaitiekūnas:
+    email: paulius.vaitiekunas@dearch.lt
+    phone: +370 602 57571
+  - Jurgita Šniepienė:
+    email: jurgita.mack@gmail.com
+    phone: +370 620 89066
+  - Arnas Skliutas:
+    email: a.skliutas@inhus.eu
+    phone: +370 663 65539
+  - Gintautas Baranauskas:
+    email: gintautas@gbt.lt
+    phone: +370 698 36146
+  - Tatjana Navidčenko:
+    email: Tatjana@gbt.lt
+    phone: +370 650 36146
+  - Valentinas Šilobritas:
+    email: valentinas.silobritas@atestuotas.lt
+    phone: +370 612 21736
+  - Inesa Cubarova:
+    email: inesa.cubarova@atestuotas.lt
+    phone: +370 650 16343
+  - Nida Vaitkutė:
+      email: 
+      phone: 
+  - Simona Minkevičiūtė:
+    email: sim@be-live.lt
+    phone: +370 647 78134
+  - Toma Brazaitė:
+    email: tmb@be-live.lt
+    phone: +370 620 19638
+  - Maksim Pozdniakov:
+    email: maksim@energus.eu
+    phone: +370 613 16740
+  - Žygis Sigis:
+    email: info@hgc.lt
+    phone: 
+  - Mindaugas Petrauskas:
+    email: mindaugas@geoinzinerija.lt
+    phone: +370 601 12504
+  - Ovidijus Vekrikas:
+    email: ovidijus.surveta@gmail.com
+    phone: +370 630 66633
+  - Renatas Turčinavičius:
+    email: info@arboristasrenatas.lt
+    phone: +370 671 25291
+    role: 
+  - Liudas Galdikas:
+    email: lga@balticengineers.com
+    phone: +370 649 19227
+    role: Statinio informacinio modelio projekto koordinatorius
+  - Eugenijus Januškevičius:
+    email: eugenijus.januskevicius@vilniausvystymas.lt
+    phone: +370 639 38446
+    role: Užsakovo BIM vadovas
+
+  files:
+    _ERDVĖS_:
+      personResponsible: 
+      - Andrius Ropolas
+      - Paulius Vaitiekūnas
+      - Gintautas Baranauskas
+      - Tatjana Navidčenko
+      - Linas Andrulevičius
+      - Martynas Lašinskas
+      - Nida Vaitkutė
+      - Simona Minkevičiūtė
+
+    SP:
+      personResponsible: 
+      - Jurgita Šniepienė
+      software: Autodesk Revit 2023 LT
+      nativeFormat: RVT
+      useCases:
+      - U4
+      - U12
+    SP.Ž:
+      personResponsible: 
+      - Povilas Marozas
+      software: Autodesk Revit 2023 LT
+      nativeFormat: RVT
+      useCases:
+      - U4
+      - U12
+      - U13
+    SA:
+      personResponsible: 
+      - Andrius Ropolas
+      - Paulius Vaitiekūnas
+      software: Autodesk Revit 2023 LT
+      nativeFormat: RVT
+      useCases:
+      - U5
+      - U12
+    SI:
+      personResponsible: 
+      - Andrius Ropolas
+      - Paulius Vaitiekūnas
+      software: Autodesk Revit 2023 LT
+      nativeFormat: RVT
+      useCases:
+      - U5
+      - U12
+    SK:
+      personResponsible: 
+      - Arnas Skliutas
+      software: Tekla Structures 2022
+      nativeFormat:
+      useCases:
+      - U11
+    T:
+      personResponsible: 
+      - Gintautas Baranauskas
+      - Tatjana Navidčenko
+      software: Autodesk Revit 2023 LT
+      nativeFormat: RVT
+      useCases:
+      - U32
+      - U33
+    T.A:
+      personResponsible: 
+      - Gintautas Baranauskas
+      - Tatjana Navidčenko
+      software: Autodesk Revit 2023 LT
+      nativeFormat: RVT
+      useCases:
+      - U32
+      - U33
+    S:
+      personResponsible: 
+      - Valentinas Šilobritas
+      - Inesa Cubarova
+      software: Autodesk Civil 3D 2023
+      nativeFormat: DWG
+      exchangeFormat: LandXML
+    VN:
+      personResponsible: 
+      - Nida Vaitkutė
+      - Simona Minkevičiūtė
+      software: Autodesk Revit 2023
+      nativeFormat: RVT
+    VN.V:
+      personResponsible: 
+      - Nida Vaitkutė
+      - Simona Minkevičiūtė
+      software: Autodesk Revit 2023
+      nativeFormat: RVT
+    VN.N:
+      personResponsible: 
+      - Nida Vaitkutė
+      - Simona Minkevičiūtė
+      software: Autodesk Revit 2023
+      nativeFormat: RVT
+    VN.GV:
+      personResponsible: 
+      - Nida Vaitkutė
+      - Simona Minkevičiūtė
+      software: Autodesk Revit 2023
+      nativeFormat: RVT
+    LVN:
+      personResponsible: 
+      - Toma Brazaitė
+      software: 
+      nativeFormat: 
+      exchangeFormat: 
+    ŠVOK:
+      personResponsible: 
+      - Linas Andrulevičius
+      software: Autodesk Revit 2023
+      nativeFormat: RVT
+      exchangeFormat: 
+    ŠVOK.Š:
+      personResponsible: 
+      - Linas Andrulevičius
+      software: Autodesk Revit 2023
+      nativeFormat: RVT
+      exchangeFormat: 
+    ŠVOK.ŠOK:
+      personResponsible: 
+      - Linas Andrulevičius
+      software: Autodesk Revit 2023
+      nativeFormat: RVT
+      exchangeFormat: 
+    ŠVOK.V:
+      personResponsible: 
+      - Martynas Lašinskas:
+        email: mal@be-live.lt
+        phone: +370 653 71875
+      software: Autodesk Revit 2023
+      nativeFormat: RVT
+      exchangeFormat: 
+    ŠVOK.OK:
+      personResponsible: 
+      - Linas Andrulevičius
+      software: Autodesk AutoCAD 2020
+      nativeFormat: DWG
+      exchangeFormat: 
+    E:
+      personResponsible: 
+      - Rimas Bakanauskas
+      software: Autodesk Revit 2023
+      nativeFormat: RVT
+      exchangeFormat: 
+      useCases:
+      - U12
+    LE:
+      personResponsible: 
+      - Maksim Pozdniakov
+      software: Autodesk Revit 2023
+      nativeFormat: RVT
+      exchangeFormat:
+    ER:
+      personResponsible: 
+      - Maksim Pozdniakov
+      software: Autodesk Revit 2023
+      nativeFormat: RVT
+      exchangeFormat:
+    LER:
+      personResponsible:
+      - Maksim Pozdniakov
+      software: Autodesk Revit 2023
+      nativeFormat: RVT
+      exchangeFormat:
+    GSS:
+      personResponsible:
+      - Maksim Pozdniakov
+      software: Autodesk Revit 2023
+      nativeFormat: RVT
+      exchangeFormat:
+    AS:
+      personResponsible:
+      - Maksim Pozdniakov
+      software: Autodesk Revit 2023
+      nativeFormat: RVT
+      exchangeFormat:
+    PVA:
+      personResponsible: 
+      - Linas Andrulevičius
+      software: Autodesk AutoCAD 2020
+      nativeFormat: DWG
+      exchangeFormat: 
+    ŠT:
+      personResponsible: 
+      - Linas Andrulevičius
+      software: Autodesk AutoCAD 2020
+      nativeFormat: DWG
+      exchangeFormat: 
+    ŠT.G:
+      personResponsible: 
+      - Žygis Sigis
+      software: Autodesk AutoCAD 2020
+      nativeFormat: DWG
+      exchangeFormat: 
+    LŠT:
+      personResponsible: 
+      - Linas Andrulevičius
+      software: Autodesk AutoCAD 2020
+      nativeFormat: DWG
+      exchangeFormat:
+    SO:
+      personResponsible: 
+      - Renatas Untonas
+      software: 
+      nativeFormat: 
+      exchangeFormat:
+    KS:
+      personResponsible: 
+      - Vytautas Matulevičius
+      software: 
+      nativeFormat: 
+      exchangeFormat:
+
+    IT.T:
+      personResponsible: 
+      - Ovidijus Vekrikas
+      software: 
+      nativeFormat: 
+      exchangeFormat:
+    IT.G:
+      personResponsible: 
+      - Mindaugas Petrauskas
+      software: 
+      nativeFormat: 
+      exchangeFormat:
+    IT.PEN:
+      personResponsible: 
+      - Karolis Banionis
+    IT.A:
+      personResponsible: 
+      - Renatas Turčinavičius
+  
+  useCases:
+   - U1
+   - U2
+   - U3
+   - U5
+   - U6
+   - U7
+   - U8
+   - U9
+   - U13
+   - U15
+   - U16
+   - U17
+   - U19
+   - U20
+   - U22
+   - U24
+   - U27
+   - U28
+   - U29
+   - U30
+   
+  classifications:
+    NSIK B: Classification.NSIKcodeB
+    NSIK E: Classification.NSIKcodeE
+    NSIK LF: Classification.NSIKcodeLF
+    NSIK LT: Classification.NSIKcodeLT
+    NSIK LK: Classification.NSIKcodeLK
+#    Uniclass: IfcClassificationReference -> Reference
+
+ 
+loin: {}
