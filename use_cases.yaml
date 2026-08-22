@@ -53,15 +53,18 @@ U26:
   stages:
     s3:
       properties:
-      - Pset_ConstructionAdministration.SpecificationSectionNumber
+        Pset_ConstructionAdministration.SpecificationSectionNumber: {}
+    s5:
+      properties:
+        VVK.RelatedDocumentationURI: {}
 
 U27:
   name: Statinio priežiūros planavimas
   stages:
     s4:
       properties:
-      - Pset_ManufacturerTypeInformation.ArticleNumber
-      - Pset_ManufacturerTypeInformation.Manufacturer
+        Pset_ManufacturerTypeInformation.ArticleNumber: {}
+        Pset_ManufacturerTypeInformation.Manufacturer: {}
 
 U28:
   name: Statinio inžinerinių sistemų, tinklų ir komunikacijų analizė
@@ -74,17 +77,16 @@ U30:
   stages:
     s5:
       properties:
-      - Pset_ConstructionOccurence.AssetIdentifier
-      - Pset_ConstructionOccurence.TagNumber
-      - Pset_InstallationOccurrence.AcceptanceDate
-      - Pset_InstallationOccurrence.InstallationDate
+        Pset_ConstructionOccurence.AssetIdentifier: {}
+        Pset_ConstructionOccurence.TagNumber: {}
+        Pset_InstallationOccurrence.AcceptanceDate: {}
+        Pset_InstallationOccurrence.InstallationDate: {}
     s6:
       properties:
-      - Pset_InstallationOccurrence.PutIntoOperationDate
-      - Pset_Warranty.WarrantyPeriod
-      - Pset_Warranty.PointOfContact
-      - Pset_Warranty.WarrantyPeriod
-      - Pset_Warranty.WarrantyStartDate
+        Pset_InstallationOccurrence.PutIntoOperationDate: {}
+        Pset_Warranty.WarrantyPeriod: {}
+        Pset_Warranty.PointOfContact: {}
+        Pset_Warranty.WarrantyStartDate: {}
 U31:
   name: Erdvės valdymas ir stebėsena
 U32:

@@ -14744,39 +14744,39 @@ T.S:
               - 100
           - Pset_ServiceLifeFactors.OutdoorEnvironment
     
-          - id: Baseino starto bokštelis
-          description: Sporto įranga
-          classifications:
-            NSIK LF: S
-            NSIK LT: RC
-            NSIK LK: SZB
-          stages:
-            s3:
-              lod: 300
-              properties:
-              - Aukštas
-              - Name:
-                - examples:
-                  - Baseino starto bokštelis
-              - Pset_ElementComponentCommon.Status
-              - Type:
-                - examples:
-                  - BSB-1
-              - VVK.Material
-              - VVK.Colour
-              - Pset_ConstructionAdministration.SpecificationSectionNumber:
-                - examples:
-                  - T-TS 2.1
-              - Ifc__.Heigth:
-                - examples:
-                  - 400
-              - Ifc__.Length:
-                - examples:
-                  - 400
-              - Ifc__.Width:
-                - examples:
-                  - 400
-              - Pset_ServiceLifeFactors.OutdoorEnvironment
+    - id: Baseino starto bokštelis
+      description: Sporto įranga
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: SZB
+      stages:
+        s3:
+          lod: 300
+          properties:
+          - Aukštas
+          - Name:
+            - examples:
+              - Baseino starto bokštelis
+          - Pset_ElementComponentCommon.Status
+          - Type:
+            - examples:
+              - BSB-1
+          - VVK.Material
+          - VVK.Colour
+          - Pset_ConstructionAdministration.SpecificationSectionNumber:
+            - examples:
+              - T-TS 2.1
+          - Ifc__.Heigth:
+            - examples:
+              - 400
+          - Ifc__.Length:
+            - examples:
+              - 400
+          - Ifc__.Width:
+            - examples:
+              - 400
+          - Pset_ServiceLifeFactors.OutdoorEnvironment
 
 T.G:
     # mokomųjų dirbtuvių technologija
