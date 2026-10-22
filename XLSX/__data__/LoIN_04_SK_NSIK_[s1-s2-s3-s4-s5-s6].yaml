@@ -1,0 +1,3911 @@
+version: 0.1a
+full_name: VVK EIR Specification
+email: bim@vilniausvystymas.lt
+identifier: VVK
+loin:
+  SK:
+    id: '04'
+    name: Statinio konstrukcijos
+    stages:
+      s1:
+        lod: 275
+        log: 2
+      s2:
+        lod: 200
+        log: 2
+      s3:
+        lod: 300
+        log: 2
+      s4:
+        lod: 350
+        log: 2
+      s5:
+        lod: 450
+        log: 4
+      s6:
+        lod: 450
+        log: 4
+      s7:
+        lod: 450
+        log: 4
+      name: Turto valdymas
+    elements:
+    - id: Geometrinis koordinavimo elementas
+      description: Modelius erdvėje koordinuojantis BEP sutartas geometrinis elementas
+      examples:
+      - Koordinacinis kubas
+      - Koordinacinė piramidė
+      - Koordinacinis kūgis
+      classifications:
+        NSIK LF: A
+        NSIK LT: ME
+        NSIK LK: FNA
+        ISO81346 CF: A
+        ISO81346 CT: ME
+        ISO81346 CC: FNA
+      stages:
+        s1:
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: &id001
+              valueType: Tekstas
+              type: IfcLabel
+        s2:
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+        s3:
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+        s4:
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+        s5:
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+        s6:
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+        s7:
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+        discard:
+          Pset_ConstructionAdministration.SpecificationSectionNumber: &id009
+            valueType: Tekstas
+            type: IfcLabel
+          Pset_ManufacturerTypeInformation.Manufacturer: &id015
+            valueType: Tekstas
+            type: IfcLabel
+          VVK.RelatedDocumentationURI: &id014
+            valueType: Tekstas
+            type: IfcLabel
+    - id: Atraminė siena
+      examples:
+      - Špuntas
+      classifications:
+        NSIK LF: A
+        NSIK LT: AB
+        NSIK LK: ULL
+        ISO81346 CF: A
+        ISO81346 CT: AB
+        ISO81346 CC: ULL
+      ifcType: &id045
+      - IfcWall
+      - IfcWallType
+      stages:
+        s1: &id046
+          lod: 275
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: &id002
+              valueType: Tekstas
+              type: IfcLabel
+            Pset_ElementComponentCommon.Status: &id003
+              valueType: Tekstas
+              type: IfcLabel
+              allowedValues:
+              - ESAMAS
+              - RESTAURUOJAMAS
+              - REMONTUOJAMAS
+              - REKONSTRUOJAMAS
+              - NAUJAS
+              - ARDOMAS
+              - LAIKINAS
+            Pset_ElementComponentCommon.Width: &id004
+              type: IfcLengthMeasure | IfcPositiveLengthMeasure
+              valueType: Skaičius
+            Pset_QuantityTakeOff.Area: &id005
+              type: IfcAreaMeasure
+              valueType: Skaičius
+            Pset_QuantityTakeOff.Volume: &id006
+              type: IfcVolumeMeasure
+              valueType: Skaičius
+            VVK.Material: &id008
+              valueType: Tekstas
+              type: IfcLabel
+            Pset_ElementComponentCommon.FireRating: &id007
+              valueType: Tekstas
+              type: IfcLabel
+        s2: &id047
+          lod: 200
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_QuantityTakeOff.Area: *id005
+            Pset_QuantityTakeOff.Volume: *id006
+            Pset_ElementComponentCommon.FireRating: *id007
+        s3: &id048
+          lod: 200
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_QuantityTakeOff.Area: *id005
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+            Pset_ElementComponentCommon.FireRating: *id007
+            VVK.RelatedDrawing: &id010
+              valueType: Tekstas
+              type: IfcLabel
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Weigth: &id011
+              type: IfcMassMeasure
+              valueType: Skaičius
+        s4: &id049
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_QuantityTakeOff.Area: *id005
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+            Pset_ElementComponentCommon.FireRating: *id007
+            VVK.RelatedDrawing: *id010
+            VVK.Tag: &id012
+              valueType: Tekstas
+              type: IfcLabel
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            VVK.MaterialClass: &id013
+              valueType: Tekstas
+              type: IfcLabel
+            Pset_QuantityTakeOff.Weigth: *id011
+        s5: &id050
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_QuantityTakeOff.Area: *id005
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+            Pset_ElementComponentCommon.FireRating: *id007
+            VVK.RelatedDrawing: *id010
+            VVK.Tag: *id012
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            VVK.MaterialClass: *id013
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+        s6: &id051
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_QuantityTakeOff.Area: *id005
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+            Pset_ElementComponentCommon.FireRating: *id007
+            VVK.RelatedDrawing: *id010
+            VVK.Tag: *id012
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            VVK.MaterialClass: *id013
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+            Pset_Warranty.WarrantyStartDate: &id016
+              descr: Garantijos pradžios data
+              valueType: Tekstas
+              type: IfcLabel
+            Pset_Warranty.WarrantyPeriod: &id017
+              descr: Garantijos trukmė, mėn
+              valueType: Sveiks skaičius
+              type: IfcLabel
+            Pset_Warranty.PointOfContact: &id018
+              descr: Garantiją teikiančio subjekto kontaktiniai duomenys
+              valueType: Tekstas
+              type: IfcLabel
+        s7: &id052
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_QuantityTakeOff.Area: *id005
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+            Pset_ElementComponentCommon.FireRating: *id007
+            VVK.RelatedDrawing: *id010
+            VVK.Tag: *id012
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            VVK.MaterialClass: *id013
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+            Pset_Warranty.WarrantyStartDate: *id016
+            Pset_Warranty.WarrantyPeriod: *id017
+            Pset_Warranty.PointOfContact: *id018
+    - id: Pamatas
+      examples:
+      - Pamatų blokas
+      - Juostinis pamatas
+      classifications:
+        NSIK LF: A
+        NSIK LT: BB
+        NSIK LK: ULG
+        ISO81346 CF: A
+        ISO81346 CT: BB
+        ISO81346 CC: ULG
+      ifcType: &id028
+      - IfcBeam
+      - IfcBeamType
+      stages:
+        s1: &id021
+          lod: 275
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: &id019
+              type: IfcLengthMeasure | IfcPositiveLengthMeasure
+              valueType: Skaičius
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_ElementComponentCommon.Height: &id020
+              type: IfcLengthMeasure | IfcPositiveLengthMeasure
+              valueType: Skaičius
+            Pset_QuantityTakeOff.Volume: *id006
+            Pset_QuantityTakeOff.Area: *id005
+            VVK.Material: *id008
+            Pset_ElementComponentCommon.FireRating: *id007
+        s2: &id022
+          lod: 200
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_ElementComponentCommon.Height: *id020
+            Pset_ElementComponentCommon.FireRating: *id007
+        s3: &id023
+          lod: 200
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_ElementComponentCommon.Height: *id020
+            Pset_QuantityTakeOff.Volume: *id006
+            Pset_QuantityTakeOff.Area: *id005
+            VVK.Material: *id008
+            Pset_ElementComponentCommon.FireRating: *id007
+            VVK.RelatedDrawing: *id010
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Weigth: *id011
+        s4: &id024
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_ElementComponentCommon.Height: *id020
+            Pset_QuantityTakeOff.Volume: *id006
+            Pset_QuantityTakeOff.Area: *id005
+            VVK.Material: *id008
+            Pset_ElementComponentCommon.FireRating: *id007
+            VVK.RelatedDrawing: *id010
+            VVK.Tag: *id012
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.MaterialClass: *id013
+        s5: &id025
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_ElementComponentCommon.Height: *id020
+            Pset_QuantityTakeOff.Volume: *id006
+            Pset_QuantityTakeOff.Area: *id005
+            VVK.Material: *id008
+            Pset_ElementComponentCommon.FireRating: *id007
+            VVK.RelatedDrawing: *id010
+            VVK.Tag: *id012
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.MaterialClass: *id013
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+        s6: &id026
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_ElementComponentCommon.Height: *id020
+            Pset_QuantityTakeOff.Volume: *id006
+            Pset_QuantityTakeOff.Area: *id005
+            VVK.Material: *id008
+            Pset_ElementComponentCommon.FireRating: *id007
+            VVK.RelatedDrawing: *id010
+            VVK.Tag: *id012
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.MaterialClass: *id013
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+            Pset_Warranty.WarrantyStartDate: *id016
+            Pset_Warranty.WarrantyPeriod: *id017
+            Pset_Warranty.PointOfContact: *id018
+        s7: &id027
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_ElementComponentCommon.Height: *id020
+            Pset_QuantityTakeOff.Volume: *id006
+            Pset_QuantityTakeOff.Area: *id005
+            VVK.Material: *id008
+            Pset_ElementComponentCommon.FireRating: *id007
+            VVK.RelatedDrawing: *id010
+            VVK.Tag: *id012
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.MaterialClass: *id013
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+            Pset_Warranty.WarrantyStartDate: *id016
+            Pset_Warranty.WarrantyPeriod: *id017
+            Pset_Warranty.PointOfContact: *id018
+    - id: Pamatų blokas
+      classifications:
+        NSIK LF: A
+        NSIK LT: BB
+        NSIK LK: '%ULG20'
+      ifcType: &id029
+      - IfcSlab
+      - IfcSlabType
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Rostverkas
+      classifications:
+        NSIK LF: A
+        NSIK LT: BB
+        NSIK LK: '%ULG30'
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Atraminis padas
+      classifications:
+        NSIK LF: A
+        NSIK LT: BB
+        NSIK LK: ULA
+        ISO81346 CF: A
+        ISO81346 CT: BB
+        ISO81346 CC: ULA
+      ifcType: *id029
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Polis
+      classifications:
+        NSIK LF: A
+        NSIK LT: BB
+        NSIK LK: ULC
+        ISO81346 CF: A
+        ISO81346 CT: BB
+        ISO81346 CC: ULC
+      ifcType: &id037
+      - IfcPile
+      - IfcPileType
+      stages:
+        s1: &id038
+          lod: 275
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Diameter: &id030
+              type: IfcLengthMeasure | IfcPositiveLengthMeasure
+              valueType: Skaičius
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+            VVK.MaterialClass: *id013
+        s2: &id039
+          lod: 200
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Diameter: *id030
+            Pset_QuantityTakeOff.Volume: *id006
+        s3: &id040
+          lod: 200
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Diameter: *id030
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+            VVK.MaterialClass: *id013
+            VVK.RelatedDrawing: *id010
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Weigth: *id011
+        s4: &id041
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Diameter: *id030
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+            VVK.MaterialClass: *id013
+            VVK.RelatedDrawing: *id010
+            VVK.Tag: *id012
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Weigth: *id011
+        s5: &id042
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Diameter: *id030
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+            VVK.MaterialClass: *id013
+            VVK.RelatedDrawing: *id010
+            VVK.Tag: *id012
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+        s6: &id043
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Diameter: *id030
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+            VVK.MaterialClass: *id013
+            VVK.RelatedDrawing: *id010
+            VVK.Tag: *id012
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+            Pset_Warranty.WarrantyStartDate: *id016
+            Pset_Warranty.WarrantyPeriod: *id017
+            Pset_Warranty.PointOfContact: *id018
+        s7: &id044
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Diameter: *id030
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+            VVK.MaterialClass: *id013
+            VVK.RelatedDrawing: *id010
+            VVK.Tag: *id012
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+            Pset_Warranty.WarrantyStartDate: *id016
+            Pset_Warranty.WarrantyPeriod: *id017
+            Pset_Warranty.PointOfContact: *id018
+    - id: Gruntinis inkaras
+      classifications:
+        NSIK LF: A
+        NSIK LT: BB
+        NSIK LK: ULF
+        ISO81346 CF: A
+        ISO81346 CT: BB
+        ISO81346 CC: ULF
+      reference: https://www.researchgate.net/publication/338082978_A_data_model_for_construction_pits
+      stages:
+        s1: &id031
+          lod: 275
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id012
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Diameter: *id030
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+        s3: &id032
+          lod: 300
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.RelatedDrawing: *id010
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Diameter: *id030
+            VVK.Material: *id008
+            Pset_QuantityTakeOff.Weigth: *id011
+        s4: &id033
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.RelatedDrawing: *id010
+            VVK.Tag: *id012
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Diameter: *id030
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+            VVK.MaterialClass: *id013
+            Pset_QuantityTakeOff.Weigth: *id011
+        s5: &id034
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.RelatedDrawing: *id010
+            VVK.Tag: *id012
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Diameter: *id030
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+            VVK.MaterialClass: *id013
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+        s6: &id035
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.RelatedDrawing: *id010
+            VVK.Tag: *id012
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Diameter: *id030
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+            VVK.MaterialClass: *id013
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+            Pset_Warranty.WarrantyStartDate: *id016
+            Pset_Warranty.WarrantyPeriod: *id017
+            Pset_Warranty.PointOfContact: *id018
+        s7: &id036
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.RelatedDrawing: *id010
+            VVK.Tag: *id012
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Diameter: *id030
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+            VVK.MaterialClass: *id013
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+            Pset_Warranty.WarrantyStartDate: *id016
+            Pset_Warranty.WarrantyPeriod: *id017
+            Pset_Warranty.PointOfContact: *id018
+    - id: Gruntinis inkaras
+      classifications:
+        NSIK LF: A
+        NSIK LT: BB
+        NSIK LK: '%ULF10'
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Pamatų blokas. Pamatų sistema
+      classifications:
+        NSIK LF: '%A20'
+        NSIK LT: BB
+        NSIK LK: ULG
+      ifcType: *id029
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Pamatų blokas. Pamatų sistema.
+      classifications:
+        NSIK LF: '%A20'
+        NSIK LT: BB
+        NSIK LK: '%ULG20'
+      ifcType: *id029
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Pamatų sistema. Polių rostverkas
+      classifications:
+        NSIK LF: '%A20'
+        NSIK LT: BB
+        NSIK LK: '%ULG30'
+      ifcType: *id037
+      stages:
+        s1: *id038
+        s2: *id039
+        s3: *id040
+        s4: *id041
+        s5: *id042
+        s6: *id043
+        s7: *id044
+    - id: Atraminis padas
+      classifications:
+        NSIK LF: '%A20'
+        NSIK LT: BB
+        NSIK LK: ULA
+      ifcType: *id029
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Polis
+      classifications:
+        NSIK LF: '%A20'
+        NSIK LT: BB
+        NSIK LK: ULC
+      ifcType: *id037
+      stages:
+        s1: *id038
+        s2: *id039
+        s3: *id040
+        s4: *id041
+        s5: *id042
+        s6: *id043
+        s7: *id044
+    - id: Gruntinis inkaras
+      classifications:
+        NSIK LF: '%A20'
+        NSIK LT: BB
+        NSIK LK: ULF
+      reference: https://www.researchgate.net/publication/338082978_A_data_model_for_construction_pits
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Gruntinis inkaras
+      classifications:
+        NSIK LF: '%A20'
+        NSIK LT: BB
+        NSIK LK: '%ULF10'
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Lauko siena
+      classifications:
+        NSIK LF: A
+        NSIK LT: BD
+        NSIK LK: ULM
+        ISO81346 CF: A
+        ISO81346 CT: BD
+        ISO81346 CC: ULM
+      ifcType: *id045
+      stages:
+        s1: *id046
+        s2: *id047
+        s3: *id048
+        s4: *id049
+        s5: *id050
+        s6: *id051
+        s7: *id052
+    - id: Polis (sudėtiniai pamatai)
+      deprecated:
+        code: 304
+        destination: A.BB.ULC
+        reason: Polis yra pamatų sistemos dalis
+      classifications:
+        NSIK LF: A
+        NSIK LT: AB
+        NSIK LK: ULC
+        ISO81346 CF: A
+        ISO81346 CT: AB
+        ISO81346 CC: ULC
+      ifcType: *id037
+      stages:
+        s1: *id038
+        s2: *id039
+        s3: *id040
+        s4: *id041
+        s5: *id042
+        s6: *id043
+        s7: *id044
+    - id: Polis (sienos)
+      deprecated:
+        code: 304
+        destination: A.BB.ULC
+        reason: Polis yra pamatų sistemos dalis
+      classifications:
+        NSIK LF: B
+        NSIK LT: AB
+        NSIK LK: ULC
+        ISO81346 CF: B
+        ISO81346 CT: AB
+        ISO81346 CC: ULC
+      ifcType: *id037
+      stages:
+        s1: *id038
+        s2: *id039
+        s3: *id040
+        s4: *id041
+        s5: *id042
+        s6: *id043
+        s7: *id044
+    - id: Polis (Pamatai)
+      deprecated:
+        code: 304
+        destination: A.BB.ULC
+        reason: Polis yra pamatų sistemos dalis
+      classifications:
+        NSIK LF: B
+        NSIK LT: BB
+        NSIK LK: ULC
+        ISO81346 CF: B
+        ISO81346 CT: BB
+        ISO81346 CC: ULC
+      ifcType: *id037
+      stages:
+        s1: *id038
+        s2: *id039
+        s3: *id040
+        s4: *id041
+        s5: *id042
+        s6: *id043
+        s7: *id044
+    - id: Gruntinis inkaras
+      deprecated:
+        code: 304
+        destination: A.BB.ULF
+        reason: Gruntinis inkaras yra pamatų sistemos dalis
+      classifications:
+        NSIK LF: B
+        NSIK LT: BB
+        NSIK LK: ULF
+        ISO81346 CF: B
+        ISO81346 CT: BB
+        ISO81346 CC: ULF
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Blokas
+      deprecated:
+        304: A.BB.ULG
+        reason: Pamatų blokas yra pamatų sistemos dalis
+      examples:
+      - Pamatų blokas
+      - Juostinis pamatas
+      classifications:
+        NSIK LF: B
+        NSIK LT: BB
+        NSIK LK: ULG
+        ISO81346 CF: B
+        ISO81346 CT: BB
+        ISO81346 CC: ULG
+      ifcType: *id029
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Rostverkas
+      deprecated:
+        304: A.BB.%ULG30
+        reason: Rostverkas yra pamatų sistemos dalis
+      classifications:
+        NSIK LF: B
+        NSIK LT: AB
+        NSIK LK: '%ULG30'
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Rostverkas (perdangai)
+      deprecated:
+        304: A.BB.%ULG30
+        reason: Rostverkas yra pamatų sistemos dalis
+      classifications:
+        NSIK LF: C
+        NSIK LT: AB
+        NSIK LK: '%ULG30'
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Atraminė siena
+      classifications:
+        NSIK LF: B
+        NSIK LT: AD
+        NSIK LK: ULL
+        ISO81346 CF: B
+        ISO81346 CT: AD
+        ISO81346 CC: ULL
+      ifcType: *id045
+      stages:
+        s1: *id046
+        s2: *id047
+        s3: *id048
+        s4: *id049
+        s5: *id050
+        s6: *id051
+        s7: *id052
+    - id: Atraminė siena. Pamatų sistema
+      classifications:
+        NSIK LF: B
+        NSIK LT: BB
+        NSIK LK: ULL
+        ISO81346 CF: B
+        ISO81346 CT: BB
+        ISO81346 CC: ULL
+      ifcType: *id045
+      stages:
+        s1: *id046
+        s2: *id047
+        s3: *id048
+        s4: *id049
+        s5: *id050
+        s6: *id051
+        s7: *id052
+    - id: Izoliacija. Sienų sistema
+      examples:
+      - šilumos izoliacija
+      - vėjo izoliacija
+      - garo izoliacija
+      classifications:
+        NSIK LF: B
+        NSIK LT: AD
+        NSIK LK: RQA
+        ISO81346 CF: B
+        ISO81346 CT: AD
+        ISO81346 CC: RQA
+      ifcType: &id093
+      - IfcCovering
+      - IfcCoveringType
+      - IfcCoveringTypeEnum
+      stages:
+        s1: &id086
+          lod: 275
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Thickness: &id053
+              type: IfcLengthMeasure | IfcPositiveLengthMeasure
+              valueType: Skaičius
+            VVK.Material: *id008
+        s2: &id087
+          lod: 200
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Thickness: *id053
+            Pset_QuantityTakeOff.Area: *id005
+        s3: &id088
+          lod: 200
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Thickness: *id053
+            Pset_QuantityTakeOff.Area: *id005
+            VVK.Material: *id008
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+        s4: &id089
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Thickness: *id053
+            VVK.Material: *id008
+            Pset_QuantityTakeOff.Area: *id005
+            VVK.MaterialClass: *id013
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+        s5: &id090
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Thickness: *id053
+            VVK.Material: *id008
+            Pset_QuantityTakeOff.Area: *id005
+            VVK.MaterialClass: *id013
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+            Pset_ManufacturerTypeInformation.ArticleNumber: &id054
+              valueType: Tekstas
+              type: IfcLabel
+        s6: &id091
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Thickness: *id053
+            VVK.Material: *id008
+            Pset_QuantityTakeOff.Area: *id005
+            VVK.MaterialClass: *id013
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+            Pset_ManufacturerTypeInformation.ArticleNumber: *id054
+            Pset_Warranty.WarrantyStartDate: *id016
+            Pset_Warranty.WarrantyPeriod: *id017
+            Pset_Warranty.PointOfContact: *id018
+        s7: &id092
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Thickness: *id053
+            VVK.Material: *id008
+            Pset_QuantityTakeOff.Area: *id005
+            VVK.MaterialClass: *id013
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+            Pset_ManufacturerTypeInformation.ArticleNumber: *id054
+            Pset_Warranty.WarrantyStartDate: *id016
+            Pset_Warranty.WarrantyPeriod: *id017
+            Pset_Warranty.PointOfContact: *id018
+    - id: Siena
+      deprecated: null
+      classifications:
+        NSIK LF: B
+        NSIK LT: AD
+        NSIK LK: ULM
+        ISO81346 CF: B
+        ISO81346 CT: AD
+        ISO81346 CC: ULM
+      ifcType: *id045
+      stages:
+        s1: *id046
+        s2: *id047
+        s3: *id048
+        s4: *id049
+        s5: *id050
+        s6: *id051
+        s7: *id052
+    - id: Siena
+      classifications:
+        NSIK LF: B
+        NSIK LT: BD
+        NSIK LK: ULM
+        ISO81346 CF: B
+        ISO81346 CT: BD
+        ISO81346 CC: ULM
+      ifcType: *id045
+      stages:
+        s1: *id046
+        s2: *id047
+        s3: *id048
+        s4: *id049
+        s5: *id050
+        s6: *id051
+        s7: *id052
+    - id: Santvara
+      classifications:
+        NSIK: B.BC.ULS
+        NSIK LF: B
+        NSIK LT: BC
+        NSIK LK: ULS
+        ISO81346 CF: B
+        ISO81346 CT: BC
+        ISO81346 CC: ULS
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Kolona
+      classifications:
+        NSIK LF: B
+        NSIK LT: BD
+        NSIK LK: ULD
+        ISO81346 CF: B
+        ISO81346 CT: BD
+        ISO81346 CC: ULD
+      ifcType: &id055
+      - IfcColumn
+      - IfcColumnType
+      stages:
+        s1: &id056
+          lod: 275
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Diameter: *id030
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+            VVK.MaterialClass: *id013
+        s2: &id057
+          lod: 200
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Diameter: *id030
+            Pset_QuantityTakeOff.Volume: *id006
+        s3: &id058
+          lod: 200
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Diameter: *id030
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+            VVK.MaterialClass: *id013
+            VVK.RelatedDrawing: *id010
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Weigth: *id011
+        s4: &id059
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Diameter: *id030
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+            VVK.MaterialClass: *id013
+            VVK.RelatedDrawing: *id010
+            VVK.Tag: *id012
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Weigth: *id011
+        s5: &id060
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Diameter: *id030
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+            VVK.MaterialClass: *id013
+            VVK.RelatedDrawing: *id010
+            VVK.Tag: *id012
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+        s6: &id061
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Diameter: *id030
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+            VVK.MaterialClass: *id013
+            VVK.RelatedDrawing: *id010
+            VVK.Tag: *id012
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+            Pset_Warranty.WarrantyStartDate: *id016
+            Pset_Warranty.WarrantyPeriod: *id017
+            Pset_Warranty.PointOfContact: *id018
+        s7: &id062
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Diameter: *id030
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+            VVK.MaterialClass: *id013
+            VVK.RelatedDrawing: *id010
+            VVK.Tag: *id012
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+            Pset_Warranty.WarrantyStartDate: *id016
+            Pset_Warranty.WarrantyPeriod: *id017
+            Pset_Warranty.PointOfContact: *id018
+    - id: Kolona
+      deprecated:
+        code: 304
+        destination: B.BD.ULD
+      classifications:
+        NSIK LF: B
+        NSIK LT: BJ
+        NSIK LK: ULD
+        ISO81346 CF: B
+        ISO81346 CT: BJ
+        ISO81346 CC: ULD
+      ifcType: *id055
+      stages:
+        s1: *id056
+        s2: *id057
+        s3: *id058
+        s4: *id059
+        s5: *id060
+        s6: *id061
+        s7: *id062
+    - id: Kolona
+      classifications:
+        NSIK LF: '%B20'
+        NSIK LT: BJ
+        NSIK LK: ULD
+      ifcType: *id055
+      stages:
+        s1: *id056
+        s2: *id057
+        s3: *id058
+        s4: *id059
+        s5: *id060
+        s6: *id061
+        s7: *id062
+    - id: Rėmas (rėminė sistema)
+      classifications:
+        NSIK LF: B
+        NSIK LT: BK
+        NSIK LK: UBF
+        ISO81346 CF: B
+        ISO81346 CT: BK
+        ISO81346 CC: UBF
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Sija sienoje
+      classifications:
+        NSIK LF: B
+        NSIK LT: AD
+        NSIK LK: ULE
+        ISO81346 CF: B
+        ISO81346 CT: AD
+        ISO81346 CC: ULE
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Sąrama
+      deprecated:
+        304: B.BD.ULE
+        reason: Sąrama yra perdangos, o ne sienos sistemos dalis
+      classifications:
+        NSIK LF: B
+        NSIK LT: BC
+        NSIK LK: ULE
+        ISO81346 CF: B
+        ISO81346 CT: BC
+        ISO81346 CC: ULE
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Sija
+      examples:
+      - Tarpaukštinės perdangos sija
+      - PETRA sija -Deltabeam sija
+      classifications:
+        NSIK LF: C
+        NSIK LT: BC
+        NSIK LK: ULE
+        ISO81346 CF: C
+        ISO81346 CT: BC
+        ISO81346 CC: ULE
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Plokštė
+      examples:
+      - Monolitinama perdanga
+      - lauko laiptų pamatinė plokštė
+      - perdangos plokštė
+      - polių galvena
+      classifications:
+        NSIK LF: C
+        NSIK LT: BC
+        NSIK LK: ULK
+        ISO81346 CF: C
+        ISO81346 CT: BC
+        ISO81346 CC: ULK
+      ifcType: *id029
+      stages:
+        s1: &id063
+          lod: 275
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Thickness: *id053
+            Pset_QuantityTakeOff.Volume: *id006
+            Pset_QuantityTakeOff.Area: *id005
+            VVK.Material: *id008
+            Pset_ElementComponentCommon.FireRating: *id007
+        s2: &id064
+          lod: 200
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Thickness: *id053
+            Pset_ElementComponentCommon.FireRating: *id007
+        s3: &id065
+          lod: 200
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Thickness: *id053
+            Pset_QuantityTakeOff.Volume: *id006
+            Pset_QuantityTakeOff.Area: *id005
+            VVK.Material: *id008
+            Pset_ElementComponentCommon.FireRating: *id007
+            VVK.RelatedDrawing: *id010
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Weigth: *id011
+        s4: &id066
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Thickness: *id053
+            Pset_QuantityTakeOff.Volume: *id006
+            Pset_QuantityTakeOff.Area: *id005
+            VVK.Material: *id008
+            Pset_ElementComponentCommon.FireRating: *id007
+            VVK.RelatedDrawing: *id010
+            VVK.Tag: *id012
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.MaterialClass: *id013
+        s5: &id067
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Thickness: *id053
+            Pset_QuantityTakeOff.Volume: *id006
+            Pset_QuantityTakeOff.Area: *id005
+            VVK.Material: *id008
+            Pset_ElementComponentCommon.FireRating: *id007
+            VVK.RelatedDrawing: *id010
+            VVK.Tag: *id012
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.MaterialClass: *id013
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+        s6: &id068
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Thickness: *id053
+            Pset_QuantityTakeOff.Volume: *id006
+            Pset_QuantityTakeOff.Area: *id005
+            VVK.Material: *id008
+            Pset_ElementComponentCommon.FireRating: *id007
+            VVK.RelatedDrawing: *id010
+            VVK.Tag: *id012
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.MaterialClass: *id013
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+            Pset_Warranty.WarrantyStartDate: *id016
+            Pset_Warranty.WarrantyPeriod: *id017
+            Pset_Warranty.PointOfContact: *id018
+        s7: &id069
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Thickness: *id053
+            Pset_QuantityTakeOff.Volume: *id006
+            Pset_QuantityTakeOff.Area: *id005
+            VVK.Material: *id008
+            Pset_ElementComponentCommon.FireRating: *id007
+            VVK.RelatedDrawing: *id010
+            VVK.Tag: *id012
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.MaterialClass: *id013
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+            Pset_Warranty.WarrantyStartDate: *id016
+            Pset_Warranty.WarrantyPeriod: *id017
+            Pset_Warranty.PointOfContact: *id018
+    - id: Plokštė
+      examples:
+      - Monolitinama perdanga
+      - lauko laiptų pamatinė plokštė
+      - perdangos plokštė
+      - polių galvena
+      classifications:
+        NSIK LF: C
+        NSIK LT: AC
+        NSIK LK: ULK
+        ISO81346 CF: C
+        ISO81346 CT: AC
+        ISO81346 CC: ULK
+      ifcType: *id029
+      stages:
+        s1: *id063
+        s2: *id064
+        s3: *id065
+        s4: *id066
+        s5: *id067
+        s6: *id068
+        s7: *id069
+    - id: Atraminė plokštelė
+      classifications:
+        NSIK LF: D
+        NSIK LT: BC
+        NSIK LK: ULQ
+      ifcType: &id070
+      - IfcPlate
+      - IfcPlateType
+      stages:
+        s1: &id071
+          lod: 275
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_ElementComponentCommon.Height: *id020
+            Pset_QuantityTakeOff.Volume: *id006
+            Pset_QuantityTakeOff.Area: *id005
+            VVK.Material: *id008
+        s2: &id072
+          lod: 200
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_ElementComponentCommon.Height: *id020
+        s3: &id073
+          lod: 200
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_ElementComponentCommon.Height: *id020
+            Pset_QuantityTakeOff.Volume: *id006
+            Pset_QuantityTakeOff.Area: *id005
+            VVK.Material: *id008
+            Pset_QuantityTakeOff.Weigth: *id011
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+        s4: &id074
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_ElementComponentCommon.Height: *id020
+            Pset_QuantityTakeOff.Volume: *id006
+            Pset_QuantityTakeOff.Area: *id005
+            VVK.Material: *id008
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.MaterialClass: *id013
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+        s5: &id075
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_ElementComponentCommon.Height: *id020
+            Pset_QuantityTakeOff.Volume: *id006
+            Pset_QuantityTakeOff.Area: *id005
+            VVK.Material: *id008
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.MaterialClass: *id013
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+        s6: &id076
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_ElementComponentCommon.Height: *id020
+            Pset_QuantityTakeOff.Volume: *id006
+            Pset_QuantityTakeOff.Area: *id005
+            VVK.Material: *id008
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.MaterialClass: *id013
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+            Pset_Warranty.WarrantyStartDate: *id016
+            Pset_Warranty.WarrantyPeriod: *id017
+            Pset_Warranty.PointOfContact: *id018
+        s7: &id077
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_ElementComponentCommon.Height: *id020
+            Pset_QuantityTakeOff.Volume: *id006
+            Pset_QuantityTakeOff.Area: *id005
+            VVK.Material: *id008
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.MaterialClass: *id013
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+            Pset_Warranty.WarrantyStartDate: *id016
+            Pset_Warranty.WarrantyPeriod: *id017
+            Pset_Warranty.PointOfContact: *id018
+    - id: Rėmas
+      classifications:
+        NSIK LF: B
+        NSIK LT: BD
+        NSIK LK: UNA
+        ISO81346 CF: B
+        ISO81346 CT: BD
+        ISO81346 CC: UNA
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Sąrama
+      classifications:
+        NSIK LF: B
+        NSIK LT: AD
+        NSIK LK: ULE
+        ISO81346 CF: B
+        ISO81346 CT: AD
+        ISO81346 CK: ULE
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Sąrama
+      classifications:
+        NSIK LF: B
+        NSIK LT: '%AD10'
+        NSIK LK: ULE
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Sąrama
+      classifications:
+        NSIK LF: B
+        NSIK LT: BD
+        NSIK LK: ULE
+        ISO81346 CF: B
+        ISO81346 CT: BD
+        ISO81346 CC: ULE
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Sąrama vidinėje mūrinėje sienoje
+      classifications:
+        NSIK LF: '%B30'
+        NSIK LT: '%AD10'
+        NSIK LK: ULE
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Perdangos plokštė
+      classifications:
+        NSIK: C.BC.ULK
+        NSIK LF: C
+        NSIK LT: BC
+        NSIK LK: ULK
+        ISO81346 CF: C
+        ISO81346 CT: BC
+        ISO81346 CC: ULK
+      ifcType: *id029
+      stages:
+        s1: *id063
+        s2: *id064
+        s3: *id065
+        s4: *id066
+        s5: *id067
+        s6: *id068
+        s7: *id069
+    - id: Baseino vonia
+      classifications:
+        NSIK: <L>C.BC.CLA
+        NSIK LF: C
+        NSIK LT: BC
+        NSIK LK: CLA
+        ISO81346 CF: C
+        ISO81346 CT: BC
+        ISO81346 CC: CLA
+      ifcType: *id029
+      stages:
+        s1: *id063
+        s2: *id064
+        s3: *id065
+        s4: *id066
+        s5: *id067
+        s6: *id068
+        s7: *id069
+    - id: Rezervuaras
+      classifications:
+        NSIK: <L>C.BC.CMA
+        NSIK LF: C
+        NSIK LT: BC
+        NSIK LK: CMA
+        ISO81346 CF: C
+        ISO81346 CT: BC
+        ISO81346 CC: CMA
+      ifcType: *id029
+      stages:
+        s1: *id063
+        s2: *id064
+        s3: *id065
+        s4: *id066
+        s5: *id067
+        s6: *id068
+        s7: *id069
+    - id: Atraminė plokštelė
+      classifications:
+        NSIK LF: C
+        NSIK LT: BC
+        NSIK LK: ULQ
+      ifcType: *id070
+      stages:
+        s1: *id071
+        s2: *id072
+        s3: *id073
+        s4: *id074
+        s5: *id075
+        s6: *id076
+        s7: *id077
+    - id: Gembė
+      classifications:
+        NSIK LF: C
+        NSIK LT: AC
+        NSIK LK: ULB
+        ISO81346 CF: C
+        ISO81346 CT: AC
+        ISO81346 CC: ULB
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Sija
+      classifications:
+        NSIK LF: C
+        NSIK LT: AC
+        NSIK LK: ULE
+        ISO81346 CF: C
+        ISO81346 CT: AC
+        ISO81346 CC: ULE
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Tarpinė laiptų aikštelė
+      classifications:
+        NSIK LF: C
+        NSIK LT: AF
+        NSIK LK: XSA
+        ISO81346 CF: C
+        ISO81346 CT: AF
+        ISO81346 CC: XSA
+      ifcType: *id029
+      stages:
+        s1: *id063
+        s2: *id064
+        s3: *id065
+        s4: *id066
+        s5: *id067
+        s6: *id068
+        s7: *id069
+    - id: Laiptatakis
+      classifications:
+        NSIK LF: C
+        NSIK LT: AF
+        NSIK LK: XSB
+        ISO81346 CF: C
+        ISO81346 CT: AF
+        ISO81346 CC: XSB
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Laiptasija
+      classifications:
+        NSIK LF: C
+        NSIK LT: AF
+        NSIK LK: UAD
+        ISO81346 CF: C
+        ISO81346 CT: AF
+        ISO81346 CC: UAD
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Pakopa
+      classifications:
+        NSIK LF: C
+        NSIK LT: AF
+        NSIK LK: UBC
+        ISO81346 CF: C
+        ISO81346 CT: AF
+        ISO81346 CC: UBC
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Sija
+      classifications:
+        NSIK LF: C
+        NSIK LT: AF
+        NSIK LK: ULE
+        ISO81346 CF: C
+        ISO81346 CT: AF
+        ISO81346 CC: ULE
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Tarpinė laiptų aikštelė
+      deprecated: null
+      classifications:
+        NSIK LF: '%C10'
+        NSIK LT: AF
+        NSIK LK: XSA
+      ifcType: *id029
+      stages:
+        s1: *id063
+        s2: *id064
+        s3: *id065
+        s4: *id066
+        s5: *id067
+        s6: *id068
+        s7: *id069
+    - id: Laiptatakis
+      deprecated: null
+      classifications:
+        NSIK LF: '%C10'
+        NSIK LT: AF
+        NSIK LK: XSB
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Laiptasija
+      deprecated: null
+      classifications:
+        NSIK LF: '%C10'
+        NSIK LT: AF
+        NSIK LK: UAD
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Pagrindo sluoksnis (konstrukcija ant grunto)
+      classifications:
+        NSIK LF: C
+        NSIK LT: CA
+        NSIK LK: ULA
+        ISO81346 CF: C
+        ISO81346 CT: CA
+        ISO81346 CC: ULA
+      ifcType: *id029
+      stages:
+        s1: *id063
+        s2: *id064
+        s3: *id065
+        s4: *id066
+        s5: *id067
+        s6: *id068
+        s7: *id069
+    - id: Pagrindo sluoksnis (konstrukcija ant grunto)
+      classifications:
+        NSIK LF: '%C10'
+        NSIK LT: CA
+        NSIK LK: ULA
+      ifcType: *id029
+      stages:
+        s1: *id063
+        s2: *id064
+        s3: *id065
+        s4: *id066
+        s5: *id067
+        s6: *id068
+        s7: *id069
+    - id: Tarpinė laiptų aikštelė
+      classifications:
+        NSIK LF: '%C20'
+        NSIK LT: AF
+        NSIK LK: XSA
+      ifcType: *id029
+      stages:
+        s1: *id063
+        s2: *id064
+        s3: *id065
+        s4: *id066
+        s5: *id067
+        s6: *id068
+        s7: *id069
+    - id: Laiptatakis
+      classifications:
+        NSIK LF: '%C20'
+        NSIK LT: AF
+        NSIK LK: XSB
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Laiptasija
+      classifications:
+        NSIK LF: '%C20'
+        NSIK LT: AF
+        NSIK LK: UAD
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Pakopa
+      classifications:
+        NSIK LF: '%C20'
+        NSIK LT: AF
+        NSIK LK: UBC
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Sija
+      classifications:
+        NSIK LF: '%C20'
+        NSIK LT: AF
+        NSIK LK: ULE
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Balkono gembė
+      classifications:
+        NSIK LF: C
+        NSIK LT: AH
+        NSIK LK: ULB
+        ISO81346 CF: C
+        ISO81346 CT: AH
+        ISO81346 CC: ULB
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Balkono sija
+      classifications:
+        NSIK LF: C
+        NSIK LT: AH
+        NSIK LK: ULE
+        ISO81346 CF: C
+        ISO81346 CT: AH
+        ISO81346 CC: ULE
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Balkono sija
+      classifications:
+        NSIK LF: '%C20'
+        NSIK LT: AH
+        NSIK LK: ULE
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Balkono plokštė
+      classifications:
+        NSIK LF: '%C20'
+        NSIK LT: AH
+        NSIK LK: ULK
+      ifcType: *id029
+      stages:
+        s1: *id063
+        s2: *id064
+        s3: *id065
+        s4: *id066
+        s5: *id067
+        s6: *id068
+        s7: *id069
+    - id: Balkono dangos pagrindas
+      classifications:
+        NSIK LF: '%C20'
+        NSIK LT: AH
+        NSIK LK: ULA
+      ifcType: *id029
+      stages:
+        s1: &id079
+          lod: 275
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Thickness: *id053
+            Pset_QuantityTakeOff.Volume: *id006
+            Pset_QuantityTakeOff.Area: *id005
+            VVK.Material: *id008
+            Pset_ElementComponentCommon.IsExternal: &id078
+              type: IfcBoolean
+              valueType: Loginis
+        s2: &id080
+          lod: 200
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Thickness: *id053
+            Pset_QuantityTakeOff.Area: *id005
+        s3: &id081
+          lod: 200
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Thickness: *id053
+            Pset_QuantityTakeOff.Volume: *id006
+            Pset_QuantityTakeOff.Area: *id005
+            VVK.Material: *id008
+            Pset_ElementComponentCommon.IsExternal: *id078
+            VVK.RelatedDrawing: *id010
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Weigth: *id011
+        s4: &id082
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Thickness: *id053
+            Pset_QuantityTakeOff.Volume: *id006
+            Pset_QuantityTakeOff.Area: *id005
+            VVK.Material: *id008
+            Pset_ElementComponentCommon.IsExternal: *id078
+            VVK.RelatedDrawing: *id010
+            VVK.Tag: *id012
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.MaterialClass: *id013
+        s5: &id083
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Thickness: *id053
+            Pset_QuantityTakeOff.Volume: *id006
+            Pset_QuantityTakeOff.Area: *id005
+            VVK.Material: *id008
+            Pset_ElementComponentCommon.IsExternal: *id078
+            VVK.RelatedDrawing: *id010
+            VVK.Tag: *id012
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.MaterialClass: *id013
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+        s6: &id084
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Thickness: *id053
+            Pset_QuantityTakeOff.Volume: *id006
+            Pset_QuantityTakeOff.Area: *id005
+            VVK.Material: *id008
+            Pset_ElementComponentCommon.IsExternal: *id078
+            VVK.RelatedDrawing: *id010
+            VVK.Tag: *id012
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.MaterialClass: *id013
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+            Pset_Warranty.WarrantyStartDate: *id016
+            Pset_Warranty.WarrantyPeriod: *id017
+            Pset_Warranty.PointOfContact: *id018
+        s7: &id085
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Thickness: *id053
+            Pset_QuantityTakeOff.Volume: *id006
+            Pset_QuantityTakeOff.Area: *id005
+            VVK.Material: *id008
+            Pset_ElementComponentCommon.IsExternal: *id078
+            VVK.RelatedDrawing: *id010
+            VVK.Tag: *id012
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.MaterialClass: *id013
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+            Pset_Warranty.WarrantyStartDate: *id016
+            Pset_Warranty.WarrantyPeriod: *id017
+            Pset_Warranty.PointOfContact: *id018
+    - id: Balkono grindų danga
+      deprecated: null
+      classifications:
+        NSIK LF: '%C20'
+        NSIK LT: AH
+        NSIK LK: NCC
+      ifcType: *id029
+      stages:
+        s1: *id079
+        s2: *id080
+        s3: *id081
+        s4: *id082
+        s5: *id083
+        s6: *id084
+        s7: *id085
+    - id: Perdangos sija
+      classifications:
+        NSIK LF: '%C20'
+        NSIK LT: BC
+        NSIK LK: ULE
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Perdangos plokštė
+      classifications:
+        NSIK LF: '%C20'
+        NSIK LT: BC
+        NSIK LK: ULK
+      ifcType: *id029
+      stages:
+        s1: *id063
+        s2: *id064
+        s3: *id065
+        s4: *id066
+        s5: *id067
+        s6: *id068
+        s7: *id069
+    - id: Pastogės grindų pagrindas
+      deprecated: null
+      classifications:
+        NSIK LF: '%C30'
+        NSIK LT: BF
+        NSIK LK: ULM
+      ifcType: *id029
+      stages:
+        s1: *id063
+        s2: *id064
+        s3: *id065
+        s4: *id066
+        s5: *id067
+        s6: *id068
+        s7: *id069
+    - id: Pastogės grindų danga
+      deprecated: null
+      classifications:
+        NSIK LF: '%C30'
+        NSIK LT: BF
+        NSIK LK: NCC
+      ifcType: *id029
+      stages:
+        s1: *id063
+        s2: *id064
+        s3: *id065
+        s4: *id066
+        s5: *id067
+        s6: *id068
+        s7: *id069
+    - id: Atraminė plokštelė. Atraminės sienos sistema
+      classifications:
+        NSIK LF: C
+        NSIK LT: '%CJ10'
+        NSIK LK: '%ULQ10'
+      ifcType: *id070
+      stages:
+        s1: *id071
+        s2: *id072
+        s3: *id073
+        s4: *id074
+        s5: *id075
+        s6: *id076
+        s7: *id077
+    - id: Pagrindo sluoksnis (grindų konstrukcija)
+      classifications:
+        NSIK LF: '%C10'
+        NSIK LT: BF
+        NSIK LK: ULA
+      ifcType: *id029
+      stages:
+        s1: *id063
+        s2: *id064
+        s3: *id065
+        s4: *id066
+        s5: *id067
+        s6: *id068
+        s7: *id069
+    - id: Pagrindo sluoksnis
+      classifications:
+        NSIK LF: '%C10'
+        NSIK LT: '%BF10'
+        NSIK LK: ULA
+      ifcType: *id029
+      stages:
+        s1: *id063
+        s2: *id064
+        s3: *id065
+        s4: *id066
+        s5: *id067
+        s6: *id068
+        s7: *id069
+    - id: Paruoštas natūralaus pagrindo sluoksnis
+      classifications:
+        NSIK LF: '%C10'
+        NSIK LT: '%BF10'
+        NSIK LK: '%ULA10'
+      stages:
+        s1:
+          lod: 275
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Thickness: *id053
+            VVK.Material: *id008
+        s2:
+          lod: 200
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Thickness: *id053
+            Pset_QuantityTakeOff.Area: *id005
+        s3:
+          lod: 200
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Thickness: *id053
+            Pset_QuantityTakeOff.Area: *id005
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+        s4:
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Thickness: *id053
+            VVK.Material: *id008
+            VVK.MaterialClass: *id013
+            Pset_QuantityTakeOff.Area: *id005
+            Pset_QuantityTakeOff.Volume: *id006
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+        s5:
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Thickness: *id053
+            VVK.Material: *id008
+            VVK.MaterialClass: *id013
+            Pset_QuantityTakeOff.Area: *id005
+            Pset_QuantityTakeOff.Volume: *id006
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+        s6:
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Thickness: *id053
+            VVK.Material: *id008
+            VVK.MaterialClass: *id013
+            Pset_QuantityTakeOff.Area: *id005
+            Pset_QuantityTakeOff.Volume: *id006
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+            Pset_Warranty.WarrantyStartDate: *id016
+            Pset_Warranty.WarrantyPeriod: *id017
+            Pset_Warranty.PointOfContact: *id018
+        s7:
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Thickness: *id053
+            VVK.Material: *id008
+            VVK.MaterialClass: *id013
+            Pset_QuantityTakeOff.Area: *id005
+            Pset_QuantityTakeOff.Volume: *id006
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+            Pset_Warranty.WarrantyStartDate: *id016
+            Pset_Warranty.WarrantyPeriod: *id017
+            Pset_Warranty.PointOfContact: *id018
+    - id: Pagrindo sluoksnis grindims ant standžios konstrukcijos
+      classifications:
+        NSIK LF: '%C10'
+        NSIK LT: '%BF30'
+        NSIK LK: ULA
+      ifcType: *id029
+      stages:
+        s1: *id063
+        s2: *id064
+        s3: *id065
+        s4: *id066
+        s5: *id067
+        s6: *id068
+        s7: *id069
+    - id: Paruoštas natūralaus pagrindo sluoksnis grindims ant standžios konstrukcijos
+      classifications:
+        NSIK LF: '%C10'
+        NSIK LT: '%BF30'
+        NSIK LK: '%ULA10'
+      stages:
+        s1: *id063
+        s2: *id064
+        s3: *id065
+        s4: *id066
+        s5: *id067
+        s6: *id068
+        s7: *id069
+    - id: Sija
+      classifications:
+        NSIK LF: '%C20'
+        NSIK LT: BC
+        NSIK LK: ULE
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Atraminė plokštelė
+      classifications:
+        NSIK LF: '%C30'
+        NSIK LT: '%BC10'
+        NSIK LK: '%ULQ10'
+      ifcType: *id070
+      stages:
+        s1: *id071
+        s2: *id072
+        s3: *id073
+        s4: *id074
+        s5: *id075
+        s6: *id076
+        s7: *id077
+    - id: Grindų dangos pagrindo konstrukcija grindims ant standžios konstrukcijos
+      examples:
+      - grindų pasluoksniai
+      classifications:
+        NSIK LF: '%C30'
+        NSIK LT: '%BF30'
+        NSIK LK: ULA
+      stages:
+        s1: *id063
+        s2: *id064
+        s3: *id065
+        s4: *id066
+        s5: *id067
+        s6: *id068
+        s7: *id069
+    - id: Stogo sija antresolėje
+      deprecated: null
+      classifications:
+        NSIK LF: '%C40'
+        NSIK LT: BE
+        NSIK LK: ULE
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Antersolės sija
+      classifications:
+        NSIK LF: '%C40'
+        NSIK LT: BC
+        NSIK LK: ULE
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Grindų dangos pasluoksnių konstrukcija
+      deprecated: null
+      examples:
+      - dangą laikanti konstrukciją, išskyrus perdangos plokštę
+      - išlyginamasis sluoksnis
+      classifications:
+        NSIK LF: C
+        NSIK LT: BF
+        NSIK LK: UMC
+        ISO81346 CF: C
+        ISO81346 CT: BF
+        ISO81346 CC: UMC
+      ifcType: *id029
+      stages:
+        s1: *id063
+        s2: *id064
+        s3: *id065
+        s4: *id066
+        s5: *id067
+        s6: *id068
+        s7: *id069
+    - id: Grindų dangos pagrindo konstrukcija
+      examples:
+      - grindų pasluoksniai
+      classifications:
+        NSIK LF: C
+        NSIK LT: BF
+        NSIK LK: ULA
+        ISO81346 CF: C
+        ISO81346 CT: BF
+        ISO81346 CC: ULA
+      ifcType: *id029
+      stages:
+        s1: *id063
+        s2: *id064
+        s3: *id065
+        s4: *id066
+        s5: *id067
+        s6: *id068
+        s7: *id069
+    - id: Pamato izoliacija
+      classifications:
+        NSIK LF: B
+        NSIK LT: BB
+        NSIK LK: RQA
+        ISO81346 CF: B
+        ISO81346 CT: BB
+        ISO81346 CC: RQA
+      ifcType: &id098
+      - IfcCovering
+      - IfcCoveringType
+      - IfcCoveringTypeEnum
+      stages:
+        s1: *id086
+        s2: *id087
+        s3: *id088
+        s4: *id089
+        s5: *id090
+        s6: *id091
+        s7: *id092
+    - id: Templė. Sienų sistema
+      classifications:
+        NSIK LF: B
+        NSIK LT: BD
+        NSIK LK: ULF
+        ISO81346 CF: B
+        ISO81346 CT: BD
+        ISO81346 CC: ULF
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Stogo plokštė
+      classifications:
+        NSIK LF: D
+        NSIK LT: BE
+        NSIK LK: ULK
+        ISO81346 CF: D
+        ISO81346 CT: BE
+        ISO81346 CC: ULK
+      ifcType: *id029
+      stages:
+        s1: *id063
+        s2: *id064
+        s3: *id065
+        s4: *id066
+        s5: *id067
+        s6: *id068
+        s7: *id069
+    - id: Stogo kolona
+      classifications:
+        NSIK LF: D
+        NSIK LT: BE
+        NSIK LK: ULD
+        ISO81346 CF: D
+        ISO81346 CT: BE
+        ISO81346 CC: ULD
+      ifcType: *id055
+      stages:
+        s1: *id056
+        s2: *id057
+        s3: *id058
+        s4: *id059
+        s5: *id060
+        s6: *id061
+        s7: *id062
+    - id: Stogo sija
+      examples:
+      - Gegnė
+      classifications:
+        NSIK LF: D
+        NSIK LT: BE
+        NSIK LK: ULE
+        ISO81346 CF: D
+        ISO81346 CT: BE
+        ISO81346 CC: ULE
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Klijuotos medienos stogo sija
+      classifications:
+        NSIK LF: D
+        NSIK LT: BE
+        NSIK LK: '%ULE13'
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Stogo danga
+      classifications:
+        NSIK LF: D
+        NSIK LT: BE
+        NSIK LK: FSD
+        ISO81346 CF: D
+        ISO81346 CT: BE
+        ISO81346 CC: FSD
+      ifcType: *id093
+      stages:
+        s1: &id099
+          lod: 275
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementCommon.System: &id094
+              valueType: Tekstas
+              type: IfcLabel
+            Pset_ElementComponentCommon.Thickness: *id053
+            Pset_QuantityTakeOff.Area: *id005
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+            VVK.Finish: &id095
+              valueType: Tekstas
+              type: IfcLabel
+            VVK.Colour: &id096
+              valueType: Tekstas
+              type: IfcLabel
+            Pset_ElementComponentCommon.FireRating: *id007
+            Pset_ElementComponentCommon.FlammabilityRating: &id097
+              valueType: Tekstas
+              type: IfcLabel
+        s2: &id100
+          lod: 200
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Thickness: *id053
+            Pset_QuantityTakeOff.Area: *id005
+            Pset_QuantityTakeOff.Volume: *id006
+        s3: &id101
+          lod: 200
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementCommon.System: *id094
+            Pset_ElementComponentCommon.Thickness: *id053
+            Pset_QuantityTakeOff.Area: *id005
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+            VVK.Finish: *id095
+            VVK.Colour: *id096
+            Pset_ElementComponentCommon.FireRating: *id007
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+        s4: &id102
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementCommon.System: *id094
+            Pset_ElementComponentCommon.Thickness: *id053
+            Pset_QuantityTakeOff.Area: *id005
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+            VVK.Finish: *id095
+            VVK.Colour: *id096
+            Pset_ElementComponentCommon.FireRating: *id007
+            Pset_ElementComponentCommon.FlammabilityRating: *id097
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+        s5: &id103
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementCommon.System: *id094
+            Pset_ElementComponentCommon.Thickness: *id053
+            Pset_QuantityTakeOff.Area: *id005
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+            VVK.Finish: *id095
+            VVK.Colour: *id096
+            Pset_ElementComponentCommon.FireRating: *id007
+            Pset_ElementComponentCommon.FlammabilityRating: *id097
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+            Pset_ManufacturerTypeInformation.ArticleNumber: *id054
+        s6: &id104
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementCommon.System: *id094
+            Pset_ElementComponentCommon.Thickness: *id053
+            Pset_QuantityTakeOff.Area: *id005
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+            VVK.Finish: *id095
+            VVK.Colour: *id096
+            Pset_ElementComponentCommon.FireRating: *id007
+            Pset_ElementComponentCommon.FlammabilityRating: *id097
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+            Pset_ManufacturerTypeInformation.ArticleNumber: *id054
+            Pset_Warranty.WarrantyStartDate: *id016
+            Pset_Warranty.WarrantyPeriod: *id017
+            Pset_Warranty.PointOfContact: *id018
+        s7: &id105
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementCommon.System: *id094
+            Pset_ElementComponentCommon.Thickness: *id053
+            Pset_QuantityTakeOff.Area: *id005
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+            VVK.Finish: *id095
+            VVK.Colour: *id096
+            Pset_ElementComponentCommon.FireRating: *id007
+            Pset_ElementComponentCommon.FlammabilityRating: *id097
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+            Pset_ManufacturerTypeInformation.ArticleNumber: *id054
+            Pset_Warranty.WarrantyStartDate: *id016
+            Pset_Warranty.WarrantyPeriod: *id017
+            Pset_Warranty.PointOfContact: *id018
+    - id: Stogo santvara
+      classifications:
+        NSIK LF: D
+        NSIK LT: BE
+        NSIK LK: ULS
+        ISO81346 CF: D
+        ISO81346 CT: BE
+        ISO81346 CC: ULS
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Mūrlotas
+      classifications:
+        NSIK LF: D
+        NSIK LT: BE
+        NSIK LK: ULQ
+        ISO81346 CF: D
+        ISO81346 CT: BE
+        ISO81346 CC: ULQ
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Stogo atraminė plokštelė
+      classifications:
+        NSIK LF: D
+        NSIK LT: BE
+        NSIK LK: UPA
+        ISO81346 CF: D
+        ISO81346 CT: BE
+        ISO81346 CC: UPA
+      ifcType: *id070
+      stages:
+        s1: *id071
+        s2: *id072
+        s3: *id073
+        s4: *id074
+        s5: *id075
+        s6: *id076
+        s7: *id077
+    - id: Stogo atraminė plokštelė
+      classifications:
+        NSIK LF: D
+        NSIK LT: BE
+        NSIK LK: '%UPA10'
+      ifcType: *id070
+      stages:
+        s1: *id071
+        s2: *id072
+        s3: *id073
+        s4: *id074
+        s5: *id075
+        s6: *id076
+        s7: *id077
+    - id: Stogo templė
+      examples:
+      - Styga
+      classifications:
+        NSIK LF: D
+        NSIK LT: BE
+        NSIK LK: ULF
+        ISO81346 CF: D
+        ISO81346 CT: BE
+        ISO81346 CC: ULF
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Stogo izoliacija
+      classifications:
+        NSIK LF: D
+        NSIK LT: BE
+        NSIK LK: RQA
+        ISO81346 CF: D
+        ISO81346 CT: BE
+        ISO81346 CC: RQA
+      ifcType: *id098
+      stages:
+        s1: *id086
+        s2: *id087
+        s3: *id088
+        s4: *id089
+        s5: *id090
+        s6: *id091
+        s7: *id092
+    - id: Stogo plokštė
+      deprecated: null
+      classifications:
+        NSIK LF: D
+        NSIK LT: AE
+        NSIK LK: ULK
+        ISO81346 CF: D
+        ISO81346 CT: AE
+        ISO81346 CC: ULK
+      ifcType: *id029
+      stages:
+        s1: *id063
+        s2: *id064
+        s3: *id065
+        s4: *id066
+        s5: *id067
+        s6: *id068
+        s7: *id069
+    - id: Šlaitinio stogo danga
+      deprecated: null
+      classifications:
+        NSIK LF: D
+        NSIK LT: '%AE20'
+        NSIK LK: FSD
+        ISO81346 CF: D
+        ISO81346 CT: AE
+        ISO81346 CC: FSD
+      ifcType: *id093
+      stages:
+        s1: *id099
+        s2: *id100
+        s3: *id101
+        s4: *id102
+        s5: *id103
+        s6: *id104
+        s7: *id105
+    - id: Templė
+      deprecated: null
+      examples:
+      - Styga
+      classifications:
+        NSIK LF: D
+        NSIK LT: '%AE20'
+        NSIK LK: ULF
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Stogo santvara
+      deprecated: null
+      classifications:
+        NSIK LF: D
+        NSIK LT: AE
+        NSIK LK: UBF
+        ISO81346 CF: D
+        ISO81346 CT: AE
+        ISO81346 CC: UBF
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Stogo santvara
+      deprecated: null
+      classifications:
+        NSIK LF: D
+        NSIK LT: '%AE10'
+        NSIK LK: UBF
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Gegnė
+      deprecated: null
+      classifications:
+        NSIK LF: D
+        NSIK LT: AE
+        NSIK LK: ULE
+        ISO81346 CF: D
+        ISO81346 CT: AE
+        ISO81346 CC: ULE
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Gegnė sijinio stogo sistemoje
+      deprecated: null
+      classifications:
+        NSIK LF: D
+        NSIK LT: '%AE20'
+        NSIK LK: ULE
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Kolona stogo konstrukcijoje
+      deprecated: null
+      classifications:
+        NSIK LF: D
+        NSIK LT: BE
+        NSIK LK: UBD
+        ISO81346 CF: D
+        ISO81346 CT: BE
+        ISO81346 CC: UBD
+      ifcType: *id055
+      stages:
+        s1: *id056
+        s2: *id057
+        s3: *id058
+        s4: *id059
+        s5: *id060
+        s6: *id061
+        s7: *id062
+    - id: Mūrlotas
+      deprecated: null
+      classifications:
+        NSIK LF: D
+        NSIK LT: AE
+        NSIK LK: ULQ
+        ISO81346 CF: D
+        ISO81346 CT: AE
+        ISO81346 CC: ULQ
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Mūrlotas
+      deprecated: null
+      classifications:
+        NSIK LF: D
+        NSIK LT: '%AE20'
+        NSIK LK: ULQ
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Šlaitinio stogo konstrukcija. Stogo plokštė
+      classifications:
+        NSIK LF: '%D10'
+        NSIK LT: BE
+        NSIK LK: ULK
+      ifcType: *id029
+      stages:
+        s1: *id063
+        s2: *id064
+        s3: *id065
+        s4: *id066
+        s5: *id067
+        s6: *id068
+        s7: *id069
+    - id: Šlaitinio stogo konstrukcija. Kolona
+      classifications:
+        NSIK LF: '%D10'
+        NSIK LT: BE
+        NSIK LK: ULD
+      ifcType: *id055
+      stages:
+        s1: *id056
+        s2: *id057
+        s3: *id058
+        s4: *id059
+        s5: *id060
+        s6: *id061
+        s7: *id062
+    - id: Šlaitinio stogo konstrukcija. Sija
+      classifications:
+        NSIK LF: '%D10'
+        NSIK LT: BE
+        NSIK LK: ULE
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Šlaitinio stogo konstrukcija. Klijuotos medienos stogo sija
+      classifications:
+        NSIK LF: '%D10'
+        NSIK LT: BE
+        NSIK LK: '%ULE13'
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Šlaitinio stogo konstrukcija. Santvara
+      classifications:
+        NSIK LF: '%D10'
+        NSIK LT: BE
+        NSIK LK: ULS
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Šlaitinio stogo konstrukcija. Mūrlotas
+      classifications:
+        NSIK LF: '%D10'
+        NSIK LT: BE
+        NSIK LK: ULQ
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Šlaitinio stogo konstrukcija. Atraminė plokštelė
+      classifications:
+        NSIK LF: '%D10'
+        NSIK LT: BE
+        NSIK LK: UPA
+      ifcType: *id070
+      stages:
+        s1: *id071
+        s2: *id072
+        s3: *id073
+        s4: *id074
+        s5: *id075
+        s6: *id076
+        s7: *id077
+    - id: Šlaitinio stogo konstrukcija. Atraminė plokštelė
+      classifications:
+        NSIK LF: '%D10'
+        NSIK LT: BE
+        NSIK LK: '%UPA10'
+      ifcType: *id070
+      stages:
+        s1: *id071
+        s2: *id072
+        s3: *id073
+        s4: *id074
+        s5: *id075
+        s6: *id076
+        s7: *id077
+    - id: Šlaitinio stogo konstrukcija. Templė
+      examples:
+      - Styga
+      classifications:
+        NSIK LF: '%D10'
+        NSIK LT: BE
+        NSIK LK: ULF
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Šlaitinio stogo konstrukcija. Izoliacija
+      classifications:
+        NSIK LF: '%D10'
+        NSIK LT: BE
+        NSIK LK: RQA
+      ifcType: *id098
+      stages:
+        s1: *id086
+        s2: *id087
+        s3: *id088
+        s4: *id089
+        s5: *id090
+        s6: *id091
+        s7: *id092
+    - id: Stogo plokštė. Sijinė šlaitinio stogo konstrukcija
+      classifications:
+        NSIK LF: '%D10'
+        NSIK LT: '%BE20'
+        NSIK LK: ULK
+      ifcType: *id029
+      stages:
+        s1: *id063
+        s2: *id064
+        s3: *id065
+        s4: *id066
+        s5: *id067
+        s6: *id068
+        s7: *id069
+    - id: Kolona. Sijinė šlaitinio stogo konstrukcija
+      classifications:
+        NSIK LF: '%D10'
+        NSIK LT: '%BE20'
+        NSIK LK: ULD
+      ifcType: *id055
+      stages:
+        s1: *id056
+        s2: *id057
+        s3: *id058
+        s4: *id059
+        s5: *id060
+        s6: *id061
+        s7: *id062
+    - id: Sija. Sijinė šlaitinio stogo konstrukcija
+      classifications:
+        NSIK LF: '%D10'
+        NSIK LT: '%BE20'
+        NSIK LK: ULE
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Klijuotos medienos sija. Sijinė šlaitinio stogo konstrukcija
+      classifications:
+        NSIK LF: '%D10'
+        NSIK LT: '%BE20'
+        NSIK LK: '%ULE13'
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Santvara. Šlaitinio stogo konstrukcija
+      classifications:
+        NSIK LF: '%D10'
+        NSIK LT: '%BE20'
+        NSIK LK: ULS
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Mūrlotas. Šlaitinio stogo konstrukcija
+      classifications:
+        NSIK LF: '%D10'
+        NSIK LT: '%BE20'
+        NSIK LK: ULQ
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Atraminė plokštelė. Sijinė šlaitinio stogo konstrukcija
+      classifications:
+        NSIK LF: '%D10'
+        NSIK LT: '%BE20'
+        NSIK LK: UPA
+      ifcType: *id070
+      stages:
+        s1: *id071
+        s2: *id072
+        s3: *id073
+        s4: *id074
+        s5: *id075
+        s6: *id076
+        s7: *id077
+    - id: Atraminė plokštelė. Sijinė šlaitinio stogo konstrukcija
+      classifications:
+        NSIK LF: '%D10'
+        NSIK LT: '%BE20'
+        NSIK LK: '%UPA10'
+      ifcType: *id070
+      stages:
+        s1: *id071
+        s2: *id072
+        s3: *id073
+        s4: *id074
+        s5: *id075
+        s6: *id076
+        s7: *id077
+    - id: Templė. Sijinė šlaitinio stogo konstrukcija
+      examples:
+      - Styga
+      classifications:
+        NSIK LF: '%D10'
+        NSIK LT: '%BE20'
+        NSIK LK: ULF
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Izoliacija. Sijinė šlaitinio stogo konstrukcija
+      classifications:
+        NSIK LF: '%D10'
+        NSIK LT: '%BE20'
+        NSIK LK: RQA
+      ifcType: *id098
+      stages:
+        s1: *id086
+        s2: *id087
+        s3: *id088
+        s4: *id089
+        s5: *id090
+        s6: *id091
+        s7: *id092
+    - id: Klijuotos medienos sija. Sijinė stogo konstrukcija
+      deprecated: null
+      classifications:
+        NSIK LF: '%D10'
+        NSIK LT: '%AE20'
+        NSIK LK: '%ULE13'
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Atitvara, turėklas
+      deprecated: null
+      classifications:
+        NSIK LF: P
+        NSIK LT: AD
+        NSIK LK: FQD
+      ifcType:
+      - IfcBeam
+      - IfcBeamType
+      stages:
+        s1: &id106
+          lod: 275
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id012
+            Pset_ElementComponentCommon.Height: *id020
+            Pset_QuantityTakeOff.Length: *id019
+            VVK.Material: *id008
+        s2: &id107
+          lod: 275
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Height: *id020
+            Pset_QuantityTakeOff.Length: *id019
+        s3: &id108
+          lod: 300
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Height: *id020
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.Material: *id008
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+        s4: &id109
+          lod: 350
+          log: 3
+          properties:
+            s1: *id106
+            s2: *id107
+            s3: *id108
+            s4: *id109
+            s5: &id110
+              lod: 350
+              log: 3
+              properties:
+                s1: *id106
+                s2: *id107
+                s3: *id108
+                s4: *id109
+                s5: *id110
+                s6: &id111
+                  lod: 350
+                  log: 3
+                  properties:
+                    s1: *id106
+                    s2: *id107
+                    s3: *id108
+                    s4: *id109
+                    s5: *id110
+                    s6: *id111
+                    s7: &id112
+                      lod: 350
+                      log: 3
+                      properties:
+                        s1: *id106
+                        s2: *id107
+                        s3: *id108
+                        s4: *id109
+                        s5: *id110
+                        s6: *id111
+                        s7: *id112
+                        VVK.MaterialClass: *id013
+                        Pset_QuantityTakeOff.Weigth: *id011
+                        Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+                        VVK.RelatedDocumentationURI: *id014
+                        Pset_ManufacturerTypeInformation.Manufacturer: *id015
+                        Pset_Warranty.WarrantyStartDate: *id016
+                        Pset_Warranty.WarrantyPeriod: *id017
+                        Pset_Warranty.PointOfContact: *id018
+                    VVK.MaterialClass: *id013
+                    Pset_QuantityTakeOff.Weigth: *id011
+                    Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+                    VVK.RelatedDocumentationURI: *id014
+                    Pset_ManufacturerTypeInformation.Manufacturer: *id015
+                    Pset_Warranty.WarrantyStartDate: *id016
+                    Pset_Warranty.WarrantyPeriod: *id017
+                    Pset_Warranty.PointOfContact: *id018
+                s7: *id112
+                VVK.MaterialClass: *id013
+                Pset_QuantityTakeOff.Weigth: *id011
+                Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+                VVK.RelatedDocumentationURI: *id014
+                Pset_ManufacturerTypeInformation.Manufacturer: *id015
+            s6: *id111
+            s7: *id112
+            VVK.MaterialClass: *id013
+            Pset_QuantityTakeOff.Weigth: *id011
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+        s5: *id110
+        s6: *id111
+        s7: *id112
+    - id: Sija
+      deprecated: null
+      classifications:
+        NSIK LF: P
+        NSIK LT: AD
+        NSIK LK: ULE
+      ifcType: *id028
+      stages:
+        s1: *id021
+        s2: *id022
+        s3: *id023
+        s4: *id024
+        s5: *id025
+        s6: *id026
+        s7: *id027
+    - id: Rostverkas ar galvena elektros stulpams
+      classifications:
+        NSIK LF: K
+        NSIK LT: BH
+        NSIK LK: ULG
+        ISO81346 CF: K
+        ISO81346 CT: BH
+        ISO81346 CC: ULG
+      stages:
+        s1: &id113
+          lod: 275
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_QuantityTakeOff.Area: *id005
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+        s2: &id114
+          lod: 200
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_QuantityTakeOff.Area: *id005
+            Pset_QuantityTakeOff.Volume: *id006
+        s3: &id115
+          lod: 200
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.RelatedDrawing: *id010
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Weigth: *id011
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_QuantityTakeOff.Area: *id005
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+        s4: &id116
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.RelatedDrawing: *id010
+            VVK.Tag: *id012
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_QuantityTakeOff.Area: *id005
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.MaterialClass: *id013
+        s5: &id117
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.RelatedDrawing: *id010
+            VVK.Tag: *id012
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_QuantityTakeOff.Area: *id005
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.MaterialClass: *id013
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+        s6: &id118
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.RelatedDrawing: *id010
+            VVK.Tag: *id012
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_QuantityTakeOff.Area: *id005
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.MaterialClass: *id013
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+            Pset_Warranty.WarrantyStartDate: *id016
+            Pset_Warranty.WarrantyPeriod: *id017
+            Pset_Warranty.PointOfContact: *id018
+        s7: &id119
+          lod: 350
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.RelatedDrawing: *id010
+            VVK.Tag: *id012
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_QuantityTakeOff.Area: *id005
+            Pset_QuantityTakeOff.Volume: *id006
+            VVK.Material: *id008
+            Pset_QuantityTakeOff.Weigth: *id011
+            VVK.MaterialClass: *id013
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+            Pset_Warranty.WarrantyStartDate: *id016
+            Pset_Warranty.WarrantyPeriod: *id017
+            Pset_Warranty.PointOfContact: *id018
+    - id: Rostverkas ar galvena elektros stulpams
+      classifications:
+        NSIK LF: K
+        NSIK LT: BH
+        NSIK LK: '%ULG30'
+      stages:
+        s1: *id113
+        s2: *id114
+        s3: *id115
+        s4: *id116
+        s5: *id117
+        s6: *id118
+        s7: *id119
+    - id: Polis elektros stulpui
+      classifications:
+        NSIK LF: K
+        NSIK LT: BH
+        NSIK LK: ULC
+        ISO81346 CF: K
+        ISO81346 CT: BH
+        ISO81346 CC: ULC
+      stages:
+        s1: *id038
+        s2: *id039
+        s3: *id040
+        s4: *id041
+        s5: *id042
+        s6: *id043
+        s7: *id044
+    - id: Stulpas elektros tiekimo sistemoms
+      examples:
+      - Šviestuvo stulpas
+      - Kontaktinio tinklo stulpas
+      classifications:
+        NSIK LF: K
+        NSIK LT: BH
+        NSIK LK: UBD
+        ISO81346 CF: K
+        ISO81346 CT: BH
+        ISO81346 CC: UBD
+      stages:
+        s1: *id056
+        s2: *id057
+        s3: *id058
+        s4: *id059
+        s5: *id060
+        s6: *id061
+        s7: *id062
+    - id: Stulpas apsaugos ir saugos sistemoms
+      examples:
+      - Stulpas vaizdo stebėjimo kamerai
+      - Šviesofore stulpas
+      classifications:
+        NSIK LF: P
+        NSIK LT: BH
+        NSIK LK: UBD
+        ISO81346 CF: P
+        ISO81346 CT: BH
+        ISO81346 CC: UBD
+      stages:
+        s1: *id056
+        s2: *id057
+        s3: *id058
+        s4: *id059
+        s5: *id060
+        s6: *id061
+        s7: *id062
+    - id: Sienų montažinės detalės
+      classifications:
+        NSIK LF: B
+        NSIK LT: AD
+        NSIK LK: UQA
+      stages:
+        s1: &id120
+          lod: 275
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_ElementComponentCommon.Height: *id020
+            VVK.Material: *id008
+        s3: &id121
+          lod: 200
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_ElementComponentCommon.Height: *id020
+            VVK.Material: *id008
+        s4: &id122
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_ElementComponentCommon.Height: *id020
+            VVK.Material: *id008
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            VVK.Tag: *id012
+        s5: &id123
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_ElementComponentCommon.Height: *id020
+            VVK.Material: *id008
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            VVK.Tag: *id012
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+            Pset_ManufacturerTypeInformation.ArticleNumber: *id054
+        s6: &id124
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_ElementComponentCommon.Height: *id020
+            VVK.Material: *id008
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            VVK.Tag: *id012
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+            Pset_ManufacturerTypeInformation.ArticleNumber: *id054
+            Pset_Warranty.WarrantyStartDate: *id016
+            Pset_Warranty.WarrantyPeriod: *id017
+            Pset_Warranty.PointOfContact: *id018
+        s7: &id125
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id019
+            Pset_ElementComponentCommon.Width: *id004
+            Pset_ElementComponentCommon.Height: *id020
+            VVK.Material: *id008
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            VVK.Tag: *id012
+            VVK.RelatedDocumentationURI: *id014
+            Pset_ManufacturerTypeInformation.Manufacturer: *id015
+            Pset_ManufacturerTypeInformation.ArticleNumber: *id054
+            Pset_Warranty.WarrantyStartDate: *id016
+            Pset_Warranty.WarrantyPeriod: *id017
+            Pset_Warranty.PointOfContact: *id018
+    - id: Perdangų monatažinės detalės
+      classifications:
+        NSIK LF: C
+        NSIK LT: BC
+        NSIK LK: UQA
+      stages:
+        s1: *id120
+        s3: *id121
+        s4: *id122
+        s5: *id123
+        s6: *id124
+        s7: *id125
+    - id: Stogo montažinės detalės
+      classifications:
+        NSIK LF: D
+        NSIK LT: BE
+        NSIK LK: UQA
+      stages:
+        s1: *id120
+        s3: *id121
+        s4: *id122
+        s5: *id123
+        s6: *id124
+        s7: *id125
+    - id: Sienų montažinės detalės
+      deprecated: null
+      classifications:
+        NSIK LF: B
+        NSIK LT: AD
+        NSIK LK: UQA
+      stages:
+        s1: *id120
+        s3: *id121
+        s4: *id122
+        s5: *id123
+        s6: *id124
+        s7: *id125
+    - id: Perdangų monatažinės detalės
+      deprecated: null
+      classifications:
+        NSIK LF: C
+        NSIK LT: AC
+        NSIK LK: UQA
+      stages:
+        s1: *id120
+        s3: *id121
+        s4: *id122
+        s5: *id123
+        s6: *id124
+        s7: *id125
+    - id: Stogo montažinės detalės
+      deprecated: null
+      classifications:
+        NSIK LF: D
+        NSIK LT: AE
+        NSIK LK: UQA
+      stages:
+        s1: *id120
+        s3: *id121
+        s4: *id122
+        s5: *id123
+        s6: *id124
+        s7: *id125
