@@ -2,6 +2,7 @@ version: 0.1a
 full_name: VVK EIR Specification
 email: bim@vilniausvystymas.lt
 identifier: VVK
+project: null
 loin:
   VN.N:
     id: '07.03'
@@ -553,7 +554,7 @@ loin:
         NSIK LT: JD
         NSIK LK: XMC
         Uniclass Pr: Pr_60_50
-      ifcType: &id076
+      ifcType: &id078
       - IfcTank
       - IfcTankType
       - IfcTankTypeEnum
@@ -597,7 +598,7 @@ loin:
         ISO81346 CC: GPA
       ifcType: *id035
       stages:
-        s1: &id077
+        s1: &id079
           lod: 275
           log: 3
           properties:
@@ -627,7 +628,10 @@ loin:
             Pset_ElectricalDeviceCommon.NominalFrequency: &id040
               valueType: Tekstas
               ifcType: IfcLabel
-            Pset_ElectricalDeviceCommon.InsulationStandardClass: &id041
+            Pset_ElectricalDeviceCommon.NumberOfPhases: &id041
+              valueType: Skaičius
+              ifcType: IfcInteger
+            Pset_ElectricalDeviceCommon.InsulationStandardClass: &id042
               valueType: Tekstas
               ifcType: IfcLabel
               allowedValues:
@@ -635,25 +639,25 @@ loin:
               - I
               - II
               - III
-            Pset_ElectricalDeviceCommon.IP_Code: &id042
+            Pset_ElectricalDeviceCommon.IP_Code: &id043
               valueType: Tekstas
               ifcType: IfcLabel
-            Pset_QuantityTakeOff.Weigth: &id043
+            Pset_QuantityTakeOff.Weigth: &id044
               type: IfcMassMeasure
               valueType: Skaičius
-            Pset_ElementComponentCommon.VolumetricFlowRate: &id044
+            Pset_ElementComponentCommon.VolumetricFlowRate: &id045
               valueType: Skaičius
               ifcType: IfcVolumetricFlowRateMeasure
               description: Srauto tūris per laiko vientą, m³/h
             Pset_ElementComponentCommon.IsExternal: *id010
-        s3: &id078
+        s3: &id080
           lod: 200
           log: 2
           properties:
             VVK.Name: *id001
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
-            VVK.RelatedDrawing: &id045
+            VVK.RelatedDrawing: &id046
               valueType: Tekstas
               type: IfcLabel
             VVK.Tag: *id009
@@ -670,12 +674,13 @@ loin:
             Pset_ElementComponentCommon.HasProtectiveEarth: *id038
             Pset_ElectricalDeviceCommon.NominalVoltage: *id039
             Pset_ElectricalDeviceCommon.NominalFrequency: *id040
-            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id041
-            Pset_ElectricalDeviceCommon.IP_Code: *id042
-            Pset_QuantityTakeOff.Weigth: *id043
-            Pset_ElementComponentCommon.VolumetricFlowRate: *id044
+            Pset_ElectricalDeviceCommon.NumberOfPhases: *id041
+            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id042
+            Pset_ElectricalDeviceCommon.IP_Code: *id043
+            Pset_QuantityTakeOff.Weigth: *id044
+            Pset_ElementComponentCommon.VolumetricFlowRate: *id045
             Pset_ElementComponentCommon.IsExternal: *id010
-        s4: &id079
+        s4: &id081
           lod: 300
           log: 3
           properties:
@@ -690,9 +695,9 @@ loin:
             Pset_ElementComponentCommon.Diameter: *id026
             Pset_QuantityTakeOff.Volume: *id036
             VVK.Material: *id008
-            VVK.RelatedDrawing: *id045
+            VVK.RelatedDrawing: *id046
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
-        s5: &id080
+        s5: &id082
           lod: 300
           log: 3
           properties:
@@ -707,52 +712,23 @@ loin:
             Pset_ElementComponentCommon.Diameter: *id026
             Pset_QuantityTakeOff.Volume: *id036
             VVK.Material: *id008
-            VVK.RelatedDrawing: *id045
+            VVK.RelatedDrawing: *id046
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
             Pset_ElementComponentCommon.NominalDiameter: *id007
             Pset_ElectricalDeviceCommon.NominalPowerConsumption: *id037
             Pset_ElementComponentCommon.HasProtectiveEarth: *id038
             Pset_ElectricalDeviceCommon.NominalVoltage: *id039
             Pset_ElectricalDeviceCommon.NominalFrequency: *id040
-            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id041
-            Pset_ElectricalDeviceCommon.IP_Code: *id042
-            Pset_QuantityTakeOff.Weigth: *id043
-            Pset_ElementComponentCommon.VolumetricFlowRate: *id044
-            Pset_ElementComponentCommon.IsExternal: *id010
-            VVK.RelatedDocumentationURI: *id011
-            Pset_ManufacturerTypeInformation.Manufacturer: *id012
-            Pset_ManufacturerTypeInformation.ArticleNumber: *id013
-        s6: &id081
-          lod: 300
-          log: 3
-          properties:
-            VVK.Name: *id001
-            VVK.ElementType: *id002
-            Pset_ElementComponentCommon.Status: *id003
-            VVK.Tag: *id009
-            Pset_ElementCommon.System: *id025
-            Pset_QuantityTakeOff.Length: *id004
-            Pset_ElementComponentCommon.Width: *id005
-            Pset_ElementComponentCommon.Height: *id006
-            Pset_ElementComponentCommon.Diameter: *id026
-            Pset_QuantityTakeOff.Volume: *id036
-            VVK.Material: *id008
-            VVK.RelatedDrawing: *id045
-            Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
-            Pset_ElementComponentCommon.NominalDiameter: *id007
-            Pset_ElectricalDeviceCommon.NominalPowerConsumption: *id037
-            Pset_ElementComponentCommon.HasProtectiveEarth: *id038
-            Pset_ElectricalDeviceCommon.NominalVoltage: *id039
-            Pset_ElectricalDeviceCommon.NominalFrequency: *id040
-            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id041
-            Pset_ElectricalDeviceCommon.IP_Code: *id042
-            Pset_QuantityTakeOff.Weigth: *id043
-            Pset_ElementComponentCommon.VolumetricFlowRate: *id044
+            Pset_ElectricalDeviceCommon.NumberOfPhases: *id041
+            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id042
+            Pset_ElectricalDeviceCommon.IP_Code: *id043
+            Pset_QuantityTakeOff.Weigth: *id044
+            Pset_ElementComponentCommon.VolumetricFlowRate: *id045
             Pset_ElementComponentCommon.IsExternal: *id010
             VVK.RelatedDocumentationURI: *id011
             Pset_ManufacturerTypeInformation.Manufacturer: *id012
             Pset_ManufacturerTypeInformation.ArticleNumber: *id013
-        s7: &id082
+        s6: &id083
           lod: 300
           log: 3
           properties:
@@ -767,17 +743,49 @@ loin:
             Pset_ElementComponentCommon.Diameter: *id026
             Pset_QuantityTakeOff.Volume: *id036
             VVK.Material: *id008
-            VVK.RelatedDrawing: *id045
+            VVK.RelatedDrawing: *id046
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
             Pset_ElementComponentCommon.NominalDiameter: *id007
             Pset_ElectricalDeviceCommon.NominalPowerConsumption: *id037
             Pset_ElementComponentCommon.HasProtectiveEarth: *id038
             Pset_ElectricalDeviceCommon.NominalVoltage: *id039
             Pset_ElectricalDeviceCommon.NominalFrequency: *id040
-            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id041
-            Pset_ElectricalDeviceCommon.IP_Code: *id042
-            Pset_QuantityTakeOff.Weigth: *id043
-            Pset_ElementComponentCommon.VolumetricFlowRate: *id044
+            Pset_ElectricalDeviceCommon.NumberOfPhases: *id041
+            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id042
+            Pset_ElectricalDeviceCommon.IP_Code: *id043
+            Pset_QuantityTakeOff.Weigth: *id044
+            Pset_ElementComponentCommon.VolumetricFlowRate: *id045
+            Pset_ElementComponentCommon.IsExternal: *id010
+            VVK.RelatedDocumentationURI: *id011
+            Pset_ManufacturerTypeInformation.Manufacturer: *id012
+            Pset_ManufacturerTypeInformation.ArticleNumber: *id013
+        s7: &id084
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id009
+            Pset_ElementCommon.System: *id025
+            Pset_QuantityTakeOff.Length: *id004
+            Pset_ElementComponentCommon.Width: *id005
+            Pset_ElementComponentCommon.Height: *id006
+            Pset_ElementComponentCommon.Diameter: *id026
+            Pset_QuantityTakeOff.Volume: *id036
+            VVK.Material: *id008
+            VVK.RelatedDrawing: *id046
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
+            Pset_ElementComponentCommon.NominalDiameter: *id007
+            Pset_ElectricalDeviceCommon.NominalPowerConsumption: *id037
+            Pset_ElementComponentCommon.HasProtectiveEarth: *id038
+            Pset_ElectricalDeviceCommon.NominalVoltage: *id039
+            Pset_ElectricalDeviceCommon.NominalFrequency: *id040
+            Pset_ElectricalDeviceCommon.NumberOfPhases: *id041
+            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id042
+            Pset_ElectricalDeviceCommon.IP_Code: *id043
+            Pset_QuantityTakeOff.Weigth: *id044
+            Pset_ElementComponentCommon.VolumetricFlowRate: *id045
             Pset_ElementComponentCommon.IsExternal: *id010
             VVK.RelatedDocumentationURI: *id011
             Pset_ManufacturerTypeInformation.Manufacturer: *id012
@@ -791,11 +799,11 @@ loin:
         ISO81346 CT: JD
         ISO81346 CC: WPA
         Uniclass Pr: Pr_65_52_63
-      ifcType: &id048
+      ifcType: &id049
       - IfcPipeSegment
       - IfcPipeSegmentType
       stages:
-        s1: &id049
+        s1: &id050
           lod: 275
           log: 3
           properties:
@@ -805,10 +813,10 @@ loin:
             Pset_ElementCommon.System: *id025
             Pset_QuantityTakeOff.Length: *id004
             Pset_ElementComponentCommon.NominalDiameter: *id007
-            Pset_ElementComponentCommon.PressureClass: &id046
+            Pset_ElementComponentCommon.PressureClass: &id047
               valueType: String
             VVK.Material: *id008
-            Pset_ElementComponentCommon.StiffnessClass: &id047
+            Pset_ElementComponentCommon.StiffnessClass: &id048
               valueType: String
               ifcType: IfcLabel`
               allowedValues:
@@ -828,10 +836,10 @@ loin:
               - SN 12
               - SN 14
               - SN 16
-        s2: &id050
+        s2: &id051
           lod: 200
           log: 2
-        s3: &id051
+        s3: &id052
           lod: 200
           log: 2
           properties:
@@ -841,11 +849,11 @@ loin:
             Pset_ElementCommon.System: *id025
             Pset_QuantityTakeOff.Length: *id004
             Pset_ElementComponentCommon.NominalDiameter: *id007
-            Pset_ElementComponentCommon.PressureClass: *id046
+            Pset_ElementComponentCommon.PressureClass: *id047
             VVK.Material: *id008
-            Pset_ElementComponentCommon.StiffnessClass: *id047
+            Pset_ElementComponentCommon.StiffnessClass: *id048
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
-        s4: &id052
+        s4: &id053
           lod: 300
           log: 2
           properties:
@@ -855,11 +863,11 @@ loin:
             Pset_ElementCommon.System: *id025
             Pset_QuantityTakeOff.Length: *id004
             Pset_ElementComponentCommon.NominalDiameter: *id007
-            Pset_ElementComponentCommon.PressureClass: *id046
+            Pset_ElementComponentCommon.PressureClass: *id047
             VVK.Material: *id008
-            Pset_ElementComponentCommon.StiffnessClass: *id047
+            Pset_ElementComponentCommon.StiffnessClass: *id048
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
-        s5: &id053
+        s5: &id054
           lod: 300
           log: 2
           properties:
@@ -869,13 +877,13 @@ loin:
             Pset_ElementCommon.System: *id025
             Pset_QuantityTakeOff.Length: *id004
             Pset_ElementComponentCommon.NominalDiameter: *id007
-            Pset_ElementComponentCommon.PressureClass: *id046
+            Pset_ElementComponentCommon.PressureClass: *id047
             VVK.Material: *id008
-            Pset_ElementComponentCommon.StiffnessClass: *id047
+            Pset_ElementComponentCommon.StiffnessClass: *id048
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
             VVK.RelatedDocumentationURI: *id011
             Pset_ManufacturerTypeInformation.Manufacturer: *id012
-        s6: &id054
+        s6: &id055
           lod: 300
           log: 2
           properties:
@@ -885,16 +893,16 @@ loin:
             Pset_ElementCommon.System: *id025
             Pset_QuantityTakeOff.Length: *id004
             Pset_ElementComponentCommon.NominalDiameter: *id007
-            Pset_ElementComponentCommon.PressureClass: *id046
+            Pset_ElementComponentCommon.PressureClass: *id047
             VVK.Material: *id008
-            Pset_ElementComponentCommon.StiffnessClass: *id047
+            Pset_ElementComponentCommon.StiffnessClass: *id048
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
             VVK.RelatedDocumentationURI: *id011
             Pset_ManufacturerTypeInformation.Manufacturer: *id012
             Pset_Warranty.WarrantyStartDate: *id014
             Pset_Warranty.WarrantyPeriod: *id015
             Pset_Warranty.PointOfContact: *id016
-        s7: &id055
+        s7: &id056
           lod: 300
           log: 2
           properties:
@@ -904,9 +912,9 @@ loin:
             Pset_ElementCommon.System: *id025
             Pset_QuantityTakeOff.Length: *id004
             Pset_ElementComponentCommon.NominalDiameter: *id007
-            Pset_ElementComponentCommon.PressureClass: *id046
+            Pset_ElementComponentCommon.PressureClass: *id047
             VVK.Material: *id008
-            Pset_ElementComponentCommon.StiffnessClass: *id047
+            Pset_ElementComponentCommon.StiffnessClass: *id048
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
             VVK.RelatedDocumentationURI: *id011
             Pset_ManufacturerTypeInformation.Manufacturer: *id012
@@ -924,15 +932,15 @@ loin:
         ISO81346 CT: JD
         ISO81346 CC: WMF
         Uniclass Pr: Pr_65_52_63
-      ifcType: *id048
+      ifcType: *id049
       stages:
-        s1: *id049
-        s2: *id050
-        s3: *id051
-        s4: *id052
-        s5: *id053
-        s6: *id054
-        s7: *id055
+        s1: *id050
+        s2: *id051
+        s3: *id052
+        s4: *id053
+        s5: *id054
+        s6: *id055
+        s7: *id056
     - id: Lietaus nuotekų surinkimo latakas
       classifications:
         NSIK LF: G
@@ -941,9 +949,9 @@ loin:
         ISO81346 CF: G
         ISO81346 CT: JD
         ISO81346 CC: WMB
-      ifcType: *id048
+      ifcType: *id049
       stages:
-        s1: &id141
+        s1: &id142
           lod: 275
           log: 3
           properties:
@@ -955,10 +963,10 @@ loin:
             Pset_ElementComponentCommon.Width: *id005
             Pset_ElementComponentCommon.Height: *id006
             VVK.Material: *id008
-        s2: &id142
+        s2: &id143
           lod: 200
           log: 2
-        s3: &id143
+        s3: &id144
           lod: 200
           log: 2
           properties:
@@ -971,7 +979,7 @@ loin:
             Pset_ElementComponentCommon.Height: *id006
             VVK.Material: *id008
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
-        s4: &id144
+        s4: &id145
           lod: 300
           log: 2
           properties:
@@ -984,7 +992,7 @@ loin:
             Pset_ElementComponentCommon.Height: *id006
             VVK.Material: *id008
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
-        s5: &id145
+        s5: &id146
           lod: 300
           log: 2
           properties:
@@ -1000,7 +1008,7 @@ loin:
             VVK.RelatedDocumentationURI: *id011
             Pset_ManufacturerTypeInformation.Manufacturer: *id012
             Pset_ManufacturerTypeInformation.ArticleNumber: *id013
-        s6: &id146
+        s6: &id147
           lod: 300
           log: 2
           properties:
@@ -1019,7 +1027,7 @@ loin:
             Pset_Warranty.WarrantyStartDate: *id014
             Pset_Warranty.WarrantyPeriod: *id015
             Pset_Warranty.PointOfContact: *id016
-        s7: &id147
+        s7: &id148
           lod: 300
           log: 2
           properties:
@@ -1048,12 +1056,12 @@ loin:
         ISO81346 CF: G
         ISO81346 CT: JD
         ISO81346 CC: FSD
-      ifcType: &id072
+      ifcType: &id074
       - IfcCovering
       - IfcCoveringType
       - IfcCoveringTypeEnum
       stages:
-        s1: &id084
+        s1: &id086
           lod: 275
           log: 3
           properties:
@@ -1065,7 +1073,7 @@ loin:
             Pset_ElementComponentCommon.Height: *id006
             VVK.Material: *id008
             Pset_ElementCommon.System: *id025
-        s3: &id085
+        s3: &id087
           lod: 200
           log: 2
           properties:
@@ -1077,7 +1085,7 @@ loin:
             Pset_ElementComponentCommon.Width: *id005
             Pset_ElementComponentCommon.Height: *id006
             VVK.Material: *id008
-        s4: &id086
+        s4: &id088
           lod: 300
           log: 3
           properties:
@@ -1091,7 +1099,7 @@ loin:
             Pset_ElementCommon.System: *id025
             VVK.Tag: *id009
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
-        s5: &id087
+        s5: &id089
           lod: 300
           log: 3
           properties:
@@ -1108,7 +1116,7 @@ loin:
             VVK.RelatedDocumentationURI: *id011
             Pset_ManufacturerTypeInformation.Manufacturer: *id012
             Pset_ManufacturerTypeInformation.ArticleNumber: *id013
-        s6: &id088
+        s6: &id090
           lod: 300
           log: 3
           properties:
@@ -1128,7 +1136,7 @@ loin:
             Pset_Warranty.WarrantyStartDate: *id014
             Pset_Warranty.WarrantyPeriod: *id015
             Pset_Warranty.PointOfContact: *id016
-        s7: &id089
+        s7: &id091
           lod: 300
           log: 3
           properties:
@@ -1156,7 +1164,7 @@ loin:
         ISO81346 CF: G
         ISO81346 CT: JD
         ISO81346 CC: GPA
-      ifcType: &id119
+      ifcType: &id120
         2x3:
         - IfcFlowController
         - IfcFlowControllerType
@@ -1169,7 +1177,7 @@ loin:
         - IfcFlowControllerType
         - IfcFlowControllerTypeEnum
       stages:
-        s1: &id120
+        s1: &id121
           lod: 200
           log: 2
           properties:
@@ -1184,12 +1192,13 @@ loin:
             Pset_ElementComponentCommon.HasProtectiveEarth: *id038
             Pset_ElectricalDeviceCommon.NominalVoltage: *id039
             Pset_ElectricalDeviceCommon.NominalFrequency: *id040
-            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id041
-            Pset_ElectricalDeviceCommon.IP_Code: *id042
-            Pset_QuantityTakeOff.Weigth: *id043
-            Pset_ElementComponentCommon.VolumetricFlowRate: *id044
+            Pset_ElectricalDeviceCommon.NumberOfPhases: *id041
+            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id042
+            Pset_ElectricalDeviceCommon.IP_Code: *id043
+            Pset_QuantityTakeOff.Weigth: *id044
+            Pset_ElementComponentCommon.VolumetricFlowRate: *id045
             Pset_ElementComponentCommon.IsExternal: *id010
-        s3: &id121
+        s3: &id122
           log: 2
           lod: 300
           properties:
@@ -1204,13 +1213,14 @@ loin:
             Pset_ElementComponentCommon.HasProtectiveEarth: *id038
             Pset_ElectricalDeviceCommon.NominalVoltage: *id039
             Pset_ElectricalDeviceCommon.NominalFrequency: *id040
-            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id041
-            Pset_ElectricalDeviceCommon.IP_Code: *id042
-            Pset_QuantityTakeOff.Weigth: *id043
-            Pset_ElementComponentCommon.VolumetricFlowRate: *id044
+            Pset_ElectricalDeviceCommon.NumberOfPhases: *id041
+            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id042
+            Pset_ElectricalDeviceCommon.IP_Code: *id043
+            Pset_QuantityTakeOff.Weigth: *id044
+            Pset_ElementComponentCommon.VolumetricFlowRate: *id045
             Pset_ElementComponentCommon.IsExternal: *id010
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
-        s4: &id122
+        s4: &id123
           log: 3
           lod: 300
           properties:
@@ -1225,13 +1235,14 @@ loin:
             Pset_ElementComponentCommon.HasProtectiveEarth: *id038
             Pset_ElectricalDeviceCommon.NominalVoltage: *id039
             Pset_ElectricalDeviceCommon.NominalFrequency: *id040
-            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id041
-            Pset_ElectricalDeviceCommon.IP_Code: *id042
-            Pset_QuantityTakeOff.Weigth: *id043
-            Pset_ElementComponentCommon.VolumetricFlowRate: *id044
+            Pset_ElectricalDeviceCommon.NumberOfPhases: *id041
+            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id042
+            Pset_ElectricalDeviceCommon.IP_Code: *id043
+            Pset_QuantityTakeOff.Weigth: *id044
+            Pset_ElementComponentCommon.VolumetricFlowRate: *id045
             Pset_ElementComponentCommon.IsExternal: *id010
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
-        s5: &id123
+        s5: &id124
           log: 3
           lod: 300
           properties:
@@ -1246,16 +1257,17 @@ loin:
             Pset_ElementComponentCommon.HasProtectiveEarth: *id038
             Pset_ElectricalDeviceCommon.NominalVoltage: *id039
             Pset_ElectricalDeviceCommon.NominalFrequency: *id040
-            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id041
-            Pset_ElectricalDeviceCommon.IP_Code: *id042
-            Pset_QuantityTakeOff.Weigth: *id043
-            Pset_ElementComponentCommon.VolumetricFlowRate: *id044
+            Pset_ElectricalDeviceCommon.NumberOfPhases: *id041
+            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id042
+            Pset_ElectricalDeviceCommon.IP_Code: *id043
+            Pset_QuantityTakeOff.Weigth: *id044
+            Pset_ElementComponentCommon.VolumetricFlowRate: *id045
             Pset_ElementComponentCommon.IsExternal: *id010
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
             VVK.RelatedDocumentationURI: *id011
             Pset_ManufacturerTypeInformation.Manufacturer: *id012
             Pset_ManufacturerTypeInformation.ArticleNumber: *id013
-        s6: &id124
+        s6: &id125
           log: 3
           lod: 350
           properties:
@@ -1270,10 +1282,11 @@ loin:
             Pset_ElementComponentCommon.HasProtectiveEarth: *id038
             Pset_ElectricalDeviceCommon.NominalVoltage: *id039
             Pset_ElectricalDeviceCommon.NominalFrequency: *id040
-            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id041
-            Pset_ElectricalDeviceCommon.IP_Code: *id042
-            Pset_QuantityTakeOff.Weigth: *id043
-            Pset_ElementComponentCommon.VolumetricFlowRate: *id044
+            Pset_ElectricalDeviceCommon.NumberOfPhases: *id041
+            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id042
+            Pset_ElectricalDeviceCommon.IP_Code: *id043
+            Pset_QuantityTakeOff.Weigth: *id044
+            Pset_ElementComponentCommon.VolumetricFlowRate: *id045
             Pset_ElementComponentCommon.IsExternal: *id010
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
             VVK.RelatedDocumentationURI: *id011
@@ -1282,7 +1295,7 @@ loin:
             Pset_Warranty.WarrantyStartDate: *id014
             Pset_Warranty.WarrantyPeriod: *id015
             Pset_Warranty.PointOfContact: *id016
-        s7: &id125
+        s7: &id126
           log: 3
           lod: 350
           properties:
@@ -1297,10 +1310,11 @@ loin:
             Pset_ElementComponentCommon.HasProtectiveEarth: *id038
             Pset_ElectricalDeviceCommon.NominalVoltage: *id039
             Pset_ElectricalDeviceCommon.NominalFrequency: *id040
-            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id041
-            Pset_ElectricalDeviceCommon.IP_Code: *id042
-            Pset_QuantityTakeOff.Weigth: *id043
-            Pset_ElementComponentCommon.VolumetricFlowRate: *id044
+            Pset_ElectricalDeviceCommon.NumberOfPhases: *id041
+            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id042
+            Pset_ElectricalDeviceCommon.IP_Code: *id043
+            Pset_QuantityTakeOff.Weigth: *id044
+            Pset_ElementComponentCommon.VolumetricFlowRate: *id045
             Pset_ElementComponentCommon.IsExternal: *id010
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
             VVK.RelatedDocumentationURI: *id011
@@ -1318,12 +1332,12 @@ loin:
         ISO81346 CF: G
         ISO81346 CT: JD
         ISO81346 CC: HQB
-      ifcType: &id056
+      ifcType: &id057
       - IfcFlowController
       - IfcFlowControllerType
       - IfcFlowControllerTypeEnum
       stages:
-        s1: &id057
+        s1: &id058
           log: 3
           lod: 275
           properties:
@@ -1335,7 +1349,7 @@ loin:
             VVK.Material: *id008
             Pset_ElementComponentCommon.IsExternal: *id010
             VVK.Tag: *id009
-        s3: &id058
+        s3: &id059
           log: 2
           lod: 200
           properties:
@@ -1348,7 +1362,7 @@ loin:
             Pset_ElementComponentCommon.IsExternal: *id010
             VVK.Tag: *id009
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
-        s4: &id059
+        s4: &id060
           log: 3
           lod: 300
           properties:
@@ -1361,7 +1375,7 @@ loin:
             Pset_ElementComponentCommon.IsExternal: *id010
             VVK.Tag: *id009
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
-        s5: &id060
+        s5: &id061
           log: 3
           lod: 300
           properties:
@@ -1377,7 +1391,7 @@ loin:
             VVK.RelatedDocumentationURI: *id011
             Pset_ManufacturerTypeInformation.Manufacturer: *id012
             Pset_ManufacturerTypeInformation.ArticleNumber: *id013
-        s6: &id061
+        s6: &id062
           log: 3
           lod: 300
           properties:
@@ -1396,7 +1410,7 @@ loin:
             Pset_Warranty.WarrantyStartDate: *id014
             Pset_Warranty.WarrantyPeriod: *id015
             Pset_Warranty.PointOfContact: *id016
-        s7: &id062
+        s7: &id063
           log: 3
           lod: 300
           properties:
@@ -1424,14 +1438,14 @@ loin:
         ISO81346 CF: G
         ISO81346 CT: JD
         ISO81346 CC: RMB
-      ifcType: *id056
+      ifcType: *id057
       stages:
-        s1: *id057
-        s3: *id058
-        s4: *id059
-        s5: *id060
-        s6: *id061
-        s7: *id062
+        s1: *id058
+        s3: *id059
+        s4: *id060
+        s5: *id061
+        s6: *id062
+        s7: *id063
     - id: Priešgaisrinė sandarinanti apkaba
       examples:
       - Priešgaisrinė mova
@@ -1442,7 +1456,7 @@ loin:
         ISO81346 CF: G
         ISO81346 CT: JD
         ISO81346 CC: FMG
-      ifcType: &id071
+      ifcType: &id073
       - IfcPlate
       - IfcPlateType
       stages:
@@ -1459,7 +1473,7 @@ loin:
             VVK.Material: *id008
             Pset_ElementComponentCommon.IsExternal: *id010
             VVK.Tag: *id009
-            Pset_ElementComponentCommon.FireRating: &id063
+            Pset_ElementComponentCommon.FireRating: &id064
               valueType: Tekstas
               type: IfcLabel
         s3:
@@ -1475,7 +1489,7 @@ loin:
             VVK.Material: *id008
             Pset_ElementComponentCommon.IsExternal: *id010
             VVK.Tag: *id009
-            Pset_ElementComponentCommon.FireRating: *id063
+            Pset_ElementComponentCommon.FireRating: *id064
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
         s4:
           log: 3
@@ -1490,7 +1504,7 @@ loin:
             VVK.Material: *id008
             Pset_ElementComponentCommon.IsExternal: *id010
             VVK.Tag: *id009
-            Pset_ElementComponentCommon.FireRating: *id063
+            Pset_ElementComponentCommon.FireRating: *id064
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
         s5:
           log: 3
@@ -1505,7 +1519,7 @@ loin:
             VVK.Material: *id008
             Pset_ElementComponentCommon.IsExternal: *id010
             VVK.Tag: *id009
-            Pset_ElementComponentCommon.FireRating: *id063
+            Pset_ElementComponentCommon.FireRating: *id064
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
             VVK.RelatedDocumentationURI: *id011
             Pset_ManufacturerTypeInformation.Manufacturer: *id012
@@ -1523,7 +1537,7 @@ loin:
             VVK.Material: *id008
             Pset_ElementComponentCommon.IsExternal: *id010
             VVK.Tag: *id009
-            Pset_ElementComponentCommon.FireRating: *id063
+            Pset_ElementComponentCommon.FireRating: *id064
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
             VVK.RelatedDocumentationURI: *id011
             Pset_ManufacturerTypeInformation.Manufacturer: *id012
@@ -1544,7 +1558,7 @@ loin:
             VVK.Material: *id008
             Pset_ElementComponentCommon.IsExternal: *id010
             VVK.Tag: *id009
-            Pset_ElementComponentCommon.FireRating: *id063
+            Pset_ElementComponentCommon.FireRating: *id064
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
             VVK.RelatedDocumentationURI: *id011
             Pset_ManufacturerTypeInformation.Manufacturer: *id012
@@ -1560,9 +1574,9 @@ loin:
         ISO81346 CF: G
         ISO81346 CT: JD
         ISO81346 CC: RMD
-      ifcType: *id056
+      ifcType: *id057
       stages:
-        s1: &id064
+        s1: &id065
           log: 3
           lod: 275
           properties:
@@ -1573,7 +1587,7 @@ loin:
             Pset_ElementComponentCommon.NominalDiameter: *id007
             VVK.Material: *id008
             Pset_ElementComponentCommon.IsExternal: *id010
-        s3: &id065
+        s3: &id066
           log: 2
           lod: 200
           properties:
@@ -1585,7 +1599,7 @@ loin:
             VVK.Material: *id008
             Pset_ElementComponentCommon.IsExternal: *id010
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
-        s4: &id066
+        s4: &id067
           log: 3
           lod: 300
           properties:
@@ -1597,21 +1611,7 @@ loin:
             VVK.Material: *id008
             Pset_ElementComponentCommon.IsExternal: *id010
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
-        s5: &id067
-          log: 3
-          lod: 300
-          properties:
-            VVK.Name: *id001
-            VVK.ElementType: *id002
-            Pset_ElementComponentCommon.Status: *id003
-            Pset_ElementCommon.System: *id025
-            Pset_ElementComponentCommon.NominalDiameter: *id007
-            VVK.Material: *id008
-            Pset_ElementComponentCommon.IsExternal: *id010
-            Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
-            VVK.RelatedDocumentationURI: *id011
-            Pset_ManufacturerTypeInformation.Manufacturer: *id012
-        s6: &id068
+        s5: &id068
           log: 3
           lod: 300
           properties:
@@ -1625,10 +1625,7 @@ loin:
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
             VVK.RelatedDocumentationURI: *id011
             Pset_ManufacturerTypeInformation.Manufacturer: *id012
-            Pset_Warranty.WarrantyStartDate: *id014
-            Pset_Warranty.WarrantyPeriod: *id015
-            Pset_Warranty.PointOfContact: *id016
-        s7: &id069
+        s6: &id069
           log: 3
           lod: 300
           properties:
@@ -1645,6 +1642,54 @@ loin:
             Pset_Warranty.WarrantyStartDate: *id014
             Pset_Warranty.WarrantyPeriod: *id015
             Pset_Warranty.PointOfContact: *id016
+        s7: &id070
+          log: 3
+          lod: 300
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementCommon.System: *id025
+            Pset_ElementComponentCommon.NominalDiameter: *id007
+            VVK.Material: *id008
+            Pset_ElementComponentCommon.IsExternal: *id010
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
+            VVK.RelatedDocumentationURI: *id011
+            Pset_ManufacturerTypeInformation.Manufacturer: *id012
+            Pset_Warranty.WarrantyStartDate: *id014
+            Pset_Warranty.WarrantyPeriod: *id015
+            Pset_Warranty.PointOfContact: *id016
+    - id: Aklė
+      classifications:
+        NSIK LF: G
+        NSIK LT: JD
+        NSIK LK: QMA
+        ISO81346 CF: G
+        ISO81346 CT: JD
+        ISO81346 CC: QMA
+      ifcType: &id071
+      - IfcPipeFitting
+      - IfcPipeFittingType
+      stages:
+        s1: *id065
+        s3: *id066
+        s4: *id067
+        s5: *id068
+        s6: *id069
+        s7: *id070
+    - id: Aklė
+      classifications:
+        NSIK LF: G
+        NSIK LT: JD
+        NSIK LK: '%QMA20'
+      ifcType: *id071
+      stages:
+        s1: *id065
+        s3: *id066
+        s4: *id067
+        s5: *id068
+        s6: *id069
+        s7: *id070
     - id: Išardoma jungtis
       classifications:
         NSIK LF: G
@@ -1653,14 +1698,14 @@ loin:
         ISO81346 CF: G
         ISO81346 CT: JD
         ISO81346 CC: XMA
-      ifcType: *id056
+      ifcType: *id071
       stages:
-        s1: *id064
-        s3: *id065
-        s4: *id066
-        s5: *id067
-        s6: *id068
-        s7: *id069
+        s1: *id065
+        s3: *id066
+        s4: *id067
+        s5: *id068
+        s6: *id069
+        s7: *id070
     - id: Neišardoma jungtis
       classifications:
         NSIK LF: G
@@ -1669,14 +1714,14 @@ loin:
         ISO81346 CF: G
         ISO81346 CT: JD
         ISO81346 CC: XMB
-      ifcType: *id056
+      ifcType: *id057
       stages:
-        s1: *id064
-        s3: *id065
-        s4: *id066
-        s5: *id067
-        s6: *id068
-        s7: *id069
+        s1: *id065
+        s3: *id066
+        s4: *id067
+        s5: *id068
+        s6: *id069
+        s7: *id070
     - id: Kampinė jungtis
       classifications:
         NSIK LF: G
@@ -1685,27 +1730,27 @@ loin:
         ISO81346 CF: G
         ISO81346 CT: JD
         ISO81346 CC: XMD
-      ifcType: *id056
+      ifcType: *id057
       stages:
-        s1: *id064
-        s3: *id065
-        s4: *id066
-        s5: *id067
-        s6: *id068
-        s7: *id069
+        s1: *id065
+        s3: *id066
+        s4: *id067
+        s5: *id068
+        s6: *id069
+        s7: *id070
     - id: Standi kampinė jungtis
       classifications:
         NSIK LF: G
         NSIK LT: JD
         NSIK LK: '%XMD10'
-      ifcType: *id056
+      ifcType: *id057
       stages:
-        s1: *id064
-        s3: *id065
-        s4: *id066
-        s5: *id067
-        s6: *id068
-        s7: *id069
+        s1: *id065
+        s3: *id066
+        s4: *id067
+        s5: *id068
+        s6: *id069
+        s7: *id070
     - id: Srauto šakotuvas
       classifications:
         NSIK LF: G
@@ -1714,9 +1759,9 @@ loin:
         ISO81346 CF: G
         ISO81346 CT: JD
         ISO81346 CC: XME
-      ifcType: *id056
+      ifcType: *id057
       stages:
-        s1: &id092
+        s1: &id093
           log: 3
           lod: 275
           properties:
@@ -1724,12 +1769,12 @@ loin:
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementCommon.System: *id025
-            Pset_ElementComponentCommon.ComplexDimensions: &id070
+            Pset_ElementComponentCommon.ComplexDimensions: &id072
               valueType: Tekstas
               type: IfcLabel
             VVK.Material: *id008
             Pset_ElementComponentCommon.IsExternal: *id010
-        s3: &id093
+        s3: &id094
           log: 2
           lod: 200
           properties:
@@ -1737,11 +1782,11 @@ loin:
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementCommon.System: *id025
-            Pset_ElementComponentCommon.ComplexDimensions: *id070
+            Pset_ElementComponentCommon.ComplexDimensions: *id072
             VVK.Material: *id008
             Pset_ElementComponentCommon.IsExternal: *id010
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
-        s4: &id094
+        s4: &id095
           log: 3
           lod: 300
           properties:
@@ -1749,11 +1794,11 @@ loin:
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementCommon.System: *id025
-            Pset_ElementComponentCommon.ComplexDimensions: *id070
+            Pset_ElementComponentCommon.ComplexDimensions: *id072
             VVK.Material: *id008
             Pset_ElementComponentCommon.IsExternal: *id010
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
-        s5: &id095
+        s5: &id096
           log: 3
           lod: 300
           properties:
@@ -1761,14 +1806,14 @@ loin:
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementCommon.System: *id025
-            Pset_ElementComponentCommon.ComplexDimensions: *id070
+            Pset_ElementComponentCommon.ComplexDimensions: *id072
             VVK.Material: *id008
             Pset_ElementComponentCommon.IsExternal: *id010
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
             VVK.RelatedDocumentationURI: *id011
             Pset_ManufacturerTypeInformation.Manufacturer: *id012
             Pset_ManufacturerTypeInformation.ArticleNumber: *id013
-        s6: &id096
+        s6: &id097
           log: 3
           lod: 300
           properties:
@@ -1776,7 +1821,7 @@ loin:
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementCommon.System: *id025
-            Pset_ElementComponentCommon.ComplexDimensions: *id070
+            Pset_ElementComponentCommon.ComplexDimensions: *id072
             VVK.Material: *id008
             Pset_ElementComponentCommon.IsExternal: *id010
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
@@ -1786,7 +1831,7 @@ loin:
             Pset_Warranty.WarrantyStartDate: *id014
             Pset_Warranty.WarrantyPeriod: *id015
             Pset_Warranty.PointOfContact: *id016
-        s7: &id097
+        s7: &id098
           log: 3
           lod: 300
           properties:
@@ -1794,7 +1839,7 @@ loin:
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementCommon.System: *id025
-            Pset_ElementComponentCommon.ComplexDimensions: *id070
+            Pset_ElementComponentCommon.ComplexDimensions: *id072
             VVK.Material: *id008
             Pset_ElementComponentCommon.IsExternal: *id010
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
@@ -1812,14 +1857,14 @@ loin:
         ISO81346 CF: G
         ISO81346 CT: JD
         ISO81346 CC: XKF
-      ifcType: *id071
+      ifcType: *id073
       stages:
-        s1: *id057
-        s3: *id058
-        s4: *id059
-        s5: *id060
-        s6: *id061
-        s7: *id062
+        s1: *id058
+        s3: *id059
+        s4: *id060
+        s5: *id061
+        s6: *id062
+        s7: *id063
     - id: Nuotekų sistemos izoliacija
       classifications:
         NSIK LF: G
@@ -1828,9 +1873,9 @@ loin:
         ISO81346 CF: G
         ISO81346 CT: JD
         ISO81346 CC: RQA
-      ifcType: *id072
+      ifcType: *id074
       stages:
-        s1: &id098
+        s1: &id099
           lod: 275
           log: 2
           properties:
@@ -1838,22 +1883,22 @@ loin:
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementCommon.System: *id025
-            Pset_ElementComponentCommon.Thickness: &id073
+            Pset_ElementComponentCommon.Thickness: &id075
               type: IfcLengthMeasure | IfcPositiveLengthMeasure
               valueType: Skaičius
             VVK.Material: *id008
-        s2: &id099
+        s2: &id100
           lod: 200
           log: 2
           properties:
             VVK.Name: *id001
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
-            Pset_ElementComponentCommon.Thickness: *id073
-            Pset_QuantityTakeOff.Area: &id074
+            Pset_ElementComponentCommon.Thickness: *id075
+            Pset_QuantityTakeOff.Area: &id076
               type: IfcAreaMeasure
               valueType: Skaičius
-        s3: &id100
+        s3: &id101
           lod: 200
           log: 2
           properties:
@@ -1862,10 +1907,10 @@ loin:
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementCommon.System: *id025
             Pset_QuantityTakeOff.Length: *id004
-            Pset_ElementComponentCommon.Thickness: *id073
-            Pset_QuantityTakeOff.Area: *id074
+            Pset_ElementComponentCommon.Thickness: *id075
+            Pset_QuantityTakeOff.Area: *id076
             VVK.Material: *id008
-        s4: &id101
+        s4: &id102
           lod: 300
           log: 3
           properties:
@@ -1873,12 +1918,12 @@ loin:
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementCommon.System: *id025
-            Pset_ElementComponentCommon.Thickness: *id073
+            Pset_ElementComponentCommon.Thickness: *id075
             VVK.Material: *id008
             Pset_QuantityTakeOff.Length: *id004
-            Pset_QuantityTakeOff.Area: *id074
+            Pset_QuantityTakeOff.Area: *id076
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
-        s5: &id102
+        s5: &id103
           lod: 300
           log: 3
           properties:
@@ -1886,15 +1931,15 @@ loin:
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementCommon.System: *id025
-            Pset_ElementComponentCommon.Thickness: *id073
+            Pset_ElementComponentCommon.Thickness: *id075
             VVK.Material: *id008
             Pset_QuantityTakeOff.Length: *id004
-            Pset_QuantityTakeOff.Area: *id074
+            Pset_QuantityTakeOff.Area: *id076
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
             VVK.RelatedDocumentationURI: *id011
             Pset_ManufacturerTypeInformation.Manufacturer: *id012
             Pset_ManufacturerTypeInformation.ArticleNumber: *id013
-        s6: &id103
+        s6: &id104
           lod: 300
           log: 3
           properties:
@@ -1902,10 +1947,10 @@ loin:
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementCommon.System: *id025
-            Pset_ElementComponentCommon.Thickness: *id073
+            Pset_ElementComponentCommon.Thickness: *id075
             VVK.Material: *id008
             Pset_QuantityTakeOff.Length: *id004
-            Pset_QuantityTakeOff.Area: *id074
+            Pset_QuantityTakeOff.Area: *id076
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
             VVK.RelatedDocumentationURI: *id011
             Pset_ManufacturerTypeInformation.Manufacturer: *id012
@@ -1913,7 +1958,7 @@ loin:
             Pset_Warranty.WarrantyStartDate: *id014
             Pset_Warranty.WarrantyPeriod: *id015
             Pset_Warranty.PointOfContact: *id016
-        s7: &id104
+        s7: &id105
           lod: 300
           log: 3
           properties:
@@ -1921,10 +1966,10 @@ loin:
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementCommon.System: *id025
-            Pset_ElementComponentCommon.Thickness: *id073
+            Pset_ElementComponentCommon.Thickness: *id075
             VVK.Material: *id008
             Pset_QuantityTakeOff.Length: *id004
-            Pset_QuantityTakeOff.Area: *id074
+            Pset_QuantityTakeOff.Area: *id076
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
             VVK.RelatedDocumentationURI: *id011
             Pset_ManufacturerTypeInformation.Manufacturer: *id012
@@ -1943,14 +1988,14 @@ loin:
         ISO81346 CF: G
         ISO81346 CT: JD
         ISO81346 CC: QNA
-      ifcType: *id056
+      ifcType: *id057
       stages:
-        s1: *id057
-        s3: *id058
-        s4: *id059
-        s5: *id060
-        s6: *id061
-        s7: *id062
+        s1: *id058
+        s3: *id059
+        s4: *id060
+        s5: *id061
+        s6: *id062
+        s7: *id063
     - id: Nuotekų šalinimo tinklo apsaugos zona
       classifications:
         NSIK LF: G
@@ -1959,100 +2004,100 @@ loin:
         ISO81346 CF: G
         ISO81346 CT: JD
         ISO81346 CS: DCB
-      ifcType: &id075
+      ifcType: &id077
       - IfcSpace
       - IfcSpaceType
       stages:
-        s1: &id105
+        s1: &id106
           lod: 275
           log: 3
           properties:
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementCommon.System: *id025
             Pset_ElementComponentCommon.Width: *id005
-            Pset_QuantityTakeOff.Area: *id074
-        s2: &id106
+            Pset_QuantityTakeOff.Area: *id076
+        s2: &id107
           lod: 200
           log: 2
           properties:
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementComponentCommon.Width: *id005
             Pset_ElementCommon.System: *id025
-        s3: &id107
+        s3: &id108
           lod: 200
           log: 2
           properties:
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementComponentCommon.Width: *id005
             Pset_ElementCommon.System: *id025
-        s5: &id108
+        s5: &id109
           lod: 300
           log: 3
           properties:
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementCommon.System: *id025
             Pset_ElementComponentCommon.Width: *id005
-            Pset_QuantityTakeOff.Area: *id074
-        s6: &id109
+            Pset_QuantityTakeOff.Area: *id076
+        s6: &id110
           lod: 300
           log: 3
           properties:
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementCommon.System: *id025
             Pset_ElementComponentCommon.Width: *id005
-            Pset_QuantityTakeOff.Area: *id074
-        s7: &id110
+            Pset_QuantityTakeOff.Area: *id076
+        s7: &id111
           lod: 300
           log: 3
           properties:
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementCommon.System: *id025
             Pset_ElementComponentCommon.Width: *id005
-            Pset_QuantityTakeOff.Area: *id074
+            Pset_QuantityTakeOff.Area: *id076
     - id: Nuotekų šalinimo tinklo aptarnavimo erdvė
       classifications:
         NSIK LF: G
         NSIK LT: JD
         NSIK B: DCB1000
-      ifcType: *id075
+      ifcType: *id077
       stages:
-        s1: &id111
+        s1: &id112
           lod: 275
           log: 3
           properties:
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementCommon.System: *id025
-        s2: &id112
+        s2: &id113
           lod: 200
           log: 2
           properties:
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementCommon.System: *id025
-        s3: &id113
+        s3: &id114
           lod: 200
           log: 2
           properties:
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementCommon.System: *id025
-        s4: &id114
+        s4: &id115
           lod: 300
           log: 3
           properties:
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementCommon.System: *id025
-        s5: &id115
+        s5: &id116
           lod: 300
           log: 3
           properties:
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementCommon.System: *id025
-        s6: &id116
+        s6: &id117
           lod: 300
           log: 3
           properties:
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementCommon.System: *id025
-        s7: &id117
+        s7: &id118
           lod: 300
           log: 3
           properties:
@@ -2068,7 +2113,7 @@ loin:
         NSIK LF: '%G10'
         NSIK LT: '%JD20'
         NSIK LK: XMC
-      ifcType: *id076
+      ifcType: *id078
       stages:
         s1: *id028
         s2: *id029
@@ -2086,12 +2131,12 @@ loin:
         NSIK LK: GPA
       ifcType: *id035
       stages:
-        s1: *id077
-        s3: *id078
-        s4: *id079
-        s5: *id080
-        s6: *id081
-        s7: *id082
+        s1: *id079
+        s3: *id080
+        s4: *id081
+        s5: *id082
+        s6: *id083
+        s7: *id084
     - id: Informacinis ženklas. Buitinių nuotekų sistema
       examples:
       - Sargelis
@@ -2100,9 +2145,9 @@ loin:
         NSIK LF: '%G10'
         NSIK LT: '%JD20'
         NSIK LK: PHD
-      ifcType: *id071
+      ifcType: *id073
       stages:
-        s1: &id126
+        s1: &id127
           lod: 275
           log: 3
           properties:
@@ -2112,13 +2157,13 @@ loin:
             VVK.Tag: *id009
             Pset_ElementComponentCommon.Width: *id005
             Pset_ElementComponentCommon.Height: *id006
-            VVK.Colour: &id083
+            VVK.Colour: &id085
               valueType: Tekstas
               type: IfcLabel
             VVK.Material: *id008
             Pset_ElementComponentCommon.IsExternal: *id010
             Pset_ElementCommon.System: *id025
-        s3: &id127
+        s3: &id128
           lod: 300
           log: 3
           properties:
@@ -2128,12 +2173,12 @@ loin:
             VVK.Tag: *id009
             Pset_ElementComponentCommon.Width: *id005
             Pset_ElementComponentCommon.Height: *id006
-            VVK.Colour: *id083
+            VVK.Colour: *id085
             VVK.Material: *id008
             Pset_ElementComponentCommon.IsExternal: *id010
             Pset_ElementCommon.System: *id025
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
-        s4: &id128
+        s4: &id129
           lod: 300
           log: 3
           properties:
@@ -2143,12 +2188,12 @@ loin:
             VVK.Tag: *id009
             Pset_ElementComponentCommon.Width: *id005
             Pset_ElementComponentCommon.Height: *id006
-            VVK.Colour: *id083
+            VVK.Colour: *id085
             VVK.Material: *id008
             Pset_ElementComponentCommon.IsExternal: *id010
             Pset_ElementCommon.System: *id025
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
-        s5: &id129
+        s5: &id130
           lod: 300
           log: 3
           properties:
@@ -2158,13 +2203,13 @@ loin:
             VVK.Tag: *id009
             Pset_ElementComponentCommon.Width: *id005
             Pset_ElementComponentCommon.Height: *id006
-            VVK.Colour: *id083
+            VVK.Colour: *id085
             VVK.Material: *id008
             Pset_ElementComponentCommon.IsExternal: *id010
             Pset_ElementCommon.System: *id025
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
             Pset_ManufacturerTypeInformation.Manufacturer: *id012
-        s6: &id130
+        s6: &id131
           lod: 300
           log: 3
           properties:
@@ -2174,7 +2219,7 @@ loin:
             VVK.Tag: *id009
             Pset_ElementComponentCommon.Width: *id005
             Pset_ElementComponentCommon.Height: *id006
-            VVK.Colour: *id083
+            VVK.Colour: *id085
             VVK.Material: *id008
             Pset_ElementComponentCommon.IsExternal: *id010
             Pset_ElementCommon.System: *id025
@@ -2183,7 +2228,7 @@ loin:
             Pset_Warranty.WarrantyStartDate: *id014
             Pset_Warranty.WarrantyPeriod: *id015
             Pset_Warranty.PointOfContact: *id016
-        s7: &id131
+        s7: &id132
           lod: 300
           log: 3
           properties:
@@ -2193,7 +2238,7 @@ loin:
             VVK.Tag: *id009
             Pset_ElementComponentCommon.Width: *id005
             Pset_ElementComponentCommon.Height: *id006
-            VVK.Colour: *id083
+            VVK.Colour: *id085
             VVK.Material: *id008
             Pset_ElementComponentCommon.IsExternal: *id010
             Pset_ElementCommon.System: *id025
@@ -2210,16 +2255,16 @@ loin:
         NSIK LF: '%G10'
         NSIK LT: '%JD20'
         NSIK LK: UBD
-      ifcType: &id132
+      ifcType: &id133
       - IfcColumn
       - IfcColumnType
       stages:
-        s1: *id084
-        s3: *id085
-        s4: *id086
-        s5: *id087
-        s6: *id088
-        s7: *id089
+        s1: *id086
+        s3: *id087
+        s4: *id088
+        s5: *id089
+        s6: *id090
+        s7: *id091
     - id: Informacinio ženklo laikiklio pamatas. Buitinių nuotekų sistema
       examples:
       - Pamatas
@@ -2227,11 +2272,11 @@ loin:
         NSIK LF: '%G10'
         NSIK LT: '%JD20'
         NSIK LK: ULD
-      ifcType: &id133
+      ifcType: &id134
       - IfcPile
       - IfcPileType
       stages:
-        s1: &id134
+        s1: &id135
           lod: 275
           log: 3
           properties:
@@ -2239,10 +2284,10 @@ loin:
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementComponentCommon.Width: *id005
-            Pset_QuantityTakeOff.Area: *id074
+            Pset_QuantityTakeOff.Area: *id076
             Pset_QuantityTakeOff.Volume: *id036
             VVK.Material: *id008
-        s2: &id135
+        s2: &id136
           lod: 200
           log: 2
           properties:
@@ -2250,95 +2295,95 @@ loin:
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementComponentCommon.Width: *id005
-            Pset_QuantityTakeOff.Area: *id074
+            Pset_QuantityTakeOff.Area: *id076
             Pset_QuantityTakeOff.Volume: *id036
-        s3: &id136
+        s3: &id137
           lod: 200
           log: 3
           properties:
             VVK.Name: *id001
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
-            VVK.RelatedDrawing: *id045
+            VVK.RelatedDrawing: *id046
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
-            Pset_QuantityTakeOff.Weigth: *id043
+            Pset_QuantityTakeOff.Weigth: *id044
             Pset_ElementComponentCommon.Width: *id005
-            Pset_QuantityTakeOff.Area: *id074
+            Pset_QuantityTakeOff.Area: *id076
             Pset_QuantityTakeOff.Volume: *id036
             VVK.Material: *id008
-        s4: &id137
+        s4: &id138
           lod: 350
           log: 3
           properties:
             VVK.Name: *id001
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
-            VVK.RelatedDrawing: *id045
+            VVK.RelatedDrawing: *id046
             VVK.Tag: *id009
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
             Pset_ElementComponentCommon.Width: *id005
-            Pset_QuantityTakeOff.Area: *id074
+            Pset_QuantityTakeOff.Area: *id076
             Pset_QuantityTakeOff.Volume: *id036
             VVK.Material: *id008
-            Pset_QuantityTakeOff.Weigth: *id043
-            VVK.MaterialClass: &id090
+            Pset_QuantityTakeOff.Weigth: *id044
+            VVK.MaterialClass: &id092
               valueType: Tekstas
               type: IfcLabel
-        s5: &id138
+        s5: &id139
           lod: 350
           log: 3
           properties:
             VVK.Name: *id001
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
-            VVK.RelatedDrawing: *id045
+            VVK.RelatedDrawing: *id046
             VVK.Tag: *id009
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
             Pset_ElementComponentCommon.Width: *id005
-            Pset_QuantityTakeOff.Area: *id074
+            Pset_QuantityTakeOff.Area: *id076
             Pset_QuantityTakeOff.Volume: *id036
             VVK.Material: *id008
-            Pset_QuantityTakeOff.Weigth: *id043
-            VVK.MaterialClass: *id090
+            Pset_QuantityTakeOff.Weigth: *id044
+            VVK.MaterialClass: *id092
             VVK.RelatedDocumentationURI: *id011
             Pset_ManufacturerTypeInformation.Manufacturer: *id012
-        s6: &id139
+        s6: &id140
           lod: 350
           log: 3
           properties:
             VVK.Name: *id001
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
-            VVK.RelatedDrawing: *id045
+            VVK.RelatedDrawing: *id046
             VVK.Tag: *id009
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
             Pset_ElementComponentCommon.Width: *id005
-            Pset_QuantityTakeOff.Area: *id074
+            Pset_QuantityTakeOff.Area: *id076
             Pset_QuantityTakeOff.Volume: *id036
             VVK.Material: *id008
-            Pset_QuantityTakeOff.Weigth: *id043
-            VVK.MaterialClass: *id090
+            Pset_QuantityTakeOff.Weigth: *id044
+            VVK.MaterialClass: *id092
             VVK.RelatedDocumentationURI: *id011
             Pset_ManufacturerTypeInformation.Manufacturer: *id012
             Pset_Warranty.WarrantyStartDate: *id014
             Pset_Warranty.WarrantyPeriod: *id015
             Pset_Warranty.PointOfContact: *id016
-        s7: &id140
+        s7: &id141
           lod: 350
           log: 3
           properties:
             VVK.Name: *id001
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
-            VVK.RelatedDrawing: *id045
+            VVK.RelatedDrawing: *id046
             VVK.Tag: *id009
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id027
             Pset_ElementComponentCommon.Width: *id005
-            Pset_QuantityTakeOff.Area: *id074
+            Pset_QuantityTakeOff.Area: *id076
             Pset_QuantityTakeOff.Volume: *id036
             VVK.Material: *id008
-            Pset_QuantityTakeOff.Weigth: *id043
-            VVK.MaterialClass: *id090
+            Pset_QuantityTakeOff.Weigth: *id044
+            VVK.MaterialClass: *id092
             VVK.RelatedDocumentationURI: *id011
             Pset_ManufacturerTypeInformation.Manufacturer: *id012
             Pset_Warranty.WarrantyStartDate: *id014
@@ -2350,15 +2395,15 @@ loin:
         NSIK LT: '%JD20'
         NSIK LK: '%WPA20'
         Uniclass Pr: Pr_65_52_63
-      ifcType: *id048
+      ifcType: *id049
       stages:
-        s1: *id049
-        s2: *id050
-        s3: *id051
-        s4: *id052
-        s5: *id053
-        s6: *id054
-        s7: *id055
+        s1: *id050
+        s2: *id051
+        s3: *id052
+        s4: *id053
+        s5: *id054
+        s6: *id055
+        s7: *id056
     - id: Sklendė. Buitinių nuotekų sistema
       examples:
       - Ventilis
@@ -2367,14 +2412,14 @@ loin:
         NSIK LF: '%G10'
         NSIK LT: '%JD20'
         NSIK LK: '%QMA10'
-      ifcType: *id056
+      ifcType: *id057
       stages:
-        s1: *id057
-        s3: *id058
-        s4: *id059
-        s5: *id060
-        s6: *id061
-        s7: *id062
+        s1: *id058
+        s3: *id059
+        s4: *id060
+        s5: *id061
+        s6: *id062
+        s7: *id063
     - id: Vožtuvas. Buitinių nuotekų sistema
       examples:
       - Atbulinis vožtuvas
@@ -2382,14 +2427,14 @@ loin:
         NSIK LF: '%G10'
         NSIK LT: '%JD20'
         NSIK LK: RMC
-      ifcType: *id056
+      ifcType: *id057
       stages:
-        s1: *id057
-        s3: *id058
-        s4: *id059
-        s5: *id060
-        s6: *id061
-        s7: *id062
+        s1: *id058
+        s3: *id059
+        s4: *id060
+        s5: *id061
+        s6: *id062
+        s7: *id063
     - id: Trapas. Buitinių nuotekų sistema
       classifications:
         NSIK LF: '%G10'
@@ -2411,16 +2456,14 @@ loin:
         NSIK LF: '%G10'
         NSIK LT: JD
         NSIK LK: XMA
-      ifcType: &id091
-      - IfcPipeFitting
-      - IfcPipeFittingType
+      ifcType: *id071
       stages:
-        s1: *id064
-        s3: *id065
-        s4: *id066
-        s5: *id067
-        s6: *id068
-        s7: *id069
+        s1: *id065
+        s3: *id066
+        s4: *id067
+        s5: *id068
+        s6: *id069
+        s7: *id070
     - id: Neišardoma redukcinė dalis. Buitinių nuotekų sistema
       examples:
       - Perėjimas
@@ -2428,72 +2471,72 @@ loin:
         NSIK LF: '%G10'
         NSIK LT: JD
         NSIK LK: XMB
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id064
-        s3: *id065
-        s4: *id066
-        s5: *id067
-        s6: *id068
-        s7: *id069
+        s1: *id065
+        s3: *id066
+        s4: *id067
+        s5: *id068
+        s6: *id069
+        s7: *id070
     - id: Kampinė jungtis. Buitinių nuotekų sistema
       classifications:
         NSIK LF: '%G10'
         NSIK LT: JB
         NSIK LK: XMD
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id064
-        s3: *id065
-        s4: *id066
-        s5: *id067
-        s6: *id068
-        s7: *id069
+        s1: *id065
+        s3: *id066
+        s4: *id067
+        s5: *id068
+        s6: *id069
+        s7: *id070
     - id: Balnas. Buitinių nuotekų sistema
       classifications:
         NSIK LF: '%G10'
         NSIK LT: JB
         NSIK LK: '%XME20'
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id092
-        s3: *id093
-        s4: *id094
-        s5: *id095
-        s6: *id096
-        s7: *id097
+        s1: *id093
+        s3: *id094
+        s4: *id095
+        s5: *id096
+        s6: *id097
+        s7: *id098
     - id: Trišakis. Buitinių nuotekų sistema
       classifications:
         NSIK LF: '%G10'
         NSIK LT: JB
         NSIK LK: '%XME30'
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id092
-        s3: *id093
-        s4: *id094
-        s5: *id095
-        s6: *id096
-        s7: *id097
+        s1: *id093
+        s3: *id094
+        s4: *id095
+        s5: *id096
+        s6: *id097
+        s7: *id098
     - id: Keturšakis. Buitinių nuotekų sistema
       classifications:
         NSIK LF: '%G10'
         NSIK LT: JB
         NSIK LK: '%XME40'
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id092
-        s3: *id093
-        s4: *id094
-        s5: *id095
-        s6: *id096
-        s7: *id097
+        s1: *id093
+        s3: *id094
+        s4: *id095
+        s5: *id096
+        s6: *id097
+        s7: *id098
     - id: Kaupimo talpa. Buitinių nuotekų sistema
       classifications:
         NSIK LF: '%G10'
         NSIK LT: '%JD20'
         NSIK LK: CMA
-      ifcType: *id076
+      ifcType: *id078
       stages:
         s1: *id028
         s2: *id029
@@ -2507,57 +2550,57 @@ loin:
         NSIK LF: '%G10'
         NSIK LT: '%JB20'
         NSIK LK: RQA
-      ifcType: *id072
+      ifcType: *id074
       stages:
-        s1: *id098
-        s2: *id099
-        s3: *id100
-        s4: *id101
-        s5: *id102
-        s6: *id103
-        s7: *id104
+        s1: *id099
+        s2: *id100
+        s3: *id101
+        s4: *id102
+        s5: *id103
+        s6: *id104
+        s7: *id105
     - id: Tinklo apsaugos zona. Buitinių nuotekų sistema
       classifications:
         NSIK LF: '%G10'
         NSIK LT: '%JB20'
         NSIK B: DCB
-      ifcType: *id075
+      ifcType: *id077
       stages:
-        s1: *id105
-        s2: *id106
-        s3: *id107
-        s5: *id108
-        s6: *id109
-        s7: *id110
+        s1: *id106
+        s2: *id107
+        s3: *id108
+        s5: *id109
+        s6: *id110
+        s7: *id111
     - id: Įrenginio aptarnavimo erdvė. Buitinių nuotekų sistema
       classifications:
         NSIK LF: '%G10'
         NSIK LT: '%JB20'
         NSIK B: '%DCB1000'
-      ifcType: *id075
+      ifcType: *id077
       stages:
-        s1: *id111
-        s2: *id112
-        s3: *id113
-        s4: *id114
-        s5: *id115
-        s6: *id116
-        s7: *id117
+        s1: *id112
+        s2: *id113
+        s3: *id114
+        s4: *id115
+        s5: *id116
+        s6: *id117
+        s7: *id118
     - id: Vamzdis. Buitinių slėginių nuotekų sistema
       classifications:
         NSIK LF: '%G10'
         NSIK LT: '%JD40'
         NSIK LK: '%WPA10'
         Uniclass Pr: Pr_65_52_63
-      ifcType: *id048
+      ifcType: *id049
       stages:
-        s1: *id049
-        s2: *id050
-        s3: *id051
-        s4: *id052
-        s5: *id053
-        s6: *id054
-        s7: *id055
+        s1: *id050
+        s2: *id051
+        s3: *id052
+        s4: *id053
+        s5: *id054
+        s6: *id055
+        s7: *id056
     - id: Sklendė. Buitinių slėginių nuotekų sistema
       examples:
       - Ventilis
@@ -2566,17 +2609,17 @@ loin:
         NSIK LF: '%G10'
         NSIK LT: '%JD20'
         NSIK LK: '%QMA10'
-      ifcType: &id118
+      ifcType: &id119
       - IfcValve
       - IfcValveType
       - IfcValveTypeEnum
       stages:
-        s1: *id057
-        s3: *id058
-        s4: *id059
-        s5: *id060
-        s6: *id061
-        s7: *id062
+        s1: *id058
+        s3: *id059
+        s4: *id060
+        s5: *id061
+        s6: *id062
+        s7: *id063
     - id: Vožtuvas. Buitinių slėginių nuotekų sistema
       examples:
       - Atbulinis vožtuvas
@@ -2584,14 +2627,14 @@ loin:
         NSIK LF: '%G10'
         NSIK LT: '%JD20'
         NSIK LK: RMC
-      ifcType: *id118
+      ifcType: *id119
       stages:
-        s1: *id057
-        s3: *id058
-        s4: *id059
-        s5: *id060
-        s6: *id061
-        s7: *id062
+        s1: *id058
+        s3: *id059
+        s4: *id060
+        s5: *id061
+        s6: *id062
+        s7: *id063
     - id: Išardoma redukcinė jungtis. Buitinių slėginių nuotekų sistema
       examples:
       - Perėjimas
@@ -2599,14 +2642,14 @@ loin:
         NSIK LF: '%G10'
         NSIK LT: '%JD40'
         NSIK LK: XMA
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id064
-        s3: *id065
-        s4: *id066
-        s5: *id067
-        s6: *id068
-        s7: *id069
+        s1: *id065
+        s3: *id066
+        s4: *id067
+        s5: *id068
+        s6: *id069
+        s7: *id070
     - id: Neišardoma redukcinė dalis. Buitinių slėginių nuotekų sistema
       examples:
       - Perėjimas
@@ -2614,120 +2657,120 @@ loin:
         NSIK LF: '%G10'
         NSIK LT: '%JD40'
         NSIK LK: XMB
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id064
-        s3: *id065
-        s4: *id066
-        s5: *id067
-        s6: *id068
-        s7: *id069
+        s1: *id065
+        s3: *id066
+        s4: *id067
+        s5: *id068
+        s6: *id069
+        s7: *id070
     - id: Kampinė jungtis. Buitinių slėginių nuotekų sistema
       classifications:
         NSIK LF: '%G10'
         NSIK LT: '%JD40'
         NSIK LK: XMD
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id064
-        s3: *id065
-        s4: *id066
-        s5: *id067
-        s6: *id068
-        s7: *id069
+        s1: *id065
+        s3: *id066
+        s4: *id067
+        s5: *id068
+        s6: *id069
+        s7: *id070
     - id: Balnas. Buitinių slėginių nuotekų sistema
       classifications:
         NSIK LF: '%G10'
         NSIK LT: '%JD40'
         NSIK LK: '%XME20'
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id092
-        s3: *id093
-        s4: *id094
-        s5: *id095
-        s6: *id096
-        s7: *id097
+        s1: *id093
+        s3: *id094
+        s4: *id095
+        s5: *id096
+        s6: *id097
+        s7: *id098
     - id: Trišakis. Buitinių slėginių nuotekų sistema
       classifications:
         NSIK LF: '%G10'
         NSIK LT: '%JD40'
         NSIK LK: '%XME30'
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id092
-        s3: *id093
-        s4: *id094
-        s5: *id095
-        s6: *id096
-        s7: *id097
+        s1: *id093
+        s3: *id094
+        s4: *id095
+        s5: *id096
+        s6: *id097
+        s7: *id098
     - id: Keturšakis. Buitinių slėginių nuotekų sistema
       classifications:
         NSIK LF: '%G10'
         NSIK LT: '%JD40'
         NSIK LK: '%XME40'
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id092
-        s3: *id093
-        s4: *id094
-        s5: *id095
-        s6: *id096
-        s7: *id097
+        s1: *id093
+        s3: *id094
+        s4: *id095
+        s5: *id096
+        s6: *id097
+        s7: *id098
     - id: Siurblys. Buitinių slėginių nuotekų sistema
       classifications:
         NSIK LF: '%G10'
         NSIK LT: '%JD40'
         NSIK LK: GPB
-      ifcType: *id119
+      ifcType: *id120
       stages:
-        s1: *id120
-        s3: *id121
-        s4: *id122
-        s5: *id123
-        s6: *id124
-        s7: *id125
+        s1: *id121
+        s3: *id122
+        s4: *id123
+        s5: *id124
+        s6: *id125
+        s7: *id126
     - id: Izoliacija. Buitinių slėginių nuotekų sistema
       classifications:
         NSIK LF: '%G10'
         NSIK LT: '%JD40'
         NSIK LK: RQA
-      ifcType: *id072
+      ifcType: *id074
       stages:
-        s1: *id098
-        s2: *id099
-        s3: *id100
-        s4: *id101
-        s5: *id102
-        s6: *id103
-        s7: *id104
+        s1: *id099
+        s2: *id100
+        s3: *id101
+        s4: *id102
+        s5: *id103
+        s6: *id104
+        s7: *id105
     - id: Tinklo apsaugos zona. Buitinių slėginių nuotekų sistema
       classifications:
         NSIK LF: '%G10'
         NSIK LT: '%JD40'
         NSIK B: DCB
-      ifcType: *id075
+      ifcType: *id077
       stages:
-        s1: *id105
-        s2: *id106
-        s3: *id107
-        s5: *id108
-        s6: *id109
-        s7: *id110
+        s1: *id106
+        s2: *id107
+        s3: *id108
+        s5: *id109
+        s6: *id110
+        s7: *id111
     - id: Įrenginio aptarnavimo erdvė. Buitinių slėginių nuotekų sistema
       classifications:
         NSIK LF: '%G10'
         NSIK LT: '%JD40'
         NSIK B: '%DCB1000'
-      ifcType: *id075
+      ifcType: *id077
       stages:
-        s1: *id111
-        s2: *id112
-        s3: *id113
-        s4: *id114
-        s5: *id115
-        s6: *id116
-        s7: *id117
+        s1: *id112
+        s2: *id113
+        s3: *id114
+        s4: *id115
+        s5: *id116
+        s6: *id117
+        s7: *id118
     - id: Šulinys. Lietaus nuoteku sistema
       examples:
       - Apžiūros šulinys
@@ -2739,7 +2782,7 @@ loin:
         NSIK LT: '%JD10'
         NSIK LK: XMC
         Uniclass Pr: Pr_60_50
-      ifcType: *id076
+      ifcType: *id078
       stages:
         s1: *id028
         s2: *id029
@@ -2760,12 +2803,12 @@ loin:
         ISO81346 CC: GPA
       ifcType: *id035
       stages:
-        s1: *id077
-        s3: *id078
-        s4: *id079
-        s5: *id080
-        s6: *id081
-        s7: *id082
+        s1: *id079
+        s3: *id080
+        s4: *id081
+        s5: *id082
+        s6: *id083
+        s7: *id084
     - id: Tinklo informacinis ženklas. Lietaus nuoteku sistema
       examples:
       - Sargelis
@@ -2774,14 +2817,14 @@ loin:
         NSIK LF: '%G20'
         NSIK LT: '%JD10'
         NSIK LK: PHD
-      ifcType: *id071
+      ifcType: *id073
       stages:
-        s1: *id126
-        s3: *id127
-        s4: *id128
-        s5: *id129
-        s6: *id130
-        s7: *id131
+        s1: *id127
+        s3: *id128
+        s4: *id129
+        s5: *id130
+        s6: *id131
+        s7: *id132
     - id: Tinklo informacinio ženklo laikiklis. Lietaus nuoteku sistema
       examples:
       - Sargelio stovas
@@ -2790,14 +2833,14 @@ loin:
         NSIK LF: '%G20'
         NSIK LT: '%JD10'
         NSIK LK: UBD
-      ifcType: *id132
+      ifcType: *id133
       stages:
-        s1: *id084
-        s3: *id085
-        s4: *id086
-        s5: *id087
-        s6: *id088
-        s7: *id089
+        s1: *id086
+        s3: *id087
+        s4: *id088
+        s5: *id089
+        s6: *id090
+        s7: *id091
     - id: Informacinio ženklo laikiklio pamatas. Lietaus nuoteku sistema
       examples:
       - Pamatas
@@ -2805,44 +2848,44 @@ loin:
         NSIK LF: '%G20'
         NSIK LT: '%JD10'
         NSIK LK: ULD
-      ifcType: *id133
+      ifcType: *id134
       stages:
-        s1: *id134
-        s2: *id135
-        s3: *id136
-        s4: *id137
-        s5: *id138
-        s6: *id139
-        s7: *id140
+        s1: *id135
+        s2: *id136
+        s3: *id137
+        s4: *id138
+        s5: *id139
+        s6: *id140
+        s7: *id141
     - id: Vamzdis. Lietaus nuoteku sistema
       classifications:
         NSIK LF: '%G20'
         NSIK LT: '%JD10'
         NSIK LK: WPA
         Uniclass Pr: Pr_65_52_63
-      ifcType: *id048
+      ifcType: *id049
       stages:
-        s1: *id049
-        s2: *id050
-        s3: *id051
-        s4: *id052
-        s5: *id053
-        s6: *id054
-        s7: *id055
+        s1: *id050
+        s2: *id051
+        s3: *id052
+        s4: *id053
+        s5: *id054
+        s6: *id055
+        s7: *id056
     - id: Vamzdis. Lietaus nuoteku sistema
       classifications:
         NSIK LF: '%G20'
         NSIK LT: '%JD10'
         NSIK LK: '%WPA20'
-      ifcType: *id048
+      ifcType: *id049
       stages:
-        s1: *id049
-        s2: *id050
-        s3: *id051
-        s4: *id052
-        s5: *id053
-        s6: *id054
-        s7: *id055
+        s1: *id050
+        s2: *id051
+        s3: *id052
+        s4: *id053
+        s5: *id054
+        s6: *id055
+        s7: *id056
     - id: Sklendė. Lietaus nuoteku sistema
       examples:
       - Ventilis
@@ -2851,14 +2894,14 @@ loin:
         NSIK LF: '%G20'
         NSIK LT: '%JD10'
         NSIK LK: '%QMA10'
-      ifcType: *id118
+      ifcType: *id119
       stages:
-        s1: *id057
-        s3: *id058
-        s4: *id059
-        s5: *id060
-        s6: *id061
-        s7: *id062
+        s1: *id058
+        s3: *id059
+        s4: *id060
+        s5: *id061
+        s6: *id062
+        s7: *id063
     - id: Vožtuvas. Lietaus nuoteku sistema
       examples:
       - Atbulinis vožtuvas
@@ -2866,28 +2909,28 @@ loin:
         NSIK LF: '%G20'
         NSIK LT: '%JD10'
         NSIK LK: RMC
-      ifcType: *id118
+      ifcType: *id119
       stages:
-        s1: *id057
-        s3: *id058
-        s4: *id059
-        s5: *id060
-        s6: *id061
-        s7: *id062
+        s1: *id058
+        s3: *id059
+        s4: *id060
+        s5: *id061
+        s6: *id062
+        s7: *id063
     - id: Latakas. Lietaus nuoteku sistema
       classifications:
         NSIK LF: '%G20'
         NSIK LT: '%JD10'
         NSIK LK: WMD
-      ifcType: *id048
+      ifcType: *id049
       stages:
-        s1: *id141
-        s2: *id142
-        s3: *id143
-        s4: *id144
-        s5: *id145
-        s6: *id146
-        s7: *id147
+        s1: *id142
+        s2: *id143
+        s3: *id144
+        s4: *id145
+        s5: *id146
+        s6: *id147
+        s7: *id148
     - id: Išardoma redukcinė dalis. Lietaus nuoteku sistema
       examples:
       - Perėjimas
@@ -2895,14 +2938,14 @@ loin:
         NSIK LF: '%G20'
         NSIK LT: '%JD10'
         NSIK LK: XMA
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id064
-        s3: *id065
-        s4: *id066
-        s5: *id067
-        s6: *id068
-        s7: *id069
+        s1: *id065
+        s3: *id066
+        s4: *id067
+        s5: *id068
+        s6: *id069
+        s7: *id070
     - id: Neišardoma redukcinė jungtis. Lietaus nuoteku sistema
       examples:
       - Perėjimas
@@ -2910,66 +2953,66 @@ loin:
         NSIK LF: '%G20'
         NSIK LT: '%JD10'
         NSIK LK: XMB
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id064
-        s3: *id065
-        s4: *id066
-        s5: *id067
-        s6: *id068
-        s7: *id069
+        s1: *id065
+        s3: *id066
+        s4: *id067
+        s5: *id068
+        s6: *id069
+        s7: *id070
     - id: Kampinė jungtis. Lietaus nuoteku sistema
       classifications:
         NSIK LF: '%G20'
         NSIK LT: '%JD10'
         NSIK LK: XMD
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id064
-        s3: *id065
-        s4: *id066
-        s5: *id067
-        s6: *id068
-        s7: *id069
+        s1: *id065
+        s3: *id066
+        s4: *id067
+        s5: *id068
+        s6: *id069
+        s7: *id070
     - id: Balnas. Lietaus nuoteku sistema
       classifications:
         NSIK LF: '%G20'
         NSIK LT: '%JD10'
         NSIK LK: '%XME20'
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id092
-        s3: *id093
-        s4: *id094
-        s5: *id095
-        s6: *id096
-        s7: *id097
+        s1: *id093
+        s3: *id094
+        s4: *id095
+        s5: *id096
+        s6: *id097
+        s7: *id098
     - id: Trišakis. Lietaus nuoteku sistema
       classifications:
         NSIK LF: '%G20'
         NSIK LT: '%JD10'
         NSIK LK: '%XME30'
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id092
-        s3: *id093
-        s4: *id094
-        s5: *id095
-        s6: *id096
-        s7: *id097
+        s1: *id093
+        s3: *id094
+        s4: *id095
+        s5: *id096
+        s6: *id097
+        s7: *id098
     - id: Keturšakis. Lietaus nuoteku sistema
       classifications:
         NSIK LF: '%G20'
         NSIK LT: '%JD10'
         NSIK LK: '%XME40'
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id092
-        s3: *id093
-        s4: *id094
-        s5: *id095
-        s6: *id096
-        s7: *id097
+        s1: *id093
+        s3: *id094
+        s4: *id095
+        s5: *id096
+        s6: *id097
+        s7: *id098
     - id: Atskirtuvas. Lietaus nuoteku sistema
       examples:
       - Naftos produktų gaudyklė
@@ -2978,20 +3021,20 @@ loin:
         NSIK LF: '%G20'
         NSIK LT: '%JD10'
         NSIK LK: XKD
-      ifcType: *id118
+      ifcType: *id119
       stages:
-        s1: *id057
-        s3: *id058
-        s4: *id059
-        s5: *id060
-        s6: *id061
-        s7: *id062
+        s1: *id058
+        s3: *id059
+        s4: *id060
+        s5: *id061
+        s6: *id062
+        s7: *id063
     - id: Kaupimo ar infiltravimo talpa. Lietaus nuoteku sistema
       classifications:
         NSIK LF: '%G20'
         NSIK LT: '%JD10'
         NSIK LK: CMA
-      ifcType: *id076
+      ifcType: *id078
       stages:
         s1: *id028
         s2: *id029
@@ -3006,111 +3049,111 @@ loin:
         NSIK LT: '%JD10'
         NSIK LK: RQA
         Uniclass: Pr_25_57_06
-      ifcType: *id072
+      ifcType: *id074
       stages:
-        s1: *id098
-        s2: *id099
-        s3: *id100
-        s4: *id101
-        s5: *id102
-        s6: *id103
-        s7: *id104
+        s1: *id099
+        s2: *id100
+        s3: *id101
+        s4: *id102
+        s5: *id103
+        s6: *id104
+        s7: *id105
     - id: Tinklo apsaugos zona. Lietaus nuoteku sistema
       classifications:
         NSIK LF: '%G20'
         NSIK LT: '%JD10'
         NSIK B: DCB
-      ifcType: *id075
+      ifcType: *id077
       stages:
-        s1: *id105
-        s2: *id106
-        s3: *id107
-        s5: *id108
-        s6: *id109
-        s7: *id110
+        s1: *id106
+        s2: *id107
+        s3: *id108
+        s5: *id109
+        s6: *id110
+        s7: *id111
     - id: Aptarnavimo erdvė. Lietaus nuoteku sistema
       classifications:
         NSIK LF: '%G20'
         NSIK LT: '%JD10'
         NSIK B: '%DCB1000'
-      ifcType: *id075
+      ifcType: *id077
       stages:
-        s1: *id111
-        s2: *id112
-        s3: *id113
-        s4: *id114
-        s5: *id115
-        s6: *id116
-        s7: *id117
+        s1: *id112
+        s2: *id113
+        s3: *id114
+        s4: *id115
+        s5: *id116
+        s6: *id117
+        s7: *id118
     - id: Vamzdis. Lietaus slėginių nuoteku sistema
       classifications:
         NSIK LF: '%G20'
         NSIK LT: '%JD40'
         NSIK LK: '%WPA10'
         Uniclass Pr: Pr_65_52_63
-      ifcType: *id048
+      ifcType: *id049
       stages:
-        s1: *id049
-        s2: *id050
-        s3: *id051
-        s4: *id052
-        s5: *id053
-        s6: *id054
-        s7: *id055
+        s1: *id050
+        s2: *id051
+        s3: *id052
+        s4: *id053
+        s5: *id054
+        s6: *id055
+        s7: *id056
     - id: Siurblys. Lietaus slėginių nuoteku sistema
       classifications:
         NSIK LF: '%G20'
         NSIK LT: '%JD40'
         NSIK LK: GPB
-      ifcType: *id119
+      ifcType: *id120
       stages:
-        s1: *id120
-        s3: *id121
-        s4: *id122
-        s5: *id123
-        s6: *id124
-        s7: *id125
+        s1: *id121
+        s3: *id122
+        s4: *id123
+        s5: *id124
+        s6: *id125
+        s7: *id126
     - id: Izoliacija. Lietaus slėginių nuoteku sistema
       classifications:
         NSIK LF: '%G20'
         NSIK LT: '%JD40'
         NSIK LK: RQA
-      ifcType: *id072
+      ifcType: *id074
       stages:
-        s1: *id098
-        s2: *id099
-        s3: *id100
-        s4: *id101
-        s5: *id102
-        s6: *id103
-        s7: *id104
+        s1: *id099
+        s2: *id100
+        s3: *id101
+        s4: *id102
+        s5: *id103
+        s6: *id104
+        s7: *id105
     - id: Tinklo apsaugos zona. Lietaus slėginių nuoteku sistema
       classifications:
         NSIK LF: '%G20'
         NSIK LT: '%JD40'
         NSIK B: DCB
-      ifcType: *id075
+      ifcType: *id077
       stages:
-        s1: *id105
-        s2: *id106
-        s3: *id107
-        s5: *id108
-        s6: *id109
-        s7: *id110
+        s1: *id106
+        s2: *id107
+        s3: *id108
+        s5: *id109
+        s6: *id110
+        s7: *id111
     - id: Aptarnavimo erdvė. Lietaus slėginių nuoteku sistema
       classifications:
         NSIK LF: '%G20'
         NSIK LT: '%JD40'
         NSIK B: '%DCB1000'
-      ifcType: *id075
+      ifcType: *id077
       stages:
-        s1: *id111
-        s2: *id112
-        s3: *id113
-        s4: *id114
-        s5: *id115
-        s6: *id116
-        s7: *id117
+        s1: *id112
+        s2: *id113
+        s3: *id114
+        s4: *id115
+        s5: *id116
+        s6: *id117
+        s7: *id118
     - id: Šulinys. Drenažo sistema
       examples:
       - Apžiūros šulinys
@@ -3122,7 +3165,7 @@ loin:
         NSIK LT: '%JD20'
         NSIK LK: XMC
         Uniclass Pr: Pr_60_50
-      ifcType: *id076
+      ifcType: *id078
       stages:
         s1: *id028
         s2: *id029
@@ -3140,12 +3183,12 @@ loin:
         NSIK LK: GPA
       ifcType: *id035
       stages:
-        s1: *id077
-        s3: *id078
-        s4: *id079
-        s5: *id080
-        s6: *id081
-        s7: *id082
+        s1: *id079
+        s3: *id080
+        s4: *id081
+        s5: *id082
+        s6: *id083
+        s7: *id084
     - id: Tinklo informacinis ženklas. Drenažo sistema
       examples:
       - Sargelis
@@ -3154,14 +3197,14 @@ loin:
         NSIK LF: '%G20'
         NSIK LT: '%JD20'
         NSIK LK: PHD
-      ifcType: *id071
+      ifcType: *id073
       stages:
-        s1: *id126
-        s3: *id127
-        s4: *id128
-        s5: *id129
-        s6: *id130
-        s7: *id131
+        s1: *id127
+        s3: *id128
+        s4: *id129
+        s5: *id130
+        s6: *id131
+        s7: *id132
     - id: Tinklo informacinio ženklo laikiklis. Drenažo sistema
       examples:
       - Sargelio stovas
@@ -3170,14 +3213,14 @@ loin:
         NSIK LF: '%G20'
         NSIK LT: '%JD20'
         NSIK LK: UBD
-      ifcType: *id132
+      ifcType: *id133
       stages:
-        s1: *id084
-        s3: *id085
-        s4: *id086
-        s5: *id087
-        s6: *id088
-        s7: *id089
+        s1: *id086
+        s3: *id087
+        s4: *id088
+        s5: *id089
+        s6: *id090
+        s7: *id091
     - id: Informacinio ženklo laikiklio pamatas. Drenažo sistema
       examples:
       - Pamatas
@@ -3185,30 +3228,30 @@ loin:
         NSIK LF: '%G20'
         NSIK LT: '%JD20'
         NSIK LK: ULD
-      ifcType: *id133
+      ifcType: *id134
       stages:
-        s1: *id134
-        s2: *id135
-        s3: *id136
-        s4: *id137
-        s5: *id138
-        s6: *id139
-        s7: *id140
+        s1: *id135
+        s2: *id136
+        s3: *id137
+        s4: *id138
+        s5: *id139
+        s6: *id140
+        s7: *id141
     - id: Vamzdis. Drenažo sistema
       classifications:
         NSIK LF: '%G20'
         NSIK LT: '%JD20'
         NSIK LK: '%WPA20'
         Uniclass Pr: Pr_65_52_63
-      ifcType: *id048
+      ifcType: *id049
       stages:
-        s1: *id049
-        s2: *id050
-        s3: *id051
-        s4: *id052
-        s5: *id053
-        s6: *id054
-        s7: *id055
+        s1: *id050
+        s2: *id051
+        s3: *id052
+        s4: *id053
+        s5: *id054
+        s6: *id055
+        s7: *id056
     - id: Sklendė. Drenažo sistema
       examples:
       - Ventilis
@@ -3217,14 +3260,14 @@ loin:
         NSIK LF: '%G20'
         NSIK LT: '%JD20'
         NSIK LK: '%QMA10'
-      ifcType: *id118
+      ifcType: *id119
       stages:
-        s1: *id057
-        s3: *id058
-        s4: *id059
-        s5: *id060
-        s6: *id061
-        s7: *id062
+        s1: *id058
+        s3: *id059
+        s4: *id060
+        s5: *id061
+        s6: *id062
+        s7: *id063
     - id: Vožtuvas. Drenažo sistema
       examples:
       - Atbulinis vožtuvas
@@ -3232,14 +3275,14 @@ loin:
         NSIK LF: '%G20'
         NSIK LT: '%JD20'
         NSIK LK: RMC
-      ifcType: *id118
+      ifcType: *id119
       stages:
-        s1: *id057
-        s3: *id058
-        s4: *id059
-        s5: *id060
-        s6: *id061
-        s7: *id062
+        s1: *id058
+        s3: *id059
+        s4: *id060
+        s5: *id061
+        s6: *id062
+        s7: *id063
     - id: Išardoma redukcinė jungtis. Drenažo sistema
       examples:
       - Perėjimas
@@ -3247,14 +3290,14 @@ loin:
         NSIK LF: '%G20'
         NSIK LT: '%JD20'
         NSIK LK: XMA
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id064
-        s3: *id065
-        s4: *id066
-        s5: *id067
-        s6: *id068
-        s7: *id069
+        s1: *id065
+        s3: *id066
+        s4: *id067
+        s5: *id068
+        s6: *id069
+        s7: *id070
     - id: Neišardoma redukcinė jungtis. Drenažo sistema
       examples:
       - Perėjimas
@@ -3262,66 +3305,66 @@ loin:
         NSIK LF: '%G20'
         NSIK LT: '%JD20'
         NSIK LK: XMB
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id064
-        s3: *id065
-        s4: *id066
-        s5: *id067
-        s6: *id068
-        s7: *id069
+        s1: *id065
+        s3: *id066
+        s4: *id067
+        s5: *id068
+        s6: *id069
+        s7: *id070
     - id: Kampinė jungtis. Drenažo sistema
       classifications:
         NSIK LF: '%G20'
         NSIK LT: '%JD20'
         NSIK LK: XMD
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id064
-        s3: *id065
-        s4: *id066
-        s5: *id067
-        s6: *id068
-        s7: *id069
+        s1: *id065
+        s3: *id066
+        s4: *id067
+        s5: *id068
+        s6: *id069
+        s7: *id070
     - id: Balnas. Drenažo sistema
       classifications:
         NSIK LF: '%G20'
         NSIK LT: '%JD20'
         NSIK LK: '%XME20'
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id092
-        s3: *id093
-        s4: *id094
-        s5: *id095
-        s6: *id096
-        s7: *id097
+        s1: *id093
+        s3: *id094
+        s4: *id095
+        s5: *id096
+        s6: *id097
+        s7: *id098
     - id: Trišakis. Drenažo sistema
       classifications:
         NSIK LF: '%G20'
         NSIK LT: '%JD20'
         NSIK LK: '%XME30'
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id092
-        s3: *id093
-        s4: *id094
-        s5: *id095
-        s6: *id096
-        s7: *id097
+        s1: *id093
+        s3: *id094
+        s4: *id095
+        s5: *id096
+        s6: *id097
+        s7: *id098
     - id: Keturšakis. Drenažo sistema
       classifications:
         NSIK LF: '%G20'
         NSIK LT: '%JD20'
         NSIK LK: '%XME40'
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id092
-        s3: *id093
-        s4: *id094
-        s5: *id095
-        s6: *id096
-        s7: *id097
+        s1: *id093
+        s3: *id094
+        s4: *id095
+        s5: *id096
+        s6: *id097
+        s7: *id098
     - id: Atskirtuvas. Drenažo sistema
       examples:
       - Naftos produktų gaudyklė
@@ -3330,20 +3373,20 @@ loin:
         NSIK LF: '%G20'
         NSIK LT: '%JD20'
         NSIK LK: XKD
-      ifcType: *id118
+      ifcType: *id119
       stages:
-        s1: *id057
-        s3: *id058
-        s4: *id059
-        s5: *id060
-        s6: *id061
-        s7: *id062
+        s1: *id058
+        s3: *id059
+        s4: *id060
+        s5: *id061
+        s6: *id062
+        s7: *id063
     - id: Kaupimo ar infiltravimo talpa. Drenažo sistema
       classifications:
         NSIK LF: '%G20'
         NSIK LT: '%JD20'
         NSIK LK: CMA
-      ifcType: *id076
+      ifcType: *id078
       stages:
         s1: *id028
         s2: *id029
@@ -3358,42 +3401,42 @@ loin:
         NSIK LT: '%JD20'
         NSIK LK: RQA
         Uniclass: Pr_25_57_06
-      ifcType: *id072
+      ifcType: *id074
       stages:
-        s1: *id098
-        s2: *id099
-        s3: *id100
-        s4: *id101
-        s5: *id102
-        s6: *id103
-        s7: *id104
+        s1: *id099
+        s2: *id100
+        s3: *id101
+        s4: *id102
+        s5: *id103
+        s6: *id104
+        s7: *id105
     - id: Tinklo apsaugos zona. Drenažo sistema
       classifications:
         NSIK LF: '%G20'
         NSIK LT: '%JD20'
         NSIK B: DCB
-      ifcType: *id075
+      ifcType: *id077
       stages:
-        s1: *id105
-        s2: *id106
-        s3: *id107
-        s5: *id108
-        s6: *id109
-        s7: *id110
+        s1: *id106
+        s2: *id107
+        s3: *id108
+        s5: *id109
+        s6: *id110
+        s7: *id111
     - id: Aptarnavimo erdvė. Drenažo sistema
       classifications:
         NSIK LF: '%G20'
         NSIK LT: '%JD20'
         NSIK B: '%DCB1000'
-      ifcType: *id075
+      ifcType: *id077
       stages:
-        s1: *id111
-        s2: *id112
-        s3: *id113
-        s4: *id114
-        s5: *id115
-        s6: *id116
-        s7: *id117
+        s1: *id112
+        s2: *id113
+        s3: *id114
+        s4: *id115
+        s5: *id116
+        s6: *id117
+        s7: *id118
     - id: Šulinys. Technologinių nuotekų sistema
       examples:
       - Apžiūros šulinys
@@ -3405,7 +3448,7 @@ loin:
         NSIK LT: '%JD20'
         NSIK LK: XMC
         Uniclass Pr: Pr_60_50
-      ifcType: *id076
+      ifcType: *id078
       stages:
         s1: *id028
         s2: *id029
@@ -3423,12 +3466,12 @@ loin:
         NSIK LK: GPA
       ifcType: *id035
       stages:
-        s1: *id077
-        s3: *id078
-        s4: *id079
-        s5: *id080
-        s6: *id081
-        s7: *id082
+        s1: *id079
+        s3: *id080
+        s4: *id081
+        s5: *id082
+        s6: *id083
+        s7: *id084
     - id: Tinklo informacinis ženklas. Technologinių nuotekų sistema
       examples:
       - Sargelis
@@ -3437,14 +3480,14 @@ loin:
         NSIK LF: '%G30'
         NSIK LT: '%JD20'
         NSIK LK: PHD
-      ifcType: *id071
+      ifcType: *id073
       stages:
-        s1: *id126
-        s3: *id127
-        s4: *id128
-        s5: *id129
-        s6: *id130
-        s7: *id131
+        s1: *id127
+        s3: *id128
+        s4: *id129
+        s5: *id130
+        s6: *id131
+        s7: *id132
     - id: Tinklo informacinio ženklo laikiklis. Technologinių nuotekų sistema
       examples:
       - Sargelio stovas
@@ -3453,14 +3496,14 @@ loin:
         NSIK LF: '%G30'
         NSIK LT: '%JD20'
         NSIK LK: UBD
-      ifcType: *id132
+      ifcType: *id133
       stages:
-        s1: *id084
-        s3: *id085
-        s4: *id086
-        s5: *id087
-        s6: *id088
-        s7: *id089
+        s1: *id086
+        s3: *id087
+        s4: *id088
+        s5: *id089
+        s6: *id090
+        s7: *id091
     - id: Informacinio ženklo laikiklio pamatas. Technologinių nuotekų sistema
       examples:
       - Pamatas
@@ -3468,30 +3511,30 @@ loin:
         NSIK LF: '%G30'
         NSIK LT: '%JD20'
         NSIK LK: ULD
-      ifcType: *id133
+      ifcType: *id134
       stages:
-        s1: *id134
-        s2: *id135
-        s3: *id136
-        s4: *id137
-        s5: *id138
-        s6: *id139
-        s7: *id140
+        s1: *id135
+        s2: *id136
+        s3: *id137
+        s4: *id138
+        s5: *id139
+        s6: *id140
+        s7: *id141
     - id: Vamzdis. Technologinių nuotekų sistema
       classifications:
         NSIK LF: '%G30'
         NSIK LT: '%JD20'
         NSIK LK: '%WPA20'
         Uniclass Pr: Pr_65_52_63
-      ifcType: *id048
+      ifcType: *id049
       stages:
-        s1: *id049
-        s2: *id050
-        s3: *id051
-        s4: *id052
-        s5: *id053
-        s6: *id054
-        s7: *id055
+        s1: *id050
+        s2: *id051
+        s3: *id052
+        s4: *id053
+        s5: *id054
+        s6: *id055
+        s7: *id056
     - id: Sklendė. Technologinių nuotekų sistema
       examples:
       - Ventilis
@@ -3500,14 +3543,14 @@ loin:
         NSIK LF: '%G30'
         NSIK LT: '%JD20'
         NSIK LK: '%QMA10'
-      ifcType: *id118
+      ifcType: *id119
       stages:
-        s1: *id057
-        s3: *id058
-        s4: *id059
-        s5: *id060
-        s6: *id061
-        s7: *id062
+        s1: *id058
+        s3: *id059
+        s4: *id060
+        s5: *id061
+        s6: *id062
+        s7: *id063
     - id: Vožtuvas. Technologinių nuotekų sistema
       examples:
       - Atbulinis vožtuvas
@@ -3515,14 +3558,14 @@ loin:
         NSIK LF: '%G30'
         NSIK LT: '%JD20'
         NSIK LK: RMC
-      ifcType: *id118
+      ifcType: *id119
       stages:
-        s1: *id057
-        s3: *id058
-        s4: *id059
-        s5: *id060
-        s6: *id061
-        s7: *id062
+        s1: *id058
+        s3: *id059
+        s4: *id060
+        s5: *id061
+        s6: *id062
+        s7: *id063
     - id: Išardoma redukcinė jungtis. Technologinių nuotekų sistema
       examples:
       - Perėjimas
@@ -3530,14 +3573,14 @@ loin:
         NSIK LF: '%G30'
         NSIK LT: '%JD20'
         NSIK LK: XMA
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id064
-        s3: *id065
-        s4: *id066
-        s5: *id067
-        s6: *id068
-        s7: *id069
+        s1: *id065
+        s3: *id066
+        s4: *id067
+        s5: *id068
+        s6: *id069
+        s7: *id070
     - id: Neišardoma redukcinė jungtis. Technologinių nuotekų sistema
       examples:
       - Perėjimas
@@ -3545,72 +3588,72 @@ loin:
         NSIK LF: '%G30'
         NSIK LT: '%JD20'
         NSIK LK: XMB
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id064
-        s3: *id065
-        s4: *id066
-        s5: *id067
-        s6: *id068
-        s7: *id069
+        s1: *id065
+        s3: *id066
+        s4: *id067
+        s5: *id068
+        s6: *id069
+        s7: *id070
     - id: Kampinė jungtis. Technologinių nuotekų sistema
       classifications:
         NSIK LF: '%G30'
         NSIK LT: '%JD20'
         NSIK LK: XMD
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id064
-        s3: *id065
-        s4: *id066
-        s5: *id067
-        s6: *id068
-        s7: *id069
+        s1: *id065
+        s3: *id066
+        s4: *id067
+        s5: *id068
+        s6: *id069
+        s7: *id070
     - id: Balnas. Technologinių nuotekų sistema
       classifications:
         NSIK LF: '%G30'
         NSIK LT: '%JD20'
         NSIK LK: '%XME20'
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id092
-        s3: *id093
-        s4: *id094
-        s5: *id095
-        s6: *id096
-        s7: *id097
+        s1: *id093
+        s3: *id094
+        s4: *id095
+        s5: *id096
+        s6: *id097
+        s7: *id098
     - id: Trišakis. Technologinių nuotekų sistema
       classifications:
         NSIK LF: '%G30'
         NSIK LT: '%JD20'
         NSIK LK: '%XME30'
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id092
-        s3: *id093
-        s4: *id094
-        s5: *id095
-        s6: *id096
-        s7: *id097
+        s1: *id093
+        s3: *id094
+        s4: *id095
+        s5: *id096
+        s6: *id097
+        s7: *id098
     - id: Keturšakis. Technologinių nuotekų sistema
       classifications:
         NSIK LF: '%G30'
         NSIK LT: '%JD20'
         NSIK LK: '%XME40'
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id092
-        s3: *id093
-        s4: *id094
-        s5: *id095
-        s6: *id096
-        s7: *id097
+        s1: *id093
+        s3: *id094
+        s4: *id095
+        s5: *id096
+        s6: *id097
+        s7: *id098
     - id: Kaupimo talpa. Technologinių nuotekų sistema
       classifications:
         NSIK LF: '%G30'
         NSIK LT: '%JD20'
         NSIK LK: CMA
-      ifcType: *id076
+      ifcType: *id078
       stages:
         s1: *id028
         s2: *id029
@@ -3625,69 +3668,69 @@ loin:
         NSIK LT: '%JD20'
         NSIK LK: RQA
         Uniclass: Pr_25_57_06
-      ifcType: *id072
+      ifcType: *id074
       stages:
-        s1: *id098
-        s2: *id099
-        s3: *id100
-        s4: *id101
-        s5: *id102
-        s6: *id103
-        s7: *id104
+        s1: *id099
+        s2: *id100
+        s3: *id101
+        s4: *id102
+        s5: *id103
+        s6: *id104
+        s7: *id105
     - id: Tinklo apsaugos zona. Technologinių nuotekų sistema
       classifications:
         NSIK LF: '%G30'
         NSIK LT: '%JD20'
         NSIK B: DCB
-      ifcType: *id075
+      ifcType: *id077
       stages:
-        s1: *id105
-        s2: *id106
-        s3: *id107
-        s5: *id108
-        s6: *id109
-        s7: *id110
+        s1: *id106
+        s2: *id107
+        s3: *id108
+        s5: *id109
+        s6: *id110
+        s7: *id111
     - id: Aptarnavimo erdvė. Technologinių nuotekų sistema
       classifications:
         NSIK LF: '%G30'
         NSIK LT: '%JD20'
         NSIK B: '%DCB1000'
-      ifcType: *id075
+      ifcType: *id077
       stages:
-        s1: *id111
-        s2: *id112
-        s3: *id113
-        s4: *id114
-        s5: *id115
-        s6: *id116
-        s7: *id117
+        s1: *id112
+        s2: *id113
+        s3: *id114
+        s4: *id115
+        s5: *id116
+        s6: *id117
+        s7: *id118
     - id: Vamzdis. Technologinių slėginių nuoteku sistema
       classifications:
         NSIK LF: '%G30'
         NSIK LT: '%JD40'
         NSIK LK: '%WPA10'
-      ifcType: *id048
+      ifcType: *id049
       stages:
-        s1: *id049
-        s2: *id050
-        s3: *id051
-        s4: *id052
-        s5: *id053
-        s6: *id054
-        s7: *id055
+        s1: *id050
+        s2: *id051
+        s3: *id052
+        s4: *id053
+        s5: *id054
+        s6: *id055
+        s7: *id056
     - id: Siurblys. Technologinių slėginių nuoteku sistema
       classifications:
         NSIK LF: '%G30'
         NSIK LT: '%JD40'
         NSIK LK: GPB
-      ifcType: *id119
+      ifcType: *id120
       stages:
-        s1: *id120
-        s3: *id121
-        s4: *id122
-        s5: *id123
-        s6: *id124
-        s7: *id125
+        s1: *id121
+        s3: *id122
+        s4: *id123
+        s5: *id124
+        s6: *id125
+        s7: *id126
     - id: Sklendė. Technologinių slėginių nuoteku sistema
       examples:
       - Ventilis
@@ -3696,14 +3739,14 @@ loin:
         NSIK LF: '%G30'
         NSIK LT: '%JD40'
         NSIK LK: '%QMA10'
-      ifcType: *id118
+      ifcType: *id119
       stages:
-        s1: *id057
-        s3: *id058
-        s4: *id059
-        s5: *id060
-        s6: *id061
-        s7: *id062
+        s1: *id058
+        s3: *id059
+        s4: *id060
+        s5: *id061
+        s6: *id062
+        s7: *id063
     - id: Vožtuvas. Technologinių slėginių nuoteku sistema
       examples:
       - Atbulinis vožtuvas
@@ -3711,14 +3754,14 @@ loin:
         NSIK LF: '%G30'
         NSIK LT: '%JD40'
         NSIK LK: RMC
-      ifcType: *id118
+      ifcType: *id119
       stages:
-        s1: *id057
-        s3: *id058
-        s4: *id059
-        s5: *id060
-        s6: *id061
-        s7: *id062
+        s1: *id058
+        s3: *id059
+        s4: *id060
+        s5: *id061
+        s6: *id062
+        s7: *id063
     - id: Išardoma redukcinė jungtis. Technologinių slėginių nuoteku sistema
       examples:
       - Perėjimas
@@ -3726,14 +3769,14 @@ loin:
         NSIK LF: '%G30'
         NSIK LT: '%JD40'
         NSIK LK: XMA
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id064
-        s3: *id065
-        s4: *id066
-        s5: *id067
-        s6: *id068
-        s7: *id069
+        s1: *id065
+        s3: *id066
+        s4: *id067
+        s5: *id068
+        s6: *id069
+        s7: *id070
     - id: Neišardoma redukcinė jungtis. Technologinių slėginių nuoteku sistema
       examples:
       - Perėjimas
@@ -3741,105 +3784,105 @@ loin:
         NSIK LF: '%G30'
         NSIK LT: '%JD40'
         NSIK LK: XMB
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id064
-        s3: *id065
-        s4: *id066
-        s5: *id067
-        s6: *id068
-        s7: *id069
+        s1: *id065
+        s3: *id066
+        s4: *id067
+        s5: *id068
+        s6: *id069
+        s7: *id070
     - id: Kampinė jungtis. Technologinių slėginių nuoteku sistema
       classifications:
         NSIK LF: '%G30'
         NSIK LT: '%JD40'
         NSIK LK: XMD
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id064
-        s3: *id065
-        s4: *id066
-        s5: *id067
-        s6: *id068
-        s7: *id069
+        s1: *id065
+        s3: *id066
+        s4: *id067
+        s5: *id068
+        s6: *id069
+        s7: *id070
     - id: Balnas. Technologinių slėginių nuoteku sistema
       classifications:
         NSIK LF: '%G30'
         NSIK LT: '%JD40'
         NSIK LK: '%XME20'
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id092
-        s3: *id093
-        s4: *id094
-        s5: *id095
-        s6: *id096
-        s7: *id097
+        s1: *id093
+        s3: *id094
+        s4: *id095
+        s5: *id096
+        s6: *id097
+        s7: *id098
     - id: Trišakis. Technologinių slėginių nuoteku sistema
       classifications:
         NSIK LF: '%G30'
         NSIK LT: '%JD40'
         NSIK LK: '%XME30'
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id092
-        s3: *id093
-        s4: *id094
-        s5: *id095
-        s6: *id096
-        s7: *id097
+        s1: *id093
+        s3: *id094
+        s4: *id095
+        s5: *id096
+        s6: *id097
+        s7: *id098
     - id: Keturšakis. Technologinių slėginių nuoteku sistema
       classifications:
         NSIK LF: '%G30'
         NSIK LT: '%JD40'
         NSIK LK: '%XME40'
-      ifcType: *id091
+      ifcType: *id071
       stages:
-        s1: *id092
-        s3: *id093
-        s4: *id094
-        s5: *id095
-        s6: *id096
-        s7: *id097
+        s1: *id093
+        s3: *id094
+        s4: *id095
+        s5: *id096
+        s6: *id097
+        s7: *id098
     - id: Izoliacija. Technologinių slėginių nuoteku sistema
       classifications:
         NSIK LF: '%G30'
         NSIK LT: '%JD40'
         NSIK LK: RQA
         Uniclass: Pr_25_57_06
-      ifcType: *id072
+      ifcType: *id074
       stages:
-        s1: *id098
-        s2: *id099
-        s3: *id100
-        s4: *id101
-        s5: *id102
-        s6: *id103
-        s7: *id104
+        s1: *id099
+        s2: *id100
+        s3: *id101
+        s4: *id102
+        s5: *id103
+        s6: *id104
+        s7: *id105
     - id: Tinklo apsaugos zona. Technologinių slėginių nuoteku sistema
       classifications:
         NSIK LF: '%G30'
         NSIK LT: '%JD40'
         NSIK B: DCB
-      ifcType: *id075
+      ifcType: *id077
       stages:
-        s1: *id105
-        s2: *id106
-        s3: *id107
-        s5: *id108
-        s6: *id109
-        s7: *id110
+        s1: *id106
+        s2: *id107
+        s3: *id108
+        s5: *id109
+        s6: *id110
+        s7: *id111
     - id: Aptarnavimo erdvė. Technologinių slėginių nuoteku sistema
       classifications:
         NSIK LF: '%G30'
         NSIK LT: '%JD40'
         NSIK B: '%DCB1000'
-      ifcType: *id075
+      ifcType: *id077
       stages:
-        s1: *id111
-        s2: *id112
-        s3: *id113
-        s4: *id114
-        s5: *id115
-        s6: *id116
-        s7: *id117
+        s1: *id112
+        s2: *id113
+        s3: *id114
+        s4: *id115
+        s5: *id116
+        s6: *id117
+        s7: *id118

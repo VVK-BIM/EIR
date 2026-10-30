@@ -2,6 +2,7 @@ version: 0.1a
 full_name: VVK EIR Specification
 email: bim@vilniausvystymas.lt
 identifier: VVK
+project: null
 loin:
   SA:
     id: '03'
@@ -1600,6 +1601,34 @@ loin:
         NSIK LK: FSB
         ISO81346 CF: B
         ISO81346 CT: AD
+        ISO81346 CC: FSB
+      ifcType:
+      - IfcCovering
+      - IfcCoveringType
+      - IfcWall
+      - IfcWallType
+      stages:
+        s1: *id039
+        s2: *id040
+        s3: *id041
+        s4: *id042
+        s5: *id043
+        s6: *id044
+        s7: *id045
+    - id: Funkcinė ar dekoratyvinė danga
+      deprecated: null
+      description: Dangos, kurių storis nėra esminis rodiklis
+      examples:
+      - Dažai
+      - Paviršiaus padengimas repelentais
+      - Paviršiaus padengimas fugnicidais
+      - Dekoratyvinis tinkas
+      classifications:
+        NSIK LF: B
+        NSIK LT: BD
+        NSIK LK: FSB
+        ISO81346 CF: B
+        ISO81346 CT: BD
         ISO81346 CC: FSB
       ifcType:
       - IfcCovering

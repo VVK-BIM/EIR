@@ -2,10 +2,11 @@ version: 0.1a
 full_name: VVK EIR Specification
 email: bim@vilniausvystymas.lt
 identifier: VVK
+project: null
 loin:
-  LŠT:
-    id: '15'
-    name: Šilumos gamyba
+  ŠVOK.OK:
+    id: '08.03'
+    name: ŠVOK. Oro kondicionavimas
     stages:
       s1:
         lod: 275
@@ -91,14 +92,14 @@ loin:
           VVK.RelatedDocumentationURI: &id011
             valueType: Tekstas
             type: IfcLabel
-    - id: Vandens skaitiklis
+    - id: Vandens skaitiklis. Vėsos tiekimo sistema
       classifications:
         NSIK LF: H
-        NSIK LT: JG
+        NSIK LT: HC
         NSIK LK: BHA
         Uniclass Pr: Pr_80_51_51_97
         ISO81346 CF: H
-        ISO81346 CT: JG
+        ISO81346 CT: HC
         ISO81346 CC: BHA
       ifcType: &id017
       - IfcFlowMeter
@@ -238,27 +239,13 @@ loin:
             Pset_Warranty.WarrantyPeriod: *id015
             Pset_Warranty.PointOfContact: *id016
             Pset_ElementComponentCommon.VolumetricFlowRate: *id010
-    - id: Vandens skaitiklis
+    - id: Šiluminės energijos skaitiklis. Vėsos tiekimo sistema
       classifications:
         NSIK LF: H
-        NSIK LT: JG
-        NSIK LK: '%BHA20'
-      ifcType: *id017
-      stages:
-        s1: *id018
-        s3: *id019
-        s4: *id020
-        s5: *id021
-        s6: *id022
-        s7: *id023
-    - id: Šiluminės energijos skaitiklis
-      classifications:
-        NSIK LF: H
-        NSIK LT: JG
+        NSIK LT: HC
         NSIK LK: BHB
-        Uniclass Pr: Pr_80_51_51_37
         ISO81346 CF: H
-        ISO81346 CT: JG
+        ISO81346 CT: HC
         ISO81346 CC: BHB
       ifcType: *id017
       stages:
@@ -268,14 +255,14 @@ loin:
         s5: *id021
         s6: *id022
         s7: *id023
-    - id: Elektros skaitiklis
+    - id: Elektros skaitiklis. Vėsos tiekimo sistema
       classifications:
         NSIK LF: H
-        NSIK LT: JG
+        NSIK LT: HC
         NSIK LK: BHC
         Uniclass Pr: Pr_80_51_51_98
         ISO81346 CF: H
-        ISO81346 CT: JG
+        ISO81346 CT: HC
         ISO81346 CC: BHC
       ifcType: *id017
       stages:
@@ -431,20 +418,19 @@ loin:
             Pset_Warranty.WarrantyStartDate: *id014
             Pset_Warranty.WarrantyPeriod: *id015
             Pset_Warranty.PointOfContact: *id016
-    - id: Vamzdis
+    - id: Vamzdis. Vėsos tiekimo sistema
       classifications:
         NSIK LF: H
-        NSIK LT: JG
+        NSIK LT: HC
         NSIK LK: WPA
-        Uniclass Pr: Pr_65_52_63
         ISO81346 CF: H
-        ISO81346 CT: JG
+        ISO81346 CT: HC
         ISO81346 CC: WPA
-      ifcType:
+      ifcType: &id073
       - IfcPipeSegment
       - IfcPipeSegmentType
       stages:
-        s1:
+        s1: &id074
           lod: 275
           log: 3
           properties:
@@ -457,10 +443,10 @@ loin:
             Pset_ElementComponentCommon.PressureClass: &id032
               valueType: String
             VVK.Material: *id006
-        s2:
+        s2: &id075
           lod: 200
           log: 2
-        s3:
+        s3: &id076
           lod: 200
           log: 2
           properties:
@@ -472,7 +458,7 @@ loin:
             Pset_ElementComponentCommon.NominalDiameter: *id005
             VVK.Material: *id006
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
-        s4:
+        s4: &id077
           lod: 300
           log: 2
           properties:
@@ -485,7 +471,7 @@ loin:
             VVK.Material: *id006
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
             Pset_ElementComponentCommon.PressureClass: *id032
-        s5:
+        s5: &id078
           lod: 300
           log: 2
           properties:
@@ -500,7 +486,7 @@ loin:
             Pset_ElementComponentCommon.PressureClass: *id032
             VVK.RelatedDocumentationURI: *id011
             Pset_ManufacturerTypeInformation.Manufacturer: *id012
-        s6:
+        s6: &id079
           lod: 300
           log: 2
           properties:
@@ -518,7 +504,7 @@ loin:
             Pset_Warranty.WarrantyStartDate: *id014
             Pset_Warranty.WarrantyPeriod: *id015
             Pset_Warranty.PointOfContact: *id016
-        s7:
+        s7: &id080
           lod: 300
           log: 2
           properties:
@@ -536,14 +522,13 @@ loin:
             Pset_Warranty.WarrantyStartDate: *id014
             Pset_Warranty.WarrantyPeriod: *id015
             Pset_Warranty.PointOfContact: *id016
-    - id: Išardoma vamzdžių jungtis
+    - id: Išardoma jungtis. Vėsos tiekimo sistema
       classifications:
         NSIK LF: H
-        NSIK LT: JG
+        NSIK LT: HC
         NSIK LK: XMA
-        Uniclass Pr: Pr_65_52_63
         ISO81346 CF: H
-        ISO81346 CT: JG
+        ISO81346 CT: HC
         ISO81346 CC: XMA
       ifcType: &id033
       - IfcPipeFitting
@@ -641,14 +626,13 @@ loin:
             Pset_Warranty.WarrantyStartDate: *id014
             Pset_Warranty.WarrantyPeriod: *id015
             Pset_Warranty.PointOfContact: *id016
-    - id: Neišardoma vamzdžių jungtis
+    - id: Neišardoma jungtis. Vėsos tiekimo sistema
       classifications:
         NSIK LF: H
-        NSIK LT: JG
+        NSIK LT: HC
         NSIK LK: XMB
-        Uniclass Pr: Pr_65_52_63
         ISO81346 CF: H
-        ISO81346 CT: JG
+        ISO81346 CT: HC
         ISO81346 CC: XMB
       ifcType: *id033
       stages:
@@ -658,17 +642,46 @@ loin:
         s5: *id037
         s6: *id038
         s7: *id039
-    - id: Alkūnė
+    - id: Alkūnė. Vėsos tiekimo sistema
       classifications:
         NSIK LF: H
-        NSIK LT: JG
+        NSIK LT: HC
         NSIK LK: XMD
         ISO81346 CF: H
-        ISO81346 CT: JG
+        ISO81346 CT: HC
         ISO81346 CC: XMD
       ifcType: *id033
       stages:
-        s1: &id041
+        s1: *id034
+        s3: *id035
+        s4: *id036
+        s5: *id037
+        s6: *id038
+        s7: *id039
+    - id: Alkūnė. Vėsos tiekimo sistema
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: '%XMD10'
+      ifcType: *id033
+      stages:
+        s1: *id034
+        s3: *id035
+        s4: *id036
+        s5: *id037
+        s6: *id038
+        s7: *id039
+    - id: Srauto šakotuvas. Vėsos tiekimo sistema
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: XME
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: XME
+      ifcType: *id033
+      stages:
+        s1:
           log: 3
           lod: 275
           properties:
@@ -683,7 +696,7 @@ loin:
             Pset_ElementComponentCommon.ComplexDimensions: &id040
               valueType: Tekstas
               type: IfcLabel
-        s3: &id042
+        s3:
           log: 2
           lod: 200
           properties:
@@ -697,7 +710,7 @@ loin:
             VVK.Tag: *id008
             Pset_ElementComponentCommon.ComplexDimensions: *id040
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
-        s4: &id043
+        s4:
           log: 3
           lod: 300
           properties:
@@ -711,23 +724,7 @@ loin:
             VVK.Tag: *id008
             Pset_ElementComponentCommon.ComplexDimensions: *id040
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
-        s5: &id044
-          log: 3
-          lod: 300
-          properties:
-            VVK.Name: *id001
-            VVK.ElementType: *id002
-            Pset_ElementComponentCommon.Status: *id003
-            Pset_ElementCommon.System: *id004
-            Pset_ElementComponentCommon.NominalDiameter: *id005
-            VVK.Material: *id006
-            Pset_ElementComponentCommon.IsExternal: *id007
-            VVK.Tag: *id008
-            Pset_ElementComponentCommon.ComplexDimensions: *id040
-            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
-            VVK.RelatedDocumentationURI: *id011
-            Pset_ManufacturerTypeInformation.Manufacturer: *id012
-        s6: &id045
+        s5:
           log: 3
           lod: 300
           properties:
@@ -743,10 +740,7 @@ loin:
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
             VVK.RelatedDocumentationURI: *id011
             Pset_ManufacturerTypeInformation.Manufacturer: *id012
-            Pset_Warranty.WarrantyStartDate: *id014
-            Pset_Warranty.WarrantyPeriod: *id015
-            Pset_Warranty.PointOfContact: *id016
-        s7: &id046
+        s6:
           log: 3
           lod: 300
           properties:
@@ -765,200 +759,52 @@ loin:
             Pset_Warranty.WarrantyStartDate: *id014
             Pset_Warranty.WarrantyPeriod: *id015
             Pset_Warranty.PointOfContact: *id016
-    - id: Alkūnė
+        s7:
+          log: 3
+          lod: 300
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementCommon.System: *id004
+            Pset_ElementComponentCommon.NominalDiameter: *id005
+            VVK.Material: *id006
+            Pset_ElementComponentCommon.IsExternal: *id007
+            VVK.Tag: *id008
+            Pset_ElementComponentCommon.ComplexDimensions: *id040
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            VVK.RelatedDocumentationURI: *id011
+            Pset_ManufacturerTypeInformation.Manufacturer: *id012
+            Pset_Warranty.WarrantyStartDate: *id014
+            Pset_Warranty.WarrantyPeriod: *id015
+            Pset_Warranty.PointOfContact: *id016
+    - id: Sifonas. Vėsos tiekimo sistema
       classifications:
         NSIK LF: H
-        NSIK LT: JG
-        NSIK LK: '%XMD10'
+        NSIK LT: HC
+        NSIK LK: RMD
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: RMD
       ifcType: *id033
       stages:
-        s1: *id041
-        s3: *id042
-        s4: *id043
-        s5: *id044
-        s6: *id045
-        s7: *id046
-    - id: Šakotuvas
-      classifications:
-        NSIK LF: H
-        NSIK LT: JG
-        NSIK LK: XME
-        ISO81346 CF: H
-        ISO81346 CT: JG
-        ISO81346 CC: XME
-      ifcType: *id033
-      stages:
         s1: *id034
         s3: *id035
         s4: *id036
         s5: *id037
         s6: *id038
         s7: *id039
-    - id: Sklendė
-      examples:
-      - Ventilis
-      - Sklendė
-      - Atbulinis vožtuvas
+    - id: Izoliacija. Vėsos tiekimo sistema
       classifications:
         NSIK LF: H
-        NSIK LT: JG
-        NSIK LK: QMA
-        Uniclass Pr: Pr_65_54_95
-        ISO81346 CF: H
-        ISO81346 CT: JG
-        ISO81346 CC: QMA
-      ifcType: &id047
-      - IfcValve
-      - IfcValveType
-      - IfcValveTypeEnum
-      stages:
-        s1: *id034
-        s3: *id035
-        s4: *id036
-        s5: *id037
-        s6: *id038
-        s7: *id039
-    - id: Sklendė
-      classifications:
-        NSIK LF: H
-        NSIK LT: JG
-        NSIK LK: '%QMA10'
-      ifcType: *id047
-      stages:
-        s1: *id034
-        s3: *id035
-        s4: *id036
-        s5: *id037
-        s6: *id038
-        s7: *id039
-    - id: Slėgio relė
-      classifications:
-        NSIK LF: H
-        NSIK LT: JG
-        NSIK LK: BPP
-        Uniclass Pr: Pr_75_50_76_97
-        ISO81346 CF: H
-        ISO81346 CT: JG
-        ISO81346 CC: BPP
-      examples:
-      - Slėgio jungiklis
-      ifcType: &id049
-      - IfcFlowController
-      - IfcFlowControllerType
-      - IfcFlowControllerTypeEnum
-      stages:
-        s1: *id034
-        s3: *id035
-        s4: *id036
-        s5: *id037
-        s6: *id038
-        s7: *id039
-    - id: Apsauginis vožtuvas
-      classifications:
-        NSIK LF: H
-        NSIK LT: JG
-        NSIK LK: FLA
-        Uniclass Pr: Pr_65_54_95_65
-        ISO81346 CF: H
-        ISO81346 CT: JG
-        ISO81346 CC: FLA
-      ifcType: &id048
-      - IfcFlowController
-      - IfcFlowControllerType
-      - IfcFlowControllerTypeEnum
-      stages:
-        s1: *id034
-        s3: *id035
-        s4: *id036
-        s5: *id037
-        s6: *id038
-        s7: *id039
-    - id: Filtras
-      classifications:
-        NSIK LF: H
-        NSIK LT: JG
-        NSIK LK: HQB
-        Uniclass Pr: Pr_60_55_97_41
-        ISO81346 CF: H
-        ISO81346 CT: JG
-        ISO81346 CC: HQB
-      ifcType: *id048
-      stages:
-        s1: *id034
-        s3: *id035
-        s4: *id036
-        s5: *id037
-        s6: *id038
-        s7: *id039
-    - id: Oro atskirtuvas
-      classifications:
-        NSIK LF: H
-        NSIK LT: JG
-        NSIK LK: '%HQB40'
-        Uniclass Pr: Pr_65_54_93_05
-      ifcType: *id048
-      stages:
-        s1: *id034
-        s3: *id035
-        s4: *id036
-        s5: *id037
-        s6: *id038
-        s7: *id039
-    - id: Skysčio srauto ribotuvas
-      examples:
-      - Balansinis ventilis
-      - sklendė
-      classifications:
-        NSIK LF: H
-        NSIK LT: JG
-        NSIK LK: RNA
-        ISO81346 CF: H
-        ISO81346 CT: JG
-        ISO81346 CC: RNA
-      ifcType: *id049
-      stages:
-        s1: *id034
-        s3: *id035
-        s4: *id036
-        s5: *id037
-        s6: *id038
-        s7: *id039
-    - id: Balansinis ventilis
-      classifications:
-        NSIK LF: H
-        NSIK LT: JG
-        NSIK LK: '%RNA20'
-        Uniclass Pr: Pr_65_54_95_86
-      ifcType: *id049
-      stages:
-        s1: *id034
-        s3: *id035
-        s4: *id036
-        s5: *id037
-        s6: *id038
-        s7: *id039
-    - id: Balansavimo ventilis su matavimo antgaliais
-      classifications:
-        NSIK LF: H
-        NSIK LT: JG
-        NSIK LK: '%RNA2010'
-      ifcType: *id049
-      stages:
-        s1: *id034
-        s3: *id035
-        s4: *id036
-        s5: *id037
-        s6: *id038
-        s7: *id039
-    - id: Izoliacija
-      classifications:
-        NSIK LF: H
-        NSIK LT: JG
+        NSIK LT: HC
         NSIK LK: RQA
-        Uniclass Pr: Pr_80_77_76
         ISO81346 CF: H
-        ISO81346 CT: JG
+        ISO81346 CT: HC
         ISO81346 CC: RQA
+      examples:
+      - Šiluminė izoliacija
+      - antikondensacinė izoliacija
       ifcType:
       - IfcCovering
       - IfcCoveringType
@@ -972,7 +818,7 @@ loin:
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementCommon.System: *id004
-            Pset_ElementComponentCommon.Thickness: &id050
+            Pset_ElementComponentCommon.Thickness: &id041
               type: IfcLengthMeasure | IfcPositiveLengthMeasure
               valueType: Skaičius
             VVK.Material: *id006
@@ -983,8 +829,8 @@ loin:
             VVK.Name: *id001
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
-            Pset_ElementComponentCommon.Thickness: *id050
-            Pset_QuantityTakeOff.Area: &id051
+            Pset_ElementComponentCommon.Thickness: *id041
+            Pset_QuantityTakeOff.Area: &id042
               type: IfcAreaMeasure
               valueType: Skaičius
         s3:
@@ -996,8 +842,8 @@ loin:
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementCommon.System: *id004
             Pset_QuantityTakeOff.Length: *id024
-            Pset_ElementComponentCommon.Thickness: *id050
-            Pset_QuantityTakeOff.Area: *id051
+            Pset_ElementComponentCommon.Thickness: *id041
+            Pset_QuantityTakeOff.Area: *id042
             VVK.Material: *id006
         s4:
           lod: 300
@@ -1007,10 +853,10 @@ loin:
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementCommon.System: *id004
-            Pset_ElementComponentCommon.Thickness: *id050
+            Pset_ElementComponentCommon.Thickness: *id041
             VVK.Material: *id006
             Pset_QuantityTakeOff.Length: *id024
-            Pset_QuantityTakeOff.Area: *id051
+            Pset_QuantityTakeOff.Area: *id042
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
         s5:
           lod: 300
@@ -1020,10 +866,10 @@ loin:
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementCommon.System: *id004
-            Pset_ElementComponentCommon.Thickness: *id050
+            Pset_ElementComponentCommon.Thickness: *id041
             VVK.Material: *id006
             Pset_QuantityTakeOff.Length: *id024
-            Pset_QuantityTakeOff.Area: *id051
+            Pset_QuantityTakeOff.Area: *id042
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
             VVK.RelatedDocumentationURI: *id011
             Pset_ManufacturerTypeInformation.Manufacturer: *id012
@@ -1036,10 +882,10 @@ loin:
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementCommon.System: *id004
-            Pset_ElementComponentCommon.Thickness: *id050
+            Pset_ElementComponentCommon.Thickness: *id041
             VVK.Material: *id006
             Pset_QuantityTakeOff.Length: *id024
-            Pset_QuantityTakeOff.Area: *id051
+            Pset_QuantityTakeOff.Area: *id042
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
             VVK.RelatedDocumentationURI: *id011
             Pset_ManufacturerTypeInformation.Manufacturer: *id012
@@ -1055,10 +901,10 @@ loin:
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementCommon.System: *id004
-            Pset_ElementComponentCommon.Thickness: *id050
+            Pset_ElementComponentCommon.Thickness: *id041
             VVK.Material: *id006
             Pset_QuantityTakeOff.Length: *id024
-            Pset_QuantityTakeOff.Area: *id051
+            Pset_QuantityTakeOff.Area: *id042
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
             VVK.RelatedDocumentationURI: *id011
             Pset_ManufacturerTypeInformation.Manufacturer: *id012
@@ -1066,73 +912,251 @@ loin:
             Pset_Warranty.WarrantyStartDate: *id014
             Pset_Warranty.WarrantyPeriod: *id015
             Pset_Warranty.PointOfContact: *id016
-    - id: Termometras
+    - id: Sklendė. Vėsos tiekimo sistema
       classifications:
         NSIK LF: H
-        NSIK LT: JG
+        NSIK LT: HC
+        NSIK LK: QMA
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: QMA
+      ifcType: &id044
+      - IfcValve
+      - IfcValveType
+      - IfcValveTypeEnum
+      stages:
+        s1: *id034
+        s3: *id035
+        s4: *id036
+        s5: *id037
+        s6: *id038
+        s7: *id039
+    - id: Apsauginis vožtuvas. Vėsos tiekimo sistema
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: FLA
+        Uniclass Pr: Pr_65_54_95_65
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: FLA
+      ifcType: &id043
+      - IfcFlowController
+      - IfcFlowControllerType
+      - IfcFlowControllerTypeEnum
+      stages:
+        s1: *id034
+        s3: *id035
+        s4: *id036
+        s5: *id037
+        s6: *id038
+        s7: *id039
+    - id: Filtras. Vėsos tiekimo sistema
+      examples:
+      - Filtras
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: HQB
+        Uniclass Pr: Pr_60_55_97_41
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: HQB
+      ifcType: *id043
+      stages:
+        s1: *id034
+        s3: *id035
+        s4: *id036
+        s5: *id037
+        s6: *id038
+        s7: *id039
+    - id: Skysčio srauto ribotuvas. Vėsos tiekimo sistema
+      examples:
+      - Balansinis ventilis
+      - sklendė
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: RNA
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: RNA
+      ifcType: &id051
+      - IfcFlowController
+      - IfcFlowControllerType
+      - IfcFlowControllerTypeEnum
+      stages:
+        s1: *id034
+        s3: *id035
+        s4: *id036
+        s5: *id037
+        s6: *id038
+        s7: *id039
+    - id: Triukšmo slopinimo komponentas. Vėsos tiekimo sistema
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: RQC
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: RQC
+      ifcType: *id044
+      stages:
+        s1: *id034
+        s3: *id035
+        s4: *id036
+        s5: *id037
+        s6: *id038
+        s7: *id039
+    - id: Atbulinis vožtuvas. Vėsos tiekimo sistema
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: RMA
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: RMA
+      ifcType: *id044
+      stages:
+        s1: *id034
+        s3: *id035
+        s4: *id036
+        s5: *id037
+        s6: *id038
+        s7: *id039
+    - id: Termometras. Vėsos tiekimo sistema
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
         NSIK LK: BTA
         Uniclass Pr: Pr_65_52_34_88
         ISO81346 CF: H
-        ISO81346 CT: JG
+        ISO81346 CT: HC
         ISO81346 CC: BTA
       ifcType: *id017
       stages:
-        s1: *id034
-        s3: *id035
-        s4: *id036
-        s5: *id037
-        s6: *id038
-        s7: *id039
-    - id: Manometras
+        s1: &id045
+          log: 3
+          lod: 275
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementCommon.System: *id004
+            Pset_ElementComponentCommon.NominalDiameter: *id005
+            VVK.Material: *id006
+            Pset_ElementComponentCommon.IsExternal: *id007
+            VVK.Tag: *id008
+        s3: &id046
+          log: 2
+          lod: 200
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementCommon.System: *id004
+            Pset_ElementComponentCommon.NominalDiameter: *id005
+            VVK.Material: *id006
+            Pset_ElementComponentCommon.IsExternal: *id007
+            VVK.Tag: *id008
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+        s4: &id047
+          log: 3
+          lod: 300
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementCommon.System: *id004
+            Pset_ElementComponentCommon.NominalDiameter: *id005
+            VVK.Material: *id006
+            Pset_ElementComponentCommon.IsExternal: *id007
+            VVK.Tag: *id008
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+        s5: &id048
+          log: 3
+          lod: 300
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementCommon.System: *id004
+            Pset_ElementComponentCommon.NominalDiameter: *id005
+            VVK.Material: *id006
+            Pset_ElementComponentCommon.IsExternal: *id007
+            VVK.Tag: *id008
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            VVK.RelatedDocumentationURI: *id011
+            Pset_ManufacturerTypeInformation.ArticleNumber: *id013
+        s6: &id049
+          log: 3
+          lod: 300
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementCommon.System: *id004
+            Pset_ElementComponentCommon.NominalDiameter: *id005
+            VVK.Material: *id006
+            Pset_ElementComponentCommon.IsExternal: *id007
+            VVK.Tag: *id008
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            VVK.RelatedDocumentationURI: *id011
+            Pset_ManufacturerTypeInformation.ArticleNumber: *id013
+            Pset_Warranty.WarrantyStartDate: *id014
+            Pset_Warranty.WarrantyPeriod: *id015
+            Pset_Warranty.PointOfContact: *id016
+        s7: &id050
+          log: 3
+          lod: 300
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementCommon.System: *id004
+            Pset_ElementComponentCommon.NominalDiameter: *id005
+            VVK.Material: *id006
+            Pset_ElementComponentCommon.IsExternal: *id007
+            VVK.Tag: *id008
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            VVK.RelatedDocumentationURI: *id011
+            Pset_ManufacturerTypeInformation.ArticleNumber: *id013
+            Pset_Warranty.WarrantyStartDate: *id014
+            Pset_Warranty.WarrantyPeriod: *id015
+            Pset_Warranty.PointOfContact: *id016
+    - id: Manometras. Vėsos tiekimo sistema
       classifications:
         NSIK LF: H
-        NSIK LT: JG
+        NSIK LT: HC
         NSIK LK: BPA
         Uniclass Pr: Pr_80_51_51_67
         ISO81346 CF: H
-        ISO81346 CT: JG
+        ISO81346 CT: HC
         ISO81346 CC: BPA
       examples:
       - Slėgio indikatorius
-      ifcType: *id049
+      ifcType: *id017
       stages:
-        s1: *id034
-        s3: *id035
-        s4: *id036
-        s5: *id037
-        s6: *id038
-        s7: *id039
-    - id: Šilumokaitis
+        s1: *id045
+        s3: *id046
+        s4: *id047
+        s5: *id048
+        s6: *id049
+        s7: *id050
+    - id: Daugiaparametris jutiklis
+      examples:
+      - Patalpos klimato kontrolės blokas
       classifications:
         NSIK LF: H
-        NSIK LT: JG
-        NSIK LK: EGC
-        Uniclass Pr: Pr_60_60_36
+        NSIK LT: HC
+        NSIK LK: BUA
         ISO81346 CF: H
-        ISO81346 CT: JG
-        ISO81346 CC: EGC
-      ifcType: &id075
-        2x3:
-        - IfcHeatExchanger
-        - IfcHeatExchangerType
-        - IfcHeatExchangerTypeEnum
-        - IfcFlowController
-        - IfcFlowControllerType
-        - IfcFlowControllerTypeEnum
-        '4':
-        - IfcPump
-        - IfcPumpType
-        - IfcPumpTypeEnum
-        - IfcHeatExchanger
-        - IfcHeatExchangerType
-        - IfcHeatExchangerTypeEnum
-        - IfcFlowController
-        - IfcFlowControllerType
-        - IfcFlowControllerTypeEnum
+        ISO81346 CT: HC
+        ISO81346 CC: BUA
+      ifcType: *id051
       stages:
         s1:
           lod: 275
-          log: 3
           properties:
             VVK.Name: *id001
             VVK.ElementType: *id002
@@ -1146,128 +1170,147 @@ loin:
             VVK.Colour: &id052
               valueType: Tekstas
               type: IfcLabel
-            Pset_QuantityTakeOff.Weigth: &id054
-              type: IfcMassMeasure
-              valueType: Skaičius
-            Pset_ElementComponentCommon.PowerConsumption: &id053
-              type: IfcPowerMeasure
-              valueType: Skaičius
-            Pset_ManufacturerTypeInformation.ArticleNumber: *id013
-        s3:
+            Pset_ElectricalDeviceCommon.NominalVoltage: *id027
+            Pset_ElectricalDeviceCommon.IP_Code: *id029
+            Pset_ElectricalDeviceCommon.IK_Code: *id030
+            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id031
+        s2:
           lod: 200
+          log: 2
+        s3:
+          lod: 300
           log: 2
           properties:
             VVK.Name: *id001
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
             VVK.Tag: *id008
-            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
             Pset_ElementCommon.System: *id004
             Pset_QuantityTakeOff.Length: *id024
             Pset_ElementComponentCommon.Width: *id025
             Pset_ElementComponentCommon.Height: *id026
             VVK.Material: *id006
             VVK.Colour: *id052
-            Pset_ElementComponentCommon.PowerConsumption: *id053
-            Pset_QuantityTakeOff.Weigth: *id054
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
         s4:
           lod: 300
-          log: 3
+          log: 2
           properties:
             VVK.Name: *id001
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
             VVK.Tag: *id008
-            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
             Pset_ElementCommon.System: *id004
             Pset_QuantityTakeOff.Length: *id024
             Pset_ElementComponentCommon.Width: *id025
             Pset_ElementComponentCommon.Height: *id026
             VVK.Material: *id006
             VVK.Colour: *id052
-            Pset_ElementComponentCommon.PowerConsumption: *id053
-            Pset_QuantityTakeOff.Weigth: *id054
+            Pset_ElectricalDeviceCommon.NominalVoltage: *id027
+            Pset_ElectricalDeviceCommon.IP_Code: *id029
+            Pset_ElectricalDeviceCommon.IK_Code: *id030
+            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id031
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
         s5:
           lod: 300
-          log: 3
+          log: 2
           properties:
             VVK.Name: *id001
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
             VVK.Tag: *id008
-            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
             Pset_ElementCommon.System: *id004
             Pset_QuantityTakeOff.Length: *id024
             Pset_ElementComponentCommon.Width: *id025
             Pset_ElementComponentCommon.Height: *id026
             VVK.Material: *id006
             VVK.Colour: *id052
-            Pset_ElementComponentCommon.PowerConsumption: *id053
-            Pset_QuantityTakeOff.Weigth: *id054
+            Pset_ElectricalDeviceCommon.NominalVoltage: *id027
+            Pset_ElectricalDeviceCommon.IP_Code: *id029
+            Pset_ElectricalDeviceCommon.IK_Code: *id030
+            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id031
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
             VVK.RelatedDocumentationURI: *id011
-            Pset_ManufacturerTypeInformation.Manufacturer: *id012
             Pset_ManufacturerTypeInformation.ArticleNumber: *id013
+            Pset_ManufacturerTypeInformation.Manufacturer: *id012
         s6:
           lod: 300
-          log: 3
+          log: 2
           properties:
             VVK.Name: *id001
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
             VVK.Tag: *id008
-            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
             Pset_ElementCommon.System: *id004
             Pset_QuantityTakeOff.Length: *id024
             Pset_ElementComponentCommon.Width: *id025
             Pset_ElementComponentCommon.Height: *id026
             VVK.Material: *id006
             VVK.Colour: *id052
-            Pset_ElementComponentCommon.PowerConsumption: *id053
-            Pset_QuantityTakeOff.Weigth: *id054
+            Pset_ElectricalDeviceCommon.NominalVoltage: *id027
+            Pset_ElectricalDeviceCommon.IP_Code: *id029
+            Pset_ElectricalDeviceCommon.IK_Code: *id030
+            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id031
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
             VVK.RelatedDocumentationURI: *id011
-            Pset_ManufacturerTypeInformation.Manufacturer: *id012
             Pset_ManufacturerTypeInformation.ArticleNumber: *id013
+            Pset_ManufacturerTypeInformation.Manufacturer: *id012
             Pset_Warranty.WarrantyStartDate: *id014
             Pset_Warranty.WarrantyPeriod: *id015
             Pset_Warranty.PointOfContact: *id016
         s7:
           lod: 300
-          log: 3
+          log: 2
           properties:
             VVK.Name: *id001
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
             VVK.Tag: *id008
-            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
             Pset_ElementCommon.System: *id004
             Pset_QuantityTakeOff.Length: *id024
             Pset_ElementComponentCommon.Width: *id025
             Pset_ElementComponentCommon.Height: *id026
             VVK.Material: *id006
             VVK.Colour: *id052
-            Pset_ElementComponentCommon.PowerConsumption: *id053
-            Pset_QuantityTakeOff.Weigth: *id054
+            Pset_ElectricalDeviceCommon.NominalVoltage: *id027
+            Pset_ElectricalDeviceCommon.IP_Code: *id029
+            Pset_ElectricalDeviceCommon.IK_Code: *id030
+            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id031
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
             VVK.RelatedDocumentationURI: *id011
-            Pset_ManufacturerTypeInformation.Manufacturer: *id012
             Pset_ManufacturerTypeInformation.ArticleNumber: *id013
+            Pset_ManufacturerTypeInformation.Manufacturer: *id012
             Pset_Warranty.WarrantyStartDate: *id014
             Pset_Warranty.WarrantyPeriod: *id015
             Pset_Warranty.PointOfContact: *id016
-    - id: Bakas skysčiams laikyti
+    - id: Šalto oro pūstuvas. Vėsos tiekimo sistema
       classifications:
         NSIK LF: H
-        NSIK LT: JG
-        NSIK LK: CMA
-        Uniclass Pr: Pr_60_50_20
+        NSIK LT: HC
+        NSIK LK: ECB
         ISO81346 CF: H
-        ISO81346 CT: JG
-        ISO81346 CC: CMA
-      ifcType: &id058
-      - IfcTank
-      - IfcTankType
-      - IfcTankTypeEnum
+        ISO81346 CT: HC
+        ISO81346 CC: ECB
+      ifcType: &id055
+        2x3:
+        - IfcHeatExchanger
+        - IfcHeatExchangerType
+        - IfcHeatExchangerTypeEnum
+        - IfcFlowController
+        - IfcFlowControllerType
+        - IfcFlowControllerTypeEnum
+        '4':
+        - IfcPump
+        - IfcPumpType
+        - IfcPumpTypeEnum
+        - IfcHeatExchanger
+        - IfcHeatExchangerType
+        - IfcHeatExchangerTypeEnum
+        - IfcFlowController
+        - IfcFlowControllerType
+        - IfcFlowControllerTypeEnum
       stages:
-        s1: &id059
+        s1: &id056
           lod: 275
           log: 3
           properties:
@@ -1279,33 +1322,33 @@ loin:
             Pset_QuantityTakeOff.Length: *id024
             Pset_ElementComponentCommon.Width: *id025
             Pset_ElementComponentCommon.Height: *id026
-            Pset_ElementComponentCommon.Diameter: &id055
-              type: IfcLengthMeasure | IfcPositiveLengthMeasure
-              valueType: Skaičius
-            Pset_QuantityTakeOff.Volume: &id056
-              type: IfcVolumeMeasure
-              valueType: Skaičius
             VVK.Material: *id006
-        s3: &id060
+            VVK.Colour: *id052
+            Pset_QuantityTakeOff.Weigth: &id054
+              type: IfcMassMeasure
+              valueType: Skaičius
+            Pset_ElementComponentCommon.PowerConsumption: &id053
+              type: IfcPowerMeasure
+              valueType: Skaičius
+            Pset_ManufacturerTypeInformation.ArticleNumber: *id013
+        s3: &id057
           lod: 200
           log: 2
           properties:
             VVK.Name: *id001
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
-            VVK.RelatedDrawing: &id057
-              valueType: Tekstas
-              type: IfcLabel
             VVK.Tag: *id008
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
             Pset_ElementCommon.System: *id004
             Pset_QuantityTakeOff.Length: *id024
             Pset_ElementComponentCommon.Width: *id025
             Pset_ElementComponentCommon.Height: *id026
-            Pset_ElementComponentCommon.Diameter: *id055
-            Pset_QuantityTakeOff.Volume: *id056
             VVK.Material: *id006
-        s4: &id061
+            VVK.Colour: *id052
+            Pset_ElementComponentCommon.PowerConsumption: *id053
+            Pset_QuantityTakeOff.Weigth: *id054
+        s4: &id058
           lod: 300
           log: 3
           properties:
@@ -1313,16 +1356,16 @@ loin:
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
             VVK.Tag: *id008
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
             Pset_ElementCommon.System: *id004
             Pset_QuantityTakeOff.Length: *id024
             Pset_ElementComponentCommon.Width: *id025
             Pset_ElementComponentCommon.Height: *id026
-            Pset_ElementComponentCommon.Diameter: *id055
-            Pset_QuantityTakeOff.Volume: *id056
             VVK.Material: *id006
-            VVK.RelatedDrawing: *id057
-            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
-        s5: &id062
+            VVK.Colour: *id052
+            Pset_ElementComponentCommon.PowerConsumption: *id053
+            Pset_QuantityTakeOff.Weigth: *id054
+        s5: &id059
           lod: 300
           log: 3
           properties:
@@ -1330,19 +1373,19 @@ loin:
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
             VVK.Tag: *id008
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
             Pset_ElementCommon.System: *id004
             Pset_QuantityTakeOff.Length: *id024
             Pset_ElementComponentCommon.Width: *id025
             Pset_ElementComponentCommon.Height: *id026
-            Pset_ElementComponentCommon.Diameter: *id055
-            Pset_QuantityTakeOff.Volume: *id056
             VVK.Material: *id006
-            VVK.RelatedDrawing: *id057
-            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            VVK.Colour: *id052
+            Pset_ElementComponentCommon.PowerConsumption: *id053
+            Pset_QuantityTakeOff.Weigth: *id054
             VVK.RelatedDocumentationURI: *id011
             Pset_ManufacturerTypeInformation.Manufacturer: *id012
             Pset_ManufacturerTypeInformation.ArticleNumber: *id013
-        s6: &id063
+        s6: &id060
           lod: 300
           log: 3
           properties:
@@ -1350,87 +1393,280 @@ loin:
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
             VVK.Tag: *id008
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
             Pset_ElementCommon.System: *id004
             Pset_QuantityTakeOff.Length: *id024
             Pset_ElementComponentCommon.Width: *id025
             Pset_ElementComponentCommon.Height: *id026
-            Pset_ElementComponentCommon.Diameter: *id055
-            Pset_QuantityTakeOff.Volume: *id056
             VVK.Material: *id006
-            VVK.RelatedDrawing: *id057
-            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
-            VVK.RelatedDocumentationURI: *id011
-            Pset_ManufacturerTypeInformation.Manufacturer: *id012
-            Pset_ManufacturerTypeInformation.ArticleNumber: *id013
-            Pset_Warranty.WarrantyStartDate: *id014
-            Pset_Warranty.WarrantyPeriod: *id015
-            Pset_Warranty.PointOfContact: *id016
-        s7: &id064
-          lod: 300
-          log: 3
-          properties:
-            VVK.Name: *id001
-            VVK.ElementType: *id002
-            Pset_ElementComponentCommon.Status: *id003
-            VVK.Tag: *id008
-            Pset_ElementCommon.System: *id004
-            Pset_QuantityTakeOff.Length: *id024
-            Pset_ElementComponentCommon.Width: *id025
-            Pset_ElementComponentCommon.Height: *id026
-            Pset_ElementComponentCommon.Diameter: *id055
-            Pset_QuantityTakeOff.Volume: *id056
-            VVK.Material: *id006
-            VVK.RelatedDrawing: *id057
-            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            VVK.Colour: *id052
+            Pset_ElementComponentCommon.PowerConsumption: *id053
+            Pset_QuantityTakeOff.Weigth: *id054
             VVK.RelatedDocumentationURI: *id011
             Pset_ManufacturerTypeInformation.Manufacturer: *id012
             Pset_ManufacturerTypeInformation.ArticleNumber: *id013
             Pset_Warranty.WarrantyStartDate: *id014
             Pset_Warranty.WarrantyPeriod: *id015
             Pset_Warranty.PointOfContact: *id016
-    - id: Išsiplėtimo indas
+        s7: &id061
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id008
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_ElementCommon.System: *id004
+            Pset_QuantityTakeOff.Length: *id024
+            Pset_ElementComponentCommon.Width: *id025
+            Pset_ElementComponentCommon.Height: *id026
+            VVK.Material: *id006
+            VVK.Colour: *id052
+            Pset_ElementComponentCommon.PowerConsumption: *id053
+            Pset_QuantityTakeOff.Weigth: *id054
+            VVK.RelatedDocumentationURI: *id011
+            Pset_ManufacturerTypeInformation.Manufacturer: *id012
+            Pset_ManufacturerTypeInformation.ArticleNumber: *id013
+            Pset_Warranty.WarrantyStartDate: *id014
+            Pset_Warranty.WarrantyPeriod: *id015
+            Pset_Warranty.PointOfContact: *id016
+    - id: Šalto oro pūstuvas. Vėsos tiekimo sistema
       classifications:
         NSIK LF: H
-        NSIK LT: JG
-        NSIK LK: FLE
-        Uniclass Pr: Pr_60_50_20_28
+        NSIK LT: HC
+        NSIK LK: EQC
         ISO81346 CF: H
-        ISO81346 CT: JG
-        ISO81346 CC: FLE
-      ifcType: *id058
-      stages:
-        s1: *id059
-        s3: *id060
-        s4: *id061
-        s5: *id062
-        s6: *id063
-        s7: *id064
-    - id: Akumuliacinė talpa
-      classifications:
-        NSIK LF: H
-        NSIK LT: JG
-        NSIK LK: CPA
-        Uniclass Pr: Pr_60_50_20_10
-        ISO81346 CF: H
-        ISO81346 CT: JG
-        ISO81346 CC: CPA
-      ifcType: *id058
+        ISO81346 CT: HC
+        ISO81346 CC: EQC
       examples:
-      - Šilumos akumuliavimo skysčiuose talpykla
+      - Kondicionieriaus vidinis blokas
+      ifcType: *id055
       stages:
-        s1: *id059
-        s3: *id060
-        s4: *id061
-        s5: *id062
-        s6: *id063
-        s7: *id064
-    - id: Akumuliacinė talpa su elektriniu šildymo elementu
+        s1: *id056
+        s3: *id057
+        s4: *id058
+        s5: *id059
+        s6: *id060
+        s7: *id061
+    - id: Vėsintuvas. Vėsos tiekimo sistema
+      examples:
+      - Išorinis kondicionieriaus blokas
+      - čileris
+      - šalčio mašina
       classifications:
         NSIK LF: H
-        NSIK LT: JG
-        NSIK LK: '%CPA2010'
-        Uniclass Pr: Pr_60_50_20_78
-      ifcType: *id058
+        NSIK LT: HC
+        NSIK LK: EQD
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: EQD
+      ifcType: *id055
+      stages:
+        s1: *id056
+        s3: *id057
+        s4: *id058
+        s5: *id059
+        s6: *id060
+        s7: *id061
+    - id: Šilumos siurblio išorinis blokas. Vėsos tiekimo sistema
+      deprecated: null
+      examples:
+      - Išorinis kondicionieriaus blokas
+      - čileris
+      - šalčio mašina
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: EGA
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: EGA
+      ifcType: *id055
+      stages:
+        s1: *id056
+        s3: *id057
+        s4: *id058
+        s5: *id059
+        s6: *id060
+        s7: *id061
+    - id: Vėsinimo plokštė. Vėsos tiekimo sistema
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: EQB
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: EQB
+      ifcType: *id055
+      stages:
+        s1: *id056
+        s3: *id057
+        s4: *id058
+        s5: *id059
+        s6: *id060
+        s7: *id061
+    - id: Ventiliatorius
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: GQB
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: GQB
+      stages:
+        s1:
+          lod: 200
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id008
+            Pset_ElementCommon.System: *id004
+            Pset_ElementComponentCommon.Diameter: &id062
+              type: IfcLengthMeasure | IfcPositiveLengthMeasure
+              valueType: Skaičius
+            VVK.Material: *id006
+            Pset_ElectricalDeviceCommon.NominalPowerConsumption: &id063
+              valueType: Skaičius
+              ifcType: IfcPowerMeasure
+            Pset_ElementComponentCommon.HasProtectiveEarth: &id064
+              type: IfcBoolean
+              valueType: Loginis
+            Pset_ElectricalDeviceCommon.NominalVoltage: *id027
+            Pset_ElectricalDeviceCommon.NominalFrequency: &id065
+              valueType: Tekstas
+              ifcType: IfcLabel
+            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id031
+            Pset_ElectricalDeviceCommon.IP_Code: *id029
+            Pset_QuantityTakeOff.Weigth: *id054
+            Pset_ElementComponentCommon.VolumetricFlowRate: *id010
+            Pset_ElementComponentCommon.IsExternal: *id007
+        s3:
+          log: 2
+          lod: 300
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id008
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_ElementCommon.System: *id004
+            VVK.Material: *id006
+            Pset_ElementComponentCommon.Diameter: *id062
+            Pset_ElectricalDeviceCommon.NominalPowerConsumption: *id063
+            Pset_QuantityTakeOff.Weigth: *id054
+        s4:
+          log: 3
+          lod: 300
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id008
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_ElementCommon.System: *id004
+            VVK.Material: *id006
+            Pset_ElementComponentCommon.Diameter: *id062
+            Pset_ElectricalDeviceCommon.NominalPowerConsumption: *id063
+            Pset_QuantityTakeOff.Weigth: *id054
+            Pset_ElementComponentCommon.HasProtectiveEarth: *id064
+            Pset_ElectricalDeviceCommon.NominalVoltage: *id027
+            Pset_ElectricalDeviceCommon.NominalFrequency: *id065
+            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id031
+            Pset_ElectricalDeviceCommon.IP_Code: *id029
+            Pset_ElementComponentCommon.VolumetricFlowRate: *id010
+            Pset_ElementComponentCommon.IsExternal: *id007
+        s5:
+          log: 3
+          lod: 300
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id008
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_ElementCommon.System: *id004
+            VVK.Material: *id006
+            Pset_ElementComponentCommon.Diameter: *id062
+            Pset_ElectricalDeviceCommon.NominalPowerConsumption: *id063
+            Pset_QuantityTakeOff.Weigth: *id054
+            Pset_ElementComponentCommon.HasProtectiveEarth: *id064
+            Pset_ElectricalDeviceCommon.NominalVoltage: *id027
+            Pset_ElectricalDeviceCommon.NominalFrequency: *id065
+            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id031
+            Pset_ElectricalDeviceCommon.IP_Code: *id029
+            Pset_ElementComponentCommon.VolumetricFlowRate: *id010
+            Pset_ElementComponentCommon.IsExternal: *id007
+            VVK.RelatedDocumentationURI: *id011
+            Pset_ManufacturerTypeInformation.Manufacturer: *id012
+            Pset_ManufacturerTypeInformation.ArticleNumber: *id013
+        s6:
+          log: 3
+          lod: 350
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id008
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_ElementCommon.System: *id004
+            VVK.Material: *id006
+            Pset_ElementComponentCommon.Diameter: *id062
+            Pset_ElectricalDeviceCommon.NominalPowerConsumption: *id063
+            Pset_QuantityTakeOff.Weigth: *id054
+            Pset_ElementComponentCommon.HasProtectiveEarth: *id064
+            Pset_ElectricalDeviceCommon.NominalVoltage: *id027
+            Pset_ElectricalDeviceCommon.NominalFrequency: *id065
+            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id031
+            Pset_ElectricalDeviceCommon.IP_Code: *id029
+            Pset_ElementComponentCommon.VolumetricFlowRate: *id010
+            Pset_ElementComponentCommon.IsExternal: *id007
+            VVK.RelatedDocumentationURI: *id011
+            Pset_ManufacturerTypeInformation.Manufacturer: *id012
+            Pset_ManufacturerTypeInformation.ArticleNumber: *id013
+            Pset_Warranty.WarrantyStartDate: *id014
+            Pset_Warranty.WarrantyPeriod: *id015
+            Pset_Warranty.PointOfContact: *id016
+        s7:
+          log: 3
+          lod: 350
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id008
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_ElementCommon.System: *id004
+            VVK.Material: *id006
+            Pset_ElementComponentCommon.Diameter: *id062
+            Pset_ElectricalDeviceCommon.NominalPowerConsumption: *id063
+            Pset_QuantityTakeOff.Weigth: *id054
+            Pset_ElementComponentCommon.HasProtectiveEarth: *id064
+            Pset_ElectricalDeviceCommon.NominalVoltage: *id027
+            Pset_ElectricalDeviceCommon.NominalFrequency: *id065
+            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id031
+            Pset_ElectricalDeviceCommon.IP_Code: *id029
+            Pset_ElementComponentCommon.VolumetricFlowRate: *id010
+            Pset_ElementComponentCommon.IsExternal: *id007
+            VVK.RelatedDocumentationURI: *id011
+            Pset_ManufacturerTypeInformation.Manufacturer: *id012
+            Pset_ManufacturerTypeInformation.ArticleNumber: *id013
+            Pset_Warranty.WarrantyStartDate: *id014
+            Pset_Warranty.WarrantyPeriod: *id015
+            Pset_Warranty.PointOfContact: *id016
+    - id: Ortakis
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: WPB
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: WPB
+      ifcType:
+      - IfcDuctSegment
+      - IfcDuctSegmentType
       stages:
         s1:
           lod: 275
@@ -1439,15 +1675,15 @@ loin:
             VVK.Name: *id001
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
-            VVK.Tag: *id008
             Pset_ElementCommon.System: *id004
             Pset_QuantityTakeOff.Length: *id024
             Pset_ElementComponentCommon.Width: *id025
             Pset_ElementComponentCommon.Height: *id026
-            Pset_ElementComponentCommon.Diameter: *id055
-            Pset_QuantityTakeOff.Volume: *id056
+            Pset_ElementComponentCommon.Diameter: *id062
             VVK.Material: *id006
-            Pset_ElementComponentCommon.PowerConsumption: *id053
+        s2:
+          lod: 200
+          log: 2
         s3:
           lod: 200
           log: 2
@@ -1455,17 +1691,264 @@ loin:
             VVK.Name: *id001
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
-            VVK.RelatedDrawing: *id057
-            VVK.Tag: *id008
-            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
             Pset_ElementCommon.System: *id004
             Pset_QuantityTakeOff.Length: *id024
             Pset_ElementComponentCommon.Width: *id025
             Pset_ElementComponentCommon.Height: *id026
-            Pset_ElementComponentCommon.Diameter: *id055
-            Pset_QuantityTakeOff.Volume: *id056
+            Pset_ElementComponentCommon.Diameter: *id062
             VVK.Material: *id006
-            Pset_ElementComponentCommon.PowerConsumption: *id053
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+        s4:
+          lod: 300
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementCommon.System: *id004
+            Pset_QuantityTakeOff.Length: *id024
+            Pset_ElementComponentCommon.Width: *id025
+            Pset_ElementComponentCommon.Height: *id026
+            Pset_ElementComponentCommon.Diameter: *id062
+            VVK.Material: *id006
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+        s5:
+          lod: 300
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementCommon.System: *id004
+            Pset_QuantityTakeOff.Length: *id024
+            Pset_ElementComponentCommon.Width: *id025
+            Pset_ElementComponentCommon.Height: *id026
+            Pset_ElementComponentCommon.Diameter: *id062
+            VVK.Material: *id006
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            VVK.RelatedDocumentationURI: *id011
+            Pset_ManufacturerTypeInformation.Manufacturer: *id012
+        s6:
+          lod: 300
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementCommon.System: *id004
+            Pset_QuantityTakeOff.Length: *id024
+            Pset_ElementComponentCommon.Width: *id025
+            Pset_ElementComponentCommon.Height: *id026
+            Pset_ElementComponentCommon.Diameter: *id062
+            VVK.Material: *id006
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            VVK.RelatedDocumentationURI: *id011
+            Pset_ManufacturerTypeInformation.Manufacturer: *id012
+            Pset_Warranty.WarrantyStartDate: *id014
+            Pset_Warranty.WarrantyPeriod: *id015
+            Pset_Warranty.PointOfContact: *id016
+        s7:
+          lod: 300
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementCommon.System: *id004
+            Pset_QuantityTakeOff.Length: *id024
+            Pset_ElementComponentCommon.Width: *id025
+            Pset_ElementComponentCommon.Height: *id026
+            Pset_ElementComponentCommon.Diameter: *id062
+            VVK.Material: *id006
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            VVK.RelatedDocumentationURI: *id011
+            Pset_ManufacturerTypeInformation.Manufacturer: *id012
+            Pset_Warranty.WarrantyStartDate: *id014
+            Pset_Warranty.WarrantyPeriod: *id015
+            Pset_Warranty.PointOfContact: *id016
+    - id: Grotelės. Vėsos tiekimo sistema
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: NAC
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: NAC
+      stages:
+        s1: &id066
+          lod: 275
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementCommon.System: *id004
+            VVK.Tag: *id008
+            Pset_ElementComponentCommon.Height: *id026
+            Pset_ElementComponentCommon.Width: *id025
+            Pset_ElementComponentCommon.Diameter: *id062
+            VVK.Material: *id006
+            Pset_ElementComponentCommon.IsExternal: *id007
+        s2: &id067
+          lod: 200
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+        s3: &id068
+          lod: 200
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_ElementCommon.System: *id004
+            Pset_ElementComponentCommon.Height: *id026
+            Pset_ElementComponentCommon.Width: *id025
+            Pset_ElementComponentCommon.Diameter: *id062
+            VVK.Material: *id006
+        s4: &id069
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementCommon.System: *id004
+            VVK.Tag: *id008
+            Pset_ElementComponentCommon.Height: *id026
+            Pset_ElementComponentCommon.Width: *id025
+            Pset_ElementComponentCommon.Diameter: *id062
+            VVK.Material: *id006
+            Pset_ElementComponentCommon.IsExternal: *id007
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+        s5: &id070
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementCommon.System: *id004
+            VVK.Tag: *id008
+            Pset_ElementComponentCommon.Height: *id026
+            Pset_ElementComponentCommon.Width: *id025
+            Pset_ElementComponentCommon.Diameter: *id062
+            VVK.Material: *id006
+            Pset_ElementComponentCommon.IsExternal: *id007
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            VVK.RelatedDocumentationURI: *id011
+            Pset_ManufacturerTypeInformation.Manufacturer: *id012
+            Pset_ManufacturerTypeInformation.ArticleNumber: *id013
+        s6: &id071
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementCommon.System: *id004
+            VVK.Tag: *id008
+            Pset_ElementComponentCommon.Height: *id026
+            Pset_ElementComponentCommon.Width: *id025
+            Pset_ElementComponentCommon.Diameter: *id062
+            VVK.Material: *id006
+            Pset_ElementComponentCommon.IsExternal: *id007
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            VVK.RelatedDocumentationURI: *id011
+            Pset_ManufacturerTypeInformation.Manufacturer: *id012
+            Pset_ManufacturerTypeInformation.ArticleNumber: *id013
+            Pset_Warranty.WarrantyStartDate: *id014
+            Pset_Warranty.WarrantyPeriod: *id015
+            Pset_Warranty.PointOfContact: *id016
+        s7: &id072
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementCommon.System: *id004
+            VVK.Tag: *id008
+            Pset_ElementComponentCommon.Height: *id026
+            Pset_ElementComponentCommon.Width: *id025
+            Pset_ElementComponentCommon.Diameter: *id062
+            VVK.Material: *id006
+            Pset_ElementComponentCommon.IsExternal: *id007
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            VVK.RelatedDocumentationURI: *id011
+            Pset_ManufacturerTypeInformation.Manufacturer: *id012
+            Pset_ManufacturerTypeInformation.ArticleNumber: *id013
+            Pset_Warranty.WarrantyStartDate: *id014
+            Pset_Warranty.WarrantyPeriod: *id015
+            Pset_Warranty.PointOfContact: *id016
+    - id: Difuzorius. Vėsos tiekimo sistema
+      classifications:
+        NSIK LF: J
+        NSIK LT: HC
+        NSIK LK: RND
+        ISO81346 CF: J
+        ISO81346 CT: HC
+        ISO81346 CC: RND
+      stages:
+        s1: *id066
+        s2: *id067
+        s3: *id068
+        s4: *id069
+        s5: *id070
+        s6: *id071
+        s7: *id072
+    - id: Oro skirstytuvas. Vėsos tiekimo sistema
+      classifications:
+        NSIK LF: J
+        NSIK LT: HC
+        NSIK LK: '%RND10'
+      stages:
+        s1: *id066
+        s2: *id067
+        s3: *id068
+        s4: *id069
+        s5: *id070
+        s6: *id071
+        s7: *id072
+    - id: Nuolaša
+      classifications:
+        NSIK LF: H
+        NSIK LT: HC
+        NSIK LK: WMD
+        ISO81346 CF: H
+        ISO81346 CT: HC
+        ISO81346 CC: WMD
+      examples:
+      - Kondensato rinktuvas
+      - Kondensato padėklas
+      stages:
+        s1:
+          lod: 275
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id024
+            Pset_ElementComponentCommon.Width: *id025
+            Pset_ElementComponentCommon.Height: *id026
+            VVK.Material: *id006
+            Pset_ElementCommon.System: *id004
+        s3:
+          lod: 200
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
+            Pset_QuantityTakeOff.Length: *id024
+            Pset_ElementComponentCommon.Width: *id025
+            Pset_ElementComponentCommon.Height: *id026
+            VVK.Material: *id006
         s4:
           lod: 300
           log: 3
@@ -1473,16 +1956,12 @@ loin:
             VVK.Name: *id001
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
-            VVK.Tag: *id008
-            Pset_ElementCommon.System: *id004
             Pset_QuantityTakeOff.Length: *id024
             Pset_ElementComponentCommon.Width: *id025
             Pset_ElementComponentCommon.Height: *id026
-            Pset_ElementComponentCommon.Diameter: *id055
-            Pset_QuantityTakeOff.Volume: *id056
             VVK.Material: *id006
-            Pset_ElementComponentCommon.PowerConsumption: *id053
-            VVK.RelatedDrawing: *id057
+            Pset_ElementCommon.System: *id004
+            VVK.Tag: *id008
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
         s5:
           lod: 300
@@ -1491,16 +1970,12 @@ loin:
             VVK.Name: *id001
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
-            VVK.Tag: *id008
-            Pset_ElementCommon.System: *id004
             Pset_QuantityTakeOff.Length: *id024
             Pset_ElementComponentCommon.Width: *id025
             Pset_ElementComponentCommon.Height: *id026
-            Pset_ElementComponentCommon.Diameter: *id055
-            Pset_QuantityTakeOff.Volume: *id056
             VVK.Material: *id006
-            Pset_ElementComponentCommon.PowerConsumption: *id053
-            VVK.RelatedDrawing: *id057
+            Pset_ElementCommon.System: *id004
+            VVK.Tag: *id008
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
             VVK.RelatedDocumentationURI: *id011
             Pset_ManufacturerTypeInformation.Manufacturer: *id012
@@ -1512,16 +1987,12 @@ loin:
             VVK.Name: *id001
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
-            VVK.Tag: *id008
-            Pset_ElementCommon.System: *id004
             Pset_QuantityTakeOff.Length: *id024
             Pset_ElementComponentCommon.Width: *id025
             Pset_ElementComponentCommon.Height: *id026
-            Pset_ElementComponentCommon.Diameter: *id055
-            Pset_QuantityTakeOff.Volume: *id056
             VVK.Material: *id006
-            Pset_ElementComponentCommon.PowerConsumption: *id053
-            VVK.RelatedDrawing: *id057
+            Pset_ElementCommon.System: *id004
+            VVK.Tag: *id008
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
             VVK.RelatedDocumentationURI: *id011
             Pset_ManufacturerTypeInformation.Manufacturer: *id012
@@ -1536,16 +2007,12 @@ loin:
             VVK.Name: *id001
             VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
-            VVK.Tag: *id008
-            Pset_ElementCommon.System: *id004
             Pset_QuantityTakeOff.Length: *id024
             Pset_ElementComponentCommon.Width: *id025
             Pset_ElementComponentCommon.Height: *id026
-            Pset_ElementComponentCommon.Diameter: *id055
-            Pset_QuantityTakeOff.Volume: *id056
             VVK.Material: *id006
-            Pset_ElementComponentCommon.PowerConsumption: *id053
-            VVK.RelatedDrawing: *id057
+            Pset_ElementCommon.System: *id004
+            VVK.Tag: *id008
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
             VVK.RelatedDocumentationURI: *id011
             Pset_ManufacturerTypeInformation.Manufacturer: *id012
@@ -1553,16 +2020,48 @@ loin:
             Pset_Warranty.WarrantyStartDate: *id014
             Pset_Warranty.WarrantyPeriod: *id015
             Pset_Warranty.PointOfContact: *id016
-    - id: Šildymo sistemos sistemos teigiamo slėgio siurblys
+    - id: Vamzdis. Šilumos tiekimo sistema
       classifications:
         NSIK LF: H
-        NSIK LT: JG
-        NSIK LK: GPA
-        Uniclass Pr: Pr_65_53_96
+        NSIK LT: HD
+        NSIK LK: WPA
         ISO81346 CF: H
-        ISO81346 CT: JG
+        ISO81346 CT: HD
+        ISO81346 CC: WPA
+      ifcType: *id073
+      stages:
+        s1: *id074
+        s2: *id075
+        s3: *id076
+        s4: *id077
+        s5: *id078
+        s6: *id079
+        s7: *id080
+    - id: Sklendė. Šilumos tiekimo sistema
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: QMA
+        ISO81346 CF: H
+        ISO81346 CT: HD
+        ISO81346 CC: QMA
+      ifcType: *id044
+      stages:
+        s1: *id034
+        s3: *id035
+        s4: *id036
+        s5: *id037
+        s6: *id038
+        s7: *id039
+    - id: Siurblys. Šilumos tiekimo sistema
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: GPA
+        ISO81346 CF: H
+        ISO81346 CT: HD
         ISO81346 CC: GPA
-      ifcType: &id068
+      ifcType:
         2x3:
         - IfcFlowController
         - IfcFlowControllerType
@@ -1575,7 +2074,7 @@ loin:
         - IfcFlowControllerType
         - IfcFlowControllerTypeEnum
       stages:
-        s1: &id069
+        s1:
           lod: 200
           log: 2
           properties:
@@ -1586,22 +2085,19 @@ loin:
             Pset_ElementCommon.System: *id004
             Pset_ElementComponentCommon.NominalDiameter: *id005
             VVK.Material: *id006
-            Pset_ElectricalDeviceCommon.NominalPowerConsumption: &id065
+            Pset_ElectricalDeviceCommon.NominalPowerConsumption: *id063
+            Pset_ElementComponentCommon.HasProtectiveEarth: *id064
+            Pset_ElectricalDeviceCommon.NominalVoltage: *id027
+            Pset_ElectricalDeviceCommon.NominalFrequency: *id065
+            Pset_ElectricalDeviceCommon.NumberOfPhases: &id081
               valueType: Skaičius
-              ifcType: IfcPowerMeasure
-            Pset_ElementComponentCommon.HasProtectiveEarth: &id066
-              type: IfcBoolean
-              valueType: Loginis
-            Pset_ElectricalDeviceCommon.NominalVoltage: *id027
-            Pset_ElectricalDeviceCommon.NominalFrequency: &id067
-              valueType: Tekstas
-              ifcType: IfcLabel
+              ifcType: IfcInteger
             Pset_ElectricalDeviceCommon.InsulationStandardClass: *id031
             Pset_ElectricalDeviceCommon.IP_Code: *id029
             Pset_QuantityTakeOff.Weigth: *id054
             Pset_ElementComponentCommon.VolumetricFlowRate: *id010
             Pset_ElementComponentCommon.IsExternal: *id007
-        s3: &id070
+        s3:
           log: 2
           lod: 300
           properties:
@@ -1612,17 +2108,18 @@ loin:
             Pset_ElementCommon.System: *id004
             Pset_ElementComponentCommon.NominalDiameter: *id005
             VVK.Material: *id006
-            Pset_ElectricalDeviceCommon.NominalPowerConsumption: *id065
-            Pset_ElementComponentCommon.HasProtectiveEarth: *id066
+            Pset_ElectricalDeviceCommon.NominalPowerConsumption: *id063
+            Pset_ElementComponentCommon.HasProtectiveEarth: *id064
             Pset_ElectricalDeviceCommon.NominalVoltage: *id027
-            Pset_ElectricalDeviceCommon.NominalFrequency: *id067
+            Pset_ElectricalDeviceCommon.NominalFrequency: *id065
+            Pset_ElectricalDeviceCommon.NumberOfPhases: *id081
             Pset_ElectricalDeviceCommon.InsulationStandardClass: *id031
             Pset_ElectricalDeviceCommon.IP_Code: *id029
             Pset_QuantityTakeOff.Weigth: *id054
             Pset_ElementComponentCommon.VolumetricFlowRate: *id010
             Pset_ElementComponentCommon.IsExternal: *id007
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
-        s4: &id071
+        s4:
           log: 3
           lod: 300
           properties:
@@ -1633,17 +2130,18 @@ loin:
             Pset_ElementCommon.System: *id004
             Pset_ElementComponentCommon.NominalDiameter: *id005
             VVK.Material: *id006
-            Pset_ElectricalDeviceCommon.NominalPowerConsumption: *id065
-            Pset_ElementComponentCommon.HasProtectiveEarth: *id066
+            Pset_ElectricalDeviceCommon.NominalPowerConsumption: *id063
+            Pset_ElementComponentCommon.HasProtectiveEarth: *id064
             Pset_ElectricalDeviceCommon.NominalVoltage: *id027
-            Pset_ElectricalDeviceCommon.NominalFrequency: *id067
+            Pset_ElectricalDeviceCommon.NominalFrequency: *id065
+            Pset_ElectricalDeviceCommon.NumberOfPhases: *id081
             Pset_ElectricalDeviceCommon.InsulationStandardClass: *id031
             Pset_ElectricalDeviceCommon.IP_Code: *id029
             Pset_QuantityTakeOff.Weigth: *id054
             Pset_ElementComponentCommon.VolumetricFlowRate: *id010
             Pset_ElementComponentCommon.IsExternal: *id007
             Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
-        s5: &id072
+        s5:
           log: 3
           lod: 300
           properties:
@@ -1654,10 +2152,11 @@ loin:
             Pset_ElementCommon.System: *id004
             Pset_ElementComponentCommon.NominalDiameter: *id005
             VVK.Material: *id006
-            Pset_ElectricalDeviceCommon.NominalPowerConsumption: *id065
-            Pset_ElementComponentCommon.HasProtectiveEarth: *id066
+            Pset_ElectricalDeviceCommon.NominalPowerConsumption: *id063
+            Pset_ElementComponentCommon.HasProtectiveEarth: *id064
             Pset_ElectricalDeviceCommon.NominalVoltage: *id027
-            Pset_ElectricalDeviceCommon.NominalFrequency: *id067
+            Pset_ElectricalDeviceCommon.NominalFrequency: *id065
+            Pset_ElectricalDeviceCommon.NumberOfPhases: *id081
             Pset_ElectricalDeviceCommon.InsulationStandardClass: *id031
             Pset_ElectricalDeviceCommon.IP_Code: *id029
             Pset_QuantityTakeOff.Weigth: *id054
@@ -1667,7 +2166,7 @@ loin:
             VVK.RelatedDocumentationURI: *id011
             Pset_ManufacturerTypeInformation.Manufacturer: *id012
             Pset_ManufacturerTypeInformation.ArticleNumber: *id013
-        s6: &id073
+        s6:
           log: 3
           lod: 350
           properties:
@@ -1678,10 +2177,11 @@ loin:
             Pset_ElementCommon.System: *id004
             Pset_ElementComponentCommon.NominalDiameter: *id005
             VVK.Material: *id006
-            Pset_ElectricalDeviceCommon.NominalPowerConsumption: *id065
-            Pset_ElementComponentCommon.HasProtectiveEarth: *id066
+            Pset_ElectricalDeviceCommon.NominalPowerConsumption: *id063
+            Pset_ElementComponentCommon.HasProtectiveEarth: *id064
             Pset_ElectricalDeviceCommon.NominalVoltage: *id027
-            Pset_ElectricalDeviceCommon.NominalFrequency: *id067
+            Pset_ElectricalDeviceCommon.NominalFrequency: *id065
+            Pset_ElectricalDeviceCommon.NumberOfPhases: *id081
             Pset_ElectricalDeviceCommon.InsulationStandardClass: *id031
             Pset_ElectricalDeviceCommon.IP_Code: *id029
             Pset_QuantityTakeOff.Weigth: *id054
@@ -1694,7 +2194,7 @@ loin:
             Pset_Warranty.WarrantyStartDate: *id014
             Pset_Warranty.WarrantyPeriod: *id015
             Pset_Warranty.PointOfContact: *id016
-        s7: &id074
+        s7:
           log: 3
           lod: 350
           properties:
@@ -1705,10 +2205,11 @@ loin:
             Pset_ElementCommon.System: *id004
             Pset_ElementComponentCommon.NominalDiameter: *id005
             VVK.Material: *id006
-            Pset_ElectricalDeviceCommon.NominalPowerConsumption: *id065
-            Pset_ElementComponentCommon.HasProtectiveEarth: *id066
+            Pset_ElectricalDeviceCommon.NominalPowerConsumption: *id063
+            Pset_ElementComponentCommon.HasProtectiveEarth: *id064
             Pset_ElectricalDeviceCommon.NominalVoltage: *id027
-            Pset_ElectricalDeviceCommon.NominalFrequency: *id067
+            Pset_ElectricalDeviceCommon.NominalFrequency: *id065
+            Pset_ElectricalDeviceCommon.NumberOfPhases: *id081
             Pset_ElectricalDeviceCommon.InsulationStandardClass: *id031
             Pset_ElectricalDeviceCommon.IP_Code: *id029
             Pset_QuantityTakeOff.Weigth: *id054
@@ -1721,409 +2222,205 @@ loin:
             Pset_Warranty.WarrantyStartDate: *id014
             Pset_Warranty.WarrantyPeriod: *id015
             Pset_Warranty.PointOfContact: *id016
-    - id: Siurblys
+    - id: Vėsos tiekimo sistemos įrenginių aptarnavimo erdvė
       classifications:
         NSIK LF: H
-        NSIK LT: JG
-        NSIK LK: GPB
-        Uniclass Pr: Pr_65_53_86
-        ISO81346 CF: H
-        ISO81346 CT: JG
-        ISO81346 CC: GPB
-      examples:
-      - Cirkuliacinis siurblys
-      - Rotacinis siurblys
-      ifcType: *id068
-      stages:
-        s1: *id069
-        s3: *id070
-        s4: *id071
-        s5: *id072
-        s6: *id073
-        s7: *id074
-    - id: Cirkuliacinis siurblys       &h_hd_gpb100
-      classifications:
-        NSIK LF: H
-        NSIK LT: JG
-        NSIK LK: '%GPB1010'
-        Uniclass Pr: Pr_65_53_86_12
-      ifcType: *id068
-      stages:
-        s1: *id069
-        s3: *id070
-        s4: *id071
-        s5: *id072
-        s6: *id073
-        s7: *id074
-    - id: Kompresorinė šaldymo mašina
-      classifications:
-        NSIK LF: H
-        NSIK LT: JG
-        NSIK LK: ECC
-        Uniclass Pr: Pr_60_60_13_04
-        ISO81346 CF: H
-        ISO81346 CT: JG
-        ISO81346 CC: ECC
-      ifcType: *id075
-      examples:
-      - Kompresorinė šaldymo mašina
-      - Čileris
-      - Šaldytuvas
-      stages:
-        s1: *id069
-        s3: *id070
-        s4: *id071
-        s5: *id072
-        s6: *id073
-        s7: *id074
-    - id: Šilumos siurblys
-      classifications:
-        NSIK LF: H
-        NSIK LT: JG
-        NSIK LK: EGA
-        Uniclass Pr: Pr_70_60_37
-        ISO81346 CF: H
-        ISO81346 CT: JG
-        ISO81346 CC: EGA
-      ifcType: *id068
-      stages:
-        s1: *id069
-        s3: *id070
-        s4: *id071
-        s5: *id072
-        s6: *id073
-        s7: *id074
-    - id: Šulinys
-      classifications:
-        NSIK LF: H
-        NSIK LT: JG
-        NSIK LK: XMC
-        Uniclass Pr: Ss_50_35_06
-        ISO81346 CF: H
-        ISO81346 CT: JG
-        ISO81346 CC: XMC
-      ifcType: &id076
-      - IfcFlowTerminal
-      - IfcFlowTerminalType
-      - IfcFlowTerminalTypeEnum
-      stages:
-        s1:
-          lod: 275
-          log: 3
-          properties:
-            Pset_ElementComponentCommon.IsExternal: *id007
-            VVK.Material: *id006
-            Pset_ElementComponentCommon.Diameter: *id055
-            Pset_ElementComponentCommon.Height: *id026
-            VVK.Name: *id001
-            VVK.ElementType: *id002
-            Pset_ElementComponentCommon.Status: *id003
-            VVK.Tag: *id008
-            Pset_ElementCommon.System: *id004
-        s2:
-          properties:
-            VVK.Name: *id001
-            VVK.ElementType: *id002
-            Pset_ElementComponentCommon.Status: *id003
-            Pset_ElementCommon.System: *id004
-        s3:
-          lod: 200
-          log: 2
-          properties:
-            VVK.Material: *id006
-            Pset_ElementComponentCommon.Diameter: *id055
-            Pset_ElementComponentCommon.Height: *id026
-            VVK.Name: *id001
-            VVK.ElementType: *id002
-            Pset_ElementComponentCommon.Status: *id003
-            VVK.Tag: *id008
-            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
-            Pset_ElementCommon.System: *id004
-        s4:
-          lod: 300
-          log: 3
-          properties:
-            Pset_ElementComponentCommon.IsExternal: *id007
-            VVK.Material: *id006
-            Pset_ElementComponentCommon.Diameter: *id055
-            Pset_ElementComponentCommon.Height: *id026
-            VVK.Name: *id001
-            VVK.ElementType: *id002
-            Pset_ElementComponentCommon.Status: *id003
-            VVK.Tag: *id008
-            Pset_ElementCommon.System: *id004
-            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
-        s5:
-          lod: 300
-          log: 3
-          properties:
-            Pset_ElementComponentCommon.IsExternal: *id007
-            VVK.Material: *id006
-            Pset_ElementComponentCommon.Diameter: *id055
-            Pset_ElementComponentCommon.Height: *id026
-            VVK.Name: *id001
-            VVK.ElementType: *id002
-            Pset_ElementComponentCommon.Status: *id003
-            VVK.Tag: *id008
-            Pset_ElementCommon.System: *id004
-            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
-            VVK.RelatedDocumentationURI: *id011
-            Pset_ManufacturerTypeInformation.Manufacturer: *id012
-        s6:
-          lod: 300
-          log: 3
-          properties:
-            Pset_ElementComponentCommon.IsExternal: *id007
-            VVK.Material: *id006
-            Pset_ElementComponentCommon.Diameter: *id055
-            Pset_ElementComponentCommon.Height: *id026
-            VVK.Name: *id001
-            VVK.ElementType: *id002
-            Pset_ElementComponentCommon.Status: *id003
-            VVK.Tag: *id008
-            Pset_ElementCommon.System: *id004
-            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
-            VVK.RelatedDocumentationURI: *id011
-            Pset_ManufacturerTypeInformation.Manufacturer: *id012
-            Pset_Warranty.WarrantyStartDate: *id014
-            Pset_Warranty.WarrantyPeriod: *id015
-            Pset_Warranty.PointOfContact: *id016
-        s7:
-          lod: 300
-          log: 3
-          properties:
-            Pset_ElementComponentCommon.IsExternal: *id007
-            VVK.Material: *id006
-            Pset_ElementComponentCommon.Diameter: *id055
-            Pset_ElementComponentCommon.Height: *id026
-            VVK.Name: *id001
-            VVK.ElementType: *id002
-            Pset_ElementComponentCommon.Status: *id003
-            VVK.Tag: *id008
-            Pset_ElementCommon.System: *id004
-            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
-            VVK.RelatedDocumentationURI: *id011
-            Pset_ManufacturerTypeInformation.Manufacturer: *id012
-            Pset_Warranty.WarrantyStartDate: *id014
-            Pset_Warranty.WarrantyPeriod: *id015
-            Pset_Warranty.PointOfContact: *id016
-    - id: Šilumos tinklų kamera
-      classifications:
-        NSIK LF: H
-        NSIK LT: JG
-        NSIK LK: '%XMC1010'
-      ifcType: *id076
-      stages:
-        s1:
-          lod: 275
-          log: 3
-          properties:
-            Pset_ElementCommon.System: *id004
-            Pset_ElementComponentCommon.IsExternal: *id007
-            VVK.Material: *id006
-            Pset_QuantityTakeOff.Length: *id024
-            Pset_ElementComponentCommon.Width: *id025
-            Pset_ElementComponentCommon.Height: *id026
-            VVK.Name: *id001
-            VVK.ElementType: *id002
-            Pset_ElementComponentCommon.Status: *id003
-            VVK.Tag: *id008
-        s2:
-          properties:
-            VVK.Name: *id001
-            VVK.ElementType: *id002
-            Pset_ElementComponentCommon.Status: *id003
-            Pset_ElementCommon.System: *id004
-        s3:
-          lod: 200
-          log: 2
-          properties:
-            Pset_ElementCommon.System: *id004
-            VVK.Material: *id006
-            Pset_QuantityTakeOff.Length: *id024
-            Pset_ElementComponentCommon.Width: *id025
-            Pset_ElementComponentCommon.Height: *id026
-            VVK.Name: *id001
-            VVK.ElementType: *id002
-            Pset_ElementComponentCommon.Status: *id003
-            VVK.Tag: *id008
-            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
-        s4:
-          lod: 300
-          log: 3
-          properties:
-            Pset_ElementCommon.System: *id004
-            Pset_ElementComponentCommon.IsExternal: *id007
-            VVK.Material: *id006
-            Pset_QuantityTakeOff.Length: *id024
-            Pset_ElementComponentCommon.Width: *id025
-            Pset_ElementComponentCommon.Height: *id026
-            VVK.Name: *id001
-            VVK.ElementType: *id002
-            Pset_ElementComponentCommon.Status: *id003
-            VVK.Tag: *id008
-            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
-        s5:
-          lod: 300
-          log: 3
-          properties:
-            Pset_ElementCommon.System: *id004
-            Pset_ElementComponentCommon.IsExternal: *id007
-            VVK.Material: *id006
-            Pset_QuantityTakeOff.Length: *id024
-            Pset_ElementComponentCommon.Width: *id025
-            Pset_ElementComponentCommon.Height: *id026
-            VVK.Name: *id001
-            VVK.ElementType: *id002
-            Pset_ElementComponentCommon.Status: *id003
-            VVK.Tag: *id008
-            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
-            VVK.RelatedDocumentationURI: *id011
-            Pset_ManufacturerTypeInformation.Manufacturer: *id012
-        s6:
-          lod: 300
-          log: 3
-          properties:
-            Pset_ElementCommon.System: *id004
-            Pset_ElementComponentCommon.IsExternal: *id007
-            VVK.Material: *id006
-            Pset_QuantityTakeOff.Length: *id024
-            Pset_ElementComponentCommon.Width: *id025
-            Pset_ElementComponentCommon.Height: *id026
-            VVK.Name: *id001
-            VVK.ElementType: *id002
-            Pset_ElementComponentCommon.Status: *id003
-            VVK.Tag: *id008
-            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
-            VVK.RelatedDocumentationURI: *id011
-            Pset_ManufacturerTypeInformation.Manufacturer: *id012
-            Pset_Warranty.WarrantyStartDate: *id014
-            Pset_Warranty.WarrantyPeriod: *id015
-            Pset_Warranty.PointOfContact: *id016
-        s7:
-          lod: 300
-          log: 3
-          properties:
-            Pset_ElementCommon.System: *id004
-            Pset_ElementComponentCommon.IsExternal: *id007
-            VVK.Material: *id006
-            Pset_QuantityTakeOff.Length: *id024
-            Pset_ElementComponentCommon.Width: *id025
-            Pset_ElementComponentCommon.Height: *id026
-            VVK.Name: *id001
-            VVK.ElementType: *id002
-            Pset_ElementComponentCommon.Status: *id003
-            VVK.Tag: *id008
-            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
-            VVK.RelatedDocumentationURI: *id011
-            Pset_ManufacturerTypeInformation.Manufacturer: *id012
-            Pset_Warranty.WarrantyStartDate: *id014
-            Pset_Warranty.WarrantyPeriod: *id015
-            Pset_Warranty.PointOfContact: *id016
-    - id: Šilumos tinklo apsaugos zona
-      classifications:
-        NSIK LF: H
-        NSIK LT: JG
-        NSIK B: DCB
-        ISO81346 CF: H
-        ISO81346 CT: JG
-        ISO81346 CS: DCB
-      ifcType: &id077
+        NSIK LT: HC
+        NSIK B: '%DCB1000'
+      ifcType: &id082
       - IfcSpace
       - IfcSpaceType
       stages:
-        s1:
+        s1: &id083
           lod: 275
           log: 3
           properties:
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementCommon.System: *id004
-            Pset_ElementComponentCommon.Width: *id025
-            Pset_QuantityTakeOff.Area: *id051
-        s2:
+        s2: &id084
           lod: 200
           log: 2
           properties:
             Pset_ElementComponentCommon.Status: *id003
-            Pset_ElementComponentCommon.Width: *id025
             Pset_ElementCommon.System: *id004
-        s3:
+        s3: &id085
           lod: 200
           log: 2
           properties:
             Pset_ElementComponentCommon.Status: *id003
-            Pset_ElementComponentCommon.Width: *id025
             Pset_ElementCommon.System: *id004
-        s5:
+        s4: &id086
           lod: 300
           log: 3
           properties:
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementCommon.System: *id004
-            Pset_ElementComponentCommon.Width: *id025
-            Pset_QuantityTakeOff.Area: *id051
-        s6:
+        s5: &id087
           lod: 300
           log: 3
           properties:
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementCommon.System: *id004
-            Pset_ElementComponentCommon.Width: *id025
-            Pset_QuantityTakeOff.Area: *id051
-        s7:
+        s6: &id088
           lod: 300
           log: 3
           properties:
             Pset_ElementComponentCommon.Status: *id003
             Pset_ElementCommon.System: *id004
-            Pset_ElementComponentCommon.Width: *id025
-            Pset_QuantityTakeOff.Area: *id051
+        s7: &id089
+          lod: 300
+          log: 3
+          properties:
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ElementCommon.System: *id004
     - id: Šilumos tinklų įrenginių aptarnavimo erdvė
       classifications:
         NSIK LF: H
-        NSIK LT: JG
-        NSIK B: '%DCB1001'
-      ifcType: *id077
+        NSIK LT: HD
+        NSIK B: '%DCB1000'
+      ifcType: *id082
+      stages:
+        s1: *id083
+        s2: *id084
+        s3: *id085
+        s4: *id086
+        s5: *id087
+        s6: *id088
+        s7: *id089
+    - id: Elektrinis erdvės šildytuvas (radiatorius)
+      deprecated: null
+      classifications:
+        NSIK LF: H
+        NSIK LT: HD
+        NSIK LK: EBG
+        ISO81346 CF: H
+        ISO81346 CT: HD
+        ISO81346 CC: EBG
       stages:
         s1:
           lod: 275
           log: 3
           properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id008
             Pset_ElementCommon.System: *id004
-        s2:
-          lod: 200
-          log: 2
-          properties:
-            Pset_ElementComponentCommon.Status: *id003
-            Pset_ElementCommon.System: *id004
+            Pset_QuantityTakeOff.Length: *id024
+            Pset_ElementComponentCommon.Width: *id025
+            Pset_ElementComponentCommon.Height: *id026
+            VVK.Material: *id006
+            VVK.Colour: *id052
+            Pset_QuantityTakeOff.Weigth: *id054
+            Pset_ElectricalDeviceCommon.NominalPowerConsumption: *id063
+            Pset_ElementComponentCommon.HasProtectiveEarth: *id064
+            Pset_ElectricalDeviceCommon.NominalVoltage: *id027
+            Pset_ElectricalDeviceCommon.NominalFrequency: *id065
+            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id031
+            Pset_ElectricalDeviceCommon.IP_Code: *id029
+            Pset_ManufacturerTypeInformation.ArticleNumber: *id013
         s3:
           lod: 200
           log: 2
           properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id008
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
             Pset_ElementCommon.System: *id004
+            Pset_QuantityTakeOff.Length: *id024
+            Pset_ElementComponentCommon.Width: *id025
+            Pset_ElementComponentCommon.Height: *id026
+            VVK.Material: *id006
+            VVK.Colour: *id052
+            Pset_ElectricalDeviceCommon.NominalPowerConsumption: *id063
+            Pset_ElementComponentCommon.HasProtectiveEarth: *id064
+            Pset_QuantityTakeOff.Weigth: *id054
         s4:
           lod: 300
           log: 3
           properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id008
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
             Pset_ElementCommon.System: *id004
+            Pset_QuantityTakeOff.Length: *id024
+            Pset_ElementComponentCommon.Width: *id025
+            Pset_ElementComponentCommon.Height: *id026
+            VVK.Material: *id006
+            VVK.Colour: *id052
+            Pset_ElectricalDeviceCommon.NominalPowerConsumption: *id063
+            Pset_ElementComponentCommon.HasProtectiveEarth: *id064
+            Pset_QuantityTakeOff.Weigth: *id054
         s5:
           lod: 300
           log: 3
           properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id008
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
             Pset_ElementCommon.System: *id004
+            Pset_QuantityTakeOff.Length: *id024
+            Pset_ElementComponentCommon.Width: *id025
+            Pset_ElementComponentCommon.Height: *id026
+            VVK.Material: *id006
+            VVK.Colour: *id052
+            Pset_ElectricalDeviceCommon.NominalPowerConsumption: *id063
+            Pset_ElementComponentCommon.HasProtectiveEarth: *id064
+            Pset_QuantityTakeOff.Weigth: *id054
+            VVK.RelatedDocumentationURI: *id011
+            Pset_ManufacturerTypeInformation.Manufacturer: *id012
+            Pset_ManufacturerTypeInformation.ArticleNumber: *id013
         s6:
           lod: 300
           log: 3
           properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id008
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
             Pset_ElementCommon.System: *id004
+            Pset_QuantityTakeOff.Length: *id024
+            Pset_ElementComponentCommon.Width: *id025
+            Pset_ElementComponentCommon.Height: *id026
+            VVK.Material: *id006
+            VVK.Colour: *id052
+            Pset_ElectricalDeviceCommon.NominalPowerConsumption: *id063
+            Pset_ElementComponentCommon.HasProtectiveEarth: *id064
+            Pset_QuantityTakeOff.Weigth: *id054
+            VVK.RelatedDocumentationURI: *id011
+            Pset_ManufacturerTypeInformation.Manufacturer: *id012
+            Pset_ManufacturerTypeInformation.ArticleNumber: *id013
+            Pset_Warranty.WarrantyStartDate: *id014
+            Pset_Warranty.WarrantyPeriod: *id015
+            Pset_Warranty.PointOfContact: *id016
         s7:
           lod: 300
           log: 3
           properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
             Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id008
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id009
             Pset_ElementCommon.System: *id004
+            Pset_QuantityTakeOff.Length: *id024
+            Pset_ElementComponentCommon.Width: *id025
+            Pset_ElementComponentCommon.Height: *id026
+            VVK.Material: *id006
+            VVK.Colour: *id052
+            Pset_ElectricalDeviceCommon.NominalPowerConsumption: *id063
+            Pset_ElementComponentCommon.HasProtectiveEarth: *id064
+            Pset_QuantityTakeOff.Weigth: *id054
+            VVK.RelatedDocumentationURI: *id011
+            Pset_ManufacturerTypeInformation.Manufacturer: *id012
+            Pset_ManufacturerTypeInformation.ArticleNumber: *id013
+            Pset_Warranty.WarrantyStartDate: *id014
+            Pset_Warranty.WarrantyPeriod: *id015
+            Pset_Warranty.PointOfContact: *id016

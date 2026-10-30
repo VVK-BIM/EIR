@@ -1,0 +1,1807 @@
+version: 0.1a
+full_name: VVK EIR Specification
+email: bim@vilniausvystymas.lt
+identifier: VVK
+project: null
+loin:
+  T.A:
+    id: '05'
+    name: Architektūros technoligija
+    stages:
+      s1:
+        lod: 275
+        log: 2
+      s2:
+        lod: 200
+        log: 2
+      s3:
+        lod: 300
+        log: 2
+      s4:
+        lod: 350
+        log: 3
+      s5:
+        lod: 350
+        log: 3
+      s6:
+        lod: 500
+        log: 3
+      name: Turto valdymas
+    elements:
+    - id: Geometrinis koordinavimo elementas
+      description: Modelius erdvėje koordinuojantis BEP sutartas geometrinis elementas
+      examples:
+      - Koordinacinis kubas
+      - Koordinacinė piramidė
+      - Koordinacinis kūgis
+      classifications:
+        NSIK LF: A
+        NSIK LT: ME
+        NSIK LK: FNA
+        ISO81346 CF: A
+        ISO81346 CT: ME
+        ISO81346 CC: FNA
+      stages:
+        s1:
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: &id001
+              valueType: Tekstas
+              type: IfcLabel
+        s2:
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+        s3:
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+        s4:
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+        s5:
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+        s6:
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+        s7:
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+    - id: Širma
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: ULM
+        ISO81346 CF: S
+        ISO81346 CT: RB
+        ISO81346 CC: ULM
+      stages:
+        s1: &id019
+          lod: 275
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: &id002
+              valueType: Tekstas
+              type: IfcLabel
+            Pset_ElementComponentCommon.Status: &id003
+              valueType: Tekstas
+              type: IfcLabel
+              allowedValues:
+              - ESAMAS
+              - RESTAURUOJAMAS
+              - REMONTUOJAMAS
+              - REKONSTRUOJAMAS
+              - NAUJAS
+              - ARDOMAS
+              - LAIKINAS
+            VVK.Tag: &id011
+              valueType: Tekstas
+              type: IfcLabel
+            Pset_QuantityTakeOff.Length: &id004
+              type: IfcLengthMeasure | IfcPositiveLengthMeasure
+              valueType: Skaičius
+            Pset_ElementComponentCommon.Width: &id005
+              type: IfcLengthMeasure | IfcPositiveLengthMeasure
+              valueType: Skaičius
+            Pset_ElementComponentCommon.Height: &id006
+              type: IfcLengthMeasure | IfcPositiveLengthMeasure
+              valueType: Skaičius
+            VVK.Material: &id007
+              valueType: Tekstas
+              type: IfcLabel
+            VVK.Finish: &id008
+              valueType: Tekstas
+              type: IfcLabel
+            VVK.Colour: &id009
+              valueType: Tekstas
+              type: IfcLabel
+            Pset_ServiceLifeFactors.OutdoorEnvironment: &id012
+              examples:
+              - XC1
+              valueType: Tekstas
+              type: IfcLabel
+              descr: XO, XC1  Aplinkos agresyvumo klasė
+        s2: &id020
+          lod: 200
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_QuantityTakeOff.Length: *id004
+            Pset_ElementComponentCommon.Width: *id005
+            Pset_ElementComponentCommon.Height: *id006
+        s3: &id021
+          lod: 200
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ConstructionAdministration.SpecificationSectionNumber: &id010
+              valueType: Tekstas
+              type: IfcLabel
+            Pset_QuantityTakeOff.Length: *id004
+            Pset_ElementComponentCommon.Width: *id005
+            Pset_ElementComponentCommon.Height: *id006
+            VVK.Material: *id007
+            VVK.Finish: *id008
+            VVK.Colour: *id009
+        s4: &id022
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id010
+            Pset_QuantityTakeOff.Length: *id004
+            Pset_ElementComponentCommon.Width: *id005
+            Pset_ElementComponentCommon.Height: *id006
+            VVK.Material: *id007
+            VVK.Finish: *id008
+            VVK.Colour: *id009
+            VVK.Tag: *id011
+            Pset_ServiceLifeFactors.OutdoorEnvironment: *id012
+        s5: &id023
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id010
+            Pset_QuantityTakeOff.Length: *id004
+            Pset_ElementComponentCommon.Width: *id005
+            Pset_ElementComponentCommon.Height: *id006
+            VVK.Material: *id007
+            VVK.Finish: *id008
+            VVK.Colour: *id009
+            VVK.Tag: *id011
+            Pset_ServiceLifeFactors.OutdoorEnvironment: *id012
+            VVK.RelatedDocumentationURI: &id013
+              valueType: Tekstas
+              type: IfcLabel
+            Pset_ManufacturerTypeInformation.Manufacturer: &id014
+              valueType: Tekstas
+              type: IfcLabel
+            Pset_ManufacturerTypeInformation.ArticleNumber: &id015
+              valueType: Tekstas
+              type: IfcLabel
+        s6: &id024
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id010
+            Pset_QuantityTakeOff.Length: *id004
+            Pset_ElementComponentCommon.Width: *id005
+            Pset_ElementComponentCommon.Height: *id006
+            VVK.Material: *id007
+            VVK.Finish: *id008
+            VVK.Colour: *id009
+            VVK.Tag: *id011
+            Pset_ServiceLifeFactors.OutdoorEnvironment: *id012
+            VVK.RelatedDocumentationURI: *id013
+            Pset_ManufacturerTypeInformation.Manufacturer: *id014
+            Pset_ManufacturerTypeInformation.ArticleNumber: *id015
+            Pset_Warranty.WarrantyStartDate: &id016
+              descr: Garantijos pradžios data
+              valueType: Tekstas
+              type: IfcLabel
+            Pset_Warranty.WarrantyPeriod: &id017
+              descr: Garantijos trukmė, mėn
+              valueType: Sveiks skaičius
+              type: IfcLabel
+            Pset_Warranty.PointOfContact: &id018
+              descr: Garantiją teikiančio subjekto kontaktiniai duomenys
+              valueType: Tekstas
+              type: IfcLabel
+        s7: &id025
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id010
+            Pset_QuantityTakeOff.Length: *id004
+            Pset_ElementComponentCommon.Width: *id005
+            Pset_ElementComponentCommon.Height: *id006
+            VVK.Material: *id007
+            VVK.Finish: *id008
+            VVK.Colour: *id009
+            VVK.Tag: *id011
+            Pset_ServiceLifeFactors.OutdoorEnvironment: *id012
+            VVK.RelatedDocumentationURI: *id013
+            Pset_ManufacturerTypeInformation.Manufacturer: *id014
+            Pset_ManufacturerTypeInformation.ArticleNumber: *id015
+            Pset_Warranty.WarrantyStartDate: *id016
+            Pset_Warranty.WarrantyPeriod: *id017
+            Pset_Warranty.PointOfContact: *id018
+    - id: Lentyna
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: CLB
+        ISO81346 CF: S
+        ISO81346 CT: RB
+        ISO81346 CC: CLB
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
+    - id: Lentyna
+      classifications:
+        NSIK LF: S
+        NSIK LT: '%RB1040'
+        NSIK LK: CLB
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
+    - id: Sieninė lentyna
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: '%CLB10'
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
+    - id: Stelažas
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: '%CLB20'
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
+    - id: Atsisėdimas
+      examples:
+      - Kėdė
+      - suoliukas
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: CLC
+        ISO81346 CF: S
+        ISO81346 CT: RB
+        ISO81346 CC: CLC
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
+    - id: Sėdynė
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: '%CLC10'
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
+    - id: Taburetė
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: '%CLC11'
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
+    - id: Kėdė
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: '%CLC12'
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
+    - id: Krėslas
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: '%CLC13'
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
+    - id: Sofa
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: '%CLC15'
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
+    - id: Suoliukas
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: '%CLC16'
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
+    - id: Lova
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: '%CLC21'
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
+    - id: Spintelė
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: CMB
+        ISO81346 CF: S
+        ISO81346 CT: RB
+        ISO81346 CC: CMB
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
+    - id: Aukšta spinta
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: '%CMB10'
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
+    - id: Pastatoma spintelė
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: '%CMB20'
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
+    - id: Pakabinama sieninė spintelė
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: '%CMB30'
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
+    - id: Džiovinimo spinta
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: '%HPA10'
+      memo: Neprijunga prie elektros tiekimo
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
+    - id: Konteineris
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: CNA
+        ISO81346 CF: S
+        ISO81346 CT: RB
+        ISO81346 CC: CNA
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
+    - id: Laikanti platforma
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: UBE
+        ISO81346 CF: S
+        ISO81346 CT: RB
+        ISO81346 CC: UBE
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
+    - id: Atsisėdimas
+      examples:
+      - Mokytojo
+      - mokinių bei laboratorinės kėdės; žiūrovų tribūnos; gimnastikos suoliukas
+      classifications:
+        NSIK LF: S
+        NSIK LT: '%RB1040'
+        NSIK LK: CLC
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
+    - id: Spintelė
+      classifications:
+        NSIK LF: S
+        NSIK LT: '%RB1040'
+        NSIK LK: CMB
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
+    - id: Paviršių apsauganti plokštė
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: NCH
+        ISO81346 CF: S
+        ISO81346 CT: RB
+        ISO81346 CC: NCH
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
+    - id: Praustuvas
+      examples:
+      - Plautuvė; demonstracinis stalas su plautuve; stalas su gilumine vonia;
+      - stalas su plautuve prie indaplovės
+      classifications:
+        NSIK LF: S
+        NSIK LT: '%RB1040'
+        NSIK LK: XKA
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
+    - id: Plautuvė
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: '%XKA10'
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
+    - id: Kopėčios
+      classifications:
+        NSIK LF: S
+        NSIK LT: AF
+        NSIK LK: XSC
+        ISO81346 CF: S
+        ISO81346 CT: AF
+        ISO81346 CC: XSC
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
+    - id: Ekranas
+      deprecated: null
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: PHA
+        ISO81346 CF: S
+        ISO81346 CT: RB
+        ISO81346 CC: PHA
+      stages:
+        s1: &id031
+          lod: 275
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id011
+            Pset_QuantityTakeOff.Length: *id004
+            Pset_ElementComponentCommon.Width: *id005
+            Pset_ElementComponentCommon.Height: *id006
+            VVK.Colour: *id009
+            VVK.Finish: *id008
+            Pset_ElectricalDeviceCommon.NominalVoltage: &id026
+              valueType: Skaičius
+              ifcType: IfcElectricVoltageMeasure
+            Pset_ElectricalDeviceCommon.IP_Code: &id027
+              valueType: Tekstas
+              ifcType: IfcLabel
+            Pset_ElectricalDeviceCommon.NominalPowerConsumption: &id028
+              valueType: Skaičius
+              ifcType: IfcPowerMeasure
+            Pset_ElectricalDeviceCommon.InsulationStandardClass: &id029
+              valueType: Tekstas
+              ifcType: IfcLabel
+              allowedValues:
+              - 0
+              - I
+              - II
+              - III
+            Pset_ElectricalDeviceCommon.NominalFrequency: &id030
+              valueType: Tekstas
+              ifcType: IfcLabel
+        s3: &id032
+          lod: 200
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id011
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id010
+            Pset_QuantityTakeOff.Length: *id004
+            Pset_ElementComponentCommon.Width: *id005
+            Pset_ElementComponentCommon.Height: *id006
+            VVK.Colour: *id009
+            VVK.Finish: *id008
+            Pset_ElectricalDeviceCommon.NominalVoltage: *id026
+            Pset_ElectricalDeviceCommon.IP_Code: *id027
+        s4: &id033
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id011
+            Pset_QuantityTakeOff.Length: *id004
+            Pset_ElementComponentCommon.Width: *id005
+            Pset_ElementComponentCommon.Height: *id006
+            VVK.Colour: *id009
+            VVK.Finish: *id008
+            Pset_ElectricalDeviceCommon.NominalVoltage: *id026
+            Pset_ElectricalDeviceCommon.IP_Code: *id027
+            Pset_ElectricalDeviceCommon.NominalPowerConsumption: *id028
+            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id029
+            Pset_ElectricalDeviceCommon.NominalFrequency: *id030
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id010
+        s5: &id034
+          lod: 300
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id011
+            Pset_QuantityTakeOff.Length: *id004
+            Pset_ElementComponentCommon.Width: *id005
+            Pset_ElementComponentCommon.Height: *id006
+            VVK.Colour: *id009
+            VVK.Finish: *id008
+            Pset_ElectricalDeviceCommon.NominalVoltage: *id026
+            Pset_ElectricalDeviceCommon.IP_Code: *id027
+            Pset_ElectricalDeviceCommon.NominalPowerConsumption: *id028
+            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id029
+            Pset_ElectricalDeviceCommon.NominalFrequency: *id030
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id010
+            VVK.RelatedDocumentationURI: *id013
+            Pset_ManufacturerTypeInformation.Manufacturer: *id014
+            Pset_ManufacturerTypeInformation.ArticleNumber: *id015
+        s6: &id035
+          lod: 300
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id011
+            Pset_QuantityTakeOff.Length: *id004
+            Pset_ElementComponentCommon.Width: *id005
+            Pset_ElementComponentCommon.Height: *id006
+            VVK.Colour: *id009
+            VVK.Finish: *id008
+            Pset_ElectricalDeviceCommon.NominalVoltage: *id026
+            Pset_ElectricalDeviceCommon.IP_Code: *id027
+            Pset_ElectricalDeviceCommon.NominalPowerConsumption: *id028
+            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id029
+            Pset_ElectricalDeviceCommon.NominalFrequency: *id030
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id010
+            VVK.RelatedDocumentationURI: *id013
+            Pset_ManufacturerTypeInformation.Manufacturer: *id014
+            Pset_ManufacturerTypeInformation.ArticleNumber: *id015
+            Pset_Warranty.WarrantyStartDate: *id016
+            Pset_Warranty.WarrantyPeriod: *id017
+            Pset_Warranty.PointOfContact: *id018
+        s7: &id036
+          lod: 300
+          log: 2
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id011
+            Pset_QuantityTakeOff.Length: *id004
+            Pset_ElementComponentCommon.Width: *id005
+            Pset_ElementComponentCommon.Height: *id006
+            VVK.Colour: *id009
+            VVK.Finish: *id008
+            Pset_ElectricalDeviceCommon.NominalVoltage: *id026
+            Pset_ElectricalDeviceCommon.IP_Code: *id027
+            Pset_ElectricalDeviceCommon.NominalPowerConsumption: *id028
+            Pset_ElectricalDeviceCommon.InsulationStandardClass: *id029
+            Pset_ElectricalDeviceCommon.NominalFrequency: *id030
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id010
+            VVK.RelatedDocumentationURI: *id013
+            Pset_ManufacturerTypeInformation.Manufacturer: *id014
+            Pset_ManufacturerTypeInformation.ArticleNumber: *id015
+            Pset_Warranty.WarrantyStartDate: *id016
+            Pset_Warranty.WarrantyPeriod: *id017
+            Pset_Warranty.PointOfContact: *id018
+    - id: Sieninė plokštė
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: NCB
+        ISO81346 CF: S
+        ISO81346 CT: RB
+        ISO81346 CC: NCB
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
+    - id: Apsauginis sienos kampas
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: FNB
+        ISO81346 CF: S
+        ISO81346 CT: RB
+        ISO81346 CC: FNB
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
+    - id: Džiovinimo spinta
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: '%HPA10'
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Švieslentė
+      deprecated: null
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: '%HPA10'
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Užuolaida
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: RQE
+        ISO81346 CF: S
+        ISO81346 CT: RB
+        ISO81346 CC: RQE
+      stages:
+        s1: &id038
+          lod: 275
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id011
+            Pset_ElementComponentCommon.Width: *id005
+            Pset_ElementComponentCommon.Height: *id006
+            VVK.Colour: *id009
+            VVK.Material: *id007
+            Pset_ElementComponentCommon.IsExternal: &id037
+              type: IfcBoolean
+              valueType: Loginis
+        s3: &id039
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id011
+            Pset_ElementComponentCommon.Width: *id005
+            Pset_ElementComponentCommon.Height: *id006
+            VVK.Colour: *id009
+            VVK.Material: *id007
+            Pset_ElementComponentCommon.IsExternal: *id037
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id010
+        s4: &id040
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id011
+            Pset_ElementComponentCommon.Width: *id005
+            Pset_ElementComponentCommon.Height: *id006
+            VVK.Colour: *id009
+            VVK.Material: *id007
+            Pset_ElementComponentCommon.IsExternal: *id037
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id010
+        s5: &id041
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id011
+            Pset_ElementComponentCommon.Width: *id005
+            Pset_ElementComponentCommon.Height: *id006
+            VVK.Colour: *id009
+            VVK.Material: *id007
+            Pset_ElementComponentCommon.IsExternal: *id037
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id010
+            Pset_ManufacturerTypeInformation.Manufacturer: *id014
+        s6: &id042
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id011
+            Pset_ElementComponentCommon.Width: *id005
+            Pset_ElementComponentCommon.Height: *id006
+            VVK.Colour: *id009
+            VVK.Material: *id007
+            Pset_ElementComponentCommon.IsExternal: *id037
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id010
+            Pset_ManufacturerTypeInformation.Manufacturer: *id014
+            Pset_Warranty.WarrantyStartDate: *id016
+            Pset_Warranty.WarrantyPeriod: *id017
+            Pset_Warranty.PointOfContact: *id018
+        s7: &id043
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id011
+            Pset_ElementComponentCommon.Width: *id005
+            Pset_ElementComponentCommon.Height: *id006
+            VVK.Colour: *id009
+            VVK.Material: *id007
+            Pset_ElementComponentCommon.IsExternal: *id037
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id010
+            Pset_ManufacturerTypeInformation.Manufacturer: *id014
+            Pset_Warranty.WarrantyStartDate: *id016
+            Pset_Warranty.WarrantyPeriod: *id017
+            Pset_Warranty.PointOfContact: *id018
+    - id: Vidiniai roletai ir žaliuzi
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: RQF
+        ISO81346 CF: S
+        ISO81346 CT: RB
+        ISO81346 CC: RQF
+      stages:
+        s1: *id038
+        s3: *id039
+        s4: *id040
+        s5: *id041
+        s6: *id042
+        s7: *id043
+    - id: Motorizuotos užuolaidos pavara
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: RQE
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: RQE
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Kojų valymo paviršius
+      classifications:
+        NSIK LF: S
+        NSIK LT: BF
+        NSIK LK: NAC
+        ISO81346 CF: S
+        ISO81346 CT: BF
+        ISO81346 CC: NAC
+      stages:
+        s1: *id038
+        s3: *id039
+        s4: *id040
+        s5: *id041
+        s6: *id042
+        s7: *id043
+    - id: Veidrodis
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: WHD
+        ISO81346 CF: S
+        ISO81346 CT: RB
+        ISO81346 CC: WHD
+      stages:
+        s1: *id038
+        s3: *id039
+        s4: *id040
+        s5: *id041
+        s6: *id042
+        s7: *id043
+    - id: Mechaninis laikrodis
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: PGK
+        ISO81346 CF: S
+        ISO81346 CT: RB
+        ISO81346 CC: PGK
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
+    - id: Ženklas
+      examples:
+      - informacinė nuoroda
+      - iškaba
+      - kabineto numeris
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: PHD
+        ISO81346 CF: S
+        ISO81346 CT: RB
+        ISO81346 CC: PHD
+      stages:
+        s1:
+          lod: 275
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id011
+            Pset_ElementComponentCommon.Width: *id005
+            Pset_ElementComponentCommon.Height: *id006
+            VVK.Colour: *id009
+            VVK.Material: *id007
+            Pset_ElementComponentCommon.IsExternal: *id037
+        s3:
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id011
+            Pset_ElementComponentCommon.Width: *id005
+            Pset_ElementComponentCommon.Height: *id006
+            VVK.Colour: *id009
+            VVK.Material: *id007
+            Pset_ElementComponentCommon.IsExternal: *id037
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id010
+        s4:
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id011
+            Pset_ElementComponentCommon.Width: *id005
+            Pset_ElementComponentCommon.Height: *id006
+            VVK.Colour: *id009
+            VVK.Material: *id007
+            Pset_ElementComponentCommon.IsExternal: *id037
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id010
+        s5:
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id011
+            Pset_ElementComponentCommon.Width: *id005
+            Pset_ElementComponentCommon.Height: *id006
+            VVK.Colour: *id009
+            VVK.Material: *id007
+            Pset_ElementComponentCommon.IsExternal: *id037
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id010
+            Pset_ManufacturerTypeInformation.Manufacturer: *id014
+        s6:
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id011
+            Pset_ElementComponentCommon.Width: *id005
+            Pset_ElementComponentCommon.Height: *id006
+            VVK.Colour: *id009
+            VVK.Material: *id007
+            Pset_ElementComponentCommon.IsExternal: *id037
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id010
+            Pset_ManufacturerTypeInformation.Manufacturer: *id014
+            Pset_Warranty.WarrantyStartDate: *id016
+            Pset_Warranty.WarrantyPeriod: *id017
+            Pset_Warranty.PointOfContact: *id018
+        s7:
+          lod: 300
+          log: 3
+          properties:
+            VVK.Name: *id001
+            VVK.ElementType: *id002
+            Pset_ElementComponentCommon.Status: *id003
+            VVK.Tag: *id011
+            Pset_ElementComponentCommon.Width: *id005
+            Pset_ElementComponentCommon.Height: *id006
+            VVK.Colour: *id009
+            VVK.Material: *id007
+            Pset_ElementComponentCommon.IsExternal: *id037
+            Pset_ConstructionAdministration.SpecificationSectionNumber: *id010
+            Pset_ManufacturerTypeInformation.Manufacturer: *id014
+            Pset_Warranty.WarrantyStartDate: *id016
+            Pset_Warranty.WarrantyPeriod: *id017
+            Pset_Warranty.PointOfContact: *id018
+    - id: Šiukšliadėžė
+      classifications:
+        NSIK LF: S
+        NSIK LT: JE
+        NSIK LK: CNA
+        ISO81346 CF: S
+        ISO81346 CT: JE
+        ISO81346 CC: CNA
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
+    - id: Išmanioji lenta, ekranas
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: PHA
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: PHA
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Projektorius
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: '%PHA20'
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Švieslentė
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: HPA
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: HPA
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Švieslentė
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: '%HPA10'
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Laiko matavimo ir rodymo įrenginys
+      examples:
+      - Sekundometras
+      - Kėlinio trukmės indikatorius
+      - Likusio laiko indikatorius
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: BKA
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: BKA
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Svarstyklės
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: BWA
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: BWA
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Skaitikis
+      examples:
+      - Kasos aparatas
+      - Praeinančių asmenų skaitiklis
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: BZA
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: BZA
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Indukcinis šildytuvas
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: EBF
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: EBF
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Šaldytuvas
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: ECC
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: ECC
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Mikrobangų krosnelė
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: EEB
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: EEB
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Pašildantis įrenginys
+      examples:
+      - Sriubinė
+      - Marmitas
+      - Lėkščįų šildytuvas
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: EGC
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: EGC
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Indaplovė
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: HKA
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: HKA
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Džiovyklė
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: HPA
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: HPA
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Maišyklė
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: HWA
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: HWA
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Elektrinis laikrodis
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: PGK
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: PGK
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Lentyna
+      deprecated:
+        code: 304
+        destination: S.RB.CLB
+        reason: RC kodas taikomas tik prie elektros tinklo prijungtai įrangai
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: CLB
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: CLB
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Atsisėdimas
+      deprecated:
+        code: 304
+        destination: S.RB.CLC
+        reason: RC kodas taikomas tik prie elektros tinklo prijungtai įrangai
+      examples:
+      - Kėdė
+      - suoliukas
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: CLC
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: CLC
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Spintelė
+      deprecated:
+        code: 304
+        destination: S.RB.CMB
+        reason: RC kodas taikomas tik prie elektros tinklo prijungtai įrangai
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: CMB
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: CMB
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Konteineris
+      deprecated:
+        code: 304
+        destination: S.RB.CNA
+        reason: RC kodas taikomas tik prie elektros tinklo prijungtai įrangai
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: CNA
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: CNA
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Stalas
+      deprecated:
+        code: 304
+        destination: S.RB.UBE
+        reason: RC kodas taikomas tik prie elektros tinklo prijungtai įrangai
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: UBE
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: UBE
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Plautuvė
+      deprecated:
+        code: 304
+        destination: S.RB.XKA
+        reason: RC kodas taikomas tik prie elektros tinklo prijungtai įrangai
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: XKA
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: XKA
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Plautuvė
+      deprecated:
+        code: 304
+        destination: S.RB.%XKA10
+        reason: RC kodas taikomas tik prie elektros tinklo prijungtai įrangai
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: '%XKA10'
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Liejimo įrenginys
+      examples:
+      - 3D spausdintuvas
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: HJA
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: HJA
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Kaitinimo įrenginys
+      examples:
+      - Orkaitė
+      - Sterilizatorius
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: EBH
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: EBH
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Presas
+      examples:
+      - Sulčiaspaudė
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: HJB
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: HJB
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Pjaustytuvas
+      examples:
+      - Ploteris
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: HUA
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: HUA
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Trupintuvas
+      examples:
+      - Ploteris
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: HUC
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: HUC
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Spausdintuvas
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: PHC
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: PHC
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Lygintuvas
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: TBA
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: TBA
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Gręžimo mašina
+      examples:
+      - Stacionarios gręžimo staklės
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: TMA
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: TMA
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Terminis pjaustiklis
+      examples:
+      - Lazerinė plaustyklė
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: TMB
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: TMB
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Gaubtas
+      examples:
+      - Garų surinkikas
+      - Dūmų surinkikas
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: UCC
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: UCC
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Gaubtas
+      examples:
+      - Traukos spinta; spinta reagentams su ištraukimu (jeigu tokia bus);
+      - ventiliacinė oro nutraukimo rankovė; ventiliacinis gaubtas - be elektros prijungimo
+      classifications:
+        NSIK LF: S
+        NSIK LT: '%RC1040'
+        NSIK LK: UCC
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Aktyvus ekranas
+      examples:
+      - SMART board
+      - Televizorius
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: PHA
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: PHA
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Aktyvus ekranas
+      examples:
+      - SMART board
+      - Televizorius
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: '%PHA10'
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Projektorius
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: PHB
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: PHB
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Garsiakalbis
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: PJA
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: PJA
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Sija apšvietimo įrangai
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: ULE
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: ULE
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
+    - id: Sporto įrenginys
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: SZB
+        ISO81346 CF: S
+        ISO81346 CT: RB
+        ISO81346 CC: SZB
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
+    - id: Sporto įrenginys (su elektros prijungimu)
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: SZB
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: SZB
+      stages:
+        s1: *id031
+        s3: *id032
+        s4: *id033
+        s5: *id034
+        s6: *id035
+        s7: *id036
+    - id: Sporto įrenginio (valties, baidarės) laikiklis
+      classifications:
+        NSIK LF: S
+        NSIK LT: RB
+        NSIK LK: UAJ
+        ISO81346 CF: S
+        ISO81346 CT: RB
+        ISO81346 CC: UAJ
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
+    - id: Sporto įrenginio jungtys
+      classifications:
+        NSIK LF: S
+        NSIK LT: RC
+        NSIK LK: UQB
+        ISO81346 CF: S
+        ISO81346 CT: RC
+        ISO81346 CC: UQB
+      stages:
+        s1: *id019
+        s2: *id020
+        s3: *id021
+        s4: *id022
+        s5: *id023
+        s6: *id024
+        s7: *id025
